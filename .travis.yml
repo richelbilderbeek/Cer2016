@@ -8,8 +8,3 @@ r_github_packages:
 after_success:
   - Rscript -e 'lintr::lint_package()'
   - Rscript -e 'library(covr); codecov()'
-  - cat /home/travis/build/richelbilderbeek/Cer2016/Cer2016.Rcheck/00check.log
-
-after_failure:
-  - cat /home/travis/build/richelbilderbeek/Cer2016/Cer2016.Rcheck/00check.log
-

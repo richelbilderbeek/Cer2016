@@ -11,6 +11,7 @@ Description: This package contains multiple phylogeny summary statistics:
     birth-death model.
 License: file LICENSE
 LazyData: TRUE
+Requires: lintr
 Suggests:
     ape,
     knitr,
