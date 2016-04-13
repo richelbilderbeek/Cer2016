@@ -1,0 +1,43 @@
+---
+title: "Demo of the summary statistics"
+author: "Richel Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Demo of the summary statistics}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+There are multiple phylogeny summary statistics:
+
+ * [first]
+ * [second]
+
+## [First summary statistic]
+
+Given a phylogeny [TODO: Use a BD or PBD phylogeny]
+
+```{r}
+library(ape)
+phylogeny <- rcoal(10)
+plot(phylogeny)
+```
+
+A possible summary statistic is ...
+
+The statistic is very in-/sensitive, as when we compare the phylogeny
+to itself, the values already differ????
+
+```{r}
+measurement_1 <- runif(n = 1, max = sum(phylogeny$edge.length))
+measurement_2 <- runif(n = 1, max = sum(phylogeny$edge.length))
+print(measurement_1)
+print(measurement_2)
+```
+
+
+
+
+
+
