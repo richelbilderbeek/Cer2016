@@ -19,7 +19,6 @@ before_script:
  - sudo Rscript install_r_packages.R
  # R wants all hidden files gone...
  - rm .gitignore
- - rm src/.gitignore
  - rm .travis.yml
  - rm -rf .git
  - rm -rf ..Rcheck
