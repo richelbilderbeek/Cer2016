@@ -27,7 +27,9 @@ before_script:
 script: 
  - R CMD check .
 
+after_succes:
+ - codecov
+
 after_failure:
- # R logs
  - cat /home/travis/build/richelbilderbeek/Cer2016/..Rcheck/00check.log
 
