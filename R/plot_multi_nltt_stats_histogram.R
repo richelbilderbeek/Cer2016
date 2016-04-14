@@ -1,17 +1,7 @@
-source("~/GitHubs/R/Peregrine/is_valid_file.R")
-source("~/GitHubs/R/FileIo/get_base_filename.R")
-source("~/GitHubs/R/Peregrine/load_parameters_from_file.R")
-source("~/GitHubs/R/MyFavoritePackages/olli_rBEAST/R/fun.beast2output.R")
-library(ape)
-library(ggplot2)
-library(gridExtra)
-library(nLTT)
-library(testit)
-
 plot_multi_nltt_stats_histogram <- function(filenames) {
 
   data <- data.frame()
-  
+
   for (filename in filenames) {
     assert(is_valid_file(filename))
     file <- load_parameters_from_file(filename)
@@ -40,11 +30,11 @@ plot_multi_nltt_stats_histogram <- function(filenames) {
     data, aes(length, fill = description)
   ) + geom_histogram(
     alpha = 0.25,
-    aes(y = ..density..), 
-    position = 'identity', 
+    aes(y = ..density..),
+    position = 'identity',
     binwidth = 0.005
-  ) + ggtitle("nLTT statistics distribution") + 
-    theme(plot.title = element_text(lineheight=.8, face="bold")) + 
+  ) + ggtitle("nLTT statistics distribution") +
+    theme(plot.title = element_text(lineheight=.8, face="bold")) +
     scale_fill_manual(" ",values=c("red","blue"))
   grid.arrange(myplot)
   ggsave("multi_nltt_stats_histogram.png")

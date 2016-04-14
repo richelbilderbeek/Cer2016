@@ -1,0 +1,80 @@
+---
+title: "convert_alignment_to_beast_posterior demo"
+author: "Richel Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{convert_alignment_to_beast_posterior demo}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+To convert an alignment to a BEAST2 posterior:
+
+ * Create a phylogeny
+ * Create an alignment from that phylogeny
+ * Create a BEAST2 posterior from that alignment
+ * Compare the BEAST2 posterior with the original phylogeny
+
+## Load the packages
+
+```{r}
+library(Cer2016)
+library(nLTT)
+```
+
+
+## Create a phylogeny
+
+```{r}
+n_taxa <- 5
+phylogeny <- rcoal(n = n_taxa)
+plot(phylogeny)
+```
+
+## Create an alignment from that phylogeny
+
+```{r}
+alignment <- convert_phylogeny_to_alignment(
+  phylogeny = phylogeny,
+  sequence_length = 10
+)
+image(alignment)
+```
+
+From that alignment, create a BEAST2 posterior
+
+```{r}
+base_filename <- "convert_alignment_to_beast_posterior_test"
+
+if (file.exists(paste(base_filename,".log",sep=""))) {
+  file.remove(paste(base_filename,".log",sep=""))  
+}
+if (file.exists(paste(base_filename,".trees",sep=""))) {
+  file.remove(paste(base_filename,".trees",sep=""))  
+}
+if (file.exists(paste(base_filename,".xml.state",sep=""))) {
+  file.remove(paste(base_filename,".xml.state",sep=""))  
+}
+posterior <- convert_alignment_to_beast_posterior(
+  alignment,
+  mcmc_chainlength = 10000,
+  base_filename = base_filename,
+  rng_seed = 42
+)
+```
+
+## Plot this posterioir
+
+```{r}
+last_tree <- tail(posterior,n=1)[[1]]
+plot(last_tree,main="Last tree in posterior")
+
+all_nltt_stats <- NULL
+for (tree in posterior)
+{
+  all_nltt_stats = c(all_nltt_stats,nLTTstat(phylogeny_with_outgroup,tree))
+}
+
+hist(all_nltt_stats)
+```

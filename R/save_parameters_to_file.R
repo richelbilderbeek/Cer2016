@@ -1,9 +1,24 @@
-library(testit)
-source("~/GitHubs/R/Peregrine/is_valid_file.R")
-
+#' Creates a valid parameter file
+#' @param rng_seed the random number generator seed
+#' @param species_initiation_rate_good_species the species initiation rate of the good species
+#' @param species_initiation_rate_incipient_species,
+#' @param speciation_completion_rate,
+#' @param extinction_rate_good_species,
+#' @param extinction_rate_incipient_species,
+#' @param age crown age of the phylogeny
+#' @param n_species_trees_samples the number of species trees that will be sampled from an incipient species tree
+#' @param mutation_rate the probability per nucleotide to mutate at a DNA replication
+#' @param n_alignments the number of alignments simulated per species tree
+#' @param sequence_length the simulated DNA sequence length in nucleotides
+#' @param mcmc_chainlength the length of the MCMC chain that BEAST2 will run
+#' @param n_beast_runs the number of BEAST2 runs per DNA alignments
+#' @param filename the name of the parameter file that will be created by this function
+#' @return Nothing, it will create a file with filename `filename`
+#' @export
+#' @author Richel Bilderbeek
 save_parameters_to_file <- function(
   rng_seed,
-  species_initiation_rate_good_species, 
+  species_initiation_rate_good_species,
   species_initiation_rate_incipient_species,
   speciation_completion_rate,
   extinction_rate_good_species,
@@ -37,10 +52,10 @@ save_parameters_to_file <- function(
     rep(x = NA, times = n_species_trees_samples * n_alignments * n_beast_runs) # posteriors
   )
   names(my_list) <- c("parameters", "pbd_output", "species_trees_with_outgroup", "alignments", "posteriors")
-  assert(length(my_list$pbd_output) == 1)
-  assert(length(my_list$species_trees_with_outgroup) == n_species_trees_samples)
-  assert(length(my_list$alignments) == n_species_trees_samples * n_alignments)
-  assert(length(my_list$posteriors) == n_species_trees_samples * n_alignments * n_beast_runs)
+  testit::assert(length(my_list$pbd_output) == 1)
+  testit::assert(length(my_list$species_trees_with_outgroup) == n_species_trees_samples)
+  testit::assert(length(my_list$alignments) == n_species_trees_samples * n_alignments)
+  testit::assert(length(my_list$posteriors) == n_species_trees_samples * n_alignments * n_beast_runs)
   saveRDS(my_list,file=filename)
-  assert(is_valid_file(filename))
+  testit::assert(is_valid_file(filename))
 }

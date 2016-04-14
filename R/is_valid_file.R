@@ -1,5 +1,3 @@
-source("~/GitHubs/R/Peregrine/read_file.R")
-
 is_valid_file <- function(filename) {
   if (!file.exists(filename)) return (FALSE)
   file <- read_file(filename)

@@ -1,16 +1,6 @@
-library(testit)
-library(ape)
-library(nLTT)
-source("~/GitHubs/R/FileIo/get_base_filename.R")
-source("~/GitHubs/R/Phylogenies/get_average_nltt.R")
-source("~/GitHubs/R/Phylogenies/sample_species_trees_from_pbd_sim_output.R")
-
-source("~/GitHubs/R/Peregrine/is_valid_file.R")
-source("~/GitHubs/R/Peregrine/read_file.R")
-
 plot_gene_tree_versus_species_trees <- function() {
 
-  for (parameter_filename in list.files(path = ".", pattern = "^(toy_example|example|article)_.*\\.RDa$")) {  
+  for (parameter_filename in list.files(path = ".", pattern = "^(toy_example|example|article)_.*\\.RDa$")) {
     #parameter_filename <- "article_0_1_2_1_0.RDa"
     print(parameter_filename)
     assert(is_valid_file(parameter_filename))
@@ -19,9 +9,9 @@ plot_gene_tree_versus_species_trees <- function() {
     png_filename <- substr(png_filename,1,nchar(png_filename) - 0)
     png_filename <- paste(png_filename,"_gene_tree_versus_species_trees.png",sep="")
     file <- read_file(parameter_filename)
-    if (typeof(file$pbd_output) != "list") { 
-      print("SKIPPED") 
-      next 
+    if (typeof(file$pbd_output) != "list") {
+      print("SKIPPED")
+      next
     }
     trees <- sample_species_trees_from_pbd_sim_output(n = 100, file$pbd_output)
     png(png_filename)

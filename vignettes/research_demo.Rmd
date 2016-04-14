@@ -1,0 +1,63 @@
+---
+title: "Research demo"
+author: "Richel Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Research demo}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+This document describes my research.
+
+## Workflow
+
+Every experiment has the following steps:
+ * Creating parameter files
+ * Checking your parameter file
+ * Do simulations
+ * Analyze results
+ 
+### Creating parameter files
+
+Parameter files can be created 
+ * from the command line: call the script `create_parameter_file.R`
+ * by calling the function `save_parameters_to_file`
+
+```{r}
+save_parameters_to_file(
+  rng_seed = as.numeric(argv[1]),
+  species_initiation_rate_good_species = as.numeric(argv[2]),
+  species_initiation_rate_incipient_species = as.numeric(argv[3]),
+  speciation_completion_rate = as.numeric(argv[4]),
+  extinction_rate_good_species = as.numeric(argv[5]),
+  extinction_rate_incipient_species = as.numeric(argv[6]),
+  age = as.numeric(argv[7]),
+  n_species_trees_samples = as.numeric(argv[8]),
+  mutation_rate = as.numeric(argv[9]),
+  n_alignments = as.numeric(argv[10]),
+  sequence_length = as.numeric(argv[11]),
+  mcmc_chainlength = as.numeric(argv[12]),
+  n_beast_runs = as.numeric(argv[13]),
+  filename = argv[14]
+)
+```
+
+
+
+###  Checking your parameter file
+
+You can check if you created a parameter file with the correct arguments using the R script 'check_parameter_file.R' (see chapter [sub:check_parameter_file.R]).
+
+### Do simulations
+
+A simulation (including its replicates) can be run from the command line by supplying all the arguments to the R script 'do_simulation.R' (see chapter [sub:do_simulation.R]). This will result in:
+
+ * A parameter file with intermediate data added
+ * BEAST2 output files
+
+### Analyze results
+
+After the simulations, the results are analyzed with the R script 'do_analyze.R' (see chapter [sub:analyse.R]).
+

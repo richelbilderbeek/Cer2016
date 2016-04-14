@@ -1,14 +1,6 @@
-library(testit)
-library(nLTT)
-source("~/GitHubs/R/FileIo/get_base_filename.R")
-source("~/GitHubs/R/Phylogenies/get_average_nltt.R")
-source("~/GitHubs/R/Peregrine/is_valid_file.R")
-source("~/GitHubs/R/Peregrine/read_file.R")
-source("~/GitHubs/R/MyFavoritePackages/olli_rBEAST/R/fun.beast2output.R")
-
 plot_beast_repeatabilities <- function() {
   # How well do two BEAST2 runs on the same alignment match?
-  
+
   # Filenames have the form:
   # * 'article_a_b_c_d_e_f_g.trees'
   # * 'example_i_e_f_g.trees'
@@ -21,7 +13,7 @@ plot_beast_repeatabilities <- function() {
   # g: 1-base index of alignment simulated from species tree
   # h: 1-base index of BEAST2 run on an alignment
   # i: 1-base index of the example
-  for (trees_filename in list.files(path = ".", pattern = "^(toy_example|example|article)_.*_1\\.trees")) {  
+  for (trees_filename in list.files(path = ".", pattern = "^(toy_example|example|article)_.*_1\\.trees")) {
     other_trees_filename <- gsub("_1.trees","_2.trees", trees_filename)
     if (!file.exists(other_trees_filename)) next
     parameter_filename <- get_base_filename(trees_filename)
@@ -31,7 +23,7 @@ plot_beast_repeatabilities <- function() {
     png_filename <- get_base_filename(trees_filename)
     png_filename <- substr(png_filename,1,nchar(png_filename) - 2)
     png_filename <- paste(png_filename,"_beast_repeatability.png",sep="")
-    
+
     print(paste(trees_filename,other_trees_filename,parameter_filename, png_filename))
     assert(is_valid_file(parameter_filename))
     parameter_file <- read_file(parameter_filename)
@@ -45,7 +37,7 @@ plot_beast_repeatabilities <- function() {
       c('True','BEAST'), # puts text in the legend
       lty=c(1,3), # gives the legend appropriate symbols (lines)
       lwd=c(1,1)
-    )   
+    )
     dev.off()
   }
 }

@@ -1,9 +1,3 @@
-source("~/GitHubs/R/Peregrine/is_valid_file.R")
-source("~/GitHubs/R/Peregrine/read_file.R")
-source("~/GitHubs/R/Phylogenies/add_outgroup_to_phylogeny.R")
-source("~/GitHubs/R/Phylogenies/sample_species_trees_from_pbd_sim_output.R")
-library(testit)
-
 add_species_trees_with_outgroup <- function(filename) {
   assert(is_valid_file(filename))
   file <- read_file(filename)
@@ -17,10 +11,10 @@ add_species_trees_with_outgroup <- function(filename) {
   print(paste("Adding species_trees_with_outgroup to file ",filename,sep=""))
 
   for (i in seq(1:n_species_trees_samples)) {
-    if (!is.na(file$species_trees_with_outgroup[i])) 
-    { 
+    if (!is.na(file$species_trees_with_outgroup[i]))
+    {
       print(paste(" * species_trees_with_outgroup[",i,"] already exists",sep=""))
-      next 
+      next
     }
     print(paste("   * Setting seed to ", (rng_seed + i), sep=""))
     set.seed(rng_seed + i) # Each species tree is generated from its own RNG seed

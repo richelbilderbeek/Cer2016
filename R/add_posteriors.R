@@ -1,10 +1,3 @@
-source("~/GitHubs/R/Peregrine/is_valid_file.R")
-source("~/GitHubs/R/Peregrine/read_file.R")
-source("~/GitHubs/R/Phylogenies/is_beast_posterior.R")
-source("~/GitHubs/R/Phylogenies/convert_alignment_to_beast_posterior.R")
-library(testit)
-library(tools) #For file_path_sans_ext
-
 add_posteriors <- function(filename)
 {
   assert(is_valid_file(filename))
@@ -26,7 +19,7 @@ add_posteriors <- function(filename)
         assert(posterior_index >= 1 && posterior_index <= length(file$posteriors))
         if(is_beast_posterior(file$posteriors[[posterior_index]][[1]])) {
           print(paste("   * Posterior #", k, " for alignment #",j," for species tree #",i," at posterior_index #", posterior_index, " already has a posterior", sep=""))
-           next 
+           next
         }
         new_seed <- rng_seed + k
         print(paste("   * Setting seed to ", new_seed, sep=""))
@@ -40,7 +33,7 @@ add_posteriors <- function(filename)
         )
         print(paste("   * Storing posterior #", k, " for alignment #",j," for species tree #",i," at posterior_index #", posterior_index, sep=""))
         file$posteriors[[posterior_index]] <- list(posterior)
-      } 
+      }
     }
   }
   saveRDS(file, file = filename)

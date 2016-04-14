@@ -1,9 +1,3 @@
-source("~/GitHubs/R/Peregrine/is_valid_file.R")
-source("~/GitHubs/R/Peregrine/read_file.R")
-source("~/GitHubs/R/Phylogenies/is_pbd_sim_output.R")
-library(PBD)
-library(testit)
-
 add_pbd_output <- function(filename) {
   assert(is_valid_file(filename))
   file <- read_file(filename)
@@ -18,7 +12,7 @@ add_pbd_output <- function(filename) {
   speciation_completion_rate <- as.numeric(parameters$speciation_completion_rate[2])
   extinction_rate_good_species <- as.numeric(parameters$extinction_rate_good_species[2])
   extinction_rate_incipient_species <- as.numeric(parameters$extinction_rate_incipient_species[2])
-  age <- as.numeric(parameters$age[2]) 
+  age <- as.numeric(parameters$age[2])
   set.seed(rng_seed)
   #pbd_output <- pbd_sim(c(
   file$pbd_output <- pbd_sim(c(

@@ -1,9 +1,3 @@
-source("~/GitHubs/R/FileIo/get_base_filename.R")
-source("~/GitHubs/R/Peregrine/is_valid_file.R")
-source("~/GitHubs/R/MyFavoritePackages/olli_rBEAST/R/fun.beast2output.R")
-source("~/GitHubs/R/Phylogenies/get_average_nltt.R")
-library(testit)
-
 plot_multi_average_nltts <- function(filenames) {
   png(paste("multi_average_nltts.png",sep=""))
 
@@ -27,7 +21,7 @@ plot_multi_average_nltts <- function(filenames) {
             get_average_nltt(all_trees,replot = FALSE,lty=1,lwd = 2, main="Average nLTTs")
           } else {
             get_average_nltt(all_trees,replot = TRUE, lty = linetype,lwd = 2)
-          }     
+          }
         }
       }
     }
@@ -36,6 +30,6 @@ plot_multi_average_nltts <- function(filenames) {
     c('BD','PBD'), # puts text in the legend
     lty=c(1,3), # gives the legend appropriate symbols (lines)
     lwd=c(2,2)
-  )   
+  )
   dev.off()
 }

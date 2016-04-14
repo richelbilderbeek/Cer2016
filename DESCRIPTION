@@ -11,11 +11,22 @@ Description: This package contains multiple phylogeny summary statistics:
     birth-death model.
 License: file LICENSE
 LazyData: TRUE
+Requires:
+  adephylo,
+  ape,
+  nLTT,
+  PBD,
+  phangorn,
+  testit,
+  tools,
+  TreeSim
 Suggests:
-    ape,
-    knitr,
-    lintr,
-    rmarkdown,
-    testthat
+  ape,
+  ggplot2,
+  gridExtra,
+  knitr,
+  lintr,
+  rmarkdown,
+  testthat
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1
