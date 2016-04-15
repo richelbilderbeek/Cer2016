@@ -12,21 +12,34 @@ convert_phylogeny_to_alignment <- function(
   sequence_length,
   mutation_rate = 1
 ) {
-  # Convert a phylogeny to a random DNA alignment
-
-  assert(is_phylogeny(phylogeny))
-  assert(sequence_length > 0)
-  assert(mutation_rate >= 0)
+  if (!is_phylogeny(phylogeny)) {
+    stop(
+      "convert_phylogeny_to_alignment: ",
+      "parameter 'phylogeny' must be a phylogeny"
+    )
+  }
+  if (sequence_length < 1) {
+    stop(
+      "convert_phylogeny_to_alignment: ",
+      "parameter 'sequence_length' must be a non-zero and positive integer value"
+    )
+  }
+  if (mutation_rate < 0) {
+    stop(
+      "convert_phylogeny_to_alignment: ",
+      "parameter 'mutation_rate' must be a non-zero and positive value"
+    )
+  }
 
   alignment_phydat <- simSeq(
     phylogeny,
     l = sequence_length,
     rate = mutation_rate
   )
-  assert(class(alignment_phydat)=="phyDat")
+  testit::assert(class(alignment_phydat)=="phyDat")
 
   alignment_dnabin <- as.DNAbin(alignment_phydat)
-  assert(is_alignment(alignment_dnabin))
+  testit::assert(is_alignment(alignment_dnabin))
 
   return (alignment_dnabin)
 }

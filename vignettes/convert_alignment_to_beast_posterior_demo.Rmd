@@ -21,6 +21,7 @@ To convert an alignment to a BEAST2 posterior:
 ```{r}
 library(Cer2016)
 library(nLTT)
+library(phangorn)
 ```
 
 

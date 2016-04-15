@@ -6,38 +6,36 @@ test_that("phylogeny must be of class phylo", {
       phylogeny = "I am not of class phylo", # Ouch
       stem_length = 0.0, # OK
       outgroup_name = "Outgroup" # OK
-    ), "phylogeny must be of type phylo"
+    )
   )
 })
 
 test_that("stem_length must be a number", {
-  skip()
   expect_error(
     add_outgroup_to_phylogeny(
       phylogeny = rcoal(10), #OK
       stem_length = "I am not a length", # Ouch
       outgroup_name = "Outgroup" # OK
-    ), "phylogeny must be of type phylo"
+    )
   )
 })
 
-test_that("outgroup_name must be a string", {
-  skip()
+test_that("outgroup_name must be a character", {
   expect_error(
     add_outgroup_to_phylogeny(
       phylogeny = rcoal(10), #OK
       stem_length = 0.0, #OK
       outgroup_name = rcoal(10) # Ouch
-    ), "phylogeny must be of type phylo"
+    )
   )
 })
 
 test_that("result is of class phylo", {
+
   phylogeny <- add_outgroup_to_phylogeny(
-      phylogeny = rcoal(10), #OK
-      stem_length = 0.0, # OK
-      outgroup_name = "Outgroup" # OK
-    ), "phylogeny must be of type phylo"
+    phylogeny = rcoal(10), #OK
+    stem_length = 0.0, # OK
+    outgroup_name = "Outgroup" # OK
   )
   expect_equal(class(phylogeny), "phylo")
 })
