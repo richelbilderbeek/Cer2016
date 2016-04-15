@@ -22,7 +22,8 @@ before_script:
  - rm .gitignore
  - rm .travis.yml
  - rm -rf .git
- - rm -rf ..Rcheck
+ - rm ..Rcheck
+ - rm .Rprofile
 
 script: 
  - R CMD check .
