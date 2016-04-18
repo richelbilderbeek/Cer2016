@@ -1,6 +1,14 @@
+#' Plot alignments
+#' @param filename name of the parameter file
+#' @export
+#' @author Richel Bilderbeek
 plot_alignments <- function(filename) {
-  assert(is_valid_file(filename))
-  base_filename <- get_base_filename(filename)
+  if (!is_valid_file(filename)) {
+    stop("plot_alignments: invalid filename")
+  }
+  base_filename <- tools::file_path_sans_ext(basename(filename))
+
+
   file <- read_file(filename)
   n_species_trees_samples <- as.numeric(file$parameters$n_species_trees_samples[2])
   n_alignments <- as.numeric(file$parameters$n_alignments[2])

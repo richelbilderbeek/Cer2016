@@ -2,7 +2,7 @@
 #' @param pbd_sim_output the argument tested to output of PBD::pbd_sim
 #' @return TRUE or FALSE
 #' @export
-#' @authorRichel Bilderbeek
+#' @author Richel Bilderbeek
 is_pbd_sim_output <- function(
   pbd_sim_output
 ) {

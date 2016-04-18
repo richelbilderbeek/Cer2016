@@ -33,12 +33,12 @@ add_posteriors <- function(filename)
         set.seed(new_seed)
         basefilename <- paste(basename(tools::file_path_sans_ext(filename)), "_", i,"_", j, "_", k,sep = "")
         posterior <- convert_alignment_to_beast_posterior(
-          alignment = alignment,
+          alignment_dnabin = alignment,
           base_filename = basefilename,
           mcmc_chainlength = mcmc_chainlength,
           rng_seed = new_seed
         )
-        print(paste("   * Storing posterior #", k, " for alignment #",j," for species tree #",i," at posterior_index #", posterior_index, sep = ""))
+        print(paste("   * Storing posterior #", k, " for alignment #", j," for species tree #",i," at posterior_index #", posterior_index, sep = ""))
         file$posteriors[[posterior_index]] <- list(posterior)
       }
     }

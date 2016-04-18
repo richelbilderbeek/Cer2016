@@ -1,5 +1,7 @@
+#' How well do the BEAST2 runs on the multiple alignments match?
+#' @export
+#' @author Richel Bilderbeek
 plot_alignment_repeatabilities <- function() {
-  # How well do the BEAST2 runs on the multiple alignments match?
 
   # Filenames have the form:
   # * 'article_a_b_c_d_e_f_g.trees'

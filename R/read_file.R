@@ -1,8 +1,12 @@
+#' Read a .RDA file
+#' @param filename name of the file
+#' @return the file as R data
+#' @export
 read_file <- function(filename)
 {
   if (!file.exists(filename)) {
-    print(paste("ERROR: file '", filename, "' not found", sep=""))
+    stop("read_file: file does not exist")
   }
-  assert(file.exists(filename))
   file <- readRDS(filename)
+  file
 }
