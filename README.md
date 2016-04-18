@@ -6,6 +6,22 @@
 
 Community Ecology Research course 2016.
 
+## How to install
+
+From the GNU/Linux terminal, or using Windows Git Bash:
+
+```
+git clone https://github.com/richelbilderbeek/Cer2016
+```
+
+This will create a folder called `Cer2016`. 
+
+You may also need to do this, for GNU/Linux:
+
+```
+sudo apt-get install libcurl4-openssl-dev
+```
+
 ## Agenda
 
  * TH 2016-04-14 16:00-17:00: GELIFES lecture, room 4.?? (`The Eye`)
