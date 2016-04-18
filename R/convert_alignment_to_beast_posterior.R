@@ -1,7 +1,13 @@
-# Convert an alignment to a BEAST2 XML input file
-# alignment_dnabin <- CreateRandomAlignment(5,10)
-# mcmc_chainlength = 10000
-#rng_seed <- 42
+#' Convert an alignment to a BEAST2 XML input file
+#' @param alignment_dnabin The alignmnet
+#' @param mcmc_chainlength The length of the MCMC chain BEAST2 will generate
+#' @param base_filename The base of the filename (the part without the extension)
+#' @param rng_seed The random number generator seed used by BEAST2
+#' @param beast_bin_path Where the binary 'beast' can be found
+#' @param beast_jar_path Where the jar 'beast.jar' can be found
+#' @return A BEAST2 posterior
+#' @export
+#' @author Richel Bilderbeek
 convert_alignment_to_beast_posterior <- function(
   alignment_dnabin,
   mcmc_chainlength,

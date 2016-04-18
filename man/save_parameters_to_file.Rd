@@ -15,6 +15,14 @@ save_parameters_to_file(rng_seed, species_initiation_rate_good_species,
 
 \item{species_initiation_rate_good_species}{the species initiation rate of the good species}
 
+\item{species_initiation_rate_incipient_species}{the speciation-initiation rate of the incipient species}
+
+\item{speciation_completion_rate}{the rate at which incipient species become good}
+
+\item{extinction_rate_good_species}{the rate at which good species get extinct}
+
+\item{extinction_rate_incipient_species}{the rate at which incipient species get extinct}
+
 \item{age}{crown age of the phylogeny}
 
 \item{n_species_trees_samples}{the number of species trees that will be sampled from an incipient species tree}

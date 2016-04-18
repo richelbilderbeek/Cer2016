@@ -1,3 +1,8 @@
+#' Add a species tree with outgroup to a file
+#' @param filename Parameter filename
+#' @return Nothing, modifies the parameter file
+#' @export
+#' @author Richel Bilderbeek
 add_species_trees_with_outgroup <- function(filename) {
   assert(is_valid_file(filename))
   file <- read_file(filename)

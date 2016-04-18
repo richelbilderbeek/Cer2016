@@ -1,4 +1,6 @@
-InstallLibraries <- function() {
+#' Installs the libraries needed
+#' @export
+install_libraries <- function() {
   install.packages("ape", repos="http://cran.r-project.org")
   install.packages("DDD", repos="http://cran.r-project.org")
   install.packages("plyr", repos="http://cran.r-project.org")
@@ -12,6 +14,6 @@ InstallLibraries <- function() {
   install.packages("data.table", repos="http://cran.r-project.org")
   install.packages("phangorn", repos="http://cran.r-project.org")
   install.packages("nLTT", repos="http://cran.r-project.org")
-  devtools::install_github("olli0601/rBEAST")
+  devtools::install_github("richelbilderbeek/rBEAST")
   devtools::install_github("richelbilderbeek/ribir")
 }

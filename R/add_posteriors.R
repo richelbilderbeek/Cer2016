@@ -1,3 +1,8 @@
+#' Add BEAST2 posteriors to a file
+#' @param filename Parameter filename
+#' @return Nothing, modifies the parameter file
+#' @export
+#' @author Richel Bilderbeek
 add_posteriors <- function(filename)
 {
   assert(is_valid_file(filename))

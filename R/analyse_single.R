@@ -1,3 +1,8 @@
+#' Analyse a single file
+#' @param filename Parameter filename
+#' @return Nothing?
+#' @export
+#' @author Richel Bilderbeek
 analyse_single <- function(filename) {
   if (!file.exists(filename)) {
     print(paste(filename,": not found"))

@@ -1,10 +1,10 @@
 #' Creates a valid parameter file
 #' @param rng_seed the random number generator seed
 #' @param species_initiation_rate_good_species the species initiation rate of the good species
-#' @param species_initiation_rate_incipient_species,
-#' @param speciation_completion_rate,
-#' @param extinction_rate_good_species,
-#' @param extinction_rate_incipient_species,
+#' @param species_initiation_rate_incipient_species the speciation-initiation rate of the incipient species
+#' @param speciation_completion_rate the rate at which incipient species become good
+#' @param extinction_rate_good_species the rate at which good species get extinct
+#' @param extinction_rate_incipient_species the rate at which incipient species get extinct
 #' @param age crown age of the phylogeny
 #' @param n_species_trees_samples the number of species trees that will be sampled from an incipient species tree
 #' @param mutation_rate the probability per nucleotide to mutate at a DNA replication

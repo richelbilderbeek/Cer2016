@@ -1,3 +1,8 @@
+#' Adds a pbd_sim result to a file
+#' @param filename Parameter filename
+#' @return Nothing, modifies the parameter file
+#' @export
+#' @author Richel Bilderbeek
 add_pbd_output <- function(filename) {
   assert(is_valid_file(filename))
   file <- read_file(filename)

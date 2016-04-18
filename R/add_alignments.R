@@ -1,3 +1,8 @@
+#' Add an alignment to a file
+#' @param filename Parameter filename
+#' @return Nothing, modifies the parameter file
+#' @export
+#' @author Richel Bilderbeek
 add_alignments <- function(filename)
 {
   assert(is_valid_file(filename))
