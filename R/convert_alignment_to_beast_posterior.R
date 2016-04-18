@@ -19,7 +19,7 @@ convert_alignment_to_beast_posterior <- function(
   assert(is_alignment(alignment_dnabin))
   assert(is_whole_number(mcmc_chainlength))
   assert(mcmc_chainlength > 0)
-  assert(is_string(base_filename))
+  assert(is.character(base_filename))
   assert(is_whole_number(rng_seed))
 
   # File paths

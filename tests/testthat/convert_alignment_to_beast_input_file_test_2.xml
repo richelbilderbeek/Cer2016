@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><beast beautitemplate='Standard' beautistatus='' namespace="beast.core:beast.evolution.alignment:beast.evolution.tree.coalescent:beast.core.util:beast.evolution.nuc:beast.evolution.operators:beast.evolution.sitemodel:beast.evolution.substitutionmodel:beast.evolution.likelihood" version="2.0">
+
+
+    <data
+id="convert_alignment_to_beast_input_file_test_2"
+name="alignment">
+                    <sequence id="seq_Outgroup" taxon="Outgroup" totalcount="4" value="TATCTAGTGA"/>
+                    <sequence id="seq_t1" taxon="t1" totalcount="4" value="AGAAGATTGA"/>
+                    <sequence id="seq_t2" taxon="t2" totalcount="4" value="AGAAGATTGA"/>
+                    <sequence id="seq_t3" taxon="t3" totalcount="4" value="ATGTGAAAGG"/>
+                    <sequence id="seq_t5" taxon="t5" totalcount="4" value="ACAGGTGCAG"/>
+                    <sequence id="seq_t4" taxon="t4" totalcount="4" value="ACTACATTTG"/>
+                </data>
+
+
+    
+
+
+    
+
+
+    
+<map name="Uniform">beast.math.distributions.Uniform</map>
+<map name="Exponential">beast.math.distributions.Exponential</map>
+<map name="LogNormal">beast.math.distributions.LogNormalDistributionModel</map>
+<map name="Normal">beast.math.distributions.Normal</map>
+<map name="Beta">beast.math.distributions.Beta</map>
+<map name="Gamma">beast.math.distributions.Gamma</map>
+<map name="LaplaceDistribution">beast.math.distributions.LaplaceDistribution</map>
+<map name="prior">beast.math.distributions.Prior</map>
+<map name="InverseGamma">beast.math.distributions.InverseGamma</map>
+<map name="OneOnX">beast.math.distributions.OneOnX</map>
+
+
+<run id="mcmc" spec="MCMC" chainLength="10000">
+    <state id="state" storeEvery="5000">
+        <tree id="Tree.t:convert_alignment_to_beast_input_file_test_2" name="stateNode">
+            <taxonset id="TaxonSet.convert_alignment_to_beast_input_file_test_2" spec="TaxonSet">
+                <alignment idref="convert_alignment_to_beast_input_file_test_2"/>
+            </taxonset>
+        </tree>
+        <parameter id="birthRate2.t:convert_alignment_to_beast_input_file_test_2" lower="0.0" name="stateNode" upper="10000.0">1.0</parameter>
+        <parameter id="relativeDeathRate2.t:convert_alignment_to_beast_input_file_test_2" lower="0.0" name="stateNode" upper="1.0">0.5</parameter>
+    </state>
+
+    <init id="RandomTree.t:convert_alignment_to_beast_input_file_test_2" spec="beast.evolution.tree.RandomTree" estimate="false" initial="@Tree.t:convert_alignment_to_beast_input_file_test_2" taxa="@convert_alignment_to_beast_input_file_test_2">
+        <populationModel id="ConstantPopulation0.t:convert_alignment_to_beast_input_file_test_2" spec="ConstantPopulation">
+            <parameter id="randomPopSize.t:convert_alignment_to_beast_input_file_test_2" name="popSize">1.0</parameter>
+        </populationModel>
+    </init>
+
+    <distribution id="posterior" spec="util.CompoundDistribution">
+        <distribution id="prior" spec="util.CompoundDistribution">
+            <distribution id="BirthDeath.t:convert_alignment_to_beast_input_file_test_2" spec="beast.evolution.speciation.BirthDeathGernhard08Model" birthDiffRate="@birthRate2.t:convert_alignment_to_beast_input_file_test_2" relativeDeathRate="@relativeDeathRate2.t:convert_alignment_to_beast_input_file_test_2" tree="@Tree.t:convert_alignment_to_beast_input_file_test_2"/>
+            <prior id="BirthRatePrior.t:convert_alignment_to_beast_input_file_test_2" name="distribution" x="@birthRate2.t:convert_alignment_to_beast_input_file_test_2">
+                <Uniform id="Uniform.0" name="distr" upper="1000.0"/>
+            </prior>
+            <prior id="DeathRatePrior.t:convert_alignment_to_beast_input_file_test_2" name="distribution" x="@relativeDeathRate2.t:convert_alignment_to_beast_input_file_test_2">
+                <Uniform id="Uniform.01" name="distr"/>
+            </prior>
+        </distribution>
+        <distribution id="likelihood" spec="util.CompoundDistribution">
+            <distribution id="treeLikelihood.convert_alignment_to_beast_input_file_test_2" spec="TreeLikelihood" data="@convert_alignment_to_beast_input_file_test_2" tree="@Tree.t:convert_alignment_to_beast_input_file_test_2">
+                <siteModel id="SiteModel.s:convert_alignment_to_beast_input_file_test_2" spec="SiteModel">
+                    <parameter id="mutationRate.s:convert_alignment_to_beast_input_file_test_2" estimate="false" name="mutationRate">1.0</parameter>
+                    <parameter id="gammaShape.s:convert_alignment_to_beast_input_file_test_2" estimate="false" name="shape">1.0</parameter>
+                    <parameter id="proportionInvariant.s:convert_alignment_to_beast_input_file_test_2" estimate="false" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
+                    <substModel id="JC69.s:convert_alignment_to_beast_input_file_test_2" spec="JukesCantor"/>
+                </siteModel>
+                <branchRateModel id="StrictClock.c:convert_alignment_to_beast_input_file_test_2" spec="beast.evolution.branchratemodel.StrictClockModel">
+                    <parameter id="clockRate.c:convert_alignment_to_beast_input_file_test_2" estimate="false" name="clock.rate">1.0</parameter>
+                </branchRateModel>
+            </distribution>
+        </distribution>
+    </distribution>
+
+    <operator id="treeScaler.t:convert_alignment_to_beast_input_file_test_2" spec="ScaleOperator" scaleFactor="0.5" tree="@Tree.t:convert_alignment_to_beast_input_file_test_2" weight="3.0"/>
+
+    <operator id="treeRootScaler.t:convert_alignment_to_beast_input_file_test_2" spec="ScaleOperator" rootOnly="true" scaleFactor="0.5" tree="@Tree.t:convert_alignment_to_beast_input_file_test_2" weight="3.0"/>
+
+    <operator id="UniformOperator.t:convert_alignment_to_beast_input_file_test_2" spec="Uniform" tree="@Tree.t:convert_alignment_to_beast_input_file_test_2" weight="30.0"/>
+
+    <operator id="SubtreeSlide.t:convert_alignment_to_beast_input_file_test_2" spec="SubtreeSlide" tree="@Tree.t:convert_alignment_to_beast_input_file_test_2" weight="15.0"/>
+
+    <operator id="narrow.t:convert_alignment_to_beast_input_file_test_2" spec="Exchange" tree="@Tree.t:convert_alignment_to_beast_input_file_test_2" weight="15.0"/>
+
+    <operator id="wide.t:convert_alignment_to_beast_input_file_test_2" spec="Exchange" isNarrow="false" tree="@Tree.t:convert_alignment_to_beast_input_file_test_2" weight="3.0"/>
+
+    <operator id="WilsonBalding.t:convert_alignment_to_beast_input_file_test_2" spec="WilsonBalding" tree="@Tree.t:convert_alignment_to_beast_input_file_test_2" weight="3.0"/>
+
+    <operator id="BirthRateScaler.t:convert_alignment_to_beast_input_file_test_2" spec="ScaleOperator" parameter="@birthRate2.t:convert_alignment_to_beast_input_file_test_2" scaleFactor="0.75" weight="3.0"/>
+
+    <operator id="DeathRateScaler.t:convert_alignment_to_beast_input_file_test_2" spec="ScaleOperator" parameter="@relativeDeathRate2.t:convert_alignment_to_beast_input_file_test_2" scaleFactor="0.75" weight="3.0"/>
+
+    <logger id="tracelog" fileName="convert_alignment_to_beast_input_file_test_2.log" logEvery="1000" model="@posterior" sanitiseHeaders="true" sort="smart">
+        <log idref="posterior"/>
+        <log idref="likelihood"/>
+        <log idref="prior"/>
+        <log idref="treeLikelihood.convert_alignment_to_beast_input_file_test_2"/>
+        <log id="TreeHeight.t:convert_alignment_to_beast_input_file_test_2" spec="beast.evolution.tree.TreeHeightLogger" tree="@Tree.t:convert_alignment_to_beast_input_file_test_2"/>
+        <log idref="BirthDeath.t:convert_alignment_to_beast_input_file_test_2"/>
+        <log idref="birthRate2.t:convert_alignment_to_beast_input_file_test_2"/>
+        <log idref="relativeDeathRate2.t:convert_alignment_to_beast_input_file_test_2"/>
+    </logger>
+
+    <logger id="screenlog" logEvery="1000">
+        <log idref="posterior"/>
+        <log id="ESS.0" spec="util.ESS" arg="@posterior"/>
+        <log idref="likelihood"/>
+        <log idref="prior"/>
+    </logger>
+
+    <logger id="treelog.t:convert_alignment_to_beast_input_file_test_2" fileName="$(tree).trees" logEvery="1000" mode="tree">
+        <log id="TreeWithMetaDataLogger.t:convert_alignment_to_beast_input_file_test_2" spec="beast.evolution.tree.TreeWithMetaDataLogger" tree="@Tree.t:convert_alignment_to_beast_input_file_test_2"/>
+    </logger>
+
+</run>
+
+</beast>

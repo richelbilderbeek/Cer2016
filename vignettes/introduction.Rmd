@@ -14,6 +14,7 @@ Need the `rBEAST` package:
 ```
 # devtools::install_github("olli0601/rBEAST")
 devtools::install_github("richelbilderbeek/rBEAST")
+devtools::install_github("richelbilderbeek/beastscriptr")
 ```
 
 Need the `ribir` package:
