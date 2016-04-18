@@ -1,4 +1,12 @@
-# Convert an alignment and parameters to a BEAST XML input file
+#' Convert an alignment and parameters to a BEAST XML input file
+#' @param alignment_dnabin the DNA alignment of type DNAbin
+#' @param mcmc_chainlength the BEAST2 MCMC chain length
+#' @param rng_seed random number generator seed
+#' @param beast_filename the filename of the XML BEAST2 input file created
+#' @param temp_fasta_filename the name of a temporary file created
+#' @return Nothing, creates a file called 'beast_filename'
+#' @export
+#' @author Richel Bilderbeek
 convert_alignment_to_beast_input_file <- function(
   alignment_dnabin,
   mcmc_chainlength,

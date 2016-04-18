@@ -37,7 +37,7 @@ add_outgroup_to_phylogeny <- function(
 
   n_taxa <- length(phylogeny$tip.label)
 
-  crown_age <- dist.nodes(phylogeny)[ n_taxa + 1][1]
+  crown_age <- ape::dist.nodes(phylogeny)[ n_taxa + 1][1]
   phylogeny$root.edge <- stem_length
   # Add an outgroup
   # Thanks to Liam J. Revell,
@@ -50,7 +50,7 @@ add_outgroup_to_phylogeny <- function(
   )
   class(tip) <- "phylo"
   # Attach to any node, in this case to the root. Note: order matters
-  phylogeny <- bind.tree(tip, phylogeny)
+  phylogeny <- ape::bind.tree(tip, phylogeny)
 
-  return (phylogeny)
+  return(phylogeny)
 }
