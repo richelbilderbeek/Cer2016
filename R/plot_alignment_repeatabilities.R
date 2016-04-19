@@ -23,36 +23,44 @@ plot_alignment_repeatabilities <- function() {
     if (!file.exists(trees_filename_2)) next
     if (!file.exists(trees_filename_3)) next
     if (!file.exists(trees_filename_4)) next
-    parameter_filename <- get_base_filename(trees_filename)
+
+    parameter_filename <- tools::file_path_sans_ext(basename(trees_filename))
     parameter_filename <- substr(parameter_filename,1,nchar(parameter_filename) - 6)
     parameter_filename <- paste(parameter_filename,".RDa",sep="")
 
-    png_filename <- get_base_filename(trees_filename)
+    png_filename <- tools::file_path_sans_ext(basename(trees_filename))
     png_filename <- substr(png_filename,1,nchar(png_filename) - 4)
     png_filename <- paste(png_filename,"_alignment_repeatability.png",sep="")
 
     print(paste(trees_filename_1,trees_filename_2,parameter_filename, png_filename))
-    assert(is_valid_file(parameter_filename))
+    testit::assert(is_valid_file(parameter_filename))
     parameter_file <- read_file(parameter_filename)
-    assert(file.exists(trees_filename))
-    assert(file.exists(trees_filename_1))
-    assert(file.exists(trees_filename_2))
-    assert(file.exists(trees_filename_3))
-    assert(file.exists(trees_filename_4))
+    testit::assert(file.exists(trees_filename))
+    testit::assert(file.exists(trees_filename_1))
+    testit::assert(file.exists(trees_filename_2))
+    testit::assert(file.exists(trees_filename_3))
+    testit::assert(file.exists(trees_filename_4))
     png(png_filename)
-    nLTT.plot(phy = parameter_file$species_trees_with_outgroup[[1]][[1]],replot = TRUE,lty=1,lwd = 1, main="Repeatability alignments")
-    get_average_nltt(beast2out.read.trees(trees_filename_1), replot = TRUE, lty = 3, lwd = 1, col = "red")
-    get_average_nltt(beast2out.read.trees(trees_filename_2), replot = TRUE, lty = 3, lwd = 1, col = "blue")
-    get_average_nltt(beast2out.read.trees(trees_filename_3), replot = TRUE, lty = 3, lwd = 1, col = "green")
-    get_average_nltt(beast2out.read.trees(trees_filename_4), replot = TRUE, lty = 3, lwd = 1, col = "purple")
-    legend(0.7,0.3, # Bottom right
-      c('True','BEAST'), # puts text in the legend
-      lty=c(1,3), # gives the legend appropriate symbols (lines)
-      lwd=c(1,1)
+    nLTT::nLTT.plot(
+      phy = parameter_file$species_trees_with_outgroup[[1]][[1]],
+      replot = TRUE,
+      lty = 1,
+      lwd = 1,
+      main = "Repeatability alignments"
     )
-    dev.off()
+    df <- ribir::get_nltt_values(
+      c(
+        rBEAST::beast2out.read.trees(trees_filename_1),
+        rBEAST::beast2out.read.trees(trees_filename_2),
+        rBEAST::beast2out.read.trees(trees_filename_3),
+        rBEAST::beast2out.read.trees(trees_filename_4)
+      ),
+      dt = 0.01
+    )
+    ggplot2::qplot(t, nltt, data = df, geom = "point", ylim = c(0,1),
+      main = "Average nLTT plot of phylogenies", color = id,
+      size = I(0.1)) + ggplot2::stat_summary(
+        fun.data = "mean_cl_boot", color = "red", geom = "smooth")
+
   }
 }
-plot_alignment_repeatabilities()
-
-#setwd("~/GitHubs/R/Peregrine")

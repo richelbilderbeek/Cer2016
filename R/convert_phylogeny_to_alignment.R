@@ -31,15 +31,15 @@ convert_phylogeny_to_alignment <- function(
     )
   }
 
-  alignment_phydat <- simSeq(
+  alignment_phydat <- phangorn::simSeq(
     phylogeny,
     l = sequence_length,
     rate = mutation_rate
   )
-  testit::assert(class(alignment_phydat)=="phyDat")
+  testit::assert(class(alignment_phydat) == "phyDat")
 
-  alignment_dnabin <- as.DNAbin(alignment_phydat)
+  alignment_dnabin <- ape::as.DNAbin(alignment_phydat)
   testit::assert(is_alignment(alignment_dnabin))
 
-  return (alignment_dnabin)
+  return(alignment_dnabin)
 }

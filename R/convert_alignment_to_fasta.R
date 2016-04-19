@@ -1,14 +1,10 @@
-library(ape)
-library(phangorn)
-library(testit)
-
 convert_alignment_to_fasta <- function(
   alignment_dnabin,
   filename
 ) {
   # Create a FASTA file text from an alignment
-
-  assert(class(alignment_dnabin) == "DNAbin")
-
-  write.phyDat(alignment_dnabin, file = filename, format = "fasta")
+  if (!class(alignment_dnabin) == "DNAbin") {
+    stop("alignment_dnabin: alignment must be of class DNAbin")
+  }
+  ape::write.phyDat(alignment_dnabin, file = filename, format = "fasta")
 }
