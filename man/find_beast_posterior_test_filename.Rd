@@ -12,9 +12,4 @@ the path of a known-to-be-valid BEAST2 posterior file
 \description{
 Find the path of known-to-be-valid BEAST2 posterior file
 }
-\examples{
-  library(testit)
-  my_file <- find_beast_posterior_test_filename()
-  assert(file.exists(my_file))
-}
 

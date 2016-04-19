@@ -26,9 +26,9 @@ sample_species_trees_from_pbd_sim_output <- function(
     # sL got renamed to s_l
     s_l <- PBD::sampletree(abs_l, crown_age)
     species_tree <- ape::as.phylo(
-      ape::read.tree(text = PBD::detphy(s_l,crown_age))
+      ape::read.tree(text = PBD::detphy(s_l, crown_age))
     )
-    species_trees <- c(species_trees,list(species_tree))
+    species_trees <- c(species_trees, list(species_tree))
   }
 
   testit::assert(typeof(species_trees) == "list")

@@ -17,7 +17,7 @@ problems just by using `Knitr` on it :-)
 Install it like this:
 
 ```{r}
-if (is.element("beastscriptr", installed.packages()[,1])) {
+if (is.element("beastscriptr", installed.packages()[, 1])) {
   print("package is already installed")
 } else {
   devtools::install_github("richelbilderbeek/beastscriptr")
@@ -29,7 +29,7 @@ if (is.element("beastscriptr", installed.packages()[,1])) {
 Perhaps the prerequisites are missing:
 
 ```{r}
-if (is.element("adephylo", installed.packages()[,1])) {
+if (is.element("adephylo", installed.packages()[, 1])) {
   print("package is already installed")
 } else {
   install.packages("adephylo", repos = "http://cran.uk.r-project.org")
@@ -39,7 +39,7 @@ if (is.element("adephylo", installed.packages()[,1])) {
 Then install it like this:
 
 ```{r}
-if (is.element("rBEAST", installed.packages()[,1])) {
+if (is.element("rBEAST", installed.packages()[, 1])) {
   print("package is already installed")
 } else {
   devtools::install_github("richelbilderbeek/rBEAST")
@@ -52,7 +52,7 @@ if (is.element("rBEAST", installed.packages()[,1])) {
 Install it like this:
 
 ```{r}
-if (is.element("ribir", installed.packages()[,1])) {
+if (is.element("ribir", installed.packages()[, 1])) {
   print("package is already installed")
 } else {
   devtools::install_github("richelbilderbeek/ribir")

@@ -4,24 +4,22 @@
 \alias{save_parameters_to_file}
 \title{Creates a valid parameter file}
 \usage{
-save_parameters_to_file(rng_seed, species_initiation_rate_good_species,
-  species_initiation_rate_incipient_species, speciation_completion_rate,
-  extinction_rate_good_species, extinction_rate_incipient_species, age,
+save_parameters_to_file(rng_seed, sirg, siri, scr, erg, eri, age,
   n_species_trees_samples, mutation_rate, n_alignments, sequence_length,
   mcmc_chainlength, n_beast_runs, filename)
 }
 \arguments{
 \item{rng_seed}{the random number generator seed}
 
-\item{species_initiation_rate_good_species}{the species initiation rate of the good species}
+\item{sirg}{the species initiation rate of the good species}
 
-\item{species_initiation_rate_incipient_species}{the speciation-initiation rate of the incipient species}
+\item{siri}{the speciation-initiation rate of the incipient species}
 
-\item{speciation_completion_rate}{the rate at which incipient species become good}
+\item{scr}{the rate at which incipient species become good}
 
-\item{extinction_rate_good_species}{the rate at which good species get extinct}
+\item{erg}{the rate at which good species get extinct}
 
-\item{extinction_rate_incipient_species}{the rate at which incipient species get extinct}
+\item{eri}{the rate at which incipient species get extinct}
 
 \item{age}{crown age of the phylogeny}
 

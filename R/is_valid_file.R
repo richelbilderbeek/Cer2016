@@ -1,4 +1,7 @@
 #' Checks if a file is a valid parameter file
+#' @param filename the name of the file to be checked
+#' @return TRUE or FALSE
+#' @export
 is_valid_file <- function(filename) {
   if (!file.exists(filename)) return(FALSE)
   file <- read_file(filename)

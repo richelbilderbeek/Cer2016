@@ -16,15 +16,15 @@ add_posteriors <- function(filename) {
   n_species_trees_samples <- as.numeric(
     file$parameters$n_species_trees_samples[2]
   )
-  for (i in seq(1,n_species_trees_samples)) {
-    for (j in seq(1,n_alignments)) {
+  for (i in seq(1, n_species_trees_samples)) {
+    for (j in seq(1, n_alignments)) {
       alignment_index <- 1 + (j - 1) + ((i - 1) * n_species_trees_samples)      # nolint
       testit::assert(alignment_index >= 1 &&
         alignment_index <= length(file$alignments)
       )
       alignment <- file$alignments[[alignment_index]][[1]]
       testit::assert(is_alignment(alignment))
-      for (k in seq(1,n_beast_runs)) {
+      for (k in seq(1, n_beast_runs)) {
         posterior_index <- 1 + (k - 1) +
           ((j - 1) * n_alignments) +                                            # nolint
           ((i - 1) * n_alignments * n_species_trees_samples)                    # nolint
@@ -43,7 +43,7 @@ add_posteriors <- function(filename) {
         set.seed(new_seed)
         basefilename <- paste(basename(
           tools::file_path_sans_ext(filename)), "_",
-          i, "_", j, "_", k,sep = ""
+          i, "_", j, "_", k, sep = ""
         )
         posterior <- convert_alignment_to_beast_posterior(
           alignment_dnabin = alignment,

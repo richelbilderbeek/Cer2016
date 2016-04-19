@@ -12,9 +12,4 @@ the path of the BEAST2 jar file
 \description{
 Find the path of the BEAST2 jar file
 }
-\examples{
-  library(testit)
-  my_file <- find_beast_jar_path()
-  assert(file.exists(my_file))
-}
 

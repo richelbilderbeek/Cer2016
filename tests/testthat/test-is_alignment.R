@@ -11,7 +11,7 @@ test_that("basic tests", {
   )
   expect_true(is_alignment(alignment_a))
   expect_true(is_alignment(alignment_b))
-  expect_true(!is_alignment(list(alignment_a,alignment_a)))
+  expect_true(!is_alignment(list(alignment_a, alignment_a)))
   expect_true(!is_alignment(ape::rmtree(N = 2, n = 10)))
   expect_true(!is_alignment(42))
   expect_true(!is_alignment(3.14))

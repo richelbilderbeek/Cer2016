@@ -30,8 +30,8 @@ pbd_sim_output <- PBD::pbd_sim(
 testit::assert(is_pbd_sim_output(pbd_sim_output))
 
 ## ------------------------------------------------------------------------
-cols = setNames(c("gray","black"),c("i","g"))
-phytools::plotSimmap(pbd_sim_output$igtree.extant,colors = cols)
+cols = setNames(c("gray", "black"), c("i", "g"))
+phytools::plotSimmap(pbd_sim_output$igtree.extant, colors = cols)
 
 ## ------------------------------------------------------------------------
 n <- 10
@@ -42,7 +42,7 @@ for (species_tree in species_trees) {
 
 ## ------------------------------------------------------------------------
 df <- get_nltt_values(species_trees, dt = 0.01)
-ggplot2::qplot(t, nltt, data = df, geom = "blank", ylim = c(0,1), main = "Average nLTT plot of phylogenies") + 
+ggplot2::qplot(t, nltt, data = df, geom = "blank", ylim = c(0, 1), main = "Average nLTT plot of phylogenies") + 
   ggplot2::stat_summary(fun.data = "mean_cl_boot", color = "red", geom = "smooth")
 
 ## ------------------------------------------------------------------------

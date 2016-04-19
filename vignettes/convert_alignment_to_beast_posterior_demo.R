@@ -38,7 +38,7 @@ posterior <- convert_alignment_to_beast_posterior(
 
 ## ------------------------------------------------------------------------
 last_tree <- tail(posterior, n = 1)[[1]]
-plot(last_tree,main = "Last tree in posterior")
+plot(last_tree, main = "Last tree in posterior")
 
 all_nltt_stats <- NULL
 for (tree in posterior)

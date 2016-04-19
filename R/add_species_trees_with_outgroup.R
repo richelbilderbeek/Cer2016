@@ -9,7 +9,7 @@ add_species_trees_with_outgroup <- function(filename) {
   }
   file <- read_file(filename)
   if (is.na(file$pbd_output[1])) {
-    print(paste("file ",filename," needs a pbd_output",sep = ""))
+    print(paste("file ", filename, " needs a pbd_output", sep = ""))
     return()
   }
   parameters <- file$parameters
@@ -30,14 +30,14 @@ add_species_trees_with_outgroup <- function(filename) {
     # Each species tree is generated from its own RNG seed
     set.seed(rng_seed + i)
     species_tree <- sample_species_trees_from_pbd_sim_output(
-      n = 1,file$pbd_output
+      n = 1, file$pbd_output
     )[[1]]
     species_tree_with_outgroup <- add_outgroup_to_phylogeny(
       species_tree, stem_length = 0
     )
     testit::assert(class(species_tree_with_outgroup) == "phylo")
     file$species_trees_with_outgroup[[i]] <- list(species_tree_with_outgroup)
-    saveRDS(file,file = filename)
+    saveRDS(file, file = filename)
   }
-  print(paste("Added species_trees_with_outgroup to file ",filename,sep = ""))
+  print(paste("Added species_trees_with_outgroup to file ", filename, sep = ""))
 }

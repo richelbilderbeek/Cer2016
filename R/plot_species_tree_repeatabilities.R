@@ -1,4 +1,3 @@
-#' Plot
 plot_species_tree_repeatabilities <- function() {
   # How well do the BEAST2 runs on the multiple species trees match?
 
@@ -34,18 +33,18 @@ plot_species_tree_repeatabilities <- function() {
     if (!file.exists(trees_filename_8)) next
     parameter_filename <- basename(trees_filename)
     parameter_filename <- substr(
-      parameter_filename,1,nchar(parameter_filename) - 6
+      parameter_filename, 1, nchar(parameter_filename) - 6
     )
     parameter_filename <- paste(parameter_filename, ".RDa", sep = "")
 
     png_filename <- basename(trees_filename)
-    png_filename <- substr(png_filename,1,nchar(png_filename) - 6)
+    png_filename <- substr(png_filename, 1, nchar(png_filename) - 6)
     png_filename <- paste(
       png_filename, "_species_tree_repeatability.png", sep = ""
     )
 
     print(paste(
-      trees_filename_1, trees_filename_2,parameter_filename, png_filename)
+      trees_filename_1, trees_filename_2, parameter_filename, png_filename)
     )
     testit::assert(is_valid_file(parameter_filename))
     parameter_file <- read_file(parameter_filename)
@@ -60,11 +59,11 @@ plot_species_tree_repeatabilities <- function() {
     testit::assert(file.exists(trees_filename_8))
     nLTT::nLTT.plot(
       phy = parameter_file$species_trees_with_outgroup[[1]][[1]],
-      replot = TRUE,lty = 1, lwd = 1, main = "Repeatability alignments"
+      replot = TRUE, lty = 1, lwd = 1, main = "Repeatability alignments"
     )
     nLTT::nLTT.plot(
       phy = parameter_file$species_trees_with_outgroup[[2]][[1]],
-      replot = FALSE,lty = 1,lwd = 1
+      replot = FALSE, lty = 1, lwd = 1
     )
     species_trees <- c(
       rBEAST::beast2out.read.trees(trees_filename_1),
@@ -78,7 +77,7 @@ plot_species_tree_repeatabilities <- function() {
     )
 
     df <- ribir::get_nltt_values(species_trees, dt = 0.01)
-    ggplot2::qplot(t, nltt, data = df, geom = "blank", ylim = c(0,1),
+    ggplot2::qplot(t, nltt, data = df, geom = "blank", ylim = c(0, 1),
       main = "Average nLTT plot of phylogenies") +
         ggplot2::stat_summary(fun.data = "mean_cl_boot",
           color = "red", geom = "smooth"

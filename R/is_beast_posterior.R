@@ -13,7 +13,7 @@ is_beast_posterior <- function(x) {
   }
 
   valid_name_regex <- "^STATE_[[:digit:]]+$"
-  valid_names <- grep(valid_name_regex,names(x), perl = TRUE, value = TRUE)
+  valid_names <- grep(valid_name_regex, names(x), perl = TRUE, value = TRUE)
   if (length(valid_names) != length(x)) {
     return(FALSE)
   }

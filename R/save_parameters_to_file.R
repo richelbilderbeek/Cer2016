@@ -98,6 +98,6 @@ save_parameters_to_file <- function(
   testit::assert(length(my_list$posteriors)
     == n_species_trees_samples * n_alignments * n_beast_runs
   )
-  saveRDS(my_list,file = filename)
+  saveRDS(my_list, file = filename)
   testit::assert(is_valid_file(filename))
 }

@@ -9,9 +9,9 @@ plot_posterior_samples <- function(filename) {
   )
   n_alignments <- as.numeric(file$parameters$n_alignments[2])
   n_beast_runs <- as.numeric(file$parameters$n_beast_runs[2])
-  for (i in seq(1,n_species_trees_samples)) {
-    for (j in seq(1,n_alignments)) {
-      for (k in seq(1,n_beast_runs)) {
+  for (i in seq(1, n_species_trees_samples)) {
+    for (j in seq(1, n_alignments)) {
+      for (k in seq(1, n_beast_runs)) {
         trees_filename <- paste(
           base_filename, "_", i, "_", j, "_", k, ".trees", sep = ""
         )

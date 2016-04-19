@@ -20,6 +20,6 @@ Samples species trees from PBD::pbd_sim its output
 It does not use pbd_sim()$stree, but generates these like PBD does.
 }
 \author{
-Richel Bilderbeek
+Richel Bilderbeek, inspired by Rampal Etienne's PBD::pbd_sim function
 }
 

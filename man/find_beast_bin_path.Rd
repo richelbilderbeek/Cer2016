@@ -12,9 +12,4 @@ the path of the BEAST2 binary file
 \description{
 Find the path of the BEAST2 binary file
 }
-\examples{
-  library(testit)
-  my_file <- find_beast_bin_path()
-  assert(file.exists(my_file))
-}
 

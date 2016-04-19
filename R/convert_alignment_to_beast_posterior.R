@@ -58,12 +58,12 @@ convert_alignment_to_beast_posterior <- function(
   }
 
   # File paths
-  beast_filename <- paste(base_filename, ".xml",sep = "");
+  beast_filename <- paste(base_filename, ".xml", sep = "");
 
-  beast_log_filename <- paste(base_filename, ".log",sep = "");
-  beast_trees_filename <- paste(base_filename, ".trees",sep = "");
-  beast_state_filename <- paste(base_filename, ".xml.state",sep = "");
-  temp_fasta_filename <- paste(base_filename, ".fasta",sep = "");
+  beast_log_filename <- paste(base_filename, ".log", sep = "");
+  beast_trees_filename <- paste(base_filename, ".trees", sep = "");
+  beast_state_filename <- paste(base_filename, ".xml.state", sep = "");
+  temp_fasta_filename <- paste(base_filename, ".fasta", sep = "");
 
   # Create a BEAST2 XML input file
   convert_alignment_to_beast_input_file(
@@ -80,15 +80,15 @@ convert_alignment_to_beast_posterior <- function(
 
   if (file.exists(beast_trees_filename)) {
     file.remove(beast_trees_filename)
-    print(paste("NOTE: removed '",beast_trees_filename, "'"), sep = "")
+    print(paste("NOTE: removed '", beast_trees_filename, "'"), sep = "")
   }
   if (file.exists(beast_log_filename)) {
     file.remove(beast_log_filename)
-    print(paste("NOTE: removed '",beast_log_filename, "'"), sep = "")
+    print(paste("NOTE: removed '", beast_log_filename, "'"), sep = "")
   }
   if (file.exists(beast_state_filename)) {
     file.remove(beast_state_filename)
-    print(paste("NOTE: removed '",beast_state_filename, "'"), sep = "")
+    print(paste("NOTE: removed '", beast_state_filename, "'"), sep = "")
   }
   testit::assert(!file.exists(beast_trees_filename))
   testit::assert(!file.exists(beast_log_filename))

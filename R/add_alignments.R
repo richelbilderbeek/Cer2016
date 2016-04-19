@@ -8,7 +8,7 @@ add_alignments <- function(filename) {
   file <- read_file(filename)
   if (is.na(file$species_trees_with_outgroup[1])) {
     print(paste("file ", filename,
-      " needs a species_trees_with_outgroup",sep = "")
+      " needs a species_trees_with_outgroup", sep = "")
     )
     return()
   }
@@ -22,7 +22,7 @@ add_alignments <- function(filename) {
   testit::assert(length(file$alignments) ==
     n_alignments * n_species_trees_samples
   )
-  for (i in seq(1,n_species_trees_samples)) {
+  for (i in seq(1, n_species_trees_samples)) {
     species_tree <- file$species_trees_with_outgroup[[i]][[1]]
     if (length(species_tree) == 1 && is.na(species_tree)) {
       print(paste("species_trees_with_outgroup[[", i,
@@ -30,7 +30,7 @@ add_alignments <- function(filename) {
       )
       return
     }
-    for (j in seq(1,n_alignments)) {
+    for (j in seq(1, n_alignments)) {
       index <- 1 + (j - 1) + ((i - 1) * n_species_trees_samples)                # nolint
       if (class(file$alignments[[index]][[1]]) == "DNAbin") {
         print(paste("   * Already stored alignment #", j,
@@ -47,10 +47,10 @@ add_alignments <- function(filename) {
       )
       file$alignments[[index]] <- list(alignment)
       saveRDS(file, file = filename)
-      print(paste("   * Created and saved alignments[",index,"]", sep = ""))
+      print(paste("   * Created and saved alignments[", index, "]", sep = ""))
     }
   }
-  print(paste("file ",filename," has gotten its ", n_alignments,
-    " alignments (per species tree)",sep = "")
+  print(paste("file ", filename, " has gotten its ", n_alignments,
+    " alignments (per species tree)", sep = "")
   )
 }
