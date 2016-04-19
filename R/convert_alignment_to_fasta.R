@@ -6,5 +6,5 @@ convert_alignment_to_fasta <- function(
   if (!class(alignment_dnabin) == "DNAbin") {
     stop("alignment_dnabin: alignment must be of class DNAbin")
   }
-  ape::write.phyDat(alignment_dnabin, file = filename, format = "fasta")
+  phangorn::write.phyDat(alignment_dnabin, file = filename, format = "fasta")
 }
