@@ -9,148 +9,94 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-Helper function:
+# Goal
+
+This vignette demonstrates the `sample_species_trees_from_pbd_output`
+function.
+
+# Demonstration
+
+Load the packages we will need:
 
 ```{r}
-plot_species_trees <- function(
-  species_trees,
-  filename
-) {
-  png(filename=filename,width = 480, height = 480 * length(species_trees))
-  n_cols <- 1
-  n_rows <- length(species_trees)
-  par(mfrow=c(n_rows,n_cols))
+library(Cer2016)
+library(ggplot2)
+library(phytools)
+library(ribir)
 
-  for (species_tree in species_trees) {
-    plot(species_tree,cex = 2)
-  }
-  dev.off()
+```
+
+Here we will simulate a protracted birth-death process:
+
+```{r}
+age <- 10
+seed <- 320
+set.seed(seed)
+
+species_initiation_rate_good_species  <- 0.7
+speciation_completion_rate <- 0.2
+species_initiation_rate_incipient_species <- 0.6
+extinction_rate_good_species <- 1.0
+extinction_rate_incipient_species <- 0.6
+
+# Work on the pbd_sim output
+pbd_sim_output <- PBD::pbd_sim(
+  c(
+    species_initiation_rate_good_species = species_initiation_rate_good_species,
+    speciation_completion_rate = speciation_completion_rate,
+    species_initiation_rate_incipient_species = species_initiation_rate_incipient_species,
+    extinction_rate_good_species = extinction_rate_good_species,
+    extinction_rate_incipient_species = extinction_rate_incipient_species
+  ),
+  age, plotit = TRUE
+)
+testit::assert(is_pbd_sim_output(pbd_sim_output))
+```
+
+Most of these trees are uninteresting for this demonstration. I will zoom in
+on the middle tree of the top row, which are the extant good and
+incipient species:
+
+```{r}
+cols = setNames(c("gray","black"),c("i","g"))
+phytools::plotSimmap(pbd_sim_output$igtree.extant,colors = cols)
+```
+
+From that tree, from each good species, we randomply pick one. This will cause
+multiple samplings to be different:
+
+```{r}
+n <- 10
+species_trees <- sample_species_trees_from_pbd_sim_output(n = n, pbd_sim_output)
+for (species_tree in species_trees) {
+  plot(species_tree)
 }
 ```
 
-Simple:
+Just for giggles, let's see the average nLTT plot:
 
 ```{r}
-
-
-n <- 6
-age <- 10
-seed <- 320
-set.seed(seed)
-
-species_initiation_rate_good_species  <- 0.7
-speciation_completion_rate <- 0.2
-species_initiation_rate_incipient_species <- 0.6
-extinction_rate_good_species <- 1.0
-extinction_rate_incipient_species <- 0.6
-
-# Work on the pbd_sim output
-pbd_sim_output <- pbd_sim(
-  c(
-    species_initiation_rate_good_species = species_initiation_rate_good_species,
-    speciation_completion_rate = speciation_completion_rate,
-    species_initiation_rate_incipient_species = species_initiation_rate_incipient_species,
-    extinction_rate_good_species = extinction_rate_good_species,
-    extinction_rate_incipient_species = extinction_rate_incipient_species
-  ),
-  age
-  #,plot = TRUE
-)
-
-
-
-species_trees <- sample_species_trees_from_pbd_sim_output(n = n, pbd_sim_output = pbd_sim_output)
-
-assert(typeof(species_trees)=="list")
-assert(length(species_trees)==n)
-
-#plot(species_trees[1]) #Cannot plot it too screen due to wide margins
-
-filename <- "~/SampleSpeciesTreesFromRandomProtractedTree1a.png"
-plot_species_trees(
-  species_trees,
-  filename = filename
-)
-print(paste("File '", filename, "' created", sep=""))
+df <- get_nltt_values(species_trees, dt = 0.01)
+ggplot2::qplot(t, nltt, data = df, geom = "blank", ylim = c(0,1), main = "Average nLTT plot of phylogenies") + 
+  ggplot2::stat_summary(fun.data = "mean_cl_boot", color = "red", geom = "smooth")
 ```
 
+To make this random process repeatable, a random number generator seed
+is used. Here we check the seed. It should yield the same results for same seed:
 
 ```{r}
-
-n <- 10
-age <- 10
-seed <- 320
 set.seed(seed)
-
-species_initiation_rate_good_species  <- 0.7
-speciation_completion_rate <- 0.2
-species_initiation_rate_incipient_species <- 0.6
-extinction_rate_good_species <- 1.0
-extinction_rate_incipient_species <- 0.6
-
-# Work on the pbd_sim output
-pbd_sim_output <- pbd_sim(
-  c(
-    species_initiation_rate_good_species = species_initiation_rate_good_species,
-    speciation_completion_rate = speciation_completion_rate,
-    species_initiation_rate_incipient_species = species_initiation_rate_incipient_species,
-    extinction_rate_good_species = extinction_rate_good_species,
-    extinction_rate_incipient_species = extinction_rate_incipient_species
-  ),
-  age
-)
-species_trees <- sample_species_trees_from_pbd_sim_output(n=n,pbd_sim_output)
-
-filename <- "~/SampleSpeciesTreesFromRandomProtractedTree1b.png"
-
-png(filename=filename,width = 480, height = 480)
-get_average_nltt(
-  species_trees,
-  plot_nltts = TRUE,
-  main = "Sampled species trees (black) versus gene tree (red)"
-)
-nLTT.lines(
-  pbd_sim_output$tree,
-  col = "red"
-)
-dev.off()
-print(paste("File '", filename, "' created", sep=""))
+species_tree_a <- sample_species_trees_from_pbd_sim_output(n = n, pbd_sim_output)[[1]]
+set.seed(seed)
+species_tree_b <- sample_species_trees_from_pbd_sim_output(n = n, pbd_sim_output)[[1]]
+plot(species_tree_a, main = "A")
+plot(species_tree_b, main = "B")
 ```
 
+For a different seed, it should be a different nLTT plot:
 
 ```{r}
-
-n <- 1
-age <- 10
-seed <- 320
-set.seed(seed)
-
-species_initiation_rate_good_species  <- 0.7
-speciation_completion_rate <- 0.2
-species_initiation_rate_incipient_species <- 0.6
-extinction_rate_good_species <- 1.0
-extinction_rate_incipient_species <- 0.6
-
-# Work on the pbd_sim output
-pbd_sim_output <- pbd_sim(
-  c(
-    species_initiation_rate_good_species = species_initiation_rate_good_species,
-    speciation_completion_rate = speciation_completion_rate,
-    species_initiation_rate_incipient_species = species_initiation_rate_incipient_species,
-    extinction_rate_good_species = extinction_rate_good_species,
-    extinction_rate_incipient_species = extinction_rate_incipient_species
-  ),
-  age
-)
-set.seed(seed)
-species_tree_a <- sample_species_trees_from_pbd_sim_output(n=n,pbd_sim_output)[[1]]
-plot(species_tree_a, main="A")
-set.seed(seed)
-species_tree_b <- sample_species_trees_from_pbd_sim_output(n=n,pbd_sim_output)[[1]]
-plot(species_tree_b, main="B")
 set.seed(seed + 1)
-species_tree_b <- sample_species_trees_from_pbd_sim_output(n=n,pbd_sim_output)[[1]]
-plot(species_tree_b, main="C")
+species_tree_c <- sample_species_trees_from_pbd_sim_output(n = n, pbd_sim_output)[[1]]
+plot(species_tree_c, main = "C")
 ```
-
-Done.

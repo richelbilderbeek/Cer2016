@@ -4,15 +4,21 @@
 \alias{is_pbd_sim_output}
 \title{Does not use pbd_sim()$stree, but generates these like PBD does}
 \usage{
-is_pbd_sim_output(pbd_sim_output)
+is_pbd_sim_output(pbd_sim_output, verbose = FALSE)
 }
 \arguments{
 \item{pbd_sim_output}{the argument tested to output of PBD::pbd_sim}
+
+\item{verbose}{will the function show why the input
+is determined not to be  output of PBD::pbd_sim}
 }
 \value{
 TRUE or FALSE
 }
 \description{
 Does not use pbd_sim()$stree, but generates these like PBD does
+}
+\author{
+Richel Bilderbeek
 }
 

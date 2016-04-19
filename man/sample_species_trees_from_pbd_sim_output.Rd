@@ -19,4 +19,7 @@ A list of length n, containing the n sampled species trees
 Samples species trees from PBD::pbd_sim its output
 It does not use pbd_sim()$stree, but generates these like PBD does.
 }
+\author{
+Richel Bilderbeek
+}
 

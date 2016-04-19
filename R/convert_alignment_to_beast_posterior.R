@@ -13,33 +13,58 @@ convert_alignment_to_beast_posterior <- function(
   mcmc_chainlength,
   base_filename,
   rng_seed = 42,
-  beast_bin_path = "~/Programs/beast/bin/beast",
-  beast_jar_path = "~/Programs/beast/lib/beast.jar"
+  beast_bin_path = "", #find_beast_bin_path(),
+  beast_jar_path = find_beast_jar_path()
 ) {
-  testit::assert(is_alignment(alignment_dnabin))
-  testit::assert(is_whole_number(mcmc_chainlength))
-  testit::assert(mcmc_chainlength > 0)
-  testit::assert(is.character(base_filename))
-  testit::assert(is_whole_number(rng_seed))
+  if (!is_alignment(alignment_dnabin)) {
+    stop("convert_alignment_to_beast_posterior: ",
+      "alignment must be of class DNAbin"
+    )
+  }
+  if (!is_whole_number(mcmc_chainlength)) {
+    stop("convert_alignment_to_beast_posterior: ",
+      "mcmc_chainlength must be a whole number"
+    )
+  }
+  if (mcmc_chainlength <= 0) {
+    stop("convert_alignment_to_beast_posterior: ",
+      "mcmc_chainlength must non-zero and positive"
+    )
+  }
+  if (!is.character(base_filename)) {
+    stop("convert_alignment_to_beast_posterior: ",
+      "base_filename must be a character string"
+    )
+  }
+  if (!is_whole_number(rng_seed)) {
+    stop("convert_alignment_to_beast_posterior: ",
+      "rng_seed must be a whole number"
+    )
+  }
+  if (!is.null(beast_bin_path) && !is.character(beast_bin_path)) {
+    stop("convert_alignment_to_beast_posterior: ",
+      "beast_bin_path must be NULL or a character string"
+    )
+  }
+  if (!is.null(beast_jar_path) && !is.character(beast_jar_path)) {
+    stop("convert_alignment_to_beast_posterior: ",
+      "beast_jar_path must be NULL or a character string"
+    )
+  }
+  if (!file.exists(beast_bin_path) && !file.exists(beast_jar_path))
+  {
+    stop("convert_alignment_to_beast_posterior: ",
+      "both beast_bin_path and beast_jar_path not found"
+    )
+  }
 
   # File paths
-  #base_filename <- "test_output_1"
-  beast_filename <- paste(base_filename,".xml",sep = "");
+  beast_filename <- paste(base_filename, ".xml",sep = "");
 
-  beast_log_filename <- paste(base_filename,".log",sep = "");
-  beast_trees_filename <- paste(base_filename,".trees",sep = "");
-  beast_state_filename <- paste(base_filename,".xml.state",sep = "");
-  temp_fasta_filename <- paste(base_filename,".fasta",sep = "");
-
-  # Check prerequisites
-  if (!file.exists(beast_bin_path))
-  {
-    print(paste("BEAST2 binary not found at path '",beast_bin_path,"'", sep = ""))
-  }
-  if (!file.exists(beast_jar_path))
-  {
-    print(paste("BEAST2 jar not found at path '",beast_jar_path,"'", sep = ""))
-  }
+  beast_log_filename <- paste(base_filename, ".log",sep = "");
+  beast_trees_filename <- paste(base_filename, ".trees",sep = "");
+  beast_state_filename <- paste(base_filename, ".xml.state",sep = "");
+  temp_fasta_filename <- paste(base_filename, ".fasta",sep = "");
 
   # Create a BEAST2 XML input file
   convert_alignment_to_beast_input_file(
@@ -56,42 +81,19 @@ convert_alignment_to_beast_posterior <- function(
 
   if (file.exists(beast_trees_filename)) {
     file.remove(beast_trees_filename)
-    print(paste("NOTE: removed '",beast_trees_filename,"'"), sep = "")
+    print(paste("NOTE: removed '",beast_trees_filename, "'"), sep = "")
   }
   if (file.exists(beast_log_filename)) {
     file.remove(beast_log_filename)
-    print(paste("NOTE: removed '",beast_log_filename,"'"), sep = "")
+    print(paste("NOTE: removed '",beast_log_filename, "'"), sep = "")
   }
   if (file.exists(beast_state_filename)) {
     file.remove(beast_state_filename)
-    print(paste("NOTE: removed '",beast_state_filename,"'"), sep = "")
+    print(paste("NOTE: removed '",beast_state_filename, "'"), sep = "")
   }
   testit::assert(!file.exists(beast_trees_filename))
   testit::assert(!file.exists(beast_log_filename))
   testit::assert(!file.exists(beast_state_filename))
-
-  print("Call BEAST2 in path")
-  {
-    cmd <- paste(
-      "beast",
-      " -seed ",rng_seed,
-      " ", beast_filename,
-      " -beagle_instances 4 -threads 4",
-      sep = ""
-    )
-    system(cmd)
-    if (file.exists(beast_trees_filename)) {
-      print("File created by beast binary in path")
-      testit::assert(file.exists(beast_trees_filename))
-      testit::assert(file.exists(beast_log_filename))
-      testit::assert(file.exists(beast_state_filename))
-      # Read all trees from the BEAST2 posterior
-      posterior <- rBEAST::beast2out.read.trees(beast_trees_filename)
-      testit::assert(is_beast_posterior(posterior))
-      return(posterior)
-    }
-  }
-
 
   if (file.exists(beast_bin_path))
   {
@@ -106,10 +108,10 @@ convert_alignment_to_beast_posterior <- function(
     # Therefore, there is another go below to call BEAST
     cmd <- paste(
       beast_bin_path,
-      " -seed ",rng_seed,
-      " ", beast_filename,
-      " -beagle_instances 4 -threads 4",
-      sep=""
+      " -seed ", rng_seed,
+      #" -beagle_instances 4 -threads 4",
+      " ", beast_filename, # XML filename should always be last
+      sep = ""
     )
     system(cmd)
     if (file.exists(beast_trees_filename)) {
@@ -121,18 +123,17 @@ convert_alignment_to_beast_posterior <- function(
       # Read all trees from the BEAST2 posterior
       posterior <- rBEAST::beast2out.read.trees(beast_trees_filename)
       testit::assert(is_beast_posterior(posterior))
-      return (posterior)
+      return(posterior)
     }
   }
-
 
   if (file.exists(beast_jar_path)) {
     print("Call BEAST2 jar by its full file path")
     cmd <- paste(
       "java -jar ", beast_jar_path,
       " -seed ", rng_seed,
-      " ", beast_filename,
-      " -beagle_instances 4 -threads 4",
+      #" -beagle_instances 4 -threads 4",
+      " ", beast_filename, # XML filename should always be last
       sep = ""
     )
     system(cmd)
@@ -145,7 +146,7 @@ convert_alignment_to_beast_posterior <- function(
       # Read all trees from the BEAST2 posterior
       posterior <- rBEAST::beast2out.read.trees(beast_trees_filename)
       testit::assert(is_beast_posterior(posterior))
-      return (posterior)
+      return(posterior)
     }
   }
 

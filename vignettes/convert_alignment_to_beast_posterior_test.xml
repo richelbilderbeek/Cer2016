@@ -4,11 +4,11 @@
     <data
 id="convert_alignment_to_beast_posterior_test"
 name="alignment">
-                    <sequence id="seq_t3" taxon="t3" totalcount="4" value="CAGGCCAAGG"/>
-                    <sequence id="seq_t4" taxon="t4" totalcount="4" value="GTTGAACATA"/>
-                    <sequence id="seq_t2" taxon="t2" totalcount="4" value="TAAAGGTTGG"/>
-                    <sequence id="seq_t5" taxon="t5" totalcount="4" value="TAGACGCGGT"/>
-                    <sequence id="seq_t1" taxon="t1" totalcount="4" value="CAGACGCGGT"/>
+                    <sequence id="seq_t4" taxon="t4" totalcount="4" value="CCCGATATCT"/>
+                    <sequence id="seq_t2" taxon="t2" totalcount="4" value="CACCCTCGCC"/>
+                    <sequence id="seq_t5" taxon="t5" totalcount="4" value="CACCCTCGCC"/>
+                    <sequence id="seq_t1" taxon="t1" totalcount="4" value="CACCCTCGCC"/>
+                    <sequence id="seq_t3" taxon="t3" totalcount="4" value="GGGCCTTAAG"/>
                 </data>
 
 

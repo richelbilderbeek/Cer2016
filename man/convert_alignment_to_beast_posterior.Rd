@@ -5,9 +5,8 @@
 \title{Convert an alignment to a BEAST2 XML input file}
 \usage{
 convert_alignment_to_beast_posterior(alignment_dnabin, mcmc_chainlength,
-  base_filename, rng_seed = 42,
-  beast_bin_path = "~/Programs/beast/bin/beast",
-  beast_jar_path = "~/Programs/beast/lib/beast.jar")
+  base_filename, rng_seed = 42, beast_bin_path = "",
+  beast_jar_path = find_beast_jar_path())
 }
 \arguments{
 \item{alignment_dnabin}{The alignmnet}

@@ -25,7 +25,7 @@ Parameter files can be created
  * from the command line: call the script `create_parameter_file.R`
  * by calling the function `save_parameters_to_file`
 
-```{r}
+```
 save_parameters_to_file(
   rng_seed = as.numeric(argv[1]),
   species_initiation_rate_good_species = as.numeric(argv[2]),

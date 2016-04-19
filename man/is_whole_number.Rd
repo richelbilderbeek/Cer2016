@@ -7,10 +7,10 @@
 is_whole_number(x, tolerance = .Machine$double.eps^0.5)
 }
 \arguments{
+\item{x}{the number to check}
+
 \item{tolerance}{the maximum error a number may deviate from a whole number,
 before it is labeled as a floating point value}
-
-\item{xthe}{number to check}
 }
 \description{
 Checks if x is a single, whole-number variable
