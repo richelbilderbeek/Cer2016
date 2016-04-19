@@ -51,8 +51,7 @@ convert_alignment_to_beast_posterior <- function(
       "beast_jar_path must be NULL or a character string"
     )
   }
-  if (!file.exists(beast_bin_path) && !file.exists(beast_jar_path))
-  {
+  if (!file.exists(beast_bin_path) && !file.exists(beast_jar_path)) {
     stop("convert_alignment_to_beast_posterior: ",
       "both beast_bin_path and beast_jar_path not found"
     )
@@ -95,8 +94,7 @@ convert_alignment_to_beast_posterior <- function(
   testit::assert(!file.exists(beast_log_filename))
   testit::assert(!file.exists(beast_state_filename))
 
-  if (file.exists(beast_bin_path))
-  {
+  if (file.exists(beast_bin_path)) {
     print("Call BEAST2 binary from full file path")
     # This may result in the following error:
     #

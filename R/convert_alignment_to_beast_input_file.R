@@ -26,7 +26,8 @@ convert_alignment_to_beast_input_file <- function(
   # Save to FASTA file
   convert_alignment_to_fasta(alignment_dnabin, temp_fasta_filename)
 
-  options(scipen = 20) # So that mcmc_chainlength is written as 1000000 instead of 1e+7
+  # So that mcmc_chainlength is written as 1000000 instead of 1e+7
+  options(scipen = 20)
   beastscriptr::beast_scriptr(
     input_fasta_filename = temp_fasta_filename,
     mcmc_chainlength = mcmc_chainlength,

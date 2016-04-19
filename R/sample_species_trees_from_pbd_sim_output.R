@@ -17,13 +17,13 @@ sample_species_trees_from_pbd_sim_output <- function(
   }
 
   crown_age <- get_phylogeny_crown_age(pbd_sim_output$tree)
-  # absL -> abs_l, as absL is not
+  # absL got renamed to abs_l
   abs_l <- pbd_sim_output$L0
   abs_l[,2] <- abs(pbd_sim_output$L0[,2])
 
   species_trees <- NULL
   for (i in c(1:n)) {
-    # sL -> s_l
+    # sL got renamed to s_l
     s_l <- PBD::sampletree(abs_l, crown_age)
     species_tree <- ape::as.phylo(
       ape::read.tree(text = PBD::detphy(s_l,crown_age))

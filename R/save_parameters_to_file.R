@@ -1,10 +1,10 @@
 #' Creates a valid parameter file
 #' @param rng_seed the random number generator seed
-#' @param species_initiation_rate_good_species the species initiation rate of the good species
-#' @param species_initiation_rate_incipient_species the speciation-initiation rate of the incipient species
-#' @param speciation_completion_rate the rate at which incipient species become good
-#' @param extinction_rate_good_species the rate at which good species get extinct
-#' @param extinction_rate_incipient_species the rate at which incipient species get extinct
+#' @param sirg the species initiation rate of the good species
+#' @param siri the speciation-initiation rate of the incipient species
+#' @param scr the rate at which incipient species become good
+#' @param erg the rate at which good species get extinct
+#' @param eri the rate at which incipient species get extinct
 #' @param age crown age of the phylogeny
 #' @param n_species_trees_samples the number of species trees that will be sampled from an incipient species tree
 #' @param mutation_rate the probability per nucleotide to mutate at a DNA replication
@@ -18,34 +18,38 @@
 #' @author Richel Bilderbeek
 save_parameters_to_file <- function(
   rng_seed,
-  species_initiation_rate_good_species,
-  species_initiation_rate_incipient_species,
-  speciation_completion_rate,
-  extinction_rate_good_species,
-  extinction_rate_incipient_species,
-  age, n_species_trees_samples,
-  mutation_rate, n_alignments,
-  sequence_length, mcmc_chainlength,
-  n_beast_runs, filename
+  sirg,
+  siri,
+  scr,
+  erg,
+  eri,
+  age,
+  n_species_trees_samples,
+  mutation_rate,
+  n_alignments,
+  sequence_length,
+  mcmc_chainlength,
+  n_beast_runs,
+  filename
 ) {
   my_table <- data.frame( row.names = c("Description", "Value"))
   my_table[, "rng_seed"] <- c(
     "Random number generate seed", rng_seed
   )
   my_table[, "species_initiation_rate_good_species"] <- c(
-    "b_g", species_initiation_rate_good_species
+    "b_g", sirg
   )
   my_table[, "species_initiation_rate_incipient_species"] <- c(
-    "b_i", species_initiation_rate_incipient_species
+    "b_i", siri
   )
   my_table[, "speciation_completion_rate"] <- c(
-    "lambda", speciation_completion_rate
+    "lambda", scr
   )
   my_table[, "extinction_rate_good_species"] <- c(
-    "mu_g", extinction_rate_good_species
+    "mu_g", erg
   )
   my_table[, "extinction_rate_incipient_species"] <- c(
-    "mu_i", extinction_rate_incipient_species
+    "mu_i", eri
   )
   my_table[, "age"] <- c(
     "Phylogenetic tree crown age", age

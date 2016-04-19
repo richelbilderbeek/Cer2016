@@ -18,13 +18,13 @@ plot_species_tree_repeatabilities <- function() {
     pattern = "^(toy_example|example|article)_.*_1_1_1\\.trees")
   ) {
     trees_filename_1 <- trees_filename
-    trees_filename_2 <- gsub("_1_1_1.trees","_1_1_2.trees", trees_filename)
-    trees_filename_3 <- gsub("_1_1_1.trees","_1_2_1.trees", trees_filename)
-    trees_filename_4 <- gsub("_1_1_1.trees","_1_2_2.trees", trees_filename)
-    trees_filename_5 <- gsub("_1_1_1.trees","_2_1_1.trees", trees_filename)
-    trees_filename_6 <- gsub("_1_1_1.trees","_2_1_2.trees", trees_filename)
-    trees_filename_7 <- gsub("_1_1_1.trees","_2_2_1.trees", trees_filename)
-    trees_filename_8 <- gsub("_1_1_1.trees","_2_2_2.trees", trees_filename)
+    trees_filename_2 <- gsub("_1_1_1.trees", "_1_1_2.trees", trees_filename)
+    trees_filename_3 <- gsub("_1_1_1.trees", "_1_2_1.trees", trees_filename)
+    trees_filename_4 <- gsub("_1_1_1.trees", "_1_2_2.trees", trees_filename)
+    trees_filename_5 <- gsub("_1_1_1.trees", "_2_1_1.trees", trees_filename)
+    trees_filename_6 <- gsub("_1_1_1.trees", "_2_1_2.trees", trees_filename)
+    trees_filename_7 <- gsub("_1_1_1.trees", "_2_2_1.trees", trees_filename)
+    trees_filename_8 <- gsub("_1_1_1.trees", "_2_2_2.trees", trees_filename)
     if (!file.exists(trees_filename_2)) next
     if (!file.exists(trees_filename_3)) next
     if (!file.exists(trees_filename_4)) next
@@ -78,7 +78,10 @@ plot_species_tree_repeatabilities <- function() {
     )
 
     df <- ribir::get_nltt_values(species_trees, dt = 0.01)
-    ggplot2::qplot(t, nltt, data = df, geom = "blank", ylim = c(0,1), main = "Average nLTT plot of phylogenies") +
-      ggplot2::stat_summary(fun.data = "mean_cl_boot", color = "red", geom = "smooth")
+    ggplot2::qplot(t, nltt, data = df, geom = "blank", ylim = c(0,1),
+      main = "Average nLTT plot of phylogenies") +
+        ggplot2::stat_summary(fun.data = "mean_cl_boot",
+          color = "red", geom = "smooth"
+        )
   }
 }

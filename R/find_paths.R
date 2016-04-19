@@ -59,12 +59,14 @@ find_beast_posterior_test_filename <- function() {
 
   filenames <- c(
     "is_beast_posterior.trees",
-    "~/GitHubs/Cer2016/inst/extdata/is_beast_posterior.trees",
+    "~/GitHubs/Cer2016/inst/extdata/is_beast_posterior.trees",                  # nolint
     paste("/home/travis/build/richelbilderbeek",                                # nolint
       "/Cer2016/inst/extdata/is_beast_posterior.trees", sep = "")               # nolint
   )
   for (filename in filenames) {
-    if (file.exists(filename)) { return (filename) }
+    if (file.exists(filename)) {
+      return (filename)
+    }
   }
   stop(
     "find_beast_posterior_test_filename: ",

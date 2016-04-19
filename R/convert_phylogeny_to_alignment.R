@@ -21,7 +21,8 @@ convert_phylogeny_to_alignment <- function(
   if (sequence_length < 1) {
     stop(
       "convert_phylogeny_to_alignment: ",
-      "parameter 'sequence_length' must be a non-zero and positive integer value"
+      "parameter 'sequence_length' must be ",
+      "a non-zero and positive integer value"
     )
   }
   if (mutation_rate < 0) {

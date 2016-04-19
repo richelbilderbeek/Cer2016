@@ -4,7 +4,9 @@
 #' @return A data table showing the progress
 #' @export
 #' @author Richel Bilderbeek
-check_progress <- function(folder = "~/Slurm/") {
+check_progress <- function(
+  folder = "~/Slurm/"                                                           # nolint
+) {
   files <- list.files(path = folder, pattern = ".RDa")
   df <- data.frame(
     files = files,

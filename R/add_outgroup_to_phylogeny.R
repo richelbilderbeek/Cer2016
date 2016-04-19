@@ -18,16 +18,14 @@ add_outgroup_to_phylogeny <- function(
       "instead of type", class(phylogeny)
     )
   }
-  if (class(stem_length) != "numeric")
-  {
+  if (class(stem_length) != "numeric") {
     stop(
       "add_outgroup_to_phylogeny: ",
       "parameter 'stem_length' must be of type 'numeric', ",
       "instead of type", class(stem_length)
     )
   }
-  if (class(outgroup_name) != "character")
-  {
+  if (class(outgroup_name) != "character") {
     stop(
       "add_outgroup_to_phylogeny: ",
       "parameter 'outgroup_name' must be of type 'character', ",
@@ -37,13 +35,13 @@ add_outgroup_to_phylogeny <- function(
 
   n_taxa <- length(phylogeny$tip.label)
 
-  crown_age <- ape::dist.nodes(phylogeny)[ n_taxa + 1][1]
+  crown_age <- ape::dist.nodes(phylogeny)[n_taxa + 1][1]
   phylogeny$root.edge <- stem_length
   # Add an outgroup
   # Thanks to Liam J. Revell,
   # http://grokbase.com/t/r/r-sig-phylo/12bfqfb93a/adding-a-branch-to-a-tree
   tip <- list(
-    edge = matrix(c(2,1),1,2),
+    edge = matrix(c(2, 1), 1, 2),
     tip.label = "Outgroup",
     edge.length = crown_age + stem_length,
     Nnode = 1
