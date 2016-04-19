@@ -17,6 +17,9 @@ Requires:
   nLTT,
   PBD,
   phangorn,
+  phytools,
+  rBEAST,
+  ribir,
   testit,
   tools,
   TreeSim

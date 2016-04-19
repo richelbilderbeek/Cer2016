@@ -1,9 +1,9 @@
 #' Find the path of the BEAST2 binary file
 #' @return the path of the BEAST2 binary file
 #' @examples
-#'   my_file <- find_beast2_bin_path()
-#'   does_exist <- file.exists(my_file)
-#'   testit::assert(does_exist)
+#'   library(testit)
+#'   my_file <- find_beast_bin_path()
+#'   assert(file.exists(my_file))
 #' @export
 find_beast_bin_path <- function() {
   filenames <- c(
@@ -25,9 +25,9 @@ find_beast_bin_path <- function() {
 #' Find the path of the BEAST2 jar file
 #' @return the path of the BEAST2 jar file
 #' @examples
-#'   my_file <- find_beast2_jar_path()
-#'   does_exist <- file.exists(my_file)
-#'   testit::assert(does_exist)
+#'   library(testit)
+#'   my_file <- find_beast_jar_path()
+#'   assert(file.exists(my_file))
 #' @export
 find_beast_jar_path <- function() {
   filenames <- c(
@@ -43,5 +43,31 @@ find_beast_jar_path <- function() {
   stop(
     "get_output_xml_filename: ",
     "cannot find the 'birth_death_0_20151005.xml' file"
+  )
+}
+
+
+#' Find the path of known-to-be-valid BEAST2 posterior file
+#' @return the path of a known-to-be-valid BEAST2 posterior file
+#' @examples
+#'   library(testit)
+#'   my_file <- find_beast_posterior_test_filename()
+#'   assert(file.exists(my_file))
+#' @export
+find_beast_posterior_test_filename <- function() {
+  # Return an existing .trees filename
+
+  filenames <- c(
+    "is_beast_posterior.trees",
+    "~/GitHubs/Cer2016/inst/extdata/is_beast_posterior.trees",
+    paste("/home/travis/build/richelbilderbeek",                                # nolint
+      "/Cer2016/inst/extdata/is_beast_posterior.trees", sep = "")               # nolint
+  )
+  for (filename in filenames) {
+    if (file.exists(filename)) { return (filename) }
+  }
+  stop(
+    "find_beast_posterior_test_filename: ",
+    "cannot find the 'is_beast_posterior.trees' file"
   )
 }

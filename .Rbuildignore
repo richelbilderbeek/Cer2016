@@ -3,3 +3,8 @@
 ^doc/*
 ^scripts/*
 .travis.yml
+Codecov.png
+TravisCI.png
+Whitespace.png
+install_beast2.sh
+install_r_packages.R

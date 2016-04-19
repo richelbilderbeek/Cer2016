@@ -33,7 +33,7 @@ test_that("outgroup_name must be a character", {
 test_that("result is of class phylo", {
 
   phylogeny <- add_outgroup_to_phylogeny(
-    phylogeny = rcoal(10), #OK
+    phylogeny = ape::rcoal(10), #OK
     stem_length = 0.0, # OK
     outgroup_name = "Outgroup" # OK
   )
