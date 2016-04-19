@@ -3,7 +3,5 @@
 #' @return TRUE or FALSE
 #' @export
 is_alignment <- function(input) {
-  # Is x a single alignment?
-
-  return (class(input) == "DNAbin")
+  return(class(input) == "DNAbin")
 }
