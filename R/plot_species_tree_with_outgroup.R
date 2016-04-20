@@ -9,7 +9,7 @@ plot_species_tree_with_outgroup <- function(filename) {
   )
   for (i in seq(1, n_species_trees_samples)) {
     plot(file$species_trees_with_outgroup[[i]][[1]],
-      main = paste(base_filename,"species tree with outgroup", i)
+      main = paste(base_filename, "species tree with outgroup", i)
     )
   }
 }

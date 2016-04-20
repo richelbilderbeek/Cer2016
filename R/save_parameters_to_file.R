@@ -72,7 +72,7 @@ save_parameters_to_file <- function(
   my_table[, "n_beast_runs"] <- c(
     "Number of BEAST2 runs per alignment", n_beast_runs
   )
-  my_table[, "version"] <- c("Parameter file version","0.1")
+  my_table[, "version"] <- c("Parameter file version", "0.1")
   # Create the slots for the results
   my_list <- list(
     my_table, #parameters

@@ -19,7 +19,7 @@ sample_species_trees_from_pbd_sim_output <- function(
   crown_age <- get_phylogeny_crown_age(pbd_sim_output$tree)
   # absL got renamed to abs_l
   abs_l <- pbd_sim_output$L0
-  abs_l[,2] <- abs(pbd_sim_output$L0[,2])
+  abs_l[, 2] <- abs(pbd_sim_output$L0[, 2])
 
   species_trees <- NULL
   for (i in c(1:n)) {

@@ -33,7 +33,7 @@ add_posteriors <- function(filename) {
         )
         if (is_beast_posterior(file$posteriors[[posterior_index]][[1]])) {
           print(paste("   * Posterior #", k, " for alignment #",
-            j," for species tree #", i," at posterior_index #",
+            j, " for species tree #", i, " at posterior_index #",
             posterior_index, " already has a posterior", sep = "")
           )
           next
