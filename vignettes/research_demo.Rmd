@@ -99,14 +99,27 @@ knitr::kable(df)
 ```
 
 
-### Do simulations
+### Simulate one incipient species tree per parameter file
 
-A simulation (including its replicates) can be run from the command line by supplying all the arguments to the R script 'do_simulation.R' (see chapter [sub:do_simulation.R]). This will result in:
+```{r}
+for (filename in filenames) {
+  add_pbd_output(filename)  
+}
+```
 
- * A parameter file with intermediate data added
- * BEAST2 output files
+```{r,cache=TRUE}
+df <- check_progress()
+knitr::kable(df)
+```
 
-### Analyze results
 
-After the simulations, the results are analyzed with the R script 'do_analyze.R' (see chapter [sub:analyse.R]).
 
+
+## TDOO
+
+```
+add_species_trees_with_outgroup(filename)  
+add_alignments(filename)  
+add_posteriors(filename)
+
+```
