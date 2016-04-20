@@ -15,3 +15,5 @@ vignettes/*.pdf
 .httr-oauth
 .Rproj.user
 inst/doc
+vignettes/toy_example_*
+vignettes/research_demo_cache/

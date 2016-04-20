@@ -36,20 +36,20 @@ save_parameters_to_file <- function(
   my_table[, "rng_seed"] <- c(
     "Random number generate seed", rng_seed
   )
-  my_table[, "species_initiation_rate_good_species"] <- c(
-    "b_g", sirg
+  my_table[, "sirg"] <- c(
+    "species initiation rate good species", sirg
   )
-  my_table[, "species_initiation_rate_incipient_species"] <- c(
-    "b_i", siri
+  my_table[, "siri"] <- c(
+    "species initiation rate incipient species", siri
   )
-  my_table[, "speciation_completion_rate"] <- c(
-    "lambda", scr
+  my_table[, "scr"] <- c(
+    "speciation_completion_rate", scr
   )
-  my_table[, "extinction_rate_good_species"] <- c(
-    "mu_g", erg
+  my_table[, "erg"] <- c(
+    "extinction_rate_good_species", erg
   )
-  my_table[, "extinction_rate_incipient_species"] <- c(
-    "mu_i", eri
+  my_table[, "eri"] <- c(
+    "extinction_rate_incipient_species", eri
   )
   my_table[, "age"] <- c(
     "Phylogenetic tree crown age", age

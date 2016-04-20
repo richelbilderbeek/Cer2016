@@ -5,9 +5,16 @@
 #' @export
 #' @author Richel Bilderbeek
 check_progress <- function(
-  folder = "~/Slurm/"                                                           # nolint
+  folder = "."
 ) {
   files <- list.files(path = folder, pattern = ".RDa")
+  if (length(files) == 0) {
+    df <- data.frame(
+      files = c("none"),
+      progress = c("NA")
+    )
+    return(df)
+  }
   df <- data.frame(
     files = files,
     progress = rep("0 %", length(files))

@@ -2,53 +2,102 @@
 title: "Research demo"
 author: "Richel Bilderbeek"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output: 
+  rmarkdown::html_vignette:
+    toc: true
 vignette: >
   %\VignetteIndexEntry{Research demo}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-This document describes my research.
+This document describes my research. It does so by
+showing the workflow for toy examples.
 
 ## Workflow
 
 Every experiment has the following steps:
+ * Starting up
  * Creating parameter files
- * Checking your parameter file
- * Do simulations
- * Analyze results
- 
-### Creating parameter files
+ * Simulate one incipient species tree per parameter file
+ * Once or more often, sample unique species from an incipient species tree
+ * Per sampled species tree, add an outgroup
+ * Simulate one or more alignments per species tree
+ * Once or more often, let BEAST2 infer a posterior per alignment
+ * Compare original, sampled species tree, to the posterior
 
-Parameter files can be created 
- * from the command line: call the script `create_parameter_file.R`
- * by calling the function `save_parameters_to_file`
+## Starting up
 
+We will need to load some libraries:
+
+```{r}
+library(Cer2016)
 ```
-save_parameters_to_file(
-  rng_seed = as.numeric(argv[1]),
-  species_initiation_rate_good_species = as.numeric(argv[2]),
-  species_initiation_rate_incipient_species = as.numeric(argv[3]),
-  speciation_completion_rate = as.numeric(argv[4]),
-  extinction_rate_good_species = as.numeric(argv[5]),
-  extinction_rate_incipient_species = as.numeric(argv[6]),
-  age = as.numeric(argv[7]),
-  n_species_trees_samples = as.numeric(argv[8]),
-  mutation_rate = as.numeric(argv[9]),
-  n_alignments = as.numeric(argv[10]),
-  sequence_length = as.numeric(argv[11]),
-  mcmc_chainlength = as.numeric(argv[12]),
-  n_beast_runs = as.numeric(argv[13]),
-  filename = argv[14]
+
+In this workflow, progress can and is shown. 
+At the start of this document, we expect nothing:
+
+```{r,cache=TRUE}
+df <- check_progress()
+knitr::kable(df)
+```
+
+Note that this result is cached. This is because if this
+vignette is created/viewed multiple times, there *will*
+be parameter files in present (note: blimey, this does not
+appear to work perfectly).
+
+## Creating parameter files
+
+We create four parameter files:
+
+```{r}
+rng_seeds <- rep(x = 1, times = 4)
+sirgs <- rep(0.5, times = 4)
+siris <- rep(0.5, times = 4)
+scrs <- rep(1.0, times = 4)
+ergs <- rep(0.1, times = 4)
+eris <- rep(0.1, times = 4)
+ages <- rep(5, times = 4)
+n_species_trees_sampleses <- c(1, 1, 2, 2)
+mutation_rates <- rep(0.01, times = 4)
+n_alignmentses <- c(1, 1, 2, 2)
+sequence_lengths <- rep(1000, times = 4)
+mcmc_chainlengths <- rep(10000, times = 4)
+n_beast_runses <- c(1, 1, 2, 2)
+filenames = c(
+  "toy_example_1.RDa", 
+  "toy_example_2.RDa", 
+  "toy_example_3.RDa", 
+  "toy_example_4.RDa"
 )
+for (i in seq(1, 4)) {
+  save_parameters_to_file(
+    rng_seed = rng_seeds[i],
+    sirg = sirgs[i],
+    siri = siris[i],
+    scr = scrs[i],
+    erg = ergs[i],
+    eri = eris[i],
+    age = ages[i],
+    n_species_trees_samples = n_species_trees_sampleses[i],
+    mutation_rate = mutation_rates[i],
+    n_alignments = n_alignmentses[i],
+    sequence_length = sequence_lengths[i],
+    mcmc_chainlength = mcmc_chainlengths[i],
+    n_beast_runs = n_beast_runses[i],
+    filename = filenames[i]
+  )  
+}
 ```
 
+Checking the progress:
 
+```{r,cache=TRUE}
+df <- check_progress()
+knitr::kable(df)
+```
 
-###  Checking your parameter file
-
-You can check if you created a parameter file with the correct arguments using the R script 'check_parameter_file.R' (see chapter [sub:check_parameter_file.R]).
 
 ### Do simulations
 

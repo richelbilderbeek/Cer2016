@@ -5,7 +5,7 @@
 \title{Function that shows how much parameter files are present,
 and how far the pipeline has gotten}
 \usage{
-check_progress(folder = "~/Slurm/")
+check_progress(folder = ".")
 }
 \arguments{
 \item{folder}{The folder containing the parameter files}
