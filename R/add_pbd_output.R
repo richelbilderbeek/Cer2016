@@ -28,11 +28,22 @@ add_pbd_output <- function(filename) {
     erg,
     eri
   )
-  file$pbd_output <- PBD::pbd_sim(
-    parameters,
-    age = age,
-    soc = 2,
-    plotit = FALSE
-  )
+
+  # Must get an incipient species tree with at least one taxon
+  while (1) {
+    file$pbd_output <- PBD::pbd_sim(
+      parameters,
+      age = age,
+      soc = 2,
+      plotit = FALSE
+    )
+    n_taxa <- length(file$pbd_output$igtree.extant$tip.label)
+    if (n_taxa > 0) {
+      break
+    } else {
+      print("n_taxa is 0")
+    }
+  }
+  testit::assert(length(file$pbd_output$igtree.extant$tip.label) > 0)
   saveRDS(file, file = filename)
 }

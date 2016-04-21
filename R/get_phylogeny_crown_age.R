@@ -7,6 +7,12 @@ get_phylogeny_crown_age <- function(
   phylogeny
 ) {
   n_taxa <- length(phylogeny$tip.label)
+  if (n_taxa == 0) {
+    stop(
+      "get_phylogeny_crown_age: ",
+      "cannot obtain the crown age of an empty phylogeny"
+    )
+  }
   crown_age <- ape::dist.nodes(phylogeny)[n_taxa + 1][1]
   return(crown_age)
 }

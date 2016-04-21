@@ -1,8 +1,11 @@
 context("get_phylogeny_crown_age")
 
-## TODO: Rename context
-## TODO: Add more tests
-
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
+test_that("get_phylogeny_crown_age works", {
+  age <- 15
+  set.seed(42)
+  phylogeny <- PBD::pbd_sim(c(0.2, 1, 0.2, 0.0, 0.0), age)$tree
+  n_taxa <- length(phylogeny$tip.label)
+  testit::assert(n_taxa > 0)
+  crown_age <- get_phylogeny_crown_age(phylogeny)
+  expect_equal(age, crown_age)
 })

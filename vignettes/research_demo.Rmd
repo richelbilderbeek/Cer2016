@@ -37,7 +37,7 @@ library(Cer2016)
 In this workflow, progress can and is shown. 
 At the start of this document, we expect nothing:
 
-```{r,cache=TRUE}
+```{r}
 df <- check_progress()
 knitr::kable(df)
 ```
@@ -50,6 +50,27 @@ appear to work perfectly).
 ## Creating parameter files
 
 We create four parameter files:
+
+```{r}
+filenames = c(
+  "toy_example_1.RDa", 
+  "toy_example_2.RDa", 
+  "toy_example_3.RDa", 
+  "toy_example_4.RDa"
+)
+```
+
+To be sure to have a fresh analysis, we delete the files if they exist:
+
+```{r}
+for (filename in filenames) {
+  if (file.exists(filename)) {
+    file.remove(filename)
+  }
+}
+```
+
+Now the parameter files are created with some parameters:
 
 ```{r}
 rng_seeds <- rep(x = 1, times = 4)
@@ -65,12 +86,6 @@ n_alignmentses <- c(1, 1, 2, 2)
 sequence_lengths <- rep(1000, times = 4)
 mcmc_chainlengths <- rep(10000, times = 4)
 n_beast_runses <- c(1, 1, 2, 2)
-filenames = c(
-  "toy_example_1.RDa", 
-  "toy_example_2.RDa", 
-  "toy_example_3.RDa", 
-  "toy_example_4.RDa"
-)
 for (i in seq(1, 4)) {
   save_parameters_to_file(
     rng_seed = rng_seeds[i],
@@ -91,9 +106,12 @@ for (i in seq(1, 4)) {
 }
 ```
 
+Note that they all have the same random number generator seed. Because
+they do have different other parameters, this is no problem.
+
 Checking the progress:
 
-```{r,cache=TRUE}
+```{r}
 df <- check_progress()
 knitr::kable(df)
 ```
@@ -101,21 +119,45 @@ knitr::kable(df)
 
 ### Simulate one incipient species tree per parameter file
 
+Here we simulate the 'true' incipient species tree:
+
 ```{r}
 for (filename in filenames) {
   add_pbd_output(filename)  
 }
 ```
 
-```{r,cache=TRUE}
+This is how these look like:
+
+```{r}
+colors <- setNames(c("gray","black"),c("i","g"))
+
+for (filename in filenames) {
+  testit::assert(is_valid_file(filename))
+  print(filename)
+  testit::assert(length(read_file(filename)$pbd_output$igtree.extant$tip.label) > 0)
+  print(length(read_file(filename)$pbd_output$igtree.extant$tip.label))
+  nLTT::nLTT.plot(
+    read_file(filename)$pbd_output$tree, 
+    main = filename
+  )
+  phytools::plotSimmap(
+    read_file(filename)$pbd_output$igtree.extant, 
+    colors = colors
+  )
+}
+```
+
+Progress has improved:
+
+```{r}
 df <- check_progress()
 knitr::kable(df)
 ```
 
 
-
-
 ## TDOO
+
 
 ```
 add_species_trees_with_outgroup(filename)  
@@ -123,3 +165,4 @@ add_alignments(filename)
 add_posteriors(filename)
 
 ```
+

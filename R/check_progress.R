@@ -7,17 +7,28 @@
 check_progress <- function(
   folder = "."
 ) {
-  files <- list.files(path = folder, pattern = ".RDa")
-  if (length(files) == 0) {
+  filenames <- list.files(path = folder, pattern = ".RDa")
+  n_files <- length(filenames)
+  if (n_files == 0) {
     df <- data.frame(
-      files = c("none"),
+      filenames = c("none"),
       progress = c("NA")
     )
     return(df)
   }
+
   df <- data.frame(
-    files = files,
-    progress = rep("0 %", length(files))
+    files = filenames,
+    has_pbd_sim_output = rep("?", length(n_files)),
+    stringsAsFactors = FALSE
   )
+
+  for (i in seq(1, n_files)) {
+    my_file <- read_file(filenames[i])
+    df$has_pbd_sim_output[i] <- ifelse(
+      is_pbd_sim_output(my_file$pbd_output), "yes", "no"
+    )
+  }
+
   df
 }

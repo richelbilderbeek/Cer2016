@@ -1,4 +1,5 @@
-plot_gene_tree <- function(filename) {
+#' Plot the extant inicipient species tree
+plot_extant_incipient_tree <- function(filename) {
   testit::assert(is_valid_file(filename))
   base_filename <- basename(filename)
   file <- read_file(filename)
