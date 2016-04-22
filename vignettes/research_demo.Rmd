@@ -17,6 +17,7 @@ showing the workflow for toy examples.
 ## Workflow
 
 Every experiment has the following steps:
+
  * Starting up
  * Creating parameter files
  * Simulate one incipient species tree per parameter file
@@ -28,26 +29,14 @@ Every experiment has the following steps:
 
 ## Starting up
 
+## Creating parameter files
+
 We will need to load some libraries:
 
 ```{r}
 library(Cer2016)
 ```
 
-In this workflow, progress can and is shown. 
-At the start of this document, we expect nothing:
-
-```{r}
-df <- check_progress()
-knitr::kable(df)
-```
-
-Note that this result is cached. This is because if this
-vignette is created/viewed multiple times, there *will*
-be parameter files in present (note: blimey, this does not
-appear to work perfectly).
-
-## Creating parameter files
 
 We create four parameter files:
 
@@ -70,10 +59,18 @@ for (filename in filenames) {
 }
 ```
 
+In this workflow, progress can and is shown. 
+At the start of this document, we expect nothing:
+
+```{r}
+df <- check_progress()
+knitr::kable(df)
+```
+
 Now the parameter files are created with some parameters:
 
 ```{r}
-rng_seeds <- rep(x = 1, times = 4)
+rng_seeds <- seq(1,4)
 sirgs <- rep(0.5, times = 4)
 siris <- rep(0.5, times = 4)
 scrs <- rep(1.0, times = 4)
@@ -106,8 +103,8 @@ for (i in seq(1, 4)) {
 }
 ```
 
-Note that they all have the same random number generator seed. Because
-they do have different other parameters, this is no problem.
+Note that they all have a different random number generator seed. Because
+they do have different other parameters, this is no problem. [TODO: Test this]
 
 Checking the progress:
 
@@ -127,24 +124,20 @@ for (filename in filenames) {
 }
 ```
 
-This is how these look like:
+This is how these look like, both the incipient species phylogenies and an nLTT plots:
 
 ```{r}
 colors <- setNames(c("gray","black"),c("i","g"))
 
 for (filename in filenames) {
   testit::assert(is_valid_file(filename))
-  print(filename)
   testit::assert(length(read_file(filename)$pbd_output$igtree.extant$tip.label) > 0)
-  print(length(read_file(filename)$pbd_output$igtree.extant$tip.label))
-  nLTT::nLTT.plot(
-    read_file(filename)$pbd_output$tree, 
-    main = filename
-  )
+  print(filename)
   phytools::plotSimmap(
     read_file(filename)$pbd_output$igtree.extant, 
     colors = colors
   )
+  nLTT::nLTT.plot(read_file(filename)$pbd_output$tree)
 }
 ```
 
@@ -155,12 +148,26 @@ df <- check_progress()
 knitr::kable(df)
 ```
 
+## Once or more often, sample unique species from an incipient species tree. Then, per sampled species tree, add an outgroup
 
-## TDOO
+Here we simulate the 'true' incipient species tree:
+
+```{r}
+for (filename in filenames) {
+  add_species_trees_with_outgroup(filename)  
+}
+```
+
+```{r}
+df <- check_progress()
+knitr::kable(df)
+```
+
+
+## TODO
 
 
 ```
-add_species_trees_with_outgroup(filename)  
 add_alignments(filename)  
 add_posteriors(filename)
 

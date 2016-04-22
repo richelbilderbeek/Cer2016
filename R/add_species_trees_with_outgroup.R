@@ -9,8 +9,9 @@ add_species_trees_with_outgroup <- function(filename) {
   }
   file <- read_file(filename)
   if (is.na(file$pbd_output[1])) {
-    print(paste("file ", filename, " needs a pbd_output", sep = ""))
-    return()
+    stop("add_species_trees_with_outgroup: ",
+      "file ", filename, " needs a pbd_output"
+    )
   }
   parameters <- file$parameters
   n_species_trees_samples <- as.numeric(parameters$n_species_trees_samples[2])

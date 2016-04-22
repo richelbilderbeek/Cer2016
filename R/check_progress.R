@@ -20,6 +20,7 @@ check_progress <- function(
   df <- data.frame(
     files = filenames,
     has_pbd_sim_output = rep("?", length(n_files)),
+    n_species_trees_sampled = rep("?", length(n_files)),
     stringsAsFactors = FALSE
   )
 
@@ -28,6 +29,17 @@ check_progress <- function(
     df$has_pbd_sim_output[i] <- ifelse(
       is_pbd_sim_output(my_file$pbd_output), "yes", "no"
     )
+    n_species_trees_samples <- as.numeric(
+      my_file$parameters$n_species_trees_samples[2]
+    )
+    n_species_trees_sampled <- 0
+    for (j in seq(1, n_species_trees_samples)) {
+      if (!is.na(my_file$species_trees_with_outgroup[i])) {
+        n_species_trees_sampled <- n_species_trees_sampled + 1
+      }
+    }
+    df$n_species_trees_sampled[i] <- paste(n_species_trees_sampled,
+      "/", n_species_trees_samples, sep = "")
   }
 
   df
