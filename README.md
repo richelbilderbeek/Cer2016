@@ -8,6 +8,16 @@ Community Ecology Research course 2016.
 
 ## How to install
 
+To install this repository, you will need to:
+
+ * Clone this repository
+ * Install packages
+ * Install BEAST2
+
+Steps are shown below.
+
+### Clone this repository
+
 From the GNU/Linux terminal, or using Windows Git Bash:
 
 ```
@@ -24,6 +34,28 @@ sudo apt-get install libcurl4-openssl-dev
 
 Additionally, there is a vignette called `Troubleshooting` that may
 (even automagically!) help you out.
+
+### Install packages
+
+You will need some packages, which are listed in `install_r_packages.R`.
+
+In Linux, you can install all of these with:
+
+```
+sudo Rscript install_r_packages.R
+```
+
+### Install BEAST2
+
+You will need to install BEAST2. 
+
+You can do this from [the BEAST2 GitHub](https://github.com/CompEvol/beast2).
+
+In Linux, you can install it with:
+
+```
+./install_beast2.sh
+```
 
 ## Agenda
 
