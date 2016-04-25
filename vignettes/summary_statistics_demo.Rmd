@@ -11,8 +11,44 @@ vignette: >
 
 There are multiple phylogeny summary statistics:
 
- * [first]
- * [second]
+ * [demo], by Richel
+ * [first], by Femke
+ * [second], by Jolien
+ 
+## Richel's demo summary statistic
+
+First, we read a parameter file:
+
+```{r}
+library(Cer2016)
+filename <- find_path("toy_example_1.RDa")
+file <- read_file(filename)
+```
+
+A file has some properties:
+
+```{r}
+print(names(file))
+```
+
+In this example, I compare the nLTT of the unsampled original species
+tree (independent if this is a good idea) to the average nLTT
+of the posterior.
+
+The unsampled original species tree is in `file$pbd_output`, let's
+see what's there:
+
+```{r}
+print(names(file$pbd_output))
+```
+
+I want to get the incipient species tree of the extant species
+
+```
+file$pbd_output$igtree.extant
+```
+
+
 
 ## [First summary statistic]
 

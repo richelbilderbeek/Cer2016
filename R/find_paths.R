@@ -1,3 +1,30 @@
+#' Finds the full pathof a file
+#' @param filename the name of a file
+#' @return the full path of the filename if an existing file could be found, stops otherwise
+#' @export
+find_path <- function(filename) {
+  if (file.exists(filename)) {
+    return(filename)
+  }
+
+  prefixes <- c(
+    "/home/richel/GitHubs/Cer2016/inst/extdata/",       # nolint
+    "/home/p230198/GitHubs/Cer2016/inst/extdata/",       # nolint
+    "/home/travis/build/richelbilderbeek/Cer2016/inst/extdata/"  # nolint
+  )
+  for (prefix in prefixes) {
+    full_path <- paste(prefix, filename, sep = "")
+    if (file.exists(full_path)) {
+      return(full_path)
+    }
+  }
+  stop(
+    "find_path: ",
+    "cannot find '", filename ,"'"
+  )
+
+}
+
 #' Find the path of the BEAST2 binary file
 #' @return the path of the BEAST2 binary file
 #' @export
@@ -45,20 +72,5 @@ find_beast_jar_path <- function() {
 #' @return the path of a known-to-be-valid BEAST2 posterior file
 #' @export
 find_beast_posterior_test_filename <- function() {
-
-  filenames <- c(
-    "/home/richel/GitHubs/Cer2016/inst/extdata/is_beast_posterior.trees",       # nolint
-    "/home/p230198/GitHubs/Cer2016/inst/extdata/is_beast_posterior.trees",       # nolint
-    "/home/travis/build/richelbilderbeek/Cer2016/inst/extdata/is_beast_posterior.trees",  # nolint
-    "is_beast_posterior.trees"
-  )
-  for (filename in filenames) {
-    if (file.exists(filename)) {
-      return(filename)
-    }
-  }
-  stop(
-    "find_beast_posterior_test_filename: ",
-    "cannot find the 'is_beast_posterior.trees' file"
-  )
+  return(find_path("is_beast_posterior.trees"))
 }
