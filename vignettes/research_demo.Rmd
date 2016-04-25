@@ -35,6 +35,7 @@ We will need to load some libraries:
 
 ```{r}
 library(Cer2016)
+library(ape)
 ```
 
 
@@ -52,11 +53,11 @@ filenames = c(
 To be sure to have a fresh analysis, we delete the files if they exist:
 
 ```{r}
-for (filename in filenames) {
-  if (file.exists(filename)) {
-    file.remove(filename)
-  }
-}
+#for (filename in filenames) {
+#  if (file.exists(filename)) {
+#    file.remove(filename)
+#  }
+#}
 ```
 
 In this workflow, progress can and is shown. 
@@ -154,9 +155,22 @@ Here we simulate the 'true' incipient species tree:
 
 ```{r}
 for (filename in filenames) {
+
   add_species_trees_with_outgroup(filename)  
 }
 ```
+
+Those are shown here. Note that run 1 and 2 have no replicate and
+thus produce only one sampled tree.
+
+```{r}
+for (filename in filenames) {
+  print(filename)
+  plot_species_tree_with_outgroup(filename)
+}
+```
+
+Progress:
 
 ```{r}
 df <- check_progress()
@@ -173,6 +187,14 @@ for (filename in filenames) {
 ```
 
 ```{r}
+for (filename in filenames) {
+  print(filename)
+  plot_alignments(filename)
+}
+```
+
+
+```{r}
 df <- check_progress()
 knitr::kable(df)
 ```
@@ -184,6 +206,14 @@ for (filename in filenames) {
   add_posteriors(filename)
 }
 ```
+
+```{r}
+for (filename in filenames) {
+  print(filename)
+  plot_posterior_samples(filename)
+}
+```
+
 
 ```{r}
 df <- check_progress()

@@ -9,6 +9,9 @@ plot_posterior_samples(filename)
 \arguments{
 \item{filename}{a filename}
 }
+\value{
+Nothing, but it does generate some plots
+}
 \description{
 Plot
 }

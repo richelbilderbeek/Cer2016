@@ -2,14 +2,17 @@
 % Please edit documentation in R/plot_posterior_sample_nltts.R
 \name{plot_posterior_sample_nltts}
 \alias{plot_posterior_sample_nltts}
-\title{Plot sergpwe9grgerg}
+\title{Plot the nLTTs of the posterior}
 \usage{
 plot_posterior_sample_nltts(filename)
 }
 \arguments{
 \item{filename}{a filename}
 }
+\value{
+Nothing, but it does generate some plots
+}
 \description{
-Plot sergpwe9grgerg
+Plot the nLTTs of the posterior
 }
 

@@ -1,5 +1,7 @@
 #' Plot
 #' @param filename a file name
+#' @return Nothing, but it does generate plots
+#' @export
 plot_species_tree_with_outgroup <- function(filename) {
   testit::assert(is_valid_file(filename))
   base_filename <- basename(filename)

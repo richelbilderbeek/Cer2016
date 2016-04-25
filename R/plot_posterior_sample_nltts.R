@@ -1,5 +1,7 @@
-#' Plot sergpwe9grgerg
+#' Plot the nLTTs of the posterior
 #' @param filename a filename
+#' @return Nothing, but it does generate some plots
+#' @export
 plot_posterior_sample_nltts <- function(filename) {
   testit::assert(is_valid_file(filename))
   base_filename <- basename(filename)

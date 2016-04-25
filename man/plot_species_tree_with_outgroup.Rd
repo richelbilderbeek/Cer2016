@@ -9,6 +9,9 @@ plot_species_tree_with_outgroup(filename)
 \arguments{
 \item{filename}{a file name}
 }
+\value{
+Nothing, but it does generate plots
+}
 \description{
 Plot
 }

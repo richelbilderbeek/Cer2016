@@ -1,5 +1,7 @@
 #' Plot
 #' @param filename a filename
+#' @return Nothing, but it does generate some plots
+#' @export
 plot_posterior_samples <- function(filename) {
   testit::assert(is_valid_file(filename))
   base_filename <- basename(filename)
@@ -15,6 +17,10 @@ plot_posterior_samples <- function(filename) {
         trees_filename <- paste(
           base_filename, "_", i, "_", j, "_", k, ".trees", sep = ""
         )
+        if (!file.exists(trees_filename)) {
+          print(paste("File '", trees_filename, "' not found", sep = ""))
+          next
+        }
         all_trees <- rBEAST::beast2out.read.trees(trees_filename)
         last_tree <- tail(all_trees, n = 1)[[1]]
         plot(last_tree, main = paste(base_filename,
