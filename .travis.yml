@@ -30,6 +30,7 @@ script:
  - R CMD check .
 
 after_succes:
+ - bash <(curl -s https://codecov.io/bash)
  - codecov
 
 after_failure:
