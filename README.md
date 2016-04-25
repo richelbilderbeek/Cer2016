@@ -27,8 +27,6 @@ Additionally, there is a vignette called `Troubleshooting` that may
 
 ## Agenda
 
- * TH 2016-04-21 16:00-17:00: GELIFES lecture, room 4.?? (`The Eye`)
- * MO 2016-04-25 10:30-11:00: TRES coffee break, room 5.80 (`TRES coffee room`)
  * MO 2016-04-25 15:30-16:30: TRES meeting, room 5.?? (`Blue Room`)
  * MO 2016-04-25 20:00-22:00: Giacomonday @ [De Minnaar](www.deminnaar.nl)
  * TH 2016-04-28 16:00-17:00: GELIFES lecture, room 4.?? (`The Eye`)
