@@ -89,3 +89,21 @@ for (filename in filenames) {
 df <- check_progress()
 knitr::kable(df)
 
+## ------------------------------------------------------------------------
+for (filename in filenames) {
+  add_alignments(filename)  
+}
+
+## ------------------------------------------------------------------------
+df <- check_progress()
+knitr::kable(df)
+
+## ------------------------------------------------------------------------
+for (filename in filenames) {
+  add_posteriors(filename)
+}
+
+## ------------------------------------------------------------------------
+df <- check_progress()
+knitr::kable(df)
+

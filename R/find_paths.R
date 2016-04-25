@@ -5,6 +5,7 @@ find_beast_bin_path <- function() {
   filenames <- c(
     "beast",
     "/home/richel/Programs/beast/bin/beast",                                    # nolint
+    "/home/p230198/Programs/beast/bin/beast",                                    # nolint
     "/home/travis/build/richelbilderbeek/Programs/beast/bin/beast"              # nolint
   )
   for (filename in filenames) {
@@ -25,6 +26,7 @@ find_beast_jar_path <- function() {
   filenames <- c(
     "beast.jar",
     "/home/richel/Programs/beast/lib/beast.jar",                                # nolint
+    "/home/p230198/Programs/beast/lib/beast.jar",                               # nolint
     "/home/travis/build/richelbilderbeek/Programs/beast/lib/beast.jar"          # nolint
   )
   for (filename in filenames) {
@@ -46,6 +48,7 @@ find_beast_posterior_test_filename <- function() {
 
   filenames <- c(
     "/home/richel/GitHubs/Cer2016/inst/extdata/is_beast_posterior.trees",       # nolint
+    "/home/p230198/GitHubs/Cer2016/inst/extdata/is_beast_posterior.trees",       # nolint
     "/home/travis/build/richelbilderbeek/Cer2016/inst/extdata/is_beast_posterior.trees",  # nolint
     "is_beast_posterior.trees"
   )

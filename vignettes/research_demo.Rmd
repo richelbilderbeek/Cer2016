@@ -164,12 +164,28 @@ knitr::kable(df)
 ```
 
 
-## TODO
+## Add alignments
 
-
+```{r}
+for (filename in filenames) {
+  add_alignments(filename)  
+}
 ```
-add_alignments(filename)  
-add_posteriors(filename)
 
+```{r}
+df <- check_progress()
+knitr::kable(df)
 ```
 
+## Add posteriors
+
+```{r}
+for (filename in filenames) {
+  add_posteriors(filename)
+}
+```
+
+```{r}
+df <- check_progress()
+knitr::kable(df)
+```
