@@ -1,0 +1,18 @@
+<itsabeastystatewerein version='2.0' sample='10000'>
+<statenode id='Tree.t:toy_example_3_2_2_1'>(0:0.05790007513241739,(((1:0.01909272193880936,2:0.01909272193880936)15:0.005202200705737285,(3:0.009509907747623067,4:0.009509907747623067)12:0.014785014896923578)14:0.02346905145490873,((((5:0.005737698456535286,6:0.005737698456535286)17:0.015276355518589366,7:0.021014053975124652)16:0.010707033553791385,10:0.03172108752891604)13:0.001917672764132912,(8:0.021696194830833366,9:0.021696194830833366)11:0.011942565462215584)19:0.014125213806406425)18:0.010136101032962017)20:0.0</statenode>
+<statenode id='birthRate2.t:toy_example_3_2_2_1'>birthRate2.t:toy_example_3_2_2_1[1 1] (0.0,10000.0): 36.916116864155505 </statenode>
+<statenode id='relativeDeathRate2.t:toy_example_3_2_2_1'>relativeDeathRate2.t:toy_example_3_2_2_1[1 1] (0.0,1.0): 0.11887991699136609 </statenode>
+</itsabeastystatewerein>
+<!--
+{"operators":[
+{"id":"treeScaler.t:toy_example_3_2_2_1","p":0.5,"accept":44,"reject":339,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"treeRootScaler.t:toy_example_3_2_2_1","p":0.5,"accept":48,"reject":336,"acceptFC":0,"rejectFC":0,"rejectIv":109,"rejectOp":109},
+{"id":"UniformOperator.t:toy_example_3_2_2_1","p":"NaN","accept":1024,"reject":2880,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"SubtreeSlide.t:toy_example_3_2_2_1","p":1,"accept":7,"reject":1884,"acceptFC":0,"rejectFC":0,"rejectIv":928,"rejectOp":928},
+{"id":"narrow.t:toy_example_3_2_2_1","p":"NaN","accept":83,"reject":1781,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"wide.t:toy_example_3_2_2_1","p":"NaN","accept":0,"reject":415,"acceptFC":0,"rejectFC":0,"rejectIv":218,"rejectOp":218},
+{"id":"WilsonBalding.t:toy_example_3_2_2_1","p":"NaN","accept":2,"reject":381,"acceptFC":0,"rejectFC":0,"rejectIv":118,"rejectOp":118},
+{"id":"BirthRateScaler.t:toy_example_3_2_2_1","p":0.75,"accept":307,"reject":62,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"DeathRateScaler.t:toy_example_3_2_2_1","p":0.75,"accept":248,"reject":160,"acceptFC":0,"rejectFC":0,"rejectIv":71,"rejectOp":71}
+]}
+-->

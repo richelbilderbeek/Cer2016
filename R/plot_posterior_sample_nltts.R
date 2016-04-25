@@ -4,7 +4,7 @@
 #' @export
 plot_posterior_sample_nltts <- function(filename) {
   testit::assert(is_valid_file(filename))
-  base_filename <- basename(filename)
+  base_filename <- tools::file_path_sans_ext(basename(filename))
   file <- read_file(filename)
   n_species_trees_samples <- as.numeric(
     file$parameters$n_species_trees_samples[2]
@@ -17,6 +17,10 @@ plot_posterior_sample_nltts <- function(filename) {
         trees_filename <- paste(base_filename,
           "_", i, "_", j, "_", k, ".trees", sep = ""
         )
+        if (!file.exists(trees_filename)) {
+          print(paste("File '", trees_filename, "' not found", sep = ""))
+          next
+        }
         all_trees <- rBEAST::beast2out.read.trees(trees_filename)
         last_tree <- tail(all_trees, n = 1)[[1]]
         nLTT::nLTT.plot(file$species_trees_with_outgroup[[1]][[1]],

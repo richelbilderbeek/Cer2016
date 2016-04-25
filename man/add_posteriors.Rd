@@ -4,10 +4,12 @@
 \alias{add_posteriors}
 \title{Add BEAST2 posteriors to a file}
 \usage{
-add_posteriors(filename)
+add_posteriors(filename, skip_if_output_present = FALSE)
 }
 \arguments{
 \item{filename}{Parameter filename}
+
+\item{skip_if_output_present}{skip if output files are present, else remove these and start a new BEAST2 run}
 }
 \value{
 Nothing, modifies the parameter file

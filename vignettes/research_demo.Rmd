@@ -203,7 +203,10 @@ knitr::kable(df)
 
 ```{r}
 for (filename in filenames) {
-  add_posteriors(filename)
+  add_posteriors(
+    filename, 
+    skip_if_output_present = TRUE
+  )
 }
 ```
 
@@ -211,6 +214,7 @@ for (filename in filenames) {
 for (filename in filenames) {
   print(filename)
   plot_posterior_samples(filename)
+  plot_posterior_sample_nltts(filename)
 }
 ```
 

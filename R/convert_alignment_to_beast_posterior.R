@@ -5,6 +5,7 @@
 #' @param rng_seed The random number generator seed used by BEAST2
 #' @param beast_bin_path Where the binary 'beast' can be found
 #' @param beast_jar_path Where the jar 'beast.jar' can be found
+#' @param skip_if_output_present skip if output files are present, else remove these and start a new BEAST2 run
 #' @return A BEAST2 posterior
 #' @export
 #' @author Richel Bilderbeek
@@ -14,7 +15,8 @@ convert_alignment_to_beast_posterior <- function(
   base_filename,
   rng_seed = 42,
   beast_bin_path = "", #find_beast_bin_path(),
-  beast_jar_path = find_beast_jar_path()
+  beast_jar_path = find_beast_jar_path(),
+  skip_if_output_present = FALSE
 ) {
   if (!is_alignment(alignment_dnabin)) {
     stop("convert_alignment_to_beast_posterior: ",
@@ -64,6 +66,13 @@ convert_alignment_to_beast_posterior <- function(
   beast_trees_filename <- paste(base_filename, ".trees", sep = "");
   beast_state_filename <- paste(base_filename, ".xml.state", sep = "");
   temp_fasta_filename <- paste(base_filename, ".fasta", sep = "");
+
+  if (skip_if_output_present &&
+    file.exists(beast_trees_filename) &&
+    file.exists(beast_log_filename) &&
+    file.exists(beast_state_filename)) {
+    return()
+  }
 
   # Create a BEAST2 XML input file
   convert_alignment_to_beast_input_file(

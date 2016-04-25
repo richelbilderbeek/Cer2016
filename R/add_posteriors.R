@@ -1,9 +1,12 @@
 #' Add BEAST2 posteriors to a file
 #' @param filename Parameter filename
+#' @param skip_if_output_present skip if output files are present, else remove these and start a new BEAST2 run
 #' @return Nothing, modifies the parameter file
 #' @export
 #' @author Richel Bilderbeek
-add_posteriors <- function(filename) {
+add_posteriors <- function(
+  filename,
+  skip_if_output_present = FALSE) {
   if (!is_valid_file(filename)) {
     stop("add_posteriors: invalid filename")
   }
@@ -49,7 +52,8 @@ add_posteriors <- function(filename) {
           alignment_dnabin = alignment,
           base_filename = basefilename,
           mcmc_chainlength = mcmc_chainlength,
-          rng_seed = new_seed
+          rng_seed = new_seed,
+          skip_if_output_present = skip_if_output_present
         )
         print(paste("   * Storing posterior #", k,
           " for alignment #", j, " for species tree #", i,

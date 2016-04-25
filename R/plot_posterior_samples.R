@@ -4,7 +4,7 @@
 #' @export
 plot_posterior_samples <- function(filename) {
   testit::assert(is_valid_file(filename))
-  base_filename <- basename(filename)
+  base_filename <- tools::file_path_sans_ext(basename(filename))
   file <- read_file(filename)
   n_species_trees_samples <- as.numeric(
     file$parameters$n_species_trees_samples[2]

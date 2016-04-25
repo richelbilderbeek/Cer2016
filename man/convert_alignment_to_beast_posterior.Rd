@@ -6,7 +6,7 @@
 \usage{
 convert_alignment_to_beast_posterior(alignment_dnabin, mcmc_chainlength,
   base_filename, rng_seed = 42, beast_bin_path = "",
-  beast_jar_path = find_beast_jar_path())
+  beast_jar_path = find_beast_jar_path(), skip_if_output_present = FALSE)
 }
 \arguments{
 \item{alignment_dnabin}{The alignmnet}
@@ -20,6 +20,8 @@ convert_alignment_to_beast_posterior(alignment_dnabin, mcmc_chainlength,
 \item{beast_bin_path}{Where the binary 'beast' can be found}
 
 \item{beast_jar_path}{Where the jar 'beast.jar' can be found}
+
+\item{skip_if_output_present}{skip if output files are present, else remove these and start a new BEAST2 run}
 }
 \value{
 A BEAST2 posterior
