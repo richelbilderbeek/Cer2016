@@ -223,3 +223,8 @@ for (filename in filenames) {
 df <- check_progress()
 knitr::kable(df)
 ```
+
+
+```{r}
+plot_species_tree_repeatabilities()
+```
