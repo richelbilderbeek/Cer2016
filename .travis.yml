@@ -30,9 +30,11 @@ script:
  - R CMD check .
 
 after_succes:
- - bash <(curl -s https://codecov.io/bash)
  - Rscript -e 'covr::codecov()
  - codecov
+ - cat /home/travis/build/richelbilderbeek/Cer2016/..Rcheck/00install.out
+ - cat /home/travis/build/richelbilderbeek/Cer2016/..Rcheck/00check.log
+
 
 after_failure:
  - cat /home/travis/build/richelbilderbeek/Cer2016/..Rcheck/00install.out
