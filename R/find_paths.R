@@ -20,7 +20,7 @@ find_path <- function(filename) {
   }
   stop(
     "find_path: ",
-    "cannot find '", filename ,"'"
+    "cannot find '", filename, "'"
   )
 
 }
