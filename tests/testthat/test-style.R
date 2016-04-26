@@ -1,6 +1,10 @@
 context("style")
 
 test_that("Use default coding style", {
-  skip("Not now")
-  lintr::expect_lint_free()
+  # Only check on Travis
+  if (substr(getwd(), 1, 13) == "/home/travis/") {
+    lintr::expect_lint_free()
+  } else {
+    skip("Only lint on Travis")
+  }
 })
