@@ -20,6 +20,7 @@ There are multiple phylogeny summary statistics:
 First, we read a parameter file:
 
 ```{r}
+library(ape)
 library(Cer2016)
 filename <- find_path("toy_example_1.RDa")
 file <- read_file(filename)
@@ -44,9 +45,54 @@ print(names(file$pbd_output))
 
 I want to get the incipient species tree of the extant species
 
+```{r}
+true_tree <- file$pbd_output$igtree.extant
+colors <- setNames(c("gray","black"),c("i","g"))
+phytools::plotSimmap(
+  true_tree, 
+  colors = colors
+)
 ```
-file$pbd_output$igtree.extant
+
+Here I use the `gamma` statistic:
+
+ * `gamma < 0`: a tippy tree
+ * `gamma > 0`: a stemmy tree
+
+```{r}
+true_gamma <- gammaStat(true_tree)
+print(true_gamma)
 ```
+
+The question is: how is the distribution of that statistic in the posterior?
+
+```{r}
+posterior_filename <- find_path("toy_example_1_1_1_1.trees")
+posterior_trees <- rBEAST::beast2out.read.trees(posterior_filename)
+n_trees <- length(posterior_trees)
+```
+
+For giggles, let's plot all 10 posterior trees:
+
+```{r}
+for (i in seq(1:n_trees)) {
+  plot(posterior_trees[[i]])
+}
+```
+
+From those posterior trees, we collect the gamma statistic:
+
+```{r}
+gamma_statistics <- rep(0, times = n_trees)
+for (i in seq(1:n_trees)) {
+  gamma_statistics[i] <- gammaStat(posterior_trees[[i]])
+}
+hist(gamma_statistics, xlim = c(-1,1))
+abline(v = true_gamma, col = "red")
+```
+
+It appears that all gamma statistics in the posterior are lower than the gamma statistic
+of the true tree.
 
 
 
