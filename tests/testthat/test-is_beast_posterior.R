@@ -1,6 +1,11 @@
 context("is_beast_posterior")
 
 test_that("can find is_beast_posterior_test.R", {
+
+  #filename <- "C:/Users/Aline/Cer2016/inst/extdata/is_beast_posterior.trees"
+  #file_exists <- file.exists(filename)
+  #file_exists
+
   filename <- find_beast_posterior_test_filename()
   file_exists <- file.exists(filename)
   expect_equal(file_exists, TRUE)

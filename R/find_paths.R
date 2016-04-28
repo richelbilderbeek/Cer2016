@@ -8,9 +8,10 @@ find_path <- function(filename) {
   }
 
   prefixes <- c(
-    "/home/richel/GitHubs/Cer2016/inst/extdata/",       # nolint
-    "/home/p230198/GitHubs/Cer2016/inst/extdata/",       # nolint
-    "/home/travis/build/richelbilderbeek/Cer2016/inst/extdata/"  # nolint
+    "/home/richel/GitHubs/Cer2016/inst/extdata/",                      # nolint
+    "/home/p230198/GitHubs/Cer2016/inst/extdata/",                     # nolint
+    "/home/travis/build/richelbilderbeek/Cer2016/inst/extdata/",       # nolint
+    "C:/Users/Aline/Cer2016/inst/extdata/"                             # nolint
   )
   for (prefix in prefixes) {
     full_path <- paste(prefix, filename, sep = "")
@@ -32,8 +33,9 @@ find_beast_bin_path <- function() {
   filenames <- c(
     "beast",
     "/home/richel/Programs/beast/bin/beast",                                    # nolint
-    "/home/p230198/Programs/beast/bin/beast",                                    # nolint
-    "/home/travis/build/richelbilderbeek/Programs/beast/bin/beast"              # nolint
+    "/home/p230198/Programs/beast/bin/beast",                                   # nolint
+    "/home/travis/build/richelbilderbeek/Programs/beast/bin/beast",             # nolint
+    "C:/Users/Aline/BEAST"                                                      # nolint
   )
   for (filename in filenames) {
     if (file.exists(filename)) {
@@ -54,7 +56,8 @@ find_beast_jar_path <- function() {
     "beast.jar",
     "/home/richel/Programs/beast/lib/beast.jar",                                # nolint
     "/home/p230198/Programs/beast/lib/beast.jar",                               # nolint
-    "/home/travis/build/richelbilderbeek/Programs/beast/lib/beast.jar"          # nolint
+    "/home/travis/build/richelbilderbeek/Programs/beast/lib/beast.jar",         # nolint
+    "C:/Users/Aline/BEAST/lib/beast.jar"                                        # nolint
   )
   for (filename in filenames) {
     if (file.exists(filename)) {
