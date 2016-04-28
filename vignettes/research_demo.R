@@ -4,9 +4,9 @@ library(ape)
 
 ## ------------------------------------------------------------------------
 filenames = c(
-  "toy_example_1.RDa", 
-  "toy_example_2.RDa", 
-  "toy_example_3.RDa", 
+  "toy_example_1.RDa",
+  "toy_example_2.RDa",
+  "toy_example_3.RDa",
   "toy_example_4.RDa"
 )
 
@@ -51,7 +51,7 @@ for (i in seq(1, 4)) {
     mcmc_chainlength = mcmc_chainlengths[i],
     n_beast_runs = n_beast_runses[i],
     filename = filenames[i]
-  )  
+  )
 }
 
 ## ------------------------------------------------------------------------
@@ -60,7 +60,7 @@ knitr::kable(df)
 
 ## ------------------------------------------------------------------------
 for (filename in filenames) {
-  add_pbd_output(filename)  
+  add_pbd_output(filename)
 }
 
 ## ------------------------------------------------------------------------
@@ -71,7 +71,7 @@ for (filename in filenames) {
   testit::assert(length(read_file(filename)$pbd_output$igtree.extant$tip.label) > 0)
   print(filename)
   phytools::plotSimmap(
-    read_file(filename)$pbd_output$igtree.extant, 
+    read_file(filename)$pbd_output$igtree.extant,
     colors = colors
   )
   nLTT::nLTT.plot(read_file(filename)$pbd_output$tree)
@@ -84,7 +84,7 @@ knitr::kable(df)
 ## ------------------------------------------------------------------------
 for (filename in filenames) {
 
-  add_species_trees_with_outgroup(filename)  
+  add_species_trees_with_outgroup(filename)
 }
 
 ## ------------------------------------------------------------------------
@@ -99,7 +99,7 @@ knitr::kable(df)
 
 ## ------------------------------------------------------------------------
 for (filename in filenames) {
-  add_alignments(filename)  
+  add_alignments(filename)
 }
 
 ## ------------------------------------------------------------------------

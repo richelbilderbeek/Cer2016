@@ -8,6 +8,7 @@ find_path <- function(filename) {
   }
 
   prefixes <- c(
+    "E:/Git/Cer2016/inst/extdata/",       # nolint
     "/home/richel/GitHubs/Cer2016/inst/extdata/",       # nolint
     "/home/p230198/GitHubs/Cer2016/inst/extdata/",       # nolint
     "/home/travis/build/richelbilderbeek/Cer2016/inst/extdata/"  # nolint
@@ -33,7 +34,8 @@ find_beast_bin_path <- function() {
     "beast",
     "/home/richel/Programs/beast/bin/beast",                                    # nolint
     "/home/p230198/Programs/beast/bin/beast",                                    # nolint
-    "/home/travis/build/richelbilderbeek/Programs/beast/bin/beast"              # nolint
+    "/home/travis/build/richelbilderbeek/Programs/beast/bin/beast",              # nolint
+    "E:/Git/BEAST.v2.4.0.Windows/BEAST/BEAST"
   )
   for (filename in filenames) {
     if (file.exists(filename)) {
@@ -54,7 +56,8 @@ find_beast_jar_path <- function() {
     "beast.jar",
     "/home/richel/Programs/beast/lib/beast.jar",                                # nolint
     "/home/p230198/Programs/beast/lib/beast.jar",                               # nolint
-    "/home/travis/build/richelbilderbeek/Programs/beast/lib/beast.jar"          # nolint
+    "/home/travis/build/richelbilderbeek/Programs/beast/lib/beast.jar",          # nolint
+    "E:/Git/BEAST.v2.4.0.Windows/BEAST/lib/beast.jar"
   )
   for (filename in filenames) {
     if (file.exists(filename)) {
@@ -63,7 +66,7 @@ find_beast_jar_path <- function() {
   }
   stop(
     "get_output_xml_filename: ",
-    "cannot find the 'birth_death_0_20151005.xml' file"
+    "cannot find the 'beast.jar' file"
   )
 }
 
