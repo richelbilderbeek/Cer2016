@@ -60,12 +60,12 @@ convert_alignment_to_beast_posterior <- function(
   }
 
   # File paths
-  beast_filename <- paste(base_filename, ".xml", sep = "");
+  beast_filename <- paste(base_filename, ".xml", sep = "")
 
-  beast_log_filename <- paste(base_filename, ".log", sep = "");
-  beast_trees_filename <- paste(base_filename, ".trees", sep = "");
-  beast_state_filename <- paste(base_filename, ".xml.state", sep = "");
-  temp_fasta_filename <- paste(base_filename, ".fasta", sep = "");
+  beast_log_filename <- paste(base_filename, ".log", sep = "")
+  beast_trees_filename <- paste(base_filename, ".trees", sep = "")
+  beast_state_filename <- paste(base_filename, ".xml.state", sep = "")
+  temp_fasta_filename <- paste(base_filename, ".fasta", sep = "")
 
   if (skip_if_output_present &&
     file.exists(beast_trees_filename) &&

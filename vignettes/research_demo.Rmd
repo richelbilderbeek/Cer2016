@@ -224,7 +224,18 @@ df <- check_progress()
 knitr::kable(df)
 ```
 
+Let's view the (single) posteriors of the first two files:
 
 ```{r}
-#plot_species_tree_repeatabilities()
+plot_posterior_nltts(filenames[1])
+plot_posterior_nltts(filenames[2])
+```
+
+The third and fourth parameter files have had two BEAST2 runs.
+We can see how similar these are:
+
+```{r}
+plot_posterior_nltts(filenames[3])
+plot_posterior_nltts(filenames[4])
+
 ```
