@@ -226,5 +226,5 @@ knitr::kable(df)
 
 
 ```{r}
-plot_species_tree_repeatabilities()
+#plot_species_tree_repeatabilities()
 ```
