@@ -34,7 +34,7 @@ plot_posterior_nltts <- function(filename) {
       }
     }
   }
-  ggplot2::qplot(t, nltt, data = df, geom = "blank", ylim = c(0,1),
+  ggplot2::qplot(t, nltt, data = df, geom = "blank", ylim = c(0, 1),
     main = "Average nLTT plot of phylogenies") +
     ggplot2::stat_summary(
       fun.data = "mean_cl_boot", color = "red", geom = "smooth"
