@@ -34,7 +34,7 @@ find_beast_bin_path <- function() {
   filenames <- c(
     "beast",
     "/home/richel/Programs/beast/bin/beast",                                    # nolint
-    "E:/Git/BEAST.v2.4.0.Windows/BEAST/BEAST"
+    "E:/Git/BEAST.v2.4.0.Windows/BEAST/BEAST",                                  # nolint
     "/home/p230198/Programs/beast/bin/beast",                                   # nolint
     "/home/travis/build/richelbilderbeek/Programs/beast/bin/beast",             # nolint
     "C:/Users/Aline/BEAST"                                                      # nolint
@@ -58,8 +58,8 @@ find_beast_jar_path <- function() {
     "beast.jar",
     "/home/richel/Programs/beast/lib/beast.jar",                                # nolint
     "/home/p230198/Programs/beast/lib/beast.jar",                               # nolint
-    "/home/travis/build/richelbilderbeek/Programs/beast/lib/beast.jar",          # nolint
-    "E:/Git/BEAST.v2.4.0.Windows/BEAST/lib/beast.jar"
+    "/home/travis/build/richelbilderbeek/Programs/beast/lib/beast.jar",         # nolint
+    "E:/Git/BEAST.v2.4.0.Windows/BEAST/lib/beast.jar",                          # nolint
     "C:/Users/Aline/BEAST/lib/beast.jar"                                        # nolint
   )
   for (filename in filenames) {
