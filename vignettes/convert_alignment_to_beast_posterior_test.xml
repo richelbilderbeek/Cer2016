@@ -4,11 +4,11 @@
     <data
 id="convert_alignment_to_beast_posterior_test"
 name="alignment">
-                    <sequence id="seq_t5" taxon="t5" totalcount="4" value="ACGGCCAGTG"/>
-                    <sequence id="seq_t4" taxon="t4" totalcount="4" value="ACCAACTGAG"/>
-                    <sequence id="seq_t2" taxon="t2" totalcount="4" value="ACAAACTGAG"/>
-                    <sequence id="seq_t3" taxon="t3" totalcount="4" value="GGTGGCATGC"/>
-                    <sequence id="seq_t1" taxon="t1" totalcount="4" value="GGTTGCATCC"/>
+                    <sequence id="seq_t5" taxon="t5" totalcount="4" value="GGAACCCGGA"/>
+                    <sequence id="seq_t2" taxon="t2" totalcount="4" value="GGAACCCGGA"/>
+                    <sequence id="seq_t4" taxon="t4" totalcount="4" value="CTAACACGGG"/>
+                    <sequence id="seq_t3" taxon="t3" totalcount="4" value="AAGGGACAGT"/>
+                    <sequence id="seq_t1" taxon="t1" totalcount="4" value="AAGCGACAGA"/>
                 </data>
 
 
@@ -104,7 +104,8 @@ name="alignment">
 
     <logger id="screenlog" logEvery="1000">
         <log idref="posterior"/>
-        <log id="ESS.0" spec="util.ESS" arg="@posterior"/>
+        <log id="ESS.0" spec="util.ESS"  arg="@posterior"/>
+
         <log idref="likelihood"/>
         <log idref="prior"/>
     </logger>

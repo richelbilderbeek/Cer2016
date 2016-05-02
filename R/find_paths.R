@@ -34,7 +34,7 @@ find_beast_bin_path <- function() {
   filenames <- c(
     "beast",
     "/home/richel/Programs/beast/bin/beast",                                    # nolint
-    "E:/Git/BEAST.v2.4.0.Windows/BEAST/BEAST",                                  # nolint
+    # "E:/Git/BEAST.v2.4.0.Windows/BEAST/BEAST.exe",                                  # nolint
     "/home/p230198/Programs/beast/bin/beast",                                   # nolint
     "/home/travis/build/richelbilderbeek/Programs/beast/bin/beast",             # nolint
     "C:/Users/Aline/BEAST"                                                      # nolint
@@ -45,8 +45,8 @@ find_beast_bin_path <- function() {
     }
   }
   stop(
-    "get_input_fasta_filename: ",
-    "cannot find the 'test_output_0.fas' file"
+    "find_beast_bin_path: ",
+    "cannot find the 'beast' file"
   )
 }
 

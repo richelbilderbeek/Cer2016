@@ -24,6 +24,14 @@ plot_posterior_nltts <- function(filename) {
           i, "_", j, "_", k, sep = ""
         )
         trees_filename <- paste(base_filename, ".trees", sep = "")
+        if (!file.exists(trees_filename))
+        {
+          stop(
+            "plot_posterior_nltts:",
+            "cannot find file '",
+            trees_filename, "'"
+          )
+        }
         phylogenies <- rBEAST::beast2out.read.trees(trees_filename)
         r <- ribir::get_nltt_values(phylogenies, dt = dt)
         if (is.na(df)) {

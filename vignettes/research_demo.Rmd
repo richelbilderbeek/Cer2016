@@ -237,5 +237,4 @@ We can see how similar these are:
 ```{r}
 plot_posterior_nltts(filenames[3])
 plot_posterior_nltts(filenames[4])
-
 ```
