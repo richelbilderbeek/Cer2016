@@ -1,0 +1,38 @@
+---
+title: "VerdubbelDit"
+author: "Jolien Gay"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+## VerdubbelDit Info
+Met deze functie verdubbel je een ingevoerde waarde x.
+
+## Code
+```{r}
+VerdubbelDit <- function(x) {
+  if (!is.numeric(x)) {
+      stop("No string-based input allowed!")
+  }
+  n <- x*2
+  n
+}
+plot(VerdubbelDit, xlim = c(-100,100), ylim = c(-200, 200))
+```
+
+## Code example
+
+```{r}
+VerdubbelDit(20)
+VerdubbelDit(-10)
+tryCatch(
+  VerdubbelDit("hallo"),
+  error = function(x) { print("hallo is invalid input indeed") }
+)
+
+```
