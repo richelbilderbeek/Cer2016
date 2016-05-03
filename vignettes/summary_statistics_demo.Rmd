@@ -11,41 +11,56 @@ vignette: >
 
 There are multiple phylogeny summary statistics:
 
- * [demo], by Richel
- * [first], by Femke
- * [second], by Jolien
+ * [Femke and Jolien summary statistic]
+ * Gamma statistic
+ * Colless statistic
  
-## Gamma statistic
+First it is shown how a parameter file is built up, then 
+the individual summary statistics are shown
 
-The gamma statistic was introduced by Pybus and Harvey (2000).
+## Parameter file build-up
 
-First, we read a parameter file:
+For this vignette, we need these libraries:
 
 ```{r}
 library(ape)
 library(Cer2016)
+```
+
+First we obtain the full path of a parameter file:
+
+```{r}
 filename <- find_path("toy_example_1.RDa")
+print(filename)
+```
+
+This path will be different: Windows users will have a path starting
+with `C:/` or `D:/` or higher. GNU/Linux users will have a UNIX
+path.
+
+The function `read_file` reads the file (it also checks
+if the file does indeed exist):
+
+```{r}
 file <- read_file(filename)
 ```
 
-A file has some properties:
+`file`, which is a file, has a (hopefully) convenient structure.
+This structure can be observed using `names`:
 
 ```{r}
 print(names(file))
 ```
 
-In this example, I /... [TODO]
-of the posterior.
-
-The unsampled original species tree is in `file$pbd_output`, let's
-see what's there:
+The (unsampled) (original) incipient species tree is 
+in `file$pbd_output`, let's see what's there:
 
 ```{r}
 print(names(file$pbd_output))
 ```
 
-The incipient species tree is in `file$species_tree_with_outgroup`, let's
-plot it:
+The (unsampled) (original) incipient species tree is 
+in `file$species_tree_with_outgroup`, let's plot it:
 
 ```{r}
 incipient_species_tree <- file$pbd_output$igtree.extant
@@ -56,30 +71,58 @@ phytools::plotSimmap(
 )
 ```
 
-I will use that tree as my true tree (sorry for all those square
-brackets):
+I chose to plot the incipient species tree for extant
+species, thus `igtree.extant`. Because an incipient
+species trees has states on the edges (`good` and
+`incipient`), it is not a phylogeny of class `phylo`
+but has additional data as well. 
+
+## Femke and Jolien summary statistic
+
+## Gamma statistic
+
+The gamma statistic was introduced by Pybus and Harvey (2000).
+
+ * `gamma < 0`: a tippy tree
+ * `gamma > 0`: a stemmy tree
+
+I will use a sampled species tree as my true tree:
 
 ```{r}
 true_tree <- file$species_trees_with_outgroup[[1]][[1]]
 plot(true_tree)
 ```
 
-Here I use the `gamma` statistic:
+Note that `[[1]][[1]]`: it allows for multiple sampled species trees
+for more complex parameter files, but here it just looks ugly.
 
- * `gamma < 0`: a tippy tree
- * `gamma > 0`: a stemmy tree
+From that true tree, I measure the gamma statistic:
 
 ```{r}
 true_gamma <- gammaStat(true_tree)
 print(true_gamma)
+if (true_gamma < 0) {
+  print("tippy tree")
+} else {
+  print("stemmy tree")
+}  
 ```
 
 The question is: how is the distribution of that statistic in the posterior?
 
+This toy example has only one posterior file:
+
+
 ```{r}
 posterior_filename <- find_path("toy_example_1_1_1_1.trees")
+```
+
+Extracting the trees from that posterior:
+
+```{r}
 posterior_trees <- rBEAST::beast2out.read.trees(posterior_filename)
 n_trees <- length(posterior_trees)
+print(paste0("There are ", n_trees))
 ```
 
 For giggles, let's plot all 10 posterior trees:
