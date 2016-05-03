@@ -1,0 +1,128 @@
+---
+title: "PhylogeniesTest"
+author: "Jolien Gay"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+Exercises book 'Functional and Phylogenetic Ecology in R' by Nathan G. Swenson
+
+# Capter 2: Phylogenetic Data in R
+
+### Ex 1
+
+```{r}
+#Read & check
+library(ape)
+my.phylo <- read.tree("Newick.file.five.species.txt")
+write.tree(my.phylo)
+names(my.phylo)
+```
+
+```{r}
+#Plotting & colour
+plot(my.phylo, edge.color = "blue")
+```
+
+### Ex 2
+
+```{r}
+#Calculate total branch length
+my.phylo$edge.length
+total.length <- sum(my.phylo$edge.length)
+total.length
+```
+
+### Ex 3
+
+```{r}
+#calculate amount of subtrees
+my.subtrees <- subtrees(my.phylo)
+my.subtrees
+```
+
+```{r}
+#calculate percentage of subtree [[2]] of total phylogeny
+subtree.two <- sum(my.subtrees[[2]]$edge.length)
+subtree.two
+
+percentage.tree.two <- subtree.two/total.length
+percentage.tree.two
+```
+
+### Ex 4
+
+```{r}
+#Randomize tip labels, sample without replacement
+sample(my.phylo$tip.label, rep=F)
+```
+
+### Ex 5
+
+```{r}
+library(ape)
+filename <- "Newick.file.five.species.txt"
+write.nexus(rcoal(10), file = filename)
+print(file.exists(filename))
+#plot(read.tree(text = "(B:3.00,(A:3.00,C:3.00,E:3.00):3.00,D:3.00);"))
+my.nexus.phylo <- read.nexus(filename) #Does nog work, why?
+plot(my.nexus.phylo)
+write.nexus(my.phylo)
+```
+
+### Ex 6
+
+```{r}
+#Read & check
+library(ape)
+my.phylo2 <- read.tree("Newick.file.six.species.txt")
+write.tree(my.phylo2)
+names(my.phylo2)
+
+#Plotting & colour
+plot(my.phylo2, edge.color = "purple")
+
+#Calculate total branch length
+my.phylo2$edge.length
+total.length2 <- sum(my.phylo2$edge.length)
+total.length2
+
+#calculate amount of subtrees
+my.subtrees2 <- subtrees(my.phylo2)
+my.subtrees2
+
+#calculate percentage of subtree [[2]] of total phylogeny
+subtree.two2 <- sum(my.subtrees2[[2]]$edge.length)
+subtree.two2
+
+percentage.tree.two2 <- subtree.two2/total.length
+percentage.tree.two2
+
+#Randomize tip labels, sample without replacement
+sample(my.phylo$tip.label, rep=F)
+```
+
+### Ex 7
+
+```{r}
+#Simulation of 5 coalescent trees with 10 species each & write it to working 
+#directory
+for (i in 1:5){
+
+  #Make random coalescent tree with 10 taxa
+  temp_random_tree <- rcoal(10)
+  
+  #Write random tree to working directory (each new file has new number)
+  write.tree(temp_random_tree, paste(i, ".txt", sep = "")) 
+}
+```
+
+### Ex 8
+
+```{r}
+
+```

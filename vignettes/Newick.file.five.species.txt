@@ -1,0 +1,10 @@
+BEGIN TAXA;
+    TaxLabels Scarabaeus Drosophila Aranaeus;
+END;
+
+BEGIN TREES;
+    Translate beetle Scarabaeus, fly Drosophila, spider Aranaeus;
+    Tree tree1 = ((1,2),3);
+    Tree tree2 = ((beetle,fly),spider);
+    Tree tree3 = ((Scarabaeus,Drosophila),Aranaeus);
+END;
