@@ -15,7 +15,9 @@ There are multiple phylogeny summary statistics:
  * [first], by Femke
  * [second], by Jolien
  
-## Richel's demo summary statistic
+## Gamma statistic
+
+The gamma statistic was introduced by Pybus and Harvey (2000)
 
 First, we read a parameter file:
 
