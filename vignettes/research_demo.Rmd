@@ -60,14 +60,6 @@ To be sure to have a fresh analysis, we delete the files if they exist:
 #}
 ```
 
-In this workflow, progress can and is shown. 
-At the start of this document, we expect nothing:
-
-```{r}
-df <- check_progress()
-knitr::kable(df)
-```
-
 Now the parameter files are created with some parameters:
 
 ```{r}
@@ -107,13 +99,6 @@ for (i in seq(1, 4)) {
 Note that they all have a different random number generator seed. Because
 they do have different other parameters, this is no problem. [TODO: Test this]
 
-Checking the progress:
-
-```{r}
-df <- check_progress()
-knitr::kable(df)
-```
-
 
 ### Simulate one incipient species tree per parameter file
 
@@ -142,20 +127,12 @@ for (filename in filenames) {
 }
 ```
 
-Progress has improved:
-
-```{r}
-df <- check_progress()
-knitr::kable(df)
-```
-
 ## Once or more often, sample unique species from an incipient species tree. Then, per sampled species tree, add an outgroup
 
 Here we simulate the 'true' incipient species tree:
 
 ```{r}
 for (filename in filenames) {
-
   add_species_trees_with_outgroup(filename)  
 }
 ```
@@ -168,13 +145,6 @@ for (filename in filenames) {
   print(filename)
   plot_species_tree_with_outgroup(filename)
 }
-```
-
-Progress:
-
-```{r}
-df <- check_progress()
-knitr::kable(df)
 ```
 
 

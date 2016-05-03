@@ -1,5 +1,5 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass article
@@ -18,13 +18,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
-\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -35,24 +35,15 @@
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_package amsmath 1
-\use_package amssymb 1
-\use_package cancel 1
-\use_package esint 1
-\use_package mathdots 1
-\use_package mathtools 1
-\use_package mhchem 1
-\use_package stackrel 1
-\use_package stmaryrd 1
-\use_package undertilde 1
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
-\cite_engine_type default
-\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification true
 \use_refstyle 1
 \index Index
 \shortcut idx
@@ -383,7 +374,7 @@ end{tikzpicture}
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The states and transitions of a species.
@@ -737,9 +728,9 @@ status open
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="2">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -1252,7 +1243,7 @@ MCMC chain length
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Parameters used
@@ -1430,7 +1421,7 @@ This research assumes that speciation is allopatric, because in the simulation
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "ShouldProtractedSpeciationBeIncorporatedInPhylogeneticTreeConstructionMethods"
+bibfiles "Cer2016"
 options "plain"
 
 \end_inset
@@ -1544,7 +1535,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The chronological order of the experiment
@@ -1680,66 +1671,7 @@ Experiments
 \end_layout
 
 \begin_layout Standard
-These worked-out examples show:
-\end_layout
 
-\begin_layout Itemize
-the error if protractedness is absent: example 1, see chapter 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Example-1-Weak-protractedness"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-the error if protractedness strong: example 2, see chapter 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Example-2-Strong-protractedness"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-comparing the errors of example 1 and 2: see chapter 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Comparing-example-1-and-2"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-the error if protractedness is absent for multiple replicates: example 3,
- see chapter 
-\end_layout
-
-\begin_layout Itemize
-the error if protractedness is strong for multiple replicates: example 4,
- see chapter 
-\end_layout
-
-\begin_layout Itemize
-comparing the errors of example 3 and 4: see chapter 
-\end_layout
-
-\begin_layout Standard
-An overview of all parameter settings can be seen in table 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:Examples-parameters"
-
-\end_inset
-
-, which can be created by calling the 'create_example_parameter_files.sh'
- script .
 \end_layout
 
 \begin_layout Standard
@@ -1751,12 +1683,12 @@ status open
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="13" columns="5">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -2589,7 +2521,7 @@ Yes
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Parameters used in the examples
@@ -2616,290 +2548,11 @@ name "tab:Examples-parameters"
 
 \end_layout
 
-\begin_layout Standard
-The parameter settings used in this example are identical, except for their
- speciation completion rate and number of replicates.
- 
-\end_layout
-
-\begin_layout Standard
-Creating these parameter files is shown in chapter 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Creating-parameter-files"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-The experimental setup of this research has multiple steps, which we will
- follow closely here.
- These steps are described in chapter 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Workflow"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-These worked-out examples show the data produced in its raw form and does
- not care too much about aesthetics.
-\end_layout
-
 \begin_layout Subsection
 Example 1: Weak protractedness
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Example-1-Weak-protractedness"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-This example answers the question: what is the base level error of the analyses
- in this research?
-\end_layout
-
-\begin_layout Standard
-The base level error can be obtained by using parameters for a constant-rate
- birth-death model.
- All tools used assume this model, but there will be noise (thus error)
- added in the process.
- 
-\end_layout
-
-\begin_layout Standard
-The parameter settings of example 1 have a high speciation completion rate
- 
-\begin_inset Formula $\lambda$
-\end_inset
-
-, which makes the constant-rate protracted speciation model fall back to
- a constant-rate birth-death model, as incipient species become good species
- (close to) instantaneously.
-\end_layout
-
-\begin_layout Subsubsection
-Gene tree
-\end_layout
-
-\begin_layout Standard
-The first step is to simulate a gene tree.
- For our parameters, this results in the tree in figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Example-1-gene-tree"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/p230198/GitHubs/R/Peregrine/example_1_gene_tree.png
-	lyxscale 50
-	width 50text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Example 1 gene tree.
- The taxon labels are S[genus]-[species]-[sub-species]'.
- This plot is created by the function 'plot_gene_tree'
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Example-1-gene-tree"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Species tree
-\end_layout
-
-\begin_layout Standard
-From that gene tree, we create a species tree by sampling one individual
- per species.
- Because speciation is instantenous for a constant-rate birth death model,
- there exist no multiple individuals per species.
- To being able to root our phylogenies in later steps, an outgroup is added
- as well, resulting in figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Example-1-species-tree"
-
-\end_inset
-
-:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/p230198/GitHubs/R/Peregrine/example_1_species_tree_with_outgroup_1.png
-	lyxscale 50
-	width 50text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Example 1 species tree.
- This plot is created by the function 'plot_species_tree_with_outgroup'
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Example-1-species-tree"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/p230198/GitHubs/R/Peregrine/example_1_species_tree_with_outgroup_nltt_1.png
-	lyxscale 50
-	width 50text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Example 1 species tree its nLTT plot.
- This plot is created by the function 'plot_species_tree_with_outgroup_nltt'
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Example-1-species-tree-nltt"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph
-Gene tree and all species trees
-\end_layout
-
-\begin_layout Standard
-Doing this multiple times:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/p230198/GitHubs/R/Peregrine/example_1_gene_tree_versus_species_trees.png
-	lyxscale 50
-	width 50text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Example 1 gene tree (black solid line) and possible sampled species tree
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Example-1-gene_tree_versu_species-trees"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
 
 \end_inset
 
@@ -2948,7 +2601,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Example 1 alignment.
@@ -3015,7 +2668,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Example 1 its ESSes and trace log
@@ -3087,7 +2740,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 A random species tree from example 1 its posterior.
@@ -3151,7 +2804,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The nLTTs of the true species tree (solid black line) and the species tree
@@ -3215,7 +2868,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Example 1 its posterior its phylogenies
@@ -3272,7 +2925,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Histogram of the nLTT statistic between the true species tree and the trees
@@ -3340,7 +2993,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Average nLTT of all the trees in the posterior.
@@ -3425,7 +3078,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Example 2 gene tree.
@@ -3509,7 +3162,7 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Example 2 species tree
@@ -3559,7 +3212,7 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Example 2 gene tree (black solid line) and possible sampled species tree
@@ -3618,7 +3271,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Example 2 alignment
@@ -3677,7 +3330,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Example 2 its ESSes and trace log
@@ -3738,7 +3391,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 A random species tree (and its nLTT plot) from example 2 its posterior
@@ -3795,7 +3448,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Both examples 2 its nLTT plots in the same chart.
@@ -3865,7 +3518,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Example 2 its posterior its phylogenies
@@ -3920,7 +3573,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Histogram of the nLTT statistic between the true species tree and the trees
@@ -3990,7 +3643,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Average nLTT of all the trees in the posterior.
@@ -4068,7 +3721,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Histogram of the nLTT statistic of the two examples 
@@ -4123,7 +3776,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Average nLTTs of the posteriors of example #1 (weak protractedness, solid
@@ -4203,7 +3856,7 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Example 3 gene tree.
@@ -4293,7 +3946,7 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Example 3 species tree and nLTT plot of that species tree
@@ -4343,7 +3996,7 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Example 3 gene tree (black solid line) and possible sampled species tree
@@ -4434,7 +4087,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Example 3 alignments
@@ -4573,7 +4226,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The random species trees from example 3 its posteriors
@@ -4631,7 +4284,7 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Count of the number of monophylies in all example 3 its BEAST2 posteriors
@@ -4757,7 +4410,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 All example 3 its nLTT plots compare to the true species tree nLTT.
@@ -4841,7 +4494,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 All example 3 its nLTT plots compare to the true species tree nLTT.
@@ -4905,7 +4558,7 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 All example 3 its nLTT plots compare to the true species tree nLTT.
@@ -4961,7 +4614,7 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 All example 3 its nLTT plots compare to the true species tree nLTT.
@@ -5090,7 +4743,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Histogram of the nLTT statistic between the true species tree and the trees
@@ -5211,7 +4864,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Average nLTT of all the trees in the posterior.
@@ -5293,7 +4946,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Example 4 gene tree.
@@ -5382,7 +5035,7 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Example 4 species tree and nLTT plot of that species tree
@@ -5437,7 +5090,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Example 4 gene tree (black solid line) and possible sampled species tree
@@ -5528,7 +5181,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Example 4 alignments
@@ -5667,7 +5320,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The random species trees from example 3 its posteriors
@@ -5725,7 +5378,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Count of the number of monophylies in all example 4 its BEAST2 posteriors
@@ -5852,7 +5505,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 All example 4 its nLTT plots compare to the true species tree nLTT.
@@ -5936,7 +5589,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 All example 4 its nLTT plots compare to the true species tree nLTT.
@@ -6000,7 +5653,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 All example 4 its nLTT plots compare to the true species tree nLTT.
@@ -6056,7 +5709,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 All example 4 its nLTT plots compare to the true species tree nLTT.
@@ -6185,7 +5838,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Histogram of the nLTT statistic between the true species tree and the trees
@@ -6306,7 +5959,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Average nLTT of all the trees in the posterior.
@@ -6370,7 +6023,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Histogram of the nLTT statistic of the two examples 
@@ -6437,7 +6090,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Average nLTTs of the posteriors of example #3 (weak protractedness, solid
@@ -6608,7 +6261,7 @@ lstparams "breaklines=true,language=bash,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The script
@@ -6647,7 +6300,7 @@ lstparams "breaklines=true,language=bash,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The script
@@ -6705,7 +6358,7 @@ lstparams "breaklines=true,language=bash,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'analyse_examples.sh' script 
@@ -6763,7 +6416,7 @@ lstparams "breaklines=true,language=bash,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The script
@@ -6802,7 +6455,7 @@ lstparams "breaklines=true,language=bash,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The script
@@ -6841,7 +6494,7 @@ lstparams "breaklines=true,language=bash,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The script
@@ -6891,7 +6544,7 @@ lstparams "breaklines=true,language=bash,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'check_parameters_examples.sh' script 
@@ -6946,7 +6599,7 @@ lstparams "breaklines=true,language={R},showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Output of 'check_example_parameter_files.sh' 
@@ -6999,7 +6652,7 @@ lstparams "breaklines=true,language=bash,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'create_parameters_article.sh' script 
@@ -7057,7 +6710,7 @@ lstparams "breaklines=true,language=bash,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'create_parameters_article_job.sh' script 
@@ -7141,7 +6794,7 @@ lstparams "breaklines=true,language=bash,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'create_parameters_examples.sh' script 
@@ -7193,7 +6846,7 @@ lstparams "breaklines=true,language=bash,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The script
@@ -7232,7 +6885,7 @@ lstparams "breaklines=true,language=bash,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The script
@@ -7271,7 +6924,7 @@ lstparams "breaklines=true,language=bash,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The script
@@ -7329,7 +6982,7 @@ lstparams "breaklines=true,language=bash,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'do_simulation_article.sh' script 
@@ -7407,7 +7060,7 @@ lstparams "breaklines=true,language=bash,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'do_simulation_article_job.sh' script 
@@ -7485,7 +7138,7 @@ lstparams "breaklines=true,language=bash,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'do_simulation_examples.sh' script 
@@ -7563,7 +7216,7 @@ lstparams "breaklines=true,language=bash,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'do_simulation_examples_job.sh' script 
@@ -7622,7 +7275,7 @@ lstparams "breaklines=true,language=bash,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The script
@@ -7661,7 +7314,7 @@ lstparams "breaklines=true,language=bash,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The script
@@ -7719,7 +7372,7 @@ lstparams "breaklines=true,language=bash,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'sbatch_me.sh' script 
@@ -7798,7 +7451,7 @@ lstparams "breaklines=true,language=R,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'analyse.R' script 
@@ -7892,7 +7545,7 @@ lstparams "breaklines=true,language=R,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'check_parameter_file.R' script 
@@ -7962,7 +7615,7 @@ lstparams "breaklines=true,language=R,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'collect_parameters.R' script 
@@ -8019,7 +7672,7 @@ lstparams "breaklines=true,language=R,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'create_parameter_file.R' script 
@@ -8115,7 +7768,7 @@ lstparams "breaklines=true,language=R,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'do_simulation.R' script 
@@ -8241,7 +7894,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The chronological order of the functions called
@@ -8305,7 +7958,7 @@ lstparams "breaklines=true,language=R,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'add_alignments' function 
@@ -8369,7 +8022,7 @@ lstparams "breaklines=true,language=R,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'add_pbd_output' function 
@@ -8433,7 +8086,7 @@ lstparams "breaklines=true,language=R,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'add_posteriors' function 
@@ -8498,7 +8151,7 @@ lstparams "breaklines=true,language=R,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'add_species_trees_with_outgroup' function 
@@ -8565,7 +8218,7 @@ lstparams "breaklines=true,language=R,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'analyse_multi' function 
@@ -8634,7 +8287,7 @@ lstparams "breaklines=true,language=R,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'analyse_single' function 
@@ -8702,7 +8355,7 @@ lstparams "breaklines=true,language=R,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'is_valid_file' function 
@@ -8755,7 +8408,7 @@ lstparams "breaklines=true,language=R,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'plot_alignments' function 
@@ -8815,7 +8468,7 @@ lstparams "breaklines=true,language=R,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'plot_gene_tree' function 
@@ -8880,7 +8533,7 @@ lstparams "breaklines=true,language=R,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'plot_multi_average_nltts' function 
@@ -8940,7 +8593,7 @@ lstparams "breaklines=true,language=R,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'plot_multi_nltt_stats_histogram' function 
@@ -9001,7 +8654,7 @@ lstparams "breaklines=true,language=R,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'plot_posterior_average_nltts' function 
@@ -9062,7 +8715,7 @@ lstparams "breaklines=true,language=R,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'plot_nltt_stats_histogram' function 
@@ -9122,7 +8775,7 @@ lstparams "breaklines=true,language=R,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'plot_posterior_samples' function 
@@ -9182,7 +8835,7 @@ lstparams "breaklines=true,language=R,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'plot_posterior_sample_nltts' function 
@@ -9242,7 +8895,7 @@ lstparams "breaklines=true,language=R,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'plot_species_tree_with_outgroup' function 
@@ -9312,7 +8965,7 @@ lstparams "breaklines=true,language=R,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'plot_species_tree_with_outgroup_nltt' function 
@@ -9396,7 +9049,7 @@ lstparams "breaklines=true,language=R,showstringspaces=false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 The 'save_parameters_to_file' function 
@@ -9464,7 +9117,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 BEAST2 error
