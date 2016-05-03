@@ -17,7 +17,7 @@ There are multiple phylogeny summary statistics:
  
 ## Gamma statistic
 
-The gamma statistic was introduced by Pybus and Harvey (2000)
+The gamma statistic was introduced by Pybus and Harvey (2000).
 
 First, we read a parameter file:
 
@@ -34,8 +34,7 @@ A file has some properties:
 print(names(file))
 ```
 
-In this example, I compare the nLTT of the sampled species
-tree to the average nLTT
+In this example, I /... [TODO]
 of the posterior.
 
 The unsampled original species tree is in `file$pbd_output`, let's
@@ -49,10 +48,10 @@ The incipient species tree is in `file$species_tree_with_outgroup`, let's
 plot it:
 
 ```{r}
-true_tree <- file$pbd_output$igtree.extant
+incipient_species_tree <- file$pbd_output$igtree.extant
 colors <- setNames(c("gray","black"),c("i","g"))
 phytools::plotSimmap(
-  true_tree, 
+  incipient_species_tree, 
   colors = colors
 )
 ```
@@ -105,7 +104,52 @@ abline(v = true_gamma, col = "red")
 It appears that all gamma statistics in the posterior are lower than the gamma statistic
 of the true tree.
 
+## Colless statistic [DOES NOT WORK]
 
+The Colless statistic was introduced by Colless (1982).
+
+First, we read a parameter file:
+
+```
+library(ape)
+library(Cer2016)
+library(phytools)
+library(apTreeshape) # For colless
+filename <- find_path("toy_example_1.RDa")
+file <- read_file(filename)
+```
+
+I will use that tree as my true tree (sorry for all those square
+brackets):
+
+```
+true_tree <- file$species_trees_with_outgroup[[1]][[1]]
+plot(true_tree)
+```
+
+This does not work:
+
+```
+true_colless  <- colless(true_tree)
+print(true_colless)
+```
+
+It does not work as `colless` needs a `apTreeShape` (from the `apTreeShape`
+package). Also their PPtree example is unclear to me:
+
+```
+library(PPtree)
+data(iris)
+n <- nrow(iris)
+tot <- c(1:n)
+n.train <- round(n*0.9)
+train <- sample(tot,n.train)
+test <- tot[-train]
+ 
+Tree.result <- PDA.Tree(iris[train,5],iris[train,1:4])
+Tree.result
+plot(Tree.result$Tree.Struct)
+```
 
 ## [First summary statistic]
 
