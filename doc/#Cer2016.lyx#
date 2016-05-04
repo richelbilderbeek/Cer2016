@@ -2564,15 +2564,7 @@ Posterior
 \end_layout
 
 \begin_layout Standard
-Now that the full posterior is assumed to be correct, I will now highlight
- one state of it first, before going back to the full picture.
- In this case, I choose the last state to zoom in on.
- I take the last state for no specific reason and I could just as easily
- have picked the first or a random one.
- From this last state, I take the tree only.
- This last tree may be very different by chance, as unlikely trees are present,
- yet in low abundances.
- 
+
 \end_layout
 
 \begin_layout Standard

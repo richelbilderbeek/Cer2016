@@ -1,7 +1,8 @@
-#' Plot
+#' Plot a random posterior phylogeny
 #' @param filename a filename
 #' @return Nothing, but it does generate some plots
 #' @export
+#' @author Richel Bilderbeek
 plot_posterior_samples <- function(filename) {
   testit::assert(is_valid_file(filename))
   base_filename <- tools::file_path_sans_ext(basename(filename))
@@ -22,9 +23,11 @@ plot_posterior_samples <- function(filename) {
           next
         }
         all_trees <- rBEAST::beast2out.read.trees(trees_filename)
-        last_tree <- tail(all_trees, n = 1)[[1]]
-        plot(last_tree, main = paste(base_filename,
-          "last tree in posterior", i, j, k)
+        n_trees <- length(all_trees)
+        random_tree_index <- round(runif(1, min = 1, max = n_trees))
+        random_tree <- all_trees[[random_tree_index]]
+        plot(random_tree, main = paste(base_filename,
+          "random tree in posterior", i, j, k)
         )
       }
     }

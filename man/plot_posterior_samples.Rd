@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_posterior_samples.R
 \name{plot_posterior_samples}
 \alias{plot_posterior_samples}
-\title{Plot}
+\title{Plot a random posterior phylogeny}
 \usage{
 plot_posterior_samples(filename)
 }
@@ -13,6 +13,9 @@ plot_posterior_samples(filename)
 Nothing, but it does generate some plots
 }
 \description{
-Plot
+Plot a random posterior phylogeny
+}
+\author{
+Richel Bilderbeek
 }
 

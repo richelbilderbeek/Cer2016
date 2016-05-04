@@ -1,5 +1,6 @@
 #' Plot species_tree_with_outgroup_nltt
 #' @param filename parameter filename
+#' @author Richel Bilderbeek
 plot_species_tree_with_outgroup_nltt <- function(filename) {
   testit::assert(is_valid_file(filename))
   base_filename <- basename(filename)

@@ -2,6 +2,7 @@
 #' @param filename the name of a file
 #' @return the full path of the filename if an existing file could be found, stops otherwise
 #' @export
+#' @author Richel Bilderbeek
 find_path <- function(filename) {
   if (file.exists(filename)) {
     return(filename)

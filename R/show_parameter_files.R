@@ -1,6 +1,7 @@
 #' Creates a nice knitr::table to show one or more parameter files
 #' @param filenames names of the parameter files
 #' @export
+#' @author Richel Bilderbeek
 show_parameter_files <- function(filenames) {
   for (filename in filenames) {
     if (!file.exists(filename)) {
