@@ -23,7 +23,6 @@ library(Cer2016)
 library(ggplot2)
 library(phytools)
 library(ribir)
-
 ```
 
 Here we will simulate a protracted birth-death process:
