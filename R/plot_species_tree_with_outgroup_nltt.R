@@ -9,25 +9,9 @@ plot_species_tree_with_outgroup_nltt <- function(
   dt = 0.001
 ) {
   testit::assert(is_valid_file(filename))
-  base_filename <- basename(filename)
-  file <- read_file(filename)
-  n_species_trees_samples <- as.numeric(
-    file$parameters$n_species_trees_samples[2]
-  )
 
-  nltt_values <- NA
-
-  for (i in seq(1, n_species_trees_samples)) {
-    these_nltt_values <- ribir::get_nltt_values(
-      list(file$species_trees_with_outgroup[[i]][[1]]),
-      dt = dt
-    )
-    if (is.na(nltt_values)) {
-      nltt_values <- these_nltt_values
-    } else {
-      nltt_values <- rbind(nltt_values, these_nltt_values)
-    }
-  }
+  nltt_values <- collect_species_tree_with_outgroup_nltt_values(
+    filename, dt)
 
   ggplot2::ggplot(
     data = nltt_values,

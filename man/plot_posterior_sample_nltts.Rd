@@ -4,10 +4,13 @@
 \alias{plot_posterior_sample_nltts}
 \title{Plot the nLTTs of the posterior}
 \usage{
-plot_posterior_sample_nltts(filename)
+plot_posterior_sample_nltts(filename, dt = 0.001)
 }
 \arguments{
 \item{filename}{a filename}
+
+\item{dt}{the resolution of the nLTT plot,
+must be in range <0,1>, default is 0.001}
 }
 \value{
 Nothing, but it does generate some plots

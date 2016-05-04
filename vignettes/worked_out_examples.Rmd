@@ -1,12 +1,12 @@
 ---
-title: "Worked-out example"
+title: "Worked-out examples"
 author: "Richel Bilderbeek"
 date: "`r Sys.Date()`"
 output: 
   rmarkdown::html_vignette:
     toc: true
 vignette: >
-  %\VignetteIndexEntry{Research demo}
+  %\VignetteIndexEntry{Worked-out examples}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -49,6 +49,15 @@ library(ggplot2)
 library(nLTT)
 library(ribir)
 ```
+
+We also set the resolution of our analysis:
+
+```{r}
+dt <- 0.001
+```
+
+I use `0.1` while developing code, 
+`0.001` for a decent analysis.
 
 ## Creating parameter files
 
@@ -279,7 +288,7 @@ To refresh our mind, the true sampled species tree is:
 
 ```{r}
 plot_species_tree_with_outgroup(filename)
-plot_species_tree_with_outgroup_nltt(filename)
+plot_species_tree_with_outgroup_nltt(filename, dt = dt)
 ```
 
 Now that the full posterior is assumed to be correct, 
@@ -303,15 +312,85 @@ How different then?
 
 There are multiple ways to quantify this:
 
+ * The gamma statistic
+ * The nLTT statistic
+
+#### The gamma statistic
+
+The gamma value is a summary statistic described in [2]
+
+First, I collect the gamma statistics from the species 
+tree(s) with outgroup(s):
+
 ```{r}
-plot_posterior_sample_nltts(filename)
+true_gamma_statistics <- collect_species_tree_with_outgroup_gamma_statistics(filename = filename)
+knitr::kable(head(true_gamma_statistics))
 ```
 
-Comparing the species tree (solid line)
-to the postereriors (dotted line):
+In this case, there will be one statistics, as we only
+have one species tree.
+
+Then, I collect the gamma statistics from the posterior(s):
 
 ```{r}
-plot_posterior_nltts(filename)
+posterior_gamma_statistics <- collect_posterior_gamma_statistics(
+  filename = filename
+)
+knitr::kable(head(posterior_gamma_statistics))
 ```
 
 
+#### The nLTT statistic
+
+The nLTT value is a summary statistic described in [1]
+
+First, I collect the nLTT values from the species 
+tree(s) with outgroup(s):
+
+```{r}
+true_nltt_values <- collect_species_tree_with_outgroup_nltt_values(filename = filename, dt = dt)
+knitr::kable(head(true_nltt_values))
+```
+
+Then, I collect the nLTT values from the posterior(s):
+
+```{r}
+posterior_nltt_values <- collect_posterior_nltt_values(
+  filename = filename, dt = dt
+)
+knitr::kable(head(posterior_nltt_values))
+```
+
+Last, I plot both of these:
+
+```{r}
+ggplot2::ggplot(
+  data = posterior_nltt_values,
+  ggplot2::aes(t, nltt),
+  main = "nLTT plots"
+) + ggplot2::geom_point(
+  color = "transparent"
+) + ggplot2::scale_x_continuous(
+  limits = c(0, 1)
+) + ggplot2::scale_y_continuous(
+  limits = c(0, 1)
+) + ggplot2::stat_summary(
+  fun.data = "mean_cl_boot", size = 0.5, lty = "dashed",
+  color = I("black"), geom = "smooth"
+) + ggplot2::geom_step(
+  data = true_nltt_values,
+  ggplot2::aes(t, nltt)
+)
+```
+
+How do we interpret these results? Well, even *if* we
+follow all assumptions, this will be standard errors we
+will make; this is the minimal level of imperfection.
+
+Note that the error is not quantified (using `nLTT::nLTTstat`),
+only visualized
+
+## References
+
+ * [1] Janzen, Thijs, Sebastian Höhna, and Rampal S. Etienne. "Approximate Bayesian Computation of diversification rates from molecular phylogenies: introducing a new efficient summary statistic, the nLTT." Methods in Ecology and Evolution 6.5 (2015): 566-575.
+ * [2] Pybus and someone else

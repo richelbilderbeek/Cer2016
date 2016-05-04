@@ -101,7 +101,8 @@ for (i in 1:5){
 ## ------------------------------------------------------------------------
 library(ape)
 
-setwd("C:/Users/Aline/New")
+# Richel: using setwd will make Travis unhappy (and my comment lintr-bot, wouldn't I add #nolint)
+#setwd("C:/Users/Aline/New") #nolint
 getwd()
 
 for (i in 1:5){

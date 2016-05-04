@@ -4,10 +4,13 @@
 \alias{plot_posterior_nltts}
 \title{Plot multiple BEAST2 posteriors}
 \usage{
-plot_posterior_nltts(filename)
+plot_posterior_nltts(filename, dt = 0.001)
 }
 \arguments{
 \item{filename}{name of the file containing the parameters and results}
+
+\item{dt}{the resolution of the nLTT plot,
+must be in range <0,1>, default is 0.001}
 }
 \value{
 Nothing, produces a plot
