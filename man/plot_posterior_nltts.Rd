@@ -15,4 +15,7 @@ Nothing, produces a plot
 \description{
 Plot multiple BEAST2 posteriors
 }
+\author{
+Richel Bilderbeek
+}
 

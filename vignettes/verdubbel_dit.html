@@ -9,11 +9,11 @@
 <meta name="generator" content="pandoc" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="author" content="Vignette Author" />
+<meta name="author" content="Jolien Gay" />
 
 <meta name="date" content="2016-05-04" />
 
-<title>Vignette Title</title>
+<title>VerdubbelDit</title>
 
 
 
@@ -68,62 +68,40 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="fluid-row" id="header">
 
 
-<h1 class="title">Vignette Title</h1>
-<h4 class="author"><em>Vignette Author</em></h4>
+<h1 class="title">VerdubbelDit</h1>
+<h4 class="author"><em>Jolien Gay</em></h4>
 <h4 class="date"><em>2016-05-04</em></h4>
 
 </div>
 
 
-<p>This vignette exists to describe and fix problem. It fixes problems just by using <code>Knitr</code> on it :-)</p>
-<div id="cannot-find-package-beastscriptr" class="section level2">
-<h2><code>Cannot find package beastscriptr</code></h2>
-<p>Install it like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (<span class="kw">is.element</span>(<span class="st">&quot;beastscriptr&quot;</span>, <span class="kw">installed.packages</span>()[, <span class="dv">1</span>])) {
-  <span class="kw">print</span>(<span class="st">&quot;package is already installed&quot;</span>)
-} else {
-  devtools::<span class="kw">install_github</span>(<span class="st">&quot;richelbilderbeek/beastscriptr&quot;</span>)
-}</code></pre></div>
-<pre><code>## [1] &quot;package is already installed&quot;</code></pre>
+<div id="verdubbeldit-info" class="section level2">
+<h2>VerdubbelDit Info</h2>
+<p>Met deze functie verdubbel je een ingevoerde waarde x.</p>
 </div>
-<div id="cannot-find-package-rbeast" class="section level2">
-<h2><code>Cannot find package rBEAST</code></h2>
-<p>Perhaps the prerequisites are missing:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (<span class="kw">is.element</span>(<span class="st">&quot;adephylo&quot;</span>, <span class="kw">installed.packages</span>()[, <span class="dv">1</span>])) {
-  <span class="kw">print</span>(<span class="st">&quot;package is already installed&quot;</span>)
-} else {
-  <span class="kw">install.packages</span>(<span class="st">&quot;adephylo&quot;</span>, <span class="dt">repos =</span> <span class="st">&quot;http://cran.uk.r-project.org&quot;</span>)
-}</code></pre></div>
-<pre><code>## [1] &quot;package is already installed&quot;</code></pre>
-<p>Then install it like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (<span class="kw">is.element</span>(<span class="st">&quot;rBEAST&quot;</span>, <span class="kw">installed.packages</span>()[, <span class="dv">1</span>])) {
-  <span class="kw">print</span>(<span class="st">&quot;package is already installed&quot;</span>)
-} else {
-  devtools::<span class="kw">install_github</span>(<span class="st">&quot;richelbilderbeek/rBEAST&quot;</span>)
-}</code></pre></div>
-<pre><code>## [1] &quot;package is already installed&quot;</code></pre>
+<div id="code" class="section level2">
+<h2>Code</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">VerdubbelDit &lt;-<span class="st"> </span>function(x) {
+  if (!<span class="kw">is.numeric</span>(x)) {
+      <span class="kw">stop</span>(<span class="st">&quot;No string-based input allowed!&quot;</span>)
+  }
+  n &lt;-<span class="st"> </span>x*<span class="dv">2</span>
+  n
+}
+<span class="kw">plot</span>(VerdubbelDit, <span class="dt">xlim =</span> <span class="kw">c</span>(-<span class="dv">100</span>,<span class="dv">100</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(-<span class="dv">200</span>, <span class="dv">200</span>))</code></pre></div>
+<p><img src="data:image/png;base64,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" alt /></p>
 </div>
-<div id="cannot-find-package-ribir" class="section level2">
-<h2><code>Cannot find package ribir</code></h2>
-<p>Install it like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (<span class="kw">is.element</span>(<span class="st">&quot;ribir&quot;</span>, <span class="kw">installed.packages</span>()[, <span class="dv">1</span>])) {
-  <span class="kw">print</span>(<span class="st">&quot;package is already installed&quot;</span>)
-} else {
-  devtools::<span class="kw">install_github</span>(<span class="st">&quot;richelbilderbeek/ribir&quot;</span>)
-}</code></pre></div>
-<pre><code>## [1] &quot;package is already installed&quot;</code></pre>
-</div>
-<div id="cannot-find-xml2-config" class="section level2">
-<h2><code>Cannot find xml2-config</code></h2>
-<p>This may happen when you install the <code>XML</code> package:</p>
-<pre><code>install.packages(&quot;XML&quot;)
-[...]
-checking for xml2-config... no
-Cannot find xml2-config</code></pre>
-<p>Solution (from <a href="http://stackoverflow.com/questions/7765429/unable-to-install-r-package-in-ubuntu-11-04">Stack Overflow</a>) is to install <code>libxml2-dev</code> on the command line.</p>
-<pre><code>sudo apt-get install libxml2-dev</code></pre>
-<p>Note: an alternative is to use</p>
-<pre><code>sudo apt-get install r-cran-xml</code></pre>
+<div id="code-example" class="section level2">
+<h2>Code example</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">VerdubbelDit</span>(<span class="dv">20</span>)</code></pre></div>
+<pre><code>## [1] 40</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">VerdubbelDit</span>(-<span class="dv">10</span>)</code></pre></div>
+<pre><code>## [1] -20</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tryCatch</span>(
+  <span class="kw">VerdubbelDit</span>(<span class="st">&quot;hallo&quot;</span>),
+  <span class="dt">error =</span> function(x) { <span class="kw">print</span>(<span class="st">&quot;hallo is invalid input indeed&quot;</span>) }
+)</code></pre></div>
+<pre><code>## [1] &quot;hallo is invalid input indeed&quot;</code></pre>
 </div>
 
 

@@ -1,6 +1,9 @@
 ## ------------------------------------------------------------------------
-library(Cer2016)
 library(ape)
+library(Cer2016)
+library(ggplot2)
+library(nLTT)
+library(ribir)
 
 ## ------------------------------------------------------------------------
 filenames = c(
@@ -21,7 +24,7 @@ filenames = c(
 rng_seeds <- seq(1,4)
 sirgs <- rep(0.5, times = 4)
 siris <- rep(0.5, times = 4)
-scrs <- rep(1.0, times = 4)
+scrs <- c(1.0e6, 1.0e-1, 1.0e6, 1.0e-1)
 ergs <- rep(0.1, times = 4)
 eris <- rep(0.1, times = 4)
 ages <- rep(5, times = 4)
@@ -51,74 +54,61 @@ for (i in seq(1, 4)) {
 }
 
 ## ------------------------------------------------------------------------
-for (filename in filenames) {
-  add_pbd_output(filename)  
-}
+show_parameter_files(filenames)
+
+## ------------------------------------------------------------------------
+filename <- filenames[1]
+testit::assert(is_valid_file(filename))
+add_pbd_output(filename)
 
 ## ------------------------------------------------------------------------
 colors <- setNames(c("gray","black"),c("i","g"))
-
-for (filename in filenames) {
-  testit::assert(is_valid_file(filename))
-  testit::assert(length(read_file(filename)$pbd_output$igtree.extant$tip.label) > 0)
-  print(filename)
-  phytools::plotSimmap(
-    read_file(filename)$pbd_output$igtree.extant, 
-    colors = colors
-  )
-  nLTT::nLTT.plot(read_file(filename)$pbd_output$tree)
-}
+testit::assert(length(read_file(filename)$pbd_output$igtree.extant$tip.label) > 0)
+phytools::plotSimmap(
+  read_file(filename)$pbd_output$igtree.extant, 
+  colors = colors
+)
 
 ## ------------------------------------------------------------------------
-for (filename in filenames) {
-  add_species_trees_with_outgroup(filename)  
-}
+# using the `ribir` package its `get_nltt_values` function and `ggplot2`
+nltt_values <- get_nltt_values(
+  phylogenies = list(read_file(filename)$pbd_output$tree), 
+  dt = 0.001
+)
+qplot(
+  t, nltt, data = nltt_values, geom = "blank", ylim = c(0,1),
+  main = "Example #1"
+) + stat_summary(
+  fun.data = "mean_cl_boot", color = "red", geom = "smooth"
+)
+
+# using the `nLTT` package its `nLTT.plot` function
+nLTT::nLTT.plot(read_file(filename)$pbd_output$tree)
 
 ## ------------------------------------------------------------------------
-for (filename in filenames) {
-  print(filename)
-  plot_species_tree_with_outgroup(filename)
-}
+add_species_trees_with_outgroup(filename)  
 
 ## ------------------------------------------------------------------------
-for (filename in filenames) {
-  add_alignments(filename)  
-}
+plot_species_tree_with_outgroup(filename)
 
 ## ------------------------------------------------------------------------
-for (filename in filenames) {
-  print(filename)
-  plot_alignments(filename)
-}
+add_alignments(filename)  
 
 ## ------------------------------------------------------------------------
-df <- check_progress()
-knitr::kable(df)
+plot_alignments(filename)
 
 ## ------------------------------------------------------------------------
-for (filename in filenames) {
-  add_posteriors(
-    filename, 
-    skip_if_output_present = TRUE
-  )
-}
+add_posteriors(filename, skip_if_output_present = TRUE)
 
 ## ------------------------------------------------------------------------
-for (filename in filenames) {
-  print(filename)
-  plot_posterior_samples(filename)
-  plot_posterior_sample_nltts(filename)
-}
+plot_species_tree_with_outgroup(filename)
 
 ## ------------------------------------------------------------------------
-df <- check_progress()
-knitr::kable(df)
+plot_posterior_samples(filename)
 
 ## ------------------------------------------------------------------------
-plot_posterior_nltts(filenames[1])
-plot_posterior_nltts(filenames[2])
+plot_posterior_sample_nltts(filename)
 
 ## ------------------------------------------------------------------------
-plot_posterior_nltts(filenames[3])
-plot_posterior_nltts(filenames[4])
+plot_posterior_nltts(filename)
 

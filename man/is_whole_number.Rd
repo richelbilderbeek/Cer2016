@@ -12,7 +12,13 @@ is_whole_number(x, tolerance = .Machine$double.eps^0.5)
 \item{tolerance}{the maximum error a number may deviate from a whole number,
 before it is labeled as a floating point value}
 }
+\value{
+TRUE or FALSE
+}
 \description{
 Checks if x is a single, whole-number variable
+}
+\author{
+Richel Bilderbeek
 }
 

@@ -9,11 +9,11 @@
 <meta name="generator" content="pandoc" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="author" content="Vignette Author" />
+<meta name="author" content="Richel Bilderbeek" />
 
 <meta name="date" content="2016-05-04" />
 
-<title>Vignette Title</title>
+<title>tryCatch demo</title>
 
 
 
@@ -68,63 +68,39 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="fluid-row" id="header">
 
 
-<h1 class="title">Vignette Title</h1>
-<h4 class="author"><em>Vignette Author</em></h4>
+<h1 class="title">tryCatch demo</h1>
+<h4 class="author"><em>Richel Bilderbeek</em></h4>
 <h4 class="date"><em>2016-05-04</em></h4>
 
 </div>
 
 
-<p>This vignette exists to describe and fix problem. It fixes problems just by using <code>Knitr</code> on it :-)</p>
-<div id="cannot-find-package-beastscriptr" class="section level2">
-<h2><code>Cannot find package beastscriptr</code></h2>
-<p>Install it like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (<span class="kw">is.element</span>(<span class="st">&quot;beastscriptr&quot;</span>, <span class="kw">installed.packages</span>()[, <span class="dv">1</span>])) {
-  <span class="kw">print</span>(<span class="st">&quot;package is already installed&quot;</span>)
-} else {
-  devtools::<span class="kw">install_github</span>(<span class="st">&quot;richelbilderbeek/beastscriptr&quot;</span>)
+<p>Imagine a function that causes stop:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">f &lt;-<span class="st"> </span>function(x) {
+  if (x ==<span class="st"> </span><span class="dv">42</span>) <span class="kw">stop</span>(<span class="st">&quot;x cannot be 42&quot;</span>)
+  x
 }</code></pre></div>
-<pre><code>## [1] &quot;package is already installed&quot;</code></pre>
-</div>
-<div id="cannot-find-package-rbeast" class="section level2">
-<h2><code>Cannot find package rBEAST</code></h2>
-<p>Perhaps the prerequisites are missing:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (<span class="kw">is.element</span>(<span class="st">&quot;adephylo&quot;</span>, <span class="kw">installed.packages</span>()[, <span class="dv">1</span>])) {
-  <span class="kw">print</span>(<span class="st">&quot;package is already installed&quot;</span>)
-} else {
-  <span class="kw">install.packages</span>(<span class="st">&quot;adephylo&quot;</span>, <span class="dt">repos =</span> <span class="st">&quot;http://cran.uk.r-project.org&quot;</span>)
+<p>Imagine a process that calls that function:</p>
+<pre><code>xs &lt;- c(1,2,4,8,16,32,42,64)
+for (x in xs) {
+  print(f(x))
+}</code></pre>
+<p>Running this code fill stop the program. Here is to check for this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">16</span>,<span class="dv">32</span>,<span class="dv">42</span>,<span class="dv">64</span>)
+for (x in xs) {
+  <span class="kw">tryCatch</span>(
+    <span class="kw">print</span>(<span class="kw">f</span>(x)), 
+    <span class="dt">error =</span> function(x) { <span class="kw">print</span>(<span class="st">&quot;skipped x&quot;</span>) } 
+  )
 }</code></pre></div>
-<pre><code>## [1] &quot;package is already installed&quot;</code></pre>
-<p>Then install it like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (<span class="kw">is.element</span>(<span class="st">&quot;rBEAST&quot;</span>, <span class="kw">installed.packages</span>()[, <span class="dv">1</span>])) {
-  <span class="kw">print</span>(<span class="st">&quot;package is already installed&quot;</span>)
-} else {
-  devtools::<span class="kw">install_github</span>(<span class="st">&quot;richelbilderbeek/rBEAST&quot;</span>)
-}</code></pre></div>
-<pre><code>## [1] &quot;package is already installed&quot;</code></pre>
-</div>
-<div id="cannot-find-package-ribir" class="section level2">
-<h2><code>Cannot find package ribir</code></h2>
-<p>Install it like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (<span class="kw">is.element</span>(<span class="st">&quot;ribir&quot;</span>, <span class="kw">installed.packages</span>()[, <span class="dv">1</span>])) {
-  <span class="kw">print</span>(<span class="st">&quot;package is already installed&quot;</span>)
-} else {
-  devtools::<span class="kw">install_github</span>(<span class="st">&quot;richelbilderbeek/ribir&quot;</span>)
-}</code></pre></div>
-<pre><code>## [1] &quot;package is already installed&quot;</code></pre>
-</div>
-<div id="cannot-find-xml2-config" class="section level2">
-<h2><code>Cannot find xml2-config</code></h2>
-<p>This may happen when you install the <code>XML</code> package:</p>
-<pre><code>install.packages(&quot;XML&quot;)
-[...]
-checking for xml2-config... no
-Cannot find xml2-config</code></pre>
-<p>Solution (from <a href="http://stackoverflow.com/questions/7765429/unable-to-install-r-package-in-ubuntu-11-04">Stack Overflow</a>) is to install <code>libxml2-dev</code> on the command line.</p>
-<pre><code>sudo apt-get install libxml2-dev</code></pre>
-<p>Note: an alternative is to use</p>
-<pre><code>sudo apt-get install r-cran-xml</code></pre>
-</div>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 4
+## [1] 8
+## [1] 16
+## [1] 32
+## [1] &quot;skipped x&quot;
+## [1] 64</code></pre>
 
 
 
