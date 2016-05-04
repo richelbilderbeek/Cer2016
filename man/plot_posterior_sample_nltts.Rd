@@ -15,4 +15,7 @@ Nothing, but it does generate some plots
 \description{
 Plot the nLTTs of the posterior
 }
+\author{
+Richel Bilderbeek
+}
 

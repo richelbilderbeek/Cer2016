@@ -2,6 +2,7 @@
 #' @param filename name of the file containing the parameters and results
 #' @return Nothing, produces a plot
 #' @export
+#' @author Richel Bilderbeek
 plot_posterior_nltts <- function(filename) {
   if (!is_valid_file(filename)) {
     stop("plot_posterior_nltts: invalid filename")

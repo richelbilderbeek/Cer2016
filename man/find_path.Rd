@@ -15,4 +15,7 @@ the full path of the filename if an existing file could be found, stops otherwis
 \description{
 Finds the full pathof a file
 }
+\author{
+Richel Bilderbeek
+}
 

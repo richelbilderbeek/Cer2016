@@ -2,6 +2,7 @@
 #' @param filename a filename
 #' @return Nothing, but it does generate some plots
 #' @export
+#' @author Richel Bilderbeek
 plot_posterior_sample_nltts <- function(filename) {
   testit::assert(is_valid_file(filename))
   base_filename <- tools::file_path_sans_ext(basename(filename))
@@ -22,12 +23,14 @@ plot_posterior_sample_nltts <- function(filename) {
           next
         }
         all_trees <- rBEAST::beast2out.read.trees(trees_filename)
-        last_tree <- tail(all_trees, n = 1)[[1]]
+        n_trees <- length(all_trees)
+        random_tree_index <- round(runif(1, min = 1, max = n_trees))
+        random_tree <- all_trees[[random_tree_index]]
         nLTT::nLTT.plot(file$species_trees_with_outgroup[[1]][[1]],
           main = paste(base_filename, "species tree with outgroup nLTTs",
             i, j, k), lwd = 2
         )
-        nLTT::nLTT.lines(last_tree, lwd = 2, lty = 3)
+        nLTT::nLTT.lines(random_tree, lwd = 2, lty = 3)
       }
     }
   }
