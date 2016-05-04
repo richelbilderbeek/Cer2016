@@ -4,22 +4,17 @@
 
 # Session Data files
 .RData
-
 # Example code in package build process
 *-Ex.R
-
 # RStudio files
 .Rproj.user/
-
 # Generated datafiles
 /toy_example_*
-
 # OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
 .httr-oauth
 .Rproj.user
 inst/doc
 vignettes/toy_example_*
 vignettes/research_demo_cache/
-
 # Newick files
 /Newick*
