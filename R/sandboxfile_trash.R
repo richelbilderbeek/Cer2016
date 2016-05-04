@@ -17,7 +17,7 @@ sandboxy_trash <- function() {
   library(Cer2016)
   library(ape)
 
-  filenames = c(
+  filenames <- c(
     "toy_example_1.RDa",
     "toy_example_2.RDa",
     "toy_example_3.RDa",
@@ -60,10 +60,9 @@ sandboxy_trash <- function() {
     add_pbd_output(filename)
   }
 
-  for (filename in filenames){
+  for (filename in filenames) {
     files  <- c()
     file   <- read_file(filename)
-    parameters <- file$parameters
   }
 
   for (filename in files) {

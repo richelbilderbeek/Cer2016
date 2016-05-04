@@ -24,7 +24,7 @@ show_parameter_files <- function(filenames) {
   options(scipen = 999)
 
   for (i in 1:n_files) {
-    df <- cbind(df, as.numeric(read_file(filenames[i])$parameters[2,, 2]))
+    df <- cbind(df, as.numeric(read_file(filenames[i])$parameters[2,, 2])) #nolint Note: I already issued a bug report about this
   }
 
   # Restore original scientific notation

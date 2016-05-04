@@ -1,0 +1,36 @@
+---
+title: "lintr never satisfied"
+author: "Richel Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::pdf_document
+vignette: >
+  %\VignetteIndexEntry{lintr never satisfied}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+Suppose a 3D matrix:
+
+```{r}
+m <- array(1:8, c(2, 2, 2))
+```
+
+Let's say I want the 2nd columns of the second depth.
+
+Here, `lintr` will complain about the presence of a 
+space before the comma before the second `2`:
+
+```{r}
+a <- m[2, , 2]
+```
+
+Here, `lintr` will complain about the space absent after the comma of
+the first `2`:
+
+```{r}
+b <- m[2,, 2]
+```
+
+```{r}
+lintr::lint("bug_report_lintr.Rmd")
+```
