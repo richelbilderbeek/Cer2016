@@ -15,4 +15,7 @@ Nothing, but it does generate plots
 \description{
 Plot
 }
+\author{
+Richel Bilderbeek
+}
 

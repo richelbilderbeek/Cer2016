@@ -15,4 +15,7 @@ TRUE or FALSE
 \description{
 Checks if a file is a valid parameter file
 }
+\author{
+Richel Bilderbeek
+}
 
