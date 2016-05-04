@@ -1,0 +1,80 @@
+---
+title: "Vignette Title"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+This is an example from `ribi::get_average_nltt_values`:
+
+```{r}
+library(ape)
+library(ggplot2)
+library(ribir)
+
+# Create some random phylogenies
+phylogeny1 <- rcoal(10)
+phylogeny2 <- rcoal(20)
+phylogeny3 <- rcoal(30)
+phylogeny4 <- rcoal(40)
+phylogeny5 <- rcoal(50)
+phylogeny6 <- rcoal(60)
+phylogeny7 <- rcoal(70)
+phylogenies <- c(phylogeny1, phylogeny2, phylogeny3,
+  phylogeny4, phylogeny5, phylogeny6, phylogeny7
+)
+
+# Obtain the nLTT values
+nltt_values <- get_nltt_values(phylogenies, dt = 0.01)
+```
+
+Here is a naive plot:
+
+```{r}
+#Plot the phylognies, where the individual nLTT values are visible
+qplot(t, nltt, data = nltt_values, geom = "point",
+  ylim = c(0,1),
+  main = "Average nLTT plot of phylogenies", color = id, size = I(0.1)
+) + stat_summary(
+  fun.data = "mean_cl_boot", color = "red", geom = "smooth"
+)
+```
+
+Here is another naive plot:
+
+```{r}
+# Plot the phylognies, where the individual nLTT values are omitted
+qplot(
+  t, nltt, data = nltt_values, geom = "blank", ylim = c(0,1),
+  main = "Average nLTT plot of phylogenies"
+) + stat_summary(
+  fun.data = "mean_cl_boot", color = "red", geom = "smooth"
+)
+```
+
+I would like to
+
+ * Use `ggplot` instead of `qplot`
+ * Add another layer, with an additional 'true' nLTT values
+
+##  Use `ggplot` instead of `qplot`
+
+
+```{r}
+ggplot2::ggplot(
+  data = nltt_values,
+  aes(t, nltt),
+  main = "Average nLTT plot of phylogenies"
+) + geom_point(color = "transparent") +
+  scale_x_continuous(limits = c(0, 1)) +
+  scale_y_continuous(limits = c(0, 1)) +
+ggplot2::stat_summary(
+  fun.data = "mean_cl_boot", color = "red", geom = "smooth"
+)
+```
+
+## Add another layer, with an additional 'true' nLTT values

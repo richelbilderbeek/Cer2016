@@ -42,9 +42,19 @@ plot_posterior_nltts <- function(filename) {
       }
     }
   }
-  ggplot2::qplot(t, nltt, data = df, geom = "blank", ylim = c(0, 1),
-    main = "Average nLTT plot of phylogenies") +
-    ggplot2::stat_summary(
-      fun.data = "mean_cl_boot", color = "red", geom = "smooth"
-    )
+#   ggplot2::qplot(t, nltt, data = df, geom = "blank", ylim = c(0, 1),
+#     main = "Average nLTT plot of phylogenies") +
+#     ggplot2::stat_summary(
+#       fun.data = "mean_cl_boot", color = "red", geom = "smooth"
+#     )
+  ggplot2::ggplot(
+    data = df,
+    aes(t, nltt),
+    main = "Average nLTT plot of phylogenies"
+  ) + geom_point(color = "blank") +
+    scale_x_continuous(limits = c(0, 1)) +
+    scale_y_continuous(limits = c(0, 1)) +
+  ggplot2::stat_summary(
+    fun.data = "mean_cl_boot", color = "red", geom = "smooth"
+  )
 }
