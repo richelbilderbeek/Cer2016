@@ -102,6 +102,7 @@ add_posteriors(filename, skip_if_output_present = TRUE)
 
 ## ------------------------------------------------------------------------
 plot_species_tree_with_outgroup(filename)
+plot_species_tree_with_outgroup_nltt(filename)
 
 ## ------------------------------------------------------------------------
 plot_posterior_samples(filename)

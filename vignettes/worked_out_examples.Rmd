@@ -279,6 +279,7 @@ To refresh our mind, the true sampled species tree is:
 
 ```{r}
 plot_species_tree_with_outgroup(filename)
+plot_species_tree_with_outgroup_nltt(filename)
 ```
 
 Now that the full posterior is assumed to be correct, 
@@ -305,6 +306,9 @@ There are multiple ways to quantify this:
 ```{r}
 plot_posterior_sample_nltts(filename)
 ```
+
+Comparing the species tree (solid line)
+to the postereriors (dotted line):
 
 ```{r}
 plot_posterior_nltts(filename)

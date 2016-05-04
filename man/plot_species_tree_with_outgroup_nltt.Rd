@@ -4,10 +4,13 @@
 \alias{plot_species_tree_with_outgroup_nltt}
 \title{Plot species_tree_with_outgroup_nltt}
 \usage{
-plot_species_tree_with_outgroup_nltt(filename)
+plot_species_tree_with_outgroup_nltt(filename, dt = 0.001)
 }
 \arguments{
 \item{filename}{parameter filename}
+
+\item{dt}{the resolution of the nLTT plot,
+must be in range <0,1>, default is 0.001}
 }
 \description{
 Plot species_tree_with_outgroup_nltt

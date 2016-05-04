@@ -15,7 +15,13 @@ plot_posterior_nltts <- function(filename) {
   n_species_trees_samples <- as.numeric(
     file$parameters$n_species_trees_samples[2]
   )
-  df <- NA
+
+  # Sampled species tree nLTT values
+  # stub
+  true_nltt_values <- ribir::get_nltt_values(list(ape::rcoal(10)), dt = dt)
+
+  # Posterior nLTT values
+  nltt_values <- NA
 
   for (i in seq(1, n_species_trees_samples)) {
     for (j in seq(1, n_alignments)) {
@@ -33,28 +39,35 @@ plot_posterior_nltts <- function(filename) {
           )
         }
         phylogenies <- rBEAST::beast2out.read.trees(trees_filename)
-        r <- ribir::get_nltt_values(phylogenies, dt = dt)
-        if (is.na(df)) {
-          df <- r
+        these_nltt_values <- ribir::get_nltt_values(phylogenies, dt = dt)
+        if (is.na(these_nltt_values)) {
+          nltt_values <- these_nltt_values
         } else {
-          df <- rbind(df, r)
+          nltt_values <- rbind(nltt_values, these_nltt_values)
         }
       }
     }
   }
-#   ggplot2::qplot(t, nltt, data = df, geom = "blank", ylim = c(0, 1),
-#     main = "Average nLTT plot of phylogenies") +
-#     ggplot2::stat_summary(
-#       fun.data = "mean_cl_boot", color = "red", geom = "smooth"
-#     )
+
+
   ggplot2::ggplot(
-    data = df,
-    aes(t, nltt),
-    main = "Average nLTT plot of phylogenies"
-  ) + geom_point(color = "blank") +
-    scale_x_continuous(limits = c(0, 1)) +
-    scale_y_continuous(limits = c(0, 1)) +
-  ggplot2::stat_summary(
-    fun.data = "mean_cl_boot", color = "red", geom = "smooth"
+    data = nltt_values,
+    ggplot2::aes(t, nltt),
+    main = "nLTT plots"
+  ) + ggplot2::geom_step(
+    data = true_nltt_values,
+    ggplot2::aes(t, nltt)
+  ) + ggplot2::geom_point(
+    color = "transparent"
+  ) + ggplot2::scale_x_continuous(
+    limits = c(0, 1)
+  ) + ggplot2::scale_y_continuous(
+    limits = c(0, 1)
+  ) + ggplot2::stat_summary(
+    fun.data = "mean_cl_boot", size = 0.5, lty = "dashed",
+    color = I("black"), geom = "smooth"
+  ) + ggplot2::geom_step(
+    data = true_nltt_values,
+    ggplot2::aes(t, nltt)
   )
 }

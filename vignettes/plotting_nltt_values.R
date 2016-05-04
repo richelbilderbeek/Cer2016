@@ -1,17 +1,4 @@
----
-title: "Plotting nLTT values"
-author: "Richel Bilderbeek"
-date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Plotting nLTT values}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
-
-This is an example from `ribi::get_average_nltt_values`:
-
-```{r}
+## ------------------------------------------------------------------------
 library(ape)
 library(ggplot2)
 library(ribir)
@@ -32,11 +19,8 @@ phylogenies <- c(phylogeny1, phylogeny2, phylogeny3,
 # Obtain the nLTT values
 dt <- 0.1
 nltt_values <- get_nltt_values(phylogenies, dt = dt)
-```
 
-Here is a naive plot:
-
-```{r}
+## ------------------------------------------------------------------------
 #Plot the phylognies, where the individual nLTT values are visible
 qplot(t, nltt, data = nltt_values, geom = "point",
   ylim = c(0,1),
@@ -44,11 +28,8 @@ qplot(t, nltt, data = nltt_values, geom = "point",
 ) + stat_summary(
   fun.data = "mean_cl_boot", color = "red", geom = "smooth"
 )
-```
 
-Here is another naive plot:
-
-```{r}
+## ------------------------------------------------------------------------
 # Plot the phylognies, where the individual nLTT values are omitted
 qplot(
   t, nltt, data = nltt_values, geom = "blank", ylim = c(0,1),
@@ -56,16 +37,8 @@ qplot(
 ) + stat_summary(
   fun.data = "mean_cl_boot", color = "red", geom = "smooth"
 )
-```
 
-I would like to
-
- * Use `ggplot` instead of `qplot`
- * Add another layer, with an additional 'true' nLTT values
-
-##  Use `ggplot` instead of `qplot`
-
-```{r}
+## ------------------------------------------------------------------------
 ggplot2::ggplot(
   data = nltt_values,
   aes(t, nltt),
@@ -76,26 +49,15 @@ ggplot2::ggplot(
 ggplot2::stat_summary(
   fun.data = "mean_cl_boot", color = "red", geom = "smooth"
 )
-```
 
-## Add another layer, with an additional 'true' nLTT values
-
-A 'true' phylogeny needs to be simulated:
-
-```{r}
+## ------------------------------------------------------------------------
 true_phylogeny <- rcoal(10)
 true_nltt_values <- get_nltt_values(list(true_phylogeny), dt = dt)
-```
 
-Here is that phylogeny:
-
-```{r}
+## ------------------------------------------------------------------------
 plot(true_phylogeny)
-```
 
-Here is that phylogeny its nLTT values added to the plot:
-
-```{r}
+## ------------------------------------------------------------------------
 ggplot2::ggplot(
   data = nltt_values,
   aes(t, nltt),
@@ -116,9 +78,4 @@ ggplot2::ggplot(
   data = true_nltt_values,
   aes(t, nltt)
 ) 
-```
 
-As one can see, there 'true' phylogeny differs a lot from the
-other phylogenies.
-
-Too bad, there is no legend, nor title...
