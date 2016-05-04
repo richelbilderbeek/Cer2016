@@ -6,6 +6,10 @@ library(rBEAST)
 library(testit)
 
 ## ------------------------------------------------------------------------
+#find_beast_bin_path()
+find_beast_jar_path()
+
+## ------------------------------------------------------------------------
 n_taxa <- 5
 phylogeny <- ape::rcoal(n = n_taxa)
 plot(phylogeny)
@@ -33,7 +37,9 @@ posterior <- convert_alignment_to_beast_posterior(
   alignment,
   mcmc_chainlength = 10000,
   base_filename = base_filename,
-  rng_seed = 42
+  rng_seed = 42,
+  beast_bin_path = "",
+  beast_jar_path = find_beast_jar_path()
 )
 
 ## ------------------------------------------------------------------------

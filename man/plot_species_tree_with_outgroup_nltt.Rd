@@ -12,4 +12,7 @@ plot_species_tree_with_outgroup_nltt(filename)
 \description{
 Plot species_tree_with_outgroup_nltt
 }
+\author{
+Richel Bilderbeek
+}
 

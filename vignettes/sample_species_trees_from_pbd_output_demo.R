@@ -4,7 +4,6 @@ library(ggplot2)
 library(phytools)
 library(ribir)
 
-
 ## ------------------------------------------------------------------------
 age <- 10
 seed <- 320

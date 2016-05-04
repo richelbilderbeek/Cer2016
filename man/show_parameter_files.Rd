@@ -12,4 +12,7 @@ show_parameter_files(filenames)
 \description{
 Creates a nice knitr::table to show one or more parameter files
 }
+\author{
+Richel Bilderbeek
+}
 

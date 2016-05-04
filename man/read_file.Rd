@@ -15,4 +15,7 @@ the file as R data
 \description{
 Read a .RDA file
 }
+\author{
+Richel Bilderbeek
+}
 

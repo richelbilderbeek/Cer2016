@@ -15,4 +15,7 @@ Nothing. It does produce a plot
 \description{
 Plot the extant inicipient species tree
 }
+\author{
+Richel Bilderbeek
+}
 
