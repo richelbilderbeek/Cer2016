@@ -21,16 +21,18 @@ Here, `lintr` will complain about the presence of a
 space before the comma before the second `2`:
 
 ```{r}
-a <- m[2, , 2]
+a <- m[2, , 2] 
 ```
 
 Here, `lintr` will complain about the space absent after the comma of
 the first `2`:
 
 ```{r}
-b <- m[2,, 2]
+b <- m[2,, 2] 
 ```
 
 ```{r}
 lintr::lint("bug_report_lintr.Rmd")
 ```
+
+After an update by @jimhester, now `a` is the preferred way.

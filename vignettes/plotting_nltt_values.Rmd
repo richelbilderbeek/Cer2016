@@ -30,7 +30,8 @@ phylogenies <- c(phylogeny1, phylogeny2, phylogeny3,
 )
 
 # Obtain the nLTT values
-nltt_values <- get_nltt_values(phylogenies, dt = 0.001)
+dt <- 0.1
+nltt_values <- get_nltt_values(phylogenies, dt = dt)
 ```
 
 Here is a naive plot:
@@ -83,7 +84,7 @@ A 'true' phylogeny needs to be simulated:
 
 ```{r}
 true_phylogeny <- rcoal(10)
-true_nltt_values <- get_nltt_values(list(true_phylogeny), dt = 0.001)
+true_nltt_values <- get_nltt_values(list(true_phylogeny), dt = dt)
 ```
 
 Here is that phylogeny:
@@ -99,13 +100,26 @@ ggplot2::ggplot(
   data = nltt_values,
   aes(t, nltt),
   main = "Average nLTT plot of phylogenies"
-) + geom_point(color = "transparent") +
-  scale_x_continuous(limits = c(0, 1)) +
-  scale_y_continuous(limits = c(0, 1)) +
-ggplot2::stat_summary(
-  fun.data = "mean_cl_boot", color = "red", geom = "smooth"
-) + geom_line(
+) + geom_step(
   data = true_nltt_values,
   aes(t, nltt)
-)
+) + geom_point(
+  color = "transparent"
+) + scale_x_continuous(
+  limits = c(0, 1)
+) + scale_y_continuous(
+  limits = c(0, 1)
+) + stat_summary(
+  fun.data = "mean_cl_boot", size = 0.5, lty = "dashed", 
+  color = I("black"), geom = "smooth"
+) + geom_step(
+  data = true_nltt_values,
+  aes(t, nltt)
+) + scale_colour_manual("",
+  breaks = c("posterior", "original"),
+  values = c("posterior" = "red", "original" = "black")
+) 
 ```
+
+As one can see, there 'true' phylogeny differs a lot from the
+other phylogenies.
