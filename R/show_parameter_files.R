@@ -23,14 +23,12 @@ show_parameter_files <- function(filenames) {
   options(scipen = 999)
 
   for (i in 1:n_files) {
-    file <- read_file(filenames[i])
-    df <- cbind(df, as.numeric(read_file(filenames[i])$parameters[2, , 2]))
+    df <- cbind(df, as.numeric(read_file(filenames[i])$parameters[2,, 2]))
   }
 
   # Restore original scientific notation
 
   colnames(df) <- c("parameters", seq(1, n_files))
-  #knitr::kable(t(file$parameters))
   t <- knitr::kable(df)
   options(scipen = old_scipen)
   t
