@@ -39,7 +39,10 @@ collect_posterior_gammas <- function(filename) {
         gamma_statistics <- collect_gamma_statistics(phylogenies)
 
         # Remove id column
-        gamma_statistics <- subset(gamma_statistics, select = -c(id) )
+        gamma_statistics <- subset(
+          gamma_statistics,
+          select = -c(id)
+        )
 
         n_gamma_statistics <- nrow(gamma_statistics)
         this_df <- data.frame(
@@ -56,5 +59,6 @@ collect_posterior_gammas <- function(filename) {
       }
     }
   }
+  testit::assert(!is.null(df$nltt))
   df
 }

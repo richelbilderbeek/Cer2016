@@ -30,7 +30,7 @@ collect_posterior_nltt_values <- function(
           i, "_", j, "_", k, sep = ""
         )
         trees_filename <- paste(base_filename, ".trees", sep = "")
-        if (!file.exists(trees_filename)){
+        if (!file.exists(trees_filename)) {
           stop(
             "plot_posterior_nltts:",
             "cannot find file '",
@@ -41,7 +41,10 @@ collect_posterior_nltt_values <- function(
         nltt_values <- ribir::get_nltt_values(phylogenies, dt = dt)
 
         # Remove id column
-        nltt_values <- subset(nltt_values, select = -c(id) )
+        nltt_values <- subset(
+          nltt_values,
+          select = -c(id)
+        )
 
         n_nltt_values <- nrow(nltt_values)
         this_df <- data.frame(
@@ -58,5 +61,6 @@ collect_posterior_nltt_values <- function(
       }
     }
   }
+  testit::assert(!is.null(df$nltt))
   df
 }

@@ -30,7 +30,10 @@ collect_species_tree_nltts <- function(
     )
 
     # Remove id column
-    nltt_values <- subset(nltt_values, select = -c(id) )
+    nltt_values <- subset(
+      nltt_values,
+      select = -c(id)
+    )
 
     n_nltt_values <- nrow(nltt_values)
     this_df <- data.frame(
@@ -43,5 +46,6 @@ collect_species_tree_nltts <- function(
       df <- rbind(df, this_df)
     }
   }
+  testit::assert(!is.null(df$nltt))
   df
 }

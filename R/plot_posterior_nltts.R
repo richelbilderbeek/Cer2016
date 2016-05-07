@@ -22,6 +22,7 @@ plot_posterior_nltts <- function(
   nltt_values <- collect_posterior_nltt_values(
     filename = filename, dt = dt
   )
+  testit::assert(!is.null(nltt_values$nltt))
 
   ggplot2::ggplot(
     data = nltt_values,
