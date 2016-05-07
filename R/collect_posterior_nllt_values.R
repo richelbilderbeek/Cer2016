@@ -43,8 +43,9 @@ collect_posterior_nltt_values <- function(
         # Remove id column
         nltt_values <- subset(
           nltt_values,
-          select = -c(id)
+          select = -c(id) # nolint Putting 'nltt_values$' before ID will break the code
         )
+        testit::assert(!is.null(nltt_values$nltt))
 
         n_nltt_values <- nrow(nltt_values)
         this_df <- data.frame(

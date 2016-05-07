@@ -118,3 +118,7 @@ knitr::kable(df)
 plot_posterior_nltts(filenames[1])
 plot_posterior_nltts(filenames[2])
 
+## ------------------------------------------------------------------------
+plot_posterior_nltts(filenames[3])
+plot_posterior_nltts(filenames[4])
+

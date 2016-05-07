@@ -4,8 +4,7 @@
 #' @export
 #' @author Richel Bilderbeek
 collect_species_tree_gammas <- function(
-  filename,
-  dt = 0.001
+  filename
 ) {
   if (!is_valid_file(filename)) {
     stop("collect_species_tree_gammas: invalid filename")

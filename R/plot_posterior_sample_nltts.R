@@ -63,6 +63,7 @@ plot_posterior_sample_nltts <- function(
       }
     }
   }
+  testit::assert(!is.null(nltt_values$nltt))
 
   ggplot2::ggplot(
     data = nltt_values,

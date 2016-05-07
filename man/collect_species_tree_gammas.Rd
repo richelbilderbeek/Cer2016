@@ -4,7 +4,7 @@
 \alias{collect_species_tree_gammas}
 \title{Collect the gamma statistics of the species trees with outgroup}
 \usage{
-collect_species_tree_gammas(filename, dt = 0.001)
+collect_species_tree_gammas(filename)
 }
 \arguments{
 \item{filename}{name of the file containing the parameters and results}

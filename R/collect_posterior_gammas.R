@@ -41,8 +41,9 @@ collect_posterior_gammas <- function(filename) {
         # Remove id column
         gamma_statistics <- subset(
           gamma_statistics,
-          select = -c(id)
+          select = -c(id) # nolint Putting 'gamma_statistics$' before ID will break the code
         )
+        testit::assert(!is.null(gamma_statistics$gamma))
 
         n_gamma_statistics <- nrow(gamma_statistics)
         this_df <- data.frame(
@@ -59,6 +60,6 @@ collect_posterior_gammas <- function(filename) {
       }
     }
   }
-  testit::assert(!is.null(df$nltt))
+  testit::assert(!is.null(df$gamma))
   df
 }

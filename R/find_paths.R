@@ -35,7 +35,7 @@ find_beast_bin_path <- function() {
   filenames <- c(
     "beast",
     "/home/richel/Programs/beast/bin/beast",                                    # nolint
-    # "E:/Git/BEAST.v2.4.0.Windows/BEAST/BEAST.exe",                                  # nolint
+    # "E:/Git/BEAST.v2.4.0.Windows/BEAST/BEAST.exe",                            # nolint
     "/home/p230198/Programs/beast/bin/beast",                                   # nolint
     "/home/travis/build/richelbilderbeek/Programs/beast/bin/beast",             # nolint
     "C:/Users/Aline/BEAST"                                                      # nolint
@@ -79,5 +79,6 @@ find_beast_jar_path <- function() {
 #' @return the path of a known-to-be-valid BEAST2 posterior file
 #' @export
 find_beast_posterior_test_filename <- function() {
-  return(ribir::find_path("is_beast_posterior.trees"))
+  # Really do not put ribir::find_path here :-)
+  return(find_path(filename = "is_beast_posterior.trees"))
 }
