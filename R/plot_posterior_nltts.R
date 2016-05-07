@@ -14,7 +14,7 @@ plot_posterior_nltts <- function(
   }
 
   # Sampled species tree nLTT values
-  true_nltt_values <- collect_species_tree_with_outgroup_nltt_values(
+  true_nltt_values <- collect_species_tree_nltts(
     filename = filename, dt = dt
   )
 

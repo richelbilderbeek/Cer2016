@@ -111,17 +111,17 @@ plot_species_tree_with_outgroup_nltt(filename, dt = dt)
 plot_posterior_samples(filename)
 
 ## ------------------------------------------------------------------------
-true_gamma_statistics <- collect_species_tree_with_outgroup_gamma_statistics(filename = filename)
+true_gamma_statistics <- collect_species_tree_gammas(filename = filename)
 knitr::kable(head(true_gamma_statistics))
 
 ## ------------------------------------------------------------------------
-posterior_gamma_statistics <- collect_posterior_gamma_statistics(
+posterior_gamma_statistics <- collect_posterior_gammas(
   filename = filename
 )
 knitr::kable(head(posterior_gamma_statistics))
 
 ## ------------------------------------------------------------------------
-true_nltt_values <- collect_species_tree_with_outgroup_nltt_values(filename = filename, dt = dt)
+true_nltt_values <- collect_species_tree_nltts(filename = filename, dt = dt)
 knitr::kable(head(true_nltt_values))
 
 ## ------------------------------------------------------------------------

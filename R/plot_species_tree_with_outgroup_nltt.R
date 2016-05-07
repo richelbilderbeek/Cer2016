@@ -10,7 +10,7 @@ plot_species_tree_with_outgroup_nltt <- function(
 ) {
   testit::assert(is_valid_file(filename))
 
-  nltt_values <- collect_species_tree_with_outgroup_nltt_values(
+  nltt_values <- collect_species_tree_nltts(
     filename, dt)
 
   ggplot2::ggplot(

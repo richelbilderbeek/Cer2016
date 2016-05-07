@@ -323,7 +323,7 @@ First, I collect the gamma statistics from the species
 tree(s) with outgroup(s):
 
 ```{r}
-true_gamma_statistics <- collect_species_tree_with_outgroup_gamma_statistics(filename = filename)
+true_gamma_statistics <- collect_species_tree_gammas(filename = filename)
 knitr::kable(head(true_gamma_statistics))
 ```
 
@@ -333,7 +333,7 @@ have one species tree.
 Then, I collect the gamma statistics from the posterior(s):
 
 ```{r}
-posterior_gamma_statistics <- collect_posterior_gamma_statistics(
+posterior_gamma_statistics <- collect_posterior_gammas(
   filename = filename
 )
 knitr::kable(head(posterior_gamma_statistics))
@@ -348,7 +348,7 @@ First, I collect the nLTT values from the species
 tree(s) with outgroup(s):
 
 ```{r}
-true_nltt_values <- collect_species_tree_with_outgroup_nltt_values(filename = filename, dt = dt)
+true_nltt_values <- collect_species_tree_nltts(filename = filename, dt = dt)
 knitr::kable(head(true_nltt_values))
 ```
 

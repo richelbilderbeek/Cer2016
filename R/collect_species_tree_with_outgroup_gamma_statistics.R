@@ -3,12 +3,12 @@
 #' @return a data frame
 #' @export
 #' @author Richel Bilderbeek
-collect_species_tree_with_outgroup_gamma_statistics <- function(
+collect_species_tree_gammas <- function(
   filename,
   dt = 0.001
 ) {
   if (!is_valid_file(filename)) {
-    stop("collect_species_tree_with_outgroup_gamma_statistics: invalid filename")
+    stop("collect_species_tree_gammas: invalid filename")
   }
   file <- read_file(filename)
 

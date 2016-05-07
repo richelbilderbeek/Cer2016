@@ -5,12 +5,15 @@
 #' @return a data frame
 #' @export
 #' @author Richel Bilderbeek
-collect_species_tree_with_outgroup_nltt_values <- function(
+collect_species_tree_nltts <- function(
   filename,
   dt = 0.001
 ) {
   if (!is_valid_file(filename)) {
-    stop("collect_species_tree_with_outgroup_nltt_values: invalid filename")
+    stop(
+      "collect_species_tree_nltts: ",
+      "invalid filename"
+    )
   }
   file <- read_file(filename)
 
