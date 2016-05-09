@@ -80,5 +80,5 @@ for (filename in filenames){
 To read these files, we can use 'str()' or 'names()'. Or at least, we can see what's in them.
 
 ```{r}
-  names(file$pbd_output$tree)
+  str(file$pbd_output$tree$root.edge)
 ```
