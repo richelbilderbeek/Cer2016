@@ -30,7 +30,7 @@ normalized_rooted_branch_score <- function(x, y) {
   score      <- 0
   tick       <- 1
   for (i in x){
-    subscore <- ( (i - y[tick])^ 2)
+    subscore <- ( (i - y[tick]) ^ 2)
     score    <- (score + subscore)
     tick     <- (tick + 1)
   }
