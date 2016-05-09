@@ -48,6 +48,7 @@ library(Cer2016)
 library(ggplot2)
 library(nLTT)
 library(ribir)
+library(phangorn)
 ```
 
 We also set the resolution of our analysis:
@@ -278,9 +279,32 @@ After running BEAST2 on our DNA sequence, the full posterior must be verified to
 
 It can be seen that the values for ESS (Effective Sample Size) are above 200 and that the trace log shows a well-mixed chain. An ESS of 200 is used as a minimum in this research. 
 
-A posterior contains many phylogenies. Before analysing them, the tool 'densitree' can be used to view these [TODO: use phangorn's densitree and automatically generate this graphic]:
+A posterior contains many phylogenies. Before analysing them, the tool 'densitree' can be used to view these:
 
-![Example 1 densitree](../doc/example_1_densitree.png)
+```{r}
+trees_filename <- "toy_example_1_1_1_1.trees"
+
+testit::assert(file.exists(trees_filename))
+
+phylogenies <- rBEAST::beast2out.read.trees(trees_filename)
+
+# To get the densiTree function working, phylogenies must be of class multiphylo
+class(phylogenies) <- "multiPhylo"
+
+densiTree(
+  phylogenies, 
+  type = "cladogram", 
+  alpha = 1/length(phylogenies), 
+  consensus = NULL, 
+  optim = FALSE, 
+  scaleX = FALSE, 
+  col = 1, 
+  width = 1, 
+  cex = 0.8
+)
+```
+
+
 
 ### Compare original, sampled species tree, to the posterior
 
