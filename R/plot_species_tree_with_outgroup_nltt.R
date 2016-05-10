@@ -16,7 +16,7 @@ plot_species_tree_with_outgroup_nltt <- function(
   ggplot2::ggplot(
     data = nltt_values,
     ggplot2::aes(t, nltt),
-    main = "nLTT plots"
+    main = "Species tree(s)"
   ) + ggplot2::geom_point(
     color = "transparent"
   ) + ggplot2::scale_x_continuous(
