@@ -46,6 +46,7 @@ We will need to load some libraries:
 library(ape)
 library(Cer2016)
 library(ggplot2)
+library(Hmisc)
 library(nLTT)
 library(ribir)
 ```
@@ -199,7 +200,6 @@ I show both because `ribir` can average multiple nLTT plots, where
 `nLTT` is an established package. The results should be the same:
 
 ```{r}
-# using the `ribir` package its `get_nltt_values` function and `ggplot2`
 nltt_values <- get_nltt_values(
   phylogenies = list(read_file(filename)$pbd_output$tree), 
   dt = 0.001
@@ -210,14 +210,17 @@ qplot(
 ) + stat_summary(
   fun.data = "mean_cl_boot", color = "red", geom = "smooth"
 )
+```
 
-# using the `nLTT` package its `nLTT.plot` function
+Here, as a check, I use the `nLTT` package its `nLTT.plot` function,
+just to see if both approaches match.
+
+```{r}
 nLTT::nLTT.plot(read_file(filename)$pbd_output$tree)
 ```
 
 The `get_nltt_values` function assumes a list of phylogenies, so
 in this code snippet I create a list of one phylogeny.
-
 
 ### Once or more often, sample unique species from an incipient species tree. Also add an outgroup
 
