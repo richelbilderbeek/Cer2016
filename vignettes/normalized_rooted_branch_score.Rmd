@@ -34,3 +34,11 @@ The arguments are two vectors ```(x and y)``` of an arbitrary length. Because th
 
   normalized_rooted_branch_score(tree1, tree2)
 ```
+And if not all branches are present in both trees:
+
+```{r}
+  tree3 <- c(1, 0.5, NA)
+  tree4 <- c(0.4, NA, 0.5)
+  normalized_rooted_branch_score(tree2, tree4)
+```
+

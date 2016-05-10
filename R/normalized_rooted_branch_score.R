@@ -10,21 +10,17 @@
 
 normalized_rooted_branch_score <- function(x, y) {
 # starting with a few error messages
-  if (any(x > 1) || any(y > 1)){
-  stop("Branch lengths should be 1 or smaller.")
-  }
-# filling up the branches.
   if (length(x) != length(y)){
-    elongate_by <- (length(y) - length(x))
-    while (elongate_by > 0){
-      x <- c(x, 0)
-      elongate_by <- (elongate_by - 1)
-    }
-    elongate_by <- (length(x) - length(y))
-    while (elongate_by > 0){
-      y <- c(y, 0)
-      elongate_by <- (elongate_by - 1)
-    }
+    stop("Vectors should be of equal length. If some branches are there in one
+         tree but not in the other, the value for that missing branch should be NA")
+  }
+# filling up the positions of branches that aren't there. It has to be this order,
+# because otherwise, the next error is going to complain about NA not being a number.
+  x <- replace(x, is.na(x), 0)
+  y <- replace(y, is.na(y), 0)
+
+  if (any(x > 1) || any(y > 1)){
+    stop("Branch lengths should be 1 or smaller.")
   }
 
 # actually calculating the score

@@ -63,7 +63,15 @@ for (filename in filenames) {
 for (filename in filenames) {
   add_species_trees_with_outgroup(filename)  
 }
-  
+for (filename in filenames) {
+  add_alignments(filename)  
+}
+for (filename in filenames) {
+  add_posteriors(
+    filename, 
+    skip_if_output_present = TRUE
+  )
+}
   
 ```
 
@@ -77,7 +85,7 @@ for (filename in filenames){
   }
 ```
 
-To read these files, we can use 'str()' or 'names()'. Or at least, we can see what's in them.
+To read these files, we can use 'str()' or 'names()'. Or at least, we can see what's in them. Also, 'summary()' can be useful.
 
 ```{r}
   str(file$pbd_output$tree$root.edge)
