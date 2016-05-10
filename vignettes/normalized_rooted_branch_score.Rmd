@@ -1,0 +1,36 @@
+---
+title: "normalized_rooted_branch_score"
+author: "Femke Thon"
+date: "9 May 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+  knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+  library(Cer2016)
+```
+
+## Description
+
+Calculate the normalized rooted branch score of trees.
+This function compares pairs of trees.
+
+## Usage
+
+```normalized_rooted_branch_score(x, y)```
+
+## Arguments
+
+The arguments are two vectors ```(x and y)``` of an arbitrary length. Because the elements are branch lengths, no element should have a value higher than 1.
+
+## Examples
+
+```{r}
+  tree1 <- c(1, 0.5, 0.7)
+  tree2 <- c(0.4, 0.9, 0.5)
+
+  normalized_rooted_branch_score(tree1, tree2)
+```
