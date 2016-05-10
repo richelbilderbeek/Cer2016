@@ -6,7 +6,7 @@
 
 # At some point, I want to start with reading a file - but for now, let's act like x
 # and y are vectors containing the lengths of the branches, in the right order. If a
-# branch doesn't exist, the length defaults to 0.
+# branch doesn't exist, it's represented by NA.
 
 normalized_rooted_branch_score <- function(x, y) {
 # starting with a few error messages
