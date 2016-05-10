@@ -18,3 +18,4 @@
 vignettes/add_posterior_demo_*
 vignettes/toy_example_*
 vignettes/research_demo_cache/
+inst/doc

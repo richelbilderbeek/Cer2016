@@ -1,0 +1,23 @@
+---
+title: "branch_sorter"
+author: "Femke Thon"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## loading required packages
+```{r}
+library(ape)
+library(Cer2016)
+```
+
+## generating some trees
+```{r}
+t <- rtree(n = 3)
+plot(t, edge.width = 2)
+```
+We've got a tree.
