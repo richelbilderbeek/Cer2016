@@ -11,7 +11,7 @@
 
 <meta name="author" content="Femke Thon" />
 
-<meta name="date" content="2016-05-09" />
+<meta name="date" content="2016-05-10" />
 
 <title>Useful bits of code</title>
 
@@ -70,7 +70,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <h1 class="title">Useful bits of code</h1>
 <h4 class="author"><em>Femke Thon</em></h4>
-<h4 class="date"><em>2016-05-09</em></h4>
+<h4 class="date"><em>2016-05-10</em></h4>
 
 </div>
 
@@ -147,8 +147,8 @@ for (filename in filenames){
   files  &lt;-<span class="st"> </span><span class="kw">c</span>(files, file)
   }</code></pre></div>
 <p>To read these files, we can use ‘str()’ or ‘names()’. Or at least, we can see what’s in them.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="kw">names</span>(file$pbd_output$tree)</code></pre></div>
-<pre><code>## [1] &quot;edge&quot;        &quot;Nnode&quot;       &quot;tip.label&quot;   &quot;edge.length&quot; &quot;root.edge&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="kw">str</span>(file$pbd_output$tree$root.edge)</code></pre></div>
+<pre><code>##  num 1e-10</code></pre>
 </div>
 
 

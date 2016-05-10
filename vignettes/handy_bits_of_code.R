@@ -58,5 +58,5 @@ for (filename in filenames){
   }
 
 ## ------------------------------------------------------------------------
-  names(file$pbd_output$tree)
+  str(file$pbd_output$tree$root.edge)
 

@@ -4,6 +4,7 @@ library(Cer2016)
 library(ggplot2)
 library(nLTT)
 library(ribir)
+library(phangorn)
 
 ## ------------------------------------------------------------------------
 dt <- 0.001
@@ -102,6 +103,28 @@ plot_alignments(filename)
 
 ## ------------------------------------------------------------------------
 add_posteriors(filename, skip_if_output_present = TRUE)
+
+## ------------------------------------------------------------------------
+trees_filename <- "toy_example_1_1_1_1.trees"
+
+testit::assert(file.exists(trees_filename))
+
+phylogenies <- rBEAST::beast2out.read.trees(trees_filename)
+
+# To get the densiTree function working, phylogenies must be of class multiphylo
+class(phylogenies) <- "multiPhylo"
+
+densiTree(
+  phylogenies, 
+  type = "cladogram", 
+  alpha = 1/length(phylogenies), 
+  consensus = NULL, 
+  optim = FALSE, 
+  scaleX = FALSE, 
+  col = 1, 
+  width = 1, 
+  cex = 0.8
+)
 
 ## ------------------------------------------------------------------------
 plot_species_tree_with_outgroup(filename)

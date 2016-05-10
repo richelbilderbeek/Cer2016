@@ -9,7 +9,7 @@
 # branch doesn't exist, the length defaults to 0.
 
 normalized_rooted_branch_score <- function(x, y) {
-# Startin with a few error messages
+# starting with a few error messages
   if (any(x > 1) || any(y > 1)){
   stop("Branch lengths should be 1 or smaller.")
   }
@@ -27,6 +27,7 @@ normalized_rooted_branch_score <- function(x, y) {
     }
   }
 
+# actually calculating the score
   score      <- 0
   tick       <- 1
   for (i in x){
