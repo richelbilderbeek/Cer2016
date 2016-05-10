@@ -13,7 +13,7 @@ vignette: >
 
 We will need to load some libraries:
 
-```{r}
+```{r message = FALSE}
 library(ape)
 library(Cer2016)
 library(ggplot2)
@@ -39,7 +39,7 @@ filename <- "add_posterior_demo.RDa"
 
 To be sure to have a fresh analysis, we delete the files if they exist:
 
-```{r}
+```{r message = FALSE}
 if (file.exists(filename)) {
   file.remove(filename)
 }
@@ -101,17 +101,21 @@ Show the posterior:
 ```{r}
 trees_filename <- "add_posterior_demo_1_1_1.trees"
 testit::assert(file.exists(trees_filename))
+```
+
+```{r warning = FALSE}
 phylogenies <- rBEAST::beast2out.read.trees(trees_filename)
 # To get the densiTree function working, phylogenies must be of class multiphylo
 class(phylogenies) <- "multiPhylo"
 ```
 
+Displaying:
 
 ```{r fig.width = 7, fig.height = 7}
 densiTree(
   phylogenies, 
   type = "cladogram", 
-  alpha = 1/length(phylogenies)
+  alpha = 1
 )
 ```
 
