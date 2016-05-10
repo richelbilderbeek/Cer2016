@@ -192,13 +192,7 @@ phytools::plotSimmap(
 
 The taxon labels are S[genus]-[species]-[sub-species]'.
 
-Now, we plot the nLTT plot of the same phylogeny in two ways:
- 
- * using the `ribir` package its `get_nltt_values` function and `ggplot2`
- * using the `nLTT` package its `nLTT.plot` function
-
-I show both because `ribir` can average multiple nLTT plots, where
-`nLTT` is an established package. The results should be the same:
+Now, we plot the nLTT plot of this phylogeny:
 
 ```{r}
 nltt_values <- get_nltt_values(
@@ -213,15 +207,9 @@ qplot(
 )
 ```
 
-Here, as a check, I use the `nLTT` package its `nLTT.plot` function,
-just to see if both approaches match.
-
-```{r}
-nLTT::nLTT.plot(read_file(filename)$pbd_output$tree)
-```
-
-The `get_nltt_values` function assumes a list of phylogenies, so
-in this code snippet I create a list of one phylogeny.
+Note that `get_nltt_values` is supplied a list of the one 
+incipient species tree. This is because `get_nltt_values` 
+works on a list of phylogenies.
 
 ### Once or more often, sample unique species from an incipient species tree. Also add an outgroup
 
@@ -282,32 +270,29 @@ After running BEAST2 on our DNA sequence, the full posterior must be verified to
 
 It can be seen that the values for ESS (Effective Sample Size) are above 200 and that the trace log shows a well-mixed chain. An ESS of 200 is used as a minimum in this research. 
 
-A posterior contains many phylogenies. Before analysing them, the tool 'densitree' can be used to view these:
+A posterior contains many phylogenies. To visualize these, 
+they are extracted from a `.trees` file here:
 
 ```{r}
 trees_filename <- "toy_example_1_1_1_1.trees"
-
 testit::assert(file.exists(trees_filename))
-
 phylogenies <- rBEAST::beast2out.read.trees(trees_filename)
-
 # To get the densiTree function working, phylogenies must be of class multiphylo
 class(phylogenies) <- "multiPhylo"
+```
 
+Then, these posterior trees are plotted:
+
+```{r fig.width = 7, fig.height = 7}
 densiTree(
   phylogenies, 
   type = "cladogram", 
-  alpha = 1/length(phylogenies), 
-  consensus = NULL, 
-  optim = FALSE, 
-  scaleX = FALSE, 
-  col = 1, 
-  width = 1, 
-  cex = 0.8
+  alpha = 1/length(phylogenies)
 )
 ```
 
-
+From this plot, it can be seen which phylogeny configurations
+pop up most in the posterior.
 
 ### Compare original, sampled species tree, to the posterior
 
