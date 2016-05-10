@@ -418,3 +418,15 @@ only visualized
 
  * [1] Janzen, Thijs, Sebastian Höhna, and Rampal S. Etienne. "Approximate Bayesian Computation of diversification rates from molecular phylogenies: introducing a new efficient summary statistic, the nLTT." Methods in Ecology and Evolution 6.5 (2015): 566-575.
  * [2] Pybus and someone else
+ 
+ 
+## Demo ex tuesday 10
+ 
+```{r}
+library(Cer2016)
+filename <- "vignettes/toy_example_4.RDa"
+file <- read_file(filename)
+n_alignments <- as.numeric(file$parameters$n_alignments[2])
+trees_filename <- "vignettes/toy_example_1_1_1_1.RDa"
+
+````

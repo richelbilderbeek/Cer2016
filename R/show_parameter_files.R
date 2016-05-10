@@ -13,7 +13,9 @@ show_parameter_files <- function(filenames) {
   }
   n_files <- length(filenames)
 
-  names(read_file(filenames[1])$parameters)
+  #testit::assert(names(filenames[1])
+  if (filenames[1])
+
   df <- data.frame(
     parameter = names(read_file(filenames[1])$parameters),
     stringsAsFactors = FALSE
@@ -24,7 +26,7 @@ show_parameter_files <- function(filenames) {
   options(scipen = 999)
 
   for (i in 1:n_files) {
-    df <- cbind(df, as.numeric(read_file(filenames[i])$parameters[2,, 2])) #nolint Note: I already issued a bug report about this
+    df <- cbind(df, as.numeric(read_file(filenames[i])$parameters[2, , 2]))
   }
 
   # Restore original scientific notation
