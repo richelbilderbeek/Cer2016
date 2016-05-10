@@ -16,6 +16,6 @@ the normalized rooted branch score
 calculates the normalized rooted branch score
 }
 \author{
-Femke thon
+Femke Thon
 }
 
