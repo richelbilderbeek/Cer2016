@@ -15,9 +15,22 @@ library(ape)
 library(Cer2016)
 ```
 
-## generating some trees
+## generating a tree
 ```{r}
-t <- rtree(n = 3)
-plot(t, edge.width = 2)
+tree1 <- rtree(3)
+plot(tree1)
 ```
-We've got a tree.
+We've got a tree. It's even got some info about itself in a file, which we'll 
+need later.
+
+```{r}
+names(tree1)
+```
+
+## comparing the tree to itself.
+We want to compare it to itself, so we duplicate it.
+
+```{r}
+tree2 <- tree1
+```
+
