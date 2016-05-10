@@ -18,7 +18,7 @@ To convert an alignment to a BEAST2 posterior:
 
 ## Load the packages
 
-```{r}
+```{r message = FALSE, warning = FALSE}
 library(Cer2016)
 library(nLTT)
 library(phangorn)
@@ -29,7 +29,6 @@ library(testit)
 Check if BEAST2 can be found:
 
 ```{r}
-#find_beast_bin_path()
 find_beast_jar_path()
 ```
 
@@ -75,24 +74,29 @@ posterior <- convert_alignment_to_beast_posterior(
 )
 ```
 
-## Plot this posterioir
+## Plot this posterior
 
-```{r}
-last_tree <- tail(posterior, n = 1)[[1]]
-plot(last_tree, main = "Last tree in posterior")
+Here the posterior phylogenies are plotted:
 
-all_nltt_stats <- NULL
-for (tree in posterior)
-{
-  all_nltt_stats = c(all_nltt_stats, nLTT::nLTTstat(phylogeny, tree))
-}
-
-hist(all_nltt_stats)
+```{r warning = FALSE}
+# To get the densiTree function working, phylogenies must be of class multiphylo
+class(posterior) <- "multiPhylo"
 ```
+
+Displaying:
+
+```{r fig.width = 7, fig.height = 7}
+densiTree(
+  posterior, 
+  type = "cladogram",
+  alpha = 1
+)
+```
+
 
 ## Cleanup
 
-```{r}
+```{r message = FALSE}
 if (file.exists(paste(base_filename, ".log", sep = ""))) {
   file.remove(paste(base_filename, ".log", sep = ""))  
 }

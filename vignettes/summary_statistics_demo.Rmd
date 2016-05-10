@@ -135,7 +135,8 @@ for (i in seq(1:n_trees)) {
 
 From those posterior trees, we collect the gamma statistic:
 
-```{r}
+```{r}cd
+collect_gamma_statistics(posterior_trees)
 gamma_statistics <- rep(0, times = n_trees)
 for (i in seq(1:n_trees)) {
   gamma_statistics[i] <- gammaStat(posterior_trees[[i]])

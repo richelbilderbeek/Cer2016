@@ -3,7 +3,7 @@ title: "Worked-out examples"
 author: "Richel Bilderbeek"
 date: "`r Sys.Date()`"
 output: 
-  rmarkdown::html_vignette:
+  rmarkdown::word_document:
     toc: true
 vignette: >
   %\VignetteIndexEntry{Worked-out examples}
@@ -46,9 +46,16 @@ We will need to load some libraries:
 library(ape)
 library(Cer2016)
 library(ggplot2)
+library(Hmisc)
 library(nLTT)
 library(ribir)
 library(phangorn)
+```
+
+If we want to generate files fresh, set this to `TRUE`:
+
+```{r}
+start_fresh <- FALSE
 ```
 
 We also set the resolution of our analysis:
@@ -92,11 +99,13 @@ filenames = c(
 To be sure to have a fresh analysis, we delete the files if they exist:
 
 ```{r}
-#for (filename in filenames) {
-#  if (file.exists(filename)) {
-#    file.remove(filename)
-#  }
-#}
+if (start_fresh) {
+  for (filename in filenames) {
+    if (file.exists(filename)) {
+      file.remove(filename)
+    }
+  }
+}
 ```
 
 Now the parameter files are created with the desired parameters:
@@ -191,16 +200,9 @@ phytools::plotSimmap(
 
 The taxon labels are S[genus]-[species]-[sub-species]'.
 
-Now, we plot the nLTT plot of the same phylogeny in two ways:
- 
- * using the `ribir` package its `get_nltt_values` function and `ggplot2`
- * using the `nLTT` package its `nLTT.plot` function
-
-I show both because `ribir` can average multiple nLTT plots, where
-`nLTT` is an established package. The results should be the same:
+Now, we plot the nLTT plot of this phylogeny:
 
 ```{r}
-# using the `ribir` package its `get_nltt_values` function and `ggplot2`
 nltt_values <- get_nltt_values(
   phylogenies = list(read_file(filename)$pbd_output$tree), 
   dt = 0.001
@@ -211,14 +213,11 @@ qplot(
 ) + stat_summary(
   fun.data = "mean_cl_boot", color = "red", geom = "smooth"
 )
-
-# using the `nLTT` package its `nLTT.plot` function
-nLTT::nLTT.plot(read_file(filename)$pbd_output$tree)
 ```
 
-The `get_nltt_values` function assumes a list of phylogenies, so
-in this code snippet I create a list of one phylogeny.
-
+Note that `get_nltt_values` is supplied a list of the one 
+incipient species tree. This is because `get_nltt_values` 
+works on a list of phylogenies.
 
 ### Once or more often, sample unique species from an incipient species tree. Also add an outgroup
 
@@ -236,6 +235,7 @@ Here we observe the sample species tree:
 
 ```{r}
 plot_species_tree_with_outgroup(filename)
+plot_species_tree_with_outgroup_nltt(filename, dt = 0.001)
 ```
 
 Note that in example #3, there will be multiple sampled
@@ -279,32 +279,29 @@ After running BEAST2 on our DNA sequence, the full posterior must be verified to
 
 It can be seen that the values for ESS (Effective Sample Size) are above 200 and that the trace log shows a well-mixed chain. An ESS of 200 is used as a minimum in this research. 
 
-A posterior contains many phylogenies. Before analysing them, the tool 'densitree' can be used to view these:
+A posterior contains many phylogenies. To visualize these, 
+they are extracted from a `.trees` file here:
 
 ```{r}
 trees_filename <- "toy_example_1_1_1_1.trees"
-
 testit::assert(file.exists(trees_filename))
-
 phylogenies <- rBEAST::beast2out.read.trees(trees_filename)
-
 # To get the densiTree function working, phylogenies must be of class multiphylo
 class(phylogenies) <- "multiPhylo"
+```
 
+Then, these posterior trees are plotted:
+
+```{r fig.width = 7, fig.height = 7}
 densiTree(
   phylogenies, 
   type = "cladogram", 
-  alpha = 1/length(phylogenies), 
-  consensus = NULL, 
-  optim = FALSE, 
-  scaleX = FALSE, 
-  col = 1, 
-  width = 1, 
-  cex = 0.8
+  alpha = 1/length(phylogenies)
 )
 ```
 
-
+From this plot, it can be seen which phylogeny configurations
+pop up most in the posterior.
 
 ### Compare original, sampled species tree, to the posterior
 
@@ -411,12 +408,222 @@ How do we interpret these results? Well, even *if* we
 follow all assumptions, this will be standard errors we
 will make; this is the minimal level of imperfection.
 
-Note that the error is not quantified (using `nLTT::nLTTstat`),
-only visualized
+Note that the error is not quantified only visualized. TODO: Issue #21
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Example 2: Strong protractedness
+
+This example answers the question: how do the analyses of this 
+research look like for strong protractedness?
+
+The pipeline is identical, except one parameter is changed: the speciation completion rate is set to a low value.
+  
+### Simulate one incipient species tree per parameter file
+
+Here we simulate the 'true' incipient species tree:
+
+```{r}
+filename <- filenames[2]
+testit::assert(is_valid_file(filename))
+add_pbd_output(filename)
+```
+
+This is how the incipient species tree looks like:
+
+```{r}
+colors <- setNames(c("gray","black"),c("i","g"))
+testit::assert(length(read_file(filename)$pbd_output$igtree.extant$tip.label) > 0)
+phytools::plotSimmap(
+  read_file(filename)$pbd_output$igtree.extant, 
+  colors = colors
+)
+```
+
+Now, we plot the nLTT plot of this phylogeny:
+
+```{r}
+nltt_values <- get_nltt_values(
+  phylogenies = list(read_file(filename)$pbd_output$tree), 
+  dt = 0.001
+)
+qplot(
+  t, nltt, data = nltt_values, geom = "blank", ylim = c(0,1),
+  main = "Example #2 incipient species tree"
+) + stat_summary(
+  fun.data = "mean_cl_boot", color = "red", geom = "smooth"
+)
+```
+
+### Once or more often, sample unique species from an incipient species tree. Also add an outgroup
+
+From that incipient species tree, 
+we create a species tree by sampling one individual 
+per incipient species. Because speciation is for a 
+constant-rate birth death model, there exist no multiple individuals 
+per species. To being able to root our phylogenies in later steps, an outgroup is added as well.
+
+```{r}
+add_species_trees_with_outgroup(filename)  
+```
+
+Here we observe the sample species tree:
+
+```{r}
+plot_species_tree_with_outgroup(filename)
+plot_species_tree_with_outgroup_nltt(filename, dt = 0.001)
+```
+
+Note that in example #4, there will be multiple sampled
+species trees. 
+
+### Simulate one or more alignments per species tree
+
+Here we simulate one DNA sequence on our one sampled species tree
+with outgroup:
+
+```{r}
+add_alignments(filename)  
+```
+
+Let's see the alignment:
+
+```{r}
+plot_alignments(filename)
+```
+
+### Once or more often, let BEAST2 infer a posterior per alignment
+
+Here we let BEAST2 infer a posterior:
+
+```{r}
+add_posteriors(filename, skip_if_output_present = TRUE)
+```
+
+A posterior contains many phylogenies. To visualize these, 
+they are extracted from a `.trees` file here:
+
+```{r}
+trees_filename <- "toy_example_2_1_1_1.trees"
+testit::assert(file.exists(trees_filename))
+phylogenies <- rBEAST::beast2out.read.trees(trees_filename)
+# To get the densiTree function working, phylogenies must be of class multiphylo
+class(phylogenies) <- "multiPhylo"
+```
+
+Then, these posterior trees are plotted:
+
+```{r fig.width = 7, fig.height = 7}
+densiTree(
+  phylogenies, 
+  type = "cladogram", 
+  alpha = 1/length(phylogenies)
+)
+```
+
+From this plot, it can be seen which phylogeny configurations
+pop up most in the posterior.
+
+### Compare original, sampled species tree, to the posterior
+
+To refresh our mind, the true sampled species tree is:
+
+```{r}
+plot_species_tree_with_outgroup(filename)
+plot_species_tree_with_outgroup_nltt(filename, dt = dt)
+```
+
+To quantify the difference between original incipient species
+tree and posterior trees, the gamma statistic is used again.
+
+
+#### The nLTT statistic
+
+The nLTT value is a summary statistic described in [1]
+
+First, I collect the nLTT values from the species 
+tree(s) with outgroup(s):
+
+```{r}
+true_nltt_values <- collect_species_tree_nltts(filename = filename, dt = dt)
+knitr::kable(head(true_nltt_values))
+```
+
+Then, I collect the nLTT values from the posterior(s):
+
+```{r}
+posterior_nltt_values <- collect_posterior_nltt_values(
+  filename = filename, dt = dt
+)
+knitr::kable(head(posterior_nltt_values))
+```
+
+Last, I plot both of these:
+
+```{r}
+ggplot2::ggplot(
+  data = posterior_nltt_values,
+  ggplot2::aes(t, nltt),
+  main = "nLTT plots"
+) + ggplot2::geom_point(
+  color = "transparent"
+) + ggplot2::scale_x_continuous(
+  limits = c(0, 1)
+) + ggplot2::scale_y_continuous(
+  limits = c(0, 1)
+) + ggplot2::stat_summary(
+  fun.data = "mean_cl_boot", size = 0.5, lty = "dashed",
+  color = I("black"), geom = "smooth"
+) + ggplot2::geom_step(
+  data = true_nltt_values,
+  ggplot2::aes(t, nltt)
+)
+```
+
+How do we interpret these results? There is a big difference between
+the 'true' nLTT and the inferred posterior its average nLTT, thus,
+as expected, BEAST2 does worse at inferring phylogenies when
+its assumptions (that speciation is instantanous) are violated.
+
+Note that the error is not quantified only visualized. TODO: Issue #21
+
+We cannot draw concusions yet:
+
+ * the number of branches is too little
+ * the number of replicates is too little
+
+In the next examples, we add replicates to the data.
 
 ## References
 
  * [1] Janzen, Thijs, Sebastian Höhna, and Rampal S. Etienne. "Approximate Bayesian Computation of diversification rates from molecular phylogenies: introducing a new efficient summary statistic, the nLTT." Methods in Ecology and Evolution 6.5 (2015): 566-575.
+<<<<<<< HEAD
  * [2] Pybus and someone else
  
  
@@ -430,3 +637,6 @@ n_alignments <- as.numeric(file$parameters$n_alignments[2])
 trees_filename <- "vignettes/toy_example_1_1_1_1.RDa"
 
 ````
+=======
+ * [2] Pybus, Oliver G., and Paul H. Harvey. "Testing macro–evolutionary models using incomplete molecular phylogenies." Proceedings of the Royal Society of London B: Biological Sciences 267.1459 (2000): 2267-2272.
+>>>>>>> d2334c4352d2381a8894f1825adf4546c5630efc
