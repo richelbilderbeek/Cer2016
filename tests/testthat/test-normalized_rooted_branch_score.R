@@ -14,4 +14,3 @@ test_that("the NRBS errors work", {
   expect_error(normalized_rooted_branch_score(c(0.6, 0.5, 3), c(1, 0.7, 1)),
                "Branch lengths should be 1 or smaller.")
 })
-
