@@ -10,9 +10,9 @@ read_file <- function(filename) {
   if (!file.exists(filename)) {
     stop("read_file: file '", filename, "' does not exist")
   }
-  if (!is_valid_file(filename)) {
-    stop("read_file: file '", filename, "'not exist' is invalid")
-  }
+  # Do not do  'if (!is_valid_file(filename)) {}',
+  # as 'is_valid_file will call 'read_file', resulting
+  # in an infinite recursion
   file <- readRDS(filename)
   file
 }

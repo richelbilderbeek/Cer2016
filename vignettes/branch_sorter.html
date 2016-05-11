@@ -10,11 +10,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="author" content="Jolien Gay" />
+<meta name="author" content="Femke Thon" />
 
 <meta name="date" content="2016-05-11" />
 
-<title>Demo collect posterior filename</title>
+<title>branch_sorter</title>
 
 
 
@@ -50,15 +50,30 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
 
 
-<h1 class="title toc-ignore">Demo collect posterior filename</h1>
-<h4 class="author"><em>Jolien Gay</em></h4>
+<h1 class="title toc-ignore">branch_sorter</h1>
+<h4 class="author"><em>Femke Thon</em></h4>
 <h4 class="date"><em>2016-05-11</em></h4>
 
 
 
-<pre class="sourceCode r"><code class="sourceCode r">collect_posterior_filename &lt;-<span class="st"> </span>function(parameter_filename) {
-   <span class="co">#</span>
-}</code></pre>
+<div id="loading-required-packages" class="section level2">
+<h2>loading required packages</h2>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ape)
+<span class="kw">library</span>(Cer2016)</code></pre>
+</div>
+<div id="generating-a-tree" class="section level2">
+<h2>generating a tree</h2>
+<pre class="sourceCode r"><code class="sourceCode r">tree1 &lt;-<span class="st"> </span><span class="kw">rtree</span>(<span class="dv">3</span>)
+<span class="kw">plot</span>(tree1)</code></pre>
+<p><img src="data:image/png;base64,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" /><!-- --> We’ve got a tree. It’s even got some info about itself in a file, which we’ll need later.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(tree1)</code></pre>
+<pre><code>## [1] &quot;edge&quot;        &quot;tip.label&quot;   &quot;edge.length&quot; &quot;Nnode&quot;</code></pre>
+</div>
+<div id="comparing-the-tree-to-itself." class="section level2">
+<h2>comparing the tree to itself.</h2>
+<p>We want to compare it to itself, so we duplicate it.</p>
+<pre class="sourceCode r"><code class="sourceCode r">tree2 &lt;-<span class="st"> </span>tree1</code></pre>
+</div>
 
 
 
