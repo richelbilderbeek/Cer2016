@@ -8,10 +8,10 @@
 # like x and y are vectors containing the lengths of the branches, in the same
 # order. If a branch doesn't exist, it's represented by NA.
 
-normalized_rooted_branch_score <- function(tree1, tree2) {
+normalized_rooted_branch_score <- function(filenames) {
 # preparing the trees
   for (filename in filenames){
-    filename$branch.lengths <- branch_sorter(filename)
+    filename <- branch_sorter(filename)
   }
 
 # actually calculating the score
