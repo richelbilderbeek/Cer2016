@@ -1,13 +1,13 @@
 #' Collect posterior filenames
-#' @param filename Parameter filename
+#' @param parameter_filename Name of a parameter file
 #' @return generates species tree files from the posterior
 #' @export
 #' @examples
 #'   parameter_filename <- find_path("toy_example_1.RDa")
 #'   posterior_filenames <- collect_posterior_filenames(parameter_filename)
 #'   trees_filename <- find_path("toy_example_1_1_1_1.trees")
-#'   assert(length(posterior_filenames) == 1)
-#'   assert(length(posterior_filenames[1]) == trees_filename)
+#'   testit::assert(length(posterior_filenames) == 1)
+#'   testit::assert(posterior_filenames[1] == trees_filename)
 #' @author Richel Bilderbeek and Jolien Gay
 collect_posterior_filenames <- function(
   parameter_filename

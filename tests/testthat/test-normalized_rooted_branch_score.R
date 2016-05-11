@@ -1,4 +1,4 @@
-context("normalized_rooted_branch_score")
+# context("normalized_rooted_branch_score") #nolint
 
 # test_that("The normalized rooted branch score is calculated correctly", { #nolint
 #   expect_equal(normalized_rooted_branch_score(c(1), c(1)), 0) #nolint
