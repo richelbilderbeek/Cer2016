@@ -11,29 +11,37 @@ vignette: >
 
 ## Code Info
 
-
 ## Example
 
 ```{r}
+pcname <- system('uname -n', intern = TRUE) 
+# User    | PC name 
+# --------+-------------------
+# Jolien  | ?Aline
+# Richel  | fwn-biol-132-102"
 
-# Test if file is there
-testit::assert(file.exists("c:/Users/Aline/Peregrine"))
+if (pcname == "Aline") {
+  setwd("c:/Users/Aline/Peregrine")
+  getwd()
+  # Put all .RDA files in a variable
+  all_parameters <- Sys.glob("*.RDa") # alternative, but longer: all_parameters <- list.files(pattern = "\\.RDa$", ignore.case=TRUE)
+  print(all_parameters)
+  
+  file.exists(all_parameters)
+  
+  show_parameter_files(all_parameters)
+}
 
-# Change working directory
-setwd("c:/Users/Aline/Peregrine")
-getwd()
-
-# Put all .RDA files in a variable
-all_parameters <- Sys.glob("*.RDa") # alternative, but longer: all_parameters <- list.files(pattern = "\\.RDa$", ignore.case=TRUE)
-print(all_parameters)
-
-file.exists(all_parameters)
-
-filenames <- read_file(all_parameters)
-
-show_parameter_files(filenames)
+if (pcname == "fwn-biol-132-102") {
+  
+  # Final goal
+  all_parameter_filenames <- list.files("/home/p230198/Peregrine", pattern = "\\.RDa")
+  all_parameter_filenames_full_path <- paste("/home/p230198/Peregrine/", all_parameter_filenames, sep = "")
+  Cer2016::show_parameter_files(all_parameter_filenames_full_path)
+}
 ```
 
+```{r}
 #---------------------Example---------------------------------
 #filename <- filenames[1]
 #filename <- "d:/Peregrine/article_0_0_0_0_0.RDa"
@@ -43,3 +51,4 @@ show_parameter_files(filenames)
 #file <- read_file(filename)
 #names(file)
 
+```

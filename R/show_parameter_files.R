@@ -3,6 +3,7 @@
 #' @export
 #' @author Richel Bilderbeek
 show_parameter_files <- function(filenames) {
+
   for (filename in filenames) {
     if (!file.exists(filename)) {
       stop(
@@ -10,14 +11,20 @@ show_parameter_files <- function(filenames) {
         "file '", filename, "' not found"
       )
     }
+    if (!is_valid_file(filename)) {
+      stop(
+        "show_parameter_file: ",
+        "file '", filename, "' invalid"
+      )
+    }
   }
   n_files <- length(filenames)
+  testit::assert(is_valid_file(filenames[1]))
 
-  #testit::assert(names(filenames[1])
-  if (filenames[1])
+  parameter_names <- names(read_file(filenames[1])$parameters)
 
   df <- data.frame(
-    parameter = names(read_file(filenames[1])$parameters),
+    parameter = parameter_names,
     stringsAsFactors = FALSE
   )
 
@@ -26,7 +33,10 @@ show_parameter_files <- function(filenames) {
   options(scipen = 999)
 
   for (i in 1:n_files) {
-    df <- cbind(df, as.numeric(read_file(filenames[i])$parameters[2, , 2]))
+    parameter_values <- as.numeric(
+      read_file(filenames[i])$parameters[2, , 2]
+    )
+    df <- cbind(df, parameter_values)
   }
 
   # Restore original scientific notation
