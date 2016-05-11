@@ -15,7 +15,7 @@ vignette: >
 ## Example
 
 ```{r}
-
+library(Cer2016)
 # Test if file is there
 testit::assert(file.exists("c:/Users/Aline/Peregrine"))
 
@@ -29,9 +29,7 @@ print(all_parameters)
 
 file.exists(all_parameters)
 
-filenames <- read_file(all_parameters)
-
-show_parameter_files(filenames)
+show_parameter_files(all_parameters)
 ```
 
 #---------------------Example---------------------------------
