@@ -16,6 +16,6 @@ generates species tree files from the posterior
 Collect posterior filenames
 }
 \author{
-Jolien Gay
+Richel Bilderbeek, Jolien Gay
 }
 
