@@ -4,7 +4,7 @@
 \alias{normalized_rooted_branch_score}
 \title{calculates the normalized rooted branch score}
 \usage{
-normalized_rooted_branch_score(x, y)
+normalized_rooted_branch_score(tree1, tree2)
 }
 \arguments{
 \item{x, }{y}
