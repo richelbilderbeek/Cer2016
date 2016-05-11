@@ -7,7 +7,7 @@ test_that("branches are sorted correctly", {
 
   # expect_equal(count(names(df),"branch_length"), 1)
   #expect_equal(count(names(df),"taxon_name"), 1)
-  #expect_equal(count(names(df),"brach_length"), 1)
+  #expect_equal(count(names(df),"branch_length"), 1)
 
   expect_equal(nrow(df$ordered.branches), 3)
   # expect_equal(length(df$taxon_name), 3)
