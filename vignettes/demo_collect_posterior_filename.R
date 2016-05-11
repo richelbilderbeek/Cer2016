@@ -1,4 +1,5 @@
 ## ------------------------------------------------------------------------
+<<<<<<< HEAD
 library(Cer2016)
 library(ape)
 library(ribir)
@@ -46,6 +47,10 @@ collect_posterior_filenames <- function(
     }
   }
   testit::assert(!is.null(nltt_values$nltt))
+=======
+collect_posterior_filename <- function(parameter_filename) {
+   #
+>>>>>>> f83d1617b1f21881d510c40d08b008d1f41f4ad9
 }
 
 
