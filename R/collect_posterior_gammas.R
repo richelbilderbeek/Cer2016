@@ -52,7 +52,7 @@ collect_posterior_gammas <- function(filename) {
           beast_run = rep(k, n_gamma_statistics)
         )
         this_df <- cbind(this_df, gamma_statistics)
-        if (is.na(df)) {
+        if (is.null(df)) {
           df <- this_df
         } else {
           df <- rbind(df, this_df)

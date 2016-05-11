@@ -26,7 +26,7 @@ plot_posterior_sample_nltts <- function(
       list(file$species_trees_with_outgroup[[i]][[1]]),
       dt = dt
     )
-    if (is.na(true_nltt_values)) {
+    if (is.null(true_nltt_values)) {
       true_nltt_values <- nltt_values
     } else {
       true_nltt_values <- rbind(true_nltt_values, nltt_values)
@@ -55,7 +55,7 @@ plot_posterior_sample_nltts <- function(
           dt = dt
         )
 
-        if (is.na(nltt_values)) {
+        if (is.null(nltt_values)) {
           nltt_values <- these_nltt_values
         } else {
           nltt_values <- rbind(nltt_values, these_nltt_values)

@@ -7,7 +7,7 @@ jolien_tests <- function() {
   testit::assert(file.exists("d:/Peregrine")) #nolint
   getwd()
   #alternative, but longer:
-  #all_parameters <- list.files(pattern = "\\.RDa$", ignore.case=TRUE)
+  #all_parameters <- list.files(pattern = "\\.RDa$", ignore.case=TRUE) #nolint
   all_parameters <- Sys.glob("*.RDa")
   print(all_parameters)
 

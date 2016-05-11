@@ -13,7 +13,6 @@ vignette: >
 
 ```{r}
 library(Cer2016)
-library(rio)
 
 pcname <- system('uname -n', intern = TRUE) 
 # User    | PC name 
@@ -26,22 +25,16 @@ pcname <- system('uname -n', intern = TRUE)
 # Richel's work
 
 ```{r}
-if (pcname == "fwn-biol-132-102") {
-  parameter_filename <- find_path("article_0_0_0_0_0.RDa")
-  parameter_filename <- find_path("article_0_1_4_0_2.RDa")
-  
-  parameter_filename <- find_path("toy_example_1.RDa")
-  file.exists(parameter_filename)
-  #readRDS(parameter_filename)
-  file <- rio::import(parameter_filename, format = "rds")
-  file
-  #parameter_filename <- "/home/p230198/Peregrine/article_0_0_0_0_0.RDa"
-  show_parameter_files(c(parameter_filename))
-  
+if (pcname == "fwn-biol-132-102" || pcname == "druten") {
+  parameter_filename_a <- find_path("article_0_0_0_0_0.RDa")
+  parameter_filename_b <- find_path("article_0_1_4_0_2.RDa")
+  parameter_filename_c <- find_path("toy_example_1.RDa")
+  all_parameter_filenames <- c(parameter_filename_a, parameter_filename_b, parameter_filename_c)
+  show_parameter_files(all_parameter_filenames)
   # Final goal
-  all_parameter_filenames <- list.files("/home/p230198/Peregrine", pattern = "\\.RDa")
-  all_parameter_filenames_full_path <- paste("/home/p230198/Peregrine/", all_parameter_filenames, sep = "")
-  show_parameter_files(all_parameter_filenames_full_path)
+  #all_parameter_filenames <- list.files("/home/p230198/Peregrine", pattern = "\\.RDa")
+  #all_parameter_filenames_full_path <- paste("/home/p230198/Peregrine/", all_parameter_filenames, sep = "")
+  #show_parameter_files(all_parameter_filenames_full_path)
 }
 ```
 

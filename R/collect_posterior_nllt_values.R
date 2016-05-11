@@ -54,7 +54,7 @@ collect_posterior_nltt_values <- function(
           beast_run = rep(k, n_nltt_values)
         )
         this_df <- cbind(this_df, nltt_values)
-        if (is.na(df)) {
+        if (is.null(df)) {
           df <- this_df
         } else {
           df <- rbind(df, this_df)
