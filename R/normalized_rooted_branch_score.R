@@ -3,13 +3,13 @@
 #' @return the normalized rooted branch score
 #' @export
 #' @author Femke Thon
-
-# At some point, I want to start with reading a file - but for now, let's act
-# like x and y are vectors containing the lengths of the branches, in the right
-# order. If a branch doesn't exist, it's represented by NA.
-
 normalized_rooted_branch_score <- function(x, y) {
-# starting with a few error messages
+  # At some point, I want to start with reading a file - but for now, let's act
+  # like x and y are vectors containing the lengths of the branches, in the right
+  # order. If a branch doesn't exist, it's represented by NA.
+
+
+  # starting with a few error messages
   if (length(x) != length(y)){
     stop("Vectors should be of equal length.")
   }

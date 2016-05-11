@@ -1,4 +1,4 @@
-## ------------------------------------------------------------------------
+## ----message = FALSE, warning = FALSE------------------------------------
 library(Cer2016)
 library(nLTT)
 library(phangorn)
@@ -6,7 +6,6 @@ library(rBEAST)
 library(testit)
 
 ## ------------------------------------------------------------------------
-#find_beast_bin_path()
 find_beast_jar_path()
 
 ## ------------------------------------------------------------------------
@@ -42,19 +41,18 @@ posterior <- convert_alignment_to_beast_posterior(
   beast_jar_path = find_beast_jar_path()
 )
 
-## ------------------------------------------------------------------------
-last_tree <- tail(posterior, n = 1)[[1]]
-plot(last_tree, main = "Last tree in posterior")
+## ----warning = FALSE-----------------------------------------------------
+# To get the densiTree function working, phylogenies must be of class multiphylo
+class(posterior) <- "multiPhylo"
 
-all_nltt_stats <- NULL
-for (tree in posterior)
-{
-  all_nltt_stats = c(all_nltt_stats, nLTT::nLTTstat(phylogeny, tree))
-}
+## ----fig.width = 7, fig.height = 7---------------------------------------
+densiTree(
+  posterior, 
+  type = "cladogram",
+  alpha = 1
+)
 
-hist(all_nltt_stats)
-
-## ------------------------------------------------------------------------
+## ----message = FALSE-----------------------------------------------------
 if (file.exists(paste(base_filename, ".log", sep = ""))) {
   file.remove(paste(base_filename, ".log", sep = ""))  
 }
