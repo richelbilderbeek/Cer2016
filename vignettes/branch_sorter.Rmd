@@ -1,0 +1,36 @@
+---
+title: "branch_sorter"
+author: "Femke Thon"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## loading required packages
+```{r}
+library(ape)
+library(Cer2016)
+```
+
+## generating a tree
+```{r}
+tree1 <- rtree(3)
+plot(tree1)
+```
+We've got a tree. It's even got some info about itself in a file, which we'll 
+need later.
+
+```{r}
+names(tree1)
+```
+
+## comparing the tree to itself.
+We want to compare it to itself, so we duplicate it.
+
+```{r}
+tree2 <- tree1
+```
+

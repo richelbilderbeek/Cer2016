@@ -12,12 +12,3 @@ test_that("It also works when not all branches are present", {
   expect_equal(normalized_rooted_branch_score(
     c(0.5, NA, 0.2), c(0.3, NA, 0.4)), 0.08)
   })
-
-test_that("The NRBS errors work", {
-  expect_error(normalized_rooted_branch_score(c(1, 0.5), c(0)),
-              "Vectors should be of equal length.")
-  expect_error(normalized_rooted_branch_score(c(2), c(3)),
-              "Branch lengths should be 1 or smaller.")
-  expect_error(normalized_rooted_branch_score(c(0.6, 0.5, 3), c(1, 0.7, 1)),
-              "Branch lengths should be 1 or smaller.")
-})

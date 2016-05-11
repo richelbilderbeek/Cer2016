@@ -623,4 +623,20 @@ In the next examples, we add replicates to the data.
 ## References
 
  * [1] Janzen, Thijs, Sebastian Höhna, and Rampal S. Etienne. "Approximate Bayesian Computation of diversification rates from molecular phylogenies: introducing a new efficient summary statistic, the nLTT." Methods in Ecology and Evolution 6.5 (2015): 566-575.
+<<<<<<< HEAD
+ * [2] Pybus and someone else
+ 
+ 
+## Demo ex tuesday 10
+ 
+```{r}
+library(Cer2016)
+filename <- "vignettes/toy_example_4.RDa"
+file <- read_file(filename)
+n_alignments <- as.numeric(file$parameters$n_alignments[2])
+trees_filename <- "vignettes/toy_example_1_1_1_1.RDa"
+
+````
+=======
  * [2] Pybus, Oliver G., and Paul H. Harvey. "Testing macro–evolutionary models using incomplete molecular phylogenies." Proceedings of the Royal Society of London B: Biological Sciences 267.1459 (2000): 2267-2272.
+>>>>>>> d2334c4352d2381a8894f1825adf4546c5630efc

@@ -4,6 +4,9 @@
 #' @export
 #' @author Richel Bilderbeek
 read_file <- function(filename) {
+  if (length(filename) != 1) {
+    stop("read_file: must supply 'read_file' with one filename")
+  }
   if (!file.exists(filename)) {
     stop("read_file: file '", filename, "' does not exist")
   }
