@@ -15,7 +15,14 @@ generates species tree files from the posterior
 \description{
 Collect posterior filenames
 }
+\examples{
+  parameter_filename <- find_path("toy_example_1.RDa")
+  posterior_filenames <- collect_posterior_filenames(parameter_filename)
+  trees_filename <- find_path("toy_example_1_1_1_1.trees")
+  assert(length(posterior_filenames) == 1)
+  assert(length(posterior_filenames[1]) == trees_filename)
+}
 \author{
-Richel Bilderbeek, Jolien Gay
+Richel Bilderbeek and Jolien Gay
 }
 
