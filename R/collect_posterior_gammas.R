@@ -18,7 +18,7 @@ collect_posterior_gammas <- function(filename) {
     file$parameters$n_species_trees_samples[2]
   )
 
-  df <- NA
+  df <- NULL
 
   for (i in seq(1, n_species_trees_samples)) {
     for (j in seq(1, n_alignments)) {

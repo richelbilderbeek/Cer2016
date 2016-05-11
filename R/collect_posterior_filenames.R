@@ -1,27 +1,8 @@
----
-title: "Demo collect posterior filename"
-author: "Jolien Gay"
-date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Vignette Title}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
-
-Load the packages we will need:
-
-```{r}
-library(Cer2016)
-library(ape)
-library(ribir)
-library(testthat)
-```
-
-Function:
-
-```{r}
-
+#' Collect posterior filenames
+#' @param filename Parameter filename
+#' @return generates species tree files from the posterior
+#' @export
+#' @author Richel Bilderbeek, Jolien Gay
 collect_posterior_filenames <- function(
   parameter_filename
 ) {
@@ -38,7 +19,7 @@ collect_posterior_filenames <- function(
     for (j in seq(1, n_alignments)) {
       for (k in seq(1, n_beast_runs)) {
         trees_filename <- paste(base_filename,
-          "_", i, "_", j, "_", k, ".trees", sep = ""
+                                "_", i, "_", j, "_", k, ".trees", sep = ""
         )
         if (!file.exists(trees_filename)) {
           print(paste("File '", trees_filename, "' not found", sep = ""))
@@ -63,5 +44,3 @@ collect_posterior_filenames <- function(
   }
   testit::assert(!is.null(nltt_values$nltt))
 }
-
-```

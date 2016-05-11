@@ -1,26 +1,10 @@
----
-title: "Demo collect posterior filename"
-author: "Jolien Gay"
-date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Vignette Title}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
-
-Load the packages we will need:
-
-```{r}
+## ------------------------------------------------------------------------
 library(Cer2016)
 library(ape)
 library(ribir)
 library(testthat)
-```
 
-Function:
-
-```{r}
+## ------------------------------------------------------------------------
 
 collect_posterior_filenames <- function(
   parameter_filename
@@ -64,4 +48,4 @@ collect_posterior_filenames <- function(
   testit::assert(!is.null(nltt_values$nltt))
 }
 
-```
+

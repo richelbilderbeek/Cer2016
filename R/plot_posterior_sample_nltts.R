@@ -19,7 +19,7 @@ plot_posterior_sample_nltts <- function(
   n_beast_runs <- as.numeric(file$parameters$n_beast_runs[2])
 
   # Sampled species tree nLTT values
-  true_nltt_values <- NA
+  true_nltt_values <- NULL
 
   for (i in seq(1, n_species_trees_samples)) {
     nltt_values <- ribir::get_nltt_values(
@@ -34,7 +34,7 @@ plot_posterior_sample_nltts <- function(
   }
 
   # Posterior nLTT values
-  nltt_values <- NA
+  nltt_values <- NULL
 
   for (i in seq(1, n_species_trees_samples)) {
     for (j in seq(1, n_alignments)) {

@@ -9,11 +9,11 @@
 <meta name="generator" content="pandoc" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="author" content="Jolien Gay" />
+<meta name="author" content="Femke Thon" />
 
 <meta name="date" content="2016-05-11" />
 
-<title>Demo collect posterior filename</title>
+<title>branch_sorter</title>
 
 
 
@@ -68,60 +68,31 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="fluid-row" id="header">
 
 
-<h1 class="title">Demo collect posterior filename</h1>
-<h4 class="author"><em>Jolien Gay</em></h4>
+<h1 class="title">branch_sorter</h1>
+<h4 class="author"><em>Femke Thon</em></h4>
 <h4 class="date"><em>2016-05-11</em></h4>
 
 </div>
 
 
-<p>Load the packages we will need:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(Cer2016)
-<span class="kw">library</span>(ape)
-<span class="kw">library</span>(ribir)
-<span class="kw">library</span>(testthat)</code></pre></div>
-<p>Function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">collect_posterior_filenames &lt;-<span class="st"> </span>function(
-  parameter_filename
-) {
-  testit::<span class="kw">assert</span>(<span class="kw">is_valid_file</span>(parameter_filename))
-  base_filename &lt;-<span class="st"> </span>tools::<span class="kw">file_path_sans_ext</span>(<span class="kw">basename</span>(filename))
-  file &lt;-<span class="st"> </span><span class="kw">read_file</span>(parameter_filename)
-  n_species_trees_samples &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(file$parameters$n_species_trees_samples[<span class="dv">2</span>])
-  n_alignments &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(file$parameters$n_alignments[<span class="dv">2</span>])
-  n_beast_runs &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(file$parameters$n_beast_runs[<span class="dv">2</span>])
-  <span class="co"># Posterior nLTT values</span>
-  nltt_values &lt;-<span class="st"> </span><span class="ot">NULL</span>
-
-  for (i in <span class="kw">seq</span>(<span class="dv">1</span>, n_species_trees_samples)) {
-    for (j in <span class="kw">seq</span>(<span class="dv">1</span>, n_alignments)) {
-      for (k in <span class="kw">seq</span>(<span class="dv">1</span>, n_beast_runs)) {
-        trees_filename &lt;-<span class="st"> </span><span class="kw">paste</span>(base_filename,
-          <span class="st">&quot;_&quot;</span>, i, <span class="st">&quot;_&quot;</span>, j, <span class="st">&quot;_&quot;</span>, k, <span class="st">&quot;.trees&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>
-        )
-        if (!<span class="kw">file.exists</span>(trees_filename)) {
-          <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;File '&quot;</span>, trees_filename, <span class="st">&quot;' not found&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>))
-          next
-        }
-        all_trees &lt;-<span class="st"> </span>rBEAST::<span class="kw">beast2out.read.trees</span>(trees_filename)
-        n_trees &lt;-<span class="st"> </span><span class="kw">length</span>(all_trees)
-        random_tree_index &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">1</span>, <span class="dt">min =</span> <span class="dv">1</span>, <span class="dt">max =</span> n_trees))
-        random_tree &lt;-<span class="st"> </span>all_trees[[random_tree_index]]
-        these_nltt_values &lt;-<span class="st"> </span>ribir::<span class="kw">get_nltt_values</span>(
-          <span class="kw">list</span>(random_tree),
-          <span class="dt">dt =</span> dt
-        )
-
-        if (<span class="kw">is.na</span>(nltt_values)) {
-          nltt_values &lt;-<span class="st"> </span>these_nltt_values
-        } else {
-          nltt_values &lt;-<span class="st"> </span><span class="kw">rbind</span>(nltt_values, these_nltt_values)
-        }
-      }
-    }
-  }
-  testit::<span class="kw">assert</span>(!<span class="kw">is.null</span>(nltt_values$nltt))
-}</code></pre></div>
+<div id="loading-required-packages" class="section level2">
+<h2>loading required packages</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ape)
+<span class="kw">library</span>(Cer2016)</code></pre></div>
+</div>
+<div id="generating-a-tree" class="section level2">
+<h2>generating a tree</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tree1 &lt;-<span class="st"> </span><span class="kw">rtree</span>(<span class="dv">3</span>)
+<span class="kw">plot</span>(tree1)</code></pre></div>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAMAAAAjXV6yAAAASFBMVEUAAAAAADoAAGYAOpAAZrY6AAA6ADo6kNtmAABmtv+QOgCQ2/+2ZgC2Zjq2///bkDrbkGbb/9vb////tmb/25D//7b//9v///+SDMmJAAAACXBIWXMAAA7DAAAOwwHHb6hkAAADs0lEQVR4nO3d3XLaVhhAUTWJG/+Q0AbbvP+bFhlMp53Ge0YI1z1d+4obgVhzJHHBJ017vdn0b+/ARw9QBCgCFAGKAEWAIkARoAhQBCgCFAGKAEWAIkARoAhQBCgCFAGKAEWAIkARoAhQBCgCFAGKAEWAIkARoAhQBCgCFAGKAEWAIkARoAhQBCgCFAGKAEWAIkARoAhQBCgCFAGKAEWAIkARoAhQBCgCFAGKAEWAIkARoAhQBCgCFAGKAEWAIkARoAhQBCgCFAGK/gdA3x72+900TV8XbT0+0Pbzj4PP3f7pdpHQ+ECbL/vn+y+HF9tP3xdsPjrQ0+00ff79t7vDy93HAZo+UI+/Phx36vn+cKwt+C6rylzzTRd2XjfbXx6WbD880Pa0bjbT3aLthwfazOfnw/G1bP2MD3S8uD/dLvUZHujx5m72WXQBe2l0oN28dDaL18/4QIffQV/n30KHlq2i0YEuDlAEKAIUAYoARYAiQBGgCFAEKAIUAYoARYAiQBGgCFAEKAIUAYoARYAiQBGgCFAEKAIUAYoARYAiQBGgCFAEKAIUAYoARYCiQYC+Hf8pvls08fRmYwCdRnoeb5bNpb7VGEDHkZ7Hm4UjT281AtDL2OWP/XaaLpjJ+FkjAO1fxi63n75v1z8FvQ/QtedSX8cuj0fadb/LVd702ivqtHKe79c/R48BdFo5L8NzazcC0Os9FZYNxkcjAL2unGuco4cA2h2v7scbUKzdCEDz2OV+v/TuJdEIQFcNUAQoAhQBigBFgCJAEaAIUAQoAhQBigBFgCJAEaAIUAQoug7Q37vGh7xT77LvgD7Ch1wpQBGgCFAEKAIUAYoARYAiQBGgCFAEKAIUAYoARYAiQBGgaEygeYR1HrNb4a/3QwLNQxvz/OrT7eVCQwLN41GbebJlhfmfAYFOI6xzyx6t+pfeB+h9Oz85dI0x8f/yBeZnnQ6s3SpD0CMCnQfrLnl032sjAp2Hn9eYIBsQ6E8WQP/YPMJ6HGM9n60vaECgdQMUAYoARYAiQBGgCFAEKAIUAYoARYAiQBGgCFAEKAIUAYoARYAiQBGgCFAEKAIUAYoARYAiQBGgCFAEKAIUAYoARYAiQBGgCFAEKAIUAYoARYAiQBGgCFAEKAIUAYoARYAiQBGgCFAEKAIUAYoARYAiQBGgCFAEKAIUAYoARYAiQBGgCFAEKAIUAYoARYAiQBGgCFAEKAIUAYoARYAiQBGgCFAEKAIUAYoARYAiQBGgCFAEKPoDi8vlb1eUXeMAAAAASUVORK5CYII=" alt /> We’ve got a tree. It’s even got some info about itself in a file, which we’ll need later.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(tree1)</code></pre></div>
+<pre><code>## [1] &quot;edge&quot;        &quot;tip.label&quot;   &quot;edge.length&quot; &quot;Nnode&quot;</code></pre>
+</div>
+<div id="comparing-the-tree-to-itself." class="section level2">
+<h2>comparing the tree to itself.</h2>
+<p>We want to compare it to itself, so we duplicate it.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tree2 &lt;-<span class="st"> </span>tree1</code></pre></div>
+</div>
 
 
 
