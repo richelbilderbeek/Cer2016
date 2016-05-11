@@ -6,7 +6,6 @@ test_that("can find is_beast_posterior_test.R", {
   expect_equal(file_exists, TRUE)
 })
 
-
 test_that("can create a posterior", {
   posterior <- rBEAST::beast2out.read.trees(
     find_beast_posterior_test_filename()
