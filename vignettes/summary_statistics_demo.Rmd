@@ -64,7 +64,7 @@ in `file$species_tree_with_outgroup`, let's plot it:
 
 ```{r}
 incipient_species_tree <- file$pbd_output$igtree.extant
-colors <- setNames(c("gray","black"),c("i","g"))
+colors <- setNames(c("gray", "black"), c("i","g"))
 phytools::plotSimmap(
   incipient_species_tree, 
   colors = colors
@@ -187,10 +187,10 @@ data(iris)
 n <- nrow(iris)
 tot <- c(1:n)
 n.train <- round(n*0.9)
-train <- sample(tot,n.train)
+train <- sample(tot, n.train)
 test <- tot[-train]
  
-Tree.result <- PDA.Tree(iris[train,5],iris[train,1:4])
+Tree.result <- PDA.Tree(iris[train,5], iris[train,1:4])
 Tree.result
 plot(Tree.result$Tree.Struct)
 ```

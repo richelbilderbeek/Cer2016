@@ -15,3 +15,4 @@ branch_sorter <- function(filename){
     filename$taxon_name       <- filename$tip.label
     filename
 }
+
