@@ -5,13 +5,13 @@ test_that("branches are sorted correctly", {
   df          <- branch_sorter(phylogeny)
   expect_equivalent(length(names(df$ordered.branches)), 2)
 
-  # expect_equal(count(names(df),"branch_length"), 1)
-  #expect_equal(count(names(df),"taxon_name"), 1)
-  #expect_equal(count(names(df),"branch_length"), 1)
+  # expect_equal(count(names(df),"branch_length"), 1) #nolint
+  #expect_equal(count(names(df),"taxon_name"), 1) #nolint
+  #expect_equal(count(names(df),"branch_length"), 1) #nolint
 
   expect_equal(nrow(df$ordered.branches), 3)
-  # expect_equal(length(df$taxon_name), 3)
-  # expect_equal(length(df$branch_length), 3)
-  # expected <- df(taxon_name = c("A", "B", "C"), branch_length = c(1,1,2))
-  # expect_equal(df, expected)
+  # expect_equal(length(df$taxon_name), 3) #nolint
+  # expect_equal(length(df$branch_length), 3) #nolint
+  # expected <- df(taxon_name = c("A", "B", "C"), branch_length = c(1,1,2)) #nolint
+  # expect_equal(df, expected) #nolint
 })

@@ -1,25 +1,23 @@
 jolien_tests <- function() {
 
-  ## ------------------------------------------------------------------------
   library(Cer2016)
   library(ape)
 
-  ## ------------------------------------------------------------------------
-  setwd("d:/Peregrine/")
-  testit::assert(file.exists("d:/Peregrine"))
+  setwd("d:/Peregrine/") #nolint
+  testit::assert(file.exists("d:/Peregrine")) #nolint
   getwd()
-
-  all_parameters <- Sys.glob("*.RDa") #alternative, but longer: all_parameters <- list.files(pattern = "\\.RDa$", ignore.case=TRUE)
+  #alternative, but longer:
+  #all_parameters <- list.files(pattern = "\\.RDa$", ignore.case=TRUE)
+  all_parameters <- Sys.glob("*.RDa")
   print(all_parameters)
 
-  filenames = "all_parameters"
+  filenames <- "all_parameters"
   filenames
   show_parameter_files(filenames)
 
-  setwd("c:/Users/Aline/Cer2016")
+  setwd("c:/Users/Aline/Cer2016") #nolint
 
-  ## ------------------------------------------------------------------------
-  rng_seeds <- seq(1,4)
+  rng_seeds <- seq(1, 4)
   sirgs <- rep(0.5, times = 4)
   siris <- rep(0.5, times = 4)
   scrs <- rep(1.0, times = 4)
@@ -49,10 +47,5 @@ jolien_tests <- function() {
       n_beast_runs = n_beast_runses[i],
       filename = filenames[i]
     )
-  }
-
-  ## ------------------------------------------------------------------------
-  collect_posterior_filename <- function(parameter_filename) {
-    #
   }
 }

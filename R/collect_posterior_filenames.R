@@ -29,7 +29,9 @@ collect_posterior_filenames <- function(
   }
   base_filename <- tools::file_path_sans_ext(parameter_filename)
   file <- read_file(parameter_filename)
-  n_species_trees_samples <- as.numeric(file$parameters$n_species_trees_samples[2])
+  n_species_trees_samples <- as.numeric(
+    file$parameters$n_species_trees_samples[2]
+  )
   n_alignments <- as.numeric(file$parameters$n_alignments[2])
   n_beast_runs <- as.numeric(file$parameters$n_beast_runs[2])
   # Posterior nLTT values
@@ -39,7 +41,7 @@ collect_posterior_filenames <- function(
     for (j in seq(1, n_alignments)) {
       for (k in seq(1, n_beast_runs)) {
         trees_filename <- paste(
-          base_filename,"_", i, "_", j, "_", k, ".trees", sep = ""
+          base_filename, "_", i, "_", j, "_", k, ".trees", sep = ""
         )
         if (!file.exists(trees_filename)) {
           print(paste("File '", trees_filename, "' not found", sep = ""))

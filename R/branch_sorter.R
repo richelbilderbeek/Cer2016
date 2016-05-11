@@ -1,6 +1,7 @@
 #' sorts branches for the NRBS analysis
 #' @param tree1, tree2, the trees that are to be sorted.
 #' @return a sorted tree1 and tree2
+#' @export
 #' @author Femke Thon
 
 branch_sorter <- function(filename){
