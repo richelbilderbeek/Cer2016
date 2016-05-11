@@ -3,14 +3,10 @@
 #' @return a sorted tree1 and tree2
 #' @author Femke Thon
 
-branch_sorter <- function(anteriors, posteriors){
+branch_sorter <- function(filename){
 
   # tree1$edge gives in the second column the end-node number, in the 'real'
   # file maybe also the tipname. (which is what I'm assuming here.)
-  cbind(tree1$edge, tree1$edge.length)
-
-  # filling up the positions of branches that aren't there.
-  x <- replace(x, is.na(x), 0)
-  y <- replace(y, is.na(y), 0)
-
+    table              <- cbind(filename$edge, filename$edge.length)
+    filename$ordered.edges <- data.table::data.table(table, key="V2")
 }

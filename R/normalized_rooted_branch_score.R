@@ -10,7 +10,9 @@
 
 normalized_rooted_branch_score <- function(tree1, tree2) {
 # preparing the trees
- branch_sorter(tree1, tree2)
+  for (filename in filenames){
+    filename$branch.lengths <- branch_sorter(filename)
+  }
 
 # actually calculating the score
   score      <- 0
