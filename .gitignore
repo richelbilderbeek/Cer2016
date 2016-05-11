@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-
 # History files
-=======
->>>>>>> d2334c4352d2381a8894f1825adf4546c5630efc
 .Rhistory
 .Rapp.history
 # Session Data files
@@ -42,4 +38,3 @@ vignettes/add_posterior_demo_*
 vignettes/toy_example_*
 vignettes/research_demo_cache/
 convert_alignment_to_beast_posterior_*
->>>>>>> 5e5b4731958af8634e7046c54b17c02bf340a70a
