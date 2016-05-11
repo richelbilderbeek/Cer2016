@@ -15,9 +15,18 @@ Load the packages we will need:
 library(Cer2016)
 ```
 
-Function:
+Simple parameter file:
 
 ```{r}
 parameter_filename <- find_path("toy_example_1.RDa")
-collect_posterior_filenames(parameter_filename)
+posterior_filenames <- collect_posterior_filenames(parameter_filename)
+knitr::kable(posterior_filenames)
+```
+
+Parameter file with 2x2x2 posteriors:
+
+```{r}
+parameter_filename <- find_path("toy_example_4.RDa")
+posterior_filenames <- collect_posterior_filenames(parameter_filename)
+knitr::kable(posterior_filenames)
 ```
