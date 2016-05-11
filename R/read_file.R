@@ -13,6 +13,19 @@ read_file <- function(filename) {
   # Do not do  'if (!is_valid_file(filename)) {}',
   # as 'is_valid_file will call 'read_file', resulting
   # in an infinite recursion
-  file <- readRDS(filename)
-  file
+  file <- NULL
+  tryCatch(
+    file <- readRDS(filename),
+    error = function(msg) {
+      stop(
+        "read_file: ",
+        "error in readRDS of file with name '",
+        filename,
+        "', with message '",
+        msg,
+        "'"
+      )
+    }
+  )
+  return(file)
 }

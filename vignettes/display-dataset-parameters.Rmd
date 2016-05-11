@@ -1,6 +1,6 @@
 ---
 title: "display dataset parameters"
-author: "Jolien Gay"
+author: "Jolien Gay en Richel Bilderbeek"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -11,15 +11,39 @@ vignette: >
 
 ## Code Info
 
-## Example
-
 ```{r}
+library(Cer2016)
+
 pcname <- system('uname -n', intern = TRUE) 
 # User    | PC name 
 # --------+-------------------
 # Jolien  | ?Aline
 # Richel  | fwn-biol-132-102"
 
+```
+
+# Richel's work
+
+```{r}
+if (pcname == "fwn-biol-132-102") {
+  parameter_filename <- find_path("article_0_0_0_0_0.RDa")
+  parameter_filename <- find_path("toy_example_1.RDa")
+  file.exists(parameter_filename)
+  readRDS(parameter_filename)
+  #parameter_filename <- "/home/p230198/Peregrine/article_0_0_0_0_0.RDa"
+  show_parameter_files(c(parameter_filename))
+  
+  # Final goal
+  all_parameter_filenames <- list.files("/home/p230198/Peregrine", pattern = "\\.RDa")
+  all_parameter_filenames_full_path <- paste("/home/p230198/Peregrine/", all_parameter_filenames, sep = "")
+  show_parameter_files(all_parameter_filenames_full_path)
+}
+```
+
+
+## Jolien's work
+
+```{r}
 if (pcname == "Aline") {
   setwd("c:/Users/Aline/Peregrine")
   getwd()
@@ -31,15 +55,9 @@ if (pcname == "Aline") {
   
   show_parameter_files(all_parameters)
 }
-
-if (pcname == "fwn-biol-132-102") {
-  
-  # Final goal
-  all_parameter_filenames <- list.files("/home/p230198/Peregrine", pattern = "\\.RDa")
-  all_parameter_filenames_full_path <- paste("/home/p230198/Peregrine/", all_parameter_filenames, sep = "")
-  Cer2016::show_parameter_files(all_parameter_filenames_full_path)
-}
 ```
+
+
 
 ```{r}
 #---------------------Example---------------------------------
