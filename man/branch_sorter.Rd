@@ -4,7 +4,7 @@
 \alias{branch_sorter}
 \title{sorts branches for the NRBS analysis}
 \usage{
-branch_sorter(anteriors, posteriors)
+branch_sorter(filename)
 }
 \arguments{
 \item{tree1, }{tree2, the trees that are to be sorted.}

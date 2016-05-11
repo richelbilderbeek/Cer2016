@@ -56,9 +56,59 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
 
 
+<<<<<<< HEAD
+<p>Load the packages we will need:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(Cer2016)
+<span class="kw">library</span>(ape)
+<span class="kw">library</span>(ribir)
+<span class="kw">library</span>(testthat)</code></pre></div>
+<p>Function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">collect_posterior_filenames &lt;-<span class="st"> </span>function(
+  parameter_filename
+) {
+  testit::<span class="kw">assert</span>(<span class="kw">is_valid_file</span>(parameter_filename))
+  base_filename &lt;-<span class="st"> </span>tools::<span class="kw">file_path_sans_ext</span>(<span class="kw">basename</span>(filename))
+  file &lt;-<span class="st"> </span><span class="kw">read_file</span>(parameter_filename)
+  n_species_trees_samples &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(file$parameters$n_species_trees_samples[<span class="dv">2</span>])
+  n_alignments &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(file$parameters$n_alignments[<span class="dv">2</span>])
+  n_beast_runs &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(file$parameters$n_beast_runs[<span class="dv">2</span>])
+  <span class="co"># Posterior nLTT values</span>
+  nltt_values &lt;-<span class="st"> </span><span class="ot">NULL</span>
+
+  for (i in <span class="kw">seq</span>(<span class="dv">1</span>, n_species_trees_samples)) {
+    for (j in <span class="kw">seq</span>(<span class="dv">1</span>, n_alignments)) {
+      for (k in <span class="kw">seq</span>(<span class="dv">1</span>, n_beast_runs)) {
+        trees_filename &lt;-<span class="st"> </span><span class="kw">paste</span>(base_filename,
+          <span class="st">&quot;_&quot;</span>, i, <span class="st">&quot;_&quot;</span>, j, <span class="st">&quot;_&quot;</span>, k, <span class="st">&quot;.trees&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>
+        )
+        if (!<span class="kw">file.exists</span>(trees_filename)) {
+          <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;File '&quot;</span>, trees_filename, <span class="st">&quot;' not found&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>))
+          next
+        }
+        all_trees &lt;-<span class="st"> </span>rBEAST::<span class="kw">beast2out.read.trees</span>(trees_filename)
+        n_trees &lt;-<span class="st"> </span><span class="kw">length</span>(all_trees)
+        random_tree_index &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">1</span>, <span class="dt">min =</span> <span class="dv">1</span>, <span class="dt">max =</span> n_trees))
+        random_tree &lt;-<span class="st"> </span>all_trees[[random_tree_index]]
+        these_nltt_values &lt;-<span class="st"> </span>ribir::<span class="kw">get_nltt_values</span>(
+          <span class="kw">list</span>(random_tree),
+          <span class="dt">dt =</span> dt
+        )
+
+        if (<span class="kw">is.na</span>(nltt_values)) {
+          nltt_values &lt;-<span class="st"> </span>these_nltt_values
+        } else {
+          nltt_values &lt;-<span class="st"> </span><span class="kw">rbind</span>(nltt_values, these_nltt_values)
+        }
+      }
+    }
+  }
+  testit::<span class="kw">assert</span>(!<span class="kw">is.null</span>(nltt_values$nltt))
+}</code></pre></div>
+=======
 <pre class="sourceCode r"><code class="sourceCode r">collect_posterior_filename &lt;-<span class="st"> </span>function(parameter_filename) {
    <span class="co">#</span>
 }</code></pre>
+>>>>>>> f83d1617b1f21881d510c40d08b008d1f41f4ad9
 
 
 

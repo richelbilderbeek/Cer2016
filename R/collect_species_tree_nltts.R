@@ -21,7 +21,7 @@ collect_species_tree_nltts <- function(
     file$parameters$n_species_trees_samples[2]
   )
 
-  df <- NA
+  df <- NULL
 
   for (i in seq(1, n_species_trees_samples)) {
     nltt_values <- ribir::get_nltt_values(
