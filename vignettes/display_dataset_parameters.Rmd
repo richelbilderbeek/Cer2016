@@ -24,6 +24,8 @@ pcname <- system('uname -n', intern = TRUE)
 
 # Richel's work
 
+Here is a test:
+
 ```{r}
 if (pcname == "fwn-biol-132-102" || pcname == "druten") {
   parameter_filename_a <- find_path("article_0_0_0_0_0.RDa")
@@ -31,10 +33,34 @@ if (pcname == "fwn-biol-132-102" || pcname == "druten") {
   parameter_filename_c <- find_path("toy_example_1.RDa")
   all_parameter_filenames <- c(parameter_filename_a, parameter_filename_b, parameter_filename_c)
   show_parameter_files(all_parameter_filenames)
-  # Final goal
-  #all_parameter_filenames <- list.files("/home/p230198/Peregrine", pattern = "\\.RDa")
-  #all_parameter_filenames_full_path <- paste("/home/p230198/Peregrine/", all_parameter_filenames, sep = "")
-  #show_parameter_files(all_parameter_filenames_full_path)
+}
+```
+
+Here is a test in the true folder
+
+```{r}
+if (pcname == "fwn-biol-132-102" || pcname == "druten") {
+  parameter_filenames <- c(
+    "/home/richel/Peregrine/article_1_2_4_1_1.RDa",
+    "/home/richel/Peregrine/article_2_2_4_1_1.RDa",
+    "/home/richel/Peregrine/article_3_2_4_1_1.RDa"
+  )
+  file.exists(parameter_filenames)
+  print(names(readRDS(parameter_filenames[1])$parameters))
+  #print(names(readRDS(parameter_filenames[2])$parameters)) # nolint this file cannot be read
+  print(names(readRDS(parameter_filenames[3])$parameters))
+  file <- read_file(parameter_filenames[2])
+  
+  show_parameter_files(parameter_filenames)
+}
+```
+
+This is the result:
+
+```{r}
+if (pcname == "fwn-biol-132-102" || pcname == "druten") {
+  all_parameter_filenames <- list.files("/home/richel/Peregrine", pattern = "\\.RDa")
+  show_parameter_files(all_parameter_filenames)
 }
 ```
 

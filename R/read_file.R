@@ -1,7 +1,10 @@
-#' Read a .RDA file
-#' @param filename name of the file
+#' Read a parameter (.RDa) file
+#' @param filename name of the parameter (.RDa) file
 #' @return the file as R data
 #' @export
+#' @examples
+#'   file <- read_file(find_path("toy_example_1.RDa"))
+#'   print(names(file))
 #' @author Richel Bilderbeek
 read_file <- function(filename) {
   if (length(filename) != 1) {

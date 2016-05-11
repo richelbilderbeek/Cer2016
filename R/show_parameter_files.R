@@ -23,10 +23,9 @@ show_parameter_files <- function(filenames) {
     break
   }
   if (is.null(df)) {
-    stop(
-      "show_parameter_files: ",
-      "not a single valid file supplied"
-    )
+    df <- data.frame(message = "No valid files supplied")
+    t <- knitr::kable(df)
+    return(t)
   }
 
   # Collect the parameters
@@ -39,20 +38,23 @@ show_parameter_files <- function(filenames) {
     file <- NULL
     tryCatch(
       file <- read_file(filename),
-      error = function(msg) { print(paste0("show_parameter_files: ", msg)) }
+      error = function(msg) { } # nolint msg should be unused
     )
     if (!is.null(file)) {
       parameter_values <- as.numeric(
         file$parameters[2, , 2]
       )
+      testit::assert(length(parameter_values) == nrow(df))
       df <- cbind(df, parameter_values)
     } else {
-      df <- cbind(df, rep(NA, times = nrow(df)))
+      new_col <- rep(NA, times = nrow(df))
+      testit::assert(length(new_col) == nrow(df))
+      df <- cbind(df, new_col)
     }
   }
 
   # Restore original scientific notation
-  colnames(df) <- c("parameters", seq(1, ncol(df) - 1))
+  colnames(df) <- c("parameters", basename(filenames))
   t <- knitr::kable(df)
   options(scipen = old_scipen)
   t

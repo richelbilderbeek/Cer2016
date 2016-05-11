@@ -2,18 +2,22 @@
 % Please edit documentation in R/read_file.R
 \name{read_file}
 \alias{read_file}
-\title{Read a .RDA file}
+\title{Read a parameter (.RDa) file}
 \usage{
 read_file(filename)
 }
 \arguments{
-\item{filename}{name of the file}
+\item{filename}{name of the parameter (.RDa) file}
 }
 \value{
 the file as R data
 }
 \description{
-Read a .RDA file
+Read a parameter (.RDa) file
+}
+\examples{
+  file <- read_file(find_path("toy_example_1.RDa"))
+  print(names(file))
 }
 \author{
 Richel Bilderbeek
