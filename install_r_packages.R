@@ -28,5 +28,6 @@ install.packages("XML", repos = "http://cran.uk.r-project.org")
 devtools::install_github("jimhester/covr")
 devtools::install_github("jimhester/lintr")
 devtools::install_github("richelbilderbeek/beastscriptr")
-devtools::install_github("richelbilderbeek/rBEAST")
+devtools::install_github("olli0601/rBEAST")
 devtools::install_github("richelbilderbeek/ribir")
+
