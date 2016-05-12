@@ -14,4 +14,3 @@ test_that("branches are sorted correctly", {
   expected <- c(c("A", "B", "C"), c(1, 1, 2))
   expect_equal(c(df$taxon_name, df$branch_length),  expected)
 })
-

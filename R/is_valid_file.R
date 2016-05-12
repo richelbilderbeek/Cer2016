@@ -21,11 +21,11 @@ is_valid_file <- function(filename) {
   if (is.null(file$alignments)) return(FALSE)
   if (is.null(file$posteriors)) return(FALSE)
   parameters <- file$parameters
-  if (extract_erg(file) < 0.0) { return(FALSE) }
-  if (extract_eri(file) < 0.0) { return(FALSE) }
-  if (extract_scr(file) < 0.0) { return(FALSE) }
-  if (extract_sirg(file) < 0.0) { return(FALSE) }
-  if (extract_siri(file) < 0.0) { return(FALSE) }
+  if (Cer2016::extract_erg(file) < 0.0) return(FALSE)
+  if (Cer2016::extract_eri(file) < 0.0) return(FALSE)
+  if (Cer2016::extract_scr(file) < 0.0) return(FALSE)
+  if (Cer2016::extract_sirg(file) < 0.0) return(FALSE)
+  if (Cer2016::extract_siri(file) < 0.0) return(FALSE)
   if (as.numeric(parameters$age[2]) <= 0.0) return(FALSE)
   if (as.numeric(parameters$n_species_trees_samples[2]) < 1) return(FALSE)
   if (as.numeric(parameters$mutation_rate[2]) <= 0.0) return(FALSE)

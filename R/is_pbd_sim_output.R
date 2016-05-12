@@ -18,8 +18,7 @@ is_pbd_sim_output <- function(
         )
       )
     }
-
-  return(FALSE)
+    return(FALSE)
   }
   if (length(pbd_sim_output) < 9) {
     if (verbose) {

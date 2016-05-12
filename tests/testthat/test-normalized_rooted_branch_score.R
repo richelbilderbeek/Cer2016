@@ -12,4 +12,3 @@ test_that("It also works when not all branches are present", {
   expect_equal(normalized_rooted_branch_score(
     c(0.5, NA, 0.2), c(0.3, NA, 0.4)), 0.08)
   })
-
