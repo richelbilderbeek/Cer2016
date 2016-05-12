@@ -1,0 +1,191 @@
+
+R version 3.3.0 (2016-05-03) -- "Supposedly Educational"
+Copyright (C) 2016 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "Cer2016"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('Cer2016')
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("collect_posterior_filenames")
+> ### * collect_posterior_filenames
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: collect_posterior_filenames
+> ### Title: Collect posterior filenames
+> ### Aliases: collect_posterior_filenames
+> 
+> ### ** Examples
+> 
+>   parameter_filename <- find_path("toy_example_1.RDa")
+>   posterior_filenames <- collect_posterior_filenames(parameter_filename)
+>   trees_filename <- find_path("toy_example_1_1_1_1.trees")
+>   testit::assert(length(posterior_filenames) == 1)
+>   testit::assert(posterior_filenames[1] == trees_filename)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("extract_erg")
+> ### * extract_erg
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: extract_erg
+> ### Title: Extract the ERG ('Extinction Rate of a Good species') parameter
+> ###   value from a file
+> ### Aliases: extract_erg
+> 
+> ### ** Examples
+> 
+>   file <- read_file(find_path("toy_example_1.RDa"))
+>   erg <- extract_erg(file)
+>   testit::assert(erg >= 0.0)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("extract_eri")
+> ### * extract_eri
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: extract_eri
+> ### Title: Extract the ERI ('Extinction Rate of an Incipient species')
+> ###   parameter value from a file
+> ### Aliases: extract_eri
+> 
+> ### ** Examples
+> 
+>   file <- read_file(find_path("toy_example_1.RDa"))
+>   eri <- extract_eri(file)
+>   testit::assert(eri >= 0.0)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("extract_scr")
+> ### * extract_scr
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: extract_scr
+> ### Title: Extract the SCR ('Speciation Completion Rate') parameter value
+> ###   from a file
+> ### Aliases: extract_scr
+> 
+> ### ** Examples
+> 
+>   file <- read_file(find_path("toy_example_1.RDa"))
+>   scr <- extract_scr(file)
+>   testit::assert(scr >= 0.0)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("extract_sirg")
+> ### * extract_sirg
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: extract_sirg
+> ### Title: Extract the SIRG ('Speciation Initial Rate of a Good species')
+> ###   parameter value from a file
+> ### Aliases: extract_sirg
+> 
+> ### ** Examples
+> 
+>   file <- read_file(find_path("toy_example_1.RDa"))
+>   sirg <- extract_sirg(file)
+>   testit::assert(sirg >= 0.0)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("extract_siri")
+> ### * extract_siri
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: extract_siri
+> ### Title: Extract the SIRI ('Speciation Initial Rate of an Incipient
+> ###   species') parameter value from a file
+> ### Aliases: extract_siri
+> 
+> ### ** Examples
+> 
+>   file <- read_file(find_path("toy_example_1.RDa"))
+>   siri <- extract_siri(file)
+>   testit::assert(siri >= 0.0)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("is_valid_file")
+> ### * is_valid_file
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: is_valid_file
+> ### Title: Checks if a file is a valid parameter file
+> ### Aliases: is_valid_file
+> 
+> ### ** Examples
+> 
+>   testit::assert(is_valid_file(find_path("toy_example_1.RDa")))
+>   testit::assert(!is_valid_file(find_path("toy_example_1_1_1_1.trees")))
+> 
+> 
+> 
+> cleanEx()
+> nameEx("read_file")
+> ### * read_file
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: read_file
+> ### Title: Read a parameter (.RDa) file
+> ### Aliases: read_file
+> 
+> ### ** Examples
+> 
+>   file <- read_file(find_path("toy_example_1.RDa"))
+>   print(names(file))
+[1] "parameters"                  "pbd_output"                 
+[3] "species_trees_with_outgroup" "alignments"                 
+[5] "posteriors"                 
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  0.077 0.005 0.292 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

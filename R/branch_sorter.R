@@ -15,11 +15,9 @@ branch_sorter <- function(filename){
     edgeorder$V1       <- NULL
     edgeorder$V2       <- NULL
     edgeorder          <- edgeorder[order(edgeorder$V4),]
-    # edgeorder    <- subset(
-    #   edgeorder, edgeorder$V2 < (length(filename$tip.label) + 1)
-    # )
     filename$ordered.branches <- edgeorder
     filename$branch_length    <- filename$ordered.branches$V3
     filename$taxon_name       <- filename$ordered.branches$V4
     filename
 }
+

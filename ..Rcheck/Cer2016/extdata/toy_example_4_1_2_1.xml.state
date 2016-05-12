@@ -1,0 +1,18 @@
+<itsabeastystatewerein version='2.0' sample='10000'>
+<statenode id='Tree.t:toy_example_4_1_2_1'>(0:0.04899075305468773,((1:0.04235466683799157,(((2:0.010666311632763308,3:0.010666311632763308)24:0.010309057074295781,4:0.02097536870705909)23:0.007779198721274954,((5:0.01385699858677467,((6:0.007212040596765388,7:0.007212040596765388)27:0.004283520238771649,(8:0.006281225014203418,9:0.006281225014203418)26:0.00521433582133362)17:0.002361437751237632)21:0.008935908639319527,(((10:0.008706925996917645,11:0.008706925996917645)16:0.0107151940135924,12:0.019422120010510045)20:0.00302689137902018,(13:0.0045172749509195115,14:0.0045172749509195115)19:0.017931736438610714)18:3.438958365639712E-4)25:0.005961660202239847)22:0.013600099409657528)28:0.005638094313668289,15:0.04799276115165986)29:9.979919030278714E-4)30:0.0</statenode>
+<statenode id='birthRate2.t:toy_example_4_1_2_1'>birthRate2.t:toy_example_4_1_2_1[1 1] (0.0,10000.0): 37.06961424351705 </statenode>
+<statenode id='relativeDeathRate2.t:toy_example_4_1_2_1'>relativeDeathRate2.t:toy_example_4_1_2_1[1 1] (0.0,1.0): 0.4741707350610583 </statenode>
+</itsabeastystatewerein>
+<!--
+{"operators":[
+{"id":"treeScaler.t:toy_example_4_1_2_1","p":0.5,"accept":56,"reject":325,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"treeRootScaler.t:toy_example_4_1_2_1","p":0.5,"accept":49,"reject":339,"acceptFC":0,"rejectFC":0,"rejectIv":93,"rejectOp":93},
+{"id":"UniformOperator.t:toy_example_4_1_2_1","p":"NaN","accept":1341,"reject":2507,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"SubtreeSlide.t:toy_example_4_1_2_1","p":1,"accept":8,"reject":1941,"acceptFC":0,"rejectFC":0,"rejectIv":1000,"rejectOp":1000},
+{"id":"narrow.t:toy_example_4_1_2_1","p":"NaN","accept":296,"reject":1632,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"wide.t:toy_example_4_1_2_1","p":"NaN","accept":9,"reject":373,"acceptFC":0,"rejectFC":0,"rejectIv":191,"rejectOp":191},
+{"id":"WilsonBalding.t:toy_example_4_1_2_1","p":"NaN","accept":7,"reject":351,"acceptFC":0,"rejectFC":0,"rejectIv":87,"rejectOp":87},
+{"id":"BirthRateScaler.t:toy_example_4_1_2_1","p":0.75,"accept":315,"reject":77,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"DeathRateScaler.t:toy_example_4_1_2_1","p":0.75,"accept":198,"reject":177,"acceptFC":0,"rejectFC":0,"rejectIv":54,"rejectOp":54}
+]}
+-->

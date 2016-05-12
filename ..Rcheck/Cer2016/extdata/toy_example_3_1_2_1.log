@@ -1,0 +1,47 @@
+#
+#model:
+#
+#<?xml version="1.0" encoding="UTF-8" standalone="no"?><input id="posterior" spec="beast.core.util.CompoundDistribution">
+#    <distribution id="prior" spec="beast.core.util.CompoundDistribution">
+#        <distribution id="BirthDeath.t:toy_example_3_1_2_1" spec="beast.evolution.speciation.BirthDeathGernhard08Model">
+#            <parameter id="relativeDeathRate2.t:toy_example_3_1_2_1" lower="0.0" name="relativeDeathRate" upper="1.0">0.5</parameter>
+#            <parameter id="birthRate2.t:toy_example_3_1_2_1" lower="0.0" name="birthDiffRate" upper="10000.0">1.0</parameter>
+#            <tree id="Tree.t:toy_example_3_1_2_1">
+#                <taxonset id="TaxonSet.toy_example_3_1_2_1" spec="beast.evolution.alignment.TaxonSet">
+#                </taxonset>
+#            </tree>
+#        </distribution>
+#        <prior id="BirthRatePrior.t:toy_example_3_1_2_1" name="distribution" x="@birthRate2.t:toy_example_3_1_2_1">
+#            <Uniform id="Uniform.0" name="distr" upper="1000.0"/>
+#        </prior>
+#        <prior id="DeathRatePrior.t:toy_example_3_1_2_1" name="distribution" x="@relativeDeathRate2.t:toy_example_3_1_2_1">
+#            <Uniform id="Uniform.01" name="distr"/>
+#        </prior>
+#    </distribution>
+#    <distribution id="likelihood" spec="beast.core.util.CompoundDistribution">
+#        <distribution data="@toy_example_3_1_2_1" id="treeLikelihood.toy_example_3_1_2_1" spec="beast.evolution.likelihood.TreeLikelihood" tree="@Tree.t:toy_example_3_1_2_1">
+#            <siteModel id="SiteModel.s:toy_example_3_1_2_1" spec="beast.evolution.sitemodel.SiteModel">
+#                <parameter estimate="false" id="mutationRate.s:toy_example_3_1_2_1" name="mutationRate">1.0</parameter>
+#                <parameter estimate="false" id="gammaShape.s:toy_example_3_1_2_1" name="shape">1.0</parameter>
+#                <parameter estimate="false" id="proportionInvariant.s:toy_example_3_1_2_1" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
+#                <substModel id="JC69.s:toy_example_3_1_2_1" spec="beast.evolution.substitutionmodel.JukesCantor"/>
+#            </siteModel>
+#            <branchRateModel id="StrictClock.c:toy_example_3_1_2_1" spec="beast.evolution.branchratemodel.StrictClockModel">
+#                <parameter estimate="false" id="clockRate.c:toy_example_3_1_2_1" name="clock.rate">1.0</parameter>
+#            </branchRateModel>
+#        </distribution>
+#    </distribution>
+#</input>
+#
+Sample	posterior	likelihood	prior	treeLikelihood	TreeHeight	BirthDeath	birthRate2	relativeDeathRate2	
+0	-6257.627932147847	-6249.577963142785	-8.049969005062337	-6249.577963142785	0.92681859949172	-1.142213726080201	1.0	0.5	
+1000	-3074.6217607854537	-3092.27907191539	17.65731112993639	-3092.27907191539	0.0474539988266622	24.565066408918526	13.957538083869473	0.5475703117774696	
+2000	-3077.7263441081627	-3092.96644786093	15.240103752767531	-3092.96644786093	0.0497542486650657	22.147859031749668	8.897994225969013	0.5072406798251555	
+3000	-3072.0509936454523	-3089.1145045812086	17.063510935756362	-3089.1145045812086	0.05164870662050649	23.9712662147385	15.572783655933332	0.753938048595516	
+4000	-3071.761056219398	-3090.089005654866	18.32794943546801	-3090.089005654866	0.04863521170860863	25.235704714450147	18.59949725493344	0.4416355413795367	
+5000	-3075.5717841751225	-3093.228502937539	17.656718762416425	-3093.228502937539	0.05641543130147573	24.56447404139856	23.535167504965827	0.5454044831922599	
+6000	-3071.565681597922	-3089.198019052314	17.63233745439206	-3089.198019052314	0.0499383799556786	24.5400927333742	24.00296901961131	0.11576229690997175	
+7000	-3073.184013726797	-3090.466903354531	17.282889627734285	-3090.466903354531	0.04875630369769055	24.19064490671642	51.29855061109862	0.14543096714879802	
+8000	-3074.7406653068165	-3093.466028106226	18.725362799409424	-3093.466028106226	0.04677729071040447	25.63311807839156	24.778396253025452	0.05397335389568101	
+9000	-3070.848516287531	-3089.1250513145756	18.276535027044773	-3089.1250513145756	0.046313776125926	25.18429030602691	25.50739190057056	0.16607390242993453	
+10000	-3072.667588922716	-3090.317924175573	17.650335252857108	-3090.317924175573	0.05378395842477663	24.558090531839245	28.132648683001985	0.20938384772650281	

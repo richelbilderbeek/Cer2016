@@ -1,17 +1,24 @@
 #' Creates a nice knitr::table to show one or more parameter files
 #' @param filenames names of the parameter files
+#' @param verbose give verbose output, should be TRUE or FALSE
 #' @export
 #' @author Richel Bilderbeek
-show_parameter_files <- function(filenames) {
+show_parameter_files <- function(
+  filenames,
+  verbose = FALSE
+) {
+  if (verbose != TRUE && verbose != FALSE) {
+    stop(
+      "show_parameter_files: ",
+      "verbose should be TRUE or FALSE"
+    )
+  }
 
   df <- NULL
 
   # Find parameter filenames
   for (filename in filenames) {
-    if (!file.exists(filename)) {
-      next
-    }
-    if (!is_valid_file(filename)) {
+    if (!is_valid_file(filename = filename, verbose = verbose)) {
       next
     }
     file <- read_file(filename)
@@ -55,7 +62,7 @@ show_parameter_files <- function(filenames) {
 
   # Restore original scientific notation
   colnames(df) <- c("parameters", basename(filenames))
-  t <- knitr::kable(df)
+  my_table <- knitr::kable(t(df))
   options(scipen = old_scipen)
-  t
+  my_table
 }

@@ -19,7 +19,7 @@ Extract the ERI ('Extinction Rate of an Incipient species')
 }
 \examples{
   file <- read_file(find_path("toy_example_1.RDa"))
-  erg <- extract_eri(file)
+  eri <- extract_eri(file)
   testit::assert(eri >= 0.0)
 }
 \author{

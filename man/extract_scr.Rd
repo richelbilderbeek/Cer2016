@@ -19,7 +19,7 @@ Extract the SCR ('Speciation Completion Rate')
 }
 \examples{
   file <- read_file(find_path("toy_example_1.RDa"))
-  sirg <- extract_scr(file)
+  scr <- extract_scr(file)
   testit::assert(scr >= 0.0)
 }
 \author{
