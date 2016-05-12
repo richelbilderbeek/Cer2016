@@ -1,5 +1,5 @@
 #' sorts branches for the NRBS analysis
-#' @param tree1, tree2, the trees that are to be sorted.
+#' @param filename name of the file with the trees that are to be sorted?
 #' @return a sorted tree1 and tree2
 #' @author Femke Thon
 

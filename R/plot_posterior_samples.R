@@ -26,7 +26,7 @@ plot_posterior_samples <- function(filename) {
         n_trees <- length(all_trees)
         random_tree_index <- round(runif(1, min = 1, max = n_trees))
         random_tree <- all_trees[[random_tree_index]]
-        plot(random_tree, main = paste(base_filename,
+        graphics::plot(random_tree, main = paste(base_filename,
           "random tree in posterior", i, j, k)
         )
       }

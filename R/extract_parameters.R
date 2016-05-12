@@ -26,7 +26,7 @@ extract_erg <- function(file) {
 #' @export
 #' @examples
 #'   file <- read_file(find_path("toy_example_1.RDa"))
-#'   erg <- extract_eri(file)
+#'   eri <- extract_eri(file)
 #'   testit::assert(eri >= 0.0)
 #' @author Richel Bilderbeek
 extract_eri <- function(file) {
@@ -48,7 +48,7 @@ extract_eri <- function(file) {
 #' @export
 #' @examples
 #'   file <- read_file(find_path("toy_example_1.RDa"))
-#'   sirg <- extract_scr(file)
+#'   scr <- extract_scr(file)
 #'   testit::assert(scr >= 0.0)
 #' @author Richel Bilderbeek
 extract_scr <- function(file) {

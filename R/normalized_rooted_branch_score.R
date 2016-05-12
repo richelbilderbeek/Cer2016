@@ -1,5 +1,5 @@
 #' calculates the normalized rooted branch score
-#' @param x, y
+#' @param filenames the filenames
 #' @return the normalized rooted branch score
 #' @export
 #' @author Femke Thon

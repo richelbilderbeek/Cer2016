@@ -2,6 +2,7 @@
 ^\.Rproj\.user$
 ^doc/*
 ^scripts/*
+^git/*
 .travis.yml
 Codecov.png
 TravisCI.png

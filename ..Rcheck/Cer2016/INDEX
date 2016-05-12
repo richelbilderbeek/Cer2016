@@ -1,0 +1,90 @@
+add_alignments          Add an alignment to a file
+add_outgroup_to_phylogeny
+                        Adds an outgroup to a phylogeny
+add_pbd_output          Adds a pbd_sim result to a file
+add_posteriors          Add BEAST2 posteriors to a file
+add_species_trees_with_outgroup
+                        Add a species tree with outgroup to a file
+branch_sorter           sorts branches for the NRBS analysis
+check_progress          Function that shows how much parameter files
+                        are present, and how far the pipeline has
+                        gotten
+collect_gamma_statistics
+                        Collects the nLTT values of all phylogenies in
+                        the melted/uncast/long form
+collect_posterior_filenames
+                        Collect posterior filenames
+collect_posterior_gammas
+                        Collect the gamma statistics of the BEAST2
+                        posteriors
+collect_posterior_nltt_values
+                        Collect the nLTT values of the BEAST2
+                        posteriors
+collect_species_tree_gammas
+                        Collect the gamma statistics of the species
+                        trees with outgroup
+collect_species_tree_nltts
+                        Collect the nLTT values of the species trees
+                        with outgroup
+convert_alignment_to_beast_input_file
+                        Convert an alignment and parameters to a BEAST
+                        XML input file
+convert_alignment_to_beast_posterior
+                        Convert an alignment to a BEAST2 XML input file
+convert_alignment_to_fasta
+                        Convert an alignment (of type DNAbin) to a
+                        FASTA file
+convert_phylogeny_to_alignment
+                        Converts a phylogeny to a random DNA alignment
+extract_erg             Extract the ERG ('Extinction Rate of a Good
+                        species') parameter value from a file
+extract_eri             Extract the ERI ('Extinction Rate of an
+                        Incipient species') parameter value from a file
+extract_scr             Extract the SCR ('Speciation Completion Rate')
+                        parameter value from a file
+extract_sirg            Extract the SIRG ('Speciation Initial Rate of a
+                        Good species') parameter value from a file
+extract_siri            Extract the SIRI ('Speciation Initial Rate of
+                        an Incipient species') parameter value from a
+                        file
+find_beast_bin_path     Find the path of the BEAST2 binary file
+find_beast_jar_path     Find the path of the BEAST2 jar file
+find_beast_posterior_test_filename
+                        Find the path of known-to-be-valid BEAST2
+                        posterior file
+find_path               Finds the full pathof a file
+get_phylogeny_crown_age
+                        Obtain the crown age of a phylony
+is_alignment            Determines if the input is an alignment of type
+                        DNAbin
+is_beast_posterior      Determines if the input is a BEAST2 posterior
+is_pbd_sim_output       Does not use pbd_sim()$stree, but generates
+                        these like PBD does
+is_phylogeny            Checks if the input is a phylogeny
+is_valid_file           Checks if a file is a valid parameter file
+is_whole_number         Checks if x is a single, whole-number variable
+load_parameters_from_file
+                        Load parameters from file
+normalized_rooted_branch_score
+                        calculates the normalized rooted branch score
+plot_alignments         Plot alignments
+plot_extant_incipient_tree
+                        Plot the extant inicipient species tree
+plot_posterior_nltts    Plot multiple BEAST2 posteriors
+plot_posterior_sample_nltts
+                        Plot the nLTTs of the posterior
+plot_posterior_samples
+                        Plot a random posterior phylogeny
+plot_species_tree_with_outgroup
+                        Plot
+plot_species_tree_with_outgroup_nltt
+                        Plot species_tree_with_outgroup_nltt
+read_file               Read a parameter (.RDa) file
+sample_species_trees_from_pbd_sim_output
+                        Samples species trees from PBD::pbd_sim its
+                        output It does not use pbd_sim()$stree, but
+                        generates these like PBD does.
+save_parameters_to_file
+                        Creates a valid parameter file
+show_parameter_files    Creates a nice knitr::table to show one or more
+                        parameter files

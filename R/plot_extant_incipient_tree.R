@@ -11,7 +11,7 @@ plot_extant_incipient_tree <- function(filename) {
   }
   base_filename <- basename(filename)
   file <- read_file(filename)
-  plot(file$pbd_output[[1]], main = paste(
+  graphics::plot(file$pbd_output[[1]], main = paste(
     base_filename, " gene tree", sep = "")
   )
 }

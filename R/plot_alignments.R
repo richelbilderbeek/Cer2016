@@ -18,7 +18,7 @@ plot_alignments <- function(filename) {
       alignment_index <- 1 + j - 1 + ((i - 1) * n_species_trees_samples)        # nolint
       testit::assert(alignment_index >= 1)
       testit::assert(alignment_index <= length(file$alignments))
-      image(file$alignments[[alignment_index]][[1]],
+      graphics::image(file$alignments[[alignment_index]][[1]],
         main = paste(base_filename, "alignment", i, j)
       )
     }

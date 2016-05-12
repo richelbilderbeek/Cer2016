@@ -7,7 +7,7 @@
 normalized_rooted_branch_score(filenames)
 }
 \arguments{
-\item{x, }{y}
+\item{filenames}{the filenames}
 }
 \value{
 the normalized rooted branch score
