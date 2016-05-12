@@ -17,10 +17,10 @@ test_that("collect_parameters of parameter files in package", {
 })
 
 test_that("collect_parameters of parameter files in any folder", {
-  pcname <- system('uname -n', intern = TRUE)
+  pcname <- system("uname -n", intern = TRUE)
   folder <- NULL
-  if (pcname == "fwn-biol-132-102") folder <- "/home/p230198/Peregrine"
-  if (pcname == "druten") folder <- "/home/richel/Peregrine"
+  if (pcname == "fwn-biol-132-102") folder <- "/home/p230198/Peregrine" # nolint
+  if (pcname == "druten") folder <- "/home/richel/Peregrine" # nolint
   if (is.null(folder)) {
     skip("Don't know where others store their data set")
   }
