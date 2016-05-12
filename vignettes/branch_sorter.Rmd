@@ -20,6 +20,7 @@ library(Cer2016)
 tree1 <- rtree(3)
 plot(tree1)
 ```
+
 We've got a tree. It's even got some info about itself in a file, which we'll 
 need later.
 
@@ -27,8 +28,31 @@ need later.
 names(tree1)
 ```
 
+We see quite a bit of info here already. In fact, everything is already there.
+By combining ```'edge.length'``` with ```'edge'``` and ```'tip.label'``` we will 
+be able to sort and extract the info we need for the NRBS analysis.
+
+```{r}
+tree1.sorted <- branch_sorter(tree1)
+```
+
+We've got a sorted tree! How wonderful! What does it look like?
+
+```{r}
+names(tree1.sorted)
+
+tree1.sorted$branch_length
+
+tree1.sorted$taxon_name
+```
+
+There we have it. ```Tree1.sorted$branch_length``` gives us the lengths of the
+branches, ```tree1.sorted$taxon_name``` the names that correspond to these
+branches.
+
 ## comparing the tree to itself.
-We want to compare it to itself, so we duplicate it.
+We want to compare it to itself, so we duplicate it. (once I get the NRBS to 
+work again.)
 
 ```{r}
 tree2 <- tree1
