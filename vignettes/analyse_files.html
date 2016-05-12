@@ -10,11 +10,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="author" content="Jolien Gay en Richel Bilderbeek" />
+<meta name="author" content="Richel Bilderbeek" />
 
 <meta name="date" content="2016-05-12" />
 
-<title>display dataset parameters</title>
+<title>Analyse files</title>
 
 
 
@@ -50,109 +50,92 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
 
 
-<h1 class="title toc-ignore">display dataset parameters</h1>
-<h4 class="author"><em>Jolien Gay en Richel Bilderbeek</em></h4>
+<h1 class="title toc-ignore">Analyse files</h1>
+<h4 class="author"><em>Richel Bilderbeek</em></h4>
 <h4 class="date"><em>2016-05-12</em></h4>
 
 
 
-<div id="code-info" class="section level2">
-<h2>Code Info</h2>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(Cer2016)</code></pre>
-</div>
-<div id="richels-work" class="section level1">
-<h1>Richel’s work</h1>
-<p>Parameter files within package:</p>
-<pre class="sourceCode r"><code class="sourceCode r">all_parameter_filenames &lt;-<span class="st"> </span><span class="kw">c</span>(
-  <span class="kw">find_path</span>(<span class="st">&quot;article_0_0_0_0_0.RDa&quot;</span>),
-  <span class="kw">find_path</span>(<span class="st">&quot;article_0_1_4_0_2.RDa&quot;</span>),
-  <span class="kw">find_path</span>(<span class="st">&quot;toy_example_1.RDa&quot;</span>)
+<p>Prerequisites:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(Cer2016)
+csv_filename &lt;-<span class="st"> &quot;collect_parameters.csv&quot;</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">df_in &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+  <span class="dt">filenames =</span> <span class="kw">c</span>(<span class="st">&quot;a.txt&quot;</span>,<span class="st">&quot;b.txt&quot;</span>,<span class="st">&quot;c.txt&quot;</span>),
+  <span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">9</span>)
 )
-<span class="kw">show_parameter_files</span>(all_parameter_filenames, <span class="dt">verbose =</span> <span class="ot">TRUE</span>)</code></pre>
-<pre><code>## &lt;simpleError in value[[3L]](cond): read_file: error in readRDS of file with name '/home/p230198/GitHubs/Cer2016/inst/extdata/article_0_0_0_0_0.RDa', with message 'Error in readRDS(filename): error reading from connection
-## '&gt;</code></pre>
+knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df_in))</code></pre>
 <table>
 <thead>
 <tr class="header">
-<th align="left"></th>
-<th align="right">rng_seed</th>
-<th align="right">species_initiation_rate_good_species</th>
-<th align="right">species_initiation_rate_incipient_species</th>
-<th align="right">speciation_completion_rate</th>
-<th align="right">extinction_rate_good_species</th>
-<th align="right">extinction_rate_incipient_species</th>
-<th align="right">age</th>
-<th align="right">n_species_trees_samples</th>
-<th align="right">mutation_rate</th>
-<th align="right">n_alignments</th>
-<th align="right">sequence_length</th>
-<th align="right">mcmc_chainlength</th>
-<th align="right">n_beast_runs</th>
-<th align="right">version</th>
+<th align="left">filenames</th>
+<th align="right">x</th>
+<th align="right">y</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">article_0_0_0_0_0.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
+<td align="left">a.txt</td>
+<td align="right">1</td>
+<td align="right">1</td>
 </tr>
 <tr class="even">
-<td align="left">article_0_1_4_0_2.RDa</td>
-<td align="right">1</td>
-<td align="right">0.1</td>
-<td align="right">0.1</td>
-<td align="right">0.1</td>
-<td align="right">0.8</td>
-<td align="right">0.8</td>
-<td align="right">5</td>
+<td align="left">b.txt</td>
 <td align="right">2</td>
-<td align="right">0.10</td>
-<td align="right">2</td>
-<td align="right">10000</td>
-<td align="right">1e+06</td>
-<td align="right">2</td>
-<td align="right">0.1</td>
+<td align="right">4</td>
 </tr>
 <tr class="odd">
-<td align="left">toy_example_1.RDa</td>
-<td align="right">1</td>
-<td align="right">0.5</td>
-<td align="right">0.5</td>
-<td align="right">1.0</td>
-<td align="right">0.1</td>
-<td align="right">0.1</td>
-<td align="right">5</td>
-<td align="right">1</td>
-<td align="right">0.01</td>
-<td align="right">1</td>
-<td align="right">1000</td>
-<td align="right">1e+04</td>
-<td align="right">1</td>
-<td align="right">0.1</td>
+<td align="left">c.txt</td>
+<td align="right">3</td>
+<td align="right">9</td>
 </tr>
 </tbody>
 </table>
-<p>Parameter files in the folder of the dataset:</p>
-<pre class="sourceCode r"><code class="sourceCode r">folder &lt;-<span class="st"> &quot;/home/p230198/Peregrine&quot;</span>
-all_parameter_filenames &lt;-<span class="st"> </span><span class="kw">paste</span>(folder, <span class="kw">list.files</span>(folder, <span class="dt">pattern =</span> <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.RDa&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot;/&quot;</span>)
-<span class="kw">show_parameter_files</span>(<span class="kw">head</span>(all_parameter_filenames), <span class="dt">verbose =</span> <span class="ot">TRUE</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.csv</span>(<span class="dt">x =</span> df_in, <span class="dt">file =</span> csv_filename)
+df_out &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> csv_filename, 
+  <span class="dt">header =</span> <span class="ot">TRUE</span>, 
+  <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>
+)
+knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df_out))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">X</th>
+<th align="left">filenames</th>
+<th align="right">x</th>
+<th align="right">y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">a.txt</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">b.txt</td>
+<td align="right">2</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">c.txt</td>
+<td align="right">3</td>
+<td align="right">9</td>
+</tr>
+</tbody>
+</table>
+<p>Extracting all file parameters is easy:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#if (!file.exists(csv_filename)) {</span>
+  folder &lt;-<span class="st"> &quot;/home/p230198/Peregrine&quot;</span>
+  all_parameter_filenames &lt;-<span class="st"> </span><span class="kw">paste</span>(folder, <span class="kw">list.files</span>(folder, <span class="dt">pattern =</span> <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.RDa&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot;/&quot;</span>)
+  df &lt;-<span class="st"> </span><span class="kw">collect_parameters</span>(<span class="kw">head</span>(all_parameter_filenames), <span class="dt">verbose =</span> <span class="ot">TRUE</span>)</code></pre>
 <pre><code>## &lt;simpleError in value[[3L]](cond): read_file: error in readRDS of file with name '/home/p230198/Peregrine/article_0_0_0_0_0.RDa', with message 'Error in readRDS(filename): error reading from connection
 ## '&gt;
 ## &lt;simpleError in value[[3L]](cond): read_file: error in readRDS of file with name '/home/p230198/Peregrine/article_0_0_0_0_1.RDa', with message 'Error in readRDS(filename): error reading from connection
 ## '&gt;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df))</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -278,30 +261,145 @@ all_parameter_filenames &lt;-<span class="st"> </span><span class="kw">paste</sp
 </tr>
 </tbody>
 </table>
-<div id="joliens-work" class="section level2">
-<h2>Jolien’s work</h2>
-<pre class="sourceCode r"><code class="sourceCode r">pcname &lt;-<span class="st"> </span><span class="kw">system</span>(<span class="st">'uname -n'</span>, <span class="dt">intern =</span> <span class="ot">TRUE</span>) 
-if (pcname ==<span class="st"> &quot;Aline&quot;</span>) {
-  <span class="kw">setwd</span>(<span class="st">&quot;c:/Users/Aline/Peregrine&quot;</span>)
-  <span class="kw">getwd</span>()
-  <span class="co"># Put all .RDA files in a variable</span>
-  all_parameters &lt;-<span class="st"> </span><span class="kw">Sys.glob</span>(<span class="st">&quot;*.RDa&quot;</span>) <span class="co"># alternative, but longer: all_parameters &lt;- list.files(pattern = &quot;\\.RDa$&quot;, ignore.case=TRUE)</span>
-  <span class="kw">print</span>(all_parameters)
-  
-  <span class="kw">file.exists</span>(all_parameters)
-  
-  <span class="kw">show_parameter_files</span>(all_parameters)
-}</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#---------------------Example---------------------------------</span>
-<span class="co">#filename &lt;- filenames[1]</span>
-<span class="co">#filename &lt;- &quot;d:/Peregrine/article_0_0_0_0_0.RDa&quot;</span>
-<span class="co">#filename &lt;- &quot;toy_example_1.RDa&quot;</span>
-<span class="co">#readRDS(filename)</span>
-<span class="co">#file.exists(filename)</span>
-<span class="co">#file &lt;- read_file(filename)</span>
-<span class="co">#names(file)</span></code></pre>
-</div>
-</div>
+<p>Saving to file:</p>
+<pre class="sourceCode r"><code class="sourceCode r">  <span class="kw">write.csv</span>(
+    <span class="dt">x =</span> df,
+    <span class="dt">file =</span> csv_filename,
+  )
+<span class="co">#}</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(
+  <span class="dt">file =</span> csv_filename, 
+  <span class="dt">header =</span> <span class="ot">TRUE</span>, 
+  <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>
+)</code></pre>
+<p>Number of filenames: 6</p>
+<p>Putting the head of the data frame in a table:</p>
+<pre class="sourceCode r"><code class="sourceCode r">knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">X</th>
+<th align="right">rng_seed</th>
+<th align="right">species_initiation_rate_good_species</th>
+<th align="right">species_initiation_rate_incipient_species</th>
+<th align="right">speciation_completion_rate</th>
+<th align="right">extinction_rate_good_species</th>
+<th align="right">extinction_rate_incipient_species</th>
+<th align="right">age</th>
+<th align="right">n_species_trees_samples</th>
+<th align="right">mutation_rate</th>
+<th align="right">n_alignments</th>
+<th align="right">sequence_length</th>
+<th align="right">mcmc_chainlength</th>
+<th align="right">n_beast_runs</th>
+<th align="right">version</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">article_0_0_0_0_0.RDa</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="left">article_0_0_0_0_1.RDa</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">article_0_0_0_0_2.RDa</td>
+<td align="right">1</td>
+<td align="right">0.1</td>
+<td align="right">0.1</td>
+<td align="right">0.1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">15</td>
+<td align="right">2</td>
+<td align="right">0.1</td>
+<td align="right">2</td>
+<td align="right">1e+05</td>
+<td align="right">1e+06</td>
+<td align="right">2</td>
+<td align="right">0.1</td>
+</tr>
+<tr class="even">
+<td align="left">article_0_0_0_1_0.RDa</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">article_0_0_0_1_1.RDa</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="left">article_0_0_0_1_2.RDa</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+</tbody>
+</table>
 
 
 

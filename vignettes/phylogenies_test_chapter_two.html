@@ -12,7 +12,7 @@
 
 <meta name="author" content="Jolien Gay" />
 
-<meta name="date" content="2016-05-04" />
+<meta name="date" content="2016-05-12" />
 
 <title>PhylogeniesTest</title>
 
@@ -52,7 +52,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
 <h1 class="title toc-ignore">PhylogeniesTest</h1>
 <h4 class="author"><em>Jolien Gay</em></h4>
-<h4 class="date"><em>2016-05-04</em></h4>
+<h4 class="date"><em>2016-05-12</em></h4>
 
 
 
@@ -155,7 +155,7 @@ percentage_tree_two</code></pre>
 <h3>Ex 4</h3>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Randomize tip labels, sample without replacement</span>
 <span class="kw">sample</span>(my_phylo$tip.label, <span class="dt">rep=</span>F)</code></pre>
-<pre><code>## [1] &quot;D&quot; &quot;B&quot; &quot;A&quot; &quot;C&quot; &quot;E&quot;</code></pre>
+<pre><code>## [1] &quot;C&quot; &quot;B&quot; &quot;D&quot; &quot;E&quot; &quot;A&quot;</code></pre>
 </div>
 <div id="ex-5" class="section level3">
 <h3>Ex 5</h3>
@@ -165,42 +165,42 @@ nexus_filename &lt;-<span class="st"> &quot;newick_file_five_species_nexus.txt&q
 <span class="kw">print</span>(<span class="kw">file.exists</span>(nexus_filename))</code></pre>
 <pre><code>## [1] TRUE</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">#plot(read.tree(text = &quot;(B:3.00,(A:3.00,C:3.00,E:3.00):3.00,D:3.00);&quot;))</span>
-my_nexus_phylo &lt;-<span class="st"> </span><span class="kw">read.nexus</span>(nexus_filename) 
+my_nexus_phylo &lt;-<span class="st"> </span>ape::<span class="kw">read.nexus</span>(nexus_filename) 
 <span class="kw">plot</span>(my_nexus_phylo)</code></pre>
-<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.nexus</span>(my_nexus_phylo)</code></pre>
 <pre><code>## #NEXUS
-## [R-package APE, Wed May  4 18:01:24 2016]
+## [R-package APE, Thu May 12 14:13:42 2016]
 ## 
 ## BEGIN TAXA;
 ##  DIMENSIONS NTAX = 10;
 ##  TAXLABELS
-##      t4
-##      t9
-##      t3
-##      t5
-##      t8
-##      t2
-##      t7
 ##      t10
 ##      t6
 ##      t1
+##      t7
+##      t3
+##      t5
+##      t8
+##      t4
+##      t9
+##      t2
 ##  ;
 ## END;
 ## BEGIN TREES;
 ##  TRANSLATE
-##      1   t4,
-##      2   t9,
-##      3   t3,
-##      4   t5,
-##      5   t8,
-##      6   t2,
-##      7   t7,
-##      8   t10,
-##      9   t6,
-##      10  t1
+##      1   t10,
+##      2   t6,
+##      3   t1,
+##      4   t7,
+##      5   t3,
+##      6   t5,
+##      7   t8,
+##      8   t4,
+##      9   t9,
+##      10  t2
 ##  ;
-##  TREE * UNTITLED = [&amp;R] (((1:0.1821007893,(2:0.01579456693,3:0.01579456693):0.1663062224):0.567782641,((4:0.3171069805,(5:0.06555260047,6:0.06555260047):0.25155438):0.0526729868,((7:0.06189057991,8:0.06189057991):0.2906208253,9:0.3525114052):0.01726856215):0.380103463):3.129997648,10:3.879881078);
+##  TREE * UNTITLED = [&amp;R] (((1:0.101417004,(2:0.04600144307,3:0.04600144307):0.05541556093):0.5502620377,(4:0.6437181806,5:0.6437181806):0.007960861083):1.891228838,(((6:0.1276945608,(7:0.007874793474,8:0.007874793474):0.1198197674):0.2221354395,9:0.3498300003):0.04596258271,10:0.3957925831):2.147115296);
 ## END;</code></pre>
 </div>
 <div id="ex-6" class="section level3">
@@ -287,7 +287,7 @@ percentage_tree_two2</code></pre>
 <pre><code>## [1] 0.2</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Randomize tip labels, sample without replacement</span>
 <span class="kw">sample</span>(my_phylo$tip.label, <span class="dt">rep=</span>F)</code></pre>
-<pre><code>## [1] &quot;C&quot; &quot;E&quot; &quot;B&quot; &quot;D&quot; &quot;A&quot;</code></pre>
+<pre><code>## [1] &quot;B&quot; &quot;A&quot; &quot;C&quot; &quot;E&quot; &quot;D&quot;</code></pre>
 </div>
 <div id="ex-7" class="section level3">
 <h3>Ex 7</h3>
@@ -318,138 +318,82 @@ for (i in <span class="dv">1</span>:<span class="dv">5</span>){
 }
 
 <span class="kw">list.files</span>(<span class="kw">getwd</span>())</code></pre>
-<pre><code>##   [1] &quot;1.txt&quot;                                         
-##   [2] &quot;2.txt&quot;                                         
-##   [3] &quot;3.txt&quot;                                         
-##   [4] &quot;4.txt&quot;                                         
-##   [5] &quot;5.txt&quot;                                         
-##   [6] &quot;add_outgroup_to_phylogeny_demo.R&quot;              
-##   [7] &quot;add_outgroup_to_phylogeny_demo.Rmd&quot;            
-##   [8] &quot;add_outgroup_to_phylogeny_demo.html&quot;           
-##   [9] &quot;bug_report_lintr.R&quot;                            
-##  [10] &quot;bug_report_lintr.Rmd&quot;                          
-##  [11] &quot;bug_report_lintr.pdf&quot;                          
-##  [12] &quot;convert_alignment_to_beast_posterior_demo.R&quot;   
-##  [13] &quot;convert_alignment_to_beast_posterior_demo.Rmd&quot; 
-##  [14] &quot;convert_alignment_to_beast_posterior_demo.html&quot;
-##  [15] &quot;convert_alignment_to_beast_posterior_test.xml&quot; 
-##  [16] &quot;convert_phylogeny_to_alignment_demo.R&quot;         
-##  [17] &quot;convert_phylogeny_to_alignment_demo.Rmd&quot;       
-##  [18] &quot;convert_phylogeny_to_alignment_demo.html&quot;      
-##  [19] &quot;handy_bits_of_code.R&quot;                          
-##  [20] &quot;handy_bits_of_code.Rmd&quot;                        
-##  [21] &quot;handy_bits_of_code.html&quot;                       
-##  [22] &quot;newick_file_five_species.txt&quot;                  
-##  [23] &quot;newick_file_five_species_nexus.txt&quot;            
-##  [24] &quot;newick_file_six_species.txt&quot;                   
-##  [25] &quot;phylogenies_test.R&quot;                            
-##  [26] &quot;phylogenies_test.html&quot;                         
-##  [27] &quot;phylogenies_test_chapter_two.R&quot;                
-##  [28] &quot;phylogenies_test_chapter_two.Rmd&quot;              
-##  [29] &quot;phylogenies_test_chapter_two.html&quot;             
-##  [30] &quot;phylogenies_test_chapter_two_files&quot;            
-##  [31] &quot;plotting_nltt_values.R&quot;                        
-##  [32] &quot;plotting_nltt_values.Rmd&quot;                      
-##  [33] &quot;plotting_nltt_values.html&quot;                     
-##  [34] &quot;plotting_nltt_values_files&quot;                    
-##  [35] &quot;research_demo.R&quot;                               
-##  [36] &quot;research_demo.Rmd&quot;                             
-##  [37] &quot;research_demo.html&quot;                            
-##  [38] &quot;sample_species_trees_from_pbd_output_demo.R&quot;   
-##  [39] &quot;sample_species_trees_from_pbd_output_demo.Rmd&quot; 
-##  [40] &quot;sample_species_trees_from_pbd_output_demo.html&quot;
-##  [41] &quot;summary_statistics_demo.R&quot;                     
-##  [42] &quot;summary_statistics_demo.Rmd&quot;                   
-##  [43] &quot;summary_statistics_demo.html&quot;                  
-##  [44] &quot;toy_example_1.RDa&quot;                             
-##  [45] &quot;toy_example_1_1_1_1.log&quot;                       
-##  [46] &quot;toy_example_1_1_1_1.trees&quot;                     
-##  [47] &quot;toy_example_1_1_1_1.xml&quot;                       
-##  [48] &quot;toy_example_1_1_1_1.xml.state&quot;                 
-##  [49] &quot;toy_example_2.RDa&quot;                             
-##  [50] &quot;toy_example_2_1_1_1.log&quot;                       
-##  [51] &quot;toy_example_2_1_1_1.trees&quot;                     
-##  [52] &quot;toy_example_2_1_1_1.xml&quot;                       
-##  [53] &quot;toy_example_2_1_1_1.xml.state&quot;                 
-##  [54] &quot;toy_example_3.RDa&quot;                             
-##  [55] &quot;toy_example_3_1_1_1.log&quot;                       
-##  [56] &quot;toy_example_3_1_1_1.trees&quot;                     
-##  [57] &quot;toy_example_3_1_1_1.xml&quot;                       
-##  [58] &quot;toy_example_3_1_1_1.xml.state&quot;                 
-##  [59] &quot;toy_example_3_1_1_2.log&quot;                       
-##  [60] &quot;toy_example_3_1_1_2.trees&quot;                     
-##  [61] &quot;toy_example_3_1_1_2.xml&quot;                       
-##  [62] &quot;toy_example_3_1_1_2.xml.state&quot;                 
-##  [63] &quot;toy_example_3_1_2_1.log&quot;                       
-##  [64] &quot;toy_example_3_1_2_1.trees&quot;                     
-##  [65] &quot;toy_example_3_1_2_1.xml&quot;                       
-##  [66] &quot;toy_example_3_1_2_1.xml.state&quot;                 
-##  [67] &quot;toy_example_3_1_2_2.log&quot;                       
-##  [68] &quot;toy_example_3_1_2_2.trees&quot;                     
-##  [69] &quot;toy_example_3_1_2_2.xml&quot;                       
-##  [70] &quot;toy_example_3_1_2_2.xml.state&quot;                 
-##  [71] &quot;toy_example_3_2_1_1.log&quot;                       
-##  [72] &quot;toy_example_3_2_1_1.trees&quot;                     
-##  [73] &quot;toy_example_3_2_1_1.xml&quot;                       
-##  [74] &quot;toy_example_3_2_1_1.xml.state&quot;                 
-##  [75] &quot;toy_example_3_2_1_2.log&quot;                       
-##  [76] &quot;toy_example_3_2_1_2.trees&quot;                     
-##  [77] &quot;toy_example_3_2_1_2.xml&quot;                       
-##  [78] &quot;toy_example_3_2_1_2.xml.state&quot;                 
-##  [79] &quot;toy_example_3_2_2_1.log&quot;                       
-##  [80] &quot;toy_example_3_2_2_1.trees&quot;                     
-##  [81] &quot;toy_example_3_2_2_1.xml&quot;                       
-##  [82] &quot;toy_example_3_2_2_1.xml.state&quot;                 
-##  [83] &quot;toy_example_3_2_2_2.log&quot;                       
-##  [84] &quot;toy_example_3_2_2_2.trees&quot;                     
-##  [85] &quot;toy_example_3_2_2_2.xml&quot;                       
-##  [86] &quot;toy_example_3_2_2_2.xml.state&quot;                 
-##  [87] &quot;toy_example_4.RDa&quot;                             
-##  [88] &quot;toy_example_4_1_1_1.log&quot;                       
-##  [89] &quot;toy_example_4_1_1_1.trees&quot;                     
-##  [90] &quot;toy_example_4_1_1_1.xml&quot;                       
-##  [91] &quot;toy_example_4_1_1_1.xml.state&quot;                 
-##  [92] &quot;toy_example_4_1_1_2.log&quot;                       
-##  [93] &quot;toy_example_4_1_1_2.trees&quot;                     
-##  [94] &quot;toy_example_4_1_1_2.xml&quot;                       
-##  [95] &quot;toy_example_4_1_1_2.xml.state&quot;                 
-##  [96] &quot;toy_example_4_1_2_1.log&quot;                       
-##  [97] &quot;toy_example_4_1_2_1.trees&quot;                     
-##  [98] &quot;toy_example_4_1_2_1.xml&quot;                       
-##  [99] &quot;toy_example_4_1_2_1.xml.state&quot;                 
-## [100] &quot;toy_example_4_1_2_2.log&quot;                       
-## [101] &quot;toy_example_4_1_2_2.trees&quot;                     
-## [102] &quot;toy_example_4_1_2_2.xml&quot;                       
-## [103] &quot;toy_example_4_1_2_2.xml.state&quot;                 
-## [104] &quot;toy_example_4_2_1_1.log&quot;                       
-## [105] &quot;toy_example_4_2_1_1.trees&quot;                     
-## [106] &quot;toy_example_4_2_1_1.xml&quot;                       
-## [107] &quot;toy_example_4_2_1_1.xml.state&quot;                 
-## [108] &quot;toy_example_4_2_1_2.log&quot;                       
-## [109] &quot;toy_example_4_2_1_2.trees&quot;                     
-## [110] &quot;toy_example_4_2_1_2.xml&quot;                       
-## [111] &quot;toy_example_4_2_1_2.xml.state&quot;                 
-## [112] &quot;toy_example_4_2_2_1.log&quot;                       
-## [113] &quot;toy_example_4_2_2_1.trees&quot;                     
-## [114] &quot;toy_example_4_2_2_1.xml&quot;                       
-## [115] &quot;toy_example_4_2_2_1.xml.state&quot;                 
-## [116] &quot;toy_example_4_2_2_2.log&quot;                       
-## [117] &quot;toy_example_4_2_2_2.trees&quot;                     
-## [118] &quot;toy_example_4_2_2_2.xml&quot;                       
-## [119] &quot;toy_example_4_2_2_2.xml.state&quot;                 
-## [120] &quot;troubleshooting.R&quot;                             
-## [121] &quot;troubleshooting.Rmd&quot;                           
-## [122] &quot;troubleshooting.html&quot;                          
-## [123] &quot;tryCatch_demo.R&quot;                               
-## [124] &quot;tryCatch_demo.Rmd&quot;                             
-## [125] &quot;tryCatch_demo.html&quot;                            
-## [126] &quot;verdubbel_dit.R&quot;                               
-## [127] &quot;verdubbel_dit.Rmd&quot;                             
-## [128] &quot;verdubbel_dit.html&quot;                            
-## [129] &quot;worked_out_examples.R&quot;                         
-## [130] &quot;worked_out_examples.Rmd&quot;                       
-## [131] &quot;worked_out_examples.html&quot;                      
-## [132] &quot;worked_out_examples_files&quot;</code></pre>
+<pre><code>##  [1] &quot;1.txt&quot;                                         
+##  [2] &quot;2.txt&quot;                                         
+##  [3] &quot;3.txt&quot;                                         
+##  [4] &quot;4.txt&quot;                                         
+##  [5] &quot;5.txt&quot;                                         
+##  [6] &quot;add_outgroup_to_phylogeny_demo.R&quot;              
+##  [7] &quot;add_outgroup_to_phylogeny_demo.Rmd&quot;            
+##  [8] &quot;add_outgroup_to_phylogeny_demo.html&quot;           
+##  [9] &quot;add_outgroup_to_phylogeny_demo_files&quot;          
+## [10] &quot;add_posterior_demo.RDa&quot;                        
+## [11] &quot;add_posteriors_demo.R&quot;                         
+## [12] &quot;add_posteriors_demo.Rmd&quot;                       
+## [13] &quot;add_posteriors_demo.html&quot;                      
+## [14] &quot;add_posteriors_demo_files&quot;                     
+## [15] &quot;analyse_files.R&quot;                               
+## [16] &quot;analyse_files.Rmd&quot;                             
+## [17] &quot;analyse_files.html&quot;                            
+## [18] &quot;analyse_files_cache&quot;                           
+## [19] &quot;branch_sorter.R&quot;                               
+## [20] &quot;branch_sorter.Rmd&quot;                             
+## [21] &quot;branch_sorter.html&quot;                            
+## [22] &quot;collect_parameters.csv&quot;                        
+## [23] &quot;collect_posterior_filenames_demo.R&quot;            
+## [24] &quot;collect_posterior_filenames_demo.Rmd&quot;          
+## [25] &quot;collect_posterior_filenames_demo.html&quot;         
+## [26] &quot;convert_alignment_to_beast_posterior_demo.R&quot;   
+## [27] &quot;convert_alignment_to_beast_posterior_demo.Rmd&quot; 
+## [28] &quot;convert_alignment_to_beast_posterior_demo.html&quot;
+## [29] &quot;convert_alignment_to_beast_posterior_test.xml&quot; 
+## [30] &quot;convert_phylogeny_to_alignment_demo.R&quot;         
+## [31] &quot;convert_phylogeny_to_alignment_demo.Rmd&quot;       
+## [32] &quot;convert_phylogeny_to_alignment_demo.html&quot;      
+## [33] &quot;display_dataset_parameters.R&quot;                  
+## [34] &quot;display_dataset_parameters.Rmd&quot;                
+## [35] &quot;display_dataset_parameters.html&quot;               
+## [36] &quot;ex-tuesday-10.R&quot;                               
+## [37] &quot;ex-tuesday-10.Rmd&quot;                             
+## [38] &quot;ex-tuesday-10.html&quot;                            
+## [39] &quot;handy_bits_of_code.R&quot;                          
+## [40] &quot;handy_bits_of_code.Rmd&quot;                        
+## [41] &quot;handy_bits_of_code.html&quot;                       
+## [42] &quot;newick_file_five_species.txt&quot;                  
+## [43] &quot;newick_file_five_species_nexus.txt&quot;            
+## [44] &quot;newick_file_six_species.txt&quot;                   
+## [45] &quot;normalized_rooted_branch_score.Rmd&quot;            
+## [46] &quot;phylogenies_test.R&quot;                            
+## [47] &quot;phylogenies_test.html&quot;                         
+## [48] &quot;phylogenies_test_chapter_two.R&quot;                
+## [49] &quot;phylogenies_test_chapter_two.Rmd&quot;              
+## [50] &quot;phylogenies_test_chapter_two.html&quot;             
+## [51] &quot;phylogenies_test_chapter_two_files&quot;            
+## [52] &quot;plotting_nltt_values.R&quot;                        
+## [53] &quot;plotting_nltt_values.Rmd&quot;                      
+## [54] &quot;plotting_nltt_values.html&quot;                     
+## [55] &quot;research_demo.R&quot;                               
+## [56] &quot;research_demo.Rmd&quot;                             
+## [57] &quot;research_demo.html&quot;                            
+## [58] &quot;research_demo_files&quot;                           
+## [59] &quot;sample_species_trees_from_pbd_output_demo.R&quot;   
+## [60] &quot;sample_species_trees_from_pbd_output_demo.Rmd&quot; 
+## [61] &quot;sample_species_trees_from_pbd_output_demo.html&quot;
+## [62] &quot;summary_statistics_demo.R&quot;                     
+## [63] &quot;summary_statistics_demo.Rmd&quot;                   
+## [64] &quot;summary_statistics_demo.html&quot;                  
+## [65] &quot;troubleshooting.R&quot;                             
+## [66] &quot;troubleshooting.Rmd&quot;                           
+## [67] &quot;troubleshooting.html&quot;                          
+## [68] &quot;tryCatch_demo.R&quot;                               
+## [69] &quot;tryCatch_demo.Rmd&quot;                             
+## [70] &quot;tryCatch_demo.html&quot;                            
+## [71] &quot;verdubbel_dit.R&quot;                               
+## [72] &quot;verdubbel_dit.Rmd&quot;                             
+## [73] &quot;verdubbel_dit.html&quot;                            
+## [74] &quot;worked_out_examples.R&quot;                         
+## [75] &quot;worked_out_examples.Rmd&quot;                       
+## [76] &quot;worked_out_examples.html&quot;</code></pre>
 </div>
 </div>
 

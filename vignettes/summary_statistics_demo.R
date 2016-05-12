@@ -17,7 +17,7 @@ print(names(file$pbd_output))
 
 ## ------------------------------------------------------------------------
 incipient_species_tree <- file$pbd_output$igtree.extant
-colors <- setNames(c("gray","black"),c("i","g"))
+colors <- setNames(c("gray", "black"), c("i","g"))
 phytools::plotSimmap(
   incipient_species_tree, 
   colors = colors
@@ -48,14 +48,6 @@ print(paste0("There are ", n_trees))
 for (i in seq(1:n_trees)) {
   plot(posterior_trees[[i]])
 }
-
-## ------------------------------------------------------------------------
-gamma_statistics <- rep(0, times = n_trees)
-for (i in seq(1:n_trees)) {
-  gamma_statistics[i] <- gammaStat(posterior_trees[[i]])
-}
-hist(gamma_statistics, xlim = c(-1,1))
-abline(v = true_gamma, col = "red")
 
 ## ------------------------------------------------------------------------
 library(ape)
