@@ -1,0 +1,3 @@
+Source: Wikipedia
+- Bayesian statistics: 
+	Bayesian statistics, named for Thomas Bayes (1701-1761), is a theory 	in the field of statistics in which the evidence about the true state 	of the world is expressed in terms of 'degrees of belief' called 	Bayesian probabilities. Such an interpretation is only one of a number 	of interpretations of probability and there are other statistical 	techniques that are not based on 'degrees of belief'. One of the key 	ideas of Bayesian statistics is that "probability is orderly opinion, 	and that inference from data is nothing other than the revision of 	such opinion in the light of relevant new information."
