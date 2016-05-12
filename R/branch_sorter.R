@@ -10,14 +10,13 @@ branch_sorter <- function(filename){
   # with the tipnames, but I'm not sure.
     table              <- cbind(filename$edge, filename$edge.length)
     edgeorder          <- data.table::data.table(table, key = "V2")
-    edgeorder          <- edgeorder[(0 - (length(filename$tip.label) + 1)),]
+    edgeorder          <- edgeorder[(0 - (length(filename$tip.label) + 1)), ]
     edgeorder$V4       <- filename$tip.label
     edgeorder$V1       <- NULL
     edgeorder$V2       <- NULL
-    edgeorder          <- edgeorder[order(edgeorder$V4),]
+    edgeorder          <- edgeorder[order(edgeorder$V4), ]
     filename$ordered.branches <- edgeorder
     filename$branch_length    <- filename$ordered.branches$V3
     filename$taxon_name       <- filename$ordered.branches$V4
     filename
 }
-
