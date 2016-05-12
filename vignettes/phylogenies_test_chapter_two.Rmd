@@ -82,7 +82,7 @@ write.nexus(rcoal(10), file = nexus_filename)
 print(file.exists(nexus_filename))
 
 #plot(read.tree(text = "(B:3.00,(A:3.00,C:3.00,E:3.00):3.00,D:3.00);"))
-my_nexus_phylo <- read.nexus(nexus_filename) 
+my_nexus_phylo <- ape::read.nexus(nexus_filename) 
 plot(my_nexus_phylo)
 write.nexus(my_nexus_phylo)
 ```

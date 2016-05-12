@@ -4,10 +4,12 @@
 \alias{show_parameter_files}
 \title{Creates a nice knitr::table to show one or more parameter files}
 \usage{
-show_parameter_files(filenames)
+show_parameter_files(filenames, verbose = FALSE)
 }
 \arguments{
 \item{filenames}{names of the parameter files}
+
+\item{verbose}{give verbose output, should be TRUE or FALSE}
 }
 \description{
 Creates a nice knitr::table to show one or more parameter files
