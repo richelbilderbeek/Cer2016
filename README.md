@@ -59,22 +59,6 @@ In Linux, you can install it with:
 
 ## Agenda
 
- * MO 2016-04-25 15:30-16:30: TRES meeting, room 5.?? (`Blue Room`)
- * MO 2016-04-25 20:00-22:00: Giacomonday @ [De Minnaar](www.deminnaar.nl)
- * TH 2016-04-28 16:00-17:00: GELIFES lecture, room 4.?? (`The Eye`)
- * TH 2016-04-28 10:30-12:00: R User Group, room 373 in Smitsborg
- * ?? 2016-05-?? 09:00-17:00: Group exchange day
- * ?? 2016-05-?? 09:00-17:00: Group exchange day
- * MO 2016-05-02 10:30-11:00: TRES coffee break, room 5.80 (`TRES coffee room`)
- * MO 2016-05-02 15:30-16:30: TRES meeting, room 5.?? (`Blue Room`)
- * MO 2016-05-02 20:00-22:00: Giacomonday @ [De Minnaar](www.deminnaar.nl)
- * TH 2016-05-05 16:00-17:00: GELIFES lecture, room 4.?? (`The Eye`)
- * MO 2016-05-09 10:30-11:00: TRES coffee break, room 5.80 (`TRES coffee room`)
- * MO 2016-05-09 15:30-16:30: TRES meeting, room 5.?? (`Blue Room`)
- * MO 2016-05-09 20:00-22:00: Giacomonday @ [De Minnaar](www.deminnaar.nl)
- * TH 2016-05-12 16:00-17:00: GELIFES lecture, room 4.?? (`The Eye`)
- * MO 2016-05-16 10:30-11:00: TRES coffee break, room 5.80 (`TRES coffee room`)
- * MO 2016-05-16 15:30-16:30: TRES meeting, room 5.?? (`Blue Room`)
  * MO 2016-05-16 20:00-22:00: Giacomonday @ [De Minnaar](www.deminnaar.nl)
  * TH 2016-05-19 16:00-17:00: GELIFES lecture, room 4.?? (`The Eye`)
  * MO 2016-05-23 10:30-11:00: TRES coffee break, room 5.80 (`TRES coffee room`)
