@@ -11,9 +11,17 @@
 * checking if there is a namespace ... OK
 * checking for executable files ... WARNING
 Found the following executable files:
+  .git/objects/00/2c5f05437c182d8435c06a19a89fe7276b920c
+  .git/objects/00/edc2cf1a36713c52a6a7f1212a1c5c0811b10c
+  .git/objects/01/2d93afe45be5e06a1061d89bf3156cf787ebd1
+  .git/objects/02/54ea6c7cf69bce2fd80ecc8f3be1bc5c1646c0
+  .git/objects/05/9a48ef84b000f9d0922e01514839455783ee12
   .git/objects/05/b367c937809b9a914d55887be75fddaf3fff1d
   .git/objects/05/caa558d9e5290711d5332d2bcd2e6e94e0f8bd
+  .git/objects/07/3f5b5fca943eea74f2da32920202304c8b2aeb
   .git/objects/07/8718c324c687459e2578250148396386e27058
+  .git/objects/07/adc38795c58657cd8def50dbf191fae6a38a50
+  .git/objects/07/f8730d62f88c601e54d1344c9030d8835ba9dc
   .git/objects/08/8885c078ba4d3ea2692f45536097adb3087630
   .git/objects/09/52e748e5eaa398e280b50291ae16efc6219182
   .git/objects/09/f880c2ea278a6351f2a4f2d1731cf0ac4251ce
@@ -21,59 +29,116 @@ Found the following executable files:
   .git/objects/0b/4935aacd563214015a3afda80b2ca520214719
   .git/objects/0b/672f7f8c9f91c4bad9d89bf79527d7ef27da70
   .git/objects/0b/74ec691e3b27a921f0f7a4c97b6a86652b1121
+  .git/objects/0d/437317313bea7660b594dd324de9edba5f84c8
   .git/objects/0d/69372cc02d97153d93383e4045beac91af65d7
+  .git/objects/0e/3d4d246f1e766f0f125b9411655ffbc0d3cfe8
   .git/objects/0e/87fa621d383d53b462098c976307b83a195a45
   .git/objects/0e/d14da5a30132943ffa55deaaaab35fe22f3c60
   .git/objects/0f/12297b5a5d57239a4a8519de06935b780d2cea
+  .git/objects/12/a33f9e8ed4b0d68969cb4dbdddc17c2a67d07d
+  .git/objects/15/35af73483f6c6716c4d2ddcab108c444b4cfed
   .git/objects/15/f72a9b8ad9629f1e7a9e9484bab06d94f3e7c3
   .git/objects/17/41bb093c6a43b47ea2d354dc0269abe1ef51ea
+  .git/objects/17/679f115d1def84cfe847dc0eec6f57b8c88556
+  .git/objects/18/5913781e264e148b1a4425fdd47e9f1aa5928b
   .git/objects/18/a1027c7ff1a0341c230edf871b65847050a58e
+  .git/objects/18/a1a17bcf445fa3dede5113178d7fea5de90d48
+  .git/objects/1b/77eda85429c5936c1a548c119f1e5c9d9e1633
+  .git/objects/1c/477d776901a45823d59837fa1f88c32a8ebe3f
   .git/objects/1c/681ae426cfaf5a04303fb3a35d8761914ee28f
+  .git/objects/1c/76beaf51ff7867b239d965f8ae38f0e0579852
+  .git/objects/1d/30bc848dc2620f9490c705902cb9f4dd269dec
   .git/objects/1d/6b1417d9fd29082eccf63497c5f94696278777
   .git/objects/1d/a2cb5f2e9230696e3a605fda68809285baf500
+  .git/objects/1d/cd49ed161d8c898ecdfb26eb1b18eca3ece7cd
+  .git/objects/1e/055dacf96b392720767a45f0510dded9402df1
   .git/objects/1e/97c6b76fd97f0770d9a4913e0972212b7aa445
+  .git/objects/1e/dca978805372f050cf26f0c3516f7f86cdc607
   .git/objects/21/38b118e55b4b73514428611560ea72c0f6b5f6
+  .git/objects/22/29efdca22af0e63fc558c15f957e0322ee69c8
   .git/objects/23/a9d16f889286ab5a2aae134adc99493d908cd4
+  .git/objects/23/eb2b24e952413fa7f57048d00d6050ec2dbb15
+  .git/objects/25/5b73f212350da92d20e6cdcbed408cb71becf8
+  .git/objects/25/c205c1b50118c524da5f6f7698674715dc125b
   .git/objects/26/a39aa9d95faea69632eef594b2dc5f2225c6d1
+  .git/objects/27/0296103abe413d1706aed846df43c133c3bcf1
+  .git/objects/27/9a12c8e3ec3876bffa9a537a9675187fb09cd8
+  .git/objects/28/8ba7d88b45feb65bcc1b60e4376032cfb7bdc6
   .git/objects/28/bb65186a76c1042359a2bc87b8a5ece2ab18fa
   .git/objects/29/1c28309da7bfb4835ee49cfb6e4edfea7dc8da
+  .git/objects/29/af30ad16d26bb1cdca4b7936b38ec768279e0f
   .git/objects/29/d621dd2484eb00dbe44012000f889d43b9e4e8
   .git/objects/2b/36f069ed5afd5562868e0b5399c328456c352f
+  .git/objects/2b/cd48e0af20d496c729cb4e316ce625e7920e71
   .git/objects/2c/40df5cc86f12ba7a3dee918cdbab8f82e95333
   .git/objects/2c/724765e35397888d483f9cbd1509c32068b98c
   .git/objects/2e/3b138adadb802fe5cb9373e33d9c1e26983119
   .git/objects/2e/dbe3fcbe6cd09f3a177fde53fc437c13804c95
+  .git/objects/2e/e02563dc59b74351823577cea455817be35e86
+  .git/objects/2e/efcac54428286f4f115ac5ed130d6243755f53
+  .git/objects/2e/f542b4ba845997569d420e181f3c271ffc65ff
+  .git/objects/2f/3289229f9bb56b8593c076901d61db283dffdd
   .git/objects/2f/9eaaf246180c42480c8e36a8ceee1beddd3afc
+  .git/objects/2f/a95d657aa51bcd644e5dae6308e167b645b5b2
   .git/objects/31/79635940e2402dfc860399f54457f9b5270d49
+  .git/objects/31/a20349f31a44c9c92c0e72fb00399c59077ade
+  .git/objects/32/17b73e889afc010a3e72f395cbb5938c323cbf
   .git/objects/32/917802c13308c95ab43b6ee3974e4fef442358
   .git/objects/32/ce1a59a1544a8dffa5ef682bda07ea5e93448b
+  .git/objects/33/991ef44e9066f847918d97fbcd8785a65e6e8d
+  .git/objects/33/b0a690418cdbf9208de5784b3d4f7718fb1158
   .git/objects/34/66e72da412923d3c93fbc297c28b09b5ba18e7
+  .git/objects/34/bda8c60a4f1e238de2aae9c621987286ce9b7d
+  .git/objects/35/5dba4d8b43f570968179ad546ba71a1f00879a
   .git/objects/35/d3939c1ccd00b188efd743f1f35e8ec1bd54ea
   .git/objects/36/497c7e4d12f5b168e8ba08de5d14295bf45a75
   .git/objects/36/72c5a9c720c5a47d49f4892d84c27bf1481b39
   .git/objects/36/7b81166ed4add98beffef4c0da6eda36341860
   .git/objects/36/f7e1de19ea2a11edeec723115a71e8f930f5ff
   .git/objects/37/4530f82f12f27f23bcbae9fb0be9806938b80b
+  .git/objects/37/4b821cde13d18d8e9e4d680a19ea84b5602980
+  .git/objects/37/58de667d9bffe06ae1384d95f0c677a6f6bc5c
+  .git/objects/37/a3cde532dd24445184c88ffb2460e9f6b10bf7
+  .git/objects/38/32c269113af142600adcf94c31788b14e27b51
+  .git/objects/38/372e2c5d3b18f9c6af9e85963fcaf72539cf84
   .git/objects/38/4db982628646be5a570b6bdc7fa7618e74c1d8
+  .git/objects/38/542d23682e8be76437757290844ddd171ce608
   .git/objects/39/d112001630c595c862221cf1c697473fae1bc7
+  .git/objects/39/ff08628c97f7f0ff08b304a061fd3959dbe8d9
   .git/objects/3a/405b259eedd99c9d391747186ecaa271b05b76
+  .git/objects/3a/8a3907ffdb82af51e868e2324b7ee51c92e82d
   .git/objects/3b/0a09773b573115bdfe473f67c53628309439f4
+  .git/objects/3b/65e3cbb872050f5dbcfacd3f2057d52d28ba0e
+  .git/objects/3b/a318a303845d65527789dec3400f5cffd22799
   .git/objects/3c/2f72f89538006d8752b374e0d4e37ba82278b2
   .git/objects/3c/bd4c9820157348804b68e8c92e576f69e1e95a
   .git/objects/3d/7d2a5b23d427348b6c6fd32b09cc2ed73644ad
   .git/objects/3e/aecc9527d9a6124d0a021bb30f495036192a54
   .git/objects/3f/0e7acb98d855c98a3c59e226089830dcc12286
+  .git/objects/3f/1d15f40cb187bf9a325b959bfa6a531995c0bf
   .git/objects/3f/396d1e5c246e76b4a6d9627378454a3fb509bd
+  .git/objects/40/26a90fcd9ccf1c488afd4bcf7c7626f4f53603
   .git/objects/41/93f8077454cbd8dad0fb40e1a1cebdd5f03f84
   .git/objects/42/90545765e191c6d65525d0415a611ac95a1679
   .git/objects/42/b9434d8b0ce756433b67be96e2027bd599fa1a
   .git/objects/43/488ffb0cd3043d0172d2265c70ede9451b6aa3
+  .git/objects/44/2cb43b5f8f43d7caa3387b09b469ded2380aae
+  .git/objects/45/44de06ebfd81c6a5668347573d2ec5845b5e84
+  .git/objects/46/325e6de6f0a0bd428c09c2f9dbf4131a186943
+  .git/objects/46/e674a10e31638a397bd05f6f21471e375b5c4e
+  .git/objects/47/2a2bae9196bdeff45b0a4eb8abe4b547ae4602
+  .git/objects/47/75d144b8432482d968c6c82aa45cf223451bb2
+  .git/objects/48/18570785b3194b4b2ccaa6e8c8e49516c24000
   .git/objects/48/3cb6b0d06f1f4259f809431740bca2d78eeea8
   .git/objects/48/500d2ddc716feea28f434e0f59bde821664f7e
   .git/objects/48/80e986ba4d68443b1e3b46791afb1dd0f17069
   .git/objects/48/930dc89aa8af70fc035aaab3c83c29d3fdd7ae
+  .git/objects/48/b483e4d64c8e1b665370099e87a4bfae7bc08f
   .git/objects/49/683170fb970ce9068415dd67cbf8c69a3dca48
+  .git/objects/49/ef850e2a61f76e6734d822958d9d6fe70f2c1e
   .git/objects/4a/8c9709e20c99805f47c1a072ce1d382e2a74e3
+  .git/objects/4a/b90c77db51ed76a534c452495aafa0a4603288
+  .git/objects/4b/8f6a5f599ff6514b1c2071f52a6319be08ec30
   .git/objects/4c/f40c392b7a3970034e3c83587d7acff0b07076
   .git/objects/4d/b8888cec00825fc1d1ba7ca81b4fc60ff187c2
   .git/objects/4e/60096aeba840fd55f7cacaed6481fc08b16058
@@ -83,35 +148,60 @@ Found the following executable files:
   .git/objects/4f/9303ff4816496b25634f7681fc95520372c770
   .git/objects/50/81579bc6e4d5bf597b39103617cc3a16ea499f
   .git/objects/51/7f3104b2e8b55d2137d9f909bcae62ae465661
+  .git/objects/52/42e07bdcaef11a893b2d40e06cadf5cb5df335
+  .git/objects/52/4d32b976c82bff18a9c5b3cf3ecca1d05f1cd3
   .git/objects/52/c16723ce2476473ae93190a7658789cf6f375d
   .git/objects/53/251e1316e086f0170189182005cab63940f0b3
+  .git/objects/54/0b4478a6ef4bdf851520d6d795492e125f30fc
+  .git/objects/54/5b79df6823be7a59e26058e4ff9c648ee6164d
   .git/objects/54/c91b2a4b7677627ad2ec40177329b57911d20e
   .git/objects/55/5566cbe3dbdbbd8531a68f6e54bce349dcb287
   .git/objects/55/5a21b82407abb2fdd588251e10bab90a3d2968
   .git/objects/55/88133c29d0d4d3e369b89670f39c69fa22a232
   .git/objects/55/bd3252d84869b0411460a08372db9b81d1ab9c
   .git/objects/57/6a45c01fd16cfed7afed691aebe6a91994d2c7
+  .git/objects/57/c212c091e95126ad16f3cc48cc2e18fc842e02
+  .git/objects/57/f6ed9f6f010fed9ce447ed723ccc02f8e9a000
   .git/objects/58/3d6464fae116aac6ff3121ddcbccbe6ac61bc8
   .git/objects/58/a17b80dd797412d37685c122ee37c7b47d8318
   .git/objects/59/c0262f35c3c468d4808af7590f4ccf0510c332
   .git/objects/59/ef6042e1d8fda05118af40689f928351746e51
   .git/objects/5a/67390a4cc861da6d9ee16687c9f847005c9017
+  .git/objects/5a/9da5e718d8f2fcd99c09a515bcfe96ba540fab
+  .git/objects/5a/a9e32e2976194e653d9a15dfe2cf4a9fe311a2
+  .git/objects/5a/b506ef6f710f3691bd4f7d72e131725601cbc2
+  .git/objects/5c/80e96b7b62bcf0b34e4c7b462c1ed468ed1872
   .git/objects/5c/8816e6f0a4c16dda7dd228ace061e22c57d667
   .git/objects/5d/48bceb1b6852c038ab7379817630749bc5830f
+  .git/objects/5d/db6e0c12e3c10c3ae00d27e1b97837ca5211a3
   .git/objects/5e/7070b662657ea57530f3340405915b80c55d91
+  .git/objects/5e/919e5ffae86ef320305bb78aa5d84c86a9575d
   .git/objects/5e/b1a44c49394d7c28479be2e53323c2ae89b76c
+  .git/objects/5f/c617011871ab5439ab40481673823fc5a68921
+  .git/objects/60/5eee1816472a2e0d11ab3ab0e4b3f6e7eaabba
   .git/objects/62/46027b050b37f56042e34f45948401fb821a95
+  .git/objects/62/ae5889b4fdb6a990fc813a726768e9e2c607eb
+  .git/objects/63/674272d8703361e8ee486cd92360cf4c21d3d1
+  .git/objects/63/72079c1a08af25f2e8e32c190f0e0a0d57ab5c
   .git/objects/64/63b69e90ddd32786c1c859f94bd56298996d00
   .git/objects/64/ab0bdcb6222f50a8628a2b4edefea0f2b465a7
   .git/objects/65/6ae22f84fa908ac3c8d7d39d19a48c35be8f23
   .git/objects/65/e34aadc2625b16fb55a1fa8277757f89127af1
   .git/objects/65/fe0f0a53ede7f7e62d935df05d4f7c0d5a8088
+  .git/objects/66/7de7693bd53edc48edbdc30845646501d05f40
   .git/objects/67/34c522a877c4a9f37717b53671fe8ca1917a36
   .git/objects/67/5bc1b87351192fe9311c06f970c20fe0cfd086
+  .git/objects/69/505aa4f6c21ddcbaca7739775c84e49dc11bf5
+  .git/objects/69/8282b4b4dc69fffb8d2a220fd3fe6ef4c1ad05
   .git/objects/69/eb8996638d235e6521ecb27c4c5ecc24826fc4
+  .git/objects/6a/fed0e1e3b912205918dd5d1f1bf2aed5c4d810
+  .git/objects/6b/2a50949890c6e0cdb72ac56962604f15386cf7
+  .git/objects/6b/707bb58cd5aa82832ce752880c598c2f178bc6
   .git/objects/6b/71e10c8d4cd6e299a77c057877f95160bc69eb
   .git/objects/6b/dcd4028f2737d3cb1a18ea95d9b244a04fdd2a
+  .git/objects/6c/21f397b2d6ee8fb85ee390ab3f4160713d0710
   .git/objects/6c/54a07219881c94b22a061a31c338de9b49261f
+  .git/objects/6c/5884691d0868cb644d910f432f27dfda1b71a2
   .git/objects/6c/72ba2a427345587c452dc3a21c9af887f2f8db
   .git/objects/6c/a767d09efc0e82f78ea2f47bf206c9ef6eb380
   .git/objects/6c/b98494749a6b3906880095778730598cead8f3
@@ -119,59 +209,106 @@ Found the following executable files:
   .git/objects/6e/b3e5f21f7c6bc04dd38312d572ec1ae9bcd702
   .git/objects/6e/e0c4b23bd110a7ae8713d73755dd2b3f75c8c2
   .git/objects/6f/251eb34edf3736790a69a58c82fc8f8ff199d8
+  .git/objects/6f/25816f0101442a5d5a13e6b58165e052b2fe5e
   .git/objects/6f/6e433b204e283f9cd054ffa4c92ad7104c7696
   .git/objects/71/53d3a5e6362165db3c283bf4c3e836a5657974
   .git/objects/71/5a944cbeda3370385aba7427b384e6eccb9e27
+  .git/objects/71/d26fbd3d71483a6dbe9ae0c4d80f64f268c339
   .git/objects/72/4ff8511eb9f5cfe5a73574b44056f4326ec924
   .git/objects/74/1c67b5779afe05dc83f7496f99fbd393782b59
   .git/objects/74/cdb002a3c9a4d8933d557f2c97a4d93c6b346a
+  .git/objects/75/0be4edf765f350465e961c55785ad01ca64533
+  .git/objects/75/941f4cfb6acd2aad27260f2e534522acc71e92
+  .git/objects/75/be0fec2c507309b2fec86f7ff0a1c159e2b195
   .git/objects/77/72ab7dbe99ec64ba0d2cf382c7d94cc61c2c24
   .git/objects/77/be42b583abc972e396fa51f377c245fad67239
   .git/objects/78/1cdce347115f2f4b571ec4749ad59b021e7769
+  .git/objects/78/3033343f6894887ef2df10f307f256450a14f5
   .git/objects/78/509c574a3742bbbff76b7dfae97ca2f68c5685
+  .git/objects/78/b7a84f2846f159f0d3dad3b32370e077865845
   .git/objects/7a/125b7867668207ca49739b21b4e7a2225a7dbc
+  .git/objects/7a/1eb7c221715ffc60fea3b07c5c86d4336aa9a6
   .git/objects/7a/2b6f2c5705e56044fedd832f9075ee490cfe19
   .git/objects/7a/55cb7c94c8e8a59ce739d494c424af725c879b
   .git/objects/7b/49c03213eed1674b808b3af6d62bfac42e0178
   .git/objects/7b/d76e1407afe9e8f2e40cfe74e1764c278eabc9
+  .git/objects/7c/3af87bcea880e3f1d13c429c3abba115899e48
+  .git/objects/7c/648e90b4c0544517057f086013478e788eb348
   .git/objects/7d/00973329334cb586e0de7104b50dfa10e25d62
+  .git/objects/7d/69abfb338cd12077ba770094218c542125dd62
   .git/objects/7d/9541560951817804618b0fc616da3e41a1b0af
+  .git/objects/7d/9b3ca996e78a8e71f8a80285e049541fa202cb
   .git/objects/7e/37dfee784176207579981bf061fc6126badad4
+  .git/objects/7e/3b87f200adf2ddd43d94d8f33124935354f83e
+  .git/objects/7e/de530ddbe643f93d0b0e52883460b0e09ffc4e
+  .git/objects/7f/33ca8388d4495b3ab9f316ccc8cf6dbd92853e
   .git/objects/80/636a4d96ca16a1370beebe8faa86743d04593f
+  .git/objects/80/e1a810e08ac74d090cc3840161235a80eba50c
+  .git/objects/81/586b7efab9572be361abca117fe91c338679de
   .git/objects/81/c843ccb14bf5b315b1f01a564acaaecab0af1c
   .git/objects/83/566e2fc933e87415bd9b15a1b1bee595c5ee4f
   .git/objects/83/aafa7b7296d9ab49562094ae80e213e08157de
+  .git/objects/83/e1c27a5e5fa2878e88547ab855b22cb7185c10
+  .git/objects/84/2a88ef9dbf5e5ae06231f60f71d00fe11d03ee
+  .git/objects/84/58427a1bf858ea42a346366cd9c964b5ec5d6e
   .git/objects/84/9765e24d9145be2a95d55a5c296a864bdc2970
   .git/objects/84/f5e4f97d4fda1f1c258650ec4dba9b8d95a8c7
+  .git/objects/85/9477fff724bd53d903a434372d77b19fffb85e
+  .git/objects/86/daaa8b2ee5970e649ff15f21e7389d31805171
+  .git/objects/87/4a369957bc1d06afe935f63bb342848c4b6a68
   .git/objects/87/679da08e4815e1b0f580ad61c0d4a9467f626b
   .git/objects/87/8d9f3327496c0027bd355e57282e44984b0725
+  .git/objects/87/bfe26e28935d505606500d0f09be1e345aacde
   .git/objects/87/d390bf63f09273650df22d506663c0296463b7
   .git/objects/87/f0d565905378b057cc2ad5728891647d7c9913
   .git/objects/88/33db06f60559ad12cd9019c0e9ffb16c37c2af
   .git/objects/88/864ef2596c729a6eec3b43482151878ee8d97c
+  .git/objects/88/a8ebed9c4ce6f4b41310b3eb7db55ece2922ff
   .git/objects/88/f18e28446e6b16f2f52a1cd0e2c520a0ab554d
+  .git/objects/89/26653b609c5965258e5b3e2ae7fb47fe611110
   .git/objects/89/51a1655128c1523e814cdf2b7ed4acd88fdbe7
   .git/objects/89/78aa288353125d5b4258d52ee548258bf48c9b
+  .git/objects/8a/82beb21fb3c39fffce2de7ff7524edce302efe
   .git/objects/8a/9d569c4a27c93a45793ba5546e599c292f5c3d
+  .git/objects/8a/d6d2508705d9a8fa77097c91589694c4a7867f
+  .git/objects/8b/31fc8be680c0758e00d03feecd02a3a2304a71
+  .git/objects/8b/4a5944970c06442dc858b65fdbd2293862b78a
   .git/objects/8b/cbc8310d7343467eca0288538c33ccb7c522e1
   .git/objects/8c/e86f631ee9078ee6065f9a5f1d94110436ba52
+  .git/objects/8c/f1af80c47396a712bb8edb422539826cedc46a
   .git/objects/8f/2d22f492871b5955450dc4814097935f2a4dd0
   .git/objects/8f/981f2b609f8c119457cc099c867fbe6a4a6929
   .git/objects/90/3f45049c8f2a1920426c9577eca3270ce0da8a
   .git/objects/90/62e432bf588ea6917c9d00778162d8ceb437c4
   .git/objects/91/78f44876c011c1e8099739422abe2d8fc31f40
+  .git/objects/91/b06e7dcb0db9e7fda65bad3a8777aa4f143b1d
+  .git/objects/92/990878f8ed1187e2d9cc9eb7ecc22853ad82c2
+  .git/objects/92/dfbeedafc69278382abbb9bcc14e44f7b27f64
   .git/objects/93/9f8ca8e2103d8e115b9f8b95f704cac80828af
+  .git/objects/93/acf5cccfa6943c5a28ce713bfcfa31e1c0f15b
+  .git/objects/93/bf4af6f66ea1876ca24645818f0b18cf1e9ba6
+  .git/objects/94/2c3b21877e6952d9e14db7d06c021644ab1158
   .git/objects/94/aa8da95fcbfb9a211ac9147aa8c7116e408e86
   .git/objects/95/2f863d4481c59018ed19310a076cc20e0e721b
+  .git/objects/96/26363bc8472b4224cb107df1ccfe9d5e59b114
+  .git/objects/97/dabd36a105f23356ae2814420c082ea0172994
+  .git/objects/97/f9eb2358864693107892f740eabf62f0a59efa
+  .git/objects/98/404ea3ec64180d13d019f4a22151ba2f2a549e
   .git/objects/98/4c4000320e6f00a4ebbbd182d819a6e08a1eda
   .git/objects/98/6d6765ba0e35563a2288b25b3bcfb4a43a6013
   .git/objects/98/a3458235b6e93b9cf7fcec42b3117dfe573de3
+  .git/objects/99/b0d0c957fd5500af25356b79f4ac5ee9fc8805
   .git/objects/9a/473c3414c5510407b8a1d6cc0ae76d7aa62591
+  .git/objects/9b/7e5122ad22ddd7efb2c8699ab41d5cdb560ee8
   .git/objects/9c/0790c3e87fcad4f5b0de4aa14c05119873ab45
+  .git/objects/9c/a1155ae24d2dcef318624284d6159fe42df957
   .git/objects/9d/548538bf1213d4efef9ed632f0d1aeecfb368a
   .git/objects/9d/c39f55357973f2397143dcabbbb47cd43d394d
   .git/objects/9e/68be63f30a69db1556e9fa36fc4d9a8ca8fb39
+  .git/objects/9e/b19ed0b3b2ff833d40100987982b2b9e83fc09
   .git/objects/9f/628089e22efdd4811019da354c61bd5d358f8e
+  .git/objects/9f/6a735f90c8b4041c2d8bb90517a062f5767e6f
+  .git/objects/9f/e94b3f84b0054c7af368db867dac0b566d2770
   .git/objects/a1/b9e50e9ab655de3382e81cadea04a9ec9bf1d1
   .git/objects/a3/3db830270c3b20639555e6265d8ed652c05aba
   .git/objects/a3/c892ee63fedb8a0f7ba7da18610d876b7f1fd3
@@ -182,44 +319,82 @@ Found the following executable files:
   .git/objects/a6/9b18197b0a0d78b2855fdfc1341efeb22d35f9
   .git/objects/a6/f2dc57d37e4e81c9465e58045a1f048012d21a
   .git/objects/a7/35f9fb1caa99345109fb2b3a7313894e510879
+  .git/objects/a8/591a67aa1a24ae3aa302a856cff36b309791a8
   .git/objects/a9/ada6b8fcd2ce2bd5f8afe487b12cacf2e52db8
+  .git/objects/aa/2658f7551680c90f01f8b22a0a47fd2cc2e664
+  .git/objects/ab/b1c0913780347c483d013407be3736c94ef1fd
   .git/objects/ad/76783c09ace66b2d90aced46c7de98e4b1070c
+  .git/objects/ad/ba3c3c78c21baa342ab7842842431c74e67877
+  .git/objects/ae/5feb4695bb09b294b3ae057364ba335ed50113
+  .git/objects/af/2b80831963c344cf4f2f5827cfa39b268bc101
   .git/objects/af/abc826cc139196f12f3b4411b408880ed6ad82
+  .git/objects/af/c716b8a5333ba7b67778b9fdb86cf3967b9733
+  .git/objects/af/d4ea29d3b9b8a0e9ee3175472af27c8b98b114
   .git/objects/b0/684582cdddcdf8f962b5f8b5ec364b82d5e22f
   .git/objects/b0/ebc689f546d7a5b447c686496e9b7d1b5bfb1a
   .git/objects/b2/8727da2bea98ab7a498d0501b34a4bec902b73
+  .git/objects/b3/f6f2aabbe357cd3bf0861c0745455ce5266ab8
   .git/objects/b4/ae9671b77e59339641acfd22cfa2311d58aa78
+  .git/objects/b4/edf05f4e1df189d3fc7215bf0e558cc8f36fdc
   .git/objects/b5/27c286f0c1dee9104c1f5dcb1d46d8c8be023f
+  .git/objects/b5/b5b9806540175f131393ef2b719801675cc7cd
+  .git/objects/b5/c4c67e99631756f4daabcc41ddb56fd5fe7161
+  .git/objects/b7/1d5cc38300ec5107734e1b1871fb5940342f83
   .git/objects/b7/471546fa920033adf62fcdc9e639c28848c9bf
+  .git/objects/b8/29e5e62c2a2d70d4e70830bf26eeba283b4ead
   .git/objects/b8/2f7d0443084fe4637d90a1ba57600b676e7347
+  .git/objects/b9/31573efa571efabfae4940097a7477c866c4e5
   .git/objects/b9/32b347ef794ba7392ba36d767ca8aa9b7c52b4
   .git/objects/b9/3ad04191ad0f80ff5895525a22727afdc11c85
+  .git/objects/ba/67426cafd7e48b20f2484b6c7fe2c5bf1962a3
+  .git/objects/bb/49dbf70d63372f2c645fe6956acbdbbdc3088b
   .git/objects/bb/772f9b7b651de3162df9cdfa65cf41720449ed
   .git/objects/bb/a04caef5b4154f6a1ea18449f80186202ba801
   .git/objects/bc/0e45f36208d06f75d91851ffd0bd1973374d0b
   .git/objects/bc/92b7ef4ae63d7df13c745619314ac368428c20
+  .git/objects/bc/f92d6776c0860f07c0c89e32cbe25551034450
+  .git/objects/bd/82e0a9e2a81b8c84d999614739c7a067b982ea
+  .git/objects/bd/9449df1fd95892a3b2dd8ca3a404c1f382cb74
+  .git/objects/bd/c17dedc03f3472b374acaba197413624a49c47
+  .git/objects/be/05c7cc729e99758e8ce3d0f2bb5dec27205878
   .git/objects/be/a91c3838049a04884e260a2a2ce239115a2f76
+  .git/objects/be/e324073b3bcf7261b55b42cf16ebd03828a461
   .git/objects/c0/075e01fef2aab6100ef6f8e7fd4fd46b1df6fe
   .git/objects/c1/26cc7c8d5b277db25a1b7fbfd118c980b0dd5c
+  .git/objects/c1/5c2df4a90a519a34d7f48765501498e385f2c2
+  .git/objects/c2/324dbfe2862b18157bd1276e751e8599011add
   .git/objects/c2/b41cc32a089ee0089f676dbb2d73a4c1169138
+  .git/objects/c2/edc4452df4323c5e7f898b6e8b67732b9681a4
   .git/objects/c3/48cfb97f4a595b5aef44ad96ad7b9cb153351f
+  .git/objects/c4/2f23e4f514669be448f6d39f85997059e4602e
   .git/objects/c4/b3c2d98f175abb4233d60e8176da455f9b1d37
+  .git/objects/c4/c0450822c6e2eadb9061964baaa0a036e4b5b4
   .git/objects/c5/91d9057743615f5338936b1b941563455b15da
   .git/objects/c6/2825074b642bda86aac85736183046b4962809
   .git/objects/c6/f4eadd3858992e88225d73a4522161cfc8a38b
+  .git/objects/c7/40e812e4b1d064e552fe74ad969597b0f4da32
   .git/objects/c7/67e7340ac2cb1914170098a54350f9fbb2d8d8
+  .git/objects/c8/560d1dc8e26ef64945e268d510fa8267c13ead
+  .git/objects/c9/4f357402011e9ca79cc37b21e10a9cf63d8c86
+  .git/objects/c9/6d2e8edb7621ad266895f017214503d15f2990
+  .git/objects/ca/3a11e954f76cb20860a7bffa6244d49292b74b
   .git/objects/ca/546b1e0a486644b606a752c8113a8f9c0e7127
   .git/objects/ca/abb666a9268252d663fc22d8280f50b3abfc8a
   .git/objects/cb/326ae5e0c25327c099bc1d09644da32ef6a315
   .git/objects/cb/619ec8499188b231b7a69cddbfda02f648a465
+  .git/objects/cb/7fd61cb1fa5d3b8de59c6a4273bf3c98dfc8b4
   .git/objects/cc/32f3994cd84b50d490227dbe65f8564ad60ddd
   .git/objects/cc/97376fb59d19ef672103e196ca0ba7f87d011b
+  .git/objects/cd/0f6dc737b23616bc30364320002ffba49653a6
   .git/objects/ce/3451b23cfa8495e638dedeb94cbd95203ddc39
+  .git/objects/ce/6a8677ae83a8f914a4eec133e638ebc9530730
+  .git/objects/cf/00c39417b1761212facc8c88265cdc48a91d35
   .git/objects/cf/3254f5b8d3c063d15a2b4f26f288d331d3cf91
   .git/objects/cf/a2ce2376f7063be081b101b1aaab85e9f07785
   .git/objects/cf/aec603c17db0dba2208315262f8723b83b9e9a
   .git/objects/d0/4bee3151ca8aa5efb26f8c4cd97c6157841ea9
   .git/objects/d1/d56ac6de97fd5eefe219984a75b7d7bbe18dec
+  .git/objects/d2/db60ae9640e0a1ee55313ad2f542603c4b748b
   .git/objects/d3/56d764d4283b07052a8ffdd53ed345c76989ec
   .git/objects/d3/b0cc3c90a19db170b115a3fd41537ba18d5e93
   .git/objects/d3/bdc2a651b01e7c2f13d456013c91742838d9f8
@@ -228,35 +403,61 @@ Found the following executable files:
   .git/objects/d5/f8625bc1940edd2915f3af3f9aa0c06cc2d0dd
   .git/objects/d6/6a7089498fe6ae3a179b7b6f345757774930b1
   .git/objects/d6/ef3efc87c40d5d30d21a170fcbbac3b9c2fe76
+  .git/objects/d7/048445a82b7db379fe7d1cfb46cf2627886031
   .git/objects/d7/7b4e924ccc9695220435dec8b5c6396023140c
   .git/objects/d9/3730670f5cb6ea14760f9d16148c5ee0f91b72
   .git/objects/db/6eb9ddab2a331279974987eeb29e74e0509573
+  .git/objects/db/df60db2e48c8bb72c4df2fee577274a65ac734
+  .git/objects/db/fe7620211277c8c9d6db0fc429b6c446c7938a
+  .git/objects/dc/15401cb152be5eecd9bada69d22e0faa9057e4
   .git/objects/dc/33ee367128c032ffd37ef917e1e1cdda785f3f
   .git/objects/df/2ce96fc3cbd4ea6542c6b6f3e3614c9ea47425
+  .git/objects/e0/100b87aed2f9439f447e5d578c8143001f4fc4
   .git/objects/e1/c544d18ead923177c7c563317adedd0bada1a1
   .git/objects/e3/101676c6f59648300ea81c6b92b31e9ab46346
+  .git/objects/e3/9895894614896d3bd3c323087fcf4dbc6d4426
   .git/objects/e3/a0d882a81406231c9e7f92d94dd0745c7ef3ea
   .git/objects/e3/a9de92f881411c08f22db84da18028ceab9516
+  .git/objects/e4/64da163b4a1589879ac9ed0a2e6a8ce18f3bab
   .git/objects/e4/fb302e14194b14f85f78459f0eddaf7967a34f
+  .git/objects/e7/6e3dc712d4c0b1746694f8d7549eaab2067dc5
+  .git/objects/e8/80da4039ff694198219cff990878f55367ca1d
+  .git/objects/e8/90b54308ab61161ce53fdf064011d12be8834d
+  .git/objects/e8/ff3ccf23b35ba3fc98dab1b55e3f1705d3cdcd
+  .git/objects/ea/0fde81d2f4b02a8f76e16792c1865a85a205ef
   .git/objects/eb/87e06c160392bdae713c434fa98b0590984164
   .git/objects/eb/b1e2d540476909b12856ac03b6f1a4781d8fbc
   .git/objects/ed/5587e0b44c3e700ae28c29c69915cc0a1681d0
   .git/objects/ed/f1d3c687ee2339bc79e4ad1c8b4a2555cbc210
   .git/objects/ee/03efad38cc26fc0660bbe93547fa25d21fccd5
   .git/objects/ee/b929ee3e42ae521537c85e7aaca38ec1594d15
+  .git/objects/f1/0f5ea669d3de9e84a2ce5bf5752546b99cd02d
   .git/objects/f1/45c660bda248fde9b85f024525e1220eb6973b
   .git/objects/f1/a13700718915683616557b984df050b431d5c9
+  .git/objects/f2/20b74c59b6ce9fc4fc59e96fa513b217f5572c
   .git/objects/f2/5bb4903d0f4b1c9eacf56170304bc6957e52dc
   .git/objects/f2/ebda31ac6cc2a1f798d32b15e1a23a71ad3915
+  .git/objects/f3/1d84f5bc42643e58b18caa4babefad3d7dd21d
   .git/objects/f3/56566a9c153fbadf6c75ef059659006fc5c207
+  .git/objects/f4/2f899cf7ad2d719731303ad2679de72c157ef5
   .git/objects/f4/b55e962e9954edffe60414106e2fb767f5d184
   .git/objects/f4/fa91134779918b7d59c3ef93b326acd3b6fabf
+  .git/objects/f5/b1c6bb8a21447c3d5e58a8e590cef1b8a2ad19
   .git/objects/f5/def140dc1499054f4c3c626809e144c2ffafbd
+  .git/objects/f6/6328dd078483dfbd1944a677c9c0dfe70852c9
   .git/objects/f6/6486ffb61ec3efa4a82a640360dfddff2cec08
   .git/objects/f7/b01552f8d699b97c8ffb91978c78933fe9baf1
   .git/objects/f8/3d1617b1f21881d510c40d08b008d1f41f4ad9
   .git/objects/f9/986e365f8c17deb27f8b08efc2e7d6160a7a91
+  .git/objects/f9/bb04a2c98572f07f7f24c3df3857c096a4e0f8
+  .git/objects/fa/397b7caabd812e83b426c09e7d9352f67aecd5
+  .git/objects/fa/786e7b560024b97fc8283ab2fdbe76c1d72a92
+  .git/objects/fb/773f65b18949e7745158ad47959c67df623013
+  .git/objects/fb/f75bdbb4bfbc39f7eb880eb0c975d4743fb355
   .git/objects/fc/134cdea57c078a293919ea3ba9101708df220a
+  .git/objects/fd/26e93c595fac62e6f3b8d3a08e3ace07b37be8
+  .git/objects/fe/7a0a54eda6677bb5cdde2cfeaf4462672e7bc6
+  .git/objects/fe/c107a387640fc0b2d77e9d36ba9b6029a81d7a
   .git/objects/ff/8aa4b352cf35c0fd2e3066b649e9db71906a1d
 Source packages should not contain undeclared executable files.
 See section ‘Package structure’ in the ‘Writing R Extensions’ manual.
@@ -272,7 +473,12 @@ Found the following hidden files and directories:
   .git
 These were most likely included in error. See section ‘Package
 structure’ in the ‘Writing R Extensions’ manual.
-* checking for portable file names ... OK
+* checking for portable file names ... WARNING
+Found the following files with non-portable file names:
+  doc/Cer2016_Femke Thon & Jolien Gay_V1.0.pptx
+  doc/Cer2016_Useful info.txt
+These are not fully portable file names.
+See section ‘Package structure’ in the ‘Writing R Extensions’ manual.
 * checking for sufficient/correct file permissions ... OK
 * checking whether package ‘Cer2016’ can be installed ... OK
 * checking installed package size ... OK
@@ -332,15 +538,65 @@ to your NAMESPACE file.
 * checking Rd cross-references ... OK
 * checking for missing documentation entries ... OK
 * checking for code/documentation mismatches ... OK
-* checking Rd \usage sections ... OK
+* checking Rd \usage sections ... WARNING
+Undocumented arguments in documentation object 'branch_sorter'
+  ‘filename’
+Documented arguments not in \usage in documentation object 'branch_sorter':
+  ‘tree1’
+
+Undocumented arguments in documentation object 'collect_file_gammas'
+  ‘verbose’
+
+Functions with \usage entries need to have the appropriate \alias
+entries, and all their arguments documented.
+The \usage entries must correspond to syntactically valid R code.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
 * checking Rd contents ... OK
 * checking for unstated dependencies in examples ... WARNING
 '::' or ':::' import not declared from: ‘testit’
-* checking files in ‘vignettes’ ... OK
+* checking files in ‘vignettes’ ... NOTE
+The following files look like leftovers/mistakes:
+  ‘toy_example_1_1_1_1.log’, ‘toy_example_2_1_1_1.log’,
+  ‘toy_example_3_1_1_1.log’, ‘toy_example_3_1_1_2.log’,
+  ‘toy_example_3_1_2_1.log’, ‘toy_example_3_1_2_2.log’,
+  ‘toy_example_3_2_1_1.log’, ‘toy_example_3_2_1_2.log’,
+  ‘toy_example_3_2_2_1.log’, ‘toy_example_3_2_2_2.log’,
+  ‘toy_example_4_1_1_1.log’, ‘toy_example_4_1_1_2.log’,
+  ‘toy_example_4_1_2_1.log’, ‘toy_example_4_1_2_2.log’,
+  ‘toy_example_4_2_1_1.log’, ‘toy_example_4_2_1_2.log’,
+  ‘toy_example_4_2_2_1.log’, ‘toy_example_4_2_2_2.log’
+Please remove them from your package.
 * checking examples ... OK
 * checking for unstated dependencies in ‘tests’ ... OK
 * checking tests ... OK
   Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... WARNING
+Package vignettes without corresponding PDF/HTML:
+   ‘add_outgroup_to_phylogeny_demo.Rmd’
+   ‘add_posteriors_demo.Rmd’
+   ‘analyse_files.Rmd’
+   ‘branch_sorter.Rmd’
+   ‘collect_gamma_statistic_demo.Rmd’
+   ‘collect_posterior_filenames_demo.Rmd’
+   ‘convert_alignment_to_beast_posterior_demo.Rmd’
+   ‘convert_phylogeny_to_alignment_demo.Rmd’
+   ‘display_dataset_parameters.Rmd’
+   ‘ex-tuesday-10.Rmd’
+   ‘handy_bits_of_code.Rmd’
+   ‘phylogenies_test_chapter_two.Rmd’
+   ‘plotting_nltt_values.Rmd’
+   ‘research_demo.Rmd’
+   ‘sample_species_trees_from_pbd_output_demo.Rmd’
+   ‘summary_statistics_demo.Rmd’
+   ‘troubleshooting.Rmd’
+   ‘tryCatch_demo.Rmd’
+   ‘verdubbel_dit.Rmd’
+   ‘worked_out_examples.Rmd’
+
+* checking running R code from vignettes ... NONE
+* checking re-building of vignette outputs ... OK
 * checking PDF version of manual ... OK
 * DONE
-Status: 4 WARNINGs, 3 NOTEs
+Status: 7 WARNINGs, 4 NOTEs

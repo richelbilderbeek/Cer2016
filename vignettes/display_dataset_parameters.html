@@ -147,8 +147,13 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </table>
 <p>Parameter files in the folder of the dataset:</p>
 <pre class="sourceCode r"><code class="sourceCode r">folder &lt;-<span class="st"> &quot;/home/p230198/Peregrine&quot;</span> <span class="co"># nolint</span>
+really_show_all &lt;-<span class="st"> </span><span class="ot">FALSE</span> <span class="co"># Set to TRUE for a long wait</span>
 all_parameter_filenames &lt;-<span class="st"> </span><span class="kw">paste</span>(folder, <span class="kw">list.files</span>(folder, <span class="dt">pattern =</span> <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.RDa&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot;/&quot;</span>)
-<span class="kw">show_parameter_files</span>(<span class="kw">head</span>(all_parameter_filenames), <span class="dt">verbose =</span> <span class="ot">TRUE</span>)</code></pre>
+if (really_show_all) {
+  <span class="kw">show_parameter_files</span>(all_parameter_filenames, <span class="dt">verbose =</span> <span class="ot">TRUE</span>)
+} else {
+  <span class="kw">show_parameter_files</span>(<span class="kw">head</span>(all_parameter_filenames), <span class="dt">verbose =</span> <span class="ot">TRUE</span>)
+}</code></pre>
 <pre><code>## &lt;simpleError in value[[3L]](cond): read_file: error in readRDS of file with name '/home/p230198/Peregrine/article_0_0_0_0_0.RDa', with message 'Error in readRDS(filename): error reading from connection
 ## '&gt;
 ## &lt;simpleError in value[[3L]](cond): read_file: error in readRDS of file with name '/home/p230198/Peregrine/article_0_0_0_0_1.RDa', with message 'Error in readRDS(filename): error reading from connection

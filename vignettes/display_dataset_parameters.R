@@ -11,8 +11,13 @@ show_parameter_files(all_parameter_filenames, verbose = TRUE)
 
 ## ------------------------------------------------------------------------
 folder <- "/home/p230198/Peregrine" # nolint
+really_show_all <- FALSE # Set to TRUE for a long wait
 all_parameter_filenames <- paste(folder, list.files(folder, pattern = "\\.RDa"), sep = "/")
-show_parameter_files(head(all_parameter_filenames), verbose = TRUE)
+if (really_show_all) {
+  show_parameter_files(all_parameter_filenames, verbose = TRUE)
+} else {
+  show_parameter_files(head(all_parameter_filenames), verbose = TRUE)
+}
 
 ## ------------------------------------------------------------------------
 pcname <- system("uname -n", intern = TRUE) 

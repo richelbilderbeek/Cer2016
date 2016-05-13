@@ -56,248 +56,29 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
 
 
-<p>Prerequisites:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(Cer2016)
-csv_filename &lt;-<span class="st"> &quot;collect_parameters.csv&quot;</span></code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">df_in &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
-  <span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">9</span>)
-)
-<span class="kw">rownames</span>(df_in) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a.txt&quot;</span>,<span class="st">&quot;b.txt&quot;</span>,<span class="st">&quot;c.txt&quot;</span>)
-<span class="kw">print</span>(<span class="kw">rownames</span>(df_in))</code></pre>
-<pre><code>## [1] &quot;a.txt&quot; &quot;b.txt&quot; &quot;c.txt&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df_in))</code></pre>
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="right">x</th>
-<th align="right">y</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">a.txt</td>
-<td align="right">1</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">b.txt</td>
-<td align="right">2</td>
-<td align="right">4</td>
-</tr>
-<tr class="odd">
-<td align="left">c.txt</td>
-<td align="right">3</td>
-<td align="right">9</td>
-</tr>
-</tbody>
-</table>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(<span class="kw">rownames</span>(df_in))</code></pre>
-<pre><code>## [1] &quot;a.txt&quot; &quot;b.txt&quot; &quot;c.txt&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(<span class="kw">colnames</span>(df_in))</code></pre>
-<pre><code>## [1] &quot;x&quot; &quot;y&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.csv</span>(<span class="dt">x =</span> df_in, <span class="dt">file =</span> csv_filename, <span class="dt">row.names =</span> <span class="ot">TRUE</span>)
-df_out &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> csv_filename, 
-  <span class="dt">header =</span> <span class="ot">TRUE</span>, 
-  <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>, 
-  <span class="dt">row.names =</span> <span class="dv">1</span>
-)
-knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df_out))</code></pre>
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="right">x</th>
-<th align="right">y</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">a.txt</td>
-<td align="right">1</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">b.txt</td>
-<td align="right">2</td>
-<td align="right">4</td>
-</tr>
-<tr class="odd">
-<td align="left">c.txt</td>
-<td align="right">3</td>
-<td align="right">9</td>
-</tr>
-</tbody>
-</table>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(<span class="kw">rownames</span>(df_out))</code></pre>
-<pre><code>## [1] &quot;a.txt&quot; &quot;b.txt&quot; &quot;c.txt&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(<span class="kw">colnames</span>(df_out))</code></pre>
-<pre><code>## [1] &quot;x&quot; &quot;y&quot;</code></pre>
+<p>Loading this package</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(Cer2016)</code></pre>
 <p>Extracting all file parameters is easy:</p>
-<pre class="sourceCode r"><code class="sourceCode r">folder &lt;-<span class="st"> &quot;/home/p230198/Peregrine&quot;</span>
-all_parameter_filenames &lt;-<span class="st"> </span><span class="kw">paste</span>(folder, <span class="kw">list.files</span>(folder, <span class="dt">pattern =</span> <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.RDa&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot;/&quot;</span>)
-df &lt;-<span class="st"> </span><span class="kw">collect_parameters</span>(<span class="kw">head</span>(all_parameter_filenames), <span class="dt">verbose =</span> <span class="ot">TRUE</span>)</code></pre>
-<pre><code>## &lt;simpleError in value[[3L]](cond): read_file: error in readRDS of file with name '/home/p230198/Peregrine/article_0_0_0_0_0.RDa', with message 'Error in readRDS(filename): error reading from connection
-## '&gt;
-## &lt;simpleError in value[[3L]](cond): read_file: error in readRDS of file with name '/home/p230198/Peregrine/article_0_0_0_0_1.RDa', with message 'Error in readRDS(filename): error reading from connection
-## '&gt;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(<span class="kw">rownames</span>(df))</code></pre>
-<pre><code>## [1] &quot;article_0_0_0_0_0.RDa&quot; &quot;article_0_0_0_0_1.RDa&quot; &quot;article_0_0_0_0_2.RDa&quot;
-## [4] &quot;article_0_0_0_1_0.RDa&quot; &quot;article_0_0_0_1_1.RDa&quot; &quot;article_0_0_0_1_2.RDa&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(<span class="kw">colnames</span>(df))</code></pre>
-<pre><code>##  [1] &quot;rng_seed&quot;                                 
-##  [2] &quot;species_initiation_rate_good_species&quot;     
-##  [3] &quot;species_initiation_rate_incipient_species&quot;
-##  [4] &quot;speciation_completion_rate&quot;               
-##  [5] &quot;extinction_rate_good_species&quot;             
-##  [6] &quot;extinction_rate_incipient_species&quot;        
-##  [7] &quot;age&quot;                                      
-##  [8] &quot;n_species_trees_samples&quot;                  
-##  [9] &quot;mutation_rate&quot;                            
-## [10] &quot;n_alignments&quot;                             
-## [11] &quot;sequence_length&quot;                          
-## [12] &quot;mcmc_chainlength&quot;                         
-## [13] &quot;n_beast_runs&quot;                             
-## [14] &quot;version&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df))</code></pre>
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="right">rng_seed</th>
-<th align="right">species_initiation_rate_good_species</th>
-<th align="right">species_initiation_rate_incipient_species</th>
-<th align="right">speciation_completion_rate</th>
-<th align="right">extinction_rate_good_species</th>
-<th align="right">extinction_rate_incipient_species</th>
-<th align="right">age</th>
-<th align="right">n_species_trees_samples</th>
-<th align="right">mutation_rate</th>
-<th align="right">n_alignments</th>
-<th align="right">sequence_length</th>
-<th align="right">mcmc_chainlength</th>
-<th align="right">n_beast_runs</th>
-<th align="right">version</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">article_0_0_0_0_0.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="even">
-<td align="left">article_0_0_0_0_1.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">article_0_0_0_0_2.RDa</td>
-<td align="right">1</td>
-<td align="right">0.1</td>
-<td align="right">0.1</td>
-<td align="right">0.1</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">15</td>
-<td align="right">2</td>
-<td align="right">0.1</td>
-<td align="right">2</td>
-<td align="right">1e+05</td>
-<td align="right">1e+06</td>
-<td align="right">2</td>
-<td align="right">0.1</td>
-</tr>
-<tr class="even">
-<td align="left">article_0_0_0_1_0.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">article_0_0_0_1_1.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="even">
-<td align="left">article_0_0_0_1_2.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-</tbody>
-</table>
-<p>Saving to file:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.csv</span>(
-  <span class="dt">x =</span> df,
-  <span class="dt">file =</span> csv_filename,
-  <span class="dt">row.names =</span> <span class="ot">TRUE</span>
-)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">csv_filename &lt;-<span class="st"> &quot;collect_parameters.csv&quot;</span>
+if (!<span class="kw">file.exists</span>(csv_filename)) {
+  folder &lt;-<span class="st"> &quot;/home/p230198/Peregrine&quot;</span>
+  all_parameter_filenames &lt;-<span class="st"> </span><span class="kw">paste</span>(folder, <span class="kw">list.files</span>(folder, <span class="dt">pattern =</span> <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.RDa&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot;/&quot;</span>)
+  df &lt;-<span class="st"> </span><span class="kw">collect_parameters</span>(all_parameter_filenames, <span class="dt">verbose =</span> <span class="ot">TRUE</span>)
+  <span class="kw">write.csv</span>(
+    <span class="dt">x =</span> df,
+    <span class="dt">file =</span> csv_filename,
+    <span class="dt">row.names =</span> <span class="ot">TRUE</span>
+  )
+}</code></pre>
+<p>Note that the comma-seperated file is only created when absent, as this is a long step.</p>
+<p>Loading it from file:</p>
 <pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(
   <span class="dt">file =</span> csv_filename, 
   <span class="dt">header =</span> <span class="ot">TRUE</span>, 
   <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>, 
   <span class="dt">row.names =</span> <span class="dv">1</span>
 )</code></pre>
-<p>Number of filenames: 6</p>
+<p>Number of filenames: 1088</p>
 <p>Putting the head of the data frame in a table:</p>
 <pre class="sourceCode r"><code class="sourceCode r">knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df))</code></pre>
 <table>
@@ -425,6 +206,135 @@ df &lt;-<span class="st"> </span><span class="kw">collect_parameters</span>(<spa
 </tr>
 </tbody>
 </table>
+<p>What kind of data is <code>df</code>?</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(df)</code></pre>
+<pre><code>## 'data.frame':    1088 obs. of  14 variables:
+##  $ rng_seed                                 : int  NA NA 1 NA NA NA NA NA NA NA ...
+##  $ species_initiation_rate_good_species     : num  NA NA 0.1 NA NA NA NA NA NA NA ...
+##  $ species_initiation_rate_incipient_species: num  NA NA 0.1 NA NA NA NA NA NA NA ...
+##  $ speciation_completion_rate               : num  NA NA 0.1 NA NA NA NA NA NA NA ...
+##  $ extinction_rate_good_species             : num  NA NA 0 NA NA NA NA NA NA NA ...
+##  $ extinction_rate_incipient_species        : num  NA NA 0 NA NA NA NA NA NA NA ...
+##  $ age                                      : int  NA NA 15 NA NA NA NA NA NA NA ...
+##  $ n_species_trees_samples                  : int  NA NA 2 NA NA NA NA NA NA NA ...
+##  $ mutation_rate                            : num  NA NA 0.1 NA NA NA NA NA NA NA ...
+##  $ n_alignments                             : int  NA NA 2 NA NA NA NA NA NA NA ...
+##  $ sequence_length                          : num  NA NA 1e+05 NA NA NA NA NA NA NA ...
+##  $ mcmc_chainlength                         : num  NA NA 1e+06 NA NA NA NA NA NA NA ...
+##  $ n_beast_runs                             : int  NA NA 2 NA NA NA NA NA NA NA ...
+##  $ version                                  : num  NA NA 0.1 NA NA NA NA NA NA NA ...</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(df)</code></pre>
+<pre><code>##  [1] &quot;rng_seed&quot;                                 
+##  [2] &quot;species_initiation_rate_good_species&quot;     
+##  [3] &quot;species_initiation_rate_incipient_species&quot;
+##  [4] &quot;speciation_completion_rate&quot;               
+##  [5] &quot;extinction_rate_good_species&quot;             
+##  [6] &quot;extinction_rate_incipient_species&quot;        
+##  [7] &quot;age&quot;                                      
+##  [8] &quot;n_species_trees_samples&quot;                  
+##  [9] &quot;mutation_rate&quot;                            
+## [10] &quot;n_alignments&quot;                             
+## [11] &quot;sequence_length&quot;                          
+## [12] &quot;mcmc_chainlength&quot;                         
+## [13] &quot;n_beast_runs&quot;                             
+## [14] &quot;version&quot;</code></pre>
+<p>If an incipient species tree is simulated for a longer time, I expect it to have more branches, thus making the next steps harder, thus causing a BEAST2 run to take too long.</p>
+<p>Let’s check this:</p>
+<pre class="sourceCode r"><code class="sourceCode r">ggplot2::<span class="kw">ggplot</span>(<span class="dt">data =</span> df, ggplot2::<span class="kw">aes</span>(df$age)) +<span class="st"> </span>ggplot2::<span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">1</span>)</code></pre>
+<pre><code>## Warning: Removed 498 rows containing non-finite values (stat_bin).</code></pre>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p>Age appears not to be very predictive if a simulation will succeed.</p>
+<p>If an alignment is simulated for more nucleotides, I expect a BEAST2 run to take longer, thus likelier to crash.</p>
+<p>Let’s check this:</p>
+<pre class="sourceCode r"><code class="sourceCode r">ggplot2::<span class="kw">ggplot</span>(<span class="dt">data =</span> df, ggplot2::<span class="kw">aes</span>(df$sequence_length)) +<span class="st"> </span>ggplot2::<span class="kw">geom_histogram</span>()</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>## Warning: Removed 498 rows containing non-finite values (stat_bin).</code></pre>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p>Now on a log scale:</p>
+<pre class="sourceCode r"><code class="sourceCode r">ggplot2::<span class="kw">ggplot</span>(<span class="dt">data =</span> df, ggplot2::<span class="kw">aes</span>(df$sequence_length)) +<span class="st"> </span>ggplot2::<span class="kw">geom_histogram</span>() +<span class="st"> </span>ggplot2::<span class="kw">scale_x_log10</span>()</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>## Warning: Removed 498 rows containing non-finite values (stat_bin).</code></pre>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p>Now as a <code>freq_poly</code> on a log scale:</p>
+<pre class="sourceCode r"><code class="sourceCode r">ggplot2::<span class="kw">ggplot</span>(<span class="dt">data =</span> df, ggplot2::<span class="kw">aes</span>(df$sequence_length)) +<span class="st"> </span>ggplot2::<span class="kw">geom_freqpoly</span>() +<span class="st"> </span>ggplot2::<span class="kw">scale_x_log10</span>()</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>## Warning: Removed 498 rows containing non-finite values (stat_bin).</code></pre>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<div id="correct-file-io-with-.csv" class="section level2">
+<h2>Correct file I/O with <code>.csv</code></h2>
+<p>Here I tested how to do correct file I/O by write to a <code>.csv</code> and then loading from that <code>.csv</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r">csv_filename &lt;-<span class="st"> &quot;analyse_files_test.csv&quot;</span>
+df_in &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+  <span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">9</span>)
+)
+<span class="kw">rownames</span>(df_in) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a.txt&quot;</span>,<span class="st">&quot;b.txt&quot;</span>,<span class="st">&quot;c.txt&quot;</span>)
+<span class="kw">print</span>(<span class="kw">rownames</span>(df_in))</code></pre>
+<pre><code>## [1] &quot;a.txt&quot; &quot;b.txt&quot; &quot;c.txt&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df_in))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">x</th>
+<th align="right">y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">a.txt</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">b.txt</td>
+<td align="right">2</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="left">c.txt</td>
+<td align="right">3</td>
+<td align="right">9</td>
+</tr>
+</tbody>
+</table>
+<p>The table should show column and row names in bold.</p>
+<p>Saving:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.csv</span>(<span class="dt">x =</span> df_in, <span class="dt">file =</span> csv_filename, <span class="dt">row.names =</span> <span class="ot">TRUE</span>)</code></pre>
+<p>Loading:</p>
+<pre class="sourceCode r"><code class="sourceCode r">df_out &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> csv_filename, 
+  <span class="dt">header =</span> <span class="ot">TRUE</span>, 
+  <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>, 
+  <span class="dt">row.names =</span> <span class="dv">1</span>
+)
+knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df_out))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">x</th>
+<th align="right">y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">a.txt</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">b.txt</td>
+<td align="right">2</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="left">c.txt</td>
+<td align="right">3</td>
+<td align="right">9</td>
+</tr>
+</tbody>
+</table>
+<p>No idea why <code>row.names = 1</code> works, and <code>row.names = TRUE</code> not…</p>
+</div>
 
 
 

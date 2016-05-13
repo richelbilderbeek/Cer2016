@@ -9,9 +9,13 @@ branch_sorter           sorts branches for the NRBS analysis
 check_progress          Function that shows how much parameter files
                         are present, and how far the pipeline has
                         gotten
+collect_file_gammas     Collects the gamm statistics of all phylogenies
+                        belonging to a parameter file in the
+                        melted/uncast/long form
 collect_gamma_statistics
-                        Collects the nLTT values of all phylogenies in
-                        the melted/uncast/long form
+                        Collects the gamma statistics of all
+                        phylogenies in the melted/uncast/long form
+collect_parameters      Creates tidy data of all parameter files
 collect_posterior_filenames
                         Collect posterior filenames
 collect_posterior_gammas

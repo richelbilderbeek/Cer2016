@@ -24,6 +24,28 @@ Type 'q()' to quit R.
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
 > cleanEx()
+> nameEx("collect_parameters")
+> ### * collect_parameters
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: collect_parameters
+> ### Title: Creates tidy data of all parameter files
+> ### Aliases: collect_parameters
+> 
+> ### ** Examples
+> 
+>  filenames <- c(
++    find_path("article_0_0_0_0_0.RDa"),
++    find_path("article_0_1_4_0_2.RDa"),
++    find_path("toy_example_1.RDa")
++  )
+>  df <- collect_parameters(filenames)
+>  testit::assert(nrow(df) == 3)
+> 
+> 
+> 
+> cleanEx()
 > nameEx("collect_posterior_filenames")
 > ### * collect_posterior_filenames
 > 
@@ -179,7 +201,7 @@ Type 'q()' to quit R.
 > ###
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  0.077 0.005 0.292 0 0 
+Time elapsed:  0.418 0.008 0.504 0 0 
 > grDevices::dev.off()
 null device 
           1 

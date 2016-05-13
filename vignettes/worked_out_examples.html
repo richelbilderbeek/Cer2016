@@ -378,10 +378,6 @@ phytools::<span class="kw">plotSimmap</span>(
 <pre class="sourceCode r"><code class="sourceCode r">trees_filename &lt;-<span class="st"> &quot;toy_example_1_1_1_1.trees&quot;</span>
 testit::<span class="kw">assert</span>(<span class="kw">file.exists</span>(trees_filename))
 phylogenies &lt;-<span class="st"> </span>rBEAST::<span class="kw">beast2out.read.trees</span>(trees_filename)</code></pre>
-<pre><code>## Warning: replacing previous import 'data.table::melt' by 'reshape2::melt'
-## when loading 'rBEAST'</code></pre>
-<pre><code>## Warning: replacing previous import 'data.table::dcast' by 'reshape2::dcast'
-## when loading 'rBEAST'</code></pre>
 <pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
 ## 'toy_example_1_1_1_1.trees'</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># To get the densiTree function working, phylogenies must be of class multiphylo</span>

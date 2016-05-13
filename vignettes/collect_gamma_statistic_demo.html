@@ -10,34 +10,14 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="author" content="Jolien Gay and Richel Bilderbeek" />
+<meta name="author" content="Richel Bilderbeek" />
 
 <meta name="date" content="2016-05-13" />
 
-<title>Demo collect posterior filename</title>
+<title>Collecting the gamma statistic</title>
 
 
 
-<style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
-</style>
 
 
 
@@ -50,57 +30,13 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
 
 
-<h1 class="title toc-ignore">Demo collect posterior filename</h1>
-<h4 class="author"><em>Jolien Gay and Richel Bilderbeek</em></h4>
+<h1 class="title toc-ignore">Collecting the gamma statistic</h1>
+<h4 class="author"><em>Richel Bilderbeek</em></h4>
 <h4 class="date"><em>2016-05-13</em></h4>
 
 
 
-<p>Load the packages we will need:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(Cer2016)</code></pre>
-<p>Simple parameter file:</p>
-<pre class="sourceCode r"><code class="sourceCode r">parameter_filename &lt;-<span class="st"> </span><span class="kw">find_path</span>(<span class="st">&quot;toy_example_1.RDa&quot;</span>)
-posterior_filenames &lt;-<span class="st"> </span><span class="kw">collect_posterior_filenames</span>(parameter_filename)
-knitr::<span class="kw">kable</span>(posterior_filenames)</code></pre>
-<table>
-<tbody>
-<tr class="odd">
-<td align="left">toy_example_1_1_1_1.trees</td>
-</tr>
-</tbody>
-</table>
-<p>Parameter file with 2x2x2 posteriors:</p>
-<pre class="sourceCode r"><code class="sourceCode r">parameter_filename &lt;-<span class="st"> </span><span class="kw">find_path</span>(<span class="st">&quot;toy_example_4.RDa&quot;</span>)
-posterior_filenames &lt;-<span class="st"> </span><span class="kw">collect_posterior_filenames</span>(parameter_filename)
-knitr::<span class="kw">kable</span>(posterior_filenames)</code></pre>
-<table>
-<tbody>
-<tr class="odd">
-<td align="left">toy_example_4_1_1_1.trees</td>
-</tr>
-<tr class="even">
-<td align="left">toy_example_4_1_1_2.trees</td>
-</tr>
-<tr class="odd">
-<td align="left">toy_example_4_1_2_1.trees</td>
-</tr>
-<tr class="even">
-<td align="left">toy_example_4_1_2_2.trees</td>
-</tr>
-<tr class="odd">
-<td align="left">toy_example_4_2_1_1.trees</td>
-</tr>
-<tr class="even">
-<td align="left">toy_example_4_2_1_2.trees</td>
-</tr>
-<tr class="odd">
-<td align="left">toy_example_4_2_2_1.trees</td>
-</tr>
-<tr class="even">
-<td align="left">toy_example_4_2_2_2.trees</td>
-</tr>
-</tbody>
-</table>
+
 
 
 

@@ -50,6 +50,14 @@ for (i in seq(1:n_trees)) {
 }
 
 ## ------------------------------------------------------------------------
+gamma_statistics <- rep(0, times = n_trees)
+for (i in seq(1:n_trees)) {
+  gamma_statistics[i] <- gammaStat(posterior_trees[[i]])
+}
+hist(gamma_statistics, xlim = c(-1,1))
+abline(v = true_gamma, col = "red")
+
+## ------------------------------------------------------------------------
 library(ape)
 phylogeny <- rcoal(10)
 plot(phylogeny)
