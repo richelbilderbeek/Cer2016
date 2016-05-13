@@ -12,7 +12,7 @@
 
 <meta name="author" content="Jolien Gay en Richel Bilderbeek" />
 
-<meta name="date" content="2016-05-12" />
+<meta name="date" content="2016-05-13" />
 
 <title>display dataset parameters</title>
 
@@ -52,7 +52,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
 <h1 class="title toc-ignore">display dataset parameters</h1>
 <h4 class="author"><em>Jolien Gay en Richel Bilderbeek</em></h4>
-<h4 class="date"><em>2016-05-12</em></h4>
+<h4 class="date"><em>2016-05-13</em></h4>
 
 
 
@@ -114,7 +114,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <td align="right">1</td>
 <td align="right">0.1</td>
 <td align="right">0.1</td>
-<td align="right">0.1</td>
+<td align="right">1e-01</td>
 <td align="right">0.8</td>
 <td align="right">0.8</td>
 <td align="right">5</td>
@@ -131,7 +131,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <td align="right">1</td>
 <td align="right">0.5</td>
 <td align="right">0.5</td>
-<td align="right">1.0</td>
+<td align="right">1e+06</td>
 <td align="right">0.1</td>
 <td align="right">0.1</td>
 <td align="right">5</td>
@@ -146,7 +146,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </tbody>
 </table>
 <p>Parameter files in the folder of the dataset:</p>
-<pre class="sourceCode r"><code class="sourceCode r">folder &lt;-<span class="st"> &quot;/home/p230198/Peregrine&quot;</span>
+<pre class="sourceCode r"><code class="sourceCode r">folder &lt;-<span class="st"> &quot;/home/p230198/Peregrine&quot;</span> <span class="co"># nolint</span>
 all_parameter_filenames &lt;-<span class="st"> </span><span class="kw">paste</span>(folder, <span class="kw">list.files</span>(folder, <span class="dt">pattern =</span> <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.RDa&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot;/&quot;</span>)
 <span class="kw">show_parameter_files</span>(<span class="kw">head</span>(all_parameter_filenames), <span class="dt">verbose =</span> <span class="ot">TRUE</span>)</code></pre>
 <pre><code>## &lt;simpleError in value[[3L]](cond): read_file: error in readRDS of file with name '/home/p230198/Peregrine/article_0_0_0_0_0.RDa', with message 'Error in readRDS(filename): error reading from connection
@@ -280,9 +280,9 @@ all_parameter_filenames &lt;-<span class="st"> </span><span class="kw">paste</sp
 </table>
 <div id="joliens-work" class="section level2">
 <h2>Jolien’s work</h2>
-<pre class="sourceCode r"><code class="sourceCode r">pcname &lt;-<span class="st"> </span><span class="kw">system</span>(<span class="st">'uname -n'</span>, <span class="dt">intern =</span> <span class="ot">TRUE</span>) 
+<pre class="sourceCode r"><code class="sourceCode r">pcname &lt;-<span class="st"> </span><span class="kw">system</span>(<span class="st">&quot;uname -n&quot;</span>, <span class="dt">intern =</span> <span class="ot">TRUE</span>) 
 if (pcname ==<span class="st"> &quot;Aline&quot;</span>) {
-  <span class="kw">setwd</span>(<span class="st">&quot;c:/Users/Aline/Peregrine&quot;</span>)
+  <span class="kw">setwd</span>(<span class="st">&quot;c:/Users/Aline/Peregrine&quot;</span>) <span class="co"># nolint</span>
   <span class="kw">getwd</span>()
   <span class="co"># Put all .RDA files in a variable</span>
   all_parameters &lt;-<span class="st"> </span><span class="kw">Sys.glob</span>(<span class="st">&quot;*.RDa&quot;</span>) <span class="co"># alternative, but longer: all_parameters &lt;- list.files(pattern = &quot;\\.RDa$&quot;, ignore.case=TRUE)</span>

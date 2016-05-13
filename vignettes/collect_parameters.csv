@@ -1,8 +1,7 @@
-"","V1","V2","V3","V4","V5","V6","V7","V8","V9","V10","V11","V12","V13","V14"
-"parameters","rng_seed","species_initiation_rate_good_species","species_initiation_rate_incipient_species","speciation_completion_rate","extinction_rate_good_species","extinction_rate_incipient_species","age","n_species_trees_samples","mutation_rate","n_alignments","sequence_length","mcmc_chainlength","n_beast_runs","version"
+"","rng_seed","species_initiation_rate_good_species","species_initiation_rate_incipient_species","speciation_completion_rate","extinction_rate_good_species","extinction_rate_incipient_species","age","n_species_trees_samples","mutation_rate","n_alignments","sequence_length","mcmc_chainlength","n_beast_runs","version"
 "article_0_0_0_0_0.RDa",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "article_0_0_0_0_1.RDa",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"article_0_0_0_0_2.RDa","      1.0","      0.1","      0.1","      0.1","      0.0","      0.0","     15.0","      2.0","      0.1","      2.0"," 100000.0","1000000.0","      2.0","      0.1"
+"article_0_0_0_0_2.RDa",1,0.1,0.1,0.1,0,0,15,2,0.1,2,1e+05,1e+06,2,0.1
 "article_0_0_0_1_0.RDa",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "article_0_0_0_1_1.RDa",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "article_0_0_0_1_2.RDa",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA

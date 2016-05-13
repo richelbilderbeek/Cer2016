@@ -27,22 +27,28 @@ df_in <- data.frame(
 rownames(df_in) <- c("a.txt","b.txt","c.txt")
 print(rownames(df_in))
 knitr::kable(head(df_in))
+print(rownames(df_in))
+print(colnames(df_in))
+
 write.csv(x = df_in, file = csv_filename, row.names = TRUE)
 df_out <- read.csv(file = csv_filename, 
   header = TRUE, 
-  stringsAsFactors = FALSE, row.names = 1
+  stringsAsFactors = FALSE, 
+  row.names = 1
 )
 knitr::kable(head(df_out))
 print(rownames(df_out))
+print(colnames(df_out))
 ```
 
 Extracting all file parameters is easy:
 
 ```{r}
-#if (!file.exists(csv_filename)) {
-  folder <- "/home/p230198/Peregrine"
-  all_parameter_filenames <- paste(folder, list.files(folder, pattern = "\\.RDa"), sep = "/")
-  df <- collect_parameters(head(all_parameter_filenames), verbose = TRUE)
+folder <- "/home/p230198/Peregrine"
+all_parameter_filenames <- paste(folder, list.files(folder, pattern = "\\.RDa"), sep = "/")
+df <- collect_parameters(head(all_parameter_filenames), verbose = TRUE)
+print(rownames(df))
+print(colnames(df))
 ```
 
 
@@ -54,18 +60,19 @@ knitr::kable(head(df))
 Saving to file:
 
 ```{r}
-  write.csv(
-    x = df,
-    file = csv_filename,
-  )
-#}
+write.csv(
+  x = df,
+  file = csv_filename,
+  row.names = TRUE
+)
 ```
 
 ```{r}
 df <- read.csv(
   file = csv_filename, 
   header = TRUE, 
-  stringsAsFactors = FALSE
+  stringsAsFactors = FALSE, 
+  row.names = 1
 )
 ```
 

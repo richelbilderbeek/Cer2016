@@ -22,7 +22,7 @@ collect_parameters <- function(
     )
   }
 
-  row_names <- NULL
+  parameter_names <- NULL
 
   # Find parameter filenames
   for (filename in filenames) {
@@ -31,10 +31,9 @@ collect_parameters <- function(
     }
     file <- read_file(filename)
     parameter_names <- names(file$parameters)
-    row_names <- parameter_names
     break
   }
-  if (is.null(row_names)) {
+  if (is.null(parameter_names)) {
     df <- data.frame(message = "No valid files supplied")
     t <- knitr::kable(df)
     return(t)
@@ -56,15 +55,15 @@ collect_parameters <- function(
       parameter_values <- as.numeric(
         file$parameters[2, , 2]
       )
-      testit::assert(length(parameter_values) == length(row_names))
+      testit::assert(length(parameter_values) == length(parameter_names))
       if (is.null(df)) {
         df <- data.frame(parameter_values = parameter_values)
       } else {
         df <- cbind(df, parameter_values)
       }
     } else {
-      new_col <- rep(NA, times = length(row_names))
-      testit::assert(length(new_col) == length(row_names))
+      new_col <- rep(NA, times = length(parameter_names))
+      testit::assert(length(new_col) == length(parameter_names))
       if (is.null(df)) {
         df <- data.frame(parameter_values = new_col)
       } else {
@@ -73,9 +72,9 @@ collect_parameters <- function(
     }
   }
 
-  rownames(df) <- row_names
-  colnames(df) <- c(basename(filenames))
   tidy_df <- t(df)
+  rownames(tidy_df) <- c(basename(filenames))
+  colnames(tidy_df) <- parameter_names
 
   # Restore original scientific notation
   options(scipen = old_scipen)

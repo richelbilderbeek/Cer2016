@@ -3,7 +3,7 @@ title: "Worked-out examples"
 author: "Richel Bilderbeek"
 date: "`r Sys.Date()`"
 output: 
-  rmarkdown::word_document:
+  rmarkdown::html_vignette:
     toc: true
 vignette: >
   %\VignetteIndexEntry{Worked-out examples}

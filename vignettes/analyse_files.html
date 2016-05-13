@@ -12,7 +12,7 @@
 
 <meta name="author" content="Richel Bilderbeek" />
 
-<meta name="date" content="2016-05-12" />
+<meta name="date" content="2016-05-13" />
 
 <title>Analyse files</title>
 
@@ -52,7 +52,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
 <h1 class="title toc-ignore">Analyse files</h1>
 <h4 class="author"><em>Richel Bilderbeek</em></h4>
-<h4 class="date"><em>2016-05-12</em></h4>
+<h4 class="date"><em>2016-05-13</em></h4>
 
 
 
@@ -60,14 +60,16 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(Cer2016)
 csv_filename &lt;-<span class="st"> &quot;collect_parameters.csv&quot;</span></code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">df_in &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
-  <span class="dt">filenames =</span> <span class="kw">c</span>(<span class="st">&quot;a.txt&quot;</span>,<span class="st">&quot;b.txt&quot;</span>,<span class="st">&quot;c.txt&quot;</span>),
   <span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">9</span>)
 )
-knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df_in))</code></pre>
+<span class="kw">rownames</span>(df_in) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a.txt&quot;</span>,<span class="st">&quot;b.txt&quot;</span>,<span class="st">&quot;c.txt&quot;</span>)
+<span class="kw">print</span>(<span class="kw">rownames</span>(df_in))</code></pre>
+<pre><code>## [1] &quot;a.txt&quot; &quot;b.txt&quot; &quot;c.txt&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df_in))</code></pre>
 <table>
 <thead>
 <tr class="header">
-<th align="left">filenames</th>
+<th align="left"></th>
 <th align="right">x</th>
 <th align="right">y</th>
 </tr>
@@ -90,51 +92,73 @@ knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df_in))</code>
 </tr>
 </tbody>
 </table>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.csv</span>(<span class="dt">x =</span> df_in, <span class="dt">file =</span> csv_filename)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(<span class="kw">rownames</span>(df_in))</code></pre>
+<pre><code>## [1] &quot;a.txt&quot; &quot;b.txt&quot; &quot;c.txt&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(<span class="kw">colnames</span>(df_in))</code></pre>
+<pre><code>## [1] &quot;x&quot; &quot;y&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.csv</span>(<span class="dt">x =</span> df_in, <span class="dt">file =</span> csv_filename, <span class="dt">row.names =</span> <span class="ot">TRUE</span>)
 df_out &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> csv_filename, 
   <span class="dt">header =</span> <span class="ot">TRUE</span>, 
-  <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>
+  <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>, 
+  <span class="dt">row.names =</span> <span class="dv">1</span>
 )
 knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df_out))</code></pre>
 <table>
 <thead>
 <tr class="header">
-<th align="right">X</th>
-<th align="left">filenames</th>
+<th align="left"></th>
 <th align="right">x</th>
 <th align="right">y</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">1</td>
 <td align="left">a.txt</td>
 <td align="right">1</td>
 <td align="right">1</td>
 </tr>
 <tr class="even">
-<td align="right">2</td>
 <td align="left">b.txt</td>
 <td align="right">2</td>
 <td align="right">4</td>
 </tr>
 <tr class="odd">
-<td align="right">3</td>
 <td align="left">c.txt</td>
 <td align="right">3</td>
 <td align="right">9</td>
 </tr>
 </tbody>
 </table>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(<span class="kw">rownames</span>(df_out))</code></pre>
+<pre><code>## [1] &quot;a.txt&quot; &quot;b.txt&quot; &quot;c.txt&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(<span class="kw">colnames</span>(df_out))</code></pre>
+<pre><code>## [1] &quot;x&quot; &quot;y&quot;</code></pre>
 <p>Extracting all file parameters is easy:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#if (!file.exists(csv_filename)) {</span>
-  folder &lt;-<span class="st"> &quot;/home/p230198/Peregrine&quot;</span>
-  all_parameter_filenames &lt;-<span class="st"> </span><span class="kw">paste</span>(folder, <span class="kw">list.files</span>(folder, <span class="dt">pattern =</span> <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.RDa&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot;/&quot;</span>)
-  df &lt;-<span class="st"> </span><span class="kw">collect_parameters</span>(<span class="kw">head</span>(all_parameter_filenames), <span class="dt">verbose =</span> <span class="ot">TRUE</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">folder &lt;-<span class="st"> &quot;/home/p230198/Peregrine&quot;</span>
+all_parameter_filenames &lt;-<span class="st"> </span><span class="kw">paste</span>(folder, <span class="kw">list.files</span>(folder, <span class="dt">pattern =</span> <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.RDa&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot;/&quot;</span>)
+df &lt;-<span class="st"> </span><span class="kw">collect_parameters</span>(<span class="kw">head</span>(all_parameter_filenames), <span class="dt">verbose =</span> <span class="ot">TRUE</span>)</code></pre>
 <pre><code>## &lt;simpleError in value[[3L]](cond): read_file: error in readRDS of file with name '/home/p230198/Peregrine/article_0_0_0_0_0.RDa', with message 'Error in readRDS(filename): error reading from connection
 ## '&gt;
 ## &lt;simpleError in value[[3L]](cond): read_file: error in readRDS of file with name '/home/p230198/Peregrine/article_0_0_0_0_1.RDa', with message 'Error in readRDS(filename): error reading from connection
 ## '&gt;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(<span class="kw">rownames</span>(df))</code></pre>
+<pre><code>## [1] &quot;article_0_0_0_0_0.RDa&quot; &quot;article_0_0_0_0_1.RDa&quot; &quot;article_0_0_0_0_2.RDa&quot;
+## [4] &quot;article_0_0_0_1_0.RDa&quot; &quot;article_0_0_0_1_1.RDa&quot; &quot;article_0_0_0_1_2.RDa&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(<span class="kw">colnames</span>(df))</code></pre>
+<pre><code>##  [1] &quot;rng_seed&quot;                                 
+##  [2] &quot;species_initiation_rate_good_species&quot;     
+##  [3] &quot;species_initiation_rate_incipient_species&quot;
+##  [4] &quot;speciation_completion_rate&quot;               
+##  [5] &quot;extinction_rate_good_species&quot;             
+##  [6] &quot;extinction_rate_incipient_species&quot;        
+##  [7] &quot;age&quot;                                      
+##  [8] &quot;n_species_trees_samples&quot;                  
+##  [9] &quot;mutation_rate&quot;                            
+## [10] &quot;n_alignments&quot;                             
+## [11] &quot;sequence_length&quot;                          
+## [12] &quot;mcmc_chainlength&quot;                         
+## [13] &quot;n_beast_runs&quot;                             
+## [14] &quot;version&quot;</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df))</code></pre>
 <table>
 <thead>
@@ -262,15 +286,16 @@ knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df_out))</code
 </tbody>
 </table>
 <p>Saving to file:</p>
-<pre class="sourceCode r"><code class="sourceCode r">  <span class="kw">write.csv</span>(
-    <span class="dt">x =</span> df,
-    <span class="dt">file =</span> csv_filename,
-  )
-<span class="co">#}</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.csv</span>(
+  <span class="dt">x =</span> df,
+  <span class="dt">file =</span> csv_filename,
+  <span class="dt">row.names =</span> <span class="ot">TRUE</span>
+)</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(
   <span class="dt">file =</span> csv_filename, 
   <span class="dt">header =</span> <span class="ot">TRUE</span>, 
-  <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>
+  <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>, 
+  <span class="dt">row.names =</span> <span class="dv">1</span>
 )</code></pre>
 <p>Number of filenames: 6</p>
 <p>Putting the head of the data frame in a table:</p>
@@ -278,7 +303,7 @@ knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df_out))</code
 <table>
 <thead>
 <tr class="header">
-<th align="left">X</th>
+<th align="left"></th>
 <th align="right">rng_seed</th>
 <th align="right">species_initiation_rate_good_species</th>
 <th align="right">species_initiation_rate_incipient_species</th>

@@ -10,14 +10,14 @@ all_parameter_filenames <- c(
 show_parameter_files(all_parameter_filenames, verbose = TRUE)
 
 ## ------------------------------------------------------------------------
-folder <- "/home/p230198/Peregrine"
+folder <- "/home/p230198/Peregrine" # nolint
 all_parameter_filenames <- paste(folder, list.files(folder, pattern = "\\.RDa"), sep = "/")
 show_parameter_files(head(all_parameter_filenames), verbose = TRUE)
 
 ## ------------------------------------------------------------------------
-pcname <- system('uname -n', intern = TRUE) 
+pcname <- system("uname -n", intern = TRUE) 
 if (pcname == "Aline") {
-  setwd("c:/Users/Aline/Peregrine")
+  setwd("c:/Users/Aline/Peregrine") # nolint
   getwd()
   # Put all .RDA files in a variable
   all_parameters <- Sys.glob("*.RDa") # alternative, but longer: all_parameters <- list.files(pattern = "\\.RDa$", ignore.case=TRUE)
