@@ -9,63 +9,32 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-
-
-
-
-Prerequisites:
+Loading this package
 
 ```{r}
 library(Cer2016)
-csv_filename <- "collect_parameters.csv"
-```
-
-```{r}
-df_in <- data.frame(
-  x = c(1,2,3), y = c(1,4,9)
-)
-rownames(df_in) <- c("a.txt","b.txt","c.txt")
-print(rownames(df_in))
-knitr::kable(head(df_in))
-print(rownames(df_in))
-print(colnames(df_in))
-
-write.csv(x = df_in, file = csv_filename, row.names = TRUE)
-df_out <- read.csv(file = csv_filename, 
-  header = TRUE, 
-  stringsAsFactors = FALSE, 
-  row.names = 1
-)
-knitr::kable(head(df_out))
-print(rownames(df_out))
-print(colnames(df_out))
 ```
 
 Extracting all file parameters is easy:
 
 ```{r}
-folder <- "/home/p230198/Peregrine"
-all_parameter_filenames <- paste(folder, list.files(folder, pattern = "\\.RDa"), sep = "/")
-df <- collect_parameters(head(all_parameter_filenames), verbose = TRUE)
-print(rownames(df))
-print(colnames(df))
+csv_filename <- "collect_parameters.csv"
+if (!file.exists(csv_filename)) {
+  folder <- "/home/p230198/Peregrine"
+  all_parameter_filenames <- paste(folder, list.files(folder, pattern = "\\.RDa"), sep = "/")
+  df <- collect_parameters(all_parameter_filenames, verbose = TRUE)
+  write.csv(
+    x = df,
+    file = csv_filename,
+    row.names = TRUE
+  )
+}
 ```
 
+Note that the comma-seperated file is only created when absent,
+as this is a long step.
 
-
-```{r}
-knitr::kable(head(df))
-```
-
-Saving to file:
-
-```{r}
-write.csv(
-  x = df,
-  file = csv_filename,
-  row.names = TRUE
-)
-```
+Loading it from file:
 
 ```{r}
 df <- read.csv(
@@ -84,3 +53,40 @@ Putting the head of the data frame in a table:
 knitr::kable(head(df))
 ```
 
+
+## Correct file I/O with `.csv`
+
+Here I tested how to do correct file I/O by write to a `.csv`
+and then loading from that `.csv`.
+
+```{r}
+csv_filename <- "analyse_files_test.csv"
+df_in <- data.frame(
+  x = c(1,2,3), y = c(1,4,9)
+)
+rownames(df_in) <- c("a.txt","b.txt","c.txt")
+print(rownames(df_in))
+knitr::kable(head(df_in))
+```
+
+The table should show column and row names in bold.
+
+Saving:
+
+```{r}
+write.csv(x = df_in, file = csv_filename, row.names = TRUE)
+```
+
+Loading:
+
+```{r}
+
+df_out <- read.csv(file = csv_filename, 
+  header = TRUE, 
+  stringsAsFactors = FALSE, 
+  row.names = 1
+)
+knitr::kable(head(df_out))
+```
+
+No idea why `row.names = 1` works, and `row.names = TRUE` not...
