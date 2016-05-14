@@ -1,6 +1,12 @@
 #' Collect the gamma statistics of the species trees with outgroup
 #' @param filename name of the file containing the parameters and results
 #' @return a data frame
+#' @examples
+#'  filename <- find_path("toy_example_1.RDa")
+#'  df <- collect_species_tree_gammas(filename)
+#'  testit::assert(names(df) == c("species_tree", "gamma_stat"))
+#'  testit::assert(nrow(df) == 1)
+#'  testit::assert(abs(df$gamma_stat - -0.8205514) < 0.0001)
 #' @export
 #' @author Richel Bilderbeek
 collect_species_tree_gammas <- function(
@@ -24,8 +30,8 @@ collect_species_tree_gammas <- function(
 
     # Remove id column
     this_df <- data.frame(
-      gamma_stat = g,
-      species_tree = i
+      species_tree = i,
+      gamma_stat = g
     )
     if (is.null(df)) {
       df <- this_df

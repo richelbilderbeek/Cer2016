@@ -15,6 +15,13 @@ a data frame
 \description{
 Collect the gamma statistics of the species trees with outgroup
 }
+\examples{
+ filename <- find_path("toy_example_1.RDa")
+ df <- collect_species_tree_gammas(filename)
+ testit::assert(names(df) == c("species_tree", "gamma_stat"))
+ testit::assert(nrow(df) == 1)
+ testit::assert(abs(df$gamma_stat - -0.8205514) < 0.0001)
+}
 \author{
 Richel Bilderbeek
 }

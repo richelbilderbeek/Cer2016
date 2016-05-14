@@ -6,6 +6,19 @@
 
 Community Ecology Research course 2016.
 
+## Datasets
+
+A large dataset has been created from many simulation runs.
+
+The datasets below are created from that bigger dataset
+and allow to do an analysis.
+
+CSV|Demonstrated|Created|Analyse
+---+---+---+---
+collect_parameters.csv|display_dataset_parameters|analyse_files|analyse_files
+collect_gammas_species_trees.csv|display_dataset_parameters|analyse_files|analyse_files
+collect_gammas_posterior.csv|display_dataset_gammas|analyse_gammas|analyse_gammas
+
 ## How to install
 
 To install this repository, you will need to:

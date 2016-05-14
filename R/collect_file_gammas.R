@@ -21,7 +21,13 @@ collect_file_gammas <- function(
       "invalid file '", filename, "'"
     )
   }
-  species_trees_gammas <- collect_species_tree_gammas(filename)
+  species_tree_gammas <- collect_species_tree_gammas(filename)
   posterior_gammas <- collect_posterior_gammas(filename)
-  return(list(species_trees_gammas, posterior_gammas))
+
+  return(
+    list(
+      species_tree_gammas = species_tree_gammas,
+      posterior_gammas = posterior_gammas
+    )
+  )
 }

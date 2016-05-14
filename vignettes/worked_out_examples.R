@@ -108,7 +108,7 @@ plot_alignments(filename)
 add_posteriors(filename, skip_if_output_present = TRUE)
 
 ## ------------------------------------------------------------------------
-trees_filename <- "toy_example_1_1_1_1.trees"
+trees_filename <- find_path("toy_example_1_1_1_1.trees")
 testit::assert(file.exists(trees_filename))
 phylogenies <- rBEAST::beast2out.read.trees(trees_filename)
 # To get the densiTree function working, phylogenies must be of class multiphylo

@@ -9,6 +9,8 @@ collect_file_gammas(filename, verbose = FALSE)
 }
 \arguments{
 \item{filename}{name of the parameter file}
+
+\item{verbose}{give verbose output, should be TRUE or FALSE}
 }
 \value{
 A dataframe of gamma statistics of each phylogeny in time

@@ -86,6 +86,17 @@ The gamma statistic was introduced by Pybus and Harvey (2000).
  * `gamma < 0`: a tippy tree
  * `gamma > 0`: a stemmy tree
 
+The incipient species tree looks like this:
+
+```{r}
+colors <- setNames(c("gray","black"), c("i","g"))
+testit::assert(length(read_file(filename)$pbd_output$igtree.extant$tip.label) > 0)
+phytools::plotSimmap(
+  file$pbd_output$igtree.extant, 
+  colors = colors
+)
+```
+
 I will use a sampled species tree as my true tree:
 
 ```{r}

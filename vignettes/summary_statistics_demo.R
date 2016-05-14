@@ -24,6 +24,14 @@ phytools::plotSimmap(
 )
 
 ## ------------------------------------------------------------------------
+colors <- setNames(c("gray","black"), c("i","g"))
+testit::assert(length(read_file(filename)$pbd_output$igtree.extant$tip.label) > 0)
+phytools::plotSimmap(
+  file$pbd_output$igtree.extant, 
+  colors = colors
+)
+
+## ------------------------------------------------------------------------
 true_tree <- file$species_trees_with_outgroup[[1]][[1]]
 plot(true_tree)
 
