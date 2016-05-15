@@ -36,7 +36,7 @@ collect_species_tree_gammas <- function(
   for (i in seq(1, n_species_trees_samples)) {
     phylogeny <- file$species_trees_with_outgroup[[i]][[1]]
     g <- NULL
-    if (!inherits(phylogeny, "phylo")) { # Check enforced by ape
+    if (!inherits(phylogeny, "phylo")) {
       if (verbose) {
         print(
           paste0(
