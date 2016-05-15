@@ -36,16 +36,13 @@ knitr::kable(df)
 ## Collecting gamma's from the posterior
 
 ```{r}
-if (1==2) {
 filename <- find_path("toy_example_3.RDa")
-df <- collect_species_tree_gammas(filename)
-testit::assert(names(df) == c("species_tree_gammas", "posterior_gammas"))
-testit::assert(
-  names(df$species_tree_gammas) == c("species_tree", "gamma_stat")
+df <- collect_posterior_gammas(filename)
+testit::assert(names(df) == 
+  c("species_tree", "alignment", "beast_run", "gamma")
 )
-testit::assert(nrow(df$species_tree_gammas) == 2)
-testit::assert(nrow(df$posterior_gammas) == 80)
-}
+testit::assert(nrow(df) == 80)
+knitr::kable(head(df))
 ```
 
 

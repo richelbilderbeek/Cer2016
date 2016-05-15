@@ -4,10 +4,12 @@
 \alias{collect_species_tree_gammas}
 \title{Collect the gamma statistics of the species trees with outgroup}
 \usage{
-collect_species_tree_gammas(filename)
+collect_species_tree_gammas(filename, verbose = FALSE)
 }
 \arguments{
 \item{filename}{name of the file containing the parameters and results}
+
+\item{verbose}{give verbose output, should be TRUE or FALSE}
 }
 \value{
 a data frame

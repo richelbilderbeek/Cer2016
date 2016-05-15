@@ -15,6 +15,14 @@ a data frame
 \description{
 Collect the gamma statistics of the BEAST2 posteriors
 }
+\examples{
+  filename <- find_path("toy_example_3.RDa")
+  df <- collect_posterior_gammas(filename)
+  testit::assert(names(df) ==
+    c("species_tree", "alignment", "beast_run", "gamma")
+  )
+  testit::assert(nrow(df) == 80)
+}
 \author{
 Richel Bilderbeek
 }

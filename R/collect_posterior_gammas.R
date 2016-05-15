@@ -2,6 +2,13 @@
 #' @param filename name of the file containing the parameters and results
 #' @return a data frame
 #' @export
+#' @examples
+#'   filename <- find_path("toy_example_3.RDa")
+#'   df <- collect_posterior_gammas(filename)
+#'   testit::assert(names(df) ==
+#'     c("species_tree", "alignment", "beast_run", "gamma")
+#'   )
+#'   testit::assert(nrow(df) == 80)
 #' @author Richel Bilderbeek
 collect_posterior_gammas <- function(filename) {
   if (!is_valid_file(filename)) {
@@ -23,14 +30,14 @@ collect_posterior_gammas <- function(filename) {
   for (i in seq(1, n_species_trees_samples)) {
     for (j in seq(1, n_alignments)) {
       for (k in seq(1, n_beast_runs)) {
-        base_filename <- paste(basename(
-          tools::file_path_sans_ext(filename)), "_",
+        base_filename <- paste(
+          tools::file_path_sans_ext(filename), "_",
           i, "_", j, "_", k, sep = ""
         )
         trees_filename <- paste(base_filename, ".trees", sep = "")
         if (!file.exists(trees_filename)){
           stop(
-            "plot_posterior_nltts:",
+            "collect_posterior_gammas: ",
             "cannot find file '",
             trees_filename, "'"
           )
