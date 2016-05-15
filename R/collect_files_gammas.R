@@ -15,9 +15,8 @@ collect_files_gammas <- function(
     )
   }
 
-  stgs <- NULL # Species Trees Gamma statistics
-
   # Species trees
+  stgs <- NULL # Species Trees Gamma statistics
   for (filename in filenames) {
     this_stgs <- NULL
     tryCatch(
@@ -30,7 +29,7 @@ collect_files_gammas <- function(
       this_stgs <- data.frame(species_tree = NA, gamma_stat = NA)
     }
     # Prepend a col with the filename
-    this_filenames <- rep(filename, times = nrow(this_stgs))
+    this_filenames <- rep(basename(filename), times = nrow(this_stgs))
     this_stgs <- cbind(
       filenames = this_filenames,
       this_stgs
@@ -42,9 +41,40 @@ collect_files_gammas <- function(
     }
   }
 
+  # Posteriors trees
+  pgs <- NULL # Posterior Gamma statistics
+  for (filename in filenames) {
+    this_pgs <- NULL
+    tryCatch(
+      this_pgs <- collect_posterior_gammas(filename),
+      error = function(msg) {
+        if (verbose) print(msg)
+      }
+    )
+    if (is.null(this_pgs)) {
+      this_pgs <- data.frame(
+        species_tree = NA,
+        alignment = NA,
+        beast_run = NA,
+        gamma_stat = NA
+      )
+    }
+    # Prepend a col with the filename
+    this_filenames <- rep(basename(filename), times = nrow(this_pgs))
+    this_pgs <- cbind(
+      filenames = this_filenames,
+      this_pgs
+    )
+    if (!is.null(pgs)) {
+      pgs <- rbind(pgs, this_pgs)
+    } else {
+      pgs <- this_pgs
+    }
+  }
+
   gs <- list(
       species_tree_gamma_stats = stgs,
-      posterior_gamma_stats = NULL
+      posterior_gamma_stats = pgs
     )
 
   return(gs)

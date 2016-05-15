@@ -73,11 +73,11 @@ knitr::<span class="kw">kable</span>(df)</code></pre>
 <tbody>
 <tr class="odd">
 <td align="right">1</td>
-<td align="right">3.290405</td>
+<td align="right">-0.2014197</td>
 </tr>
 <tr class="even">
 <td align="right">2</td>
-<td align="right">4.809685</td>
+<td align="right">3.6499719</td>
 </tr>
 </tbody>
 </table>
@@ -216,21 +216,37 @@ testit::<span class="kw">assert</span>(<span class="kw">names</span>(df$posterio
 testit::<span class="kw">assert</span>(<span class="kw">nrow</span>(df$species_tree_gammas) ==<span class="st"> </span><span class="dv">2</span>)
 testit::<span class="kw">assert</span>(<span class="kw">nrow</span>(df$posterior_gammas) ==<span class="st"> </span><span class="dv">80</span>)</code></pre>
 </div>
-<div id="collecting-gammas-from-all-files" class="section level2">
-<h2>Collecting gamma’s from all files</h2>
-<p>Testing</p>
+<div id="collecting-gammas-from-some-files" class="section level2">
+<h2>Collecting gamma’s from some files</h2>
 <pre class="sourceCode r"><code class="sourceCode r">folder &lt;-<span class="st"> &quot;/home/p230198/Peregrine&quot;</span>
 all_parameter_filenames &lt;-<span class="st"> </span><span class="kw">paste</span>(folder, <span class="kw">list.files</span>(folder, <span class="dt">pattern =</span> <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.RDa&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot;/&quot;</span>)
-df &lt;-<span class="st"> </span><span class="kw">collect_files_gammas</span>(<span class="kw">head</span>(all_parameter_filenames, <span class="dt">n =</span> <span class="dv">10</span>), <span class="dt">verbose =</span> <span class="ot">TRUE</span>)</code></pre>
+df &lt;-<span class="st"> </span><span class="kw">collect_files_gammas</span>(<span class="kw">head</span>(all_parameter_filenames), <span class="dt">verbose =</span> <span class="ot">TRUE</span>)</code></pre>
 <pre><code>## &lt;simpleError in collect_species_tree_gammas(filename): collect_species_tree_gammas: invalid filename&gt;
 ## &lt;simpleError in collect_species_tree_gammas(filename): collect_species_tree_gammas: invalid filename&gt;
 ## &lt;simpleError in collect_species_tree_gammas(filename): collect_species_tree_gammas: invalid filename&gt;
 ## &lt;simpleError in collect_species_tree_gammas(filename): collect_species_tree_gammas: invalid filename&gt;
 ## &lt;simpleError in collect_species_tree_gammas(filename): collect_species_tree_gammas: invalid filename&gt;
-## &lt;simpleError in collect_species_tree_gammas(filename): collect_species_tree_gammas: invalid filename&gt;
-## &lt;simpleError in collect_species_tree_gammas(filename): collect_species_tree_gammas: invalid filename&gt;
-## &lt;simpleError in collect_species_tree_gammas(filename): collect_species_tree_gammas: invalid filename&gt;
-## &lt;simpleError in collect_species_tree_gammas(filename): collect_species_tree_gammas: invalid filename&gt;</code></pre>
+## &lt;simpleError in collect_posterior_gammas(filename): collect_posterior_gammas: invalid filename&gt;
+## &lt;simpleError in collect_posterior_gammas(filename): collect_posterior_gammas: invalid filename&gt;</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/Peregrine/article_0_0_0_0_2_1_1_1.trees'</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/Peregrine/article_0_0_0_0_2_1_1_2.trees'</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/Peregrine/article_0_0_0_0_2_1_2_1.trees'</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/Peregrine/article_0_0_0_0_2_1_2_2.trees'</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/Peregrine/article_0_0_0_0_2_2_1_1.trees'</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/Peregrine/article_0_0_0_0_2_2_1_2.trees'</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/Peregrine/article_0_0_0_0_2_2_2_1.trees'</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/Peregrine/article_0_0_0_0_2_2_2_2.trees'</code></pre>
+<pre><code>## &lt;simpleError in collect_posterior_gammas(filename): collect_posterior_gammas: invalid filename&gt;
+## &lt;simpleError in collect_posterior_gammas(filename): collect_posterior_gammas: invalid filename&gt;
+## &lt;simpleError in collect_posterior_gammas(filename): collect_posterior_gammas: invalid filename&gt;</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">testit::<span class="kw">assert</span>(<span class="kw">names</span>(df) 
   ==<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;species_tree_gamma_stats&quot;</span>, <span class="st">&quot;posterior_gamma_stats&quot;</span>)
 )
@@ -245,89 +261,145 @@ knitr::<span class="kw">kable</span>(df$species_tree_gamma_stats)</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">/home/p230198/Peregrine/article_0_0_0_0_0.RDa</td>
+<td align="left">article_0_0_0_0_0.RDa</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="even">
-<td align="left">/home/p230198/Peregrine/article_0_0_0_0_1.RDa</td>
+<td align="left">article_0_0_0_0_1.RDa</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="odd">
-<td align="left">/home/p230198/Peregrine/article_0_0_0_0_2.RDa</td>
+<td align="left">article_0_0_0_0_2.RDa</td>
 <td align="right">1</td>
 <td align="right">0.1567163</td>
 </tr>
 <tr class="even">
-<td align="left">/home/p230198/Peregrine/article_0_0_0_0_2.RDa</td>
+<td align="left">article_0_0_0_0_2.RDa</td>
 <td align="right">2</td>
 <td align="right">0.1567163</td>
 </tr>
 <tr class="odd">
-<td align="left">/home/p230198/Peregrine/article_0_0_0_1_0.RDa</td>
+<td align="left">article_0_0_0_1_0.RDa</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="even">
-<td align="left">/home/p230198/Peregrine/article_0_0_0_1_1.RDa</td>
+<td align="left">article_0_0_0_1_1.RDa</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="odd">
-<td align="left">/home/p230198/Peregrine/article_0_0_0_1_2.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="even">
-<td align="left">/home/p230198/Peregrine/article_0_0_0_2_0.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">/home/p230198/Peregrine/article_0_0_0_2_1.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="even">
-<td align="left">/home/p230198/Peregrine/article_0_0_0_2_2.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">/home/p230198/Peregrine/article_0_0_1_0_0.RDa</td>
+<td align="left">article_0_0_0_1_2.RDa</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 </tbody>
 </table>
-<pre class="sourceCode r"><code class="sourceCode r">knitr::<span class="kw">kable</span>(df$posterior_gamma_stats)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df$posterior_gamma_stats))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">filenames</th>
+<th align="right">species_tree</th>
+<th align="right">alignment</th>
+<th align="right">beast_run</th>
+<th align="right">gamma_stat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">article_0_0_0_0_0.RDa</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="left">article_0_0_0_0_1.RDa</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">article_0_0_0_0_2.RDa</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">0.1962860</td>
+</tr>
+<tr class="even">
+<td align="left">article_0_0_0_0_2.RDa</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">0.1709388</td>
+</tr>
+<tr class="odd">
+<td align="left">article_0_0_0_0_2.RDa</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">0.2194888</td>
+</tr>
+<tr class="even">
+<td align="left">article_0_0_0_0_2.RDa</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">0.1643772</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="collecting-gammas-from-all-files-1" class="section level2">
+<div id="collecting-gammas-from-all-files" class="section level2">
 <h2>Collecting gamma’s from all files</h2>
 <pre class="sourceCode r"><code class="sourceCode r">csv_filename_species_trees &lt;-<span class="st"> &quot;collected_gammas_species_trees.csv&quot;</span>
 csv_filename_posterior &lt;-<span class="st"> &quot;collected_gammas_posterior.csv&quot;</span>
-<span class="co">#if (!file.exists(csv_filename_species_trees) || !file.exists(csv_filename_posterior)) {</span>
+if (!<span class="kw">file.exists</span>(csv_filename_species_trees) ||<span class="st"> </span>!<span class="kw">file.exists</span>(csv_filename_posterior)) {
   folder &lt;-<span class="st"> &quot;/home/p230198/Peregrine&quot;</span>
   all_parameter_filenames &lt;-<span class="st"> </span><span class="kw">paste</span>(folder, <span class="kw">list.files</span>(folder, <span class="dt">pattern =</span> <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.RDa&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot;/&quot;</span>)
-  df &lt;-<span class="st"> </span><span class="kw">collect_files_gammas</span>(<span class="kw">head</span>(all_parameter_filenames), <span class="dt">verbose =</span> <span class="ot">TRUE</span>)</code></pre>
-<pre><code>## &lt;simpleError in collect_species_tree_gammas(filename): collect_species_tree_gammas: invalid filename&gt;
-## &lt;simpleError in collect_species_tree_gammas(filename): collect_species_tree_gammas: invalid filename&gt;
-## &lt;simpleError in collect_species_tree_gammas(filename): collect_species_tree_gammas: invalid filename&gt;
-## &lt;simpleError in collect_species_tree_gammas(filename): collect_species_tree_gammas: invalid filename&gt;
-## &lt;simpleError in collect_species_tree_gammas(filename): collect_species_tree_gammas: invalid filename&gt;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">  <span class="kw">write.csv</span>(
-    <span class="dt">x =</span> df$species_tree_gammas,
+  df &lt;-<span class="st"> </span><span class="kw">collect_files_gammas</span>(<span class="kw">head</span>(all_parameter_filenames), <span class="dt">verbose =</span> <span class="ot">TRUE</span>)
+  <span class="kw">write.csv</span>(
+    <span class="dt">x =</span> df$species_tree_gamma_stats,
     <span class="dt">file =</span> csv_filename_species_trees,
     <span class="dt">row.names =</span> <span class="ot">TRUE</span>
   )
   <span class="kw">write.csv</span>(
-    <span class="dt">x =</span> df$posterior_gammas,
+    <span class="dt">x =</span> df$posterior_gamma_stats,
     <span class="dt">file =</span> csv_filename_posterior,
     <span class="dt">row.names =</span> <span class="ot">TRUE</span>
   )
-<span class="co">#}</span>
-testit::<span class="kw">assert</span>(<span class="kw">file.exists</span>(csv_filename_species_trees))
+}</code></pre>
+<pre><code>## &lt;simpleError in collect_species_tree_gammas(filename): collect_species_tree_gammas: invalid filename&gt;
+## &lt;simpleError in collect_species_tree_gammas(filename): collect_species_tree_gammas: invalid filename&gt;
+## &lt;simpleError in collect_species_tree_gammas(filename): collect_species_tree_gammas: invalid filename&gt;
+## &lt;simpleError in collect_species_tree_gammas(filename): collect_species_tree_gammas: invalid filename&gt;
+## &lt;simpleError in collect_species_tree_gammas(filename): collect_species_tree_gammas: invalid filename&gt;
+## &lt;simpleError in collect_posterior_gammas(filename): collect_posterior_gammas: invalid filename&gt;
+## &lt;simpleError in collect_posterior_gammas(filename): collect_posterior_gammas: invalid filename&gt;</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/Peregrine/article_0_0_0_0_2_1_1_1.trees'</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/Peregrine/article_0_0_0_0_2_1_1_2.trees'</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/Peregrine/article_0_0_0_0_2_1_2_1.trees'</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/Peregrine/article_0_0_0_0_2_1_2_2.trees'</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/Peregrine/article_0_0_0_0_2_2_1_1.trees'</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/Peregrine/article_0_0_0_0_2_2_1_2.trees'</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/Peregrine/article_0_0_0_0_2_2_2_1.trees'</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/Peregrine/article_0_0_0_0_2_2_2_2.trees'</code></pre>
+<pre><code>## &lt;simpleError in collect_posterior_gammas(filename): collect_posterior_gammas: invalid filename&gt;
+## &lt;simpleError in collect_posterior_gammas(filename): collect_posterior_gammas: invalid filename&gt;
+## &lt;simpleError in collect_posterior_gammas(filename): collect_posterior_gammas: invalid filename&gt;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">testit::<span class="kw">assert</span>(<span class="kw">file.exists</span>(csv_filename_species_trees))
 testit::<span class="kw">assert</span>(<span class="kw">file.exists</span>(csv_filename_posterior))</code></pre>
 <p>Note that the comma-seperated file is only created when absent, as this is a long step.</p>
 <p>Loading it from file:</p>

@@ -38,32 +38,32 @@ testit::assert(nrow(df$posterior_gammas) == 80)
 ## ------------------------------------------------------------------------
 folder <- "/home/p230198/Peregrine"
 all_parameter_filenames <- paste(folder, list.files(folder, pattern = "\\.RDa"), sep = "/")
-df <- collect_files_gammas(head(all_parameter_filenames, n = 10), verbose = TRUE)
+df <- collect_files_gammas(head(all_parameter_filenames), verbose = TRUE)
 testit::assert(names(df) 
   == c("species_tree_gamma_stats", "posterior_gamma_stats")
 )
 knitr::kable(df$species_tree_gamma_stats)
-knitr::kable(df$posterior_gamma_stats)
+knitr::kable(head(df$posterior_gamma_stats))
 
 
 ## ------------------------------------------------------------------------
 csv_filename_species_trees <- "collected_gammas_species_trees.csv"
 csv_filename_posterior <- "collected_gammas_posterior.csv"
-#if (!file.exists(csv_filename_species_trees) || !file.exists(csv_filename_posterior)) {
+if (!file.exists(csv_filename_species_trees) || !file.exists(csv_filename_posterior)) {
   folder <- "/home/p230198/Peregrine"
   all_parameter_filenames <- paste(folder, list.files(folder, pattern = "\\.RDa"), sep = "/")
   df <- collect_files_gammas(head(all_parameter_filenames), verbose = TRUE)
   write.csv(
-    x = df$species_tree_gammas,
+    x = df$species_tree_gamma_stats,
     file = csv_filename_species_trees,
     row.names = TRUE
   )
   write.csv(
-    x = df$posterior_gammas,
+    x = df$posterior_gamma_stats,
     file = csv_filename_posterior,
     row.names = TRUE
   )
-#}
+}
 testit::assert(file.exists(csv_filename_species_trees))
 testit::assert(file.exists(csv_filename_posterior))
 
