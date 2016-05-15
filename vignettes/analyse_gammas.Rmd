@@ -15,7 +15,7 @@ Loading this package
 library(Cer2016)
 ```
 
-## Collecting gamma's from multiple phylogenies
+## Collecting gamma's from one or more phylogenies
 
 ```{r}
 phylogenies <- c(ape::rcoal(10), ape::rcoal(20))
@@ -39,7 +39,7 @@ knitr::kable(df)
 filename <- find_path("toy_example_3.RDa")
 df <- collect_posterior_gammas(filename)
 testit::assert(names(df) == 
-  c("species_tree", "alignment", "beast_run", "gamma")
+  c("species_tree", "alignment", "beast_run", "gamma_stat")
 )
 testit::assert(nrow(df) == 80)
 knitr::kable(head(df))
@@ -49,23 +49,36 @@ knitr::kable(head(df))
 ## Collecting gamma's from a file
 
 ```{r}
-if (1==2) {
 filename <- find_path("toy_example_3.RDa")
 df <- collect_file_gammas(filename)
 testit::assert(names(df) == c("species_tree_gammas", "posterior_gammas"))
 testit::assert(
   names(df$species_tree_gammas) == c("species_tree", "gamma_stat")
 )
+testit::assert(names(df$posterior_gammas) == 
+  c("species_tree", "alignment", "beast_run", "gamma_stat")
+)
 testit::assert(nrow(df$species_tree_gammas) == 2)
 testit::assert(nrow(df$posterior_gammas) == 80)
-}
 ```
 
 ## Collecting gamma's from all files
 
+Testing
 
+```{r}
+folder <- "/home/p230198/Peregrine"
+all_parameter_filenames <- paste(folder, list.files(folder, pattern = "\\.RDa"), sep = "/")
+df <- collect_files_gammas(head(all_parameter_filenames), verbose = TRUE)
+testit::assert(names(df) 
+  == c("species_tree_gamma_stats", "posterior_gamma_stats")
+)
+knitr::kable(df$species_tree_gamma_stats)
+knitr::kable(df$posterior_gamma_stats)
 
-Extracting the gammas from all file parameters is easy:
+```
+
+## Collecting gamma's from all files
 
 ```{r}
 csv_filename_species_trees <- "collected_gammas_species_trees.csv"

@@ -15,19 +15,37 @@ collect_files_gammas <- function(
     )
   }
 
-  gs <- list(
-      species_tree_gammas = NULL,
-      posterior_gammas = NULL
-    )
+  stgs <- NULL # Species Trees Gamma statistics
 
-#   if (!is_valid_file(filename = filename, verbose = verbose)) {
-#     stop(
-#       "collect_gamma_statistics_from_file: ",
-#       "invalid file '", filename, "'"
-#     )
-#   }
-#   species_tree_gammas <- collect_species_tree_gammas(filename)
-#   posterior_gammas <- collect_posterior_gammas(filename)
+  # Species trees
+  for (filename in filenames) {
+    this_stgs <- NULL
+    tryCatch(
+      this_stgs <- collect_species_tree_gammas(filename),
+      error = function(msg) {
+        if (verbose) print(msg)
+      }
+    )
+    if (is.null(this_stgs)) {
+      this_stgs <- data.frame(species_tree = NA, gamma_stat = NA)
+    }
+    # Prepend a col with the filename
+    this_filenames <- rep(filename, times = nrow(this_stgs))
+    this_stgs <- cbind(
+      filenames = this_filenames,
+      this_stgs
+    )
+    if (!is.null(stgs)) {
+      stgs <- rbind(stgs, this_stgs)
+    } else {
+      stgs <- this_stgs
+    }
+  }
+
+  gs <- list(
+      species_tree_gamma_stats = stgs,
+      posterior_gamma_stats = NULL
+    )
 
   return(gs)
 }

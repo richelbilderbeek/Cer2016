@@ -31,7 +31,7 @@ collect_gamma_statistics <- function(phylogenies) {
     m[i, 2] <- gamma_stat
   }
   z <- as.data.frame(x = m)
-  colnames(z) <- c("id", "gamma")
+  colnames(z) <- c("id", "gamma_stat")
   z[, 1] <- sapply(z[, 1], as.integer)
   z
 }

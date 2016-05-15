@@ -6,7 +6,7 @@
 #'   filename <- find_path("toy_example_3.RDa")
 #'   df <- collect_posterior_gammas(filename)
 #'   testit::assert(names(df) ==
-#'     c("species_tree", "alignment", "beast_run", "gamma")
+#'     c("species_tree", "alignment", "beast_run", "gamma_stat")
 #'   )
 #'   testit::assert(nrow(df) == 80)
 #' @author Richel Bilderbeek

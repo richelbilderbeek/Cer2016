@@ -17,22 +17,34 @@ knitr::kable(df)
 filename <- find_path("toy_example_3.RDa")
 df <- collect_posterior_gammas(filename)
 testit::assert(names(df) == 
-  c("species_tree", "alignment", "beast_run", "gamma")
+  c("species_tree", "alignment", "beast_run", "gamma_stat")
 )
 testit::assert(nrow(df) == 80)
 knitr::kable(head(df))
 
 ## ------------------------------------------------------------------------
-if (1==2) {
 filename <- find_path("toy_example_3.RDa")
 df <- collect_file_gammas(filename)
 testit::assert(names(df) == c("species_tree_gammas", "posterior_gammas"))
 testit::assert(
   names(df$species_tree_gammas) == c("species_tree", "gamma_stat")
 )
+testit::assert(names(df$posterior_gammas) == 
+  c("species_tree", "alignment", "beast_run", "gamma_stat")
+)
 testit::assert(nrow(df$species_tree_gammas) == 2)
 testit::assert(nrow(df$posterior_gammas) == 80)
-}
+
+## ------------------------------------------------------------------------
+folder <- "/home/p230198/Peregrine"
+all_parameter_filenames <- paste(folder, list.files(folder, pattern = "\\.RDa"), sep = "/")
+df <- collect_files_gammas(head(all_parameter_filenames, n = 10), verbose = TRUE)
+testit::assert(names(df) 
+  == c("species_tree_gamma_stats", "posterior_gamma_stats")
+)
+knitr::kable(df$species_tree_gamma_stats)
+knitr::kable(df$posterior_gamma_stats)
+
 
 ## ------------------------------------------------------------------------
 csv_filename_species_trees <- "collected_gammas_species_trees.csv"
