@@ -84,7 +84,7 @@ csv_filename_posterior <- "collected_gammas_posterior.csv"
 if (!file.exists(csv_filename_species_trees) || !file.exists(csv_filename_posterior)) {
   folder <- "/home/p230198/Peregrine"
   all_parameter_filenames <- paste(folder, list.files(folder, pattern = "\\.RDa"), sep = "/")
-  df <- collect_files_gammas(head(all_parameter_filenames), verbose = TRUE)
+  df <- collect_files_gammas(all_parameter_filenames, verbose = TRUE)
   write.csv(
     x = df$species_tree_gamma_stats,
     file = csv_filename_species_trees,
