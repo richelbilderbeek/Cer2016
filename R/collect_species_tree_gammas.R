@@ -1,5 +1,6 @@
 #' Collect the gamma statistics of the species trees with outgroup
 #' @param filename name of the file containing the parameters and results
+#' @param verbose give verbose output, should be TRUE or FALSE
 #' @return a data frame
 #' @examples
 #'  filename <- find_path("toy_example_1.RDa")
@@ -10,11 +11,20 @@
 #' @export
 #' @author Richel Bilderbeek
 collect_species_tree_gammas <- function(
-  filename
+  filename,
+  verbose = FALSE
 ) {
   if (!is_valid_file(filename)) {
     stop("collect_species_tree_gammas: invalid filename")
   }
+  if (verbose != TRUE && verbose != FALSE) {
+    stop(
+      "show_parameter_files: ",
+      "verbose should be TRUE or FALSE"
+    )
+  }
+
+
   file <- read_file(filename)
 
   n_species_trees_samples <- as.numeric(
@@ -24,9 +34,21 @@ collect_species_tree_gammas <- function(
   df <- NULL
 
   for (i in seq(1, n_species_trees_samples)) {
-    g <- ape::gammaStat(
-      file$species_trees_with_outgroup[[i]][[1]]
-    )
+    phylogeny <- file$species_trees_with_outgroup[[i]][[1]]
+    g <- NULL
+    if (!inherits(phylogeny, "phylo")) { # Check enforced by ape
+      if (verbose) {
+        print(
+          paste0(
+            "collect_species_tree_gammas: ",
+            "phylogeny must inherit from class 'phylo', ",
+            "class is '", class(phylogeny), "'"
+          )
+        )
+      }
+    } else {
+      g <- ape::gammaStat(phylogeny)
+    }
 
     # Remove id column
     this_df <- data.frame(

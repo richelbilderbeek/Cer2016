@@ -19,4 +19,14 @@ A dataframe of gamma statistics of each phylogeny in time
 Collects the gamm statistics of all phylogenies belonging to a
 parameter file in the melted/uncast/long form
 }
+\examples{
+  filename <- find_path("toy_example_3.RDa")
+  df <- collect_file_gammas(filename)
+  testit::assert(names(df) == c("species_tree_gammas", "posterior_gammas"))
+  testit::assert(names(df$species_tree_gammas)
+    == c("species_tree", "gamma_stat")
+  )
+  testit::assert(nrow(df$species_tree_gammas) == 2)
+  testit::assert(nrow(df$posterior_gammas) == 80)
+}
 

@@ -3,7 +3,7 @@ library(Cer2016)
 
 ## ------------------------------------------------------------------------
 
-csv_filename <- "collect_parameters.csv"
+csv_filename <- "collected_parameters.csv"
 if (!file.exists(csv_filename)) {
   folder <- "/home/p230198/Peregrine"
   all_parameter_filenames <- paste(folder, list.files(folder, pattern = "\\.RDa"), sep = "/")

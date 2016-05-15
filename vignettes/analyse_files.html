@@ -12,7 +12,7 @@
 
 <meta name="author" content="Richel Bilderbeek" />
 
-<meta name="date" content="2016-05-13" />
+<meta name="date" content="2016-05-15" />
 
 <title>Analyse files</title>
 
@@ -52,14 +52,14 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
 <h1 class="title toc-ignore">Analyse files</h1>
 <h4 class="author"><em>Richel Bilderbeek</em></h4>
-<h4 class="date"><em>2016-05-13</em></h4>
+<h4 class="date"><em>2016-05-15</em></h4>
 
 
 
 <p>Loading this package</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(Cer2016)</code></pre>
 <p>Extracting all file parameters is easy:</p>
-<pre class="sourceCode r"><code class="sourceCode r">csv_filename &lt;-<span class="st"> &quot;collect_parameters.csv&quot;</span>
+<pre class="sourceCode r"><code class="sourceCode r">csv_filename &lt;-<span class="st"> &quot;collected_parameters.csv&quot;</span>
 if (!<span class="kw">file.exists</span>(csv_filename)) {
   folder &lt;-<span class="st"> &quot;/home/p230198/Peregrine&quot;</span>
   all_parameter_filenames &lt;-<span class="st"> </span><span class="kw">paste</span>(folder, <span class="kw">list.files</span>(folder, <span class="dt">pattern =</span> <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.RDa&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot;/&quot;</span>)

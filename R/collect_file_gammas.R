@@ -4,6 +4,15 @@
 #' @param filename name of the parameter file
 #' @param verbose give verbose output, should be TRUE or FALSE
 #' @return A dataframe of gamma statistics of each phylogeny in time
+#' @examples
+#'   filename <- find_path("toy_example_3.RDa")
+#'   df <- collect_file_gammas(filename)
+#'   testit::assert(names(df) == c("species_tree_gammas", "posterior_gammas"))
+#'   testit::assert(names(df$species_tree_gammas)
+#'     == c("species_tree", "gamma_stat")
+#'   )
+#'   testit::assert(nrow(df$species_tree_gammas) == 2)
+#'   testit::assert(nrow(df$posterior_gammas) == 80)
 #' @export
 collect_file_gammas <- function(
   filename,
@@ -21,6 +30,13 @@ collect_file_gammas <- function(
       "invalid file '", filename, "'"
     )
   }
+  if (verbose != TRUE && verbose != FALSE) {
+    stop(
+      "show_parameter_files: ",
+      "verbose should be TRUE or FALSE"
+    )
+  }
+
   species_tree_gammas <- collect_species_tree_gammas(filename)
   posterior_gammas <- collect_posterior_gammas(filename)
 
