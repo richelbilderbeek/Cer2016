@@ -1,7 +1,7 @@
 context("branch_sorter")
 
 test_that("branches are sorted correctly", {
-  phylogeny   <- ape::read.tree("branch_sorter_testfile.txt")
+  phylogeny   <- "branch_sorter_testfile.txt"
   df          <- branch_sorter(phylogeny)
   expect_equivalent(length(names(df$ordered.branches)), 2)
 
@@ -16,7 +16,7 @@ test_that("branches are sorted correctly", {
 })
 
 test_that("...even if they are of different lengths!", {
-  phylogeny   <- ape::read.tree("branch_sorter_testfile2.txt")
+  phylogeny   <- "branch_sorter_testfile2.txt"
   df          <- branch_sorter(phylogeny)
   expect_equivalent(length(names(df$ordered.branches)), 2)
 
@@ -31,7 +31,7 @@ test_that("...even if they are of different lengths!", {
 })
 
 test_that("...even if they are in a different order!", {
-  phylogeny    <- ape::read.tree("branch_sorter_testfile3.txt")
+  phylogeny    <- "branch_sorter_testfile3.txt"
   df           <- branch_sorter(phylogeny)
   expect_equivalent(length(names(df$ordered.branches)), 2)
 

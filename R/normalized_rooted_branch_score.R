@@ -9,18 +9,22 @@
 # order. If a branch doesn't exist, it's represented by NA.
 
 normalized_rooted_branch_score <- function(filenames) {
-# preparing the trees
+# sorting the trees.
+  files                      <- NULL
   for (filename in filenames){
-    filename <- branch_sorter(filename)
+    file                     <- branch_sorter(filename)
+    files[[length(files)+1]] <- file
   }
+  names(files)               <- filenames
 
 # actually calculating the score
-  score      <- 0
-  tick       <- 1
-  for (branch in tree1){
-    subscore <- ( (branch - tree2[tick]) ^ 2) #nolint WARNING: tree2 does not exist
-    score    <- (score + subscore)
-    tick     <- (tick + 1)
-  }
-  return(score)
+  # score      <- 0
+  # tick       <- 1
+  # anterior   <-
+  # for (posterior in groups){
+  #   subscore <- ( (posterior - anterior[tick]) ^ 2)
+  #   score    <- (score + subscore)
+  #   tick     <- (tick + 1)
+  # }
+
 }
