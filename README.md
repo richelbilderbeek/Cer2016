@@ -13,7 +13,7 @@ A large dataset has been created from many simulation runs.
 The datasets below are created from that bigger dataset
 and allow to do an analysis.
 
-CSV|Demonstrated|Created|Analyse
+CSV|Analyse
 ---|---
 collected_parameters.csv|analyse_files
 collected_gammas_species_trees.csv|analyse_gammas
