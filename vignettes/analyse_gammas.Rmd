@@ -2,7 +2,7 @@
 title: "Analyse gamma's"
 author: "Richel Bilderbeek"
 date: "`r Sys.Date()`"
-output: rmarkdown::pdf_document
+output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Analyse gamma's}
   %\VignetteEngine{knitr::rmarkdown}

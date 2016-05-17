@@ -10,21 +10,17 @@
 
 normalized_rooted_branch_score <- function(filenames) {
 # sorting the trees.
-  files                      <- NULL
   for (filename in filenames){
-    file                     <- branch_sorter(filename)
-    files[[length(files)+1]] <- file
+    filename                <- branch_sorter(filename)
   }
-  names(files)               <- filenames
-
 # actually calculating the score
-  # score      <- 0
-  # tick       <- 1
-  # anterior   <-
-  # for (posterior in groups){
-  #   subscore <- ( (posterior - anterior[tick]) ^ 2)
-  #   score    <- (score + subscore)
-  #   tick     <- (tick + 1)
-  # }
-
+  score      <- 0
+  tick       <- 1
+  PBD-output <-
+  for (posterior in groups){
+    subscore <- ( (posterior - PBD-output[tick]) ^ 2)
+    score    <- (score + subscore)
+    tick     <- (tick + 1)
+  }
+ filename
 }
