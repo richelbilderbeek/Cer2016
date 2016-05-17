@@ -108,6 +108,7 @@ Here we simulate the 'true' incipient species tree:
 for (filename in filenames) {
   add_pbd_output(filename)  
 }
+names(filename$pbd_output)
 ```
 
 This is how these look like, both the incipient species phylogenies and an nLTT plots:

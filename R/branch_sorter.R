@@ -3,14 +3,23 @@
 #' @return a sorted tree1 and tree2
 #' @export
 #' @author Femke Thon
-
-branch_sorter <- function(filename){
+branch_sorter_from_file <- function(filename){
   if (tools::file_ext(filename) == "txt"){
-    filename           <- ape::read.tree(filename)
+    return(branch_sorter(ape::read.tree(filename)))
+  } else{
+    return(read_file(filename)$species_tree_with_outgroup[[1]][[1]])
   }
-  else{
-    filename           <- read_file(filename)
-  }
+
+}
+
+branch_sorter <- function(phylogeny){
+  #if (tools::file_ext(filename) == "txt"){
+  #  filename           <- ape::read.tree(filename)
+  #}
+  #else{
+  #  filename           <- read_file(filename)$species_tree_with_outgroup[[1]][[1]]
+  #}
+  filename <- phylogeny
   table              <- cbind(filename$edge, filename$edge.length)
   edgeorder          <- data.table::data.table(table, key = "V2")
   edgeorder          <- edgeorder[(0 - (length(filename$tip.label) + 1)), ]
