@@ -51,29 +51,30 @@ testit::assert(nrow(df) == 880)
 knitr::kable(head(df))
 ```
 
-
 ## Collecting nLTTs's from a file
 
 ```{r}
 filename <- find_path("toy_example_3.RDa")
-df <- collect_file_gammas(filename)
-testit::assert(names(df) == c("species_tree_gammas", "posterior_gammas"))
+df <- collect_file_nltts(filename, dt = dt)
+testit::assert(names(df) == c("species_tree_nltts", "posterior_nltts"))
 testit::assert(
-  names(df$species_tree_gammas) == c("species_tree", "gamma_stat")
+  names(df$species_tree_nltts) == c("species_tree", "t", "nltt")
 )
-testit::assert(names(df$posterior_gammas) == 
-  c("species_tree", "alignment", "beast_run", "gamma_stat")
+testit::assert(names(df$posterior_nltts) == 
+  c("species_tree", "alignment", "beast_run", "state", "t", "nltt")
 )
-testit::assert(nrow(df$species_tree_gammas) == 2)
-testit::assert(nrow(df$posterior_gammas) == 80)
+testit::assert(nrow(df$species_tree_nltts) > 0)
+testit::assert(nrow(df$posterior_nltts) > 0)
+knitr::kable(head(df$species_tree_nltts))
+knitr::kable(head(df$posterior_nltts))
 ```
 
-## Collecting gamma's from some files
+## Collecting nLTTs from some files
 
 ```{r}
 folder <- "/home/p230198/Peregrine"
 all_parameter_filenames <- paste(folder, list.files(folder, pattern = "\\.RDa"), sep = "/")
-df <- collect_files_gammas(head(all_parameter_filenames), verbose = TRUE)
+df <- collect_files_nltts(head(all_parameter_filenames), verbose = TRUE)
 testit::assert(names(df) 
   == c("species_tree_gamma_stats", "posterior_gamma_stats")
 )

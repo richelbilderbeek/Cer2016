@@ -97,37 +97,37 @@ knitr::<span class="kw">kable</span>(df)</code></pre>
 <tr class="odd">
 <td align="right">1</td>
 <td align="right">0.4</td>
-<td align="right">0.20</td>
+<td align="right">0.30</td>
 </tr>
 <tr class="even">
 <td align="right">1</td>
 <td align="right">0.5</td>
-<td align="right">0.20</td>
+<td align="right">0.30</td>
 </tr>
 <tr class="odd">
 <td align="right">1</td>
 <td align="right">0.6</td>
-<td align="right">0.20</td>
+<td align="right">0.30</td>
 </tr>
 <tr class="even">
 <td align="right">1</td>
 <td align="right">0.7</td>
-<td align="right">0.30</td>
-</tr>
-<tr class="odd">
-<td align="right">1</td>
-<td align="right">0.8</td>
-<td align="right">0.30</td>
-</tr>
-<tr class="even">
-<td align="right">1</td>
-<td align="right">0.9</td>
 <td align="right">0.40</td>
 </tr>
 <tr class="odd">
 <td align="right">1</td>
-<td align="right">1.0</td>
+<td align="right">0.8</td>
 <td align="right">0.50</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">0.9</td>
+<td align="right">0.60</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">1.0</td>
+<td align="right">0.70</td>
 </tr>
 <tr class="even">
 <td align="right">2</td>
@@ -147,12 +147,12 @@ knitr::<span class="kw">kable</span>(df)</code></pre>
 <tr class="odd">
 <td align="right">2</td>
 <td align="right">0.3</td>
-<td align="right">0.10</td>
+<td align="right">0.15</td>
 </tr>
 <tr class="even">
 <td align="right">2</td>
 <td align="right">0.4</td>
-<td align="right">0.10</td>
+<td align="right">0.15</td>
 </tr>
 <tr class="odd">
 <td align="right">2</td>
@@ -162,7 +162,7 @@ knitr::<span class="kw">kable</span>(df)</code></pre>
 <tr class="even">
 <td align="right">2</td>
 <td align="right">0.6</td>
-<td align="right">0.20</td>
+<td align="right">0.15</td>
 </tr>
 <tr class="odd">
 <td align="right">2</td>
@@ -407,7 +407,7 @@ knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df))</code></p
 <div id="collecting-nlttss-from-a-file" class="section level2">
 <h2>Collecting nLTTs’s from a file</h2>
 <pre class="sourceCode r"><code class="sourceCode r">filename &lt;-<span class="st"> </span><span class="kw">find_path</span>(<span class="st">&quot;toy_example_3.RDa&quot;</span>)
-df &lt;-<span class="st"> </span><span class="kw">collect_file_gammas</span>(filename)</code></pre>
+df &lt;-<span class="st"> </span><span class="kw">collect_file_nltts</span>(filename, <span class="dt">dt =</span> dt)</code></pre>
 <pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
 ## home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_1_1_1.trees'</code></pre>
 <pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
@@ -424,15 +424,120 @@ df &lt;-<span class="st"> </span><span class="kw">collect_file_gammas</span>(fil
 ## home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_2_2_1.trees'</code></pre>
 <pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
 ## home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_2_2_2.trees'</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">testit::<span class="kw">assert</span>(<span class="kw">names</span>(df) ==<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;species_tree_gammas&quot;</span>, <span class="st">&quot;posterior_gammas&quot;</span>))
+<pre class="sourceCode r"><code class="sourceCode r">testit::<span class="kw">assert</span>(<span class="kw">names</span>(df) ==<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;species_tree_nltts&quot;</span>, <span class="st">&quot;posterior_nltts&quot;</span>))
 testit::<span class="kw">assert</span>(
-  <span class="kw">names</span>(df$species_tree_gammas) ==<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;species_tree&quot;</span>, <span class="st">&quot;gamma_stat&quot;</span>)
+  <span class="kw">names</span>(df$species_tree_nltts) ==<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;species_tree&quot;</span>, <span class="st">&quot;t&quot;</span>, <span class="st">&quot;nltt&quot;</span>)
 )
-testit::<span class="kw">assert</span>(<span class="kw">names</span>(df$posterior_gammas) ==<span class="st"> </span>
-<span class="st">  </span><span class="kw">c</span>(<span class="st">&quot;species_tree&quot;</span>, <span class="st">&quot;alignment&quot;</span>, <span class="st">&quot;beast_run&quot;</span>, <span class="st">&quot;gamma_stat&quot;</span>)
+testit::<span class="kw">assert</span>(<span class="kw">names</span>(df$posterior_nltts) ==<span class="st"> </span>
+<span class="st">  </span><span class="kw">c</span>(<span class="st">&quot;species_tree&quot;</span>, <span class="st">&quot;alignment&quot;</span>, <span class="st">&quot;beast_run&quot;</span>, <span class="st">&quot;state&quot;</span>, <span class="st">&quot;t&quot;</span>, <span class="st">&quot;nltt&quot;</span>)
 )
-testit::<span class="kw">assert</span>(<span class="kw">nrow</span>(df$species_tree_gammas) ==<span class="st"> </span><span class="dv">2</span>)
-testit::<span class="kw">assert</span>(<span class="kw">nrow</span>(df$posterior_gammas) ==<span class="st"> </span><span class="dv">80</span>)</code></pre>
+testit::<span class="kw">assert</span>(<span class="kw">nrow</span>(df$species_tree_nltts) &gt;<span class="st"> </span><span class="dv">0</span>)
+testit::<span class="kw">assert</span>(<span class="kw">nrow</span>(df$posterior_nltts) &gt;<span class="st"> </span><span class="dv">0</span>)
+knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df$species_tree_nltts))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">species_tree</th>
+<th align="right">t</th>
+<th align="right">nltt</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">0.0</td>
+<td align="right">0.2727273</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">0.1</td>
+<td align="right">0.2727273</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">0.2</td>
+<td align="right">0.2727273</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">0.3</td>
+<td align="right">0.2727273</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">0.4</td>
+<td align="right">0.3636364</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">0.5</td>
+<td align="right">0.4545455</td>
+</tr>
+</tbody>
+</table>
+<pre class="sourceCode r"><code class="sourceCode r">knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df$posterior_nltts))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">species_tree</th>
+<th align="right">alignment</th>
+<th align="right">beast_run</th>
+<th align="right">state</th>
+<th align="right">t</th>
+<th align="right">nltt</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">0.0</td>
+<td align="right">0.1818182</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">0.1</td>
+<td align="right">0.1818182</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">0.2</td>
+<td align="right">0.2727273</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">0.3</td>
+<td align="right">0.3636364</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">0.4</td>
+<td align="right">0.4545455</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">0.5</td>
+<td align="right">0.5454545</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="collecting-gammas-from-some-files" class="section level2">
 <h2>Collecting gamma’s from some files</h2>

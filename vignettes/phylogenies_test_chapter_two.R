@@ -3,7 +3,7 @@
 library(Cer2016)
 library(ape)
 
-newick_filename <- "newick_file_five_species.txt"
+newick_filename <- find_path("newick_file_five_species.txt")
 if (file.exists(newick_filename)) {
   print(readLines(newick_filename))
   my_phylo <- read.tree(file = newick_filename)
@@ -58,7 +58,9 @@ write.nexus(my_nexus_phylo)
 ## ------------------------------------------------------------------------
 #Read & check
 library(ape)
-my_phylo2 <- read.tree("newick_file_six_species.txt")
+my_phylo2 <- read.tree(
+  find_path("newick_file_six_species.txt")
+)
 write.tree(my_phylo2)
 names(my_phylo2)
 
