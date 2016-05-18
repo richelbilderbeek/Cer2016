@@ -1,37 +1,72 @@
-sudo: require
-language: cpp
-compiler: gcc
+language: r
+cache: packages
 
-before_install:
-  - sudo add-apt-repository --yes ppa:marutter/rrutter 
-  - sudo apt-get update -qq
+r_packages:
+  - RNeXML
+  - ape
+  - adephylo
+  - crayon
+  - data.table
+  - devtools
+  - ggplot2
+  - gridExtra
+  - httr
+  - jsonlite
+  - knitr
+  - memoise
+  - phangorn
+  - PBD
+  - rex
+  - rmarkdown
+  - stringdist
+  - testit
+  - testthat
+  - withr
+  - XML
 
-install: 
-  - sudo apt-get install -qq r-base r-base-dev 
-  - sudo apt-get install -qq texlive
-  - sudo pip install codecov
-  - ./install_beast2.sh
+r_github_packages:
+  - jimhester/lintr
+  - jimhester/covr
+  - richelbilderbeek/beastscriptr
+  - olli0601/rBEAST
+  - richelbilderbeek/ribir
 
-addons:
-  apt:
-    sources:
-    - ubuntu-toolchain-r-test
+after_success:
+  - Rscript -e 'lintr::lint_package()'
+  - Rscript -e 'library(covr); codecov()'
 
-before_script:
- - sudo Rscript install_r_packages.R
- # R wants all hidden files gone...
- - rm .gitignore
- - rm .travis.yml
- - rm -rf .git
- - rm -rf ..Rcheck
- - rm .Rprofile
+#sudo: require
 
-script: 
- - R CMD check .
+#before_install:
+#  - sudo add-apt-repository --yes ppa:marutter/rrutter 
+#  - sudo apt-get update -qq
+
+#install: 
+#  - sudo apt-get install -qq r-base r-base-dev 
+#  - sudo apt-get install -qq texlive
+#  - sudo pip install codecov
+#  - ./install_beast2.sh
+
+#addons:
+#  apt:
+#    sources:
+#    - ubuntu-toolchain-r-test
+
+#before_script:
+# - sudo Rscript install_r_packages.R
+# R wants all hidden files gone...
+# - rm .gitignore
+# - rm .travis.yml
+# - rm -rf .git
+# - rm -rf ..Rcheck
+# - rm .Rprofile
+
+#script: 
+# - R CMD check .
 
 after_succes:
- - Rscript -e 'covr::codecov()
- - codecov
+ - Rscript -e 'lintr::lint_package()'
+ - Rscript -e 'library(covr); codecov()'
  - cat /home/travis/build/richelbilderbeek/Cer2016/..Rcheck/00install.out
  - cat /home/travis/build/richelbilderbeek/Cer2016/..Rcheck/00check.log
 
