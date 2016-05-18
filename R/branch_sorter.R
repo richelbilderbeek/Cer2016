@@ -12,6 +12,11 @@ branch_sorter_from_file <- function(filename){
 
 }
 
+#' Sorts branches for the NRBS analysis
+#' @param phylogeny A phylogeny of class 'phylo'
+#' @return something
+#' @export
+#' @author Femke Thon
 branch_sorter <- function(phylogeny){
   #if (tools::file_ext(filename) == "txt"){
   #  filename           <- ape::read.tree(filename)

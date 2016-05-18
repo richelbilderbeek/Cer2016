@@ -18,6 +18,13 @@ a data frame
 \description{
 Collect the nLTT values of the species trees with outgroup
 }
+\examples{
+  dt <- 0.1
+  filename <- find_path("toy_example_3.RDa")
+  df <- collect_species_tree_nltts(filename, dt = dt)
+  testit::assert(names(df) == c("species_tree", "t", "nltt"))
+  testit::assert(nrow(df) == 2 * (1 + (1/dt)))
+}
 \author{
 Richel Bilderbeek
 }

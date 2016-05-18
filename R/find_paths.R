@@ -1,13 +1,13 @@
 #' Finds the full pathof a file
 #' @param filename the name of a file
 #' @return the full path of the filename if an existing file could be found, stops otherwise
-#' @export
+#' @examples
+#'   path <- find_path("toy_example_1.RDa")
+#'   testit::assert(file.exists(path))
 #' @author Richel Bilderbeek
+#' @export
 find_path <- function(filename) {
-  if (file.exists(filename)) {
-    return(filename)
-  }
-
+  # Check inst/extdata first
   prefixes <- c(
     "E:/Git/Cer2016/inst/extdata/",                                    # nolint
     "/home/richel/GitHubs/Cer2016/inst/extdata/",                      # nolint
@@ -21,6 +21,11 @@ find_path <- function(filename) {
       return(full_path)
     }
   }
+
+  if (file.exists(filename)) {
+    return(filename)
+  }
+
   stop(
     "find_path: ",
     "cannot find '", filename, "'"

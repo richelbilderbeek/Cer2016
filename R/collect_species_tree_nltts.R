@@ -3,8 +3,14 @@
 #' @param dt the resolution of the nLTT plot,
 #'   must be in range <0,1>, default is 0.001
 #' @return a data frame
-#' @export
+#' @examples
+#'   dt <- 0.1
+#'   filename <- find_path("toy_example_3.RDa")
+#'   df <- collect_species_tree_nltts(filename, dt = dt)
+#'   testit::assert(names(df) == c("species_tree", "t", "nltt"))
+#'   testit::assert(nrow(df) == 2 * (1 + (1/dt)))
 #' @author Richel Bilderbeek
+#' @export
 collect_species_tree_nltts <- function(
   filename,
   dt = 0.001

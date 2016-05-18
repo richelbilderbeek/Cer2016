@@ -19,7 +19,7 @@ plot_posterior_nltts <- function(
   )
 
   # Posterior nLTT values
-  nltt_values <- collect_posterior_nltt_values(
+  nltt_values <- collect_posterior_nltts(
     filename = filename, dt = dt
   )
   testit::assert(!is.null(nltt_values$nltt))

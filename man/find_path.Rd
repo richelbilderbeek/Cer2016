@@ -15,6 +15,10 @@ the full path of the filename if an existing file could be found, stops otherwis
 \description{
 Finds the full pathof a file
 }
+\examples{
+  path <- find_path("toy_example_1.RDa")
+  testit::assert(file.exists(path))
+}
 \author{
 Richel Bilderbeek
 }

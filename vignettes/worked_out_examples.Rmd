@@ -376,7 +376,7 @@ knitr::kable(head(true_nltt_values))
 Then, I collect the nLTT values from the posterior(s):
 
 ```{r}
-posterior_nltt_values <- collect_posterior_nltt_values(
+posterior_nltt_values <- collect_posterior_nltts(
   filename = filename, dt = dt
 )
 knitr::kable(head(posterior_nltt_values))
@@ -578,7 +578,7 @@ knitr::kable(head(true_nltt_values))
 Then, I collect the nLTT values from the posterior(s):
 
 ```{r}
-posterior_nltt_values <- collect_posterior_nltt_values(
+posterior_nltt_values <- collect_posterior_nltts(
   filename = filename, dt = dt
 )
 knitr::kable(head(posterior_nltt_values))

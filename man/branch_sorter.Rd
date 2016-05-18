@@ -2,18 +2,18 @@
 % Please edit documentation in R/branch_sorter.R
 \name{branch_sorter}
 \alias{branch_sorter}
-\title{sorts branches for the NRBS analysis}
+\title{Sorts branches for the NRBS analysis}
 \usage{
-branch_sorter(filename)
+branch_sorter(phylogeny)
 }
 \arguments{
-\item{tree1, }{tree2, the trees that are to be sorted.}
+\item{phylogeny}{A phylogeny of class 'phylo'}
 }
 \value{
-a sorted tree1 and tree2
+something
 }
 \description{
-sorts branches for the NRBS analysis
+Sorts branches for the NRBS analysis
 }
 \author{
 Femke Thon

@@ -143,7 +143,7 @@ true_nltt_values <- collect_species_tree_nltts(filename = filename, dt = dt)
 knitr::kable(head(true_nltt_values))
 
 ## ------------------------------------------------------------------------
-posterior_nltt_values <- collect_posterior_nltt_values(
+posterior_nltt_values <- collect_posterior_nltts(
   filename = filename, dt = dt
 )
 knitr::kable(head(posterior_nltt_values))
@@ -231,7 +231,7 @@ true_nltt_values <- collect_species_tree_nltts(filename = filename, dt = dt)
 knitr::kable(head(true_nltt_values))
 
 ## ------------------------------------------------------------------------
-posterior_nltt_values <- collect_posterior_nltt_values(
+posterior_nltt_values <- collect_posterior_nltts(
   filename = filename, dt = dt
 )
 knitr::kable(head(posterior_nltt_values))

@@ -14,7 +14,7 @@
 
 <meta name="date" content="2016-05-18" />
 
-<title>Analyse gamma’s</title>
+<title>Analyse nLTTs</title>
 
 
 
@@ -50,7 +50,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
 
 
-<h1 class="title toc-ignore">Analyse gamma’s</h1>
+<h1 class="title toc-ignore">Analyse nLTTs</h1>
 <h4 class="author"><em>Richel Bilderbeek</em></h4>
 <h4 class="date"><em>2016-05-18</em></h4>
 
@@ -58,80 +58,288 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
 <p>Loading this package</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(Cer2016)</code></pre>
-<div id="collecting-gammas-from-one-or-more-phylogenies" class="section level2">
-<h2>Collecting gamma’s from one or more phylogenies</h2>
+<p>Resolution of analysis:</p>
+<pre class="sourceCode r"><code class="sourceCode r">dt &lt;-<span class="st"> </span><span class="fl">0.1</span></code></pre>
+<div id="collecting-nltt-values-from-one-or-more-phylogenies" class="section level2">
+<h2>Collecting nLTT values from one or more phylogenies</h2>
 <pre class="sourceCode r"><code class="sourceCode r">phylogenies &lt;-<span class="st"> </span><span class="kw">c</span>(ape::<span class="kw">rcoal</span>(<span class="dv">10</span>), ape::<span class="kw">rcoal</span>(<span class="dv">20</span>))
-df &lt;-<span class="st"> </span><span class="kw">collect_gamma_statistics</span>(phylogenies)
+df &lt;-<span class="st"> </span>ribir::<span class="kw">get_nltt_values</span>(phylogenies, <span class="dt">dt =</span> dt)
 knitr::<span class="kw">kable</span>(df)</code></pre>
 <table>
 <thead>
 <tr class="header">
 <th align="right">id</th>
-<th align="right">gamma_stat</th>
+<th align="right">t</th>
+<th align="right">nltt</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="right">1</td>
-<td align="right">3.435896</td>
+<td align="right">0.0</td>
+<td align="right">0.20</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">0.1</td>
+<td align="right">0.20</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">0.2</td>
+<td align="right">0.20</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">0.3</td>
+<td align="right">0.20</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">0.4</td>
+<td align="right">0.20</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">0.5</td>
+<td align="right">0.20</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">0.6</td>
+<td align="right">0.20</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">0.7</td>
+<td align="right">0.30</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">0.8</td>
+<td align="right">0.30</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">0.9</td>
+<td align="right">0.40</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">1.0</td>
+<td align="right">0.50</td>
 </tr>
 <tr class="even">
 <td align="right">2</td>
-<td align="right">3.375894</td>
+<td align="right">0.0</td>
+<td align="right">0.10</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">0.1</td>
+<td align="right">0.10</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">0.2</td>
+<td align="right">0.10</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">0.3</td>
+<td align="right">0.10</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">0.4</td>
+<td align="right">0.10</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">0.5</td>
+<td align="right">0.15</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">0.6</td>
+<td align="right">0.20</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">0.7</td>
+<td align="right">0.20</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">0.8</td>
+<td align="right">0.20</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">0.9</td>
+<td align="right">0.25</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">1.0</td>
+<td align="right">0.30</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="collecting-gammas-from-the-species-trees" class="section level2">
-<h2>Collecting gamma’s from the species trees</h2>
+<div id="collecting-nltt-values-from-the-species-trees" class="section level2">
+<h2>Collecting nLTT values from the species trees</h2>
 <pre class="sourceCode r"><code class="sourceCode r">filename &lt;-<span class="st"> </span><span class="kw">find_path</span>(<span class="st">&quot;toy_example_3.RDa&quot;</span>)
-df &lt;-<span class="st"> </span><span class="kw">collect_species_tree_gammas</span>(filename)
-testit::<span class="kw">assert</span>(<span class="kw">names</span>(df) ==<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;species_tree&quot;</span>, <span class="st">&quot;gamma_stat&quot;</span>))
-testit::<span class="kw">assert</span>(<span class="kw">nrow</span>(df) ==<span class="st"> </span><span class="dv">2</span>)
+df &lt;-<span class="st"> </span><span class="kw">collect_species_tree_nltts</span>(filename, <span class="dt">dt =</span> dt)
+testit::<span class="kw">assert</span>(<span class="kw">names</span>(df) ==<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;species_tree&quot;</span>, <span class="st">&quot;t&quot;</span>, <span class="st">&quot;nltt&quot;</span>))
+testit::<span class="kw">assert</span>(<span class="kw">nrow</span>(df) ==<span class="st"> </span><span class="dv">2</span> *<span class="st"> </span>(<span class="dv">1</span> +<span class="st"> </span>(<span class="dv">1</span> /<span class="st"> </span>dt)))
 knitr::<span class="kw">kable</span>(df)</code></pre>
 <table>
 <thead>
 <tr class="header">
 <th align="right">species_tree</th>
-<th align="right">gamma_stat</th>
+<th align="right">t</th>
+<th align="right">nltt</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="right">1</td>
-<td align="right">-0.8567307</td>
+<td align="right">0.0</td>
+<td align="right">0.2727273</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">0.1</td>
+<td align="right">0.2727273</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">0.2</td>
+<td align="right">0.2727273</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">0.3</td>
+<td align="right">0.2727273</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">0.4</td>
+<td align="right">0.3636364</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">0.5</td>
+<td align="right">0.4545455</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">0.6</td>
+<td align="right">0.5454545</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">0.7</td>
+<td align="right">0.6363636</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">0.8</td>
+<td align="right">0.7272727</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">0.9</td>
+<td align="right">0.8181818</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">1.0</td>
+<td align="right">0.9090909</td>
 </tr>
 <tr class="even">
 <td align="right">2</td>
-<td align="right">-0.8567307</td>
+<td align="right">0.0</td>
+<td align="right">0.2727273</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">0.1</td>
+<td align="right">0.2727273</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">0.2</td>
+<td align="right">0.2727273</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">0.3</td>
+<td align="right">0.2727273</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">0.4</td>
+<td align="right">0.3636364</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">0.5</td>
+<td align="right">0.4545455</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">0.6</td>
+<td align="right">0.5454545</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">0.7</td>
+<td align="right">0.6363636</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">0.8</td>
+<td align="right">0.7272727</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">0.9</td>
+<td align="right">0.8181818</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">1.0</td>
+<td align="right">0.9090909</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="collecting-gammas-from-the-posterior" class="section level2">
-<h2>Collecting gamma’s from the posterior</h2>
+<div id="collecting-nltt-values-from-the-posterior" class="section level2">
+<h2>Collecting nLTT values from the posterior</h2>
 <pre class="sourceCode r"><code class="sourceCode r">filename &lt;-<span class="st"> </span><span class="kw">find_path</span>(<span class="st">&quot;toy_example_3.RDa&quot;</span>)
-df &lt;-<span class="st"> </span><span class="kw">collect_posterior_gammas</span>(filename)</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_3_1_1_1.trees'</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_3_1_1_2.trees'</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_3_1_2_1.trees'</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_3_1_2_2.trees'</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_3_2_1_1.trees'</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_3_2_1_2.trees'</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_3_2_2_1.trees'</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_3_2_2_2.trees'</code></pre>
+df &lt;-<span class="st"> </span><span class="kw">collect_posterior_nltts</span>(filename, <span class="dt">dt =</span> dt)</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_1_1_1.trees'</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_1_1_2.trees'</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_1_2_1.trees'</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_1_2_2.trees'</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_2_1_1.trees'</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_2_1_2.trees'</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_2_2_1.trees'</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_2_2_2.trees'</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">testit::<span class="kw">assert</span>(<span class="kw">names</span>(df) ==<span class="st"> </span>
-<span class="st">  </span><span class="kw">c</span>(<span class="st">&quot;species_tree&quot;</span>, <span class="st">&quot;alignment&quot;</span>, <span class="st">&quot;beast_run&quot;</span>, <span class="st">&quot;gamma_stat&quot;</span>)
+<span class="st">  </span><span class="kw">c</span>(<span class="st">&quot;species_tree&quot;</span>, <span class="st">&quot;alignment&quot;</span>, <span class="st">&quot;beast_run&quot;</span>, <span class="st">&quot;state&quot;</span>, <span class="st">&quot;t&quot;</span>, <span class="st">&quot;nltt&quot;</span>)
 )
-testit::<span class="kw">assert</span>(<span class="kw">nrow</span>(df) ==<span class="st"> </span><span class="dv">80</span>)
+testit::<span class="kw">assert</span>(<span class="kw">nrow</span>(df) ==<span class="st"> </span><span class="dv">880</span>)
 knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df))</code></pre>
 <table>
 <thead>
@@ -139,7 +347,9 @@ knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df))</code></p
 <th align="right">species_tree</th>
 <th align="right">alignment</th>
 <th align="right">beast_run</th>
-<th align="right">gamma_stat</th>
+<th align="right">state</th>
+<th align="right">t</th>
+<th align="right">nltt</th>
 </tr>
 </thead>
 <tbody>
@@ -147,61 +357,73 @@ knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df))</code></p
 <td align="right">1</td>
 <td align="right">1</td>
 <td align="right">1</td>
-<td align="right">-0.7760589</td>
+<td align="right">1</td>
+<td align="right">0.0</td>
+<td align="right">0.1818182</td>
 </tr>
 <tr class="even">
 <td align="right">1</td>
 <td align="right">1</td>
 <td align="right">1</td>
-<td align="right">-0.9833685</td>
+<td align="right">1</td>
+<td align="right">0.1</td>
+<td align="right">0.1818182</td>
 </tr>
 <tr class="odd">
 <td align="right">1</td>
 <td align="right">1</td>
 <td align="right">1</td>
-<td align="right">-1.1986747</td>
+<td align="right">1</td>
+<td align="right">0.2</td>
+<td align="right">0.2727273</td>
 </tr>
 <tr class="even">
 <td align="right">1</td>
 <td align="right">1</td>
 <td align="right">1</td>
-<td align="right">-1.3442141</td>
+<td align="right">1</td>
+<td align="right">0.3</td>
+<td align="right">0.3636364</td>
 </tr>
 <tr class="odd">
 <td align="right">1</td>
 <td align="right">1</td>
 <td align="right">1</td>
-<td align="right">-0.8632066</td>
+<td align="right">1</td>
+<td align="right">0.4</td>
+<td align="right">0.4545455</td>
 </tr>
 <tr class="even">
 <td align="right">1</td>
 <td align="right">1</td>
 <td align="right">1</td>
-<td align="right">-0.9591119</td>
+<td align="right">1</td>
+<td align="right">0.5</td>
+<td align="right">0.5454545</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="collecting-gammas-from-a-file" class="section level2">
-<h2>Collecting gamma’s from a file</h2>
+<div id="collecting-nlttss-from-a-file" class="section level2">
+<h2>Collecting nLTTs’s from a file</h2>
 <pre class="sourceCode r"><code class="sourceCode r">filename &lt;-<span class="st"> </span><span class="kw">find_path</span>(<span class="st">&quot;toy_example_3.RDa&quot;</span>)
 df &lt;-<span class="st"> </span><span class="kw">collect_file_gammas</span>(filename)</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_3_1_1_1.trees'</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_3_1_1_2.trees'</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_3_1_2_1.trees'</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_3_1_2_2.trees'</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_3_2_1_1.trees'</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_3_2_1_2.trees'</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_3_2_2_1.trees'</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_3_2_2_2.trees'</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_1_1_1.trees'</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_1_1_2.trees'</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_1_2_1.trees'</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_1_2_2.trees'</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_2_1_1.trees'</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_2_1_2.trees'</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_2_2_1.trees'</code></pre>
+<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
+## home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_2_2_2.trees'</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">testit::<span class="kw">assert</span>(<span class="kw">names</span>(df) ==<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;species_tree_gammas&quot;</span>, <span class="st">&quot;posterior_gammas&quot;</span>))
 testit::<span class="kw">assert</span>(
   <span class="kw">names</span>(df$species_tree_gammas) ==<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;species_tree&quot;</span>, <span class="st">&quot;gamma_stat&quot;</span>)

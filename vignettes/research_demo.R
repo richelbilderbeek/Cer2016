@@ -3,7 +3,7 @@ library(Cer2016)
 library(ape)
 
 ## ------------------------------------------------------------------------
-filenames = c(
+filenames <- c(
   "toy_example_1.RDa", 
   "toy_example_2.RDa", 
   "toy_example_3.RDa", 
