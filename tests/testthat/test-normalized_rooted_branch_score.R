@@ -8,7 +8,6 @@ test_that("The normalized rooted branch score is calculated correctly", {
                      "branch_sorter_testfile0.1.txt")
   expect_equal(normalized_rooted_branch_score(phylogenies), 0.5)
 
-  # filenames   <- ("branch_sorter_testfile3.txt")
+  # filenames   <- ("branch_sorter_testfile3.txt") # nolint
 
 })
-

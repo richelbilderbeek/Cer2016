@@ -16,9 +16,9 @@ normalized_rooted_branch_score <- function(filenames) {
 # actually calculating the score
   score      <- 0
   tick       <- 1
-  PBD-output <-
+  PBD_output <- "foo"
   for (posterior in groups){
-    subscore <- ( (posterior - PBD-output[tick]) ^ 2)
+    subscore <- ( (posterior - PBD_output[tick]) ^ 2)
     score    <- (score + subscore)
     tick     <- (tick + 1)
   }

@@ -13,12 +13,12 @@ branch_sorter_from_file <- function(filename){
 }
 
 branch_sorter <- function(phylogeny){
-  #if (tools::file_ext(filename) == "txt"){
+  #if (tools::file_ext(filename) == "txt"){     # nolint start
   #  filename           <- ape::read.tree(filename)
   #}
   #else{
   #  filename           <- read_file(filename)$species_tree_with_outgroup[[1]][[1]]
-  #}
+  #}                               # nolint end
   filename <- phylogeny
   table              <- cbind(filename$edge, filename$edge.length)
   edgeorder          <- data.table::data.table(table, key = "V2")
