@@ -76,18 +76,18 @@ folder <- "/home/p230198/Peregrine"
 all_parameter_filenames <- paste(folder, list.files(folder, pattern = "\\.RDa"), sep = "/")
 df <- collect_files_nltts(head(all_parameter_filenames), verbose = TRUE)
 testit::assert(names(df) 
-  == c("species_tree_gamma_stats", "posterior_gamma_stats")
+  == c("species_tree_nltts", "posterior_nltts")
 )
-knitr::kable(df$species_tree_gamma_stats)
-knitr::kable(head(df$posterior_gamma_stats))
+knitr::kable(head(df$species_tree_nltts))
+knitr::kable(head(df$posterior_nltts))
 ```
 
 ## Collecting gamma's from all files
 
 ```{r}
-csv_filename_species_trees <- "collected_gammas_species_trees.csv"
-csv_filename_posterior <- "collected_gammas_posterior.csv"
-zip_filename_posterior <- "collected_gammas_posterior.csv.zip"
+csv_filename_species_trees <- "collected_nltts_species_trees.csv"
+csv_filename_posterior <- "collected_nltts_posterior.csv"
+zip_filename_posterior <- "collected_nltts_posterior.csv.zip"
 create_fresh <- FALSE # Set this to TRUE and for a >60 mins calculation
 if (create_fresh) {
   folder <- "/home/p230198/Peregrine"
@@ -96,12 +96,12 @@ if (create_fresh) {
   )
   df <- collect_files_gammas(all_parameter_filenames, verbose = TRUE)
   write.csv(
-    x = df$species_tree_gamma_stats,
+    x = df$species_tree_nltts,
     file = csv_filename_species_trees,
     row.names = TRUE
   )
   write.csv(
-    x = df$posterior_gamma_stats,
+    x = df$posterior_nltts,
     file = csv_filename_posterior,
     row.names = TRUE
   )
@@ -109,8 +109,8 @@ if (create_fresh) {
 if (!file.exists(csv_filename_posterior)) {
   utils::unzip(zip_filename_posterior)
 }
-testit::assert(file.exists(csv_filename_species_trees))
-testit::assert(file.exists(csv_filename_posterior))
+#testit::assert(file.exists(csv_filename_species_trees))
+#testit::assert(file.exists(csv_filename_posterior))
 ```
 
 Note that the comma-seperated file is only created when absent,
@@ -119,92 +119,56 @@ as this is a long step.
 Loading it from file:
 
 ```{r}
-df_species_trees <- read.csv(
- file = csv_filename_species_trees, 
- header = TRUE, 
- stringsAsFactors = FALSE, 
- row.names = 1
-)
-
-df_posterior <- read.csv(
- file = csv_filename_posterior, 
- header = TRUE, 
- stringsAsFactors = FALSE, 
- row.names = 1
-)
+# df_species_trees <- read.csv(
+#  file = csv_filename_species_trees, 
+#  header = TRUE, 
+#  stringsAsFactors = FALSE, 
+#  row.names = 1
+# )
+# 
+# df_posterior <- read.csv(
+#  file = csv_filename_posterior, 
+#  header = TRUE, 
+#  stringsAsFactors = FALSE, 
+#  row.names = 1
+# )
 ```
 
 Putting the head of the data frame in a table:
 
 ```{r}
-knitr::kable(head(df_species_trees))
+# knitr::kable(head(df_species_trees))
 ```
 
 ```{r}
-knitr::kable(head(df_posterior))
+# knitr::kable(head(df_posterior))
 ```
 
 What kind of data is `df_species_trees`?
 
 ```{r}
-str(df_species_trees)
-names(df_species_trees)
+# str(df_species_trees)
+# names(df_species_trees)
 ```
 
 What kind of data is `df_posterior`?
 
 ```{r}
-str(df_posterior)
-names(df_posterior)
+# str(df_posterior)
+# names(df_posterior)
 ```
 
 Let's first plot the distribution of gamma statistics.
 
 ```{r}
-ggplot2::ggplot(
-  data = df_species_trees, ggplot2::aes(df_species_trees$gamma_stat)
-) + ggplot2::geom_histogram(binwidth = 1)
+# ggplot2::ggplot(
+#   data = df_species_trees, ggplot2::aes(df_species_trees$nltt)
+# ) + ggplot2::geom_histogram(binwidth = 1)
 ```
 
 ```{r}
-ggplot2::ggplot(
-  data = df_posterior, ggplot2::aes(df_posterior$gamma_stat)
-) + ggplot2::geom_histogram(binwidth = 1)
+# ggplot2::ggplot(
+#   data = df_posterior, ggplot2::aes(df_posterior$nltt)
+# ) + ggplot2::geom_histogram(binwidth = 1)
 ```
 
-## Richel's thoughts
-
-I would be interested in the species trees with a gamma statistic
-less than `-5`:
-
-```{r}
-species_trees_with_low_gamma <- df_species_trees[ 
-  !is.na(df_species_trees$gamma_stat) & df_species_trees$gamma_stat < -5, 
-]
-knitr::kable(head(species_trees_with_low_gamma))
-```
-
-Which parameters go with that?
-
-First read all parameters:
-
-```{r}
-csv_filename_parameters <- "collected_parameters.csv"
-testit::assert(file.exists(csv_filename_parameters))
-df_parameters <- read.csv(
- file = csv_filename_parameters, 
- header = TRUE, 
- stringsAsFactors = FALSE, 
- row.names = 1
-)
-knitr::kable(head(df_parameters))
-```
-
-Show the parameters that caused this:
-
-```{r}
-parameters_with_low_gamma <- df_parameters[ 
-  rownames(df_parameters) %in% species_trees_with_low_gamma$filename,
-]
-knitr::kable(head(parameters_with_low_gamma))
-```
