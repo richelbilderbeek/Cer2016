@@ -32,6 +32,7 @@
       eri = eris[i],
       age = ages[i],
       n_species_trees_samples = n_species_trees_sampleses[i],
+      add_outgroup = TRUE,
       mutation_rate = mutation_rates[i],
       n_alignments = n_alignmentses[i],
       sequence_length = sequence_lengths[i],
@@ -47,7 +48,15 @@ for (filename in filenames) {
 for (filename in filenames) {
   add_species_trees_with_outgroup(filename)  
 }
-  
+for (filename in filenames) {
+  add_alignments(filename)  
+}
+for (filename in filenames) {
+  add_posteriors(
+    filename, 
+    skip_if_output_present = TRUE
+  )
+}
   
 
 ## ------------------------------------------------------------------------
@@ -58,5 +67,7 @@ for (filename in filenames){
   }
 
 ## ------------------------------------------------------------------------
-  str(file$pbd_output$tree$root.edge)
+  names(file)
+  names(file$species_trees_with_outgroup)
+  names(file$posteriors)
 

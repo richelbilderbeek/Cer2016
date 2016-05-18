@@ -28,7 +28,7 @@ parameter file in the melted/uncast/long form
   df <- collect_file_nltts(filename, dt = dt)
   testit::assert(names(df) == c("species_tree_nltts", "posterior_nltts"))
   testit::assert(names(df$species_tree_nltts)
-    == c("species_tree", "gamma_stat")
+    == c("species_tree", "t", "nltt")
   )
   testit::assert(nrow(df$species_tree_nltts) > 2)
   testit::assert(nrow(df$posterior_nltts) > 80)

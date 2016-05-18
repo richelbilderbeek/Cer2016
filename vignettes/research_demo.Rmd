@@ -86,6 +86,7 @@ for (i in seq(1, 4)) {
     eri = eris[i],
     age = ages[i],
     n_species_trees_samples = n_species_trees_sampleses[i],
+    add_outgroup = TRUE,
     mutation_rate = mutation_rates[i],
     n_alignments = n_alignmentses[i],
     sequence_length = sequence_lengths[i],

@@ -1,4 +1,4 @@
-#' Collects the gamm statistics of all phylogenies belonging to a
+#' Collects the gamma statistics of all phylogenies belonging to a
 #' parameter file in the melted/uncast/long form
 #'
 #' @param filename name of the parameter file

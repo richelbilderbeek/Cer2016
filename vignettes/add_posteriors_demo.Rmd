@@ -71,6 +71,7 @@ save_parameters_to_file(
   eri = 0.1,
   age = 5,
   n_species_trees_samples = 1,
+  add_outgroup = TRUE,
   mutation_rate = 0.01,
   n_alignments = 1,
   sequence_length = 1000,

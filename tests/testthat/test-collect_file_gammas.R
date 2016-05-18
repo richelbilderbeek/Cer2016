@@ -1,8 +1,6 @@
-context("collect_file_gammas")
-
-
 test_that("collect_file_gammas for toy example 1", {
   filename <- find_path("toy_example_1.RDa")
+  testit::assert(file.exists(filename))
   df <- collect_file_gammas(filename)
   expect_equal(names(df),
     c("species_tree_gammas", "posterior_gammas")
@@ -16,6 +14,7 @@ test_that("collect_file_gammas for toy example 1", {
 
 test_that("collect_file_gammas for toy example 3", {
   filename <- find_path("toy_example_3.RDa")
+  testit::assert(file.exists(filename))
   df <- collect_file_gammas(filename)
   expect_equal(names(df),
     c("species_tree_gammas", "posterior_gammas")

@@ -2,7 +2,7 @@
 % Please edit documentation in R/collect_file_gammas.R
 \name{collect_file_gammas}
 \alias{collect_file_gammas}
-\title{Collects the gamm statistics of all phylogenies belonging to a
+\title{Collects the gamma statistics of all phylogenies belonging to a
 parameter file in the melted/uncast/long form}
 \usage{
 collect_file_gammas(filename, verbose = FALSE)
@@ -16,7 +16,7 @@ collect_file_gammas(filename, verbose = FALSE)
 A dataframe of gamma statistics of each phylogeny in time
 }
 \description{
-Collects the gamm statistics of all phylogenies belonging to a
+Collects the gamma statistics of all phylogenies belonging to a
 parameter file in the melted/uncast/long form
 }
 \examples{

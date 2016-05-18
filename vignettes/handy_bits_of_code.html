@@ -11,7 +11,7 @@
 
 <meta name="author" content="Femke Thon" />
 
-<meta name="date" content="2016-05-10" />
+<meta name="date" content="2016-05-18" />
 
 <title>Useful bits of code</title>
 
@@ -70,7 +70,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <h1 class="title">Useful bits of code</h1>
 <h4 class="author"><em>Femke Thon</em></h4>
-<h4 class="date"><em>2016-05-10</em></h4>
+<h4 class="date"><em>2016-05-18</em></h4>
 
 </div>
 
@@ -111,6 +111,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <span class="dt">eri =</span> eris[i],
       <span class="dt">age =</span> ages[i],
       <span class="dt">n_species_trees_samples =</span> n_species_trees_sampleses[i],
+      <span class="dt">add_outgroup =</span> <span class="ot">TRUE</span>,
       <span class="dt">mutation_rate =</span> mutation_rates[i],
       <span class="dt">n_alignments =</span> n_alignmentses[i],
       <span class="dt">sequence_length =</span> sequence_lengths[i],
@@ -140,15 +141,84 @@ for (filename in filenames) {
 ## [1] &quot;   * Setting seed to 5&quot;
 ## [1] &quot;   * Setting seed to 6&quot;
 ## [1] &quot;Added species_trees_with_outgroup to file toy_example_4.RDa&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for (filename in filenames) {
+  <span class="kw">add_alignments</span>(filename)  
+}</code></pre></div>
+<pre><code>## [1] &quot;   * Created and saved alignments[1]&quot;
+## [1] &quot;file toy_example_1.RDa has gotten its 1 alignments (per species tree)&quot;
+## [1] &quot;   * Created and saved alignments[1]&quot;
+## [1] &quot;file toy_example_2.RDa has gotten its 1 alignments (per species tree)&quot;
+## [1] &quot;   * Created and saved alignments[1]&quot;
+## [1] &quot;   * Created and saved alignments[2]&quot;
+## [1] &quot;   * Created and saved alignments[3]&quot;
+## [1] &quot;   * Created and saved alignments[4]&quot;
+## [1] &quot;file toy_example_3.RDa has gotten its 2 alignments (per species tree)&quot;
+## [1] &quot;   * Created and saved alignments[1]&quot;
+## [1] &quot;   * Created and saved alignments[2]&quot;
+## [1] &quot;   * Created and saved alignments[3]&quot;
+## [1] &quot;   * Created and saved alignments[4]&quot;
+## [1] &quot;file toy_example_4.RDa has gotten its 2 alignments (per species tree)&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for (filename in filenames) {
+  <span class="kw">add_posteriors</span>(
+    filename, 
+    <span class="dt">skip_if_output_present =</span> <span class="ot">TRUE</span>
+  )
+}</code></pre></div>
+<pre><code>## [1] &quot;   * Setting seed to 2&quot;
+## [1] &quot;   * Storing posterior #1 for alignment #1 for species tree #1 at posterior_index #1&quot;
+## [1] &quot;file toy_example_1.RDa has gotten its posteriors&quot;
+## [1] &quot;   * Setting seed to 3&quot;
+## [1] &quot;   * Storing posterior #1 for alignment #1 for species tree #1 at posterior_index #1&quot;
+## [1] &quot;file toy_example_2.RDa has gotten its posteriors&quot;
+## [1] &quot;   * Setting seed to 4&quot;
+## [1] &quot;   * Storing posterior #1 for alignment #1 for species tree #1 at posterior_index #1&quot;
+## [1] &quot;   * Setting seed to 5&quot;
+## [1] &quot;   * Storing posterior #2 for alignment #1 for species tree #1 at posterior_index #2&quot;
+## [1] &quot;   * Setting seed to 4&quot;
+## [1] &quot;   * Storing posterior #1 for alignment #2 for species tree #1 at posterior_index #3&quot;
+## [1] &quot;   * Setting seed to 5&quot;
+## [1] &quot;   * Storing posterior #2 for alignment #2 for species tree #1 at posterior_index #4&quot;
+## [1] &quot;   * Setting seed to 4&quot;
+## [1] &quot;   * Storing posterior #1 for alignment #1 for species tree #2 at posterior_index #5&quot;
+## [1] &quot;   * Setting seed to 5&quot;
+## [1] &quot;   * Storing posterior #2 for alignment #1 for species tree #2 at posterior_index #6&quot;
+## [1] &quot;   * Setting seed to 4&quot;
+## [1] &quot;   * Storing posterior #1 for alignment #2 for species tree #2 at posterior_index #7&quot;
+## [1] &quot;   * Setting seed to 5&quot;
+## [1] &quot;   * Storing posterior #2 for alignment #2 for species tree #2 at posterior_index #8&quot;
+## [1] &quot;file toy_example_3.RDa has gotten its posteriors&quot;
+## [1] &quot;   * Setting seed to 5&quot;
+## [1] &quot;   * Storing posterior #1 for alignment #1 for species tree #1 at posterior_index #1&quot;
+## [1] &quot;   * Setting seed to 6&quot;
+## [1] &quot;   * Storing posterior #2 for alignment #1 for species tree #1 at posterior_index #2&quot;
+## [1] &quot;   * Setting seed to 5&quot;
+## [1] &quot;   * Storing posterior #1 for alignment #2 for species tree #1 at posterior_index #3&quot;
+## [1] &quot;   * Setting seed to 6&quot;
+## [1] &quot;   * Storing posterior #2 for alignment #2 for species tree #1 at posterior_index #4&quot;
+## [1] &quot;   * Setting seed to 5&quot;
+## [1] &quot;   * Storing posterior #1 for alignment #1 for species tree #2 at posterior_index #5&quot;
+## [1] &quot;   * Setting seed to 6&quot;
+## [1] &quot;   * Storing posterior #2 for alignment #1 for species tree #2 at posterior_index #6&quot;
+## [1] &quot;   * Setting seed to 5&quot;
+## [1] &quot;   * Storing posterior #1 for alignment #2 for species tree #2 at posterior_index #7&quot;
+## [1] &quot;   * Setting seed to 6&quot;
+## [1] &quot;   * Storing posterior #2 for alignment #2 for species tree #2 at posterior_index #8&quot;
+## [1] &quot;file toy_example_4.RDa has gotten its posteriors&quot;</code></pre>
 <p>Now we read the files, so we can later get stuff from the file (which is now loaded in R.)</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">files  &lt;-<span class="st"> </span><span class="kw">c</span>()
 for (filename in filenames){
   file   &lt;-<span class="st"> </span><span class="kw">read_file</span>(filename)
   files  &lt;-<span class="st"> </span><span class="kw">c</span>(files, file)
   }</code></pre></div>
-<p>To read these files, we can use ‘str()’ or ‘names()’. Or at least, we can see what’s in them.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="kw">str</span>(file$pbd_output$tree$root.edge)</code></pre></div>
-<pre><code>##  num 1e-10</code></pre>
+<p>To read these files, we can use ‘str()’ or ‘names()’. Or at least, we can see what’s in them. Also, ‘summary()’ can be useful.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="kw">names</span>(file)</code></pre></div>
+<pre><code>## [1] &quot;parameters&quot;                  &quot;pbd_output&quot;                 
+## [3] &quot;species_trees_with_outgroup&quot; &quot;alignments&quot;                 
+## [5] &quot;posteriors&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="kw">names</span>(file$species_trees_with_outgroup)</code></pre></div>
+<pre><code>## NULL</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="kw">names</span>(file$posteriors)</code></pre></div>
+<pre><code>## NULL</code></pre>
 </div>
 
 
