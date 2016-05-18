@@ -2,7 +2,12 @@
 title: "normalized_rooted_branch_score"
 author: "Femke Thon"
 date: "9 May 2016"
-output: html_document
+output: 
+  rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Research demo}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r setup, include=FALSE}
@@ -100,5 +105,5 @@ for (filename in filenames) {
 ```
 
 ```{r}
- normalized_rooted_branch_score(phylogenies)
+# normalized_rooted_branch_score(phylogenies) #nolint
 ```

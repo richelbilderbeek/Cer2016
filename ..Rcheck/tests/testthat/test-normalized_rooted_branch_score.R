@@ -1,16 +1,15 @@
 context("normalized_rooted_branch_score")
 
 test_that("The normalized rooted branch score is calculated correctly", {
-  skip("Don't break the build")
-  expect_equal(normalized_rooted_branch_score(c(1), c(1)), 0)
-  expect_equal(normalized_rooted_branch_score(
-    c(0.3, 0.4, 0.4), c(0.5, 0.2, 0.2)), 0.12)
+  skip("Do not break the build")
+  filenames  <- c("branch_sorter_testfile0.1.txt",
+                  "branch_sorter_testfile0.2.txt")
+  expect_equal(normalized_rooted_branch_score(phylogenies), 0)
+  filenames    <- c("branch_sorter_testfile2.txt",
+                     "branch_sorter_testfile0.1.txt")
+  expect_equal(normalized_rooted_branch_score(phylogenies), 0.5)
+
+  # filenames   <- ("branch_sorter_testfile3.txt")
+
 })
 
-test_that("It also works when not all branches are present", {
-  skip("Don't break the build")
-  expect_equal(normalized_rooted_branch_score(
-      c(0.5, 0.2, NA), c(0.3, 0.4, 0.4)), 0.24)
-  expect_equal(normalized_rooted_branch_score(
-    c(0.5, NA, 0.2), c(0.3, NA, 0.4)), 0.08)
-  })

@@ -5,13 +5,18 @@ add_pbd_output          Adds a pbd_sim result to a file
 add_posteriors          Add BEAST2 posteriors to a file
 add_species_trees_with_outgroup
                         Add a species tree with outgroup to a file
-branch_sorter           sorts branches for the NRBS analysis
+branch_sorter           Sorts branches for the NRBS analysis
+branch_sorter_from_file
+                        sorts branches for the NRBS analysis
 check_progress          Function that shows how much parameter files
                         are present, and how far the pipeline has
                         gotten
 collect_file_gammas     Collects the gamm statistics of all phylogenies
                         belonging to a parameter file in the
                         melted/uncast/long form
+collect_files_gammas    Collects the gamma statistics of all
+                        phylogenies belonging to a multiple parameter
+                        file in the melted/uncast/long form
 collect_gamma_statistics
                         Collects the gamma statistics of all
                         phylogenies in the melted/uncast/long form
@@ -21,7 +26,7 @@ collect_posterior_filenames
 collect_posterior_gammas
                         Collect the gamma statistics of the BEAST2
                         posteriors
-collect_posterior_nltt_values
+collect_posterior_nltts
                         Collect the nLTT values of the BEAST2
                         posteriors
 collect_species_tree_gammas

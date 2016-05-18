@@ -20,8 +20,8 @@ Type 'q()' to quit R.
 > 
 > test_check("Cer2016")
 testthat results ================================================================
-OK: 74 SKIPPED: 3 FAILED: 0
+OK: 74 SKIPPED: 5 FAILED: 0
 > 
 > proc.time()
    user  system elapsed 
-  2.632   0.094   3.625 
+  2.314   0.149   3.244 

@@ -3,7 +3,9 @@ context("get_phylogeny_crown_age")
 test_that("get_phylogeny_crown_age works", {
   age <- 15
   set.seed(42)
-  phylogeny <- PBD::pbd_sim(c(0.2, 1, 0.2, 0.0, 0.0), age)$tree
+  phylogeny <- PBD::pbd_sim(
+    c(0.2, 1, 0.2, 0.0, 0.0), age
+  )$tree
   n_taxa <- length(phylogeny$tip.label)
   testit::assert(n_taxa > 0)
   crown_age <- get_phylogeny_crown_age(phylogeny)

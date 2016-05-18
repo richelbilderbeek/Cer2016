@@ -13,9 +13,10 @@ License: file LICENSE
 LazyData: TRUE
 Requires: adephylo, ape, nLTT, PBD, phangorn, phytools, rBEAST, ribir,
         testit, tools, TreeSim
-Suggests: ape, ggplot2, gridExtra, knitr, lintr, rmarkdown, testthat
+Suggests: ape, ggplot2, gridExtra, knitr, lintr, rmarkdown, testit,
+        testthat
 RoxygenNote: 5.0.1
 URL: https://github.com/richelbilderbeek/Cer2016
 BugReports: https://github.com/richelbilderbeek/Cer2016/issues
 VignetteBuilder: knitr
-Built: R 3.3.0; ; 2016-05-13 12:16:56 UTC; unix
+Built: R 3.3.0; ; 2016-05-18 09:33:04 UTC; unix
