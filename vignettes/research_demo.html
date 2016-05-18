@@ -12,7 +12,7 @@
 
 <meta name="author" content="Richel Bilderbeek" />
 
-<meta name="date" content="2016-05-12" />
+<meta name="date" content="2016-05-18" />
 
 <title>Research demo</title>
 
@@ -52,7 +52,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
 <h1 class="title toc-ignore">Research demo</h1>
 <h4 class="author"><em>Richel Bilderbeek</em></h4>
-<h4 class="date"><em>2016-05-12</em></h4>
+<h4 class="date"><em>2016-05-18</em></h4>
 
 
 <div id="TOC">
@@ -92,7 +92,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(Cer2016)
 <span class="kw">library</span>(ape)</code></pre>
 <p>We create four parameter files:</p>
-<pre class="sourceCode r"><code class="sourceCode r">filenames =<span class="st"> </span><span class="kw">c</span>(
+<pre class="sourceCode r"><code class="sourceCode r">filenames &lt;-<span class="st"> </span><span class="kw">c</span>(
   <span class="st">&quot;toy_example_1.RDa&quot;</span>, 
   <span class="st">&quot;toy_example_2.RDa&quot;</span>, 
   <span class="st">&quot;toy_example_3.RDa&quot;</span>, 
@@ -279,120 +279,44 @@ knitr::<span class="kw">kable</span>(df)</code></pre>
   )
 }</code></pre>
 <pre><code>## [1] &quot;   * Setting seed to 2&quot;
-## [1] &quot;Call BEAST2 jar by its full file path&quot;
-## [1] &quot;File created by BEAST2 jar file&quot;</code></pre>
-<pre><code>## Warning: replacing previous import 'data.table::melt' by 'reshape2::melt'
-## when loading 'rBEAST'</code></pre>
-<pre><code>## Warning: replacing previous import 'data.table::dcast' by 'reshape2::dcast'
-## when loading 'rBEAST'</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_1_1_1_1.trees'</code></pre>
-<pre><code>## [1] &quot;   * Storing posterior #1 for alignment #1 for species tree #1 at posterior_index #1&quot;
+## [1] &quot;   * Storing posterior #1 for alignment #1 for species tree #1 at posterior_index #1&quot;
 ## [1] &quot;file toy_example_1.RDa has gotten its posteriors&quot;
 ## [1] &quot;   * Setting seed to 3&quot;
-## [1] &quot;Call BEAST2 jar by its full file path&quot;
-## [1] &quot;File created by BEAST2 jar file&quot;</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_2_1_1_1.trees'</code></pre>
-<pre><code>## [1] &quot;   * Storing posterior #1 for alignment #1 for species tree #1 at posterior_index #1&quot;
+## [1] &quot;   * Storing posterior #1 for alignment #1 for species tree #1 at posterior_index #1&quot;
 ## [1] &quot;file toy_example_2.RDa has gotten its posteriors&quot;
 ## [1] &quot;   * Setting seed to 4&quot;
-## [1] &quot;Call BEAST2 jar by its full file path&quot;
-## [1] &quot;File created by BEAST2 jar file&quot;</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_3_1_1_1.trees'</code></pre>
-<pre><code>## [1] &quot;   * Storing posterior #1 for alignment #1 for species tree #1 at posterior_index #1&quot;
+## [1] &quot;   * Storing posterior #1 for alignment #1 for species tree #1 at posterior_index #1&quot;
 ## [1] &quot;   * Setting seed to 5&quot;
-## [1] &quot;Call BEAST2 jar by its full file path&quot;
-## [1] &quot;File created by BEAST2 jar file&quot;</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_3_1_1_2.trees'</code></pre>
-<pre><code>## [1] &quot;   * Storing posterior #2 for alignment #1 for species tree #1 at posterior_index #2&quot;
+## [1] &quot;   * Storing posterior #2 for alignment #1 for species tree #1 at posterior_index #2&quot;
 ## [1] &quot;   * Setting seed to 4&quot;
-## [1] &quot;Call BEAST2 jar by its full file path&quot;
-## [1] &quot;File created by BEAST2 jar file&quot;</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_3_1_2_1.trees'</code></pre>
-<pre><code>## [1] &quot;   * Storing posterior #1 for alignment #2 for species tree #1 at posterior_index #3&quot;
+## [1] &quot;   * Storing posterior #1 for alignment #2 for species tree #1 at posterior_index #3&quot;
 ## [1] &quot;   * Setting seed to 5&quot;
-## [1] &quot;Call BEAST2 jar by its full file path&quot;
-## [1] &quot;File created by BEAST2 jar file&quot;</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_3_1_2_2.trees'</code></pre>
-<pre><code>## [1] &quot;   * Storing posterior #2 for alignment #2 for species tree #1 at posterior_index #4&quot;
+## [1] &quot;   * Storing posterior #2 for alignment #2 for species tree #1 at posterior_index #4&quot;
 ## [1] &quot;   * Setting seed to 4&quot;
-## [1] &quot;Call BEAST2 jar by its full file path&quot;
-## [1] &quot;File created by BEAST2 jar file&quot;</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_3_2_1_1.trees'</code></pre>
-<pre><code>## [1] &quot;   * Storing posterior #1 for alignment #1 for species tree #2 at posterior_index #5&quot;
+## [1] &quot;   * Storing posterior #1 for alignment #1 for species tree #2 at posterior_index #5&quot;
 ## [1] &quot;   * Setting seed to 5&quot;
-## [1] &quot;Call BEAST2 jar by its full file path&quot;
-## [1] &quot;File created by BEAST2 jar file&quot;</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_3_2_1_2.trees'</code></pre>
-<pre><code>## [1] &quot;   * Storing posterior #2 for alignment #1 for species tree #2 at posterior_index #6&quot;
+## [1] &quot;   * Storing posterior #2 for alignment #1 for species tree #2 at posterior_index #6&quot;
 ## [1] &quot;   * Setting seed to 4&quot;
-## [1] &quot;Call BEAST2 jar by its full file path&quot;
-## [1] &quot;File created by BEAST2 jar file&quot;</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_3_2_2_1.trees'</code></pre>
-<pre><code>## [1] &quot;   * Storing posterior #1 for alignment #2 for species tree #2 at posterior_index #7&quot;
+## [1] &quot;   * Storing posterior #1 for alignment #2 for species tree #2 at posterior_index #7&quot;
 ## [1] &quot;   * Setting seed to 5&quot;
-## [1] &quot;Call BEAST2 jar by its full file path&quot;
-## [1] &quot;File created by BEAST2 jar file&quot;</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_3_2_2_2.trees'</code></pre>
-<pre><code>## [1] &quot;   * Storing posterior #2 for alignment #2 for species tree #2 at posterior_index #8&quot;
+## [1] &quot;   * Storing posterior #2 for alignment #2 for species tree #2 at posterior_index #8&quot;
 ## [1] &quot;file toy_example_3.RDa has gotten its posteriors&quot;
 ## [1] &quot;   * Setting seed to 5&quot;
-## [1] &quot;Call BEAST2 jar by its full file path&quot;
-## [1] &quot;File created by BEAST2 jar file&quot;</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_4_1_1_1.trees'</code></pre>
-<pre><code>## [1] &quot;   * Storing posterior #1 for alignment #1 for species tree #1 at posterior_index #1&quot;
+## [1] &quot;   * Storing posterior #1 for alignment #1 for species tree #1 at posterior_index #1&quot;
 ## [1] &quot;   * Setting seed to 6&quot;
-## [1] &quot;Call BEAST2 jar by its full file path&quot;
-## [1] &quot;File created by BEAST2 jar file&quot;</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_4_1_1_2.trees'</code></pre>
-<pre><code>## [1] &quot;   * Storing posterior #2 for alignment #1 for species tree #1 at posterior_index #2&quot;
+## [1] &quot;   * Storing posterior #2 for alignment #1 for species tree #1 at posterior_index #2&quot;
 ## [1] &quot;   * Setting seed to 5&quot;
-## [1] &quot;Call BEAST2 jar by its full file path&quot;
-## [1] &quot;File created by BEAST2 jar file&quot;</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_4_1_2_1.trees'</code></pre>
-<pre><code>## [1] &quot;   * Storing posterior #1 for alignment #2 for species tree #1 at posterior_index #3&quot;
+## [1] &quot;   * Storing posterior #1 for alignment #2 for species tree #1 at posterior_index #3&quot;
 ## [1] &quot;   * Setting seed to 6&quot;
-## [1] &quot;Call BEAST2 jar by its full file path&quot;
-## [1] &quot;File created by BEAST2 jar file&quot;</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_4_1_2_2.trees'</code></pre>
-<pre><code>## [1] &quot;   * Storing posterior #2 for alignment #2 for species tree #1 at posterior_index #4&quot;
+## [1] &quot;   * Storing posterior #2 for alignment #2 for species tree #1 at posterior_index #4&quot;
 ## [1] &quot;   * Setting seed to 5&quot;
-## [1] &quot;Call BEAST2 jar by its full file path&quot;
-## [1] &quot;File created by BEAST2 jar file&quot;</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_4_2_1_1.trees'</code></pre>
-<pre><code>## [1] &quot;   * Storing posterior #1 for alignment #1 for species tree #2 at posterior_index #5&quot;
+## [1] &quot;   * Storing posterior #1 for alignment #1 for species tree #2 at posterior_index #5&quot;
 ## [1] &quot;   * Setting seed to 6&quot;
-## [1] &quot;Call BEAST2 jar by its full file path&quot;
-## [1] &quot;File created by BEAST2 jar file&quot;</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_4_2_1_2.trees'</code></pre>
-<pre><code>## [1] &quot;   * Storing posterior #2 for alignment #1 for species tree #2 at posterior_index #6&quot;
+## [1] &quot;   * Storing posterior #2 for alignment #1 for species tree #2 at posterior_index #6&quot;
 ## [1] &quot;   * Setting seed to 5&quot;
-## [1] &quot;Call BEAST2 jar by its full file path&quot;
-## [1] &quot;File created by BEAST2 jar file&quot;</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_4_2_2_1.trees'</code></pre>
-<pre><code>## [1] &quot;   * Storing posterior #1 for alignment #2 for species tree #2 at posterior_index #7&quot;
+## [1] &quot;   * Storing posterior #1 for alignment #2 for species tree #2 at posterior_index #7&quot;
 ## [1] &quot;   * Setting seed to 6&quot;
-## [1] &quot;Call BEAST2 jar by its full file path&quot;
-## [1] &quot;File created by BEAST2 jar file&quot;</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on
-## 'toy_example_4_2_2_2.trees'</code></pre>
-<pre><code>## [1] &quot;   * Storing posterior #2 for alignment #2 for species tree #2 at posterior_index #8&quot;
+## [1] &quot;   * Storing posterior #2 for alignment #2 for species tree #2 at posterior_index #8&quot;
 ## [1] &quot;file toy_example_4.RDa has gotten its posteriors&quot;</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">for (filename in filenames) {
   <span class="kw">print</span>(filename)

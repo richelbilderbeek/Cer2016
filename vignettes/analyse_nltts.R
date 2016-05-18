@@ -2,24 +2,27 @@
 library(Cer2016)
 
 ## ------------------------------------------------------------------------
+dt <- 0.1
+
+## ------------------------------------------------------------------------
 phylogenies <- c(ape::rcoal(10), ape::rcoal(20))
-df <- collect_gamma_statistics(phylogenies)
+df <- ribir::get_nltt_values(phylogenies, dt = dt)
 knitr::kable(df)
 
 ## ------------------------------------------------------------------------
 filename <- find_path("toy_example_3.RDa")
-df <- collect_species_tree_gammas(filename)
-testit::assert(names(df) == c("species_tree", "gamma_stat"))
-testit::assert(nrow(df) == 2)
+df <- collect_species_tree_nltts(filename, dt = dt)
+testit::assert(names(df) == c("species_tree", "t", "nltt"))
+testit::assert(nrow(df) == 2 * (1 + (1 / dt)))
 knitr::kable(df)
 
 ## ------------------------------------------------------------------------
 filename <- find_path("toy_example_3.RDa")
-df <- collect_posterior_gammas(filename)
+df <- collect_posterior_nltts(filename, dt = dt)
 testit::assert(names(df) == 
-  c("species_tree", "alignment", "beast_run", "gamma_stat")
+  c("species_tree", "alignment", "beast_run", "state", "t", "nltt")
 )
-testit::assert(nrow(df) == 80)
+testit::assert(nrow(df) == 880)
 knitr::kable(head(df))
 
 ## ------------------------------------------------------------------------

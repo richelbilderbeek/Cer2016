@@ -5,12 +5,12 @@
 #' @return a data frame
 #' @export
 #' @author Richel Bilderbeek
-collect_posterior_nltt_values <- function(
+collect_posterior_nltts <- function(
   filename,
   dt = 0.001
 ) {
   if (!is_valid_file(filename)) {
-    stop("collect_posterior_nltt_values: invalid filename")
+    stop("collect_posterior_nltts: invalid filename")
   }
   file <- read_file(filename)
   parameters <- file$parameters
@@ -25,8 +25,8 @@ collect_posterior_nltt_values <- function(
   for (i in seq(1, n_species_trees_samples)) {
     for (j in seq(1, n_alignments)) {
       for (k in seq(1, n_beast_runs)) {
-        base_filename <- paste(basename(
-          tools::file_path_sans_ext(filename)), "_",
+        base_filename <- paste(
+          tools::file_path_sans_ext(filename), "_",
           i, "_", j, "_", k, sep = ""
         )
         trees_filename <- paste(base_filename, ".trees", sep = "")
@@ -39,13 +39,6 @@ collect_posterior_nltt_values <- function(
         }
         phylogenies <- rBEAST::beast2out.read.trees(trees_filename)
         nltt_values <- ribir::get_nltt_values(phylogenies, dt = dt)
-
-        # Remove id column
-        nltt_values <- subset(
-          nltt_values,
-          select = -c(id) # nolint Putting 'nltt_values$' before ID will break the code
-        )
-        testit::assert(!is.null(nltt_values$nltt))
 
         n_nltt_values <- nrow(nltt_values)
         this_df <- data.frame(
@@ -63,5 +56,9 @@ collect_posterior_nltt_values <- function(
     }
   }
   testit::assert(!is.null(df$nltt))
+  testit::assert(names(df)
+    ==  c("species_tree", "alignment", "beast_run", "id", "t", "nltt")
+  )
+  names(df) <- c("species_tree", "alignment", "beast_run", "state", "t", "nltt")
   df
 }
