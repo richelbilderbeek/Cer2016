@@ -18,12 +18,12 @@ branch_sorter_from_file <- function(filename){
 #' @export
 #' @author Femke Thon
 branch_sorter <- function(phylogeny){
-  #if (tools::file_ext(filename) == "txt"){
-  #  filename           <- ape::read.tree(filename)
-  #}
-  #else{
-  #  filename           <- read_file(filename)$species_tree_with_outgroup[[1]][[1]]
-  #}
+  #if (tools::file_ext(filename) == "txt"){ # nolint thanks Richel
+  #  filename           <- ape::read.tree(filename) # nolint thanks Richel
+  #} # nolint thanks Richel
+  #else{ # nolint thanks Richel
+  #  filename           <- read_file(filename)$species_tree_with_outgroup[[1]][[1]] # nolint thanks Richel
+  #} # nolint thanks Richel
   filename <- phylogeny
   table              <- cbind(filename$edge, filename$edge.length)
   edgeorder          <- data.table::data.table(table, key = "V2")

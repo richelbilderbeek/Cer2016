@@ -24,6 +24,46 @@ Type 'q()' to quit R.
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
 > cleanEx()
+> nameEx("collect_file_gammas")
+> ### * collect_file_gammas
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: collect_file_gammas
+> ### Title: Collects the gamm statistics of all phylogenies belonging to a
+> ###   parameter file in the melted/uncast/long form
+> ### Aliases: collect_file_gammas
+> 
+> ### ** Examples
+> 
+>   filename <- find_path("toy_example_3.RDa")
+>   df <- collect_file_gammas(filename)
+Warning in readLines(file, n = 2000) :
+  incomplete final line found on '/home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_1_1_1.trees'
+Warning in readLines(file, n = 2000) :
+  incomplete final line found on '/home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_1_1_2.trees'
+Warning in readLines(file, n = 2000) :
+  incomplete final line found on '/home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_1_2_1.trees'
+Warning in readLines(file, n = 2000) :
+  incomplete final line found on '/home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_1_2_2.trees'
+Warning in readLines(file, n = 2000) :
+  incomplete final line found on '/home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_2_1_1.trees'
+Warning in readLines(file, n = 2000) :
+  incomplete final line found on '/home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_2_1_2.trees'
+Warning in readLines(file, n = 2000) :
+  incomplete final line found on '/home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_2_2_1.trees'
+Warning in readLines(file, n = 2000) :
+  incomplete final line found on '/home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_2_2_2.trees'
+>   testit::assert(names(df) == c("species_tree_gammas", "posterior_gammas"))
+>   testit::assert(names(df$species_tree_gammas)
++     == c("species_tree", "gamma_stat")
++   )
+>   testit::assert(nrow(df$species_tree_gammas) == 2)
+>   testit::assert(nrow(df$posterior_gammas) == 80)
+> 
+> 
+> 
+> cleanEx()
 > nameEx("collect_parameters")
 > ### * collect_parameters
 > 
@@ -62,6 +102,83 @@ Type 'q()' to quit R.
 >   trees_filename <- find_path("toy_example_1_1_1_1.trees")
 >   testit::assert(length(posterior_filenames) == 1)
 >   testit::assert(posterior_filenames[1] == trees_filename)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("collect_posterior_gammas")
+> ### * collect_posterior_gammas
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: collect_posterior_gammas
+> ### Title: Collect the gamma statistics of the BEAST2 posteriors
+> ### Aliases: collect_posterior_gammas
+> 
+> ### ** Examples
+> 
+>   filename <- find_path("toy_example_3.RDa")
+>   df <- collect_posterior_gammas(filename)
+Warning in readLines(file, n = 2000) :
+  incomplete final line found on '/home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_1_1_1.trees'
+Warning in readLines(file, n = 2000) :
+  incomplete final line found on '/home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_1_1_2.trees'
+Warning in readLines(file, n = 2000) :
+  incomplete final line found on '/home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_1_2_1.trees'
+Warning in readLines(file, n = 2000) :
+  incomplete final line found on '/home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_1_2_2.trees'
+Warning in readLines(file, n = 2000) :
+  incomplete final line found on '/home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_2_1_1.trees'
+Warning in readLines(file, n = 2000) :
+  incomplete final line found on '/home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_2_1_2.trees'
+Warning in readLines(file, n = 2000) :
+  incomplete final line found on '/home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_2_2_1.trees'
+Warning in readLines(file, n = 2000) :
+  incomplete final line found on '/home/p230198/GitHubs/Cer2016/inst/extdata/toy_example_3_2_2_2.trees'
+>   testit::assert(names(df) ==
++     c("species_tree", "alignment", "beast_run", "gamma_stat")
++   )
+>   testit::assert(nrow(df) == 80)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("collect_species_tree_gammas")
+> ### * collect_species_tree_gammas
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: collect_species_tree_gammas
+> ### Title: Collect the gamma statistics of the species trees with outgroup
+> ### Aliases: collect_species_tree_gammas
+> 
+> ### ** Examples
+> 
+>  filename <- find_path("toy_example_1.RDa")
+>  df <- collect_species_tree_gammas(filename)
+>  testit::assert(names(df) == c("species_tree", "gamma_stat"))
+>  testit::assert(nrow(df) == 1)
+>  testit::assert(abs(df$gamma_stat - -0.8205514) < 0.0001)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("collect_species_tree_nltts")
+> ### * collect_species_tree_nltts
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: collect_species_tree_nltts
+> ### Title: Collect the nLTT values of the species trees with outgroup
+> ### Aliases: collect_species_tree_nltts
+> 
+> ### ** Examples
+> 
+>   dt <- 0.1
+>   filename <- find_path("toy_example_3.RDa")
+>   df <- collect_species_tree_nltts(filename, dt = dt)
+>   testit::assert(names(df) == c("species_tree", "t", "nltt"))
+>   testit::assert(nrow(df) == 2 * (1 + (1/dt)))
 > 
 > 
 > 
@@ -161,6 +278,23 @@ Type 'q()' to quit R.
 > 
 > 
 > cleanEx()
+> nameEx("find_path")
+> ### * find_path
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: find_path
+> ### Title: Finds the full pathof a file
+> ### Aliases: find_path
+> 
+> ### ** Examples
+> 
+>   path <- find_path("toy_example_1.RDa")
+>   testit::assert(file.exists(path))
+> 
+> 
+> 
+> cleanEx()
 > nameEx("is_valid_file")
 > ### * is_valid_file
 > 
@@ -201,7 +335,7 @@ Type 'q()' to quit R.
 > ###
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  0.418 0.008 0.504 0 0 
+Time elapsed:  0.668 0.029 0.994 0 0 
 > grDevices::dev.off()
 null device 
           1 
