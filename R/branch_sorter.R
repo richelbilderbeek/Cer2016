@@ -18,6 +18,7 @@ branch_sorter_from_file <- function(filename){
 #' @export
 #' @author Femke Thon
 branch_sorter <- function(phylogeny){
+  #if (tools::file_ext(filename) == "txt"){
   #if (tools::file_ext(filename) == "txt"){ # nolint thanks Richel
   #  filename           <- ape::read.tree(filename) # nolint thanks Richel
   #} # nolint thanks Richel
