@@ -15,6 +15,7 @@ r_packages:
   - jsonlite
   - knitr
   - memoise
+  - nLTT
   - phangorn
   - PBD
   - rex

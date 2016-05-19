@@ -88,7 +88,7 @@ knitr::kable(head(df$posterior_nltts))
 csv_filename_species_trees <- "collected_nltts_species_trees.csv"
 csv_filename_posterior <- "collected_nltts_posterior.csv"
 zip_filename_posterior <- "collected_nltts_posterior.csv.zip"
-create_fresh <- FALSE # Set this to TRUE and for a >60 mins calculation
+create_fresh <- TRUE # Set this to TRUE and for a >60 mins calculation
 if (create_fresh) {
   folder <- "/home/p230198/Peregrine"
   all_parameter_filenames <- paste(
@@ -106,9 +106,9 @@ if (create_fresh) {
     row.names = TRUE
   )
 }
-if (!file.exists(csv_filename_posterior)) {
-  utils::unzip(zip_filename_posterior)
-}
+#if (!file.exists(csv_filename_posterior)) {
+#  utils::unzip(zip_filename_posterior)
+#}
 #testit::assert(file.exists(csv_filename_species_trees))
 #testit::assert(file.exists(csv_filename_posterior))
 ```
