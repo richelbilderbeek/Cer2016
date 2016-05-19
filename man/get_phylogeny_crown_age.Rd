@@ -15,6 +15,17 @@ the age of the phylogeny
 \description{
 Obtain the crown age of a phylony
 }
+\examples{
+  age <- 15
+  set.seed(42)
+  phylogeny <- PBD::pbd_sim(
+    c(0.2, 1, 0.2, 0.0, 0.0), age
+  )$tree
+  n_taxa <- length(phylogeny$tip.label)
+  testit::assert(n_taxa > 0)
+  crown_age <- get_phylogeny_crown_age(phylogeny)
+  testit::assert(all.equal(age, crown_age, tolerance = 0.001))
+}
 \author{
 Richel Bilderbeek
 }
