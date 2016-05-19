@@ -47,8 +47,9 @@ knitr::kable(head(df$posterior_gamma_stats))
 
 ## ------------------------------------------------------------------------
 csv_filename_species_trees <- "collected_gammas_species_trees.csv"
-csv_filename_posterior <- "collected_gammas_posterior.csv"
-zip_filename_posterior <- "collected_gammas_posterior.csv.zip"
+csv_filename_posterior     <- "collected_gammas_posterior.csv"
+zip_filename_posterior     <- "collected_gammas_posterior.csv.zip"
+csv_filename_parameters    <- "collected_parameters.csv"
 create_fresh <- FALSE # Set this to TRUE and for a >60 mins calculation
 if (create_fresh) {
   folder <- "/home/p230198/Peregrine"
@@ -88,6 +89,13 @@ df_posterior <- read.csv(
  row.names = 1
 )
 
+df_parameters <- read.csv(
+  file = csv_filename_parameters, 
+  header = TRUE, 
+  stringsAsFactors = FALSE, 
+  row.names = 1
+)
+
 ## ------------------------------------------------------------------------
 knitr::kable(head(df_species_trees))
 
@@ -113,25 +121,42 @@ ggplot2::ggplot(
 ) + ggplot2::geom_histogram(binwidth = 1)
 
 ## ------------------------------------------------------------------------
-species_trees_with_low_gamma <- df_species_trees[ 
-  !is.na(df_species_trees$gamma_stat) & df_species_trees$gamma_stat < -5, 
-]
-knitr::kable(head(species_trees_with_low_gamma))
+counter <- 0
+interesting_values <- NULL
+for (stat in df_species_trees$gamma_stat){
+  counter <- counter + 1
+  if ( !is.na(stat) && (stat < -10)){
+    interesting_values$filenames  <- c(interesting_values$filenames,
+                                       df_species_trees$filenames[counter])
+    interesting_values$gamma_stat <- c(interesting_values$gamma_stat, stat)
+  }
+}
+interesting_values <- data.frame(interesting_values)
 
 ## ------------------------------------------------------------------------
-csv_filename_parameters <- "collected_parameters.csv"
-testit::assert(file.exists(csv_filename_parameters))
-df_parameters <- read.csv(
- file = csv_filename_parameters, 
- header = TRUE, 
- stringsAsFactors = FALSE, 
- row.names = 1
-)
-knitr::kable(head(df_parameters))
+knitr::kable(interesting_values)
 
 ## ------------------------------------------------------------------------
-parameters_with_low_gamma <- df_parameters[ 
-  rownames(df_parameters) %in% species_trees_with_low_gamma$filename,
-]
-knitr::kable(head(parameters_with_low_gamma))
+# counter <- 0
+# counter3 <- 0
+# stuff   <- NULL
+# for (posterior in df_posterior$filenames){
+#   counter  <- counter + 1
+#   counter3 <- counter3 + 1
+#   counter2 <- 0
+#   for (filename in interesting_values$filenames){
+#     counter2 <- counter2 + 1
+#     if (posterior == filename){
+#       stuff$filenames  <- c(stuff$filenames,
+#                             df_posterior$filenames[counter])
+#       stuff$gamma_post <- c(stuff$gamma_post, df_posterior$gamma_stat[counter])
+#       stuff$gamma_int  <- c(stuff$gamma_int, 
+#                             interesting_values$gamma_stat[counter2])
+#     }
+#   }
+# }
+# 
+# stuff <- data.frame(stuff)
+# knitr::kable(head(stuff))
+
 
