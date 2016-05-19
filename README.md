@@ -18,6 +18,7 @@ CSV|Analyse
 collected_parameters.csv|analyse_files
 collected_gammas_species_trees.csv|analyse_gammas
 collected_gammas_posterior.csv|analyse_gammas
+collected_n_taxa.csv|analyse_n_taxa
 
 ## How to install
 

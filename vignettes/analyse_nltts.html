@@ -12,7 +12,7 @@
 
 <meta name="author" content="Richel Bilderbeek" />
 
-<meta name="date" content="2016-05-18" />
+<meta name="date" content="2016-05-19" />
 
 <title>Analyse nLTTs</title>
 
@@ -52,7 +52,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
 <h1 class="title toc-ignore">Analyse nLTTs</h1>
 <h4 class="author"><em>Richel Bilderbeek</em></h4>
-<h4 class="date"><em>2016-05-18</em></h4>
+<h4 class="date"><em>2016-05-19</em></h4>
 
 
 
@@ -87,12 +87,12 @@ knitr::<span class="kw">kable</span>(df)</code></pre>
 <tr class="odd">
 <td align="right">1</td>
 <td align="right">0.2</td>
-<td align="right">0.20</td>
+<td align="right">0.30</td>
 </tr>
 <tr class="even">
 <td align="right">1</td>
 <td align="right">0.3</td>
-<td align="right">0.20</td>
+<td align="right">0.30</td>
 </tr>
 <tr class="odd">
 <td align="right">1</td>
@@ -112,22 +112,22 @@ knitr::<span class="kw">kable</span>(df)</code></pre>
 <tr class="even">
 <td align="right">1</td>
 <td align="right">0.7</td>
-<td align="right">0.40</td>
+<td align="right">0.30</td>
 </tr>
 <tr class="odd">
 <td align="right">1</td>
 <td align="right">0.8</td>
-<td align="right">0.50</td>
+<td align="right">0.40</td>
 </tr>
 <tr class="even">
 <td align="right">1</td>
 <td align="right">0.9</td>
-<td align="right">0.60</td>
+<td align="right">0.50</td>
 </tr>
 <tr class="odd">
 <td align="right">1</td>
 <td align="right">1.0</td>
-<td align="right">0.70</td>
+<td align="right">0.60</td>
 </tr>
 <tr class="even">
 <td align="right">2</td>
@@ -147,27 +147,27 @@ knitr::<span class="kw">kable</span>(df)</code></pre>
 <tr class="odd">
 <td align="right">2</td>
 <td align="right">0.3</td>
-<td align="right">0.15</td>
+<td align="right">0.10</td>
 </tr>
 <tr class="even">
 <td align="right">2</td>
 <td align="right">0.4</td>
-<td align="right">0.15</td>
+<td align="right">0.10</td>
 </tr>
 <tr class="odd">
 <td align="right">2</td>
 <td align="right">0.5</td>
-<td align="right">0.15</td>
+<td align="right">0.10</td>
 </tr>
 <tr class="even">
 <td align="right">2</td>
 <td align="right">0.6</td>
-<td align="right">0.15</td>
+<td align="right">0.10</td>
 </tr>
 <tr class="odd">
 <td align="right">2</td>
 <td align="right">0.7</td>
-<td align="right">0.20</td>
+<td align="right">0.15</td>
 </tr>
 <tr class="even">
 <td align="right">2</td>
@@ -539,638 +539,81 @@ knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df$species_tre
 </tbody>
 </table>
 </div>
-<div id="collecting-gammas-from-some-files" class="section level2">
-<h2>Collecting gamma’s from some files</h2>
-<pre class="sourceCode r"><code class="sourceCode r">folder &lt;-<span class="st"> &quot;/home/p230198/Peregrine&quot;</span>
-all_parameter_filenames &lt;-<span class="st"> </span><span class="kw">paste</span>(folder, <span class="kw">list.files</span>(folder, <span class="dt">pattern =</span> <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.RDa&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot;/&quot;</span>)
-df &lt;-<span class="st"> </span><span class="kw">collect_files_gammas</span>(<span class="kw">head</span>(all_parameter_filenames), <span class="dt">verbose =</span> <span class="ot">TRUE</span>)</code></pre>
-<pre><code>## &lt;simpleError in collect_species_tree_gammas(filename): collect_species_tree_gammas: invalid filename&gt;
-## &lt;simpleError in collect_species_tree_gammas(filename): collect_species_tree_gammas: invalid filename&gt;
-## &lt;simpleError in collect_species_tree_gammas(filename): collect_species_tree_gammas: invalid filename&gt;
-## &lt;simpleError in collect_species_tree_gammas(filename): collect_species_tree_gammas: invalid filename&gt;
-## &lt;simpleError in collect_species_tree_gammas(filename): collect_species_tree_gammas: invalid filename&gt;
-## &lt;simpleError in collect_posterior_gammas(filename): collect_posterior_gammas: invalid filename&gt;
-## &lt;simpleError in collect_posterior_gammas(filename): collect_posterior_gammas: invalid filename&gt;</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
-## home/p230198/Peregrine/article_0_0_0_0_2_1_1_1.trees'</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
-## home/p230198/Peregrine/article_0_0_0_0_2_1_1_2.trees'</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
-## home/p230198/Peregrine/article_0_0_0_0_2_1_2_1.trees'</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
-## home/p230198/Peregrine/article_0_0_0_0_2_1_2_2.trees'</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
-## home/p230198/Peregrine/article_0_0_0_0_2_2_1_1.trees'</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
-## home/p230198/Peregrine/article_0_0_0_0_2_2_1_2.trees'</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
-## home/p230198/Peregrine/article_0_0_0_0_2_2_2_1.trees'</code></pre>
-<pre><code>## Warning in readLines(file, n = 2000): incomplete final line found on '/
-## home/p230198/Peregrine/article_0_0_0_0_2_2_2_2.trees'</code></pre>
-<pre><code>## &lt;simpleError in collect_posterior_gammas(filename): collect_posterior_gammas: invalid filename&gt;
-## &lt;simpleError in collect_posterior_gammas(filename): collect_posterior_gammas: invalid filename&gt;
-## &lt;simpleError in collect_posterior_gammas(filename): collect_posterior_gammas: invalid filename&gt;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">testit::<span class="kw">assert</span>(<span class="kw">names</span>(df) 
-  ==<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;species_tree_gamma_stats&quot;</span>, <span class="st">&quot;posterior_gamma_stats&quot;</span>)
-)
-knitr::<span class="kw">kable</span>(df$species_tree_gamma_stats)</code></pre>
-<table>
-<thead>
-<tr class="header">
-<th align="left">filenames</th>
-<th align="right">species_tree</th>
-<th align="right">gamma_stat</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">article_0_0_0_0_0.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="even">
-<td align="left">article_0_0_0_0_1.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">article_0_0_0_0_2.RDa</td>
-<td align="right">1</td>
-<td align="right">0.1567163</td>
-</tr>
-<tr class="even">
-<td align="left">article_0_0_0_0_2.RDa</td>
-<td align="right">2</td>
-<td align="right">0.1567163</td>
-</tr>
-<tr class="odd">
-<td align="left">article_0_0_0_1_0.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="even">
-<td align="left">article_0_0_0_1_1.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">article_0_0_0_1_2.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-</tbody>
-</table>
-<pre class="sourceCode r"><code class="sourceCode r">knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df$posterior_gamma_stats))</code></pre>
-<table>
-<thead>
-<tr class="header">
-<th align="left">filenames</th>
-<th align="right">species_tree</th>
-<th align="right">alignment</th>
-<th align="right">beast_run</th>
-<th align="right">gamma_stat</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">article_0_0_0_0_0.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="even">
-<td align="left">article_0_0_0_0_1.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">article_0_0_0_0_2.RDa</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">0.1962860</td>
-</tr>
-<tr class="even">
-<td align="left">article_0_0_0_0_2.RDa</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">0.1709388</td>
-</tr>
-<tr class="odd">
-<td align="left">article_0_0_0_0_2.RDa</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">0.2194888</td>
-</tr>
-<tr class="even">
-<td align="left">article_0_0_0_0_2.RDa</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">0.1643772</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="collecting-gammas-from-all-files" class="section level2">
-<h2>Collecting gamma’s from all files</h2>
-<pre class="sourceCode r"><code class="sourceCode r">csv_filename_species_trees &lt;-<span class="st"> &quot;collected_gammas_species_trees.csv&quot;</span>
-csv_filename_posterior &lt;-<span class="st"> &quot;collected_gammas_posterior.csv&quot;</span>
-zip_filename_posterior &lt;-<span class="st"> &quot;collected_gammas_posterior.csv.zip&quot;</span>
-create_fresh &lt;-<span class="st"> </span><span class="ot">FALSE</span> <span class="co"># Set this to TRUE and for a &gt;60 mins calculation</span>
-if (create_fresh) {
+<div id="collecting-nltts-from-some-files" class="section level2">
+<h2>Collecting nLTTs from some files</h2>
+<pre class="sourceCode r"><code class="sourceCode r">if (<span class="st">&quot;Skip this&quot;</span> ==<span class="st"> </span><span class="ot">TRUE</span>) {
   folder &lt;-<span class="st"> &quot;/home/p230198/Peregrine&quot;</span>
-  all_parameter_filenames &lt;-<span class="st"> </span><span class="kw">paste</span>(
-    folder, <span class="kw">list.files</span>(folder, <span class="dt">pattern =</span> <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.RDa&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot;/&quot;</span>
+  all_parameter_filenames &lt;-<span class="st"> </span><span class="kw">paste</span>(folder, <span class="kw">list.files</span>(folder, <span class="dt">pattern =</span> <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.RDa&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot;/&quot;</span>)
+  df &lt;-<span class="st"> </span><span class="kw">collect_files_nltts</span>(<span class="kw">head</span>(all_parameter_filenames), <span class="dt">verbose =</span> <span class="ot">TRUE</span>)
+  testit::<span class="kw">assert</span>(<span class="kw">names</span>(df) 
+    ==<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;species_tree_nltts&quot;</span>, <span class="st">&quot;posterior_nltts&quot;</span>)
   )
-  df &lt;-<span class="st"> </span><span class="kw">collect_files_gammas</span>(all_parameter_filenames, <span class="dt">verbose =</span> <span class="ot">TRUE</span>)
-  <span class="kw">write.csv</span>(
-    <span class="dt">x =</span> df$species_tree_gamma_stats,
-    <span class="dt">file =</span> csv_filename_species_trees,
-    <span class="dt">row.names =</span> <span class="ot">TRUE</span>
-  )
-  <span class="kw">write.csv</span>(
-    <span class="dt">x =</span> df$posterior_gamma_stats,
-    <span class="dt">file =</span> csv_filename_posterior,
-    <span class="dt">row.names =</span> <span class="ot">TRUE</span>
-  )
+  knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df$species_tree_nltts))
+  knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df$posterior_nltts))
+}</code></pre>
+</div>
+<div id="collecting-nltts-from-all-files" class="section level2">
+<h2>Collecting nLTTs from all files</h2>
+<pre class="sourceCode r"><code class="sourceCode r">if (<span class="st">&quot;Skip this&quot;</span> ==<span class="st"> </span><span class="ot">TRUE</span>) {
+  csv_filename_species_trees &lt;-<span class="st"> &quot;collected_nltts_species_trees.csv&quot;</span>
+  csv_filename_posterior &lt;-<span class="st"> &quot;collected_nltts_posterior.csv&quot;</span>
+  zip_filename_posterior &lt;-<span class="st"> &quot;collected_nltts_posterior.csv.zip&quot;</span>
+  <span class="co"># Set this to TRUE for a &gt;60 mins calculation that failed on my powerfull computer</span>
+  create_fresh &lt;-<span class="st"> </span><span class="ot">TRUE</span> 
+  if (create_fresh) {
+    folder &lt;-<span class="st"> &quot;/home/p230198/Peregrine&quot;</span>
+    all_parameter_filenames &lt;-<span class="st"> </span><span class="kw">paste</span>(
+      folder, <span class="kw">list.files</span>(folder, <span class="dt">pattern =</span> <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.RDa&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot;/&quot;</span>
+    )
+    df &lt;-<span class="st"> </span><span class="kw">collect_files_nltts</span>(all_parameter_filenames, <span class="dt">verbose =</span> <span class="ot">TRUE</span>)
+    <span class="kw">write.csv</span>(
+      <span class="dt">x =</span> df$species_tree_nltts,
+      <span class="dt">file =</span> csv_filename_species_trees,
+      <span class="dt">row.names =</span> <span class="ot">TRUE</span>
+    )
+    <span class="kw">write.csv</span>(
+      <span class="dt">x =</span> df$posterior_nltts,
+      <span class="dt">file =</span> csv_filename_posterior,
+      <span class="dt">row.names =</span> <span class="ot">TRUE</span>
+    )
+  }
 }
-if (!<span class="kw">file.exists</span>(csv_filename_posterior)) {
-  utils::<span class="kw">unzip</span>(zip_filename_posterior)
-}
-testit::<span class="kw">assert</span>(<span class="kw">file.exists</span>(csv_filename_species_trees))
-testit::<span class="kw">assert</span>(<span class="kw">file.exists</span>(csv_filename_posterior))</code></pre>
+<span class="co">#if (!file.exists(csv_filename_posterior)) {</span>
+<span class="co">#  utils::unzip(zip_filename_posterior)</span>
+<span class="co">#}</span>
+<span class="co">#testit::assert(file.exists(csv_filename_species_trees))</span>
+<span class="co">#testit::assert(file.exists(csv_filename_posterior))</span></code></pre>
 <p>Note that the comma-seperated file is only created when absent, as this is a long step.</p>
 <p>Loading it from file:</p>
-<pre class="sourceCode r"><code class="sourceCode r">df_species_trees &lt;-<span class="st"> </span><span class="kw">read.csv</span>(
- <span class="dt">file =</span> csv_filename_species_trees, 
- <span class="dt">header =</span> <span class="ot">TRUE</span>, 
- <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>, 
- <span class="dt">row.names =</span> <span class="dv">1</span>
-)
-
-df_posterior &lt;-<span class="st"> </span><span class="kw">read.csv</span>(
- <span class="dt">file =</span> csv_filename_posterior, 
- <span class="dt">header =</span> <span class="ot">TRUE</span>, 
- <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>, 
- <span class="dt">row.names =</span> <span class="dv">1</span>
-)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># df_species_trees &lt;- read.csv(</span>
+<span class="co">#  file = csv_filename_species_trees, </span>
+<span class="co">#  header = TRUE, </span>
+<span class="co">#  stringsAsFactors = FALSE, </span>
+<span class="co">#  row.names = 1</span>
+<span class="co"># )</span>
+<span class="co"># </span>
+<span class="co"># df_posterior &lt;- read.csv(</span>
+<span class="co">#  file = csv_filename_posterior, </span>
+<span class="co">#  header = TRUE, </span>
+<span class="co">#  stringsAsFactors = FALSE, </span>
+<span class="co">#  row.names = 1</span>
+<span class="co"># )</span></code></pre>
 <p>Putting the head of the data frame in a table:</p>
-<pre class="sourceCode r"><code class="sourceCode r">knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df_species_trees))</code></pre>
-<table>
-<thead>
-<tr class="header">
-<th align="left">filenames</th>
-<th align="right">species_tree</th>
-<th align="right">gamma_stat</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">article_0_0_0_0_0.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="even">
-<td align="left">article_0_0_0_0_1.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">article_0_0_0_0_2.RDa</td>
-<td align="right">1</td>
-<td align="right">0.1567163</td>
-</tr>
-<tr class="even">
-<td align="left">article_0_0_0_0_2.RDa</td>
-<td align="right">2</td>
-<td align="right">0.1567163</td>
-</tr>
-<tr class="odd">
-<td align="left">article_0_0_0_1_0.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="even">
-<td align="left">article_0_0_0_1_1.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-</tbody>
-</table>
-<pre class="sourceCode r"><code class="sourceCode r">knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df_posterior))</code></pre>
-<table>
-<thead>
-<tr class="header">
-<th align="left">filenames</th>
-<th align="right">species_tree</th>
-<th align="right">alignment</th>
-<th align="right">beast_run</th>
-<th align="right">gamma_stat</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">article_0_0_0_0_0.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="even">
-<td align="left">article_0_0_0_0_1.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">article_0_0_0_0_2.RDa</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">0.1962860</td>
-</tr>
-<tr class="even">
-<td align="left">article_0_0_0_0_2.RDa</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">0.1709388</td>
-</tr>
-<tr class="odd">
-<td align="left">article_0_0_0_0_2.RDa</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">0.2194888</td>
-</tr>
-<tr class="even">
-<td align="left">article_0_0_0_0_2.RDa</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">0.1643772</td>
-</tr>
-</tbody>
-</table>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># knitr::kable(head(df_species_trees))</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># knitr::kable(head(df_posterior))</span></code></pre>
 <p>What kind of data is <code>df_species_trees</code>?</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(df_species_trees)</code></pre>
-<pre><code>## 'data.frame':    1491 obs. of  3 variables:
-##  $ filenames   : chr  &quot;article_0_0_0_0_0.RDa&quot; &quot;article_0_0_0_0_1.RDa&quot; &quot;article_0_0_0_0_2.RDa&quot; &quot;article_0_0_0_0_2.RDa&quot; ...
-##  $ species_tree: int  NA NA 1 2 NA NA NA NA NA NA ...
-##  $ gamma_stat  : num  NA NA 0.157 0.157 NA ...</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(df_species_trees)</code></pre>
-<pre><code>## [1] &quot;filenames&quot;    &quot;species_tree&quot; &quot;gamma_stat&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># str(df_species_trees)</span>
+<span class="co"># names(df_species_trees)</span></code></pre>
 <p>What kind of data is <code>df_posterior</code>?</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(df_posterior)</code></pre>
-<pre><code>## 'data.frame':    1942838 obs. of  5 variables:
-##  $ filenames   : chr  &quot;article_0_0_0_0_0.RDa&quot; &quot;article_0_0_0_0_1.RDa&quot; &quot;article_0_0_0_0_2.RDa&quot; &quot;article_0_0_0_0_2.RDa&quot; ...
-##  $ species_tree: int  NA NA 1 1 1 1 1 1 1 1 ...
-##  $ alignment   : int  NA NA 1 1 1 1 1 1 1 1 ...
-##  $ beast_run   : int  NA NA 1 1 1 1 1 1 1 1 ...
-##  $ gamma_stat  : num  NA NA 0.196 0.171 0.219 ...</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(df_posterior)</code></pre>
-<pre><code>## [1] &quot;filenames&quot;    &quot;species_tree&quot; &quot;alignment&quot;    &quot;beast_run&quot;   
-## [5] &quot;gamma_stat&quot;</code></pre>
-<p>Let’s first plot the distribution of gamma statistics.</p>
-<pre class="sourceCode r"><code class="sourceCode r">ggplot2::<span class="kw">ggplot</span>(
-  <span class="dt">data =</span> df_species_trees, ggplot2::<span class="kw">aes</span>(df_species_trees$gamma_stat)
-) +<span class="st"> </span>ggplot2::<span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">1</span>)</code></pre>
-<pre><code>## Warning: Removed 685 rows containing non-finite values (stat_bin).</code></pre>
-<p><img src="data:image/png;base64,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" /><!-- --></p>
-<pre class="sourceCode r"><code class="sourceCode r">ggplot2::<span class="kw">ggplot</span>(
-  <span class="dt">data =</span> df_posterior, ggplot2::<span class="kw">aes</span>(df_posterior$gamma_stat)
-) +<span class="st"> </span>ggplot2::<span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">1</span>)</code></pre>
-<pre><code>## Warning: Removed 845 rows containing non-finite values (stat_bin).</code></pre>
-<p><img src="data:image/png;base64,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" /><!-- --></p>
-</div>
-<div id="richels-thoughts" class="section level2">
-<h2>Richel’s thoughts</h2>
-<p>I would be interested in the species trees with a gamma statistic less than <code>-5</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r">species_trees_with_low_gamma &lt;-<span class="st"> </span>df_species_trees[ 
-  !<span class="kw">is.na</span>(df_species_trees$gamma_stat) &amp;<span class="st"> </span>df_species_trees$gamma_stat &lt;<span class="st"> </span>-<span class="dv">5</span>, 
-]
-knitr::<span class="kw">kable</span>(<span class="kw">head</span>(species_trees_with_low_gamma))</code></pre>
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="left">filenames</th>
-<th align="right">species_tree</th>
-<th align="right">gamma_stat</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">364</td>
-<td align="left">article_1_0_0_0_1.RDa</td>
-<td align="right">1</td>
-<td align="right">-14.48119</td>
-</tr>
-<tr class="even">
-<td align="left">365</td>
-<td align="left">article_1_0_0_0_1.RDa</td>
-<td align="right">2</td>
-<td align="right">-14.53100</td>
-</tr>
-<tr class="odd">
-<td align="left">366</td>
-<td align="left">article_1_0_0_0_2.RDa</td>
-<td align="right">1</td>
-<td align="right">-14.48119</td>
-</tr>
-<tr class="even">
-<td align="left">367</td>
-<td align="left">article_1_0_0_0_2.RDa</td>
-<td align="right">2</td>
-<td align="right">-14.53100</td>
-</tr>
-<tr class="odd">
-<td align="left">369</td>
-<td align="left">article_1_0_0_1_1.RDa</td>
-<td align="right">1</td>
-<td align="right">-14.48119</td>
-</tr>
-<tr class="even">
-<td align="left">370</td>
-<td align="left">article_1_0_0_1_1.RDa</td>
-<td align="right">2</td>
-<td align="right">-14.53100</td>
-</tr>
-</tbody>
-</table>
-<p>Which parameters go with that?</p>
-<p>First read all parameters:</p>
-<pre class="sourceCode r"><code class="sourceCode r">csv_filename_parameters &lt;-<span class="st"> &quot;collected_parameters.csv&quot;</span>
-testit::<span class="kw">assert</span>(<span class="kw">file.exists</span>(csv_filename_parameters))
-df_parameters &lt;-<span class="st"> </span><span class="kw">read.csv</span>(
- <span class="dt">file =</span> csv_filename_parameters, 
- <span class="dt">header =</span> <span class="ot">TRUE</span>, 
- <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>, 
- <span class="dt">row.names =</span> <span class="dv">1</span>
-)
-knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df_parameters))</code></pre>
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="right">rng_seed</th>
-<th align="right">species_initiation_rate_good_species</th>
-<th align="right">species_initiation_rate_incipient_species</th>
-<th align="right">speciation_completion_rate</th>
-<th align="right">extinction_rate_good_species</th>
-<th align="right">extinction_rate_incipient_species</th>
-<th align="right">age</th>
-<th align="right">n_species_trees_samples</th>
-<th align="right">mutation_rate</th>
-<th align="right">n_alignments</th>
-<th align="right">sequence_length</th>
-<th align="right">mcmc_chainlength</th>
-<th align="right">n_beast_runs</th>
-<th align="right">version</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">article_0_0_0_0_0.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="even">
-<td align="left">article_0_0_0_0_1.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">article_0_0_0_0_2.RDa</td>
-<td align="right">1</td>
-<td align="right">0.1</td>
-<td align="right">0.1</td>
-<td align="right">0.1</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">15</td>
-<td align="right">2</td>
-<td align="right">0.1</td>
-<td align="right">2</td>
-<td align="right">1e+05</td>
-<td align="right">1e+06</td>
-<td align="right">2</td>
-<td align="right">0.1</td>
-</tr>
-<tr class="even">
-<td align="left">article_0_0_0_1_0.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">article_0_0_0_1_1.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="even">
-<td align="left">article_0_0_0_1_2.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-</tbody>
-</table>
-<p>Show the parameters that caused this:</p>
-<pre class="sourceCode r"><code class="sourceCode r">parameters_with_low_gamma &lt;-<span class="st"> </span>df_parameters[ 
-  <span class="kw">rownames</span>(df_parameters) %in%<span class="st"> </span>species_trees_with_low_gamma$filename,
-]
-knitr::<span class="kw">kable</span>(<span class="kw">head</span>(parameters_with_low_gamma))</code></pre>
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="right">rng_seed</th>
-<th align="right">species_initiation_rate_good_species</th>
-<th align="right">species_initiation_rate_incipient_species</th>
-<th align="right">speciation_completion_rate</th>
-<th align="right">extinction_rate_good_species</th>
-<th align="right">extinction_rate_incipient_species</th>
-<th align="right">age</th>
-<th align="right">n_species_trees_samples</th>
-<th align="right">mutation_rate</th>
-<th align="right">n_alignments</th>
-<th align="right">sequence_length</th>
-<th align="right">mcmc_chainlength</th>
-<th align="right">n_beast_runs</th>
-<th align="right">version</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">article_1_0_0_0_1.RDa</td>
-<td align="right">1</td>
-<td align="right">0.5</td>
-<td align="right">0.5</td>
-<td align="right">0.1</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">15</td>
-<td align="right">2</td>
-<td align="right">0.100</td>
-<td align="right">2</td>
-<td align="right">1e+04</td>
-<td align="right">1e+06</td>
-<td align="right">2</td>
-<td align="right">0.1</td>
-</tr>
-<tr class="even">
-<td align="left">article_1_0_0_0_2.RDa</td>
-<td align="right">1</td>
-<td align="right">0.5</td>
-<td align="right">0.5</td>
-<td align="right">0.1</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">15</td>
-<td align="right">2</td>
-<td align="right">0.100</td>
-<td align="right">2</td>
-<td align="right">1e+05</td>
-<td align="right">1e+06</td>
-<td align="right">2</td>
-<td align="right">0.1</td>
-</tr>
-<tr class="odd">
-<td align="left">article_1_0_0_1_1.RDa</td>
-<td align="right">1</td>
-<td align="right">0.5</td>
-<td align="right">0.5</td>
-<td align="right">0.1</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">15</td>
-<td align="right">2</td>
-<td align="right">0.010</td>
-<td align="right">2</td>
-<td align="right">1e+04</td>
-<td align="right">1e+06</td>
-<td align="right">2</td>
-<td align="right">0.1</td>
-</tr>
-<tr class="even">
-<td align="left">article_1_0_0_1_2.RDa</td>
-<td align="right">1</td>
-<td align="right">0.5</td>
-<td align="right">0.5</td>
-<td align="right">0.1</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">15</td>
-<td align="right">2</td>
-<td align="right">0.010</td>
-<td align="right">2</td>
-<td align="right">1e+05</td>
-<td align="right">1e+06</td>
-<td align="right">2</td>
-<td align="right">0.1</td>
-</tr>
-<tr class="odd">
-<td align="left">article_1_0_0_2_1.RDa</td>
-<td align="right">1</td>
-<td align="right">0.5</td>
-<td align="right">0.5</td>
-<td align="right">0.1</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">15</td>
-<td align="right">2</td>
-<td align="right">0.001</td>
-<td align="right">2</td>
-<td align="right">1e+04</td>
-<td align="right">1e+06</td>
-<td align="right">2</td>
-<td align="right">0.1</td>
-</tr>
-<tr class="even">
-<td align="left">article_1_0_0_2_2.RDa</td>
-<td align="right">1</td>
-<td align="right">0.5</td>
-<td align="right">0.5</td>
-<td align="right">0.1</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">15</td>
-<td align="right">2</td>
-<td align="right">0.001</td>
-<td align="right">2</td>
-<td align="right">1e+05</td>
-<td align="right">1e+06</td>
-<td align="right">2</td>
-<td align="right">0.1</td>
-</tr>
-</tbody>
-</table>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># str(df_posterior)</span>
+<span class="co"># names(df_posterior)</span></code></pre>
+<p>Let’s first plot the distribution of nLTTs:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># ggplot2::ggplot(</span>
+<span class="co">#   data = df_species_trees, ggplot2::aes(df_species_trees$nltt)</span>
+<span class="co"># ) + ggplot2::geom_histogram(binwidth = 1)</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># ggplot2::ggplot(</span>
+<span class="co">#   data = df_posterior, ggplot2::aes(df_posterior$nltt)</span>
+<span class="co"># ) + ggplot2::geom_histogram(binwidth = 1)</span></code></pre>
 </div>
 
 

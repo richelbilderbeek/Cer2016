@@ -257,3 +257,41 @@ comparison <- data.frame(comparison)
 ```{r table3}
 knitr::kable(comparison)
 ```
+
+## Richel's thoughts
+
+I would be interested in the species trees with a gamma statistic
+less than `-5`:
+
+```{r}
+species_trees_with_low_gamma <- df_species_trees[ 
+  !is.na(df_species_trees$gamma_stat) & df_species_trees$gamma_stat < -5, 
+]
+knitr::kable(head(species_trees_with_low_gamma))
+```
+
+Which parameters go with that?
+
+First read all parameters:
+
+```{r}
+csv_filename_parameters <- "collected_parameters.csv"
+testit::assert(file.exists(csv_filename_parameters))
+df_parameters <- read.csv(
+ file = csv_filename_parameters, 
+ header = TRUE, 
+ stringsAsFactors = FALSE, 
+ row.names = 1
+)
+knitr::kable(head(df_parameters))
+```
+
+Show the parameters that caused this:
+
+```{r}
+parameters_with_low_gamma <- df_parameters[ 
+  rownames(df_parameters) %in% species_trees_with_low_gamma$filename,
+]
+knitr::kable(head(parameters_with_low_gamma))
+```
+
