@@ -164,12 +164,6 @@ for (filename in filenames) {
 }
 ```
 
-
-```{r}
-df <- check_progress()
-knitr::kable(df)
-```
-
 ## Add posteriors
 
 ```{r}
@@ -187,12 +181,6 @@ for (filename in filenames) {
   plot_posterior_samples(filename)
   plot_posterior_sample_nltts(filename)
 }
-```
-
-
-```{r}
-df <- check_progress()
-knitr::kable(df)
 ```
 
 Let's view the (single) posteriors of the first two files:
