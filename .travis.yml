@@ -29,7 +29,7 @@ before_script:
 script: 
  - R CMD check .
 
-after_succes:
+after_success:
  - Rscript -e 'lintr::lint_package()'
  - Rscript -e 'library(covr); codecov()'
  - codecov
