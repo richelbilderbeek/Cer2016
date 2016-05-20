@@ -7,7 +7,7 @@
 #' @author Richel Bilderbeek
 collect_posterior_nltts <- function(
   filename,
-  dt = 0.001
+  dt
 ) {
   if (!is_valid_file(filename)) {
     stop("collect_posterior_nltts: invalid filename")
@@ -38,7 +38,7 @@ collect_posterior_nltts <- function(
           )
         }
         phylogenies <- rBEAST::beast2out.read.trees(trees_filename)
-        nltt_values <- ribir::get_nltt_values(phylogenies, dt = dt)
+        nltt_values <- nLTT::get_nltt_values(phylogenies, dt = dt)
 
         n_nltt_values <- nrow(nltt_values)
         this_df <- data.frame(

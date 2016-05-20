@@ -25,7 +25,7 @@ dt <- 0.1
 
 ```{r}
 phylogenies <- c(ape::rcoal(10), ape::rcoal(20))
-df <- ribir::get_nltt_values(phylogenies, dt = dt)
+df <- nLTT::get_nltt_values(phylogenies, dt = dt)
 knitr::kable(df)
 ```
 
@@ -75,7 +75,7 @@ knitr::kable(head(df$posterior_nltts))
 if ("Skip this" == TRUE) {
   folder <- "/home/p230198/Peregrine"
   all_parameter_filenames <- paste(folder, list.files(folder, pattern = "\\.RDa"), sep = "/")
-  df <- collect_files_nltts(head(all_parameter_filenames), verbose = TRUE)
+  df <- collect_files_nltts(head(all_parameter_filenames), dt = dt, verbose = TRUE)
   testit::assert(names(df) 
     == c("species_tree_nltts", "posterior_nltts")
   )
@@ -98,7 +98,7 @@ if (1 == 1) {
     all_parameter_filenames <- paste(
       folder, list.files(folder, pattern = "\\.RDa"), sep = "/"
     )
-    df <- collect_files_nltts(all_parameter_filenames, verbose = FALSE)
+    df <- collect_files_nltts(head(all_parameter_filenames), dt = dt, verbose = FALSE)
     write.csv(
       x = df$species_tree_nltts,
       file = csv_filename_species_trees,

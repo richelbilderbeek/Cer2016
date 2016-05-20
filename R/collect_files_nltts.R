@@ -1,11 +1,14 @@
 #' Collects the nLTT statistics of all phylogenies belonging to a
 #' multiple parameter file in the melted/uncast/long form
 #' @param filenames names of the parameter file
+#' @param dt the resolution of the nLTT plot,
+#'   must be in range <0,1>, default is 0.001
 #' @param verbose give verbose output, should be TRUE or FALSE
 #' @return A list with two dataframes of nLTTs
 #' @export
 collect_files_nltts <- function(
   filenames,
+  dt,
   verbose = FALSE
 ) {
   if (length(filenames) < 1) {
@@ -26,7 +29,7 @@ collect_files_nltts <- function(
   for (filename in filenames) {
     this_stns <- NULL
     tryCatch(
-      this_stns <- collect_species_tree_nltts(filename),
+      this_stns <- collect_species_tree_nltts(filename = filename, dt = dt),
       error = function(msg) {
         if (verbose) print(msg)
       }
@@ -52,7 +55,7 @@ collect_files_nltts <- function(
   for (filename in filenames) {
     this_pns <- NULL
     tryCatch(
-      this_pns <- collect_posterior_nltts(filename),
+      this_pns <- collect_posterior_nltts(filename = filename, dt = dt),
       error = function(msg) {
         if (verbose) print(msg)
       }

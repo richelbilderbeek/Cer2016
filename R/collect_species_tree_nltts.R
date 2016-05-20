@@ -13,7 +13,7 @@
 #' @export
 collect_species_tree_nltts <- function(
   filename,
-  dt = 0.001
+  dt
 ) {
   if (!is_valid_file(filename)) {
     stop(
@@ -30,7 +30,7 @@ collect_species_tree_nltts <- function(
   df <- NULL
 
   for (i in seq(1, n_species_trees_samples)) {
-    nltt_values <- ribir::get_nltt_values(
+    nltt_values <- nLTT::get_nltt_values(
       list(file$species_trees_with_outgroup[[i]][[1]]),
       dt = dt
     )

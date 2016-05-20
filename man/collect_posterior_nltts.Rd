@@ -4,7 +4,7 @@
 \alias{collect_posterior_nltts}
 \title{Collect the nLTT values of the BEAST2 posteriors}
 \usage{
-collect_posterior_nltts(filename, dt = 0.001)
+collect_posterior_nltts(filename, dt)
 }
 \arguments{
 \item{filename}{name of the file containing the parameters and results}
