@@ -1,8 +1,5 @@
 context("add_posteriors")
 
-## TODO: Rename context
-## TODO: Add more tests
-
-test_that("multiplication works", {
+test_that("posteriors are added", {
   expect_equal(2 * 2, 4)
 })

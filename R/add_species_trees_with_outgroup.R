@@ -1,9 +1,19 @@
 #' Add a species tree with outgroup to a file
 #' @param filename Parameter filename
+#' @param verbose give verbose output, should be TRUE or FALSE
 #' @return Nothing, modifies the parameter file
 #' @export
 #' @author Richel Bilderbeek
-add_species_trees_with_outgroup <- function(filename) {
+add_species_trees_with_outgroup <- function(
+  filename,
+  verbose = TRUE
+) {
+  if (verbose != TRUE && verbose != FALSE) {
+    stop(
+      "add_species_trees_with_outgroup: ",
+      "verbose should be TRUE or FALSE"
+    )
+  }
   if (!is_valid_file(filename)) {
     stop("add_species_trees_with_outgroup: invalid file")
   }
@@ -21,13 +31,12 @@ add_species_trees_with_outgroup <- function(filename) {
   )
 
   for (i in seq(1:n_species_trees_samples)) {
-    if (!is.na(file$species_trees_with_outgroup[i])) {
-      print(paste(" * species_trees_with_outgroup[", i, "] already exists",
-        sep = "")
+    if (!is.na(file$species_trees_with_outgroup[i]) && verbose) {
+        print(paste0(" * species_trees_with_outgroup[", i, "] already exists")
       )
       next
     }
-    print(paste("   * Setting seed to ", (rng_seed + i), sep = ""))
+    if (verbose) print(paste0("   * Setting seed to ", (rng_seed + i)))
     # Each species tree is generated from its own RNG seed
     set.seed(rng_seed + i)
     species_tree <- sample_species_trees_from_pbd_sim_output(
@@ -40,5 +49,7 @@ add_species_trees_with_outgroup <- function(filename) {
     file$species_trees_with_outgroup[[i]] <- list(species_tree_with_outgroup)
     saveRDS(file, file = filename)
   }
-  print(paste("Added species_trees_with_outgroup to file ", filename, sep = ""))
+  if (verbose) {
+    print(paste0("Added species_trees_with_outgroup to file ", filename))
+  }
 }

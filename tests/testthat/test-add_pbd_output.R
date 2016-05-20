@@ -1,5 +1,6 @@
+context("add_pbd_output")
 
-test_that("add_pbd_output", {
+test_that("pbd_output is added", {
   filename <- "test-add_pbd_output.RDa"
   save_parameters_to_file(
     rng_seed = 42,

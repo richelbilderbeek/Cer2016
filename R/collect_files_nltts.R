@@ -14,6 +14,12 @@ collect_files_nltts <- function(
       "there must be at least one filename supplied"
     )
   }
+  if (verbose != TRUE && verbose != FALSE) {
+    stop(
+      "collect_files_nltts: ",
+      "verbose should be TRUE or FALSE"
+    )
+  }
 
   # Species trees
   stns <- NULL # Species Trees Normalized lineaegs through timeS

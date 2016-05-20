@@ -14,6 +14,12 @@ collect_files_n_taxa <- function(
       "there must be at least one filename supplied"
     )
   }
+  if (verbose != TRUE && verbose != FALSE) {
+    stop(
+      "collect_files_n_taxa: ",
+      "verbose should be TRUE or FALSE"
+    )
+  }
 
   # Species trees
   n_taxa <- NULL

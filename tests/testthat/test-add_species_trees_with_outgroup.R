@@ -1,9 +1,6 @@
 context("add_species_trees_with_outgroup")
 
-## TODO: Rename context
-## TODO: Add more tests
-
-test_that("multiplication works", {
+test_that("species tree with outgroup is added", {
   filename <- "test-add_pbd_output.RDa"
   save_parameters_to_file(
     rng_seed = 42,
@@ -27,7 +24,10 @@ test_that("multiplication works", {
     is.na(read_file(filename)$species_trees_with_outgroup[1]),
     TRUE
   )
-  add_species_trees_with_outgroup(filename)
+  add_species_trees_with_outgroup(
+    filename = filename,
+    verbose = FALSE
+  )
   expect_equal(
     is.na(read_file(filename)$species_trees_with_outgroup[1]),
     FALSE

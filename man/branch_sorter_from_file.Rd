@@ -7,7 +7,7 @@
 branch_sorter_from_file(filename)
 }
 \arguments{
-\item{tree1, }{tree2, the trees that are to be sorted.}
+\item{filename}{name of a file}
 }
 \value{
 a sorted tree1 and tree2

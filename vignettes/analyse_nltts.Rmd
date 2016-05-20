@@ -87,18 +87,18 @@ if ("Skip this" == TRUE) {
 ## Collecting nLTTs from all files
 
 ```{r}
-if ("Skip this" == TRUE) {
+if (1 == 1) {
   csv_filename_species_trees <- "collected_nltts_species_trees.csv"
   csv_filename_posterior <- "collected_nltts_posterior.csv"
   zip_filename_posterior <- "collected_nltts_posterior.csv.zip"
-  # Set this to TRUE for a >60 mins calculation that failed on my powerfull computer
-  create_fresh <- TRUE 
+  # Set this to TRUE for a >10 hour calculation that failed on my powerfull computer
+  create_fresh <- FALSE 
   if (create_fresh) {
     folder <- "/home/p230198/Peregrine"
     all_parameter_filenames <- paste(
       folder, list.files(folder, pattern = "\\.RDa"), sep = "/"
     )
-    df <- collect_files_nltts(all_parameter_filenames, verbose = TRUE)
+    df <- collect_files_nltts(all_parameter_filenames, verbose = FALSE)
     write.csv(
       x = df$species_tree_nltts,
       file = csv_filename_species_trees,
