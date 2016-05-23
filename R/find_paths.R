@@ -84,6 +84,6 @@ find_beast_jar_path <- function() {
 #' @return the path of a known-to-be-valid BEAST2 posterior file
 #' @export
 find_beast_posterior_test_filename <- function() {
-  # Really do not put ribir::find_path here :-)
+  # Really do not put Cer2016::find_path here :-)
   return(find_path(filename = "is_beast_posterior.trees"))
 }

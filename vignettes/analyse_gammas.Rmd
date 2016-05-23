@@ -191,9 +191,9 @@ trees and the posterior! Let's take a look at that.
 ```{r interesting_values}
 counter <- 0
 interesting_values <- NULL
-for (stat in head(df_species_trees$gamma_stat)){
+for (stat in df_species_trees$gamma_stat){
   counter <- counter + 1
-  if ( !is.na(stat) && (stat < 2)){
+  if ( !is.na(stat) && (stat < -10)){
     interesting_values$filenames  <- c(interesting_values$filenames,
                                        df_species_trees$filenames[counter])
     interesting_values$gamma_stat <- c(interesting_values$gamma_stat, stat)
@@ -214,7 +214,7 @@ Let's compare them to the posterior values for those statistics.
 ```{r looking_at_outlier}
 counter    <- 0
 outliers   <- NULL
-for (posterior in head(df_posterior$filenames)){
+for (posterior in df_posterior$filenames){
   counter  <- counter + 1
   counter2 <- 0
   for (filename in interesting_values$filenames){
@@ -249,17 +249,19 @@ compare the gamma statistics of every tree that has a posterior.
 comparison  <- NULL
 for (stat in head(df_posterior$gamma_stat)){
   counter <- 0
-  for (value in head(df_species_trees$gamma_stat)){
-    counter <- counter + 1
-    if (!is.na(stat) && !is.na(value)){
-      comparison$filenames  <- c(comparison$filenames,
-                                 df_species_trees$filenames[counter])
-      comparison$treenumber <- c(comparison$treenumber,
-                                 df_species_trees$species_tree[counter])
-      comparison$gamma_pbd  <- c(comparison$gamma_pbd, value)
-      comparison$gamma_post <- c(comparison$gamma_post, stat)
-      comparison$diff       <- c(comparison$diff, 
-                                 (value - stat))
+  if (!is.na(stat)){ 
+    for (value in head(df_species_trees$gamma_stat)){
+      counter <- counter + 1
+      if (!is.na(value)){
+        comparison$filenames  <- c(comparison$filenames,
+                                   df_species_trees$filenames[counter])
+        comparison$treenumber <- c(comparison$treenumber,
+                                   df_species_trees$species_tree[counter])
+        comparison$gamma_pbd  <- c(comparison$gamma_pbd, value)
+        comparison$gamma_post <- c(comparison$gamma_post, stat)
+        comparison$diff       <- c(comparison$diff, 
+                                   (value - stat))
+      }
     }
   }
 }

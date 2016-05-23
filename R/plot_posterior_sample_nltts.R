@@ -50,7 +50,7 @@ plot_posterior_sample_nltts <- function(
         n_trees <- length(all_trees)
         random_tree_index <- round(runif(1, min = 1, max = n_trees))
         random_tree <- all_trees[[random_tree_index]]
-        these_nltt_values <- ribir::get_nltt_values(
+        these_nltt_values <- nLTT::get_nltt_values(
           list(random_tree),
           dt = dt
         )

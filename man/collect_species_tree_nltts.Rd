@@ -4,7 +4,7 @@
 \alias{collect_species_tree_nltts}
 \title{Collect the nLTT values of the species trees with outgroup}
 \usage{
-collect_species_tree_nltts(filename, dt = 0.001)
+collect_species_tree_nltts(filename, dt)
 }
 \arguments{
 \item{filename}{name of the file containing the parameters and results}
