@@ -619,7 +619,222 @@ We cannot draw concusions yet:
  * the number of branches is too little
  * the number of replicates is too little
 
+## Comparing example 1 and 2
+
+Both examples showed a histogram of the error between 
+true species tree and posterior trees. We expect these 
+errors to have a different distribution: 
+example #1 assumed instant speciation, which suits 
+the algorithm best, where example #2 has a strong 
+protractedness. 
+
+It can be observed that these error distributions 
+have a different median. This means that there is 
+an observable higher error being made when the 
+true species tree is protracted. 
+
+This visualization does not tell use 
+how the error is made: is the error concentrated 
+at the root, middle or tips of the tree? 
+To locate this, the average nLTT plots of 
+the posterior is shown in figure :
+
 In the next examples, we add replicates to the data.
+
+## Example 3: Weak protractedness with replicates
+
+This example is an extension of the examples 1, with the differences that:
+
+ * From the (same) incipient species tree, multiple species trees are sampled
+ * Per species tree, multiple DNA alignments are simulated
+ * Per DNA alignment, multiple BEAST2 runs are performed
+
+### Incipient species tree
+
+The first step is to simulate an incipient species tree. 
+Because the RNG seed is at the same value as 
+example #1, exactly the same incipient species 
+tree will be obtained.
+
+###  Species tree
+
+It has little use to sample multiple species trees 
+from an incipient species tree, as these are 
+identical for instant speciation models. 
+In this example, we do sample a species trees 
+twice from the true incipient species tree. 
+This results in two identical species trees.
+
+### Alignment
+
+From these (in this case identical) species trees, 
+multiple alignments can be simulated. 
+In this example, for every species tree, 
+there are two alignments simulated. 
+Because in this example, 
+there are two species sampled, 
+and every species tree has two alignments simulated, 
+this results in four alignments.
+
+Each alignment is different.
+
+### Posterior
+
+In this example, for each alignment, we do two BEAST2 runs, 
+instead of one. It is expected (or: it should be the case) that both runs 
+create a similar posterior. Because this example has 2 species trees, 
+2 alignments per species tree and 2 BEAST2 runs per alignment, 
+8 different-yet-similar posteriors are expected.
+
+### Do posteriors contain paraphylies?
+
+Never, which is expected, as there is no protractedness
+
+### Seperate nLTT plots
+
+Each its nLTT plot is compared to the original species tree, which is shown in figure [fig:Example-3-both-nLTTs]:
+
+In all cases, we can observe that the lines are close, but do not match. 
+Also this is expected, due to stochasticity in the MCMC sampling.
+
+### nLTT plots of BEAST runs
+
+To see how well the posteriors match, the nLTT plots of the BEAST runs are plotted in the same graphs:
+
+### The BEAST2 runs appear to have converged to a similar posterior. 
+
+nLTT plots of alignments
+
+### Do the different alignments matter?
+
+The different alignments do matter.
+
+### nLTT plots of species trees
+
+Do the different species tree matter?
+
+A bit.
+
+### Errors
+
+For each tree in each of the posteriors, the error is put in a histogram as shown by figure [fig:Example-3-nltt-stats]:
+
+But this does not tell us where the errors have been made: near the crown, 
+near the tips, or in between? To do so, we plot the average nLTT plot of the posterior and compare it to the true species tree its nLTT, as shown in figure [fig:Example-3-posterior-average-nltt]:
+
+
+
+## Example 4: Strong protractedness with replicates
+
+This example is an extension of the previous examples, with the differences that:
+
+ * From the (same) incipient species tree, multiple species trees are sampled
+ * Per species tree, multiple DNA alignments are simulated
+ * Per DNA alignment, multiple BEAST2 runs are performed
+
+### incipient species tree
+
+The first step is to simulate an incipient species tree. Because the RNG seed is at the same value as example #1, exactly the same incipient species tree will be obtained, as can be seen in figure [fig:Example-4-gene-tree]:
+
+
+
+### Species tree
+
+As there are multiple sub-species present for the same species, it makes sense to sample multiple species trees from an incipient species tree. In this example, we do sample a species trees twice from the true incipient species tree. This results in two different species trees, as can be verified by figure [fig:Example-4-species-tree].
+
+
+
+It is a bit of bad luck that the random number generator picked two very similar species trees: would, instead of 
+
+incipient species tree and all species trees
+
+Doing this multiple times:
+
+
+
+### Alignment
+
+From these (in this case identical) species trees, multiple alignments can be simulated. In this example, for every species tree, there are two alignments simulated. Because in this example, there are two species sampled, and every species tree has two alignments simulated, this results in four alignments.
+
+Figure [fig:Example-4-alignments] shows a visualisation of the simulated alignments of our example.
+
+
+
+Each alignment is different.
+
+### Posterior
+
+In this example, for each alignment, we do two BEAST2 runs, instead of one. It is expected (or: it should be the case) that both runs create a similar posterior. Because this example has 2 species trees, 2 alignments per species tree and 2 BEAST2 runs per alignment, 8 different-yet-similar posteriors are expected.
+
+Last tree
+
+The last trees picked from the eight different posterior are shown in figure [fig:Example-4-posterior-sample-tree].
+
+
+
+The species tree picked from the posterior all are different, but not too different (figure [fig:Example-4-species-tree]). 
+
+### Do posteriors contain paraphylies?
+
+Never BEAST2 creates monophyletic trees. 
+
+###Seperate nLTT plots
+
+Each its nLTT plot is compared to the original species tree, which is shown in figure [fig:Example-4-both-nLTTs].
+
+
+
+In all cases, we can observe that the lines are close, but do not match. Also this is expected, due to stochasticity in the MCMC sampling.
+
+### nLTT plots of BEAST runs
+
+To see how well the posteriors match, the nLTT plots of the BEAST runs are plotted in the same graphs:
+
+
+
+The BEAST2 runs appear to have converged to a similar posterior. 
+
+### nLTT plots of alignments
+
+Do the different alignments matter?
+
+
+
+The different alignments do matter.
+
+### nLTT plots of species trees
+
+Do the different species tree matter?
+
+
+
+A bit.
+
+### Error
+
+For each tree in each of the posteriors, the error is put in a histogram as shown by figure [fig:Example-4-nltt-stats].
+
+
+
+But this does not tell us where the errors have been made: near the crown, near the tips, or in between? To do so, we plot the average nLTT plot of the posterior and compare it to the true species tree its nLTT, as shown in figure [fig:Example-4-posterior-average-nltt].
+
+
+
+## Comparing example 3 and 4
+
+Both examples showed a histogram of the error between true species tree and posterior trees. We expect these errors to have a different distribution: example 3 assumed instant speciation, which suits the algorithm best, where example 4 has a strong protractedness. Plotting both histograms in the same plot results in figure [fig:Example-34-both-nltt-stats]:
+
+
+
+It can be observed that these error distributions have a different median. This means that there is an observable higher error being made when the true species tree is protracted. 
+
+Because of the number of repeats, there are more data points, as all are lumped together.
+
+This visualization does not tell use how the error is made: is the error concentrated at the root, middle or tips of the tree? To locate this, the average nLTT plots of the posterior is shown in figure [fig:Examples-34-posterior-average-nltt]:
+
+
+
+
 
 ## References
 
