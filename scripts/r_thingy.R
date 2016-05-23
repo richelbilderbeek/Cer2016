@@ -25,12 +25,17 @@ df_parameters <- read.csv(
 
 comparison  <- NULL
 counter2    <- 0
-for (stat in df_posterior$gamma_stat){
+for (stat in head(df_posterior$gamma_stat)) {
   counter  <- 0
   counter2 <- counter2 + 1
   if (!is.na(stat)){
     for (value in df_species_trees$gamma_stat){
       counter <- counter + 1
+      testit::assert(counter >= 1)
+      testit::assert(counter < length(df_species_trees$filenames))
+      testit::assert(counter2 >= 1)
+      testit::assert(counter2 < length(df_posterior$filenames))
+      testit::assert(df_posterior$filenames[counter2] != df_species_trees$filenames[counter])
       if ((df_posterior$filenames[counter2] ==
            df_species_trees$filenames[counter]) && !is.na(value)){
         comparison$filenames  <- c(comparison$filenames,
@@ -52,7 +57,7 @@ knitr::kable(head(comparison))
 #let's plot this
 
 ggplot2::ggplot(
-  data = comparison, ggplot2::aes(comparison$gamma_stat)
+  data = comparison, ggplot2::aes(comparison$diff)
 ) + ggplot2::geom_histogram(binwidth = 1)
 
 
