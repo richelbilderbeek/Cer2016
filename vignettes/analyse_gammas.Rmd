@@ -165,16 +165,16 @@ Let's first plot the distribution of gamma statistics.
 ggplot2::ggplot(
   data = df_species_trees, ggplot2::aes(df_species_trees$gamma_stat)) +   
   ggplot2::geom_histogram(binwidth = 1,
-                          colour = "#0072B2", fill = "blue") +
+                          colour = "grey38", fill = "gold2") +
   ggplot2::theme(text = ggplot2::element_text(size = 12)) +
   ggplot2::theme(axis.text = ggplot2::element_text(size = 12)) +
   ggplot2::xlab("Gamma Statistic") +
-  ggplot2::theme(axis.title.x = ggplot2::element_text(color="forestgreen",
+  ggplot2::theme(axis.title.x = ggplot2::element_text(color="darkorange3",
                                              vjust=-0.35)) +
   ggplot2::ylab("Count") +
-  ggplot2::theme(axis.title.y = ggplot2::element_text(color="cadetblue" , 
+  ggplot2::theme(axis.title.y = ggplot2::element_text(color="darkorange3" , 
                                              vjust=0.35)) +
-  ggplot2::ggtitle("Sampled Trees\n Gamma Statistics") +
+  ggplot2::ggtitle("Sampled Trees Gamma Statistics") +
   ggplot2::theme(plot.title = ggplot2::element_text(size=12, 
                                   face="bold", 
                                   vjust=1, 
@@ -185,16 +185,16 @@ ggplot2::ggplot(
 ggplot2::ggplot(
   data = df_posterior, ggplot2::aes(df_posterior$gamma_stat)) +     
   ggplot2::geom_histogram(binwidth = 1, 
-                          colour = "#0072B2", fill = "blue") + 
+                          colour = "grey38", fill = "gold2") + 
   ggplot2::theme(text = ggplot2::element_text(size = 12)) +
   ggplot2::theme(axis.text = ggplot2::element_text(size = 12)) +
   ggplot2::xlab("Gamma Statistic") +
-  ggplot2::theme(axis.title.x = ggplot2::element_text(color="forestgreen",
+  ggplot2::theme(axis.title.x = ggplot2::element_text(color="darkorange3",
                                              vjust=-0.35)) +
   ggplot2::ylab("Count") +
-  ggplot2::theme(axis.title.y = ggplot2::element_text(color="cadetblue" , 
+  ggplot2::theme(axis.title.y = ggplot2::element_text(color="darkorange3" , 
                                              vjust=0.35)) +
-  ggplot2::ggtitle("Sampled Trees\n Gamma Statistics") +
+  ggplot2::ggtitle("Posterior Trees Gamma Statistics") +
   ggplot2::theme(plot.title = ggplot2::element_text(size=12, 
                                   face="bold", 
                                   vjust=1, 
