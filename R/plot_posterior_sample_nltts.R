@@ -11,7 +11,7 @@ plot_posterior_sample_nltts <- function(
 ) {
   testit::assert(is_valid_file(filename))
   base_filename <- tools::file_path_sans_ext(basename(filename))
-  file <- read_file(filename)
+  file <- Cer2016::read_file(filename)
   n_species_trees_samples <- as.numeric(
     file$parameters$n_species_trees_samples[2]
   )

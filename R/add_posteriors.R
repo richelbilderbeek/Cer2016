@@ -10,7 +10,7 @@ add_posteriors <- function(
   if (!is_valid_file(filename)) {
     stop("add_posteriors: invalid filename")
   }
-  file <- read_file(filename)
+  file <- Cer2016::read_file(filename)
   parameters <- file$parameters
   rng_seed <- as.numeric(parameters$rng_seed[2])
   mcmc_chainlength <- as.numeric(parameters$mcmc_chainlength[2])

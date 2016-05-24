@@ -28,7 +28,7 @@ collect_posterior_filenames <- function(
     )
   }
   base_filename <- tools::file_path_sans_ext(parameter_filename)
-  file <- read_file(parameter_filename)
+  file <- Cer2016::read_file(parameter_filename)
   n_species_trees_samples <- as.numeric(
     file$parameters$n_species_trees_samples[2]
   )

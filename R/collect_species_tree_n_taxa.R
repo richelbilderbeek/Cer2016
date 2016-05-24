@@ -27,7 +27,7 @@ collect_species_tree_n_taxa <- function(
     )
   }
 
-  file <- read_file(filename)
+  file <- Cer2016::read_file(filename)
 
 
   phylogeny <- file$species_trees_with_outgroup[[1]][[1]]

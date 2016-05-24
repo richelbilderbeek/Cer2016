@@ -23,7 +23,7 @@ is_valid_file <- function(
   }
   file <- NULL
   tryCatch(
-    file <- read_file(filename),
+    file <- Cer2016::read_file(filename),
     error = function(msg) {
       if (verbose) print(msg)
     }
