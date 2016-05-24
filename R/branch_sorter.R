@@ -23,7 +23,7 @@ branch_sorter <- function(phylogeny){
   #  filename           <- ape::read.tree(filename) # nolint thanks Richel
   #} # nolint thanks Richel
   #else{ # nolint thanks Richel
-  #  filename           <- Cer2016::read_file(filename)$species_tree_with_outgroup[[1]][[1]] # nolint thanks Richel
+  #  filename           <- read_file(filename)$species_tree_with_outgroup[[1]][[1]] # nolint thanks Richel
   #} # nolint thanks Richel
   filename <- phylogeny
   table              <- cbind(filename$edge, filename$edge.length)

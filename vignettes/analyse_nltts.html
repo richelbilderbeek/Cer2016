@@ -12,7 +12,7 @@
 
 <meta name="author" content="Richel Bilderbeek" />
 
-<meta name="date" content="2016-05-24" />
+<meta name="date" content="2016-05-19" />
 
 <title>Analyse nLTTs</title>
 
@@ -52,7 +52,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
 <h1 class="title toc-ignore">Analyse nLTTs</h1>
 <h4 class="author"><em>Richel Bilderbeek</em></h4>
-<h4 class="date"><em>2016-05-24</em></h4>
+<h4 class="date"><em>2016-05-19</em></h4>
 
 
 
@@ -63,7 +63,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <div id="collecting-nltt-values-from-one-or-more-phylogenies" class="section level2">
 <h2>Collecting nLTT values from one or more phylogenies</h2>
 <pre class="sourceCode r"><code class="sourceCode r">phylogenies &lt;-<span class="st"> </span><span class="kw">c</span>(ape::<span class="kw">rcoal</span>(<span class="dv">10</span>), ape::<span class="kw">rcoal</span>(<span class="dv">20</span>))
-df &lt;-<span class="st"> </span>nLTT::<span class="kw">get_nltt_values</span>(phylogenies, <span class="dt">dt =</span> dt)
+df &lt;-<span class="st"> </span>ribir::<span class="kw">get_nltt_values</span>(phylogenies, <span class="dt">dt =</span> dt)
 knitr::<span class="kw">kable</span>(df)</code></pre>
 <table>
 <thead>
@@ -87,47 +87,47 @@ knitr::<span class="kw">kable</span>(df)</code></pre>
 <tr class="odd">
 <td align="right">1</td>
 <td align="right">0.2</td>
-<td align="right">0.20</td>
+<td align="right">0.30</td>
 </tr>
 <tr class="even">
 <td align="right">1</td>
 <td align="right">0.3</td>
-<td align="right">0.20</td>
-</tr>
-<tr class="odd">
-<td align="right">1</td>
-<td align="right">0.4</td>
-<td align="right">0.20</td>
-</tr>
-<tr class="even">
-<td align="right">1</td>
-<td align="right">0.5</td>
-<td align="right">0.20</td>
-</tr>
-<tr class="odd">
-<td align="right">1</td>
-<td align="right">0.6</td>
-<td align="right">0.20</td>
-</tr>
-<tr class="even">
-<td align="right">1</td>
-<td align="right">0.7</td>
-<td align="right">0.20</td>
-</tr>
-<tr class="odd">
-<td align="right">1</td>
-<td align="right">0.8</td>
-<td align="right">0.20</td>
-</tr>
-<tr class="even">
-<td align="right">1</td>
-<td align="right">0.9</td>
 <td align="right">0.30</td>
 </tr>
 <tr class="odd">
 <td align="right">1</td>
-<td align="right">1.0</td>
+<td align="right">0.4</td>
+<td align="right">0.30</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">0.5</td>
+<td align="right">0.30</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">0.6</td>
+<td align="right">0.30</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">0.7</td>
+<td align="right">0.30</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">0.8</td>
 <td align="right">0.40</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">0.9</td>
+<td align="right">0.50</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">1.0</td>
+<td align="right">0.60</td>
 </tr>
 <tr class="even">
 <td align="right">2</td>
@@ -142,27 +142,27 @@ knitr::<span class="kw">kable</span>(df)</code></pre>
 <tr class="even">
 <td align="right">2</td>
 <td align="right">0.2</td>
-<td align="right">0.15</td>
+<td align="right">0.10</td>
 </tr>
 <tr class="odd">
 <td align="right">2</td>
 <td align="right">0.3</td>
-<td align="right">0.15</td>
+<td align="right">0.10</td>
 </tr>
 <tr class="even">
 <td align="right">2</td>
 <td align="right">0.4</td>
-<td align="right">0.15</td>
+<td align="right">0.10</td>
 </tr>
 <tr class="odd">
 <td align="right">2</td>
 <td align="right">0.5</td>
-<td align="right">0.15</td>
+<td align="right">0.10</td>
 </tr>
 <tr class="even">
 <td align="right">2</td>
 <td align="right">0.6</td>
-<td align="right">0.15</td>
+<td align="right">0.10</td>
 </tr>
 <tr class="odd">
 <td align="right">2</td>
@@ -544,7 +544,7 @@ knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df$species_tre
 <pre class="sourceCode r"><code class="sourceCode r">if (<span class="st">&quot;Skip this&quot;</span> ==<span class="st"> </span><span class="ot">TRUE</span>) {
   folder &lt;-<span class="st"> &quot;/home/p230198/Peregrine&quot;</span>
   all_parameter_filenames &lt;-<span class="st"> </span><span class="kw">paste</span>(folder, <span class="kw">list.files</span>(folder, <span class="dt">pattern =</span> <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.RDa&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot;/&quot;</span>)
-  df &lt;-<span class="st"> </span><span class="kw">collect_files_nltts</span>(<span class="kw">head</span>(all_parameter_filenames), <span class="dt">dt =</span> dt, <span class="dt">verbose =</span> <span class="ot">TRUE</span>)
+  df &lt;-<span class="st"> </span><span class="kw">collect_files_nltts</span>(<span class="kw">head</span>(all_parameter_filenames), <span class="dt">verbose =</span> <span class="ot">TRUE</span>)
   testit::<span class="kw">assert</span>(<span class="kw">names</span>(df) 
     ==<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;species_tree_nltts&quot;</span>, <span class="st">&quot;posterior_nltts&quot;</span>)
   )
@@ -554,202 +554,66 @@ knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df$species_tre
 </div>
 <div id="collecting-nltts-from-all-files" class="section level2">
 <h2>Collecting nLTTs from all files</h2>
-<pre class="sourceCode r"><code class="sourceCode r">csv_filename_species_trees &lt;-<span class="st"> &quot;collected_nltts_species_trees.csv&quot;</span>
-csv_filename_posterior &lt;-<span class="st"> &quot;collected_nltts_posterior.csv&quot;</span>
-zip_filename_posterior &lt;-<span class="st"> &quot;collected_nltts_posterior.csv.zip&quot;</span>
-<span class="co"># Set this to TRUE for a &gt;1 hour calculation</span>
-create_fresh &lt;-<span class="st"> </span><span class="ot">FALSE</span> 
-if (create_fresh) {
-  folder &lt;-<span class="st"> &quot;/home/p230198/Peregrine&quot;</span>
-  all_parameter_filenames &lt;-<span class="st"> </span><span class="kw">paste</span>(
-    folder, <span class="kw">list.files</span>(folder, <span class="dt">pattern =</span> <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.RDa&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot;/&quot;</span>
-  )
-  df &lt;-<span class="st"> </span><span class="kw">collect_files_nltts</span>(all_parameter_filenames, <span class="dt">dt =</span> dt, <span class="dt">verbose =</span> <span class="ot">FALSE</span>)
-  <span class="kw">write.csv</span>(
-    <span class="dt">x =</span> df$species_tree_nltts,
-    <span class="dt">file =</span> csv_filename_species_trees,
-    <span class="dt">row.names =</span> <span class="ot">TRUE</span>
-  )
-  <span class="kw">write.csv</span>(
-    <span class="dt">x =</span> df$posterior_nltts,
-    <span class="dt">file =</span> csv_filename_posterior,
-    <span class="dt">row.names =</span> <span class="ot">TRUE</span>
-  )
+<pre class="sourceCode r"><code class="sourceCode r">if (<span class="st">&quot;Skip this&quot;</span> ==<span class="st"> </span><span class="ot">TRUE</span>) {
+  csv_filename_species_trees &lt;-<span class="st"> &quot;collected_nltts_species_trees.csv&quot;</span>
+  csv_filename_posterior &lt;-<span class="st"> &quot;collected_nltts_posterior.csv&quot;</span>
+  zip_filename_posterior &lt;-<span class="st"> &quot;collected_nltts_posterior.csv.zip&quot;</span>
+  <span class="co"># Set this to TRUE for a &gt;60 mins calculation that failed on my powerfull computer</span>
+  create_fresh &lt;-<span class="st"> </span><span class="ot">TRUE</span> 
+  if (create_fresh) {
+    folder &lt;-<span class="st"> &quot;/home/p230198/Peregrine&quot;</span>
+    all_parameter_filenames &lt;-<span class="st"> </span><span class="kw">paste</span>(
+      folder, <span class="kw">list.files</span>(folder, <span class="dt">pattern =</span> <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.RDa&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot;/&quot;</span>
+    )
+    df &lt;-<span class="st"> </span><span class="kw">collect_files_nltts</span>(all_parameter_filenames, <span class="dt">verbose =</span> <span class="ot">TRUE</span>)
+    <span class="kw">write.csv</span>(
+      <span class="dt">x =</span> df$species_tree_nltts,
+      <span class="dt">file =</span> csv_filename_species_trees,
+      <span class="dt">row.names =</span> <span class="ot">TRUE</span>
+    )
+    <span class="kw">write.csv</span>(
+      <span class="dt">x =</span> df$posterior_nltts,
+      <span class="dt">file =</span> csv_filename_posterior,
+      <span class="dt">row.names =</span> <span class="ot">TRUE</span>
+    )
+  }
 }
-if (!<span class="kw">file.exists</span>(csv_filename_posterior)) {
-  utils::<span class="kw">unzip</span>(zip_filename_posterior)
-}
-
-testit::<span class="kw">assert</span>(<span class="kw">file.exists</span>(csv_filename_species_trees))
-testit::<span class="kw">assert</span>(<span class="kw">file.exists</span>(csv_filename_posterior))</code></pre>
+<span class="co">#if (!file.exists(csv_filename_posterior)) {</span>
+<span class="co">#  utils::unzip(zip_filename_posterior)</span>
+<span class="co">#}</span>
+<span class="co">#testit::assert(file.exists(csv_filename_species_trees))</span>
+<span class="co">#testit::assert(file.exists(csv_filename_posterior))</span></code></pre>
 <p>Note that the comma-seperated file is only created when absent, as this is a long step.</p>
 <p>Loading it from file:</p>
-<pre class="sourceCode r"><code class="sourceCode r">df_species_trees &lt;-<span class="st"> </span><span class="kw">read.csv</span>(
- <span class="dt">file =</span> csv_filename_species_trees, 
- <span class="dt">header =</span> <span class="ot">TRUE</span>, 
- <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>, 
- <span class="dt">row.names =</span> <span class="dv">1</span>
-)
-
-df_posterior &lt;-<span class="st"> </span><span class="kw">read.csv</span>(
- <span class="dt">file =</span> csv_filename_posterior, 
- <span class="dt">header =</span> <span class="ot">TRUE</span>, 
- <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>, 
- <span class="dt">row.names =</span> <span class="dv">1</span>
-)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># df_species_trees &lt;- read.csv(</span>
+<span class="co">#  file = csv_filename_species_trees, </span>
+<span class="co">#  header = TRUE, </span>
+<span class="co">#  stringsAsFactors = FALSE, </span>
+<span class="co">#  row.names = 1</span>
+<span class="co"># )</span>
+<span class="co"># </span>
+<span class="co"># df_posterior &lt;- read.csv(</span>
+<span class="co">#  file = csv_filename_posterior, </span>
+<span class="co">#  header = TRUE, </span>
+<span class="co">#  stringsAsFactors = FALSE, </span>
+<span class="co">#  row.names = 1</span>
+<span class="co"># )</span></code></pre>
 <p>Putting the head of the data frame in a table:</p>
-<pre class="sourceCode r"><code class="sourceCode r">knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df_species_trees))</code></pre>
-<table>
-<thead>
-<tr class="header">
-<th align="left">filenames</th>
-<th align="right">species_tree</th>
-<th align="right">t</th>
-<th align="right">nltt</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">article_0_0_0_0_0.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="even">
-<td align="left">article_0_0_0_0_1.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">article_0_0_0_0_2.RDa</td>
-<td align="right">1</td>
-<td align="right">0.0</td>
-<td align="right">0.5</td>
-</tr>
-<tr class="even">
-<td align="left">article_0_0_0_0_2.RDa</td>
-<td align="right">1</td>
-<td align="right">0.1</td>
-<td align="right">0.5</td>
-</tr>
-<tr class="odd">
-<td align="left">article_0_0_0_0_2.RDa</td>
-<td align="right">1</td>
-<td align="right">0.2</td>
-<td align="right">0.5</td>
-</tr>
-<tr class="even">
-<td align="left">article_0_0_0_0_2.RDa</td>
-<td align="right">1</td>
-<td align="right">0.3</td>
-<td align="right">0.5</td>
-</tr>
-</tbody>
-</table>
-<pre class="sourceCode r"><code class="sourceCode r">knitr::<span class="kw">kable</span>(<span class="kw">head</span>(df_posterior))</code></pre>
-<table>
-<thead>
-<tr class="header">
-<th align="left">filenames</th>
-<th align="right">species_tree</th>
-<th align="right">alignment</th>
-<th align="right">beast_run</th>
-<th align="right">state</th>
-<th align="right">t</th>
-<th align="right">nltt</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">article_0_0_0_0_0.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="even">
-<td align="left">article_0_0_0_0_1.RDa</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">article_0_0_0_0_2.RDa</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">0.0</td>
-<td align="right">0.3333333</td>
-</tr>
-<tr class="even">
-<td align="left">article_0_0_0_0_2.RDa</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">0.1</td>
-<td align="right">0.5000000</td>
-</tr>
-<tr class="odd">
-<td align="left">article_0_0_0_0_2.RDa</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">0.2</td>
-<td align="right">0.5000000</td>
-</tr>
-<tr class="even">
-<td align="left">article_0_0_0_0_2.RDa</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">0.3</td>
-<td align="right">0.5000000</td>
-</tr>
-</tbody>
-</table>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># knitr::kable(head(df_species_trees))</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># knitr::kable(head(df_posterior))</span></code></pre>
 <p>What kind of data is <code>df_species_trees</code>?</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(df_species_trees)</code></pre>
-<pre><code>## 'data.frame':    9551 obs. of  4 variables:
-##  $ filenames   : chr  &quot;article_0_0_0_0_0.RDa&quot; &quot;article_0_0_0_0_1.RDa&quot; &quot;article_0_0_0_0_2.RDa&quot; &quot;article_0_0_0_0_2.RDa&quot; ...
-##  $ species_tree: int  NA NA 1 1 1 1 1 1 1 1 ...
-##  $ t           : num  NA NA 0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 ...
-##  $ nltt        : num  NA NA 0.5 0.5 0.5 ...</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(df_species_trees)</code></pre>
-<pre><code>## [1] &quot;filenames&quot;    &quot;species_tree&quot; &quot;t&quot;            &quot;nltt&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># str(df_species_trees)</span>
+<span class="co"># names(df_species_trees)</span></code></pre>
 <p>What kind of data is <code>df_posterior</code>?</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(df_posterior)</code></pre>
-<pre><code>## 'data.frame':    21362768 obs. of  7 variables:
-##  $ filenames   : chr  &quot;article_0_0_0_0_0.RDa&quot; &quot;article_0_0_0_0_1.RDa&quot; &quot;article_0_0_0_0_2.RDa&quot; &quot;article_0_0_0_0_2.RDa&quot; ...
-##  $ species_tree: int  NA NA 1 1 1 1 1 1 1 1 ...
-##  $ alignment   : int  NA NA 1 1 1 1 1 1 1 1 ...
-##  $ beast_run   : int  NA NA 1 1 1 1 1 1 1 1 ...
-##  $ state       : int  NA NA 1 1 1 1 1 1 1 1 ...
-##  $ t           : num  NA NA 0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 ...
-##  $ nltt        : num  NA NA 0.333 0.5 0.5 ...</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(df_posterior)</code></pre>
-<pre><code>## [1] &quot;filenames&quot;    &quot;species_tree&quot; &quot;alignment&quot;    &quot;beast_run&quot;   
-## [5] &quot;state&quot;        &quot;t&quot;            &quot;nltt&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># str(df_posterior)</span>
+<span class="co"># names(df_posterior)</span></code></pre>
 <p>Let’s first plot the distribution of nLTTs:</p>
-<pre class="sourceCode r"><code class="sourceCode r">ggplot2::<span class="kw">ggplot</span>(
-  <span class="dt">data =</span> df_species_trees, ggplot2::<span class="kw">aes</span>(df_species_trees$nltt)
-) +<span class="st"> </span>ggplot2::<span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">1</span>)</code></pre>
-<pre><code>## Warning: Removed 685 rows containing non-finite values (stat_bin).</code></pre>
-<p><img src="data:image/png;base64,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" /><!-- --></p>
-<pre class="sourceCode r"><code class="sourceCode r">ggplot2::<span class="kw">ggplot</span>(
-  <span class="dt">data =</span> df_posterior, ggplot2::<span class="kw">aes</span>(df_posterior$nltt)
-) +<span class="st"> </span>ggplot2::<span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">1</span>)</code></pre>
-<pre><code>## Warning: Removed 845 rows containing non-finite values (stat_bin).</code></pre>
-<p><img src="data:image/png;base64,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" /><!-- --></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># ggplot2::ggplot(</span>
+<span class="co">#   data = df_species_trees, ggplot2::aes(df_species_trees$nltt)</span>
+<span class="co"># ) + ggplot2::geom_histogram(binwidth = 1)</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># ggplot2::ggplot(</span>
+<span class="co">#   data = df_posterior, ggplot2::aes(df_posterior$nltt)</span>
+<span class="co"># ) + ggplot2::geom_histogram(binwidth = 1)</span></code></pre>
 </div>
 
 

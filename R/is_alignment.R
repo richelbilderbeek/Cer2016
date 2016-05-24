@@ -1,7 +1,6 @@
 #' Determines if the input is an alignment of type DNAbin
 #' @param input The input to be testes
 #' @return TRUE or FALSE
-#' @export
 #' @author Richel Bilderbeek
 is_alignment <- function(input) {
   return(class(input) == "DNAbin")

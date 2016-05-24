@@ -12,7 +12,7 @@
 
 <meta name="author" content="Femke Thon" />
 
-<meta name="date" content="2016-05-24" />
+<meta name="date" content="2016-05-12" />
 
 <title>branch_sorter</title>
 
@@ -52,7 +52,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
 <h1 class="title toc-ignore">branch_sorter</h1>
 <h4 class="author"><em>Femke Thon</em></h4>
-<h4 class="date"><em>2016-05-24</em></h4>
+<h4 class="date"><em>2016-05-12</em></h4>
 
 
 
@@ -65,7 +65,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <h2>generating a tree</h2>
 <pre class="sourceCode r"><code class="sourceCode r">tree1 &lt;-<span class="st"> </span><span class="kw">rtree</span>(<span class="dv">3</span>)
 <span class="kw">plot</span>(tree1)</code></pre>
-<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
 <p>We’ve got a tree. It’s even got some info about itself in a file, which we’ll need later.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(tree1)</code></pre>
 <pre><code>## [1] &quot;edge&quot;        &quot;tip.label&quot;   &quot;edge.length&quot; &quot;Nnode&quot;</code></pre>
@@ -77,7 +77,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 ## [4] &quot;Nnode&quot;            &quot;ordered.branches&quot; &quot;branch_length&quot;   
 ## [7] &quot;taxon_name&quot;</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">tree1.sorted$branch_length</code></pre>
-<pre><code>## [1] 0.44965744 0.35973690 0.02025647</code></pre>
+<pre><code>## [1] 0.3982733 0.9222836 0.6254975</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">tree1.sorted$taxon_name</code></pre>
 <pre><code>## [1] &quot;t1&quot; &quot;t2&quot; &quot;t3&quot;</code></pre>
 <p>There we have it. <code>Tree1.sorted$branch_length</code> gives us the lengths of the branches, <code>tree1.sorted$taxon_name</code> the names that correspond to these branches.</p>

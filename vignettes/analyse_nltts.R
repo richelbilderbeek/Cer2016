@@ -6,7 +6,7 @@ dt <- 0.1
 
 ## ------------------------------------------------------------------------
 phylogenies <- c(ape::rcoal(10), ape::rcoal(20))
-df <- nLTT::get_nltt_values(phylogenies, dt = dt)
+df <- ribir::get_nltt_values(phylogenies, dt = dt)
 knitr::kable(df)
 
 ## ------------------------------------------------------------------------
@@ -44,7 +44,7 @@ knitr::kable(head(df$posterior_nltts))
 if ("Skip this" == TRUE) {
   folder <- "/home/p230198/Peregrine"
   all_parameter_filenames <- paste(folder, list.files(folder, pattern = "\\.RDa"), sep = "/")
-  df <- collect_files_nltts(head(all_parameter_filenames), dt = dt, verbose = TRUE)
+  df <- collect_files_nltts(head(all_parameter_filenames), verbose = TRUE)
   testit::assert(names(df) 
     == c("species_tree_nltts", "posterior_nltts")
   )
@@ -53,71 +53,72 @@ if ("Skip this" == TRUE) {
 }
 
 ## ------------------------------------------------------------------------
-csv_filename_species_trees <- "collected_nltts_species_trees.csv"
-csv_filename_posterior <- "collected_nltts_posterior.csv"
-zip_filename_posterior <- "collected_nltts_posterior.csv.zip"
-# Set this to TRUE for a >1 hour calculation
-create_fresh <- FALSE 
-if (create_fresh) {
-  folder <- "/home/p230198/Peregrine"
-  all_parameter_filenames <- paste(
-    folder, list.files(folder, pattern = "\\.RDa"), sep = "/"
-  )
-  df <- collect_files_nltts(all_parameter_filenames, dt = dt, verbose = FALSE)
-  write.csv(
-    x = df$species_tree_nltts,
-    file = csv_filename_species_trees,
-    row.names = TRUE
-  )
-  write.csv(
-    x = df$posterior_nltts,
-    file = csv_filename_posterior,
-    row.names = TRUE
-  )
+if ("Skip this" == TRUE) {
+  csv_filename_species_trees <- "collected_nltts_species_trees.csv"
+  csv_filename_posterior <- "collected_nltts_posterior.csv"
+  zip_filename_posterior <- "collected_nltts_posterior.csv.zip"
+  # Set this to TRUE for a >60 mins calculation that failed on my powerfull computer
+  create_fresh <- TRUE 
+  if (create_fresh) {
+    folder <- "/home/p230198/Peregrine"
+    all_parameter_filenames <- paste(
+      folder, list.files(folder, pattern = "\\.RDa"), sep = "/"
+    )
+    df <- collect_files_nltts(all_parameter_filenames, verbose = TRUE)
+    write.csv(
+      x = df$species_tree_nltts,
+      file = csv_filename_species_trees,
+      row.names = TRUE
+    )
+    write.csv(
+      x = df$posterior_nltts,
+      file = csv_filename_posterior,
+      row.names = TRUE
+    )
+  }
 }
-if (!file.exists(csv_filename_posterior)) {
-  utils::unzip(zip_filename_posterior)
-}
-
-testit::assert(file.exists(csv_filename_species_trees))
-testit::assert(file.exists(csv_filename_posterior))
-
-## ------------------------------------------------------------------------
-df_species_trees <- read.csv(
- file = csv_filename_species_trees, 
- header = TRUE, 
- stringsAsFactors = FALSE, 
- row.names = 1
-)
-
-df_posterior <- read.csv(
- file = csv_filename_posterior, 
- header = TRUE, 
- stringsAsFactors = FALSE, 
- row.names = 1
-)
+#if (!file.exists(csv_filename_posterior)) {
+#  utils::unzip(zip_filename_posterior)
+#}
+#testit::assert(file.exists(csv_filename_species_trees))
+#testit::assert(file.exists(csv_filename_posterior))
 
 ## ------------------------------------------------------------------------
-knitr::kable(head(df_species_trees))
+# df_species_trees <- read.csv(
+#  file = csv_filename_species_trees, 
+#  header = TRUE, 
+#  stringsAsFactors = FALSE, 
+#  row.names = 1
+# )
+# 
+# df_posterior <- read.csv(
+#  file = csv_filename_posterior, 
+#  header = TRUE, 
+#  stringsAsFactors = FALSE, 
+#  row.names = 1
+# )
 
 ## ------------------------------------------------------------------------
-knitr::kable(head(df_posterior))
+# knitr::kable(head(df_species_trees))
 
 ## ------------------------------------------------------------------------
-str(df_species_trees)
-names(df_species_trees)
+# knitr::kable(head(df_posterior))
 
 ## ------------------------------------------------------------------------
-str(df_posterior)
-names(df_posterior)
+# str(df_species_trees)
+# names(df_species_trees)
 
 ## ------------------------------------------------------------------------
-ggplot2::ggplot(
-  data = df_species_trees, ggplot2::aes(df_species_trees$nltt)
-) + ggplot2::geom_histogram(binwidth = 1)
+# str(df_posterior)
+# names(df_posterior)
 
 ## ------------------------------------------------------------------------
-ggplot2::ggplot(
-  data = df_posterior, ggplot2::aes(df_posterior$nltt)
-) + ggplot2::geom_histogram(binwidth = 1)
+# ggplot2::ggplot(
+#   data = df_species_trees, ggplot2::aes(df_species_trees$nltt)
+# ) + ggplot2::geom_histogram(binwidth = 1)
+
+## ------------------------------------------------------------------------
+# ggplot2::ggplot(
+#   data = df_posterior, ggplot2::aes(df_posterior$nltt)
+# ) + ggplot2::geom_histogram(binwidth = 1)
 

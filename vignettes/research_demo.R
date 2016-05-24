@@ -93,6 +93,10 @@ for (filename in filenames) {
 }
 
 ## ------------------------------------------------------------------------
+df <- check_progress()
+knitr::kable(df)
+
+## ------------------------------------------------------------------------
 for (filename in filenames) {
   add_posteriors(
     filename, 
@@ -106,6 +110,10 @@ for (filename in filenames) {
   plot_posterior_samples(filename)
   plot_posterior_sample_nltts(filename)
 }
+
+## ------------------------------------------------------------------------
+df <- check_progress()
+knitr::kable(df)
 
 ## ------------------------------------------------------------------------
 plot_posterior_nltts(filenames[1])

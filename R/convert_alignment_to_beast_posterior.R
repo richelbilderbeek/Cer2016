@@ -18,7 +18,7 @@ convert_alignment_to_beast_posterior <- function(
   beast_jar_path = find_beast_jar_path(),
   skip_if_output_present = FALSE
 ) {
-  if (!Cer2016::is_alignment(alignment_dnabin)) {
+  if (!is_alignment(alignment_dnabin)) {
     stop("convert_alignment_to_beast_posterior: ",
       "alignment must be of class DNAbin"
     )
