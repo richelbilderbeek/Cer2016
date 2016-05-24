@@ -16,7 +16,7 @@ problems just by using `Knitr` on it :-)
 
 Install it like this:
 
-```{r}
+```
 if (is.element("beastscriptr", installed.packages()[, 1])) {
   print("package is already installed")
 } else {
@@ -28,7 +28,7 @@ if (is.element("beastscriptr", installed.packages()[, 1])) {
 
 Perhaps the prerequisites are missing:
 
-```{r}
+```
 if (is.element("adephylo", installed.packages()[, 1])) {
   print("package is already installed")
 } else {
@@ -38,7 +38,7 @@ if (is.element("adephylo", installed.packages()[, 1])) {
 
 Then install it like this:
 
-```{r}
+```
 if (is.element("rBEAST", installed.packages()[, 1])) {
   print("package is already installed")
 } else {
@@ -51,7 +51,7 @@ if (is.element("rBEAST", installed.packages()[, 1])) {
 
 Install it like this:
 
-```{r}
+```
 if (is.element("ribir", installed.packages()[, 1])) {
   print("package is already installed")
 } else {
