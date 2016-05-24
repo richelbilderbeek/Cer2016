@@ -17,7 +17,7 @@ collect_posterior_gammas <- function(filename) {
       "invalid filename"
     )
   }
-  file <- read_file(filename)
+  file <- Cer2016::read_file(filename)
   parameters <- file$parameters
   n_alignments <- as.numeric(parameters$n_alignments[2])
   n_beast_runs <- as.numeric(parameters$n_beast_runs[2])

@@ -17,7 +17,7 @@ add_species_trees_with_outgroup <- function(
   if (!is_valid_file(filename)) {
     stop("add_species_trees_with_outgroup: invalid file")
   }
-  file <- read_file(filename)
+  file <- Cer2016::read_file(filename)
   if (is.na(file$pbd_output[1])) {
     stop("add_species_trees_with_outgroup: ",
       "file ", filename, " needs a pbd_output"

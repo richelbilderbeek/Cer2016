@@ -7,8 +7,8 @@ add_pbd_output <- function(filename) {
   if (!is_valid_file(filename)) {
     stop("add_pbd_output: invalid filename")
   }
-  file <- read_file(filename)
-  if (is_pbd_sim_output(file$pbd_output)) {
+  file <- Cer2016::read_file(filename)
+  if (Cer2016::is_pbd_sim_output(file$pbd_output)) {
     print(paste("file ", filename, " already has a pbd_output", sep = ""))
     return()
   }

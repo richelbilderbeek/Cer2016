@@ -29,7 +29,7 @@ collect_parameters <- function(
     if (!is_valid_file(filename = filename, verbose = verbose)) {
       next
     }
-    file <- read_file(filename)
+    file <- Cer2016::read_file(filename)
     parameter_names <- names(file$parameters)
     break
   }
@@ -48,7 +48,7 @@ collect_parameters <- function(
   for (filename in filenames) {
     file <- NULL
     tryCatch(
-      file <- read_file(filename),
+      file <- Cer2016::read_file(filename),
       error = function(msg) { } # nolint msg should be unused
     )
     if (!is.null(file)) {

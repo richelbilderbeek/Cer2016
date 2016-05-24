@@ -4,8 +4,8 @@
 #' @export
 #' @author Richel Bilderbeek
 add_alignments <- function(filename) {
-  testit::assert(is_valid_file(filename))
-  file <- read_file(filename)
+  testit::assert(Cer2016::is_valid_file(filename))
+  file <- Cer2016::read_file(filename)
   if (is.na(file$species_trees_with_outgroup[1])) {
     print(paste("file ", filename,
       " needs a species_trees_with_outgroup", sep = "")
