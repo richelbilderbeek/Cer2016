@@ -26,7 +26,7 @@ add_posteriors <- function(
         alignment_index <= length(file$alignments)
       )
       alignment <- file$alignments[[alignment_index]][[1]]
-      testit::assert(is_alignment(alignment))
+      testit::assert(Cer2016::is_alignment(alignment))
       for (k in seq(1, n_beast_runs)) {
         posterior_index <- 1 + (k - 1) +
           ((j - 1) * n_alignments) +                                            # nolint
@@ -48,7 +48,7 @@ add_posteriors <- function(
           tools::file_path_sans_ext(filename)), "_",
           i, "_", j, "_", k, sep = ""
         )
-        posterior <- convert_alignment_to_beast_posterior(
+        posterior <- Cer2016::convert_alignment_to_beast_posterior(
           alignment_dnabin = alignment,
           base_filename = basefilename,
           mcmc_chainlength = mcmc_chainlength,
