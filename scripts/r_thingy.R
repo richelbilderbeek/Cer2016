@@ -74,31 +74,6 @@ df_parameters <- read.csv(
   row.names = 1
 )
 
-names(df_species_trees)
-head(total)
-
-profile_filename <- "rprof.out"
-
-Rprof(filename = profile_filename)
-df <- analysis_femke(
-  df_species_trees = df_species_trees,
-  df_posterior = df_posterior,
-  df_parameters = df_parameters,
-  n = 2
-)
-print(nrow(df))
-Rprof(NULL)
-summaryRprof(file = profile_filename)
-
-
-knitr::kable(comparison)
-
-df_time <- data.frame(
-  n = c(2000, 10000, 15000, 20000, 40000),
-  t = c(1.69, 9.553, 24.96, 42.41, 120.2)
-)
-ggplot2::qplot(data = df_time, x = df_time$n, y = df_time$t)
-
 comparison <- analysis_richel(
   df_species_trees = df_species_trees,
   df_posterior = df_posterior
@@ -109,9 +84,6 @@ write.csv(
   file = "femke.csv",
   row.names = TRUE
 )
-
-
-#let's plot this
 
 ggplot2::ggplot(
   data = comparison, ggplot2::aes(comparison$diff)
