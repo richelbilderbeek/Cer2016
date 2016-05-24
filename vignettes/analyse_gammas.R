@@ -16,7 +16,7 @@ knitr::kable(df)
 ## ------------------------------------------------------------------------
 filename <- find_path("toy_example_3.RDa")
 df <- collect_posterior_gammas(filename)
-testit::assert(names(df) == 
+testit::assert(names(df) ==
   c("species_tree", "alignment", "beast_run", "gamma_stat")
 )
 testit::assert(nrow(df) == 80)
@@ -29,7 +29,7 @@ testit::assert(names(df) == c("species_tree_gammas", "posterior_gammas"))
 testit::assert(
   names(df$species_tree_gammas) == c("species_tree", "gamma_stat")
 )
-testit::assert(names(df$posterior_gammas) == 
+testit::assert(names(df$posterior_gammas) ==
   c("species_tree", "alignment", "beast_run", "gamma_stat")
 )
 testit::assert(nrow(df$species_tree_gammas) == 2)
@@ -39,7 +39,7 @@ testit::assert(nrow(df$posterior_gammas) == 80)
 folder <- "/home/p230198/Peregrine"
 all_parameter_filenames <- paste(folder, list.files(folder, pattern = "\\.RDa"), sep = "/")
 df <- collect_files_gammas(head(all_parameter_filenames), verbose = TRUE)
-testit::assert(names(df) 
+testit::assert(names(df)
   == c("species_tree_gamma_stats", "posterior_gamma_stats")
 )
 knitr::kable(df$species_tree_gamma_stats)
@@ -76,23 +76,23 @@ testit::assert(file.exists(csv_filename_posterior))
 
 ## ------------------------------------------------------------------------
 df_species_trees <- read.csv(
- file = csv_filename_species_trees, 
- header = TRUE, 
- stringsAsFactors = FALSE, 
+ file = csv_filename_species_trees,
+ header = TRUE,
+ stringsAsFactors = FALSE,
  row.names = 1
 )
 
 df_posterior <- read.csv(
- file = csv_filename_posterior, 
- header = TRUE, 
- stringsAsFactors = FALSE, 
+ file = csv_filename_posterior,
+ header = TRUE,
+ stringsAsFactors = FALSE,
  row.names = 1
 )
 
 df_parameters <- read.csv(
-  file = csv_filename_parameters, 
-  header = TRUE, 
-  stringsAsFactors = FALSE, 
+  file = csv_filename_parameters,
+  header = TRUE,
+  stringsAsFactors = FALSE,
   row.names = 1
 )
 
@@ -150,12 +150,12 @@ knitr::kable(interesting_values)
 #       stuff$filenames  <- c(stuff$filenames,
 #                             df_posterior$filenames[counter])
 #       stuff$gamma_post <- c(stuff$gamma_post, df_posterior$gamma_stat[counter])
-#       stuff$gamma_int  <- c(stuff$gamma_int, 
+#       stuff$gamma_int  <- c(stuff$gamma_int,
 #                             interesting_values$gamma_stat[counter2])
 #     }
 #   }
 # }
-# 
+#
 # stuff <- data.frame(stuff)
 # knitr::kable(head(stuff))
 

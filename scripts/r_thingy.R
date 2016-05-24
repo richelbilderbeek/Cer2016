@@ -30,7 +30,7 @@ start_time <- Sys.time()
 
 comparison  <- NULL
 counter2    <- 0
-for (stat in df_posterior$gamma_stat) {
+for (stat in head(df_posterior$gamma_stat)) {
   counter  <- 0
   counter2 <- counter2 + 1
   if (!is.na(stat)){
@@ -40,6 +40,7 @@ for (stat in df_posterior$gamma_stat) {
       testit::assert(counter <= length(df_species_trees$filenames))
       testit::assert(counter2 >= 1)
       testit::assert(counter2 <= length(df_posterior$filenames))
+      # testit::assert(df_posterior$filenames[counter2] != df_species_trees$filenames[counter])
       if ((df_posterior$filenames[counter2] ==
            df_species_trees$filenames[counter]) && !is.na(value)){
         comparison$filenames  <- c(comparison$filenames,
@@ -62,7 +63,7 @@ end_time <- Sys.time()
 time_taken <- end_time - start_time
 print(time_taken)
 
-knitr::kable(head(comparison))
+knitr::kable(comparison)
 
 df_time <- data.frame(
   n = c(2000, 10000, 15000, 20000, 40000),
