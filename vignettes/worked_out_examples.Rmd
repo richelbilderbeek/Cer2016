@@ -264,12 +264,10 @@ Let's see the alignment:
 
 ```{r}
 plot_alignments(filename)
-
-HIERO read_file(filename)$alignments[[1]][[1]]
-
+n_taxa <- length(labels(read_file(filename)$alignments[[1]][[1]]))
 ```
 
-In the sampled species tree, there are `r n_taxa`.
+In the alignment, there are `r n_taxa` taxa.
 
 ### Once or more often, let BEAST2 infer a posterior per alignment
 

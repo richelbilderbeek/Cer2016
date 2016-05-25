@@ -35,6 +35,8 @@ test_that("alignment is added", {
   file <- read_file(filename = filename)
   expect_equal(class(file$alignments[[1]]) == "list", TRUE)
   expect_equal(class(file$alignments[[1]][[1]]) == "DNAbin", TRUE)
+
+  # Cleaning up
   file.remove(filename)
   expect_equal(file.exists(filename), FALSE)
 })
