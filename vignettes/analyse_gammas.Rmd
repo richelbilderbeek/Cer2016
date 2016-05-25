@@ -82,6 +82,7 @@ csv_filename_species_trees <- "collected_gammas_species_trees.csv"
 csv_filename_posterior     <- "collected_gammas_posterior.csv"
 zip_filename_posterior     <- "collected_gammas_posterior.csv.zip"
 csv_filename_parameters    <- "collected_parameters.csv"
+csv_filename_comparison    <- "femke.csv"
 create_fresh <- FALSE # Set this to TRUE and for a >60 mins calculation
 if (create_fresh) {
   folder <- "/home/p230198/Peregrine"
@@ -131,6 +132,13 @@ df_parameters <- read.csv(
   file = csv_filename_parameters, 
   header = TRUE, 
   stringsAsFactors = FALSE, 
+  row.names = 1
+)
+
+df_comparison <- read.csv(
+  file = csv_filename_comparison,
+  header = TRUE,
+  stringsAsFactors = FALSE,
   row.names = 1
 )
 ```
@@ -288,6 +296,37 @@ comparison <- data.frame(comparison)
 knitr::kable(comparison)
 ```
 
+We actually used a different script for this. At any rate, this is what you get
+if you plot it:
+
+```{r comparisonplot}
+ggplot2::qplot(diff, data = df_comparison, binwidth = 0.05, xlim = c(-2, 2))
+```
+
+The lower the 'comparison' value, the bigger the error of BEAST towards higher 
+gamma statistics.
+
+Interestingly, some parameter values don't show up in the lower comparison 
+values. The higher values for the speciation initiation rate for example 
+(0.8 and 1)
+
+```{r}
+
+gamma_bigdiff <- df_comparison[ 
+  !is.na(df_comparison$diff) & df_comparison$diff < -1, 
+  ]
+gamma_bigdiff
+
+parameters_bigdiff <- df_parameters[ 
+  rownames(df_parameters) %in% gamma_bigdiff$filenames,
+  ]
+parameters_bigdiff
+
+ggplot2::qplot(species_initiation_rate_good_species, data = parameters_bigdiff, 
+               binwidth = 0.1, xlim = c(0, 2))
+```
+
+
 ## Richel's thoughts
 
 I would be interested in the species trees with a gamma statistic
@@ -372,9 +411,81 @@ files: a species initiation rate of 0.4. For some reason, these are very often
 corrupted. This is very unexpected, as we'd expect something going wrong with
 the program if the computer would be overwhelmed by calculations - for example
 if the speciation initiatoin rate is high. But high speciation rates seem to be
-fine:
+fine. We later found out that this is caused by most of the 0.4 being 
+overwritten before the experiment,
+but not all, and the double dose of super-duper high speciation 
+completion time runs. In the end, it turns out that the corrupted files are 
+random... we are working with an involuntarily sampled set from the 'real' data. 
 
 ```{r SIR_GS_graph}
 ggplot2::qplot(SIR_GS, data = na_sample, binwidth = 0.05, xlim = c(-0.1, 2))
-ggplot2::qplot(SIR_IS, data = na_sample, binwidth = 0.05, xlim = c(-0.1, 2))
+```
+
+The speciation completion rate is also interesting.
+
+```{r }
+ggplot2::qplot(SCR, data = na_sample, binwidth = 0.05, xlim = c(999999, 1000001))
+ggplot2::qplot(SCR, data = na_sample, binwidth = 0.05, xlim = c(-0.1, 2))
+```
+
+```{r BD}
+BD           <- NULL
+counter      <- 0
+for (rate in df_parameters$speciation_completion_rate){
+  counter <- counter + 1
+  if (!is.na(rate) && rate > 1){
+    BD$files <- c(BD$files, rownames(df_parameters)[counter])
+  }  
+}
+
+counter <- 0
+for (file in df_species_trees$filenames){
+  counter <- counter + 1
+  for (name in BD$files)
+    if (!is.na(df_species_trees$gamma_stat[counter]) && file == name){
+      BD$filenames  <- c(BD$filenames, file)
+      BD$gammas     <- c(BD$gammas, df_species_trees$gamma_stat[counter])
+    } 
+}
+BD$files <- NULL
+
+BD <- data.frame(BD)
+knitr::kable(head(BD))
+
+PBD    <- NULL
+counter      <- 0
+for (rate in df_parameters$speciation_completion_rate){
+  counter <- counter + 1
+  if (!is.na(rate) && rate == 0.1){
+    PBD$files <- c(PBD$files, rownames(df_parameters)[counter])
+  }
+}
+
+counter <- 0
+for (file in df_species_trees$filenames){
+  counter <- counter + 1
+  for (name in PBD$files)
+    if (!is.na(df_species_trees$gamma_stat[counter]) && file == name){
+      PBD$filenames  <- c(PBD$filenames, file)
+      PBD$gammas     <- c(PBD$gammas, df_species_trees$gamma_stat[counter])
+    }
+}
+PBD$files <- NULL
+
+PBD <- data.frame(PBD)
+
+knitr::kable(head(PBD))
+
+ggplot2::qplot(gammas, data = PBD, binwidth = 0.05, xlim = c(-15, 3))
+ggplot2::qplot(gammas, data = BD, binwidth = 0.05, xlim = c(-15, 3))
+
+pbds_with_low_gamma <- PBD[ 
+  !is.na(PBD$gammas) & PBD$gammas < -10, 
+]
+pbds_with_low_gamma
+
+parameters_with_low_gamma <- df_parameters[ 
+  rownames(df_parameters) %in% pbds_with_low_gamma$filename,
+]
+parameters_with_low_gamma
 ```
