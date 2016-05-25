@@ -423,8 +423,11 @@ completion time runs. In the end, it turns out that the corrupted files are
 random... we are working with an involuntarily sampled set from the 'real' data. 
 
 ```{r SIR_GS_graph}
-ggplot2::qplot(
-  SIR_GS, data = na_sample, binwidth = 0.05, xlim = c(-0.1, 1)) +
+ggplot2::ggplot(
+  data = na_sample, ggplot2::aes(SIR_GS)) +
+  ggplot2::xlim(-0.1, 1) +
+  ggplot2::geom_histogram(binwidth = 0.05,
+                          colour = "grey38", fill = "gold2") +
   ggplot2::theme(text = ggplot2::element_text(size = 12)) +
   ggplot2::theme(axis.text = ggplot2::element_text(size = 12)) +
   ggplot2::xlab("SIR") +
@@ -443,8 +446,43 @@ ggplot2::qplot(
 The speciation completion rate is also interesting.
 
 ```{r }
-ggplot2::qplot(SCR, data = na_sample, binwidth = 0.05, xlim = c(999999, 1000001))
-ggplot2::qplot(SCR, data = na_sample, binwidth = 0.05, xlim = c(-0.1, 2))
+ggplot2::ggplot(
+  data = na_sample, ggplot2::aes(SCR)) +
+  ggplot2::xlim(c(999999, 1000001)) +
+  ggplot2::geom_histogram(binwidth = 0.05,
+                          colour = "grey38", fill = "gold2") +
+  ggplot2::theme(text = ggplot2::element_text(size = 12)) +
+  ggplot2::theme(axis.text = ggplot2::element_text(size = 12)) +
+  ggplot2::xlab("SCR") +
+  ggplot2::theme(axis.title.x = ggplot2::element_text(color="black",
+                                             vjust=-0.35)) +
+  ggplot2::ylab("Runs") +
+  ggplot2::theme(axis.title.y = ggplot2::element_text(color="black" , 
+                                             vjust=0.35)) +
+  ggplot2::ggtitle("Number of runs for Speciation Completion Rate (SCR)") +
+  ggplot2::theme(plot.title = ggplot2::element_text(size=12, 
+                                  face="bold", 
+                                  vjust=1, 
+                                  lineheight=1))
+
+ggplot2::ggplot(
+  data = na_sample, ggplot2::aes(SCR)) +
+  ggplot2::xlim(c(-0.1, 2)) +
+  ggplot2::geom_histogram(binwidth = 0.05,
+                          colour = "grey38", fill = "gold2") +
+  ggplot2::theme(text = ggplot2::element_text(size = 12)) +
+  ggplot2::theme(axis.text = ggplot2::element_text(size = 12)) +
+  ggplot2::xlab("SCR") +
+  ggplot2::theme(axis.title.x = ggplot2::element_text(color="black",
+                                             vjust=-0.35)) +
+  ggplot2::ylab("Runs") +
+  ggplot2::theme(axis.title.y = ggplot2::element_text(color="black" , 
+                                             vjust=0.35)) +
+  ggplot2::ggtitle("Number of runs for Speciation Completion Rate (SCR)") +
+  ggplot2::theme(plot.title = ggplot2::element_text(size=12, 
+                                  face="bold", 
+                                  vjust=1, 
+                                  lineheight=1))
 ```
 
 ```{r BD}
@@ -495,6 +533,45 @@ PBD <- data.frame(PBD)
 
 knitr::kable(head(PBD))
 
+```{r Gammas_graph}
+ggplot2::ggplot(
+  data = PBD, ggplot2::aes(gammas)) +
+  ggplot2::xlim(c(-15, 3)) +
+  ggplot2::geom_histogram(binwidth = 0.05,
+                          colour = "grey38", fill = "gold2") +
+  ggplot2::theme(text = ggplot2::element_text(size = 12)) +
+  ggplot2::theme(axis.text = ggplot2::element_text(size = 12)) +
+  ggplot2::xlab("Gammas") +
+  ggplot2::theme(axis.title.x = ggplot2::element_text(color="black",
+                                             vjust=-0.35)) +
+  ggplot2::ylab("Runs") +
+  ggplot2::theme(axis.title.y = ggplot2::element_text(color="black" , 
+                                             vjust=0.35)) +
+  ggplot2::ggtitle("Distribution of PBD gammas") +
+  ggplot2::theme(plot.title = ggplot2::element_text(size=12, 
+                                  face="bold", 
+                                  vjust=1, 
+                                  lineheight=1))
+
+ggplot2::ggplot(
+  data = BD, ggplot2::aes(gammas)) +
+  ggplot2::xlim(c(-15, 3)) +
+  ggplot2::geom_histogram(binwidth = 0.05,
+                          colour = "grey38", fill = "gold2") +
+  ggplot2::theme(text = ggplot2::element_text(size = 12)) +
+  ggplot2::theme(axis.text = ggplot2::element_text(size = 12)) +
+  ggplot2::xlab("Gammas") +
+  ggplot2::theme(axis.title.x = ggplot2::element_text(color="black",
+                                             vjust=-0.35)) +
+  ggplot2::ylab("Runs") +
+  ggplot2::theme(axis.title.y = ggplot2::element_text(color="black" , 
+                                             vjust=0.35)) +
+  ggplot2::ggtitle("Distribution of BD gammas") +
+  ggplot2::theme(plot.title = ggplot2::element_text(size=12, 
+                                  face="bold", 
+                                  vjust=1, 
+                                  lineheight=1))
+```
 ggplot2::qplot(gammas, data = PBD, binwidth = 0.05, xlim = c(-15, 3))
 ggplot2::qplot(gammas, data = BD, binwidth = 0.05, xlim = c(-15, 3))
 
