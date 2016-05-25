@@ -1,7 +1,7 @@
 context("add_species_trees_with_outgroup")
 
 test_that("species tree with outgroup is added", {
-  filename <- "test-add_pbd_output.RDa"
+  filename <- "test-add_species_trees_with_outgroup.RDa"
   save_parameters_to_file(
     rng_seed = 42,
     sirg = 0.5,

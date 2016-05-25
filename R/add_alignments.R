@@ -1,15 +1,29 @@
 #' Add an alignment to a file
 #' @param filename Parameter filename
+#' @param verbose give verbose output, should be TRUE or FALSE
 #' @return Nothing, modifies the parameter file
 #' @export
 #' @author Richel Bilderbeek
-add_alignments <- function(filename) {
-  testit::assert(Cer2016::is_valid_file(filename))
+add_alignments <- function(
+  filename,
+  verbose = TRUE
+) {
+  if (verbose != TRUE && verbose != FALSE) {
+    stop(
+      "add_alignments: ",
+      "verbose should be TRUE or FALSE"
+    )
+  }
+  if (!is_valid_file(filename)) {
+    stop("add_alignments: invalid file")
+  }
   file <- Cer2016::read_file(filename)
   if (is.na(file$species_trees_with_outgroup[1])) {
-    print(paste("file ", filename,
-      " needs a species_trees_with_outgroup", sep = "")
-    )
+    if (verbose) {
+      print(paste("file ", filename,
+        " needs a species_trees_with_outgroup", sep = "")
+      )
+    }
     return()
   }
   parameters <- file$parameters
@@ -25,17 +39,21 @@ add_alignments <- function(filename) {
   for (i in seq(1, n_species_trees_samples)) {
     species_tree <- file$species_trees_with_outgroup[[i]][[1]]
     if (length(species_tree) == 1 && is.na(species_tree)) {
-      print(paste("species_trees_with_outgroup[[", i,
-        "]] is NA. Terminating 'add_alignments'", sep = "")
-      )
+      if (verbose) {
+        print(paste("species_trees_with_outgroup[[", i,
+          "]] is NA. Terminating 'add_alignments'", sep = "")
+        )
+      }
       return
     }
     for (j in seq(1, n_alignments)) {
       index <- 1 + (j - 1) + ((i - 1) * n_species_trees_samples)                # nolint
       if (class(file$alignments[[index]][[1]]) == "DNAbin") {
-        print(paste("   * Already stored alignment #", j,
-          " for species tree #", i, " at index #", index, sep = "")
-        )
+        if (verbose) {
+          print(paste("   * Already stored alignment #", j,
+            " for species tree #", i, " at index #", index, sep = "")
+          )
+        }
         next
       }
       new_seed <- rng_seed - 1 + j + ((i - 1) * n_species_trees_samples)        # nolint
@@ -47,10 +65,14 @@ add_alignments <- function(filename) {
       )
       file$alignments[[index]] <- list(alignment)
       saveRDS(file, file = filename)
-      print(paste("   * Created and saved alignments[", index, "]", sep = ""))
+      if (verbose) {
+        print(paste("   * Created and saved alignments[", index, "]", sep = ""))
+      }
     }
   }
-  print(paste("file ", filename, " has gotten its ", n_alignments,
-    " alignments (per species tree)", sep = "")
-  )
+  if (verbose) {
+    print(paste("file ", filename, " has gotten its ", n_alignments,
+      " alignments (per species tree)", sep = "")
+    )
+  }
 }

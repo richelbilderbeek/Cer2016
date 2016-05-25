@@ -9,8 +9,8 @@ sample_species_trees_from_pbd_sim_output <- function(
   n, #How many?
   pbd_sim_output
 ) {
-  if (!is_pbd_sim_output(pbd_sim_output)) {
-    is_pbd_sim_output(pbd_sim_output, verbose = TRUE)
+  if (!Cer2016::is_pbd_sim_output(pbd_sim_output)) {
+    Cer2016::is_pbd_sim_output(pbd_sim_output, verbose = TRUE)
     stop("sample_species_trees_from_pbd_sim_output: ",
       "pbd_sim_output is not output of PBD::pbd_sim"
     )

@@ -55,7 +55,9 @@ collect_files_nltts <- function(
   for (filename in filenames) {
     this_pns <- NULL
     tryCatch(
-      this_pns <- collect_posterior_nltts(filename = filename, dt = dt),
+      this_pns <- Cer2016::collect_posterior_nltts(
+        filename = filename, dt = dt
+      ),
       error = function(msg) {
         if (verbose) print(msg)
       }

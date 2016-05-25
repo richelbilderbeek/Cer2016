@@ -4,10 +4,12 @@
 \alias{add_alignments}
 \title{Add an alignment to a file}
 \usage{
-add_alignments(filename)
+add_alignments(filename, verbose = TRUE)
 }
 \arguments{
 \item{filename}{Parameter filename}
+
+\item{verbose}{give verbose output, should be TRUE or FALSE}
 }
 \value{
 Nothing, modifies the parameter file

@@ -43,7 +43,7 @@ collect_posterior_gammas <- function(filename) {
           )
         }
         phylogenies <- rBEAST::beast2out.read.trees(trees_filename)
-        gamma_statistics <- collect_gamma_statistics(phylogenies)
+        gamma_statistics <- Cer2016::collect_gamma_statistics(phylogenies)
 
         # Remove id column
         gamma_statistics <- subset(

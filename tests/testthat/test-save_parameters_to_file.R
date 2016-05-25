@@ -1,3 +1,5 @@
+context("save_parameters_to_file")
+
 test_that("save_parameters_to_file", {
   filename <- "test-save_parameters_to_file.RDa"
   save_parameters_to_file(

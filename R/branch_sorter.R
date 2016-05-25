@@ -5,9 +5,9 @@
 #' @author Femke Thon
 branch_sorter_from_file <- function(filename){
   if (tools::file_ext(filename) == "txt"){
-    return(branch_sorter(ape::read.tree(filename)))
+    return(Cer2016::branch_sorter(ape::read.tree(filename)))
   } else{
-    return(read_file(filename)$species_tree_with_outgroup[[1]][[1]])
+    return(Cer2016::read_file(filename)$species_tree_with_outgroup[[1]][[1]])
   }
 
 }
