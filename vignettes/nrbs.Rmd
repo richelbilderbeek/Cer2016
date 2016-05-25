@@ -1,0 +1,22 @@
+---
+title: "Normalized Rooted Branch Score"
+author: "Richel Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Normalized Rooted Branch Score}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+The Normalized Rooted Branch Score (NRBS) is a difference
+summary statistic.
+
+The NRBS is zero for identical trees. Let's test this:
+
+```{r}
+phylogeny1 <- ape::rcoal(10)
+phylogeny2 <- phylogeny1
+```
+
+
