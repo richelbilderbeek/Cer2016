@@ -67,7 +67,7 @@ add_posteriors <- function(
           tools::file_path_sans_ext(filename)), "_",
           i, "_", j, "_", k, sep = ""
         )
-        posterior <- Cer2016::alignment_to_beast_posterior(
+        posterior <- alignment_to_beast_posterior(
           alignment_dnabin = alignment,
           base_filename = basefilename,
           mcmc_chainlength = mcmc_chainlength,
