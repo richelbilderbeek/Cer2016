@@ -1,57 +1,7 @@
-analysis_femke <- function(
-  df_species_trees,
-  df_posterior
-  n
-) {
-  comparison  <- NULL
-  counter2    <- 0
-  for (stat in head(df_posterior$gamma_stat, n = n)) {
-    counter  <- 0
-    counter2 <- counter2 + 1
-    if (!is.na(stat)){
-      for (value in df_species_trees$gamma_stat){
-        counter <- counter + 1
-        testit::assert(counter >= 1)
-        testit::assert(counter <= length(df_species_trees$filenames))
-        testit::assert(counter2 >= 1)
-        testit::assert(counter2 <= length(df_posterior$filenames))
-        testit::assert(df_posterior$filenames[counter2] != df_species_trees$filenames[counter])
-        if ((df_posterior$filenames[counter2] ==
-             df_species_trees$filenames[counter]) && !is.na(value)){
-          comparison$filenames  <- c(comparison$filenames,
-                                     df_species_trees$filenames[counter])
-          comparison$treenumber <- c(comparison$treenumber,
-                                     df_species_trees$species_tree[counter])
-          comparison$gamma_pbd  <- c(comparison$gamma_pbd, value)
-          comparison$gamma_post <- c(comparison$gamma_post, stat)
-          comparison$diff       <- c(comparison$diff,
-                                     (value - stat))
-          break
-        }
-      }
-    }
-  }
-  comparison <- data.frame(comparison)
-  comparison
-}
-
-analysis_richel <- function(
-  df_species_trees,
-  df_posterior
-) {
-  # Do an inner join
-  total <- merge(df_species_trees,df_posterior, by = c("filenames", "species_tree"))
-  total$diff <- total$gamma_stat.x - total$gamma_stat.y
-  total
-}
-
 csv_filename_species_trees <- "vignettes/collected_gammas_species_trees.csv"
 csv_filename_posterior     <- "vignettes/collected_gammas_posterior.csv"
 csv_filename_parameters    <- "vignettes/collected_parameters.csv"
-testit::assert(file.exists(csv_filename_species_trees))
-testit::assert(file.exists(csv_filename_posterior))
-testit::assert(file.exists(csv_filename_parameters))
-
+csv_filename_comparison    <- "vignettes/femke.csv"
 
 df_species_trees <- read.csv(
   file = csv_filename_species_trees,
@@ -74,19 +24,25 @@ df_parameters <- read.csv(
   row.names = 1
 )
 
-comparison <- analysis_richel(
-  df_species_trees = df_species_trees,
-  df_posterior = df_posterior
+df_comparison <- read.csv(
+  file = csv_filename_comparison,
+  header = TRUE,
+  stringsAsFactors = FALSE,
+  row.names = 1
 )
 
-write.csv(
-  x = comparison,
-  file = "femke.csv",
-  row.names = TRUE
-)
+ggplot2::qplot(diff, data = df_comparison, binwidth = 0.05, xlim = c(-2, 2))
 
-ggplot2::ggplot(
-  data = comparison, ggplot2::aes(comparison$diff)
-) + ggplot2::geom_histogram(binwidth = 0.1)
+gamma_bigdiff <- df_comparison[
+  !is.na(df_comparison$diff) & df_comparison$diff < -1,
+  ]
+gamma_bigdiff
 
+parameters_bigdiff <- df_parameters[
+  rownames(df_parameters) %in% gamma_bigdiff$filenames,
+  ]
+parameters_bigdiff
+
+ggplot2::qplot(species_initiation_rate_good_species, data = parameters_bigdiff,
+               binwidth = 0.1, xlim = c(0, 2))
 
