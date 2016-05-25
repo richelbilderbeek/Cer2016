@@ -3,6 +3,9 @@ context("add_posteriors")
 test_that("posteriors are added", {
   filename <- "test-add_posteriors.RDa"
   filename_trees <- "test-add_posteriors_1_1_1.trees"
+  filename_xml <- "test-add_posteriors_1_1_1.xml"
+  filename_xml_state <- "test-add_posteriors_1_1_1.xml.state"
+  filename_log <- "test-add_posteriors_1_1_1.log"
 
   # Pre clean
   if (file.exists(filename)) {
@@ -11,9 +14,21 @@ test_that("posteriors are added", {
   if (file.exists(filename_trees)) {
     file.remove(filename_trees)
   }
+  if (file.exists(filename_xml)) {
+    file.remove(filename_xml)
+  }
+  if (file.exists(filename_xml_state)) {
+    file.remove(filename_xml_state)
+  }
+  if (file.exists(filename_log)) {
+    file.remove(filename_log)
+  }
 
   expect_equal(file.exists(filename), FALSE)
   expect_equal(file.exists(filename_trees), FALSE)
+  expect_equal(file.exists(filename_xml), FALSE)
+  expect_equal(file.exists(filename_xml_state), FALSE)
+  expect_equal(file.exists(filename_log), FALSE)
 
   save_parameters_to_file(
     rng_seed = 42,
@@ -46,14 +61,24 @@ test_that("posteriors are added", {
   expect_equal(file.exists(filename_trees), FALSE)
   add_posteriors(
     filename = filename,
+    skip_if_output_present = FALSE,
     verbose = FALSE
   )
   expect_equal(file.exists(filename_trees), TRUE)
+  expect_equal(file.exists(filename_xml), TRUE)
+  expect_equal(file.exists(filename_xml_state), TRUE)
+  expect_equal(file.exists(filename_log), TRUE)
 
   # Cleaning up
   file.remove(filename)
   file.remove(filename_trees)
+  file.remove(filename_xml)
+  file.remove(filename_xml_state)
+  file.remove(filename_log)
   expect_equal(file.exists(filename), FALSE)
   expect_equal(file.exists(filename_trees), FALSE)
+  expect_equal(file.exists(filename_xml), FALSE)
+  expect_equal(file.exists(filename_xml_state), FALSE)
+  expect_equal(file.exists(filename_log), FALSE)
 
 })

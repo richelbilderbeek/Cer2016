@@ -4,6 +4,7 @@
 #' @param rng_seed random number generator seed
 #' @param beast_filename the filename of the XML BEAST2 input file created
 #' @param temp_fasta_filename the name of a temporary file created
+#' @param verbose give verbose output, should be TRUE or FALSE
 #' @return Nothing, creates a file called 'beast_filename'
 #' @export
 #' @author Richel Bilderbeek

@@ -17,6 +17,8 @@ alignment_to_beast_input_file(alignment_dnabin, mcmc_chainlength,
 \item{beast_filename}{the filename of the XML BEAST2 input file created}
 
 \item{temp_fasta_filename}{the name of a temporary file created}
+
+\item{verbose}{give verbose output, should be TRUE or FALSE}
 }
 \value{
 Nothing, creates a file called 'beast_filename'
