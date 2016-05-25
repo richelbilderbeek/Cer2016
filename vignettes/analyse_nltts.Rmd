@@ -23,7 +23,7 @@ dt <- 0.1
 
 ## Collecting nLTT values from one or more phylogenies
 
-```{r}
+```{r collect_from_phylogenies}
 phylogenies <- c(ape::rcoal(10), ape::rcoal(20))
 df <- nLTT::get_nltt_values(phylogenies, dt = dt)
 knitr::kable(df)
@@ -31,7 +31,7 @@ knitr::kable(df)
 
 ## Collecting nLTT values from the species trees
 
-```{r}
+```{r collect_from_species_tree}
 filename <- find_path("toy_example_3.RDa")
 df <- collect_species_tree_nltts(filename, dt = dt)
 testit::assert(names(df) == c("species_tree", "t", "nltt"))
@@ -41,7 +41,7 @@ knitr::kable(df)
 
 ## Collecting nLTT values from the posterior
 
-```{r}
+```{r collect_from_a_file}
 filename <- find_path("toy_example_3.RDa")
 df <- collect_posterior_nltts(filename, dt = dt)
 testit::assert(names(df) == 
@@ -71,17 +71,20 @@ knitr::kable(head(df$posterior_nltts))
 
 ## Collecting nLTTs from some files
 
-```{r}
-if ("Skip this" == TRUE) {
-  folder <- "/home/p230198/Peregrine"
-  all_parameter_filenames <- paste(folder, list.files(folder, pattern = "\\.RDa"), sep = "/")
-  df <- collect_files_nltts(head(all_parameter_filenames), dt = dt, verbose = TRUE)
-  testit::assert(names(df) 
-    == c("species_tree_nltts", "posterior_nltts")
-  )
-  knitr::kable(head(df$species_tree_nltts))
-  knitr::kable(head(df$posterior_nltts))
-}
+```{r collect_from_some_files}
+filenames <- c(
+  find_path("toy_example_1.RDa"),
+  find_path("toy_example_2.RDa"),
+  find_path("toy_example_3.RDa"),
+  find_path("toy_example_4.RDa")
+)
+
+df <- collect_files_nltts(filenames, dt = dt, verbose = TRUE)
+testit::assert(names(df) 
+  == c("species_tree_nltts", "posterior_nltts")
+)
+knitr::kable(head(df$species_tree_nltts))
+knitr::kable(head(df$posterior_nltts))
 ```
 
 ## Collecting nLTTs from all files
