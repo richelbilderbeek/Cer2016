@@ -3,6 +3,15 @@ context("add_posteriors")
 test_that("posteriors are added", {
   filename <- "test-add_posteriors.RDa"
   filename_trees <- "test-add_posteriors_1_1_1.trees"
+
+  # Pre clean
+  if (file.exists(filename)) {
+    file.remove(filename)
+  }
+  if (file.exists(filename_trees)) {
+    file.remove(filename_trees)
+  }
+
   expect_equal(file.exists(filename), FALSE)
   expect_equal(file.exists(filename_trees), FALSE)
 
