@@ -19,4 +19,21 @@ A list with two dataframes of gamma statistics
 Collects the gamma statistics of all phylogenies belonging to a
 multiple parameter file in the melted/uncast/long form
 }
+\examples{
+ filenames <- c(
+   find_path("toy_example_3.RDa"),
+   find_path("toy_example_4.RDa")
+ )
+ df <- collect_files_gammas(filenames)
+ testit::assert(
+   names(df) ==
+   c("species_tree_gamma_stats", "posterior_gamma_stats")
+ )
+ testit::assert(
+   names(df$species_tree_gamma_stats) ==
+   c("filenames", "species_tree", "gamma_stat")
+ )
+ testit::assert(nrow(df$species_tree_gamma_stats) == 4)
+ testit::assert(nrow(df$posterior_gamma_stats) == 160)
+}
 
