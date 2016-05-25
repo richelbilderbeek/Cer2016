@@ -308,7 +308,8 @@ gamma statistics.
 
 Interestingly, some parameter values don't show up in the lower comparison 
 values. The higher values for the speciation initiation rate for example 
-(0.8 and 1)
+(0.8 and 1). This turned to be because of missing posterior gammas for those
+parameters. All files after ```article_1_5_5_2_2.RDA``` appear to be corrupted.
 
 ```{r}
 
