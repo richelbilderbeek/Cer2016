@@ -65,6 +65,8 @@ find_beast_jar_path <- function() {
     "/home/richel/Programs/beast/lib/beast.jar",                                # nolint
     "/home/p230198/Programs/beast/lib/beast.jar",                               # nolint
     "/home/travis/build/richelbilderbeek/Programs/beast/lib/beast.jar",         # nolint
+    "./Programs/beast/lib/beast.jar",                                           # nolint
+    "~/Programs/beast/lib/beast.jar",                                           # nolint
     "E:/Git/BEAST.v2.4.0.Windows/BEAST/lib/beast.jar",                          # nolint
     "C:/Users/Aline/BEAST/lib/beast.jar"                                        # nolint
   )
