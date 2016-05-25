@@ -195,9 +195,10 @@ phytools::plotSimmap(
   read_file(filename)$pbd_output$igtree.extant, 
   colors = colors
 )
+n_taxa <- length(read_file(filename)$pbd_output$igtree.extant$tip.label)
 ```
 
-The taxon labels are S[genus]-[species]-[sub-species]'.
+There are `r n_taxa` taxa. The taxon labels are S[genus]-[species]-[sub-species]'.
 
 Now, we plot the nLTT plot of this phylogeny:
 
