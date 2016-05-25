@@ -40,7 +40,7 @@ Every experiment has the following steps:
 
 We will need to load some libraries:
 
-```{r}
+```{r, message = FALSE}
 library(ape)
 library(Cer2016)
 library(ggplot2)
@@ -78,19 +78,19 @@ This worked-out example will show:
 
 For that, I will create four parameter files:
 
-  * `toy_example_1.RDa`: protractedness is absent
-  * `toy_example_2.RDa`: protractedness strong
-  * `toy_example_3.RDa`: protractedness is absent for multiple replicates
-  * `toy_example_4.RDa`: protractedness is strong for multiple replicates
+  * `worked_out_example_1.RDa`: protractedness is absent
+  * `worked_out_example_2.RDa`: protractedness strong
+  * `worked_out_example_3.RDa`: protractedness is absent for multiple replicates
+  * `worked_out_example_4.RDa`: protractedness is strong for multiple replicates
 
 Here, we create the four parameter filenames:
 
 ```{r}
 filenames = c(
-  "toy_example_1.RDa", 
-  "toy_example_2.RDa", 
-  "toy_example_3.RDa", 
-  "toy_example_4.RDa"
+  "worked_out_example_1.RDa", 
+  "worked_out_example_2.RDa", 
+  "worked_out_example_3.RDa", 
+  "worked_out_example_4.RDa"
 )
 ```
 
@@ -143,10 +143,10 @@ for (i in seq(1, 4)) {
 }
 ```
 
-  * `toy_example_1.RDa`: protractedness is absent, thus speciation completion rate is high, in this case `1.0e6`
-  * `toy_example_2.RDa`: protractedness strong, thus speciation completion rate is low, in this case `1.0e-1`
-  * `toy_example_3.RDa`: protractedness is absent for multiple replicates, thus number of sampled species trees, alignments per species trees, and BEAST2 runs are all 2
-  * `toy_example_4.RDa`: protractedness is strong for multiple replicates,  thus number of sampled species trees, alignments per species trees, and   BEAST2 runs are all 2
+  * `worked_out_example_1.RDa`: protractedness is absent, thus speciation completion rate is high, in this case `1.0e6`
+  * `worked_out_example_2.RDa`: protractedness strong, thus speciation completion rate is low, in this case `1.0e-1`
+  * `worked_out_example_3.RDa`: protractedness is absent for multiple replicates, thus number of sampled species trees, alignments per species trees, and BEAST2 runs are all 2
+  * `worked_out_example_4.RDa`: protractedness is strong for multiple replicates,  thus number of sampled species trees, alignments per species trees, and   BEAST2 runs are all 2
   
 Here the parameters are shown in a nicer format:
 
@@ -195,10 +195,11 @@ phytools::plotSimmap(
   read_file(filename)$pbd_output$igtree.extant, 
   colors = colors
 )
-n_taxa <- length(read_file(filename)$pbd_output$igtree.extant$tip.label)
+n_taxa_istree <- length(read_file(filename)$pbd_output$igtree.extant$tip.label)
 ```
 
-There are `r n_taxa` taxa. All taxa are good species, so the
+There are `r n_taxa_istree` taxa in the incipient species tree. 
+All taxa are good species, so the
 edges of the phylogeny have only one color. The taxon labels are S[genus]-[species]-[sub-species]'. 
 
 Now, we plot the nLTT plot of this phylogeny:
@@ -229,7 +230,7 @@ constant-rate birth death model, there exist no multiple individuals
 per species. To being able to root our phylogenies in later steps, an outgroup is added as well.
 
 ```{r}
-add_species_trees_with_outgroup(filename)  
+add_species_trees_with_outgroup(filename, verbose = FALSE)  
 ```
 
 Here we observe the sample species tree:
@@ -238,10 +239,12 @@ Here we observe the sample species tree:
 
 plot_species_tree_with_outgroup(filename)
 plot_species_tree_with_outgroup_nltt(filename, dt = 0.001)
-n_taxa <- length(read_file(filename)$species_trees_with_outgroup[[1]][[1]]$tip.label)
+n_taxa_sstree <- length(read_file(filename)$species_trees_with_outgroup[[1]][[1]]$tip.label)
 ```
 
-In the sampled species tree, there are `r n_taxa`.
+
+In the sampled species tree, there are `r n_taxa_sstree` taxa,
+where in the incipient species tree we had `r n_taxa_istree` taxa.
 
 Note that in example #3, there will be multiple sampled
 species trees. 
@@ -255,7 +258,7 @@ Here we simulate one DNA sequence on our one sampled species tree
 with outgroup:
 
 ```{r}
-add_alignments(filename)  
+add_alignments(filename, verbose = FALSE)  
 ```
 
 Note that this research assumes a simple Jukes-Cantor model, and does so as well in later steps.
@@ -264,10 +267,11 @@ Let's see the alignment:
 
 ```{r}
 plot_alignments(filename)
-n_taxa <- length(labels(read_file(filename)$alignments[[1]][[1]]))
+n_taxa_alignment <- length(labels(read_file(filename)$alignments[[1]][[1]]))
 ```
 
-In the alignment, there are `r n_taxa` taxa.
+In the alignment, there are `r n_taxa_alignment` taxa, 
+where in the sampled species tree, there are `r n_taxa_sstree` taxa.
 
 ### Once or more often, let BEAST2 infer a posterior per alignment
 
@@ -279,13 +283,7 @@ Here we let BEAST2 do so:
 add_posteriors(filename, skip_if_output_present = TRUE)
 ```
 
-After running BEAST2 on our DNA sequence, the full posterior must be verified to be eligible for further analysis. Using Tracer, we can open the .log file generated by BEAST2, which is then displayed here:
-
-```
-![Example 1 trace](../doc/example_1_trace.png)
-```
-
-(note: this picture is not freshly generated and may thus be incorrect)
+After running BEAST2 on our DNA sequence, the full posterior must be verified to be eligible for further analysis. Using Tracer, we can open the .log file generated by BEAST2, which has to be done manually.
 
 It can be seen that the values for ESS (Effective Sample Size) are above 200 and that the trace log shows a well-mixed chain. An ESS of 200 is used as a minimum in this research. 
 
@@ -293,7 +291,7 @@ A posterior contains many phylogenies. To visualize these,
 they are extracted from a `.trees` file here:
 
 ```{r}
-trees_filename <- find_path("toy_example_1_1_1_1.trees")
+trees_filename <- "worked_out_example_1_1_1_1.trees"
 testit::assert(file.exists(trees_filename))
 phylogenies <- rBEAST::beast2out.read.trees(trees_filename)
 # To get the densiTree function working, phylogenies must be of class multiphylo
@@ -500,7 +498,7 @@ constant-rate birth death model, there exist no multiple individuals
 per species. To being able to root our phylogenies in later steps, an outgroup is added as well.
 
 ```{r}
-add_species_trees_with_outgroup(filename)  
+add_species_trees_with_outgroup(filename, verbose = FALSE)  
 ```
 
 Here we observe the sample species tree:
@@ -519,7 +517,7 @@ Here we simulate one DNA sequence on our one sampled species tree
 with outgroup:
 
 ```{r}
-add_alignments(filename)  
+add_alignments(filename, verbose = FALSE)  
 ```
 
 Let's see the alignment:
@@ -540,7 +538,7 @@ A posterior contains many phylogenies. To visualize these,
 they are extracted from a `.trees` file here:
 
 ```{r}
-trees_filename <- "toy_example_2_1_1_1.trees"
+trees_filename <- "worked_out_example_2_1_1_1.trees"
 testit::assert(file.exists(trees_filename))
 phylogenies <- rBEAST::beast2out.read.trees(trees_filename)
 # To get the densiTree function working, phylogenies must be of class multiphylo
