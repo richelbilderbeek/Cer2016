@@ -1,5 +1,3 @@
-
-=======
 ---
 title: "Analyse gamma's"
 author: "Richel Bilderbeek"
