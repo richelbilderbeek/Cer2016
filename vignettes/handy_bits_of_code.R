@@ -46,18 +46,22 @@ for (filename in filenames) {
     add_pbd_output(filename)
   }
 for (filename in filenames) {
-  add_species_trees_with_outgroup(filename)  
+  add_species_trees_with_outgroup(
+    filename,
+    add_outgroup = TRUE,
+    verbose = FALSE
+  )
 }
 for (filename in filenames) {
-  add_alignments(filename)  
+  add_alignments(filename)
 }
 for (filename in filenames) {
   add_posteriors(
-    filename, 
+    filename,
     skip_if_output_present = TRUE
   )
 }
-  
+
 
 ## ------------------------------------------------------------------------
 files  <- c()

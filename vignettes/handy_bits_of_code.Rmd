@@ -62,7 +62,7 @@ for (filename in filenames) {
     add_pbd_output(filename)
   }
 for (filename in filenames) {
-  add_species_trees_with_outgroup(filename)  
+  add_species_trees(filename, verbose = FALSE, add_outgroup = TRUE)  
 }
 for (filename in filenames) {
   add_alignments(filename)  

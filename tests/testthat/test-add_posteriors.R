@@ -24,9 +24,10 @@ test_that("posteriors are added", {
     filename = filename
   )
   add_pbd_output(filename)
-  add_species_trees_with_outgroup(
+  add_species_trees(
     filename = filename,
-    verbose = FALSE
+    verbose = FALSE,
+    add_outgroup = TRUE
   )
   add_alignments(
     filename = filename,

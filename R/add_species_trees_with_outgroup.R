@@ -1,25 +1,27 @@
-#' Add a species tree with outgroup to a file
+#' Add a species tree with/without outgroup to a file
 #' @param filename Parameter filename
 #' @param verbose give verbose output, should be TRUE or FALSE
+#' @param add_outgroup add an outgroup to the phylogeny, should be TRUE or FALSE
 #' @return Nothing, modifies the parameter file
 #' @export
 #' @author Richel Bilderbeek
-add_species_trees_with_outgroup <- function(
+add_species_trees <- function(
   filename,
-  verbose = TRUE
+  verbose,
+  add_outgroup
 ) {
   if (verbose != TRUE && verbose != FALSE) {
     stop(
-      "add_species_trees_with_outgroup: ",
+      "add_species_trees: ",
       "verbose should be TRUE or FALSE"
     )
   }
   if (!is_valid_file(filename)) {
-    stop("add_species_trees_with_outgroup: invalid file")
+    stop("add_species_trees: invalid file")
   }
   file <- Cer2016::read_file(filename)
   if (is.na(file$pbd_output[1])) {
-    stop("add_species_trees_with_outgroup: ",
+    stop("add_species_trees: ",
       "file ", filename, " needs a pbd_output"
     )
   }
@@ -41,12 +43,17 @@ add_species_trees_with_outgroup <- function(
     if (verbose) print(paste0("   * Setting seed to ", (rng_seed + i)))
     # Each species tree is generated from its own RNG seed
     set.seed(rng_seed + i)
-    species_tree <- sample_species_trees_from_pbd_sim_output(
+    species_tree <- sample_species_trees(
       n = 1, file$pbd_output
     )[[1]]
-    species_tree_with_outgroup <- add_outgroup_to_phylogeny(
-      species_tree, stem_length = 0
-    )
+    if (add_outgroup) {
+      species_tree_with_outgroup <- add_outgroup_to_phylogeny(
+        species_tree, stem_length = 0
+      )
+    } else {
+      species_tree_with_outgroup <- species_tree
+    }
+
     testit::assert(class(species_tree_with_outgroup) == "phylo")
     file$species_trees_with_outgroup[[i]] <- list(species_tree_with_outgroup)
     saveRDS(file, file = filename)

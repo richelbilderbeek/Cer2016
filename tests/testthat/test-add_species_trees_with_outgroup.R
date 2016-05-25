@@ -1,7 +1,7 @@
-context("add_species_trees_with_outgroup")
+context("add_species_trees")
 
 test_that("species tree with outgroup is added", {
-  filename <- "test-add_species_trees_with_outgroup.RDa"
+  filename <- "test-add_species_trees.RDa"
   save_parameters_to_file(
     rng_seed = 42,
     sirg = 0.5,
@@ -24,9 +24,10 @@ test_that("species tree with outgroup is added", {
     is.na(read_file(filename)$species_trees_with_outgroup[1]),
     TRUE
   )
-  add_species_trees_with_outgroup(
+  add_species_trees(
     filename = filename,
-    verbose = FALSE
+    verbose = FALSE,
+    add_outgroup = TRUE
   )
   expect_equal(
     is.na(read_file(filename)$species_trees_with_outgroup[1]),

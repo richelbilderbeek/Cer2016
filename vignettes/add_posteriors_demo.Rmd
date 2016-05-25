@@ -86,9 +86,9 @@ Get there:
 
 ```{r}
 add_pbd_output(filename)
-add_species_trees_with_outgroup(filename)  
-add_alignments(filename)  
-add_posteriors(filename, skip_if_output_present = TRUE)
+add_species_trees(filename, add_outgroup = TRUE, verbose = FALSE)  
+add_alignments(filename, verbose = FALSE)  
+add_posteriors(filename, skip_if_output_present = TRUE, verbose = FALSE)
 ```
 
 Let's see the alignment:
@@ -104,7 +104,7 @@ trees_filename <- "add_posterior_demo_1_1_1.trees"
 testit::assert(file.exists(trees_filename))
 ```
 
-```{r warning = FALSE}
+```{r}
 phylogenies <- rBEAST::beast2out.read.trees(trees_filename)
 # To get the densiTree function working, phylogenies must be of class multiphylo
 class(phylogenies) <- "multiPhylo"

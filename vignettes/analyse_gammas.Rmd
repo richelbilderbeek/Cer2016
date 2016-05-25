@@ -82,6 +82,7 @@ csv_filename_species_trees <- "collected_gammas_species_trees.csv"
 csv_filename_posterior     <- "collected_gammas_posterior.csv"
 zip_filename_posterior     <- "collected_gammas_posterior.csv.zip"
 csv_filename_parameters    <- "collected_parameters.csv"
+zip_filename_comparison    <- "femke.csv.zip"
 csv_filename_comparison    <- "femke.csv"
 create_fresh <- FALSE # Set this to TRUE and for a >60 mins calculation
 if (create_fresh) {

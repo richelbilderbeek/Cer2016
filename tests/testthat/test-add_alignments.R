@@ -20,9 +20,10 @@ test_that("alignment is added", {
     filename = filename
   )
   add_pbd_output(filename)
-  add_species_trees_with_outgroup(
+  add_species_trees(
     filename = filename,
-    verbose = FALSE
+    verbose = FALSE,
+    add_outgroup = TRUE
   )
   expect_equal(
     is.na(read_file(filename = filename)$alignments),

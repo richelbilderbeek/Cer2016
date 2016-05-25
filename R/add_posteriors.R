@@ -41,7 +41,7 @@ add_posteriors <- function(
         alignment_index <= length(file$alignments)
       )
       alignment <- file$alignments[[alignment_index]][[1]]
-      testit::assert(Cer2016::is_alignment(alignment))
+      testit::assert(is_alignment(alignment))
       for (k in seq(1, n_beast_runs)) {
         posterior_index <- 1 + (k - 1) +
           ((j - 1) * n_alignments) +                                            # nolint

@@ -83,7 +83,7 @@ alignment_to_beast_posterior <- function(
   }
 
   # Create a BEAST2 XML input file
-  convert_alignment_to_beast_input_file(
+  alignment_to_beast_input_file(
     alignment_dnabin = alignment_dnabin,
     mcmc_chainlength = mcmc_chainlength,
     rng_seed = rng_seed,

@@ -1,4 +1,4 @@
-context("convert_alignment_to_beast_input_file")
+context("alignment_to_beast_input_file")
 
 test_that("creates an XML", {
 
@@ -13,10 +13,10 @@ test_that("creates an XML", {
     sequence_length = 10
   )
 
-  beast_xml_input_file <- "test-convert_alignment_to_beast_input_file.xml"
-  fasta_filename <- "test-convert_alignment_to_beast_input_file.fasta"
+  beast_xml_input_file <- "test-alignment_to_beast_input_file.xml"
+  fasta_filename <- "test-alignment_to_beast_input_file.fasta"
 
-  convert_alignment_to_beast_input_file(
+  alignment_to_beast_input_file(
     alignment_dnabin = alignment,
     mcmc_chainlength = 10000,
     rng_seed = 42,
