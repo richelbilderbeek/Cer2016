@@ -26,9 +26,11 @@ add_species_trees_with_outgroup <- function(
   parameters <- file$parameters
   n_species_trees_samples <- as.numeric(parameters$n_species_trees_samples[2])
   rng_seed <- as.numeric(parameters$rng_seed[2])
-  print(paste("Adding species_trees_with_outgroup to file ",
-    filename, sep = "")
-  )
+  if (verbose) {
+    print(paste("Adding species_trees_with_outgroup to file ",
+      filename, sep = "")
+    )
+  }
 
   for (i in seq(1:n_species_trees_samples)) {
     if (!is.na(file$species_trees_with_outgroup[i]) && verbose) {

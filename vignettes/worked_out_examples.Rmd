@@ -198,7 +198,8 @@ phytools::plotSimmap(
 n_taxa <- length(read_file(filename)$pbd_output$igtree.extant$tip.label)
 ```
 
-There are `r n_taxa` taxa. The taxon labels are S[genus]-[species]-[sub-species]'.
+There are `r n_taxa` taxa. All taxa are good species, so the
+edges of the phylogeny have only one color. The taxon labels are S[genus]-[species]-[sub-species]'. 
 
 Now, we plot the nLTT plot of this phylogeny:
 
@@ -234,9 +235,13 @@ add_species_trees_with_outgroup(filename)
 Here we observe the sample species tree:
 
 ```{r}
+
 plot_species_tree_with_outgroup(filename)
 plot_species_tree_with_outgroup_nltt(filename, dt = 0.001)
+n_taxa <- length(read_file(filename)$species_trees_with_outgroup[[1]][[1]]$tip.label)
 ```
+
+In the sampled species tree, there are `r n_taxa`.
 
 Note that in example #3, there will be multiple sampled
 species trees. 
@@ -259,7 +264,12 @@ Let's see the alignment:
 
 ```{r}
 plot_alignments(filename)
+
+HIERO read_file(filename)$alignments[[1]][[1]]
+
 ```
+
+In the sampled species tree, there are `r n_taxa`.
 
 ### Once or more often, let BEAST2 infer a posterior per alignment
 
