@@ -19,7 +19,6 @@ Requires:
   phangorn,
   phytools,
   rBEAST,
-  ribir,
   testit,
   tools,
   TreeSim

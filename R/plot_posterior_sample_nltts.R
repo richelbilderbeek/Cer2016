@@ -22,7 +22,7 @@ plot_posterior_sample_nltts <- function(
   true_nltt_values <- NULL
 
   for (i in seq(1, n_species_trees_samples)) {
-    nltt_values <- ribir::get_nltt_values(
+    nltt_values <- nLTT::get_nltt_values(
       list(file$species_trees_with_outgroup[[i]][[1]]),
       dt = dt
     )

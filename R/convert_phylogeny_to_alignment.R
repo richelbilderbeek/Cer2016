@@ -40,7 +40,7 @@ convert_phylogeny_to_alignment <- function(
   testit::assert(class(alignment_phydat) == "phyDat")
 
   alignment_dnabin <- ape::as.DNAbin(alignment_phydat)
-  testit::assert(Cer2016::is_alignment(alignment_dnabin))
+  testit::assert(is_alignment(alignment_dnabin))
 
   return(alignment_dnabin)
 }
