@@ -19,4 +19,13 @@ A dataframe with all number of taxa of all files
 Collects the number of taxa of all phylogenies belonging to a
 multiple parameter file in the melted/uncast/long form
 }
+\examples{
+  filenames <- c(
+   find_path("toy_example_1.RDa"),
+   find_path("toy_example_2.RDa")
+ )
+ df <- collect_files_n_taxa(filenames, verbose = FALSE)
+ testit::assert(names(df) == c("filenames", "n_taxa"))
+ testit::assert(nrow(df) == length(filenames))
+}
 

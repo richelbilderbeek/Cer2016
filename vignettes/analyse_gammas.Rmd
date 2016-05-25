@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Analyse gamma's"
 author: "Richel Bilderbeek"
@@ -585,3 +586,550 @@ parameters_with_low_gamma <- df_parameters[
 ]
 parameters_with_low_gamma
 ```
+=======
+---
+title: "Analyse gamma's"
+author: "Richel Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Analyse gamma's}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+Loading this package
+
+```{r}
+library(Cer2016)
+```
+
+## Collecting gamma's from one or more phylogenies
+
+```{r collecting_gammas1}
+phylogenies <- c(ape::rcoal(10), ape::rcoal(20))
+df <- collect_gamma_statistics(phylogenies)
+knitr::kable(df)
+```
+
+## Collecting gamma's from the species trees
+
+```{r collecting_gammas2}
+filename <- find_path("toy_example_3.RDa")
+df <- collect_species_tree_gammas(filename)
+testit::assert(names(df) == c("species_tree", "gamma_stat"))
+testit::assert(nrow(df) == 2)
+knitr::kable(df)
+```
+
+## Collecting gamma's from the posterior
+
+```{r collecting_gammas3}
+filename <- find_path("toy_example_3.RDa")
+df <- collect_posterior_gammas(filename)
+testit::assert(names(df) == 
+  c("species_tree", "alignment", "beast_run", "gamma_stat")
+)
+testit::assert(nrow(df) == 80)
+knitr::kable(head(df))
+```
+
+
+## Collecting gamma's from a file
+
+```{r collecting_gammas4}
+filename <- find_path("toy_example_3.RDa")
+df <- collect_file_gammas(filename)
+testit::assert(names(df) == c("species_tree_gammas", "posterior_gammas"))
+testit::assert(
+  names(df$species_tree_gammas) == c("species_tree", "gamma_stat")
+)
+testit::assert(names(df$posterior_gammas) == 
+  c("species_tree", "alignment", "beast_run", "gamma_stat")
+)
+testit::assert(nrow(df$species_tree_gammas) == 2)
+testit::assert(nrow(df$posterior_gammas) == 80)
+```
+
+## Collecting gamma's from some files
+
+```{r collecting_gammas5}
+folder <- "/home/p230198/Peregrine"
+all_parameter_filenames <- paste(folder, list.files(folder, pattern = "\\.RDa"), sep = "/")
+df <- collect_files_gammas(head(all_parameter_filenames), verbose = TRUE)
+testit::assert(names(df) 
+  == c("species_tree_gamma_stats", "posterior_gamma_stats")
+)
+knitr::kable(df$species_tree_gamma_stats)
+knitr::kable(head(df$posterior_gamma_stats))
+```
+
+## Collecting gamma's from all files
+
+```{r collecting_gammas6}
+csv_filename_species_trees <- "collected_gammas_species_trees.csv"
+csv_filename_posterior     <- "collected_gammas_posterior.csv"
+zip_filename_posterior     <- "collected_gammas_posterior.csv.zip"
+csv_filename_parameters    <- "collected_parameters.csv"
+csv_filename_comparison    <- "femke.csv"
+create_fresh <- FALSE # Set this to TRUE and for a >60 mins calculation
+if (create_fresh) {
+  folder <- "/home/p230198/Peregrine"
+  all_parameter_filenames <- paste(
+    folder, list.files(folder, pattern = "\\.RDa"), sep = "/"
+  )
+  df <- collect_files_gammas(all_parameter_filenames, verbose = TRUE)
+  write.csv(
+    x = df$species_tree_gamma_stats,
+    file = csv_filename_species_trees,
+    row.names = TRUE
+  )
+  write.csv(
+    x = df$posterior_gamma_stats,
+    file = csv_filename_posterior,
+    row.names = TRUE
+  )
+}
+if (!file.exists(csv_filename_posterior)) {
+  utils::unzip(zip_filename_posterior)
+}
+testit::assert(file.exists(csv_filename_species_trees))
+testit::assert(file.exists(csv_filename_posterior))
+```
+
+Note that the comma-seperated file is only created when absent,
+as this is a long step.
+
+Loading it from file:
+
+```{r loading_files}
+df_species_trees <- read.csv(
+ file = csv_filename_species_trees, 
+ header = TRUE, 
+ stringsAsFactors = FALSE, 
+ row.names = 1
+)
+
+df_posterior <- read.csv(
+ file = csv_filename_posterior, 
+ header = TRUE, 
+ stringsAsFactors = FALSE, 
+ row.names = 1
+)
+
+df_parameters <- read.csv(
+  file = csv_filename_parameters, 
+  header = TRUE, 
+  stringsAsFactors = FALSE, 
+  row.names = 1
+)
+
+df_comparison <- read.csv(
+  file = csv_filename_comparison,
+  header = TRUE,
+  stringsAsFactors = FALSE,
+  row.names = 1
+)
+```
+
+Putting the head of the data frame in a table:
+
+```{r}
+knitr::kable(head(df_species_trees))
+```
+
+```{r}
+knitr::kable(head(df_posterior))
+```
+
+What kind of data is `df_species_trees`?
+
+```{r}
+str(df_species_trees)
+names(df_species_trees)
+```
+
+What kind of data is `df_posterior`?
+
+```{r}
+str(df_posterior)
+names(df_posterior)
+```
+
+Let's first plot the distribution of gamma statistics.
+
+```{r plot_gamma1}
+ggplot2::ggplot(
+  data = df_species_trees, ggplot2::aes(df_species_trees$gamma_stat)) +   
+  ggplot2::xlim(-15, 5) +
+  ggplot2::geom_histogram(binwidth = 1,
+                          colour = "grey38", fill = "gold2") +
+  ggplot2::theme(text = ggplot2::element_text(size = 12)) +
+  ggplot2::theme(axis.text = ggplot2::element_text(size = 12)) +
+  ggplot2::xlab("Gamma Statistic") +
+  ggplot2::theme(axis.title.x = ggplot2::element_text(color="darkorange3",
+                                             vjust=-0.35)) +
+  ggplot2::ylab("Count") +
+  ggplot2::theme(axis.title.y = ggplot2::element_text(color="darkorange3" , 
+                                             vjust=0.35)) +
+  ggplot2::ggtitle("Sampled Trees Gamma Statistics") +
+  ggplot2::theme(plot.title = ggplot2::element_text(size=12, 
+                                  face="bold", 
+                                  vjust=1, 
+                                  lineheight=1))
+```
+
+```{r plot_gamma2}
+ggplot2::ggplot(
+  data = df_posterior, ggplot2::aes(df_posterior$gamma_stat)) + 
+  ggplot2::xlim(-15, 5) +
+  ggplot2::geom_histogram(binwidth = 1, 
+                          colour = "grey38", 
+                          fill = "gold2") + 
+  ggplot2::theme(text = ggplot2::element_text(size = 12)) +
+  ggplot2::theme(axis.text = ggplot2::element_text(size = 12)) +
+  ggplot2::xlab("Gamma Statistic") +
+  ggplot2::theme(axis.title.x = ggplot2::element_text(color="black",
+                                             vjust=-0.35)) +
+  ggplot2::ylab("Runs") +
+  ggplot2::theme(axis.title.y = ggplot2::element_text(color="black" , 
+                                             vjust=0.35)) +
+  ggplot2::ggtitle("Posterior Trees Gamma Statistics") +
+  ggplot2::theme(plot.title = ggplot2::element_text(size=12, 
+                                  face="bold", 
+                                  vjust=1, 
+                                  lineheight=1))
+```
+
+Hey, some of those gamma statistics are quite different between the species 
+trees and the posterior! Let's take a look at that.
+
+```{r interesting_values}
+counter <- 0
+interesting_values <- NULL
+for (stat in df_species_trees$gamma_stat){
+  counter <- counter + 1
+  if ( !is.na(stat) && (stat < -10)){
+    interesting_values$filenames  <- c(interesting_values$filenames,
+                                       df_species_trees$filenames[counter])
+    interesting_values$gamma_stat <- c(interesting_values$gamma_stat, stat)
+    interesting_values$treenumber <- c(interesting_values$treenumber,
+                                       df_species_trees$species_tree[counter])
+  }
+}
+interesting_values <- data.frame(interesting_values)
+```
+
+```{r table1}
+knitr::kable(head(interesting_values))
+```
+
+It seems like there are clusters of files that have very low gamma statistics. 
+Let's compare them to the posterior values for those statistics.
+
+```{r looking_at_outlier}
+counter    <- 0
+outliers   <- NULL
+for (posterior in df_posterior$filenames){
+  counter  <- counter + 1
+  counter2 <- 0
+  for (filename in interesting_values$filenames){
+    counter2 <- counter2 + 1
+    if (posterior == filename){
+      outliers$filenames  <- c(outliers$filenames,
+                               df_posterior$filenames[counter])
+      outliers$gamma_post <- c(outliers$gamma_post,
+                               df_posterior$gamma_stat[counter])
+      outliers$gamma_int  <- c(outliers$gamma_int,
+                               interesting_values$gamma_stat[counter2])
+      outliers$treenumber <- c(outliers$treenumber,
+                               interesting_values$treenumber[counter2])
+    }
+  }
+}
+
+outliers <- data.frame(outliers)
+
+print(names(outliers))
+```
+
+```{r table2}
+knitr::kable(head(outliers))
+```
+
+All the low outliers don't seem to have a posterior... so the difference in the
+graphs might not actually mean anything. Let's take a different approach. Let's
+compare the gamma statistics of every tree that has a posterior.
+
+```{r comparison}
+comparison  <- NULL
+for (stat in head(df_posterior$gamma_stat)){
+  counter <- 0
+  if (!is.na(stat)){ 
+    for (value in head(df_species_trees$gamma_stat)){
+      counter <- counter + 1
+      if (!is.na(value)){
+        comparison$filenames  <- c(comparison$filenames,
+                                   df_species_trees$filenames[counter])
+        comparison$treenumber <- c(comparison$treenumber,
+                                   df_species_trees$species_tree[counter])
+        comparison$gamma_pbd  <- c(comparison$gamma_pbd, value)
+        comparison$gamma_post <- c(comparison$gamma_post, stat)
+        comparison$diff       <- c(comparison$diff, 
+                                   (value - stat))
+      }
+    }
+  }
+}
+comparison <- data.frame(comparison)
+```
+
+```{r table3}
+knitr::kable(comparison)
+```
+
+We actually used a different script for this. At any rate, this is what you get
+if you plot it:
+
+```{r comparisonplot}
+ggplot2::qplot(diff, data = df_comparison, binwidth = 0.05, xlim = c(-2, 2))
+```
+
+The lower the 'comparison' value, the bigger the error of BEAST towards higher 
+gamma statistics.
+
+Interestingly, some parameter values don't show up in the lower comparison 
+values. The higher values for the speciation initiation rate for example 
+(0.8 and 1).
+
+```{r}
+gamma_bigdiff <- df_comparison[ 
+  !is.na(df_comparison$diff) & df_comparison$diff < -1, 
+  ]
+
+parameters_bigdiff <- df_parameters[ 
+  rownames(df_parameters) %in% gamma_bigdiff$filenames,
+  ]
+
+ggplot2::qplot(species_initiation_rate_good_species, data = parameters_bigdiff, 
+               binwidth = 0.1, xlim = c(0, 2))
+```
+
+This turned to be because of missing posterior gammas for those
+parameters. All files after ```article_1_5_5_2_2.RDA``` appear to be corrupted.
+
+```{r existing_posteriors}
+existing_post <- df_comparison[
+  !is.na(df_comparison$diff),
+  ]
+tail(existing_post)
+```
+
+But back to comparing the parameters of the worse predicted gammas to those of 
+the better predicted gammas.
+
+```{r}
+gamma_smalldiff <- df_comparison[
+  !is.na(df_comparison$diff) & df_comparison$diff > -1,
+  ]
+
+parameters_smalldiff <- df_parameters[
+  rownames(df_parameters) %in% gamma_smalldiff$filenames,
+  ]
+```
+
+Most of the time, there doesn't seem to be a difference. 
+
+But let's look at age: It seems like the longer ```age``` is less well 
+predicted.
+
+```{r age}
+ggplot2::qplot(age, data = parameters_bigdiff,
+               binwidth = 0.5)
+
+ggplot2::qplot(age, data = parameters_smalldiff,
+               binwidth = 0.5)
+``` 
+
+Higher mutation rates are predicted better.
+
+```{r mutation_rate}
+ggplot2::qplot(mutation_rate, data = parameters_bigdiff,
+               binwidth = 0.005)
+
+ggplot2::qplot(mutation_rate, data = parameters_smalldiff,
+               binwidth = 0.005)
+```
+
+But those are the only parameters that seem to havce any kind of pattern to 
+them.
+
+```{r}
+
+```
+
+
+## Richel's thoughts
+
+I would be interested in the species trees with a gamma statistic
+less than `-5`:
+
+```{r}
+species_trees_with_low_gamma <- df_species_trees[ 
+  !is.na(df_species_trees$gamma_stat) & df_species_trees$gamma_stat < -5, 
+]
+knitr::kable(head(species_trees_with_low_gamma))
+```
+
+Which parameters go with that?
+
+First read all parameters:
+
+```{r}
+csv_filename_parameters <- "collected_parameters.csv"
+testit::assert(file.exists(csv_filename_parameters))
+df_parameters <- read.csv(
+ file = csv_filename_parameters, 
+ header = TRUE, 
+ stringsAsFactors = FALSE, 
+ row.names = 1
+)
+knitr::kable(head(df_parameters))
+```
+
+Show the parameters that caused this:
+
+```{r}
+parameters_with_low_gamma <- df_parameters[ 
+  rownames(df_parameters) %in% species_trees_with_low_gamma$filename,
+]
+knitr::kable(head(parameters_with_low_gamma))
+```
+
+Let's look at what parameters are often there in the corrupted files.
+
+```{r parameter_check}
+na_sample    <- NULL
+counter      <- 0
+for (stat in df_species_trees$gamma_stat){
+  counter <- counter + 1
+  if (!is.na(stat)){
+    counter2 <- 0
+    for (filename in row.names(df_parameters)){
+      counter2 <- counter2 + 1
+      if (filename == df_species_trees$filenames[counter]){
+        na_sample$filenames   <- c(na_sample$filenames,
+                                   df_species_trees$filenames[counter])
+        na_sample$treenumber  <- c(na_sample$treenumber,
+                                   df_species_trees$species_tree[counter])
+        na_sample$gamma_stat  <- c(na_sample$gamma_stat, stat)
+        na_sample$SIR_GS      <- c(na_sample$SIR_GS,
+                   df_parameters$species_initiation_rate_good_species[counter2])
+        na_sample$SIR_IS      <- c(na_sample$SIR_IS,
+              df_parameters$species_initiation_rate_incipient_species[counter2])
+        na_sample$SCR         <- c(na_sample$SCR,
+                             df_parameters$speciation_completion_rate[counter2])
+        na_sample$EXT_GS      <- c(na_sample$EXT_GS,
+                           df_parameters$extinction_rate_good_species[counter2])
+        na_sample$EXT_IS      <- c(na_sample$EXT_IS,
+                      df_parameters$extinction_rate_incipient_species[counter2])
+        na_sample$AGE         <- c(na_sample$AGE, df_parameters$age[counter2])
+        na_sample$MUTATIONR   <- c(na_sample$MUTATIONR,
+                                   df_parameters$mutation_rate[counter2])
+        break
+      }
+    }
+  }
+}
+na_sample <- data.frame(na_sample)
+```
+
+```{r table4}
+knitr::kable(head(na_sample))
+```
+
+It seems like there is one parameter which is unusually often present in corrupt
+files: a species initiation rate of 0.4. For some reason, these are very often
+corrupted. This is very unexpected, as we'd expect something going wrong with
+the program if the computer would be overwhelmed by calculations - for example
+if the speciation initiatoin rate is high. But high speciation rates seem to be
+fine. We later found out that this is caused by most of the 0.4 being 
+overwritten before the experiment,
+but not all, and the double dose of super-duper high speciation 
+completion time runs. In the end, it turns out that the corrupted files are 
+random... we are working with an involuntarily sampled set from the 'real' data. 
+
+```{r SIR_GS_graph}
+ggplot2::qplot(
+  SIR_GS, data = na_sample, binwidth = 0.05, xlim = c(-0.1, 1)) +
+  ggplot2::theme(text = ggplot2::element_text(size = 12)) +
+  ggplot2::theme(axis.text = ggplot2::element_text(size = 12)) +
+  ggplot2::xlab("SIR") +
+  ggplot2::theme(axis.title.x = ggplot2::element_text(color="black",
+                                             vjust=-0.35)) +
+  ggplot2::ylab("Runs") +
+  ggplot2::theme(axis.title.y = ggplot2::element_text(color="black" , 
+                                             vjust=0.35)) +
+  ggplot2::ggtitle("Number of runs for Speciation Initiation Rate (SIR)") +
+  ggplot2::theme(plot.title = ggplot2::element_text(size=12, 
+                                  face="bold", 
+                                  vjust=1, 
+                                  lineheight=1))
+```
+
+The speciation completion rate is also interesting. And same story there.
+
+```{r }
+ggplot2::qplot(SCR, data = na_sample, binwidth = 0.05, xlim = c(999999, 1000001))
+ggplot2::qplot(SCR, data = na_sample, binwidth = 0.05, xlim = c(-0.1, 2))
+```
+
+```{r BD}
+BD           <- NULL
+counter      <- 0
+for (rate in df_parameters$speciation_completion_rate){
+  counter <- counter + 1
+  if (!is.na(rate) && rate > 1){
+    BD$files <- c(BD$files, rownames(df_parameters)[counter])
+  }  
+}
+
+counter <- 0
+for (file in df_species_trees$filenames){
+  counter <- counter + 1
+  for (name in BD$files)
+    if (!is.na(df_species_trees$gamma_stat[counter]) && file == name){
+      BD$filenames  <- c(BD$filenames, file)
+      BD$gammas     <- c(BD$gammas, df_species_trees$gamma_stat[counter])
+    } 
+}
+BD$files <- NULL
+
+BD <- data.frame(BD)
+knitr::kable(head(BD))
+
+PBD    <- NULL
+counter      <- 0
+for (rate in df_parameters$speciation_completion_rate){
+  counter <- counter + 1
+  if (!is.na(rate) && rate == 0.1){
+    PBD$files <- c(PBD$files, rownames(df_parameters)[counter])
+  }
+}
+
+counter <- 0
+for (file in df_species_trees$filenames){
+  counter <- counter + 1
+  for (name in PBD$files)
+    if (!is.na(df_species_trees$gamma_stat[counter]) && file == name){
+      PBD$filenames  <- c(PBD$filenames, file)
+      PBD$gammas     <- c(PBD$gammas, df_species_trees$gamma_stat[counter])
+    }
+}
+PBD$files <- NULL
+
+PBD <- data.frame(PBD)
+
+knitr::kable(head(PBD))
+
+

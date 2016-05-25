@@ -3,6 +3,14 @@
 #' @param filenames names of the parameter file
 #' @param verbose give verbose output, should be TRUE or FALSE
 #' @return A dataframe with all number of taxa of all files
+#' @examples
+#'   filenames <- c(
+#'    find_path("toy_example_1.RDa"),
+#'    find_path("toy_example_2.RDa")
+#'  )
+#'  df <- collect_files_n_taxa(filenames, verbose = FALSE)
+#'  testit::assert(names(df) == c("filenames", "n_taxa"))
+#'  testit::assert(nrow(df) == length(filenames))
 #' @export
 collect_files_n_taxa <- function(
   filenames,
