@@ -20,7 +20,10 @@ nrbs <- function(phylogeny1, phylogeny2) {
     )
   }
 
-  difference <- 0
-
-  difference
+  difference <- phangorn::treedist(
+    phylogeny1,
+    phylogeny2,
+    check.labels = TRUE
+  )
+  return (difference["branch.score.difference"][[1]])
 }
