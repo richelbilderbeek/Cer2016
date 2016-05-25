@@ -229,7 +229,7 @@ interesting_values <- data.frame(interesting_values)
 ```
 
 ```{r table1}
-knitr::kable(interesting_values)
+knitr::kable(head(interesting_values))
 ```
 
 It seems like there are clusters of files that have very low gamma statistics. 
@@ -262,7 +262,7 @@ print(names(outliers))
 ```
 
 ```{r table2}
-knitr::kable(outliers)
+knitr::kable(head(outliers))
 ```
 
 All the low outliers don't seem to have a posterior... so the difference in the
@@ -308,23 +308,72 @@ gamma statistics.
 
 Interestingly, some parameter values don't show up in the lower comparison 
 values. The higher values for the speciation initiation rate for example 
-(0.8 and 1). This turned to be because of missing posterior gammas for those
-parameters. All files after ```article_1_5_5_2_2.RDA``` appear to be corrupted.
+(0.8 and 1).
 
 ```{r}
-
 gamma_bigdiff <- df_comparison[ 
   !is.na(df_comparison$diff) & df_comparison$diff < -1, 
   ]
-gamma_bigdiff
 
 parameters_bigdiff <- df_parameters[ 
   rownames(df_parameters) %in% gamma_bigdiff$filenames,
   ]
-parameters_bigdiff
 
 ggplot2::qplot(species_initiation_rate_good_species, data = parameters_bigdiff, 
                binwidth = 0.1, xlim = c(0, 2))
+```
+
+This turned to be because of missing posterior gammas for those
+parameters. All files after ```article_1_5_5_2_2.RDA``` appear to be corrupted.
+
+```{r existing_posteriors}
+existing_post <- df_comparison[
+  !is.na(df_comparison$diff),
+  ]
+tail(existing_post)
+```
+
+But back to comparing the parameters of the worse predicted gammas to those of 
+the better predicted gammas.
+
+```{r}
+gamma_smalldiff <- df_comparison[
+  !is.na(df_comparison$diff) & df_comparison$diff > -1,
+  ]
+
+parameters_smalldiff <- df_parameters[
+  rownames(df_parameters) %in% gamma_smalldiff$filenames,
+  ]
+```
+
+Most of the time, there doesn't seem to be a difference. 
+
+But let's look at age: It seems like the longer ```age``` is less well 
+predicted.
+
+```{r age}
+ggplot2::qplot(age, data = parameters_bigdiff,
+               binwidth = 0.5)
+
+ggplot2::qplot(age, data = parameters_smalldiff,
+               binwidth = 0.5)
+``` 
+
+Higher mutation rates are predicted better.
+
+```{r mutation_rate}
+ggplot2::qplot(mutation_rate, data = parameters_bigdiff,
+               binwidth = 0.005)
+
+ggplot2::qplot(mutation_rate, data = parameters_smalldiff,
+               binwidth = 0.005)
+```
+
+But those are the only parameters that seem to havce any kind of pattern to 
+them.
+
+```{r}
+
 ```
 
 
@@ -422,7 +471,7 @@ random... we are working with an involuntarily sampled set from the 'real' data.
 ggplot2::qplot(SIR_GS, data = na_sample, binwidth = 0.05, xlim = c(-0.1, 2))
 ```
 
-The speciation completion rate is also interesting.
+The speciation completion rate is also interesting. And same story there.
 
 ```{r }
 ggplot2::qplot(SCR, data = na_sample, binwidth = 0.05, xlim = c(999999, 1000001))
@@ -480,13 +529,4 @@ knitr::kable(head(PBD))
 ggplot2::qplot(gammas, data = PBD, binwidth = 0.05, xlim = c(-15, 3))
 ggplot2::qplot(gammas, data = BD, binwidth = 0.05, xlim = c(-15, 3))
 
-pbds_with_low_gamma <- PBD[ 
-  !is.na(PBD$gammas) & PBD$gammas < -10, 
-]
-pbds_with_low_gamma
-
-parameters_with_low_gamma <- df_parameters[ 
-  rownames(df_parameters) %in% pbds_with_low_gamma$filename,
-]
-parameters_with_low_gamma
 ```

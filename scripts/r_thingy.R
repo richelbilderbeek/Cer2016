@@ -31,18 +31,34 @@ df_comparison <- read.csv(
   row.names = 1
 )
 
-ggplot2::qplot(diff, data = df_comparison, binwidth = 0.05, xlim = c(-2, 2))
+ggplot2::qplot(diff, data = df_comparison, binwidth = 0.05, xlim = c(-2, 1))
+
+gamma_smalldiff <- df_comparison[
+  !is.na(df_comparison$diff) & df_comparison$diff > -1,
+  ]
+head(gamma_smalldiff)
+
+parameters_smalldiff <- df_parameters[
+  rownames(df_parameters) %in% gamma_smalldiff$filenames,
+  ]
+head(parameters_smalldiff)
 
 gamma_bigdiff <- df_comparison[
   !is.na(df_comparison$diff) & df_comparison$diff < -1,
   ]
-gamma_bigdiff
+head(gamma_bigdiff)
 
 parameters_bigdiff <- df_parameters[
   rownames(df_parameters) %in% gamma_bigdiff$filenames,
   ]
-parameters_bigdiff
+head(parameters_bigdiff)
 
-ggplot2::qplot(species_initiation_rate_good_species, data = parameters_bigdiff,
-               binwidth = 0.1, xlim = c(0, 2))
+ggplot2::qplot(sequence_length, data = parameters_bigdiff,
+               binwidth = 0.5, xlim = c(999, 1001))
+
+ggplot2::qplot(sequence_length, data = parameters_smalldiff,
+               binwidth = 0.5, xlim = c(999, 1001))
+
+ggplot2::qplot(speciation_completion_rate, data = parameters_bigdiff,
+               binwidth = 0.05, xlim = c(999999, 1000001))
 
