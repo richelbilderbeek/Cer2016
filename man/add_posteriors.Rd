@@ -4,12 +4,14 @@
 \alias{add_posteriors}
 \title{Add BEAST2 posteriors to a file}
 \usage{
-add_posteriors(filename, skip_if_output_present = FALSE)
+add_posteriors(filename, skip_if_output_present = FALSE, verbose = TRUE)
 }
 \arguments{
 \item{filename}{Parameter filename}
 
 \item{skip_if_output_present}{skip if output files are present, else remove these and start a new BEAST2 run}
+
+\item{verbose}{give verbose output, should be TRUE or FALSE}
 }
 \value{
 Nothing, modifies the parameter file

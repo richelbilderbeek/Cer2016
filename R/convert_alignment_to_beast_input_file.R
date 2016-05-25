@@ -12,17 +12,9 @@ convert_alignment_to_beast_input_file <- function(
   mcmc_chainlength,
   rng_seed = 42,
   beast_filename,
-  temp_fasta_filename
+  temp_fasta_filename,
+  verbose = TRUE
 ) {
-  # Reads an alignment (a FASTA file) and with some
-  # additional parameters create a BEAST2 XML input file
-  #beastscriptr::beast_scriptr(
-
-  # Choose the fastest, iff present
-  # Reads an alignment (a FASTA file) and with some
-  # additional parameters create a BEAST2 XML input file
-  # using the R script version of BeastScripter
-
   # Save to FASTA file
   convert_alignment_to_fasta(alignment_dnabin, temp_fasta_filename)
 

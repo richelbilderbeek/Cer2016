@@ -6,6 +6,7 @@
 #' @param beast_bin_path Where the binary 'beast' can be found
 #' @param beast_jar_path Where the jar 'beast.jar' can be found
 #' @param skip_if_output_present skip if output files are present, else remove these and start a new BEAST2 run
+#' @param verbose give verbose output, should be TRUE or FALSE
 #' @return A BEAST2 posterior
 #' @export
 #' @author Richel Bilderbeek
@@ -16,7 +17,8 @@ alignment_to_beast_posterior <- function(
   rng_seed = 42,
   beast_bin_path = "", #find_beast_bin_path(),
   beast_jar_path = find_beast_jar_path(),
-  skip_if_output_present = FALSE
+  skip_if_output_present = FALSE,
+  verbose = TRUE
 ) {
   if (!is_alignment(alignment_dnabin)) {
     stop("alignment_to_beast_posterior: ",
@@ -58,6 +60,12 @@ alignment_to_beast_posterior <- function(
       "both beast_bin_path and beast_jar_path not found"
     )
   }
+  if (verbose != TRUE && verbose != FALSE) {
+    stop(
+      "alignment_to_beast_posterior: ",
+      "verbose should be TRUE or FALSE"
+    )
+  }
 
   # File paths
   beast_filename <- paste(base_filename, ".xml", sep = "")
@@ -80,7 +88,8 @@ alignment_to_beast_posterior <- function(
     mcmc_chainlength = mcmc_chainlength,
     rng_seed = rng_seed,
     beast_filename = beast_filename,
-    temp_fasta_filename = temp_fasta_filename
+    temp_fasta_filename = temp_fasta_filename,
+    verbose = verbose
   )
   testit::assert(file.exists(beast_filename))
 
@@ -89,15 +98,21 @@ alignment_to_beast_posterior <- function(
 
   if (file.exists(beast_trees_filename)) {
     file.remove(beast_trees_filename)
-    print(paste("NOTE: removed '", beast_trees_filename, "'"), sep = "")
+    if (verbose) {
+      print(paste("NOTE: removed '", beast_trees_filename, "'"), sep = "")
+    }
   }
   if (file.exists(beast_log_filename)) {
     file.remove(beast_log_filename)
-    print(paste("NOTE: removed '", beast_log_filename, "'"), sep = "")
+    if (verbose) {
+      print(paste("NOTE: removed '", beast_log_filename, "'"), sep = "")
+    }
   }
   if (file.exists(beast_state_filename)) {
     file.remove(beast_state_filename)
-    print(paste("NOTE: removed '", beast_state_filename, "'"), sep = "")
+    if (verbose) {
+      print(paste("NOTE: removed '", beast_state_filename, "'"), sep = "")
+    }
   }
   testit::assert(!file.exists(beast_trees_filename))
   testit::assert(!file.exists(beast_log_filename))
@@ -135,17 +150,24 @@ alignment_to_beast_posterior <- function(
   }
 
   if (file.exists(beast_jar_path)) {
-    print("Call BEAST2 jar by its full file path")
-    cmd <- paste(
+    if (verbose) {
+      print("Call BEAST2 jar by its full file path")
+    }
+    cmd <- paste0(
       "java -jar ", beast_jar_path,
       " -seed ", rng_seed,
       #" -beagle_instances 4 -threads 4",
-      " ", beast_filename, # XML filename should always be last
-      sep = ""
+      " ", beast_filename # XML filename should always be last
     )
+    if (verbose == FALSE) {
+      # Silence BEAST
+      cmd <- paste0(cmd, " 1>/dev/null 2>/dev/null")
+    }
     system(cmd)
     if (file.exists(beast_trees_filename)) {
-      print("File created by BEAST2 jar file")
+      if (verbose) {
+        print("File created by BEAST2 jar file")
+      }
       testit::assert(file.exists(beast_trees_filename))
       testit::assert(file.exists(beast_log_filename))
       testit::assert(file.exists(beast_state_filename))
