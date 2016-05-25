@@ -11,7 +11,7 @@
 normalized_rooted_branch_score <- function(filenames) {
 # sorting the trees.
   for (filename in filenames){
-    filename                <- branch_sorter(filename)
+    filename                <- Cer2016::branch_sorter(filename)
   }
 # actually calculating the score
   score      <- 0

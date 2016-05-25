@@ -37,8 +37,8 @@ collect_file_gammas <- function(
     )
   }
 
-  species_tree_gammas <- collect_species_tree_gammas(filename)
-  posterior_gammas <- collect_posterior_gammas(filename)
+  species_tree_gammas <- Cer2016::collect_species_tree_gammas(filename)
+  posterior_gammas <- Cer2016::collect_posterior_gammas(filename)
 
   return(
     list(

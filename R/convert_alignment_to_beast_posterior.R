@@ -9,7 +9,7 @@
 #' @return A BEAST2 posterior
 #' @export
 #' @author Richel Bilderbeek
-convert_alignment_to_beast_posterior <- function(
+alignment_to_beast_posterior <- function(
   alignment_dnabin,
   mcmc_chainlength,
   base_filename,
@@ -19,42 +19,42 @@ convert_alignment_to_beast_posterior <- function(
   skip_if_output_present = FALSE
 ) {
   if (!is_alignment(alignment_dnabin)) {
-    stop("convert_alignment_to_beast_posterior: ",
+    stop("alignment_to_beast_posterior: ",
       "alignment must be of class DNAbin"
     )
   }
   if (!is_whole_number(mcmc_chainlength)) {
-    stop("convert_alignment_to_beast_posterior: ",
+    stop("alignment_to_beast_posterior: ",
       "mcmc_chainlength must be a whole number"
     )
   }
   if (mcmc_chainlength <= 0) {
-    stop("convert_alignment_to_beast_posterior: ",
+    stop("alignment_to_beast_posterior: ",
       "mcmc_chainlength must non-zero and positive"
     )
   }
   if (!is.character(base_filename)) {
-    stop("convert_alignment_to_beast_posterior: ",
+    stop("alignment_to_beast_posterior: ",
       "base_filename must be a character string"
     )
   }
   if (!is_whole_number(rng_seed)) {
-    stop("convert_alignment_to_beast_posterior: ",
+    stop("alignment_to_beast_posterior: ",
       "rng_seed must be a whole number"
     )
   }
   if (!is.null(beast_bin_path) && !is.character(beast_bin_path)) {
-    stop("convert_alignment_to_beast_posterior: ",
+    stop("alignment_to_beast_posterior: ",
       "beast_bin_path must be NULL or a character string"
     )
   }
   if (!is.null(beast_jar_path) && !is.character(beast_jar_path)) {
-    stop("convert_alignment_to_beast_posterior: ",
+    stop("alignment_to_beast_posterior: ",
       "beast_jar_path must be NULL or a character string"
     )
   }
   if (!file.exists(beast_bin_path) && !file.exists(beast_jar_path)) {
-    stop("convert_alignment_to_beast_posterior: ",
+    stop("alignment_to_beast_posterior: ",
       "both beast_bin_path and beast_jar_path not found"
     )
   }
@@ -129,7 +129,7 @@ convert_alignment_to_beast_posterior <- function(
 
       # Read all trees from the BEAST2 posterior
       posterior <- rBEAST::beast2out.read.trees(beast_trees_filename)
-      testit::assert(is_beast_posterior(posterior))
+      testit::assert(Cer2016::is_beast_posterior(posterior))
       return(posterior)
     }
   }

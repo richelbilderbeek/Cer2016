@@ -22,6 +22,7 @@ inst/doc
 # History files.Rhistory
 .Rapp.history# Session Data files
 convert_alignment_to_beast_posterior_*
+alignment_to_beast_posterior_*
 vignettes/collected_gammas_posterior.csv
 vignettes/collected_nltts_posterior.csv
 vignettes/tryCatch.*
