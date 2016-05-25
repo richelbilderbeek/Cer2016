@@ -86,7 +86,7 @@ if ("Skip this" == TRUE) {
 
 ## Collecting nLTTs from all files
 
-```{r}
+```{r creating_csvs_if_absent}
 csv_filename_species_trees <- "collected_nltts_species_trees.csv"
 csv_filename_posterior <- "collected_nltts_posterior.csv"
 zip_filename_posterior <- "collected_nltts_posterior.csv.zip"
@@ -122,7 +122,7 @@ as this is a long step.
 
 Loading it from file:
 
-```{r}
+```{r loading_csvs}
 df_species_trees <- read.csv(
  file = csv_filename_species_trees, 
  header = TRUE, 

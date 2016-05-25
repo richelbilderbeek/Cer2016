@@ -69,9 +69,14 @@ not make sense.
 ## Collecting the number of taxa from some files
 
 ```{r}
-folder <- "/home/p230198/Peregrine"
-all_parameter_filenames <- paste(folder, list.files(folder, pattern = "\\.RDa"), sep = "/")
-df <- collect_files_n_taxa(head(all_parameter_filenames, n= 10), verbose = FALSE)
+filenames <- c(
+  find_path("toy_example_1.RDa"),
+  find_path("toy_example_2.RDa"),
+  find_path("toy_example_3.RDa"),
+  find_path("toy_example_4.RDa")
+)
+
+df <- collect_files_n_taxa(filenames, verbose = FALSE)
 testit::assert(names(df) == c("filenames", "n_taxa"))
 names(df)
 knitr::kable(df)
