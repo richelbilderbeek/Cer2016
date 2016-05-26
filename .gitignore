@@ -32,3 +32,4 @@ tests/testthat/test-add_posteriors_*
 ..Rcheck/
 collected_gammas_posterior.csv
 *_cache/
+tests/testthat/Rplots.pdf

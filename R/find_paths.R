@@ -78,7 +78,7 @@ find_beast_jar_path <- function() {
     }
   }
   stop(
-    "get_output_xml_filename: ",
+    "find_beast_jar_path: ",
     "cannot find the 'beast.jar' file"
   )
 }

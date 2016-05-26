@@ -22,6 +22,8 @@ test_that("alignment_to_beast_posterior: basic", {
     sequence_length = 10,
     mutation_rate = 1
   )
+  beast_jar_path <- find_beast_jar_path()
+  testit::assert(file.exists(beast_jar_path))
 
   posterior <- alignment_to_beast_posterior(
     alignment_dnabin = alignment,
@@ -29,7 +31,7 @@ test_that("alignment_to_beast_posterior: basic", {
     base_filename = base_filename,
     rng_seed = 42,
     beast_bin_path = "",
-    beast_jar_path = find_beast_jar_path(),
+    beast_jar_path = beast_jar_path,
     skip_if_output_present = FALSE,
     verbose = FALSE
   )
