@@ -23,6 +23,7 @@ df_a <- data.frame(
   scr = rep(0.1, times = sz),
   diff = rnorm(n = sz, mean = 0.1, sd = 0.1)
 )
+df_a$diff
 
 df_b <- data.frame(
   scr = rep(0.5, times = sz),
