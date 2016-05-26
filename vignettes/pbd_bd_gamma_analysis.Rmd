@@ -1,0 +1,158 @@
+---
+title: "PBD-BD gamma analysis"
+author: "Femke Thon"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Analyse gamma's}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+Loading this package
+
+```{r}
+library(Cer2016)
+```
+
+Loading some files
+
+```{r loading_files}
+csv_filename_species_trees <- "collected_gammas_species_trees.csv"
+csv_filename_posterior     <- "collected_gammas_posterior.csv"
+csv_filename_parameters    <- "collected_parameters.csv"
+csv_filename_comparison    <- "femke.csv"
+
+df_species_trees <- read.csv(
+  file = csv_filename_species_trees,
+  header = TRUE,
+  stringsAsFactors = FALSE,
+  row.names = 1
+)
+
+df_posterior <- read.csv(
+  file = csv_filename_posterior,
+  header = TRUE,
+  stringsAsFactors = FALSE,
+  row.names = 1
+)
+
+df_parameters <- read.csv(
+  file = csv_filename_parameters,
+  header = TRUE,
+  stringsAsFactors = FALSE,
+  row.names = 1
+)
+
+df_comparison <- read.csv(
+  file = csv_filename_comparison,
+  header = TRUE,
+  stringsAsFactors = FALSE,
+  row.names = 1
+)
+```
+
+Now let's make some graphs!
+
+```{r BD}
+BD <- df_parameters[
+  !is.na(df_parameters$speciation_completion_rate) 
+  & df_parameters$speciation_completion_rate > 2,
+  ]
+
+BD_gammas <- df_comparison[
+  df_comparison$filenames %in% rownames(BD),
+  ]
+ggplot2::qplot(diff, data = BD_gammas, binwidth = 0.005, xlim = c(-2, 2))
+```
+
+```{r PBD_all}
+PBD <- df_parameters[
+  !is.na(df_parameters$speciation_completion_rate)
+  & df_parameters$speciation_completion_rate < 2 
+  & df_parameters$speciation_completion_rate > 0,
+  ]
+
+PBD_gammas <- df_comparison[
+  df_comparison$filenames %in% rownames(PBD),
+  ]
+ggplot2::qplot(diff, data = PBD_gammas, binwidth = 0.005, xlim = c(-2, 2))
+```
+
+```{r PBD_01}
+PBD_01 <- df_parameters[
+  !is.na(df_parameters$speciation_completion_rate)
+  & df_parameters$speciation_completion_rate == 0.1,
+  ]
+
+PBD_01_gamma <- df_comparison[
+  df_comparison$filenames %in% rownames(PBD_01),
+  ]
+
+ggplot2::qplot(diff, data = PBD_01_gamma, binwidth = 0.005, xlim = c(-2, 2))
+```
+
+```{r PBD_02}
+PBD_02 <- df_parameters[
+  !is.na(df_parameters$speciation_completion_rate)
+  & df_parameters$speciation_completion_rate == 0.2,
+  ]
+
+PBD_02_gamma <- df_comparison[
+  df_comparison$filenames %in% rownames(PBD_02),
+  ]
+
+ggplot2::qplot(diff, data = PBD_02_gamma, binwidth = 0.005, xlim = c(-2, 2))
+```
+
+```{r PBD_03}
+PBD_03 <- df_parameters[
+  !is.na(df_parameters$speciation_completion_rate)
+  & df_parameters$speciation_completion_rate == 0.3,
+  ]
+
+PBD_03_gamma <- df_comparison[
+  df_comparison$filenames %in% rownames(PBD_03),
+  ]
+
+ggplot2::qplot(diff, data = PBD_03_gamma, binwidth = 0.005, xlim = c(-2, 2))
+```
+
+```{r PBD_04}
+PBD_04 <- df_parameters[
+  !is.na(df_parameters$speciation_completion_rate)
+  & df_parameters$speciation_completion_rate == 0.4,
+  ]
+
+PBD_04_gamma <- df_comparison[
+  df_comparison$filenames %in% rownames(PBD_04),
+  ]
+
+ggplot2::qplot(diff, data = PBD_04_gamma, binwidth = 0.005, xlim = c(-2, 2))
+```
+
+```{r PBD_08}
+PBD_08 <- df_parameters[
+  !is.na(df_parameters$speciation_completion_rate)
+  & df_parameters$speciation_completion_rate == 0.8,
+  ]
+
+PBD_08_gamma <- df_comparison[
+  df_comparison$filenames %in% rownames(PBD_08),
+  ]
+
+ggplot2::qplot(diff, data = PBD_08_gamma, binwidth = 0.005, xlim = c(-2, 2))
+```
+
+```{r PBD_10}
+PBD_10 <- df_parameters[
+  !is.na(df_parameters$speciation_completion_rate)
+  & df_parameters$speciation_completion_rate == 1.0,
+  ]
+
+PBD_10_gamma <- df_comparison[
+  df_comparison$filenames %in% rownames(PBD_10),
+  ]
+
+ggplot2::qplot(diff, data = PBD_10_gamma, binwidth = 0.005, xlim = c(-2, 2))
+```

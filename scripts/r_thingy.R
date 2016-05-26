@@ -33,17 +33,13 @@ df_comparison <- read.csv(
 
 ggplot2::qplot(diff, data = df_comparison, binwidth = 0.05, xlim = c(-2, 1))
 
-PBD <- df_parameters[
+PBD_0.1 <- df_parameters[
   !is.na(df_parameters$speciation_completion_rate)
-  & df_parameters$speciation_completion_rate < 2
-  & df_parameters$speciation_completion_rate > 0,
-  ]
-head(PBD)
+  & df_parameters$speciation_completion_rate == 0.1
 
-PBD_gammas <- df_comparison[
-  df_comparison$filenames %in% rownames(PBD),
+PBD_0.1 <- df_comparison[
+  df_comparison$filenames %in% rownames(PBD_0.1),
   ]
-head(PBD_gammas)
 
-ggplot2::qplot(diff, data = PBD_gammas, binwidth = 0.005, xlim = c(-2, 2))
+ggplot2::qplot(diff, data = PBD_extreme_gammas, binwidth = 0.005, xlim = c(-2, 2))
 
