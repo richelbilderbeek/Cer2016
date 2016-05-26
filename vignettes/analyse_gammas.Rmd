@@ -343,7 +343,7 @@ PBD_gammas <- df_comparison[
   ]
 head(PBD_gammas)
 
-ggplot2::qplot(diff, data = BD_gammas, binwidth = 0.005, xlim = c(-2, 2))
+ggplot2::qplot(diff, data = PBD_gammas, binwidth = 0.005, xlim = c(-2, 2))
 
 ```
 
