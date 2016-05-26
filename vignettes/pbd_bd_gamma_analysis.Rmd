@@ -142,7 +142,7 @@ ggplot2::qplot(diff, data = PBD_10_gamma, binwidth = 0.005, xlim = c(-2, 2))
 
 ```{r plotprep_BD_PBDall}
 df_BD <- data.frame(
-  scr = rep(BD$speciation_completion_rate[1], times = length(BD_gammas$diff)),
+  scr = rep(0.1), times = length(BD_gammas$diff)),
   diff = BD_gammas$diff
 )
 
@@ -160,6 +160,6 @@ df$scr <- as.factor(df$scr)
 ggplot2::ggplot(df, ggplot2::aes(x = diff, fill = scr)) +
     ggplot2::geom_histogram(binwidth=0.01, alpha=.5, position="identity")
 
-ggplot2::ggplot(df, ggplot2::aes(x = diff, colour = scr)) + geom_density()
+ggplot2::ggplot(df, ggplot2::aes(x = diff, colour = scr)) + ggplot2::geom_density()
 
 ```
