@@ -29,4 +29,5 @@ vignettes/collected_nltts_posterior.csv
 vignettes/tryCatch.*
 vignettes/worked_out_example_*
 tests/testthat/test-add_posteriors_*
+..Rcheck/
 collected_gammas_posterior.csv

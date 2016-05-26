@@ -105,8 +105,13 @@ if (create_fresh) {
 if (!file.exists(csv_filename_posterior)) {
   utils::unzip(zip_filename_posterior)
 }
+if (!file.exists(csv_filename_comparison)) {
+  utils::unzip(zip_filename_comparison)
+}
 testit::assert(file.exists(csv_filename_species_trees))
 testit::assert(file.exists(csv_filename_posterior))
+testit::assert(file.exists(csv_filename_parameters))
+testit::assert(file.exists(csv_filename_comparison))
 ```
 
 Note that the comma-seperated file is only created when absent,
