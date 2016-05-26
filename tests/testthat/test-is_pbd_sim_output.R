@@ -4,18 +4,18 @@ test_that("basic tests", {
   expect_equal(
     is_pbd_sim_output(
       PBD::pbd_sim(c(0.2, 1, 0.2, 0.1, 0.1), 15),
-      verbose = TRUE
+      verbose = FALSE
     ),
     TRUE
   )
   expect_equal(
-    is_pbd_sim_output(rep(x = 0, times = 9), verbose = TRUE),
+    is_pbd_sim_output(rep(x = 0, times = 9), verbose = FALSE),
     FALSE
   )
   expect_equal(
     is_pbd_sim_output(
       as.list(rep(x = 0, times = 9)),
-      verbose = TRUE
+      verbose = FALSE
     ),
     FALSE
   )

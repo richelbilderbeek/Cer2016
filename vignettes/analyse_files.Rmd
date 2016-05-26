@@ -104,7 +104,7 @@ and then loading from that `.csv`.
 ```{r}
 csv_filename <- "analyse_files_test.csv"
 df_in <- data.frame(
-  x = c(1,2,3), y = c(1,4,9)
+  x = c(1, 2, 3), y = c(1, 4, 9)
 )
 rownames(df_in) <- c("a.txt","b.txt","c.txt")
 print(rownames(df_in))

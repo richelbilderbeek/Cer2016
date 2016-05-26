@@ -18,7 +18,7 @@ is_valid_file <- function(
     )
   }
   if (!file.exists(filename)) {
-    if (verbose) print(paste0("file '", filename, "'not found"))
+    if (verbose) print(paste0("file '", filename, "' not found"))
     return(FALSE)
   }
   file <- NULL

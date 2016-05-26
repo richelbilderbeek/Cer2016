@@ -65,6 +65,9 @@ test_that("alignment_to_beast_posterior: abuse", {
     mutation_rate = 1
   )
 
+  # Will never be created
+  base_filename <- "test-alignment_to_beast_posterior"
+
   expect_error(
     alignment_to_beast_posterior(
       alignment_dnabin = "not an alignment",
@@ -110,7 +113,7 @@ test_that("alignment_to_beast_posterior: abuse", {
     alignment_to_beast_posterior(
       alignment_dnabin = alignment,
       mcmc_chainlength = 10000,
-      base_filename = c(1,2,3), # Not a character string
+      base_filename = c(1, 2, 3), # Not a character string
       rng_seed = 42,
       beast_bin_path = "",
       beast_jar_path = find_beast_jar_path(),
@@ -124,7 +127,7 @@ test_that("alignment_to_beast_posterior: abuse", {
       alignment_dnabin = alignment,
       mcmc_chainlength = 10000,
       base_filename = base_filename,
-      rng_seed = 3.14, # Not a whole number
+      rng_seed = 3.14,   # Not a whole number
       beast_bin_path = "",
       beast_jar_path = find_beast_jar_path(),
       skip_if_output_present = FALSE,
@@ -138,12 +141,12 @@ test_that("alignment_to_beast_posterior: abuse", {
       mcmc_chainlength = 10000,
       base_filename = base_filename,
       rng_seed = 42,
-      beast_bin_path = c(1,2,3), # Not NULL nor a character string
+      beast_bin_path = c(1, 2, 3), # Not NULL nor a character string
       beast_jar_path = find_beast_jar_path(),
       skip_if_output_present = FALSE,
       verbose = FALSE
     ),
-    "alignment_to_beast_posterior: beast_bin_path must be NULL or a character string"
+    "alignment_to_beast_posterior: beast_bin_path must be NULL or a character string" # nolint sometimes error messages are long :-)
   )
   expect_error(
     alignment_to_beast_posterior(
@@ -152,7 +155,7 @@ test_that("alignment_to_beast_posterior: abuse", {
       base_filename = base_filename,
       rng_seed = 42,
       beast_bin_path = "",
-      beast_jar_path = c(1,2,3), # Not NULL nor a character string
+      beast_jar_path = c(1, 2, 3), # Not NULL nor a character string
       skip_if_output_present = FALSE,
       verbose = FALSE
     ),
