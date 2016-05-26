@@ -334,7 +334,8 @@ So it seems like this is just noise.
 ```{r PBD_comparison}
 PBD <- df_parameters[
   !is.na(df_parameters$speciation_completion_rate)
-  & df_parameters$speciation_completion_rate < 2,
+  & df_parameters$speciation_completion_rate < 2 
+  & df_parameters$speciation_completion_rate > 0,
   ]
 head(PBD)
 
