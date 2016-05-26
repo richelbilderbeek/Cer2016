@@ -309,8 +309,27 @@ We actually used a different script for this. At any rate, this is what you get
 if you plot it:
 
 ```{r comparisonplot}
-ggplot2::qplot(diff, data = df_comparison, binwidth = 0.05, xlim = c(-2, 2))
+ggplot2::qplot(diff, data = df_comparison, binwidth = 0.005, xlim = c(-2, 2))
 ```
+
+And this is what you get if you plot the BD portion:
+
+```{r BD_comparison}
+BD <- df_parameters[
+  !is.na(df_parameters$speciation_completion_rate) 
+  & df_parameters$speciation_completion_rate > 2,
+  ]
+head(BD)
+
+BD_gammas <- df_comparison[
+  df_comparison$filenames %in% rownames(BD),
+  ]
+head(BD_gammas)
+
+ggplot2::qplot(diff, data = BD_gammas, binwidth = 0.005, xlim = c(-2, 2))
+```
+
+So it seems like this is just noise.
 
 The lower the 'comparison' value, the bigger the error of BEAST towards higher 
 gamma statistics.
@@ -587,6 +606,7 @@ PBD$files <- NULL
 PBD <- data.frame(PBD)
 
 knitr::kable(head(PBD))
+```
 
 ```{r Gammas_graph}
 ggplot2::ggplot(
@@ -627,6 +647,8 @@ ggplot2::ggplot(
                                   vjust=1, 
                                   lineheight=1))
 ```
+
+```{r}
 ggplot2::qplot(gammas, data = PBD, binwidth = 0.05, xlim = c(-15, 3))
 ggplot2::qplot(gammas, data = BD, binwidth = 0.05, xlim = c(-15, 3))
 
