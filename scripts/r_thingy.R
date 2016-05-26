@@ -33,32 +33,16 @@ df_comparison <- read.csv(
 
 ggplot2::qplot(diff, data = df_comparison, binwidth = 0.05, xlim = c(-2, 1))
 
-gamma_smalldiff <- df_comparison[
-  !is.na(df_comparison$diff) & df_comparison$diff > -1,
+BD <- df_parameters[
+  !is.na(df_parameters$speciation_completion_rate)
+  & df_parameters$speciation_completion_rate > 2,
   ]
-head(gamma_smalldiff)
+head(BD)
 
-parameters_smalldiff <- df_parameters[
-  rownames(df_parameters) %in% gamma_smalldiff$filenames,
+BD_gammas <- df_comparison[
+  df_comparison$filenames %in% rownames(BD),
   ]
-head(parameters_smalldiff)
+head(BD_gammas)
 
-gamma_bigdiff <- df_comparison[
-  !is.na(df_comparison$diff) & df_comparison$diff < -1,
-  ]
-head(gamma_bigdiff)
-
-parameters_bigdiff <- df_parameters[
-  rownames(df_parameters) %in% gamma_bigdiff$filenames,
-  ]
-head(parameters_bigdiff)
-
-ggplot2::qplot(sequence_length, data = parameters_bigdiff,
-               binwidth = 0.5, xlim = c(999, 1001))
-
-ggplot2::qplot(sequence_length, data = parameters_smalldiff,
-               binwidth = 0.5, xlim = c(999, 1001))
-
-ggplot2::qplot(speciation_completion_rate, data = parameters_bigdiff,
-               binwidth = 0.05, xlim = c(999999, 1000001))
+ggplot2::qplot(diff, data = BD_gammas, binwidth = 0.005)
 
