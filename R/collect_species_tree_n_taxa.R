@@ -50,8 +50,5 @@ collect_species_tree_n_taxa <- function(
   df <- data.frame(
     n_taxa = g$n_taxa
   )
-  testit::assert(nrow(df) == 1)
-  testit::assert(ncol(df) == 1)
-  testit::assert(names(df) == c("n_taxa"))
   df
 }

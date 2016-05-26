@@ -5,6 +5,18 @@ test_that("find_path: basic test", {
   expect_equal(file.exists(path), TRUE)
 })
 
+test_that("find_path: error on absent file", {
+  expect_error(
+    find_path("inva.lid"),
+    "find_path: cannot find 'inva.lid''"
+  )
+})
+
+test_that("find_beast_bin_path: basic test", {
+  path <- find_beast_bin_path()
+  expect_equal(file.exists(path), TRUE)
+})
+
 test_that("find_beast_jar_path: basic test", {
   path <- find_beast_jar_path()
   expect_equal(file.exists(path), TRUE)
