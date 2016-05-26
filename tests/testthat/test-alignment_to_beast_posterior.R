@@ -159,7 +159,7 @@ test_that("alignment_to_beast_posterior: abuse", {
       skip_if_output_present = FALSE,
       verbose = FALSE
     ),
-    "alignment_to_beast_posterior: beast_jar_path must be NULL or a character string"
+    "alignment_to_beast_posterior: beast_jar_path must be NULL or a character string" # nolint sometimes error messages are long
   )
   expect_error(
     alignment_to_beast_posterior(
@@ -172,7 +172,7 @@ test_that("alignment_to_beast_posterior: abuse", {
       skip_if_output_present = FALSE,
       verbose = FALSE
     ),
-    "alignment_to_beast_posterior: both beast_bin_path and beast_jar_path not found"
+    "alignment_to_beast_posterior: both beast_bin_path and beast_jar_path not found" # nolint sometimes error messages are long
   )
   expect_error(
     alignment_to_beast_posterior(
@@ -185,6 +185,6 @@ test_that("alignment_to_beast_posterior: abuse", {
       skip_if_output_present = FALSE,
       verbose = "not TRUE not FALSE"
     ),
-    "alignment_to_beast_posterior: verbose should be TRUE or FALSE"
+    "alignment_to_beast_posterior: verbose should be TRUE or FALSE" # nolint sometimes error messages are long
   )
 })

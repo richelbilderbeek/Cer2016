@@ -16,7 +16,9 @@ sample_species_trees <- function(
     )
   }
 
-  crown_age <- get_phylogeny_crown_age(pbd_sim_output$tree)
+  crown_age <- Cer2016::get_phylogeny_crown_age(
+    phylogeny = pbd_sim_output$tree
+  )
   # absL got renamed to abs_l
   abs_l <- pbd_sim_output$L0
   abs_l[, 2] <- abs(pbd_sim_output$L0[, 2])

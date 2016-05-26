@@ -41,8 +41,12 @@ collect_file_nltts <- function(
     )
   }
 
-  species_tree_nltts <- collect_species_tree_nltts(filename = filename, dt = dt)
-  posterior_nltts <- collect_posterior_nltts(filename = filename, dt = dt)
+  species_tree_nltts <- Cer2016::collect_species_tree_nltts(
+    filename = filename, dt = dt
+  )
+  posterior_nltts <- Cer2016::collect_posterior_nltts(
+    filename = filename, dt = dt
+  )
 
   return(
     list(

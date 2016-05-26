@@ -174,7 +174,6 @@ alignment_to_beast_posterior <- function(
 
       # Read all trees from the BEAST2 posterior
       posterior <- rBEAST::beast2out.read.trees(beast_trees_filename)
-      testit::assert(is_beast_posterior(posterior))
       return(posterior)
     }
   }

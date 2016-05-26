@@ -1,0 +1,60 @@
+---
+title: "Plot two distributions"
+author: "Richel Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Plot two distributions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r}
+library(ggplot2)
+```
+
+Prepare data:
+
+```{r}
+sz <- 1000
+
+df_a <- data.frame(
+  scr = rep(0.1, times = sz),
+  diff = rnorm(n = sz, mean = 0.1, sd = 0.1)
+)
+
+df_b <- data.frame(
+  scr = rep(0.5, times = sz),
+  diff = rnorm(n = sz, mean = 0.5, sd = 0.5)
+)
+df <- rbind(df_a, df_b)
+df$scr <- as.factor(df$scr)
+```
+
+Note the `as.factor`: this makes `ggplot2` 
+infer that this is a categorical variable.
+
+Plot at once:
+
+```{r}
+ggplot2::qplot(diff, data = df, binwidth = 0.01)
+```
+
+Plot at once with a density plot:
+
+```{r}
+ggplot(df, aes(x = diff)) + geom_density()
+```
+
+Plot for different `scr`s:
+
+```{r}
+ggplot(df, aes(x = diff, fill = scr)) +
+    geom_histogram(binwidth=0.01, alpha=.5, position="identity")
+
+ggplot(df, aes(x = diff, colour = scr)) + geom_density()
+
+```
+
+

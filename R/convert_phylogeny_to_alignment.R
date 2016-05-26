@@ -5,8 +5,15 @@
 #' @param mutation_rate the rate per nucleotide to change,
 #'   per million years
 #' @return an alignment
-#' @export
+#' @examples
+#' alignment <- convert_phylogeny_to_alignment(
+#'    phylogeny = ape::rcoal(5),
+#'    sequence_length = 10,
+#'    mutation_rate = 1
+#'  )
+#'  testit::assert(is_alignment(alignment))
 #' @author Richel Bilderbeek
+#' @export
 convert_phylogeny_to_alignment <- function(
   phylogeny,
   sequence_length,
@@ -40,7 +47,5 @@ convert_phylogeny_to_alignment <- function(
   testit::assert(class(alignment_phydat) == "phyDat")
 
   alignment_dnabin <- ape::as.DNAbin(alignment_phydat)
-  testit::assert(is_alignment(alignment_dnabin))
-
   return(alignment_dnabin)
 }
