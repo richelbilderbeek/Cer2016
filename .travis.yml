@@ -37,8 +37,11 @@ after_success:
  - cat /home/travis/build/richelbilderbeek/Cer2016/..Rcheck/00install.out
  - cat /home/travis/build/richelbilderbeek/Cer2016/..Rcheck/00check.log
 
-
 after_failure:
+ - Rscript -e 'lintr::lint_package()'
+ - Rscript -e 'library(covr); codecov()'
+ - codecov
+ - bash <(curl -s https://codecov.io/bash)
  - cat /home/travis/build/richelbilderbeek/Cer2016/..Rcheck/00install.out
  - cat /home/travis/build/richelbilderbeek/Cer2016/..Rcheck/00check.log
  - cd ~; find . | egrep "beast"
