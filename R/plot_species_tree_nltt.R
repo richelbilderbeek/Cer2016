@@ -12,7 +12,9 @@ plot_species_tree_nltt <- function(
     stop("plot_species_tree_nltt: invalid filename")
   }
 
-  nltt_values <- collect_species_tree_nltts(filename, dt)
+  nltt_values <- Cer2016::collect_species_tree_nltts(
+    filename = filename, dt = dt
+  )
 
   ggplot2::ggplot(
     data = nltt_values,

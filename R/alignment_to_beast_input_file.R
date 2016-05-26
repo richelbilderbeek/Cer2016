@@ -23,7 +23,7 @@ alignment_to_beast_input_file <- function(
     )
   }
   # Save to FASTA file
-  convert_alignment_to_fasta(alignment_dnabin, temp_fasta_filename)
+  Cer2016::convert_alignment_to_fasta(alignment_dnabin, temp_fasta_filename)
 
   # So that mcmc_chainlength is written as 1000000 instead of 1e+7
   options(scipen = 20)

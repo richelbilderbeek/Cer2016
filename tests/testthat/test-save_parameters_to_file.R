@@ -20,6 +20,7 @@ test_that("save_parameters_to_file", {
     filename = filename
   )
   expect_equal(file.exists(filename), TRUE)
+  expect_equal(is_valid_file(filename), TRUE)
   file.remove(filename)
   expect_equal(file.exists(filename), FALSE)
 })

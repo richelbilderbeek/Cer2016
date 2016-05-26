@@ -21,6 +21,14 @@ an alignment
 \description{
 Converts a phylogeny to a random DNA alignment
 }
+\examples{
+alignment <- convert_phylogeny_to_alignment(
+   phylogeny = ape::rcoal(5),
+   sequence_length = 10,
+   mutation_rate = 1
+ )
+ testit::assert(is_alignment(alignment))
+}
 \author{
 Richel Bilderbeek
 }
