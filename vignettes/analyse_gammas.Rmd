@@ -683,3 +683,19 @@ parameters_with_low_gamma <- df_parameters[
 ]
 parameters_with_low_gamma
 ```
+
+## Richel's notes
+
+```{r}
+df_parameters_richel <- df_parameters[
+  !is.na(df_parameters$speciation_completion_rate)
+  & df_parameters$speciation_completion_rate > 0,
+  ]
+head(df_parameters_richel)
+
+richel_gammas <- df_comparison[
+  df_comparison$filenames %in% rownames(df_parameters_richel),
+  ]
+head(richel_gammas)
+
+```
