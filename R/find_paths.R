@@ -43,6 +43,8 @@ find_beast_bin_path <- function() {
     # "E:/Git/BEAST.v2.4.0.Windows/BEAST/BEAST.exe",                            # nolint
     "/home/p230198/Programs/beast/bin/beast",                                   # nolint
     "/home/travis/build/richelbilderbeek/Programs/beast/bin/beast",             # nolint
+    "~/Programs/beast/bin/beast",                                               # nolint
+    "./Programs/beast/bin/beast",                                               # nolint
     "C:/Users/Aline/BEAST"                                                      # nolint
   )
   for (filename in filenames) {
