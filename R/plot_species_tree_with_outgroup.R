@@ -1,10 +1,12 @@
 #' Plot
 #' @param filename a file name
 #' @return Nothing, but it does generate plots
-#' @export
 #' @author Richel Bilderbeek
+#' @export
 plot_species_tree_with_outgroup <- function(filename) {
-  testit::assert(Cer2016::is_valid_file(filename))
+  if (!is_valid_file(filename)) {
+    stop("plot_species_tree_with_outgroup: invalid filename")
+  }
   file <- Cer2016::read_file(filename)
   n_species_trees_samples <- as.numeric(
     file$parameters$n_species_trees_samples[2]

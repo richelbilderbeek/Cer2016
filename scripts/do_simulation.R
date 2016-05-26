@@ -10,8 +10,8 @@ if (!file.exists(filename)) {
   stop()
 }
 
-source("~/GitHubs/R/Peregrine/load_parameters_from_file.R")
-print(t(load_parameters_from_file(filename)$parameters[2,]))
+source("~/GitHubs/R/Peregrine/read_file.R")
+print(t(read_file(filename)$parameters[2,]))
 source("~/GitHubs/R/Peregrine/add_pbd_output.R")
 print("Adding PBD output")
 add_pbd_output(filename)

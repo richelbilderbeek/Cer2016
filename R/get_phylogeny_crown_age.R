@@ -1,7 +1,6 @@
 #' Obtain the crown age of a phylony
 #' @param phylogeny The phylogeny to obtain the crown age of
 #' @return the age of the phylogeny
-#' @export
 #' @examples
 #'   age <- 15
 #'   set.seed(42)
@@ -13,6 +12,7 @@
 #'   crown_age <- get_phylogeny_crown_age(phylogeny)
 #'   testit::assert(all.equal(age, crown_age, tolerance = 0.001))
 #' @author Richel Bilderbeek
+#' @export
 get_phylogeny_crown_age <- function(
   phylogeny
 ) {

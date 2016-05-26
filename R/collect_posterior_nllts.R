@@ -3,8 +3,8 @@
 #' @param dt the resolution of the nLTT plot,
 #'   must be in range <0,1>, default is 0.001
 #' @return a data frame
-#' @export
 #' @author Richel Bilderbeek
+#' @export
 collect_posterior_nltts <- function(
   filename,
   dt
