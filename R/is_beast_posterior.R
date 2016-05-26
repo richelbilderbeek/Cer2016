@@ -1,8 +1,8 @@
 #' Determines if the input is a BEAST2 posterior
 #' @param x the input
 #' @return TRUE or FALSE
-#' @export
 #' @author Richel Bilderbeek
+#' @export
 is_beast_posterior <- function(x) {
   # as parsed by olli's rBEAST package its function beast2out.read.trees
   if (class(x) != "list") {

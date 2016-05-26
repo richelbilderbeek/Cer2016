@@ -62,7 +62,7 @@ test_that("posteriors are added", {
   add_posteriors(
     filename = filename,
     skip_if_output_present = FALSE,
-    verbose = TRUE
+    verbose = FALSE
   )
   #expect_equal(file.exists(filename_trees), TRUE) # nolint
   expect_equal(file.exists(filename_xml), TRUE)

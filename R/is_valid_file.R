@@ -2,11 +2,11 @@
 #' @param filename the name of the file to be checked
 #' @param verbose give verbose output, should be TRUE or FALSE
 #' @return TRUE or FALSE
-#' @export
 #' @examples
 #'   testit::assert(is_valid_file(find_path("toy_example_1.RDa")))
 #'   testit::assert(!is_valid_file(find_path("toy_example_1_1_1_1.trees")))
 #' @author Richel Bilderbeek
+#' @export
 is_valid_file <- function(
   filename,
   verbose = FALSE

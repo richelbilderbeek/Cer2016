@@ -1,11 +1,13 @@
 #' Plot a random posterior phylogeny
 #' @param filename a filename
 #' @return Nothing, but it does generate some plots
-#' @export
 #' @author Richel Bilderbeek
+#' @export
 plot_posterior_samples <- function(filename) {
-  testit::assert(is_valid_file(filename))
-  base_filename <- tools::file_path_sans_ext(basename(filename))
+  if (!is_valid_file(filename)) {
+    stop("plot_posterior_samples: invalid filename")
+  }
+  base_filename <- tools::file_path_sans_ext(filename)
   file <- Cer2016::read_file(filename)
   n_species_trees_samples <- as.numeric(
     file$parameters$n_species_trees_samples[2]
