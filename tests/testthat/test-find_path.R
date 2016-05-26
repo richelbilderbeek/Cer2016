@@ -8,7 +8,7 @@ test_that("find_path: basic test", {
 test_that("find_path: error on absent file", {
   expect_error(
     find_path("inva.lid"),
-    "find_path: cannot find 'inva.lid''"
+    "find_path: cannot find 'inva.lid'"
   )
 })
 

@@ -4,12 +4,12 @@
 #'   must be in range <0,1>, default is 0.001
 #' @author Richel Bilderbeek
 #' @export
-plot_species_tree_with_outgroup_nltt <- function(
+plot_species_tree_nltt <- function(
   filename,
   dt = 0.001
 ) {
   if (!is_valid_file(filename)) {
-    stop("plot_species_tree_with_outgroup_nltt: invalid filename")
+    stop("plot_species_tree_nltt: invalid filename")
   }
 
   nltt_values <- collect_species_tree_nltts(filename, dt)

@@ -237,8 +237,8 @@ Here we observe the sample species tree:
 
 ```{r}
 
-plot_species_tree_with_outgroup(filename)
-plot_species_tree_with_outgroup_nltt(filename, dt = 0.001)
+plot_species_tree(filename)
+plot_species_tree_nltt(filename, dt = 0.001)
 n_taxa_sstree <- length(read_file(filename)$species_trees_with_outgroup[[1]][[1]]$tip.label)
 ```
 
@@ -316,8 +316,8 @@ pop up most in the posterior.
 To refresh our mind, the true sampled species tree is:
 
 ```{r}
-plot_species_tree_with_outgroup(filename)
-plot_species_tree_with_outgroup_nltt(filename, dt = dt)
+plot_species_tree(filename)
+plot_species_tree_nltt(filename, dt = dt)
 ```
 
 Now that the full posterior is assumed to be correct, 
@@ -504,8 +504,8 @@ add_species_trees(filename, verbose = FALSE, add_outgroup = TRUE)
 Here we observe the sample species tree:
 
 ```{r}
-plot_species_tree_with_outgroup(filename)
-plot_species_tree_with_outgroup_nltt(filename, dt = 0.001)
+plot_species_tree(filename)
+plot_species_tree_nltt(filename, dt = 0.001)
 ```
 
 Note that in example #4, there will be multiple sampled
@@ -563,8 +563,8 @@ pop up most in the posterior.
 To refresh our mind, the true sampled species tree is:
 
 ```{r}
-plot_species_tree_with_outgroup(filename)
-plot_species_tree_with_outgroup_nltt(filename, dt = dt)
+plot_species_tree(filename)
+plot_species_tree_nltt(filename, dt = dt)
 ```
 
 To quantify the difference between original incipient species

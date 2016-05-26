@@ -14,16 +14,18 @@ collect_species_tree_n_taxa <- function(
   filename,
   verbose = FALSE
 ) {
-  if (!is_valid_file(filename = filename, verbose = verbose)) {
-    stop(
-      "collect_species_n_taxa: ",
-      "invalid filename '", filename, "'"
-    )
-  }
+  # Order dependency: check verbose first,
+  # otherwise is_valid_file will stop
   if (verbose != TRUE && verbose != FALSE) {
     stop(
       "collect_species_n_taxa: ",
       "verbose should be TRUE or FALSE"
+    )
+  }
+  if (!is_valid_file(filename = filename, verbose = verbose)) {
+    stop(
+      "collect_species_n_taxa: ",
+      "invalid filename '", filename, "'"
     )
   }
 

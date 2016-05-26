@@ -3,9 +3,9 @@
 #' @return Nothing, but it does generate plots
 #' @author Richel Bilderbeek
 #' @export
-plot_species_tree_with_outgroup <- function(filename) {
+plot_species_tree <- function(filename) {
   if (!is_valid_file(filename)) {
-    stop("plot_species_tree_with_outgroup: invalid filename")
+    stop("plot_species_tree: invalid filename")
   }
   file <- Cer2016::read_file(filename)
   n_species_trees_samples <- as.numeric(

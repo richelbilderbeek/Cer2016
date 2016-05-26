@@ -144,7 +144,7 @@ thus produce only one sampled tree.
 ```{r}
 for (filename in filenames) {
   print(filename)
-  plot_species_tree_with_outgroup(filename)
+  plot_species_tree(filename)
 }
 ```
 

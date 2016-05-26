@@ -65,6 +65,9 @@ test_that("alignment_to_beast_posterior: abuse", {
     mutation_rate = 1
   )
 
+  # Will never be created
+  base_filename <- "test-alignment_to_beast_posterior"
+
   expect_error(
     alignment_to_beast_posterior(
       alignment_dnabin = "not an alignment",
@@ -124,7 +127,7 @@ test_that("alignment_to_beast_posterior: abuse", {
       alignment_dnabin = alignment,
       mcmc_chainlength = 10000,
       base_filename = base_filename,
-      rng_seed = 3.14, # Not a whole number
+      rng_seed = 3.14,   # Not a whole number
       beast_bin_path = "",
       beast_jar_path = find_beast_jar_path(),
       skip_if_output_present = FALSE,
