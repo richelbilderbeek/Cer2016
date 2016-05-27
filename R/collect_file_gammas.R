@@ -18,22 +18,22 @@ collect_file_gammas <- function(
   filename,
   verbose = FALSE
 ) {
-  if (length(filename) < 1) {
+  if (length(filename) != 1) {
     stop(
-      "collect_gamma_statistics_from_file: ",
+      "collect_file_gammas: ",
       "there must be exactly one filename supplied"
-    )
-  }
-  if (!is_valid_file(filename = filename, verbose = verbose)) {
-    stop(
-      "collect_gamma_statistics_from_file: ",
-      "invalid file '", filename, "'"
     )
   }
   if (verbose != TRUE && verbose != FALSE) {
     stop(
-      "show_parameter_files: ",
+      "collect_file_gammas: ",
       "verbose should be TRUE or FALSE"
+    )
+  }
+  if (!is_valid_file(filename = filename, verbose = verbose)) {
+    stop(
+      "collect_file_gammas: ",
+      "invalid file '", filename, "'"
     )
   }
 

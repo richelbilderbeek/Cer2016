@@ -25,16 +25,17 @@ branch_sorter <- function(phylogeny){
   #else{ # nolint thanks Richel
   #  filename           <- read_file(filename)$species_tree_with_outgroup[[1]][[1]] # nolint thanks Richel
   #} # nolint thanks Richel
+
   filename <- phylogeny
-  table              <- cbind(filename$edge, filename$edge.length)
-  edgeorder          <- data.table::data.table(table, key = "V2")
-  edgeorder          <- edgeorder[(0 - (length(filename$tip.label) + 1)), ]
-  edgeorder$V4       <- filename$tip.label
-  edgeorder$V1       <- NULL
-  edgeorder$V2       <- NULL
-  edgeorder          <- edgeorder[order(edgeorder$V4), ]
-  filename$ordered.branches <- edgeorder
-  filename$branch_length    <- filename$ordered.branches$V3
-  filename$taxon_name       <- filename$ordered.branches$V4
+#   table              <- cbind(filename$edge, filename$edge.length) # nolint
+#   edgeorder          <- data.table::data.table(table, key = "V2") # nolint
+#   edgeorder          <- edgeorder[(0 - (length(filename$tip.label) + 1)), ] # nolint
+#   edgeorder$V4       <- filename$tip.label # nolint
+#   edgeorder$V1       <- NULL # nolint
+#   edgeorder$V2       <- NULL # nolint
+#   edgeorder          <- edgeorder[order(edgeorder$V4), ] # nolint
+#   filename$ordered.branches <- edgeorder # nolint
+#   filename$branch_length    <- filename$ordered.branches$V3 # nolint
+#   filename$taxon_name       <- filename$ordered.branches$V4 # nolint
   filename
 }

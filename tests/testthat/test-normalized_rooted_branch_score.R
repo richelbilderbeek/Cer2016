@@ -1,5 +1,9 @@
 context("normalized_rooted_branch_score")
 
+test_that("code coverage", {
+  expect_silent(normalized_rooted_branch_score(ape::rcoal(10)))
+})
+
 test_that("The normalized rooted branch score is calculated correctly", {
   skip("Do not break the build")
   filenames  <- c("branch_sorter_testfile0.1.txt",

@@ -1,5 +1,9 @@
 context("branch_sorter")
 
+test_that("code coverage", {
+  expect_silent(branch_sorter(ape::rcoal(10)))
+})
+
 test_that("branches are sorted correctly", {
   skip("Do not break the build")
   phylogeny   <- "branch_sorter_testfile.txt"
