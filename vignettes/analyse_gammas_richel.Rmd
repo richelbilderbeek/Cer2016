@@ -108,7 +108,18 @@ names(df_big)
 knitr::kable(head(df_big))
 df_big$speciation_completion_rate <- as.factor(df_big$speciation_completion_rate)
 
+df_extreme <- df_big[
+  !is.na(df_big$speciation_completion_rate)
+  & (df_big$speciation_completion_rate == 0.1 |       
+     df_big$speciation_completion_rate == 1e+06),
+  ]
+
+
 ggplot(df_big, aes(x = diff, colour = speciation_completion_rate)) + 
+  geom_density() +
+  xlim(c(-2, 2))
+
+ggplot(df_extreme, aes(x = diff, colour = speciation_completion_rate)) + 
   geom_density() +
   xlim(c(-2, 2))
 ```
