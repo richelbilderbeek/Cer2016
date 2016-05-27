@@ -3,43 +3,12 @@ csv_filename_posterior     <- "vignettes/collected_gammas_posterior.csv"
 csv_filename_parameters    <- "vignettes/collected_parameters.csv"
 csv_filename_comparison    <- "vignettes/femke.csv"
 
-df_species_trees <- read.csv(
-  file = csv_filename_species_trees,
-  header = TRUE,
-  stringsAsFactors = FALSE,
-  row.names = 1
-)
+df_big
 
-df_posterior <- read.csv(
-  file = csv_filename_posterior,
-  header = TRUE,
-  stringsAsFactors = FALSE,
-  row.names = 1
-)
+df_big$mutation_rate <- as.factor(df_big$mutation_rate)
 
-df_parameters <- read.csv(
-  file = csv_filename_parameters,
-  header = TRUE,
-  stringsAsFactors = FALSE,
-  row.names = 1
-)
-
-df_comparison <- read.csv(
-  file = csv_filename_comparison,
-  header = TRUE,
-  stringsAsFactors = FALSE,
-  row.names = 1
-)
-
-ggplot2::qplot(diff, data = df_comparison, binwidth = 0.05, xlim = c(-2, 1))
-
-PBD_0.1 <- df_parameters[
-  !is.na(df_parameters$speciation_completion_rate)
-  & df_parameters$speciation_completion_rate == 0.1
-
-PBD_0.1 <- df_comparison[
-  df_comparison$filenames %in% rownames(PBD_0.1),
-  ]
-
-ggplot2::qplot(diff, data = PBD_extreme_gammas, binwidth = 0.005, xlim = c(-2, 2))
-
+ggplot(df_big, aes(x = diff, colour = mutation_rate)) +
+  geom_density() +
+  xlim(c(-1, 0.2)) +
+  ggtitle("Comparison Mutation rate") +
+  xlab("Diff sampled tree - posterior")

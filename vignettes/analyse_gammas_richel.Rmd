@@ -144,6 +144,29 @@ df_10 <- df_big[
      df_big$speciation_completion_rate == 1e+06),
   ]
 
+df_final <- df_big[
+  !is.na(df_big$speciation_completion_rate)
+  & (df_big$speciation_completion_rate == 0.1 |
+     df_big$speciation_completion_rate == 0.4 |
+     df_big$speciation_completion_rate == 1 |
+     df_big$speciation_completion_rate == 1e+06),
+  ]
+
+ggplot(df_final, aes(x = diff, colour = speciation_completion_rate)) + 
+  geom_density() +
+  xlim(c(-1, 0.2)) +
+  ggtitle("Comparison PBD - BD") +
+  xlab("Diff sampled tree - posterior")
+
+ggplot(df_final, aes(x = diff, colour = speciation_completion_rate)) + 
+  geom_density() +
+  xlim(c(-2, 2)) +
+  ggtitle("Comparison PBD - BD") +
+  xlab("Diff sampled tree - posterior")
+
+
+
+
 ggplot(df_big, aes(x = diff, colour = speciation_completion_rate)) + 
   geom_density() +
   xlim(c(-0.2, 0.2)) +
