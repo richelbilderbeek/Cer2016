@@ -1,22 +1,26 @@
 context("is_pbd_sim_output")
 
 test_that("basic tests", {
-  expect_equal(
-    is_pbd_sim_output(
-      PBD::pbd_sim(c(0.2, 1, 0.2, 0.1, 0.1), 15),
-      verbose = FALSE
-    ),
-    TRUE
+  sink("/dev/null")
+  result <- is_pbd_sim_output(
+    PBD::pbd_sim(c(0.2, 1, 0.2, 0.1, 0.1), 15),
+    verbose = TRUE
   )
-  expect_equal(
-    is_pbd_sim_output(rep(x = 0, times = 9), verbose = FALSE),
-    FALSE
-  )
-  expect_equal(
-    is_pbd_sim_output(
+  sink()
+  expect_equal(result, TRUE)
+
+  sink("/dev/null")
+  result <- is_pbd_sim_output(rep(x = 0, times = 9), verbose = TRUE)
+  sink()
+
+  expect_equal(result, FALSE)
+
+  sink("/dev/null")
+  result <- is_pbd_sim_output(
       as.list(rep(x = 0, times = 9)),
-      verbose = FALSE
-    ),
-    FALSE
-  )
+      verbose = TRUE
+    )
+  sink()
+
+  expect_equal(result, FALSE)
 })
