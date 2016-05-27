@@ -22,9 +22,9 @@ library(ggplot2)
 csv_filename_species_trees <- "collected_gammas_species_trees.csv"
 csv_filename_posterior     <- "collected_gammas_posterior.csv"
 zip_filename_posterior     <- "collected_gammas_posterior.csv.zip"
-csv_filename_parameters    <- "collected_parameters.csv"
+csv_filename_parameters    <- "vignettes/collected_parameters.csv"
 zip_filename_comparison    <- "femke.csv.zip"
-csv_filename_comparison    <- "femke.csv"
+csv_filename_comparison    <- "vignettes/femke.csv"
 create_fresh <- FALSE # Set this to TRUE and for a >60 mins calculation
 if (create_fresh) {
   folder <- "/home/p230198/Peregrine"
@@ -146,7 +146,15 @@ df_10 <- df_big[
 
 ggplot(df_big, aes(x = diff, colour = speciation_completion_rate)) + 
   geom_density() +
-  xlim(c(-2, 2))
+  xlim(c(-0.2, 0.2)) +
+  ggtitle("Comparison PBD - BD") +
+  xlab("Diff sampled tree - posterior")
+
+ggplot(df_big, aes(x = diff, colour = speciation_completion_rate)) + 
+  geom_density() +
+  xlim(c(-2, 2)) +
+  ggtitle("Comparison PBD - BD") +
+  xlab("Diff sampled tree - posterior")
 
 ggplot(df_01, aes(x = diff, colour = speciation_completion_rate)) + 
   geom_density() +
