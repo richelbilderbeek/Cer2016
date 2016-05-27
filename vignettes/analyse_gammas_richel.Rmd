@@ -1,6 +1,6 @@
 ---
 title: "Analyse gamma's"
-author: "Richel Bilderbeek"
+author: "Richel Bilderbeek, Femke Thon"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -108,7 +108,9 @@ names(df_big)
 knitr::kable(head(df_big))
 df_big$speciation_completion_rate <- as.factor(df_big$speciation_completion_rate)
 
-ggplot(df_big, aes(x = diff, colour = speciation_completion_rate)) + geom_density()
+ggplot(df_big, aes(x = diff, colour = speciation_completion_rate)) + 
+  geom_density() +
+  xlim(c(-2, 2))
 ```
 
 
