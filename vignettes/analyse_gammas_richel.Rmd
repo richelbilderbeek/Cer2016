@@ -108,18 +108,67 @@ names(df_big)
 knitr::kable(head(df_big))
 df_big$speciation_completion_rate <- as.factor(df_big$speciation_completion_rate)
 
-df_extreme <- df_big[
+df_01 <- df_big[
   !is.na(df_big$speciation_completion_rate)
   & (df_big$speciation_completion_rate == 0.1 |       
      df_big$speciation_completion_rate == 1e+06),
   ]
 
+df_02 <- df_big[
+  !is.na(df_big$speciation_completion_rate)
+  & (df_big$speciation_completion_rate == 0.2 |       
+     df_big$speciation_completion_rate == 1e+06),
+  ]
+
+df_03 <- df_big[
+  !is.na(df_big$speciation_completion_rate)
+  & (df_big$speciation_completion_rate == 0.3 |       
+     df_big$speciation_completion_rate == 1e+06),
+  ]
+
+df_04 <- df_big[
+  !is.na(df_big$speciation_completion_rate)
+  & (df_big$speciation_completion_rate == 0.4 |       
+     df_big$speciation_completion_rate == 1e+06),
+  ]
+
+df_08 <- df_big[
+  !is.na(df_big$speciation_completion_rate)
+  & (df_big$speciation_completion_rate == 0.8 |       
+     df_big$speciation_completion_rate == 1e+06),
+  ]
+
+df_10 <- df_big[
+  !is.na(df_big$speciation_completion_rate)
+  & (df_big$speciation_completion_rate == 1 |       
+     df_big$speciation_completion_rate == 1e+06),
+  ]
 
 ggplot(df_big, aes(x = diff, colour = speciation_completion_rate)) + 
   geom_density() +
   xlim(c(-2, 2))
 
-ggplot(df_extreme, aes(x = diff, colour = speciation_completion_rate)) + 
+ggplot(df_01, aes(x = diff, colour = speciation_completion_rate)) + 
+  geom_density() +
+  xlim(c(-2, 2))
+
+ggplot(df_02, aes(x = diff, colour = speciation_completion_rate)) + 
+  geom_density() +
+  xlim(c(-2, 2))
+
+ggplot(df_03, aes(x = diff, colour = speciation_completion_rate)) + 
+  geom_density() +
+  xlim(c(-2, 2))
+
+ggplot(df_04, aes(x = diff, colour = speciation_completion_rate)) + 
+  geom_density() +
+  xlim(c(-2, 2))
+
+ggplot(df_08, aes(x = diff, colour = speciation_completion_rate)) + 
+  geom_density() +
+  xlim(c(-2, 2))
+
+ggplot(df_10, aes(x = diff, colour = speciation_completion_rate)) + 
   geom_density() +
   xlim(c(-2, 2))
 ```
