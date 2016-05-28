@@ -132,9 +132,9 @@ df_10 <- df_big[
 
 df_final <- df_big[
   !is.na(df_big$speciation_completion_rate)
-  & (df_big$speciation_completion_rate == 0.1 |
+  & (df_big$speciation_completion_rate == 0.2 |
      df_big$speciation_completion_rate == 0.4 |
-     df_big$speciation_completion_rate == 1 |
+     df_big$speciation_completion_rate == 0.8 |
      df_big$speciation_completion_rate == 1e+06),
   ]
 ```
