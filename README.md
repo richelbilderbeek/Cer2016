@@ -71,21 +71,6 @@ In Linux, you can install it with:
 ./install_beast2.sh
 ```
 
-## Agenda
-
- * MO 2016-05-16 20:00-22:00: Giacomonday @ [De Minnaar](www.deminnaar.nl)
- * TH 2016-05-19 16:00-17:00: GELIFES lecture, room 4.?? (`The Eye`)
- * MO 2016-05-23 10:30-11:00: TRES coffee break, room 5.80 (`TRES coffee room`)
- * MO 2016-05-23 15:30-16:30: TRES meeting, room 5.?? (`Blue Room`)
- * MO 2016-05-23 20:00-22:00: Giacomonday @ [De Minnaar](www.deminnaar.nl)
- * TH 2016-04-26 ??:??-??:??: Peer review of poster with other group
- * TH 2016-04-26 10:30-12:00: R User Group, room ???? in Smitsborg
- * TH 2016-05-26 16:00-17:00: GELIFES lecture, room 4.?? (`The Eye`)
- * MO 2016-05-30 ??:??-??:??: ?Poster presentation, room 5.?? (`Blue Room`)
- * MO 2016-05-30 10:30-11:00: TRES coffee break, room 5.80 (`TRES coffee room`)
- * MO 2016-05-30 15:30-16:30: TRES meeting, room 5.?? (`Blue Room`)
- * MO 2016-05-30 20:00-22:00: Giacomonday @ [De Minnaar](www.deminnaar.nl)
-
 ## Resources
 
  * [My 2015-11-23 TRES presentation](https://github.com/richelbilderbeek/Science/blob/master/Bilderbeek20151123TresMeeting/20151123TresMeeting.pdf)
