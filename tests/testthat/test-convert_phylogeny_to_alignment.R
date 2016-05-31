@@ -16,8 +16,7 @@ test_that("convert_phylogeny_to_alignment: abuse", {
       sequence_length = 10,
       mutation_rate = 1
     ),
-    "convert_phylogeny_to_alignment: ",
-      "parameter 'phylogeny' must be a phylogeny"
+    "convert_phylogeny_to_alignment: parameter 'phylogeny' must be a phylogeny" #nolint
   )
 
   expect_error(

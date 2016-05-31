@@ -16,13 +16,14 @@
 get_phylogeny_crown_age <- function(
   phylogeny
 ) {
-  n_taxa <- length(phylogeny$tip.label)
-  if (n_taxa == 0) {
+  if (class(phylogeny) != "phylo") {
     stop(
       "get_phylogeny_crown_age: ",
-      "cannot obtain the crown age of an empty phylogeny"
+      "phylogeny must be of class 'phylo'"
     )
   }
+  n_taxa <- length(phylogeny$tip.label)
+  testit::assert(n_taxa > 0)
   crown_age <- ape::dist.nodes(phylogeny)[n_taxa + 1][1]
   return(crown_age)
 }

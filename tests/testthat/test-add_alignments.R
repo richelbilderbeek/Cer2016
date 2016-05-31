@@ -41,3 +41,22 @@ test_that("alignment is added", {
   file.remove(filename)
   expect_equal(file.exists(filename), FALSE)
 })
+
+
+test_that("add_alignment: abuse", {
+
+  expect_error(
+    add_alignments(
+      filename = find_path("toy_example_1.RDa"),
+      verbose = "not TRUE nor FALSE"
+    ),
+    "add_alignments: verbose should be TRUE or FALSE"
+  )
+  expect_error(
+    add_alignments(
+      filename = "inva.lid",
+      verbose = FALSE
+    ),
+    "add_alignments: invalid file"
+  )
+})
