@@ -33,3 +33,4 @@ tests/testthat/test-add_posteriors_*
 collected_gammas_posterior.csv
 *_cache/
 tests/testthat/Rplots.pdf
+tests/testthat/article_*.RDa
