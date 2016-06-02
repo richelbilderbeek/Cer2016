@@ -7,7 +7,7 @@
 create_parameter_files_article()
 }
 \value{
-Nothing, it will create all parameter files
+The filenames of all parameter files created
 }
 \description{
 Creates the parameter files in the article
