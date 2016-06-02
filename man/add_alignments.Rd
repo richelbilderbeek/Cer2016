@@ -4,7 +4,7 @@
 \alias{add_alignments}
 \title{Add an alignment to a file}
 \usage{
-add_alignments(filename, verbose = TRUE)
+add_alignments(filename, verbose = FALSE)
 }
 \arguments{
 \item{filename}{Parameter filename}

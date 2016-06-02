@@ -23,12 +23,6 @@ library(ribir)
 library(phangorn)
 ```
 
-We also set the resolution of our analysis:
-
-```{r}
-dt <- 0.001
-```
-
 ## Creating parameter files
 
 Here, we create the four parameter filenames:
@@ -48,19 +42,7 @@ if (file.exists(filename)) {
 Now the parameter files are created with the desired parameters:
 
 ```{r}
-rng_seeds <- seq(1,4)
-sirgs <- rep(0.5, times = 4)
-siris <- rep(0.5, times = 4)
-scrs <- c(1.0e6, 1.0e-1, 1.0e6, 1.0e-1)
-ergs <- rep(0.1, times = 4)
-eris <- rep(0.1, times = 4)
-ages <- rep(5, times = 4)
-n_species_trees_sampleses <- c(1, 1, 2, 2)
-mutation_rates <- rep(0.01, times = 4)
-n_alignmentses <- c(1, 1, 2, 2)
-sequence_lengths <- rep(1000, times = 4)
-mcmc_chainlengths <- rep(10000, times = 4)
-n_beast_runses <- c(1, 1, 2, 2)
+n_beast_runs <- 2
 
 save_parameters_to_file(
   rng_seed = 2,
@@ -71,50 +53,65 @@ save_parameters_to_file(
   eri = 0.1,
   age = 5,
   n_species_trees_samples = 1,
-  add_outgroup = TRUE,
+  add_outgroup = FALSE,
   mutation_rate = 0.01,
   n_alignments = 1,
   sequence_length = 1000,
   mcmc_chainlength = 10000,
-  n_beast_runs = 1,
+  n_beast_runs = n_beast_runs,
   filename = filename
 )  
 testit::assert(is_valid_file(filename))
 ```
 
-Get there:
+## Running the simulation
+
+The simulation has multiple steps. The last step is adding the 
+posterior to the parameter file.
 
 ```{r}
-add_pbd_output(filename)
-add_species_trees(filename, verbose = FALSE)  
-add_alignments(filename, verbose = FALSE)  
-add_posteriors(filename, skip_if_output_present = TRUE, verbose = FALSE)
+do_simulation(filename, cache_beast_output = TRUE)
 ```
 
-Let's see the alignment:
+## Show the posterior
 
 ```{r}
-plot_alignments(filename)
+posteriors <- extract_posteriors(read_file(filename))
+testit::assert(length(posteriors) == n_beast_runs)
+testit::assert(is_beast_posterior(posteriors[[1]][[1]]))
+testit::assert(is_beast_posterior(posteriors[[2]][[1]]))
+phylogenies_1 <- posteriors[[1]][[1]]
+phylogenies_2 <- posteriors[[2]][[1]]
+testit::assert(length(phylogenies_1) > 0)
+testit::assert(length(phylogenies_2) > 0)
 ```
 
-Show the posterior:
+Note the `[[index][[1]]` needed. Cumbersome as it is, R needs this to be able to store lists of phylogenies.
+If you know something more elegant, please let me know.
+
+Here another hack: to get the `densiTree` function working, phylogenies must be of class multiphylo.
+Let it be so:
 
 ```{r}
-trees_filename <- "add_posterior_demo_1_1_1.trees"
-testit::assert(file.exists(trees_filename))
+class(phylogenies_1) <- "multiPhylo"
+class(phylogenies_2) <- "multiPhylo"
 ```
 
-```{r}
-phylogenies <- rBEAST::beast2out.read.trees(trees_filename)
-# To get the densiTree function working, phylogenies must be of class multiphylo
-class(phylogenies) <- "multiPhylo"
+Displaying first posterior:
+
+```{r fig.width = 7, fig.height = 7}
+phangorn::densiTree(
+  phylogenies_1, 
+  type = "cladogram", 
+  alpha = 1
+)
 ```
 
-Displaying:
+Displaying second posterior:
 
 ```{r fig.width = 7, fig.height = 7}
 densiTree(
-  phylogenies, 
+  phylogenies_2, 
   type = "cladogram", 
   alpha = 1
 )

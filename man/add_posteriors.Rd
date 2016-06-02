@@ -4,7 +4,7 @@
 \alias{add_posteriors}
 \title{Add BEAST2 posteriors to a file}
 \usage{
-add_posteriors(filename, skip_if_output_present = FALSE, verbose = TRUE)
+add_posteriors(filename, skip_if_output_present = FALSE, verbose = FALSE)
 }
 \arguments{
 \item{filename}{Parameter filename}

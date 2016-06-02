@@ -2,18 +2,22 @@
 % Please edit documentation in R/is_beast_posterior.R
 \name{is_beast_posterior}
 \alias{is_beast_posterior}
-\title{Determines if the input is a BEAST2 posterior}
+\title{Determines if the input is a BEAST2 posterior,
+as parsed by olli's rBEAST package its function beast2out.read.trees}
 \usage{
-is_beast_posterior(x)
+is_beast_posterior(x, verbose = FALSE)
 }
 \arguments{
 \item{x}{the input}
+
+\item{verbose}{give verbose output, should be TRUE or FALSE}
 }
 \value{
 TRUE or FALSE
 }
 \description{
-Determines if the input is a BEAST2 posterior
+Determines if the input is a BEAST2 posterior,
+as parsed by olli's rBEAST package its function beast2out.read.trees
 }
 \author{
 Richel Bilderbeek

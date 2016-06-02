@@ -4,10 +4,12 @@
 \alias{do_simulation}
 \title{Run the full simulation pipeline on a parameter file}
 \usage{
-do_simulation(filename, verbose = FALSE)
+do_simulation(filename, cache_beast_output = FALSE, verbose = FALSE)
 }
 \arguments{
 \item{filename}{name of the parameter file}
+
+\item{cache_beast_output}{if the BEAST2 output files exist, do not recalculate}
 
 \item{verbose}{give verbose output, should be TRUE or FALSE}
 }

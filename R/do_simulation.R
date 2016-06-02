@@ -1,11 +1,13 @@
 #' Run the full simulation pipeline on a parameter file
 #' @param filename name of the parameter file
+#' @param cache_beast_output if the BEAST2 output files exist, do not recalculate
 #' @param verbose give verbose output, should be TRUE or FALSE
 #' @return Nothing. It does modify the input filename
 #' @export
 #' @author Richel Bilderbeek
 do_simulation <- function(
   filename,
+  cache_beast_output = FALSE,
   verbose = FALSE
 ) {
   if (verbose != TRUE && verbose != FALSE) {
@@ -23,5 +25,9 @@ do_simulation <- function(
   add_pbd_output(filename, verbose = verbose)
   add_species_trees(filename, verbose = verbose)
   add_alignments(filename, verbose = verbose)
-  add_posteriors(filename, verbose = verbose)
+  add_posteriors(
+    filename = filename,
+    skip_if_output_present = cache_beast_output,
+    verbose = verbose
+  )
 }

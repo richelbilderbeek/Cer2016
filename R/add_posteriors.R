@@ -8,7 +8,7 @@
 add_posteriors <- function(
   filename,
   skip_if_output_present = FALSE,
-  verbose = TRUE
+  verbose = FALSE
 ) {
   if (!is_valid_file(filename)) {
     stop("add_posteriors: invalid filename")
@@ -78,14 +78,21 @@ add_posteriors <- function(
           skip_if_output_present = skip_if_output_present,
           verbose = verbose
         )
+        testit::assert(
+          is_beast_posterior(posterior) && 1 == 1
+        )
+
         if (verbose) {
-          print(paste("   * Storing posterior #", k,
+          print(paste0("   * Storing posterior #", k,
             " for alignment #", j, " for species tree #", i,
-            " at posterior_index #", posterior_index, sep = "")
+            " at posterior_index #", posterior_index)
           )
         }
-        file$posteriors[[posterior_index]] <- list(posterior)
+        file$posteriors[[posterior_index]] <- list(posterior) # nolint does not work otherwise
         n_posteriors_added <- n_posteriors_added + 1
+        testit::assert(
+          is_beast_posterior(file$posteriors[[posterior_index]][[1]]) && 2 == 2
+        )
       }
     }
   }

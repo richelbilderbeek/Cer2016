@@ -6,7 +6,7 @@
 #' @author Richel Bilderbeek
 add_alignments <- function(
   filename,
-  verbose = TRUE
+  verbose = FALSE
 ) {
   if (verbose != TRUE && verbose != FALSE) {
     stop(

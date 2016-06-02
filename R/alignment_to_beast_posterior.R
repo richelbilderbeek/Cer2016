@@ -16,7 +16,7 @@ alignment_to_beast_posterior <- function(
   rng_seed = 42,
   beast_jar_path = find_beast_jar_path(),
   skip_if_output_present = FALSE,
-  verbose = TRUE
+  verbose = FALSE
 ) {
   if (!is_alignment(alignment_dnabin)) {
     stop("alignment_to_beast_posterior: ",
@@ -68,11 +68,14 @@ alignment_to_beast_posterior <- function(
   beast_state_filename <- paste(base_filename, ".xml.state", sep = "")
   temp_fasta_filename <- paste(base_filename, ".fasta", sep = "")
 
+  # Use the posterior already present?
   if (skip_if_output_present &&
     file.exists(beast_trees_filename) &&
     file.exists(beast_log_filename) &&
     file.exists(beast_state_filename)) {
-    return()
+    posterior <- rBEAST::beast2out.read.trees(beast_trees_filename)
+    testit::assert(is_beast_posterior(posterior))
+    return(posterior)
   }
 
   # Create a BEAST2 XML input file
@@ -149,5 +152,13 @@ alignment_to_beast_posterior <- function(
   file.remove(beast_log_filename)
   file.remove(beast_state_filename)
 
-  posterior
+  if (!is_beast_posterior(posterior)) {
+    print(is_beast_posterior(posterior, verbose = TRUE))
+    stop(
+      "alignment_to_beast_posterior: ",
+      "no posterior created"
+    )
+  }
+  testit::assert(is_beast_posterior(posterior))
+  return(posterior)
 }
