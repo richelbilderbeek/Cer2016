@@ -2,7 +2,7 @@
 #' @param filename Parameter filename
 #' @param skip_if_output_present skip if output files are present, else remove these and start a new BEAST2 run
 #' @param verbose give verbose output, should be TRUE or FALSE
-#' @return Nothing, modifies the parameter file
+#' @return the number of posteriors added. Also modifies the parameter file
 #' @export
 #' @author Richel Bilderbeek
 add_posteriors <- function(
@@ -34,6 +34,9 @@ add_posteriors <- function(
   n_species_trees_samples <- as.numeric(
     file$parameters$n_species_trees_samples[2]
   )
+
+  n_posteriors_added <- 0
+
   for (i in seq(1, n_species_trees_samples)) {
     for (j in seq(1, n_alignments)) {
       alignment_index <- 1 + (j - 1) + ((i - 1) * n_species_trees_samples)      # nolint
@@ -63,8 +66,8 @@ add_posteriors <- function(
           print(paste("   * Setting seed to ", new_seed, sep = ""))
         }
         set.seed(new_seed)
-        basefilename <- paste(basename(
-          tools::file_path_sans_ext(filename)), "_",
+        basefilename <- paste(
+          tools::file_path_sans_ext(filename), "_",
           i, "_", j, "_", k, sep = ""
         )
         posterior <- alignment_to_beast_posterior(
@@ -82,6 +85,7 @@ add_posteriors <- function(
           )
         }
         file$posteriors[[posterior_index]] <- list(posterior)
+        n_posteriors_added <- n_posteriors_added + 1
       }
     }
   }
@@ -89,4 +93,5 @@ add_posteriors <- function(
   if (verbose) {
     print(paste("file ", filename, " has gotten its posteriors", sep = ""))
   }
+  n_posteriors_added
 }

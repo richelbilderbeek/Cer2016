@@ -14,7 +14,7 @@ add_posteriors(filename, skip_if_output_present = FALSE, verbose = TRUE)
 \item{verbose}{give verbose output, should be TRUE or FALSE}
 }
 \value{
-Nothing, modifies the parameter file
+the number of posteriors added. Also modifies the parameter file
 }
 \description{
 Add BEAST2 posteriors to a file
