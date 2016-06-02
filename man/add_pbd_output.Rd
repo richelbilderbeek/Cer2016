@@ -4,10 +4,12 @@
 \alias{add_pbd_output}
 \title{Adds a pbd_sim result to a file}
 \usage{
-add_pbd_output(filename)
+add_pbd_output(filename, verbose = FALSE)
 }
 \arguments{
 \item{filename}{Parameter filename}
+
+\item{verbose}{give verbose output, should be TRUE or FALSE}
 }
 \value{
 Nothing, modifies the parameter file

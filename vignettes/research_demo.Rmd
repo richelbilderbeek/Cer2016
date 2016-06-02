@@ -134,7 +134,7 @@ Here we simulate the 'true' incipient species tree:
 
 ```{r}
 for (filename in filenames) {
-  add_species_trees(filename, add_outgroup = TRUE, verbose = FALSE)  
+  add_species_trees(filename, verbose = FALSE)  
 }
 ```
 

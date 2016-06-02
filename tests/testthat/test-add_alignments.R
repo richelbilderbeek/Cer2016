@@ -22,8 +22,7 @@ test_that("alignment is added", {
   add_pbd_output(filename)
   add_species_trees(
     filename = filename,
-    verbose = FALSE,
-    add_outgroup = TRUE
+    verbose = FALSE
   )
   expect_equal(
     is.na(read_file(filename = filename)$alignments),

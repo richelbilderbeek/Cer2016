@@ -86,7 +86,7 @@ Get there:
 
 ```{r}
 add_pbd_output(filename)
-add_species_trees(filename, add_outgroup = TRUE, verbose = FALSE)  
+add_species_trees(filename, verbose = FALSE)  
 add_alignments(filename, verbose = FALSE)  
 add_posteriors(filename, skip_if_output_present = TRUE, verbose = FALSE)
 ```

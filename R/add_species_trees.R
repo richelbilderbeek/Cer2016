@@ -1,14 +1,12 @@
 #' Add a species tree with/without outgroup to a file
 #' @param filename Parameter filename
 #' @param verbose give verbose output, should be TRUE or FALSE
-#' @param add_outgroup add an outgroup to the phylogeny, should be TRUE or FALSE
 #' @return Nothing, modifies the parameter file
 #' @export
 #' @author Richel Bilderbeek
 add_species_trees <- function(
   filename,
-  verbose,
-  add_outgroup
+  verbose = FALSE
 ) {
   if (verbose != TRUE && verbose != FALSE) {
     stop(
@@ -27,6 +25,7 @@ add_species_trees <- function(
   }
   parameters <- file$parameters
   n_species_trees_samples <- as.numeric(parameters$n_species_trees_samples[2])
+  add_outgroup <- as.logical(parameters$add_outgroup[2])
   rng_seed <- as.numeric(parameters$rng_seed[2])
   if (verbose) {
     print(paste("Adding species_trees_with_outgroup to file ",

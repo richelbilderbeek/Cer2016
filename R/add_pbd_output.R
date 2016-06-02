@@ -1,15 +1,29 @@
 #' Adds a pbd_sim result to a file
 #' @param filename Parameter filename
+#' @param verbose give verbose output, should be TRUE or FALSE
 #' @return Nothing, modifies the parameter file
 #' @export
 #' @author Richel Bilderbeek
-add_pbd_output <- function(filename) {
+add_pbd_output <- function(
+  filename,
+  verbose = FALSE
+) {
+
+  if (verbose != TRUE && verbose != FALSE) {
+    stop(
+      "add_pbd_output: ",
+      "verbose should be TRUE or FALSE"
+    )
+  }
   if (!is_valid_file(filename)) {
     stop("add_pbd_output: invalid filename")
   }
+
   file <- Cer2016::read_file(filename)
   if (Cer2016::is_pbd_sim_output(file$pbd_output)) {
-    print(paste("file ", filename, " already has a pbd_output", sep = ""))
+    if (verbose) {
+      print(paste0("file ", filename, " already has a pbd_output"))
+    }
     return()
   }
   parameters <- file$parameters
@@ -41,7 +55,9 @@ add_pbd_output <- function(filename) {
     if (n_taxa > 0) {
       break
     } else {
-      print("n_taxa is 0")
+      if (verbose) {
+        print("n_taxa is 0")
+      }
     }
   }
   testit::assert(length(file$pbd_output$igtree.extant$tip.label) > 0)

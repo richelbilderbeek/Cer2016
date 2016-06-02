@@ -62,7 +62,7 @@ for (filename in filenames) {
     add_pbd_output(filename)
   }
 for (filename in filenames) {
-  add_species_trees(filename, verbose = FALSE, add_outgroup = TRUE)  
+  add_species_trees(filename, verbose = FALSE)  
 }
 for (filename in filenames) {
   add_alignments(filename)  
@@ -80,7 +80,7 @@ Now we read the files, so we can later get stuff from the file (which is now loa
 
 ```{r}
 files  <- c()
-for (filename in filenames){
+for (filename in filenames) {
   file   <- read_file(filename)
   files  <- c(files, file)
   }

@@ -26,8 +26,7 @@ test_that("species tree with outgroup is added", {
   )
   add_species_trees(
     filename = filename,
-    verbose = FALSE,
-    add_outgroup = TRUE
+    verbose = FALSE
   )
   expect_equal(
     is.na(read_file(filename)$species_trees_with_outgroup[1]),
