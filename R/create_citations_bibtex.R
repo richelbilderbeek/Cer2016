@@ -13,8 +13,6 @@ create_citations_bibtex <- function() {
     toBibtex(citation(package = "tools")),
     toBibtex(citation(package = "PBD")),
     toBibtex(citation(package = "phangorn")),
-    toBibtex(citation(package = "geiger")),
-    toBibtex(citation(package = "PBD")),
     toBibtex(citation(package = "PBD")),
     "@Manual{,",
     "  title = {rBEAST},",
