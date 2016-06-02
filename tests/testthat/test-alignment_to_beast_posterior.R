@@ -43,20 +43,9 @@ test_that("alignment_to_beast_posterior: basic", {
     class(posterior$STATE_1000),
     "phylo"
   )
-  expect_equal(file.exists(beast_log_filename), TRUE)
-  expect_equal(file.exists(beast_trees_filename), TRUE)
-  expect_equal(file.exists(beast_state_filename), TRUE)
-
-  # Cleaning up
-  if (file.exists(beast_log_filename)) {
-    file.remove(beast_log_filename)
-  }
-  if (file.exists(beast_trees_filename)) {
-    file.remove(beast_trees_filename)
-  }
-  if (file.exists(beast_state_filename)) {
-    file.remove(beast_state_filename)
-  }
+  expect_equal(file.exists(beast_log_filename), FALSE)
+  expect_equal(file.exists(beast_trees_filename), FALSE)
+  expect_equal(file.exists(beast_state_filename), FALSE)
 })
 
 test_that("alignment_to_beast_posterior: abuse", {

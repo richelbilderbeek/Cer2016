@@ -144,6 +144,7 @@ alignment_to_beast_posterior <- function(
   }
   posterior <- rBEAST::beast2out.read.trees(beast_trees_filename)
 
+  file.remove(beast_filename)
   file.remove(beast_trees_filename)
   file.remove(beast_log_filename)
   file.remove(beast_state_filename)
