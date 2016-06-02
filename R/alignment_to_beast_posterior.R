@@ -3,7 +3,6 @@
 #' @param mcmc_chainlength The length of the MCMC chain BEAST2 will generate
 #' @param base_filename The base of the filename (the part without the extension)
 #' @param rng_seed The random number generator seed used by BEAST2
-#' @param beast_bin_path Where the binary 'beast' can be found
 #' @param beast_jar_path Where the jar 'beast.jar' can be found
 #' @param skip_if_output_present skip if output files are present, else remove these and start a new BEAST2 run
 #' @param verbose give verbose output, should be TRUE or FALSE
@@ -15,7 +14,6 @@ alignment_to_beast_posterior <- function(
   mcmc_chainlength,
   base_filename,
   rng_seed = 42,
-  beast_bin_path = "", #find_beast_bin_path(),
   beast_jar_path = find_beast_jar_path(),
   skip_if_output_present = FALSE,
   verbose = TRUE
@@ -45,19 +43,14 @@ alignment_to_beast_posterior <- function(
       "rng_seed must be a whole number"
     )
   }
-  if (!is.null(beast_bin_path) && !is.character(beast_bin_path)) {
-    stop("alignment_to_beast_posterior: ",
-      "beast_bin_path must be NULL or a character string"
-    )
-  }
   if (!is.null(beast_jar_path) && !is.character(beast_jar_path)) {
     stop("alignment_to_beast_posterior: ",
       "beast_jar_path must be NULL or a character string"
     )
   }
-  if (!file.exists(beast_bin_path) && !file.exists(beast_jar_path)) {
+  if (!file.exists(beast_jar_path)) {
     stop("alignment_to_beast_posterior: ",
-      "both beast_bin_path and beast_jar_path not found"
+      "beast_jar_path not found"
     )
   }
   if (verbose != TRUE && verbose != FALSE) {
@@ -117,37 +110,6 @@ alignment_to_beast_posterior <- function(
   testit::assert(!file.exists(beast_trees_filename))
   testit::assert(!file.exists(beast_log_filename))
   testit::assert(!file.exists(beast_state_filename))
-
-  if (file.exists(beast_bin_path)) {
-    print("Call BEAST2 binary from full file path")
-    # This may result in the following error:
-    #
-    #   Invalid maximum heap size: -Xmx4g
-    #   The specified size exceeds the maximum representable size.
-    #   Error: Could not create the Java Virtual Machine.
-    #   Error: A fatal exception has occurred. Program will exit.
-    #
-    # Therefore, there is another go below to call BEAST
-    cmd <- paste(
-      beast_bin_path,
-      " -seed ", rng_seed,
-      #" -beagle_instances 4 -threads 4",
-      " ", beast_filename, # XML filename should always be last
-      sep = ""
-    )
-    system(cmd)
-    if (file.exists(beast_trees_filename)) {
-      print("File created by beast binary (called by its full path)")
-      testit::assert(file.exists(beast_trees_filename))
-      testit::assert(file.exists(beast_log_filename))
-      testit::assert(file.exists(beast_state_filename))
-
-      # Read all trees from the BEAST2 posterior
-      posterior <- rBEAST::beast2out.read.trees(beast_trees_filename)
-      testit::assert(Cer2016::is_beast_posterior(posterior))
-      return(posterior)
-    }
-  }
 
   if (file.exists(beast_jar_path)) {
     if (verbose) {

@@ -69,7 +69,6 @@ posterior <- alignment_to_beast_posterior(
   mcmc_chainlength = 10000,
   base_filename = base_filename,
   rng_seed = 42,
-  beast_bin_path = "",
   beast_jar_path = find_beast_jar_path()
 )
 ```

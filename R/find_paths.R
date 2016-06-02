@@ -33,31 +33,6 @@ find_path <- function(filename) {
 
 }
 
-#' Find the path of the BEAST2 binary file
-#' @return the path of the BEAST2 binary file
-#' @export
-find_beast_bin_path <- function() {
-  filenames <- c(
-    "beast",
-    "/home/richel/Programs/beast/bin/beast",                                    # nolint
-    # "E:/Git/BEAST.v2.4.0.Windows/BEAST/BEAST.exe",                            # nolint
-    "/home/p230198/Programs/beast/bin/beast",                                   # nolint
-    "/home/travis/build/richelbilderbeek/Programs/beast/bin/beast",             # nolint
-    "~/Programs/beast/bin/beast",                                               # nolint
-    "./Programs/beast/bin/beast",                                               # nolint
-    "C:/Users/Aline/BEAST"                                                      # nolint
-  )
-  for (filename in filenames) {
-    if (file.exists(filename)) {
-      return(filename)
-    }
-  }
-  stop(
-    "find_beast_bin_path: ",
-    "cannot find the 'beast' file"
-  )
-}
-
 #' Find the path of the BEAST2 jar file
 #' @return the path of the BEAST2 jar file
 #' @export

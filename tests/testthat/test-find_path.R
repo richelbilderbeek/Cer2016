@@ -12,11 +12,6 @@ test_that("find_path: error on absent file", {
   )
 })
 
-test_that("find_beast_bin_path: basic test", {
-  path <- find_beast_bin_path()
-  expect_equal(file.exists(path), TRUE)
-})
-
 test_that("find_beast_jar_path: basic test", {
   path <- find_beast_jar_path()
   expect_equal(file.exists(path), TRUE)

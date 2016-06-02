@@ -5,9 +5,8 @@
 \title{Convert an alignment to a BEAST2 XML input file}
 \usage{
 alignment_to_beast_posterior(alignment_dnabin, mcmc_chainlength, base_filename,
-  rng_seed = 42, beast_bin_path = "",
-  beast_jar_path = find_beast_jar_path(), skip_if_output_present = FALSE,
-  verbose = TRUE)
+  rng_seed = 42, beast_jar_path = find_beast_jar_path(),
+  skip_if_output_present = FALSE, verbose = TRUE)
 }
 \arguments{
 \item{alignment_dnabin}{The alignmnet}
@@ -17,8 +16,6 @@ alignment_to_beast_posterior(alignment_dnabin, mcmc_chainlength, base_filename,
 \item{base_filename}{The base of the filename (the part without the extension)}
 
 \item{rng_seed}{The random number generator seed used by BEAST2}
-
-\item{beast_bin_path}{Where the binary 'beast' can be found}
 
 \item{beast_jar_path}{Where the jar 'beast.jar' can be found}
 

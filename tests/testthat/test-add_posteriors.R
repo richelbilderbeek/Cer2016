@@ -64,10 +64,10 @@ test_that("one posterior is added", {
     verbose = FALSE
   )
   expect_equal(n_posteriors_added, 1)
-  expect_equal(file.exists(filename_trees), TRUE) # nolint
+  #expect_equal(file.exists(filename_trees), TRUE) # nolint
   expect_equal(file.exists(filename_xml), TRUE)
-  expect_equal(file.exists(filename_xml_state), TRUE) # nolint
-  expect_equal(file.exists(filename_log), TRUE) # nolint
+  #expect_equal(file.exists(filename_xml_state), TRUE) # nolint
+  #expect_equal(file.exists(filename_log), TRUE) # nolint
 
   # Cleaning up
   # Post clean
