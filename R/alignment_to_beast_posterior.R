@@ -6,7 +6,7 @@
 #' @param beast_jar_path Where the jar 'beast.jar' can be found
 #' @param skip_if_output_present skip if output files are present, else remove these and start a new BEAST2 run
 #' @param verbose give verbose output, should be TRUE or FALSE
-#' @return A BEAST2 posterior
+#' @return the phylogenies of the BEAST2 posterior
 #' @export
 #' @author Richel Bilderbeek
 alignment_to_beast_posterior <- function(
@@ -111,33 +111,42 @@ alignment_to_beast_posterior <- function(
   testit::assert(!file.exists(beast_log_filename))
   testit::assert(!file.exists(beast_state_filename))
 
-  if (file.exists(beast_jar_path)) {
-    if (verbose) {
-      print("Call BEAST2 jar by its full file path")
-    }
-    cmd <- paste0(
-      "java -jar ", beast_jar_path,
-      " -seed ", rng_seed,
-      #" -beagle_instances 4 -threads 4",
-      " ", beast_filename # XML filename should always be last
-    )
-    if (verbose == FALSE) {
-      # Silence BEAST
-      cmd <- paste0(cmd, " 1>/dev/null 2>/dev/null")
-    }
-    system(cmd)
-    if (file.exists(beast_trees_filename)) {
-      if (verbose) {
-        print("File created by BEAST2 jar file")
-      }
-      testit::assert(file.exists(beast_trees_filename))
-      testit::assert(file.exists(beast_log_filename))
-      testit::assert(file.exists(beast_state_filename))
-
-      # Read all trees from the BEAST2 posterior
-      posterior <- rBEAST::beast2out.read.trees(beast_trees_filename)
-      return(posterior)
-    }
+  # Run BEAST2
+  cmd <- paste0(
+    "java -jar ", beast_jar_path,
+    " -seed ", rng_seed,
+    #" -beagle_instances 4 -threads 4",
+    " ", beast_filename # XML filename should always be last
+  )
+  if (verbose == FALSE) {
+    # Silence BEAST
+    cmd <- paste0(cmd, " 1>/dev/null 2>/dev/null")
   }
+  system(cmd)
 
+  if (!file.exists(beast_trees_filename)) {
+    stop(
+      "alignment_to_beast_posterior: ",
+      "file '", beast_trees_filename, "' should have been created"
+    )
+  }
+  if (!file.exists(beast_log_filename)) {
+    stop(
+      "alignment_to_beast_posterior: ",
+      "file '", beast_log_filename, "' should have been created"
+    )
+  }
+  if (!file.exists(beast_state_filename)) {
+    stop(
+      "alignment_to_beast_posterior: ",
+      "file '", beast_state_filename, "' should have been created"
+    )
+  }
+  posterior <- rBEAST::beast2out.read.trees(beast_trees_filename)
+
+  file.remove(beast_trees_filename)
+  file.remove(beast_log_filename)
+  file.remove(beast_state_filename)
+
+  posterior
 }

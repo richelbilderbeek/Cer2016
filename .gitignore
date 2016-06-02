@@ -34,3 +34,7 @@ collected_gammas_posterior.csv
 *_cache/
 tests/testthat/Rplots.pdf
 tests/testthat/article_*.RDa
+test-alignment_to_beast_posterior.log
+test-alignment_to_beast_posterior.trees
+test-alignment_to_beast_posterior.xml
+test-alignment_to_beast_posterior.xml.state

@@ -24,7 +24,7 @@ alignment_to_beast_posterior(alignment_dnabin, mcmc_chainlength, base_filename,
 \item{verbose}{give verbose output, should be TRUE or FALSE}
 }
 \value{
-A BEAST2 posterior
+the phylogenies of the BEAST2 posterior
 }
 \description{
 Convert an alignment to a BEAST2 XML input file
