@@ -2,7 +2,7 @@
 % Please edit documentation in R/do_simulation.R
 \name{do_simulation}
 \alias{do_simulation}
-\title{Run the full simulation pipeline on a parameter file}
+\title{Run the full simulation pipeline on a parameter file on a local computer.}
 \usage{
 do_simulation(filename, cache_beast_output = FALSE, verbose = FALSE)
 }
@@ -17,7 +17,7 @@ do_simulation(filename, cache_beast_output = FALSE, verbose = FALSE)
 Nothing. It does modify the input filename
 }
 \description{
-Run the full simulation pipeline on a parameter file
+Run the full simulation pipeline on a parameter file on a local computer.
 }
 \author{
 Richel Bilderbeek

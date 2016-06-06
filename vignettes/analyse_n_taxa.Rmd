@@ -85,8 +85,8 @@ knitr::kable(df)
 ## Collecting the number of taxa from all files
 
 ```{r}
-csv_filename_n_taxa <- "collected_n_taxa.csv"
-csv_filename_parameters <- "collected_parameters.csv"
+csv_filename_n_taxa <- find_path("collected_n_taxa.csv")
+csv_filename_parameters <- find_path("collected_parameters.csv")
 create_fresh <- FALSE # Set this to TRUE for a >2 mins calculation
 if (create_fresh) {
   folder <- "/home/p230198/Peregrine"

@@ -6,6 +6,14 @@
 
 Community Ecology Research course 2016.
 
+## Run the sim on the Peregrine cluster
+
+From the root folder:
+
+```
+./scripts/run_1.sh
+```
+
 ## Datasets
 
 A large dataset has been created from many simulation runs.

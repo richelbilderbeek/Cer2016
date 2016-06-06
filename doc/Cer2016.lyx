@@ -70,6 +70,16 @@
 \begin_layout Title
 Should protracted speciation be incorporated in phylogenetic tree construction
  methods?
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The error when recovering protracted speciation phylogenies with a BD model
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Author
@@ -127,14 +137,28 @@ Other non-protracted speciation models
 
 \begin_layout Standard
 Other speciation models may assume that speciation rate changes in time
- [REF], is dependent on the amount of species present 
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "rabosky2008explosive"
+
+\end_inset
+
+, is dependent on the amount of species present 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "etienne2011diversity"
 
 \end_inset
 
-, or is trait dependent [REF].
+, or is trait dependent 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "fitzjohn2009estimating"
+
+\end_inset
+
+.
  The original model by making speciation rate dependent on time, diversity
  or trait value.
  Also these extended models assume speciation is instantaneous.
@@ -542,7 +566,7 @@ n of independent mutations.
 \begin_inset Formula $\mu_{i}=\mu_{g}$
 \end_inset
 
- [TODO: Is there reason to assume differently?].
+.
  
 \end_layout
 
@@ -1320,13 +1344,13 @@ key "testit"
 \end_inset
 
  for debugging.
- All the scripts can be downloaded 
+ All the scripts can be downloaded from 
 \begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
 
-https://github.com/richelbilderbeek/should
+https://github.com/richelbilderbeek/Cer2016
 \end_layout
 
 \end_inset

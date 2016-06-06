@@ -437,7 +437,7 @@ Which parameters go with that?
 First read all parameters:
 
 ```{r}
-csv_filename_parameters <- "collected_parameters.csv"
+csv_filename_parameters <- find_path("collected_parameters.csv")
 testit::assert(file.exists(csv_filename_parameters))
 df_parameters <- read.csv(
  file = csv_filename_parameters, 
