@@ -28,7 +28,7 @@ before_script:
  - rm .Rprofile
 
 script: 
- - R CMD check .
+ - travis_wait 30 R CMD check .
 
 after_success:
  - Rscript -e 'lintr::lint_package()'
