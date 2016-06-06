@@ -39,3 +39,5 @@ test-alignment_to_beast_posterior.trees
 test-alignment_to_beast_posterior.xml
 test-alignment_to_beast_posterior.xml.state
 inst/extdata/gamma_diff.csv
+inst/extdata/collected_nltts_posterior.csv
+inst/extdata/gamma_diff.csv.zip
