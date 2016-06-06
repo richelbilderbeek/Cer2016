@@ -1,7 +1,7 @@
 context("alignment_to_beast_posterior")
 
 test_that("alignment_to_beast_posterior: basic", {
-  base_filename <- "test-alignment_to_beast_posterior"
+  base_filename <- file.path(getwd(),"test-alignment_to_beast_posterior")
   beast_log_filename <- paste0(base_filename, ".log")
   beast_trees_filename <- paste0(base_filename, ".trees")
   beast_state_filename <- paste0(base_filename, ".xml.state")
