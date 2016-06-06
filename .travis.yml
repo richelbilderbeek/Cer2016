@@ -19,6 +19,7 @@ addons:
 
 before_script:
  - sudo Rscript install_r_packages.R
+ - ./download_data.sh
  # R wants all hidden files gone...
  - rm .gitignore
  - rm .travis.yml
