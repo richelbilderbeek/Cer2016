@@ -14,7 +14,14 @@ create_parameter_files_article <- function() {
         for (r in c(0.1, 0.01, 0.001)) {
           l_index <- 0
           for (l in c(1000, 10000, 100000)) {
-            filename <- paste0("article_", b_index, "_", lambda_index, "_", mu_index, "_", r_index, "_", l_index, ".RDa")
+            filename <- paste0(
+              "article_",
+              b_index, "_",
+              lambda_index, "_",
+              mu_index, "_",
+              r_index, "_",
+              l_index, ".RDa"
+            )
             filenames <- c(filenames, filename)
             save_parameters_to_file(
               rng_seed = 1,

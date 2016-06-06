@@ -74,7 +74,7 @@ alignment_to_beast_posterior <- function(
     file.exists(beast_log_filename) &&
     file.exists(beast_state_filename)) {
     posterior <- rBEAST::beast2out.read.trees(beast_trees_filename)
-    testit::assert(is_beast_posterior(posterior))
+    testit::assert(Cer2016::is_beast_posterior(posterior))
     return(posterior)
   }
 
@@ -152,13 +152,13 @@ alignment_to_beast_posterior <- function(
   file.remove(beast_log_filename)
   file.remove(beast_state_filename)
 
-  if (!is_beast_posterior(posterior)) {
-    print(is_beast_posterior(posterior, verbose = TRUE))
+  if (!Cer2016::is_beast_posterior(x = posterior)) {
+    print(Cer2016::is_beast_posterior(x = posterior, verbose = TRUE))
     stop(
       "alignment_to_beast_posterior: ",
       "no posterior created"
     )
   }
-  testit::assert(is_beast_posterior(posterior))
+  testit::assert(Cer2016::is_beast_posterior(posterior))
   return(posterior)
 }
