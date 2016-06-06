@@ -90,9 +90,8 @@ knitr::kable(head(df$posterior_nltts))
 ## Collecting nLTTs from all files
 
 ```{r creating_csvs_if_absent}
-csv_filename_species_trees <- "collected_nltts_species_trees.csv"
-csv_filename_posterior <- "collected_nltts_posterior.csv"
-zip_filename_posterior <- "collected_nltts_posterior.csv.zip"
+csv_filename_species_trees <- find_path("collected_nltts_species_trees.csv")
+csv_filename_posterior <- find_path("collected_nltts_posterior.csv")
 # Set this to TRUE for a >1 hour calculation
 create_fresh <- FALSE 
 if (create_fresh) {
@@ -111,9 +110,6 @@ if (create_fresh) {
     file = csv_filename_posterior,
     row.names = TRUE
   )
-}
-if (!file.exists(csv_filename_posterior)) {
-  utils::unzip(zip_filename_posterior)
 }
 
 testit::assert(file.exists(csv_filename_species_trees))
