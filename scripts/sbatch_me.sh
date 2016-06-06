@@ -9,4 +9,4 @@
 #SBATCH --mail-type=BEGIN,END
 module load beagle-lib Beast
 beast -beagle_info
-beast -threads 8 -beagle example.xml
+beast -threads 8 -beagle $1
