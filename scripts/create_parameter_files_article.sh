@@ -3,7 +3,7 @@
 #SBATCH --time=240:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=4
-#SBATCH --ntasks=8
+#SBATCH --ntasks=4
 #SBATCH --mem=1G
 #SBATCH --job-name=add_pdb_output
 #SBATCH --mail-type=BEGIN,END
