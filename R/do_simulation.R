@@ -1,4 +1,4 @@
-#' Run the full simulation pipeline on a parameter file
+#' Run the full simulation pipeline on a parameter file on a local computer.
 #' @param filename name of the parameter file
 #' @param cache_beast_output if the BEAST2 output files exist, do not recalculate
 #' @param verbose give verbose output, should be TRUE or FALSE

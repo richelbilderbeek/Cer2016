@@ -8,13 +8,11 @@ Community Ecology Research course 2016.
 
 ## Datasets
 
-The bigger files are handled with [GitHub Large File Storage](https://git-lfs.github.com).
-You will need to install it from [GitHub Large File Storage](here).
-
 A large dataset has been created from many simulation runs.
-
 The datasets below are created from that bigger dataset
 and allow to do an analysis.
+
+The script [download_data.sh](download_data.sh) takes care of downloading and unzipping these files.
 
 CSV|Analyse
 ---|---

@@ -17,8 +17,8 @@ library(ggplot2)
 Loading some files
 
 ```{r loading_files}
-csv_filename_parameters    <- "vignettes/collected_parameters.csv"
-csv_filename_comparison    <- "vignettes/femke.csv"
+csv_filename_parameters    <- find_path("collected_parameters.csv")
+csv_filename_comparison    <- find_path("gamma_diff.csv")
 
 df_parameters <- read.csv(
   file = csv_filename_parameters,
@@ -142,7 +142,7 @@ ggplot2::qplot(diff, data = PBD_10_gamma, binwidth = 0.005, xlim = c(-2, 2))
 
 ```{r plotprep_BD_PBDall}
 df_BD <- data.frame(
-  scr = rep(0.1), times = length(BD_gammas$diff)),
+  scr = rep(0.1, times = length(BD_gammas$diff)),
   diff = BD_gammas$diff
 )
 
