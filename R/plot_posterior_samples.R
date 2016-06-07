@@ -14,23 +14,18 @@ plot_posterior_samples <- function(filename) {
   )
   n_alignments <- as.numeric(file$parameters$n_alignments[2])
   n_beast_runs <- as.numeric(file$parameters$n_beast_runs[2])
+  index <- 1
   for (i in seq(1, n_species_trees_samples)) {
     for (j in seq(1, n_alignments)) {
       for (k in seq(1, n_beast_runs)) {
-        trees_filename <- paste(
-          base_filename, "_", i, "_", j, "_", k, ".trees", sep = ""
-        )
-        if (!file.exists(trees_filename)) {
-          print(paste("File '", trees_filename, "' not found", sep = ""))
-          next
-        }
-        all_trees <- rBEAST::beast2out.read.trees(trees_filename)
+        all_trees <- extract_posteriors(file)[[1]][[index]]
         n_trees <- length(all_trees)
         random_tree_index <- round(runif(1, min = 1, max = n_trees))
         random_tree <- all_trees[[random_tree_index]]
         graphics::plot(random_tree, main = paste(base_filename,
           "random tree in posterior", i, j, k)
         )
+        index <- index + 1
       }
     }
   }

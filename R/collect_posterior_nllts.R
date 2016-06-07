@@ -21,23 +21,12 @@ collect_posterior_nltts <- function(
   )
 
   df <- NULL
+  index <- 1
 
   for (i in seq(1, n_species_trees_samples)) {
     for (j in seq(1, n_alignments)) {
       for (k in seq(1, n_beast_runs)) {
-        base_filename <- paste(
-          tools::file_path_sans_ext(filename), "_",
-          i, "_", j, "_", k, sep = ""
-        )
-        trees_filename <- paste(base_filename, ".trees", sep = "")
-        if (!file.exists(trees_filename)) {
-          stop(
-            "plot_posterior_nltts:",
-            "cannot find file '",
-            trees_filename, "'"
-          )
-        }
-        phylogenies <- rBEAST::beast2out.read.trees(trees_filename)
+        phylogenies <- extract_posteriors(file)[[1]][[index]]
         nltt_values <- nLTT::get_nltt_values(phylogenies, dt = dt)
 
         n_nltt_values <- nrow(nltt_values)
@@ -52,6 +41,7 @@ collect_posterior_nltts <- function(
         } else {
           df <- rbind(df, this_df)
         }
+        index <- index + 1
       }
     }
   }

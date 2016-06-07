@@ -26,23 +26,12 @@ collect_posterior_gammas <- function(filename) {
   )
 
   df <- NULL
+  index <- 1
 
   for (i in seq(1, n_species_trees_samples)) {
     for (j in seq(1, n_alignments)) {
       for (k in seq(1, n_beast_runs)) {
-        base_filename <- paste(
-          tools::file_path_sans_ext(filename), "_",
-          i, "_", j, "_", k, sep = ""
-        )
-        trees_filename <- paste(base_filename, ".trees", sep = "")
-        if (!file.exists(trees_filename)){
-          stop(
-            "collect_posterior_gammas: ",
-            "cannot find file '",
-            trees_filename, "'"
-          )
-        }
-        phylogenies <- rBEAST::beast2out.read.trees(trees_filename)
+        phylogenies <- extract_posteriors(file)[[1]][[index]]
         gamma_statistics <- Cer2016::collect_gamma_statistics(phylogenies)
 
         # Remove id column
@@ -64,6 +53,7 @@ collect_posterior_gammas <- function(filename) {
         } else {
           df <- rbind(df, this_df)
         }
+        index <- index + 1
       }
     }
   }
