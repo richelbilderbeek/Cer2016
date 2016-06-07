@@ -7,7 +7,6 @@
 #' @param eri the rate at which incipient species get extinct
 #' @param age crown age of the phylogeny
 #' @param n_species_trees_samples the number of species trees that will be sampled from an incipient species tree
-#' @param add_outgroup must an outgroup be added before simulating a DNA sequence on the sampled species trees? Must be TRUE or FALSE
 #' @param mutation_rate the probability per nucleotide to mutate at a DNA replication
 #' @param n_alignments the number of alignments simulated per species tree
 #' @param sequence_length the simulated DNA sequence length in nucleotides
@@ -26,7 +25,6 @@
 #'   eri = 0.5,
 #'   age = 5,
 #'   n_species_trees_samples = 1,
-#'   add_outgroup = TRUE,
 #'   mutation_rate = 0.1,
 #'   n_alignments = 1,
 #'   sequence_length = 10,
@@ -46,7 +44,6 @@ save_parameters_to_file <- function(
   eri,
   age,
   n_species_trees_samples,
-  add_outgroup,
   mutation_rate,
   n_alignments,
   sequence_length,
@@ -54,12 +51,6 @@ save_parameters_to_file <- function(
   n_beast_runs,
   filename
 ) {
-  if (add_outgroup != TRUE && add_outgroup != FALSE) {
-    stop(
-      "save_parameters_to_file: ",
-      "add_outgroup must be either TRUE or FALSE"
-    )
-  }
   my_table <- data.frame( row.names = c("Description", "Value"))
   my_table[, "rng_seed"] <- c(
     "Random number generate seed", rng_seed
@@ -84,9 +75,6 @@ save_parameters_to_file <- function(
   )
   my_table[, "n_species_trees_samples"] <- c(
     "species trees sampled", n_species_trees_samples
-  )
-  my_table[, "add_outgroup"] <- c(
-    "outgroup added", add_outgroup
   )
   my_table[, "mutation_rate"] <- c(
     "DNA mutation rate", mutation_rate

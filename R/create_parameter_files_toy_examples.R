@@ -1,7 +1,8 @@
-## ------------------------------------------------------------------------
-  library(Cer2016)
-  library(ape)
-
+#' Creates the parameter files for the toy examples
+#' @return The filenames of all parameter files created
+#' @export
+#' @author Richel Bilderbeek
+create_parameter_files_toy_examples <- function() {
   filenames = c(
     "toy_example_1.RDa",
     "toy_example_2.RDa",
@@ -12,7 +13,7 @@
   rng_seeds <- seq(1,4)
   sirgs <- rep(0.5, times = 4)
   siris <- rep(0.5, times = 4)
-  scrs <- rep(1.0, times = 4)
+  scrs <- c(1.0e6, 1.0e-1, 1.0e6, 1.0e-1)
   ergs <- rep(0.1, times = 4)
   eris <- rep(0.1, times = 4)
   ages <- rep(5, times = 4)
@@ -32,7 +33,6 @@
       eri = eris[i],
       age = ages[i],
       n_species_trees_samples = n_species_trees_sampleses[i],
-      add_outgroup = TRUE,
       mutation_rate = mutation_rates[i],
       n_alignments = n_alignmentses[i],
       sequence_length = sequence_lengths[i],
@@ -41,37 +41,5 @@
       filename = filenames[i]
     )
   }
-
-for (filename in filenames) {
-    add_pbd_output(filename)
-  }
-for (filename in filenames) {
-  add_species_trees_with_outgroup(
-    filename,
-    add_outgroup = TRUE,
-    verbose = FALSE
-  )
+  filenames
 }
-for (filename in filenames) {
-  add_alignments(filename)
-}
-for (filename in filenames) {
-  add_posteriors(
-    filename,
-    skip_if_output_present = TRUE
-  )
-}
-
-
-## ------------------------------------------------------------------------
-files  <- c()
-for (filename in filenames){
-  file   <- read_file(filename)
-  files  <- c(files, file)
-  }
-
-## ------------------------------------------------------------------------
-  names(file)
-  names(file$species_trees_with_outgroup)
-  names(file$posteriors)
-

@@ -25,7 +25,6 @@ add_species_trees <- function(
   }
   parameters <- file$parameters
   n_species_trees_samples <- as.numeric(parameters$n_species_trees_samples[2])
-  add_outgroup <- as.logical(parameters$add_outgroup[2])
   rng_seed <- as.numeric(parameters$rng_seed[2])
   if (verbose) {
     print(paste("Adding species_trees_with_outgroup to file ",
@@ -45,16 +44,8 @@ add_species_trees <- function(
     species_tree <- sample_species_trees(
       n = 1, file$pbd_output
     )[[1]]
-    if (add_outgroup) {
-      species_tree_with_outgroup <- add_outgroup_to_phylogeny(
-        species_tree, stem_length = 0
-      )
-    } else {
-      species_tree_with_outgroup <- species_tree
-    }
-
-    testit::assert(class(species_tree_with_outgroup) == "phylo")
-    file$species_trees_with_outgroup[[i]] <- list(species_tree_with_outgroup)
+    testit::assert(class(species_tree) == "phylo")
+    file$species_trees_with_outgroup[[i]] <- list(species_tree)
     saveRDS(file, file = filename)
   }
   if (verbose) {

@@ -132,7 +132,6 @@ for (i in seq(1, 4)) {
     eri = eris[i],
     age = ages[i],
     n_species_trees_samples = n_species_trees_sampleses[i],
-    add_outgroup = TRUE,
     mutation_rate = mutation_rates[i],
     n_alignments = n_alignmentses[i],
     sequence_length = sequence_lengths[i],
@@ -144,7 +143,7 @@ for (i in seq(1, 4)) {
 ```
 
   * `worked_out_example_1.RDa`: protractedness is absent, thus speciation completion rate is high, in this case `1.0e6`
-  * `worked_out_example_2.RDa`: protractedness strong, thus speciation completion rate is low, in this case `1.0e-1`
+  * `worked_out_example_2.RDa`: protractedness strong, thus speciation completion rate is low, inde this case `1.0e-1`
   * `worked_out_example_3.RDa`: protractedness is absent for multiple replicates, thus number of sampled species trees, alignments per species trees, and BEAST2 runs are all 2
   * `worked_out_example_4.RDa`: protractedness is strong for multiple replicates,  thus number of sampled species trees, alignments per species trees, and   BEAST2 runs are all 2
   

@@ -42,20 +42,19 @@ save_parameters_to_file(
   eri = 0.1,
   age = 5,
   n_species_trees_samples = 1,
-  add_outgroup = TRUE,
   mutation_rate = 0.01,
   n_alignments = 1,
   sequence_length = 1000,
   mcmc_chainlength = 10000,
   n_beast_runs = 1,
   filename = filename
-)  
+)
 testit::assert(is_valid_file(filename))
 
 ## ------------------------------------------------------------------------
 add_pbd_output(filename)
-add_species_trees_with_outgroup(filename)  
-add_alignments(filename)  
+add_species_trees_with_outgroup(filename)
+add_alignments(filename)
 add_posteriors(filename, skip_if_output_present = TRUE)
 
 ## ------------------------------------------------------------------------
@@ -72,8 +71,8 @@ class(phylogenies) <- "multiPhylo"
 
 ## ----fig.width = 7, fig.height = 7---------------------------------------
 densiTree(
-  phylogenies, 
-  type = "cladogram", 
+  phylogenies,
+  type = "cladogram",
   alpha = 1
 )
 

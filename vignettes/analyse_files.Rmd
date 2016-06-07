@@ -13,14 +13,15 @@ Loading this package
 
 ```{r}
 library(Cer2016)
+options(warn = 2)
 ```
 
 Extracting all file parameters is easy:
 
 ```{r}
-
 csv_filename <- find_path("collected_parameters.csv")
-if (!file.exists(csv_filename)) {
+create_fresh <- TRUE
+if (create_fresh) {
   folder <- "/home/p230198/Peregrine"
   all_parameter_filenames <- paste(folder, list.files(folder, pattern = "\\.RDa"), sep = "/")
   df <- collect_parameters(all_parameter_filenames, verbose = TRUE)
@@ -30,6 +31,8 @@ if (!file.exists(csv_filename)) {
     row.names = TRUE
   )
 }
+
+testit::assert(file.exists(csv_filename))
 ```
 
 Note that the comma-seperated file is only created when absent,

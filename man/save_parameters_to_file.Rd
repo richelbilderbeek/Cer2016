@@ -5,8 +5,8 @@
 \title{Creates a valid parameter file}
 \usage{
 save_parameters_to_file(rng_seed, sirg, siri, scr, erg, eri, age,
-  n_species_trees_samples, add_outgroup, mutation_rate, n_alignments,
-  sequence_length, mcmc_chainlength, n_beast_runs, filename)
+  n_species_trees_samples, mutation_rate, n_alignments, sequence_length,
+  mcmc_chainlength, n_beast_runs, filename)
 }
 \arguments{
 \item{rng_seed}{the random number generator seed}
@@ -24,8 +24,6 @@ save_parameters_to_file(rng_seed, sirg, siri, scr, erg, eri, age,
 \item{age}{crown age of the phylogeny}
 
 \item{n_species_trees_samples}{the number of species trees that will be sampled from an incipient species tree}
-
-\item{add_outgroup}{must an outgroup be added before simulating a DNA sequence on the sampled species trees? Must be TRUE or FALSE}
 
 \item{mutation_rate}{the probability per nucleotide to mutate at a DNA replication}
 
@@ -56,7 +54,6 @@ save_parameters_to_file(
   eri = 0.5,
   age = 5,
   n_species_trees_samples = 1,
-  add_outgroup = TRUE,
   mutation_rate = 0.1,
   n_alignments = 1,
   sequence_length = 10,
