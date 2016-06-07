@@ -2,7 +2,7 @@
 # Call from root folder with with 'sbatch ./scripts/add_pdb_output example.xml'
 #SBATCH --time=240:00:00
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=4
+#SBATCH --ntasks-per-node=8
 #SBATCH --ntasks=8
 #SBATCH --mem=1G
 #SBATCH --job-name=add_pdb_output
