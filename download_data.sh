@@ -17,16 +17,30 @@ cd inst/extdata
 
 if [ ! -e gamma_diff.csv.zip ]
 then
-  echo "Downloading file"
-  wget http://richelbilderbeek.nl/Cer2016/gamma_diff.csv.zip
+  if [ "$1" == "full" ]
+  then
+    echo "Downloading full data"
+    wget http://richelbilderbeek.nl/Cer2016/gamma_diff.csv.zip
+  else
+    echo "Downloading testing data"
+    wget http://richelbilderbeek.nl/Cer2016/gamma_diff_stub.csv.zip
+    mv gamma_diff_stub.csv.zip gamma_diff.csv.zip
+  fi
 else
   echo "File already downloaded"
 fi
 
 if [ ! -e collected_gammas_posterior.csv.zip ]
 then
-  echo "Downloading file"
-  wget http://richelbilderbeek.nl/Cer2016/collected_gammas_posterior.csv.zip
+  if [ "$1" == "full" ]
+  then
+    echo "Downloading full data"
+    wget http://richelbilderbeek.nl/Cer2016/collected_gammas_posterior.csv.zip
+  else
+    echo "Downloading testing data"
+    wget http://richelbilderbeek.nl/Cer2016/collected_gammas_posterior_stub.csv.zip
+    mv collected_gammas_posterior_stub.csv.zip collected_gammas_posterior.csv.zip
+  fi
 else
   echo "File already downloaded"
 fi
@@ -41,8 +55,15 @@ fi
 
 if [ ! -e collected_nltts_posterior.csv.zip ]
 then
-  echo "Downloading file"
-  wget http://richelbilderbeek.nl/Cer2016/collected_nltts_posterior.csv.zip
+  if [ "$1" == "full" ]
+  then
+    echo "Downloading full data"
+    wget http://richelbilderbeek.nl/Cer2016/collected_nltts_posterior.csv.zip
+  else
+    echo "Downloading testing data"
+    wget http://richelbilderbeek.nl/Cer2016/collected_nltts_posterior_stub.csv.zip
+    mv collected_nltts_posterior_stub.csv.zip collected_nltts_posterior.csv.zip
+  fi
 else
   echo "File already downloaded"
 fi
