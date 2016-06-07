@@ -7,5 +7,5 @@
 #SBATCH --mem=1G
 #SBATCH --job-name=add_pdb_output
 #SBATCH --mail-type=BEGIN,END
-module load R
+module load R/3.2.1-goolfc-2.7.11-default
 Rscript -e 'devtools::install_github("richelbilderbeek/Cer2016"); library(Cer2016); add_pbd_output($1)'
