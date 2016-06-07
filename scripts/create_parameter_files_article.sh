@@ -10,3 +10,5 @@
 #SBATCH --mail-type=BEGIN,END
 module load R
 Rscript -e 'library(Cer2016); create_parameter_files_article()'
+mkdir results
+mv *.Rda results

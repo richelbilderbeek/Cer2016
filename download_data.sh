@@ -1,4 +1,16 @@
 #!/bin/bash
+# Script to download the data used to folder 'inst/extdata'
+# * Download testing data: './download_data.sh'
+# * Download full data: './download_data.sh full'
+
+
+if [ "$1" == "full" ]
+then
+  echo "Downloading full data"
+else
+  echo "Downloading testing data"
+fi
+
 cd inst/extdata
 
 ## Downloading
