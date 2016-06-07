@@ -4,6 +4,7 @@ install.packages("RNeXML", repos = "http://cran.uk.r-project.org")
 # Second things
 install.packages("ape", repos = "http://cran.uk.r-project.org")
 install.packages("adephylo", repos = "http://cran.uk.r-project.org")
+install.packages("coda", repos = "http://cran.uk.r-project.org")
 install.packages("crayon", repos = "http://cran.uk.r-project.org")
 install.packages("data.table", repos = "http://cran.uk.r-project.org")
 install.packages("devtools", repos = "http://cran.uk.r-project.org")
