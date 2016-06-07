@@ -48,3 +48,4 @@ inst/extdata/collected_nltts_species_trees.csv
 inst/extdata/collected_parameters.csv
 inst/extdata/collected_*.zip
 inst/extdata/collected_nltts_posterior_stub.csv
+inst/extdata/article_*.RDa
