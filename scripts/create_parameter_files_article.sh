@@ -6,6 +6,7 @@
 #SBATCH --ntasks=4
 #SBATCH --mem=1G
 #SBATCH --job-name=create_parameter_files_article
+#SBATCH --output=create_parameter_files_article.log
 #SBATCH --mail-type=BEGIN,END
 module load R
 Rscript -e 'library(Cer2016); create_parameter_files_article()'

@@ -7,6 +7,7 @@
 #SBATCH --ntasks=1
 #SBATCH --mem=1G
 #SBATCH --job-name=test_package
+#SBATCH --output=test_package.log
 #SBATCH --mail-type=BEGIN,END
 module load R
 R CMD check .
