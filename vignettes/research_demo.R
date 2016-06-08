@@ -56,7 +56,6 @@ for (filename in filenames) {
 }
 
 ## ------------------------------------------------------------------------
-colors <- setNames(c("gray","black"), c("i","g"))
 
 for (filename in filenames) {
   testit::assert(is_valid_file(filename))

@@ -24,7 +24,6 @@ phytools::plotSimmap(
 )
 
 ## ------------------------------------------------------------------------
-colors <- setNames(c("gray","black"), c("i","g"))
 testit::assert(length(read_file(filename)$pbd_output$igtree.extant$tip.label) > 0)
 phytools::plotSimmap(
   file$pbd_output$igtree.extant,

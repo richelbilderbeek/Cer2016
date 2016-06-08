@@ -89,7 +89,7 @@ The gamma statistic was introduced by Pybus and Harvey (2000).
 The incipient species tree looks like this:
 
 ```{r}
-colors <- setNames(c("gray","black"), c("i","g"))
+colors <- setNames(c("gray", "black"), c("i", "g"))
 testit::assert(length(read_file(filename)$pbd_output$igtree.extant$tip.label) > 0)
 phytools::plotSimmap(
   file$pbd_output$igtree.extant, 

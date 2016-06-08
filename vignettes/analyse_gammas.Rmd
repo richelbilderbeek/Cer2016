@@ -78,7 +78,7 @@ knitr::kable(head(df$posterior_gamma_stats))
 
 ## Collecting gamma's from all files
 
-```{r collecting_gammas6}
+```
 csv_filename_species_trees <- find_path("collected_gammas_species_trees.csv")
 csv_filename_posterior     <- find_path("collected_gammas_posterior.csv")
 csv_filename_parameters    <- find_path("collected_parameters.csv")
@@ -112,7 +112,7 @@ as this is a long step.
 
 Loading it from file:
 
-```{r loading_files}
+```
 df_species_trees <- read.csv(
  file = csv_filename_species_trees, 
  header = TRUE, 
@@ -144,31 +144,31 @@ df_comparison <- read.csv(
 
 Putting the head of the data frame in a table:
 
-```{r}
+```
 knitr::kable(head(df_species_trees))
 ```
 
-```{r}
+```
 knitr::kable(head(df_posterior))
 ```
 
 What kind of data is `df_species_trees`?
 
-```{r}
+```
 str(df_species_trees)
 names(df_species_trees)
 ```
 
 What kind of data is `df_posterior`?
 
-```{r}
+```
 str(df_posterior)
 names(df_posterior)
 ```
 
 Let's first plot the distribution of gamma statistics.
 
-```{r plot_gamma1}
+```
 ggplot2::ggplot(
   data = df_species_trees, ggplot2::aes(df_species_trees$gamma_stat)) +   
   ggplot2::xlim(-15, 5) +
@@ -189,7 +189,7 @@ ggplot2::ggplot(
                                   lineheight=1))
 ```
 
-```{r plot_gamma2}
+```
 ggplot2::ggplot(
   data = df_posterior, ggplot2::aes(df_posterior$gamma_stat)) + 
   ggplot2::xlim(-15, 5) +
@@ -214,7 +214,7 @@ ggplot2::ggplot(
 Hey, some of those gamma statistics are quite different between the species 
 trees and the posterior! Let's take a look at that.
 
-```{r interesting_values}
+```
 counter <- 0
 interesting_values <- NULL
 for (stat in df_species_trees$gamma_stat){
@@ -230,14 +230,14 @@ for (stat in df_species_trees$gamma_stat){
 interesting_values <- data.frame(interesting_values)
 ```
 
-```{r table1}
+```
 knitr::kable(head(interesting_values))
 ```
 
 It seems like there are clusters of files that have very low gamma statistics. 
 Let's compare them to the posterior values for those statistics.
 
-```{r looking_at_outlier}
+```
 counter    <- 0
 outliers   <- NULL
 for (posterior in df_posterior$filenames){
@@ -263,7 +263,7 @@ outliers <- data.frame(outliers)
 print(names(outliers))
 ```
 
-```{r table2}
+```
 knitr::kable(head(outliers))
 ```
 
@@ -271,7 +271,7 @@ All the low outliers don't seem to have a posterior... so the difference in the
 graphs might not actually mean anything. Let's take a different approach. Let's
 compare the gamma statistics of every tree that has a posterior.
 
-```{r comparison}
+```
 comparison  <- NULL
 for (stat in head(df_posterior$gamma_stat)){
   counter <- 0
@@ -294,20 +294,20 @@ for (stat in head(df_posterior$gamma_stat)){
 comparison <- data.frame(comparison)
 ```
 
-```{r table3}
+```
 knitr::kable(comparison)
 ```
 
 We actually used a different script for this. At any rate, this is what you get
 if you plot it:
 
-```{r comparisonplot}
+```
 ggplot2::qplot(diff, data = df_comparison, binwidth = 0.005, xlim = c(-2, 2))
 ```
 
 And this is what you get if you plot the BD portion:
 
-```{r BD_comparison}
+```
 BD <- df_parameters[
   !is.na(df_parameters$speciation_completion_rate) 
   & df_parameters$speciation_completion_rate > 2,
@@ -324,7 +324,7 @@ ggplot2::qplot(diff, data = BD_gammas, binwidth = 0.005, xlim = c(-2, 2))
 
 So it seems like this is just noise.
 
-```{r PBD_comparison}
+```
 PBD <- df_parameters[
   !is.na(df_parameters$speciation_completion_rate)
   & df_parameters$speciation_completion_rate < 2 
@@ -353,7 +353,7 @@ values. The higher values for the speciation initiation rate for example
 (0.8 and 1). This turned to be because of missing posterior gammas for those
 parameters. All files after ```article_1_5_5_2_2.RDA``` appear to be corrupted.
 
-```{r}
+```
 gamma_bigdiff <- df_comparison[ 
   !is.na(df_comparison$diff) & df_comparison$diff < -1, 
   ]
@@ -369,7 +369,7 @@ ggplot2::qplot(species_initiation_rate_good_species, data = parameters_bigdiff,
 This turned to be because of missing posterior gammas for those
 parameters. All files after ```article_1_5_5_2_2.RDA``` appear to be corrupted.
 
-```{r existing_posteriors}
+```
 existing_post <- df_comparison[
   !is.na(df_comparison$diff),
   ]
@@ -379,7 +379,7 @@ tail(existing_post)
 But back to comparing the parameters of the worse predicted gammas to those of 
 the better predicted gammas.
 
-```{r}
+```
 gamma_smalldiff <- df_comparison[
   !is.na(df_comparison$diff) & df_comparison$diff > -1,
   ]
@@ -394,7 +394,7 @@ Most of the time, there doesn't seem to be a difference.
 But let's look at age: It seems like the longer ```age``` is less well 
 predicted.
 
-```{r age}
+```
 ggplot2::qplot(age, data = parameters_bigdiff,
                binwidth = 0.5)
 
@@ -404,7 +404,7 @@ ggplot2::qplot(age, data = parameters_smalldiff,
 
 Higher mutation rates are predicted better.
 
-```{r mutation_rate}
+```
 ggplot2::qplot(mutation_rate, data = parameters_bigdiff,
                binwidth = 0.005)
 
@@ -415,17 +415,12 @@ ggplot2::qplot(mutation_rate, data = parameters_smalldiff,
 But those are the only parameters that seem to havce any kind of pattern to 
 them.
 
-```{r}
-
-```
-
-
 ## Richel's thoughts
 
 I would be interested in the species trees with a gamma statistic
 less than `-5`:
 
-```{r}
+```
 species_trees_with_low_gamma <- df_species_trees[ 
   !is.na(df_species_trees$gamma_stat) & df_species_trees$gamma_stat < -5, 
 ]
@@ -436,7 +431,7 @@ Which parameters go with that?
 
 First read all parameters:
 
-```{r}
+```
 csv_filename_parameters <- find_path("collected_parameters.csv")
 testit::assert(file.exists(csv_filename_parameters))
 df_parameters <- read.csv(
@@ -450,7 +445,7 @@ knitr::kable(head(df_parameters))
 
 Show the parameters that caused this:
 
-```{r}
+```
 parameters_with_low_gamma <- df_parameters[ 
   rownames(df_parameters) %in% species_trees_with_low_gamma$filename,
 ]
@@ -459,7 +454,7 @@ knitr::kable(head(parameters_with_low_gamma))
 
 Let's look at what parameters are often there in the corrupted files.
 
-```{r parameter_check}
+```
 na_sample    <- NULL
 counter      <- 0
 for (stat in df_species_trees$gamma_stat){
@@ -495,7 +490,7 @@ for (stat in df_species_trees$gamma_stat){
 na_sample <- data.frame(na_sample)
 ```
 
-```{r table4}
+```
 knitr::kable(head(na_sample))
 ```
 
@@ -510,7 +505,7 @@ but not all, and the double dose of super-duper high speciation
 completion time runs. In the end, it turns out that the corrupted files are 
 random... we are working with an involuntarily sampled set from the 'real' data. 
 
-```{r SIR_GS_graph}
+```
 ggplot2::ggplot(
   data = na_sample, ggplot2::aes(SIR_GS)) +
   ggplot2::xlim(-0.1, 1) +
@@ -533,7 +528,7 @@ ggplot2::ggplot(
 
 The speciation completion rate is also interesting.
 
-```{r }
+```
 ggplot2::ggplot(
   data = na_sample, ggplot2::aes(SCR)) +
   ggplot2::xlim(c(999999, 1000001)) +
@@ -573,7 +568,7 @@ ggplot2::ggplot(
                                   lineheight=1))
 ```
 
-```{r BD}
+```
 BD           <- NULL
 counter      <- 0
 for (rate in df_parameters$speciation_completion_rate){
@@ -622,7 +617,7 @@ PBD <- data.frame(PBD)
 knitr::kable(head(PBD))
 ```
 
-```{r Gammas_graph}
+```
 ggplot2::ggplot(
   data = PBD, ggplot2::aes(gammas)) +
   ggplot2::xlim(c(-15, 3)) +
@@ -662,7 +657,7 @@ ggplot2::ggplot(
                                   lineheight=1))
 ```
 
-```{r}
+```
 ggplot2::qplot(gammas, data = PBD, binwidth = 0.05, xlim = c(-15, 3))
 ggplot2::qplot(gammas, data = BD, binwidth = 0.05, xlim = c(-15, 3))
 
@@ -679,7 +674,7 @@ parameters_with_low_gamma
 
 ## Richel's notes
 
-```{r}
+```
 df_parameters_richel <- df_parameters[
   !is.na(df_parameters$speciation_completion_rate)
   & df_parameters$speciation_completion_rate > 0,
@@ -697,7 +692,7 @@ head(richel_gammas)
 
 Analysis here:
 
-```{r}
+```
 class(df_comparison)
 class(df_parameters)
 
@@ -757,7 +752,7 @@ df_final <- df_big[
   ]
 ```
 
-```{r plots}
+```
 ggplot(df_final, aes(x = diff, colour = speciation_completion_rate)) + 
   geom_density() +
   xlim(c(-1, 0.2)) +

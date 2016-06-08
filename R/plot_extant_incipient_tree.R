@@ -9,14 +9,10 @@ plot_extant_incipient_tree <- function(filename) {
       "file '", filename, "' is invalid"
     )
   }
-#   base_filename <- basename(filename)
-#   file <- Cer2016::read_file(filename)
-#   graphics::plot(file$pbd_output$igtree.extant, main = paste(
-#     base_filename, " gene tree", sep = "")
-#   )
-
-  colors <- setNames(c("gray","black"), c("i","g"))
-  testit::assert(length(read_file(filename)$pbd_output$igtree.extant$tip.label) > 0)
+  colors <- setNames(c("gray", "black"), c("i", "g"))
+  testit::assert(
+    length(Cer2016::read_file(filename)$pbd_output$igtree.extant$tip.label) > 0
+  )
   phytools::plotSimmap(
     read_file(filename)$pbd_output$igtree.extant,
     colors = colors

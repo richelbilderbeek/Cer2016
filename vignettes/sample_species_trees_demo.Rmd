@@ -2,7 +2,7 @@
 title: "sample_species_trees_from_pbd_output demo"
 author: "Richel Bilderbeek"
 date: "`r Sys.Date()`"
-output: rmarkdown::word_document
+output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{sample_species_trees_from_pbd_output demo}
   %\VignetteEngine{knitr::rmarkdown}

@@ -16,7 +16,7 @@ library(ggplot2)
 
 Loading some files
 
-```{r loading_files}
+```
 csv_filename_parameters    <- find_path("collected_parameters.csv")
 csv_filename_comparison    <- find_path("gamma_diff.csv")
 
@@ -36,8 +36,7 @@ df_comparison <- read.csv(
 ```
 
 Now let's make some graphs!
-
-```{r BD}
+```
 BD <- df_parameters[
   !is.na(df_parameters$speciation_completion_rate) 
   & df_parameters$speciation_completion_rate > 2,
@@ -49,7 +48,7 @@ BD_gammas <- df_comparison[
 ggplot2::qplot(diff, data = BD_gammas, binwidth = 0.005, xlim = c(-2, 2))
 ```
 
-```{r PBD_all}
+```
 PBD <- df_parameters[
   !is.na(df_parameters$speciation_completion_rate)
   & df_parameters$speciation_completion_rate < 2 
@@ -62,7 +61,7 @@ PBD_gammas <- df_comparison[
 ggplot2::qplot(diff, data = PBD_gammas, binwidth = 0.005, xlim = c(-2, 2))
 ```
 
-```{r PBD_01}
+```
 PBD_01 <- df_parameters[
   !is.na(df_parameters$speciation_completion_rate)
   & df_parameters$speciation_completion_rate == 0.1,
@@ -75,7 +74,7 @@ PBD_01_gamma <- df_comparison[
 ggplot2::qplot(diff, data = PBD_01_gamma, binwidth = 0.005, xlim = c(-2, 2))
 ```
 
-```{r PBD_02}
+```
 PBD_02 <- df_parameters[
   !is.na(df_parameters$speciation_completion_rate)
   & df_parameters$speciation_completion_rate == 0.2,
@@ -88,7 +87,7 @@ PBD_02_gamma <- df_comparison[
 ggplot2::qplot(diff, data = PBD_02_gamma, binwidth = 0.005, xlim = c(-2, 2))
 ```
 
-```{r PBD_03}
+```
 PBD_03 <- df_parameters[
   !is.na(df_parameters$speciation_completion_rate)
   & df_parameters$speciation_completion_rate == 0.3,
@@ -101,7 +100,7 @@ PBD_03_gamma <- df_comparison[
 ggplot2::qplot(diff, data = PBD_03_gamma, binwidth = 0.005, xlim = c(-2, 2))
 ```
 
-```{r PBD_04}
+```
 PBD_04 <- df_parameters[
   !is.na(df_parameters$speciation_completion_rate)
   & df_parameters$speciation_completion_rate == 0.4,
@@ -114,7 +113,7 @@ PBD_04_gamma <- df_comparison[
 ggplot2::qplot(diff, data = PBD_04_gamma, binwidth = 0.005, xlim = c(-2, 2))
 ```
 
-```{r PBD_08}
+```
 PBD_08 <- df_parameters[
   !is.na(df_parameters$speciation_completion_rate)
   & df_parameters$speciation_completion_rate == 0.8,
@@ -127,7 +126,7 @@ PBD_08_gamma <- df_comparison[
 ggplot2::qplot(diff, data = PBD_08_gamma, binwidth = 0.005, xlim = c(-2, 2))
 ```
 
-```{r PBD_10}
+```
 PBD_10 <- df_parameters[
   !is.na(df_parameters$speciation_completion_rate)
   & df_parameters$speciation_completion_rate == 1.0,
@@ -140,7 +139,7 @@ PBD_10_gamma <- df_comparison[
 ggplot2::qplot(diff, data = PBD_10_gamma, binwidth = 0.005, xlim = c(-2, 2))
 ```
 
-```{r plotprep_BD_PBDall}
+```
 df_BD <- data.frame(
   scr = rep(0.1, times = length(BD_gammas$diff)),
   diff = BD_gammas$diff
@@ -156,7 +155,7 @@ df <- rbind(df_BD, df_PBD_all)
 df$scr <- as.factor(df$scr)
 ```
 
-```{r plot_BD_PBDall}
+```
 ggplot2::ggplot(df, ggplot2::aes(x = diff, fill = scr)) +
     ggplot2::geom_histogram(binwidth=0.01, alpha=.5, position="identity")
 

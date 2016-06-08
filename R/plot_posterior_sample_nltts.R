@@ -12,7 +12,6 @@ plot_posterior_sample_nltts <- function(
   if (!is_valid_file(filename)) {
     stop("plot_posterior_sample_nltts: invalid filename")
   }
-  base_filename <- tools::file_path_sans_ext(filename)
   file <- Cer2016::read_file(filename)
   n_species_trees_samples <- as.numeric(
     file$parameters$n_species_trees_samples[2]
@@ -42,7 +41,7 @@ plot_posterior_sample_nltts <- function(
   for (i in seq(1, n_species_trees_samples)) {
     for (j in seq(1, n_alignments)) {
       for (k in seq(1, n_beast_runs)) {
-        all_trees <- extract_posteriors(file)[[index]][[1]]
+        all_trees <- Cer2016::extract_posteriors(file)[[index]][[1]]
         n_trees <- length(all_trees)
         random_tree_index <- round(runif(1, min = 1, max = n_trees))
         random_tree <- all_trees[[random_tree_index]]
