@@ -18,7 +18,7 @@ plot_posterior_samples <- function(filename) {
   for (i in seq(1, n_species_trees_samples)) {
     for (j in seq(1, n_alignments)) {
       for (k in seq(1, n_beast_runs)) {
-        all_trees <- extract_posteriors(file)[[1]][[index]]
+        all_trees <- Cer2016::extract_posteriors(file)[[1]][[index]]
         n_trees <- length(all_trees)
         random_tree_index <- round(runif(1, min = 1, max = n_trees))
         random_tree <- all_trees[[random_tree_index]]
