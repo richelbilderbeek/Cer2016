@@ -80,7 +80,7 @@ For that, I will create four parameter files:
 Here the parameter files are created with the desired parameters:
 
 ```{r create_parameter_files}
-filenames <- create_parameter_files_toy_examples()
+filenames <- create_test_parameter_files()
 ```
 
   * `toy_example_1.RDa`: protractedness is absent, thus speciation completion rate is high, in this case `1.0e6`

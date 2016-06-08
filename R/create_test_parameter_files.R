@@ -2,7 +2,7 @@
 #' @return The filenames of all parameter files created
 #' @export
 #' @author Richel Bilderbeek
-create_parameter_files_toy_examples <- function() {
+create_test_parameter_files <- function() {
   filenames <- c(
     "toy_example_1.RDa",
     "toy_example_2.RDa",

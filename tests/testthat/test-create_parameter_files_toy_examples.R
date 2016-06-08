@@ -1,10 +1,10 @@
-context("create_parameter_files_toy_examples")
+context("create_test_parameter_files")
 
-test_that("create_parameter_files_toy_examples works", {
+test_that("create_test_parameter_files works", {
   expect_silent(
-    create_parameter_files_toy_examples()
+    create_test_parameter_files()
   )
 
-  filenames <- create_parameter_files_toy_examples()
+  filenames <- create_test_parameter_files()
   expect_equal(file.exists(filenames), rep(TRUE, 4))
 })
