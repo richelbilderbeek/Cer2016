@@ -14,6 +14,13 @@ From the root folder:
 ./scripts/run_1.sh
 ```
 
+
+## Copy files from Peregrine to local computer
+
+```
+scp p230198@peregrine.hpc.rug.nl:/home/p230198/GitHubs/Cer2016/*.RDa /home/p230198/Peregrine
+```
+
 ## Datasets
 
 A large dataset has been created from many simulation runs.

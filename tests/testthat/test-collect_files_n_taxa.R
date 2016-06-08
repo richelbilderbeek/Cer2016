@@ -1,6 +1,8 @@
 context("collect_files_n_taxa")
 
 test_that("collect_files_n_taxa: basic", {
+  skip("First recreate toy examples")
+
   filenames <- c(
     find_path("toy_example_1.RDa"),
     find_path("toy_example_2.RDa")

@@ -42,6 +42,7 @@ test_that("alignment is added", {
 
 
 test_that("add_alignment: abuse", {
+  skip("First recreate toy examples")
 
   expect_error(
     add_alignments(

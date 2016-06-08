@@ -1,6 +1,8 @@
 context("plot_alignments")
 
 test_that("plot_alignments: basic use", {
+  skip("First recreate toy examples")
+
   pdf_filename <- "Rplots.pdf"
   if (file.exists(pdf_filename)) {
     file.remove(pdf_filename)
