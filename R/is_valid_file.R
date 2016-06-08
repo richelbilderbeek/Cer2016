@@ -74,6 +74,11 @@ is_valid_file <- function(
     if (verbose) print("SIRI invalid")
     return(FALSE)
   }
+  if (!is.null(parameters$add_ougroup)) {
+    if (verbose) print("add_ougroup must be absent")
+    return(FALSE)
+  }
+
   if (as.numeric(parameters$age[2]) <= 0.0) {
     if (verbose) print("age invalid")
     return(FALSE)
