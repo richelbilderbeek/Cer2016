@@ -1,6 +1,7 @@
 context("collect_species_tree_gammas")
 
 test_that("collect_species_tree_gammas toy example 3", {
+  skip("First recreate toy examples")
   filename <- find_path("toy_example_1.RDa")
   df <- collect_species_tree_gammas(filename)
   expect_equal(names(df),
@@ -11,6 +12,7 @@ test_that("collect_species_tree_gammas toy example 3", {
 })
 
 test_that("collect_species_tree_gammas toy example 1", {
+  skip("First recreate toy examples")
   filename <- find_path("toy_example_3.RDa")
   df <- collect_species_tree_gammas(filename)
   expect_equal(names(df),

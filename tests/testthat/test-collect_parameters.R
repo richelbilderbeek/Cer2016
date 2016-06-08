@@ -14,7 +14,7 @@ test_that("collect_parameters: fixing #52", {
   skip("First recreate toy examples")
 
   # Testing
-  file <- read_file("/home/p230198/Peregrine/article_0_0_0_0_0.RDa") #nolint
+  file <- read_file("/home/p230198/Peregrine2017/article_0_0_0_0_0.RDa") #nolint
   expect_equal("rng_seed" %in% names(file$parameters[2, , 2]), TRUE)
   expect_equal("add_outgroup" %in% names(file$parameters[2, , 2]), FALSE)
 

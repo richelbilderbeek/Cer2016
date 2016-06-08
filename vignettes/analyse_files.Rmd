@@ -19,7 +19,8 @@ options(warn = 2)
 Extracting all file parameters is easy:
 
 ```{r}
-csv_filename <- find_path("collected_parameters.csv")
+#csv_filename <- find_path("collected_parameters.csv")
+csv_filename <- "collected_parameters.csv"
 create_fresh <- TRUE
 if (create_fresh) {
   folder <- "/home/p230198/Peregrine"
@@ -32,7 +33,7 @@ if (create_fresh) {
   )
 }
 
-testit::assert(file.exists(csv_filename))
+#testit::assert(file.exists(csv_filename))
 ```
 
 Note that the comma-seperated file is only created when absent,
