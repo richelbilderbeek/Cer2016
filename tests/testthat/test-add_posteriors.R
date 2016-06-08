@@ -178,3 +178,22 @@ test_that("three posteriors are added, middle is deleted and added again", {
   file.remove(filename)
   expect_equal(file.exists(filename), FALSE)
 })
+
+
+test_that("add_posteriors: abuse", {
+  expect_error(
+    add_posteriors(filename = "inva.lid", verbose = "TRUE not FALSE"),
+    "add_posteriors: verbose should be TRUE or FALSE"
+  )
+  expect_error(
+    add_posteriors(
+      filename = "inva.lid",
+      skip_if_output_present = "TRUE not FALSE"
+    ),
+    "add_posteriors: skip_if_output_present should be TRUE or FALSE"
+  )
+  expect_error(
+    add_posteriors(filename = "inva.lid"),
+    "add_posteriors: invalid filename"
+  )
+})

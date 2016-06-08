@@ -12,12 +12,15 @@ is_valid_file <- function(
 ) {
   if (verbose != TRUE && verbose != FALSE) {
     stop(
-      "is_valid_file: ",
-      "verbose should be TRUE or FALSE"
+      "is_valid_file: verbose should be TRUE or FALSE"
     )
   }
   if (!file.exists(filename)) {
-    if (verbose) print(paste0("file '", filename, "' not found"))
+    if (verbose) {
+      print(
+        paste0("is_valid_file: file '", filename, "' not found")
+      )
+    }
     return(FALSE)
   }
   file <- NULL

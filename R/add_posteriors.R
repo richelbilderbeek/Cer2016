@@ -10,20 +10,18 @@ add_posteriors <- function(
   skip_if_output_present = FALSE,
   verbose = FALSE
 ) {
-  if (!is_valid_file(filename)) {
-    stop("add_posteriors: invalid filename")
+  if (verbose != TRUE && verbose != FALSE) {
+    stop(
+      "add_posteriors: verbose should be TRUE or FALSE"
+    )
   }
   if (skip_if_output_present != TRUE && skip_if_output_present != FALSE) {
     stop(
-      "add_posteriors: ",
-      "skip_if_output_present should be TRUE or FALSE"
+      "add_posteriors: skip_if_output_present should be TRUE or FALSE"
     )
   }
-  if (verbose != TRUE && verbose != FALSE) {
-    stop(
-      "add_posteriors: ",
-      "verbose should be TRUE or FALSE"
-    )
+  if (!is_valid_file(filename)) {
+    stop("add_posteriors: invalid filename")
   }
   file <- Cer2016::read_file(filename)
   parameters <- file$parameters
