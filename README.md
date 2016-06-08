@@ -6,6 +6,19 @@
 
 Community Ecology Research course 2016.
 
+## Update the package source
+
+```
+module load git; git pull
+```
+
+## Re-install the package
+
+```
+module load R; Rscript -e 'devtools::install_github("richelbilderbeek/Cer2016")'
+```
+
+
 ## Run the sim on the Peregrine cluster
 
 From the root folder:
@@ -20,6 +33,7 @@ From the root folder:
 ```
 scp p230198@peregrine.hpc.rug.nl:/home/p230198/GitHubs/Cer2016/*.RDa /home/p230198/Peregrine
 ```
+
 
 ## Datasets
 
