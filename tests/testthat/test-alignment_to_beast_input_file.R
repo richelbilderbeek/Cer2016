@@ -2,14 +2,10 @@ context("alignment_to_beast_input_file")
 
 test_that("creates an XML", {
 
-  phylogeny_without_outgroup <- ape::rcoal(n = 5)
+  phylogeny <- ape::rcoal(n = 5)
 
-  phylogeny_with_outgroup <- add_outgroup_to_phylogeny(
-    phylogeny_without_outgroup,
-    stem_length = 0
-  )
   alignment <- convert_phylogeny_to_alignment(
-    phylogeny = phylogeny_with_outgroup,
+    phylogeny = phylogeny,
     sequence_length = 10
   )
 
