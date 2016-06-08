@@ -50,12 +50,6 @@ library(ribir)
 library(phangorn)
 ```
 
-If we want to generate files fresh, set this to `TRUE`:
-
-```{r}
-start_fresh <- FALSE
-```
-
 We also set the resolution of our analysis:
 
 ```{r}
@@ -85,7 +79,7 @@ For that, I will create four parameter files:
 
 Here the parameter files are created with the desired parameters:
 
-```{r}
+```{r create_parameter_files}
 filenames <- create_parameter_files_toy_examples()
 ```
 
