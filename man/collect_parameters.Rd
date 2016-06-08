@@ -16,9 +16,9 @@ Creates tidy data of all parameter files
 }
 \examples{
  filenames <- c(
-   find_path("article_0_0_0_0_0.RDa"),
-   find_path("article_0_1_4_0_2.RDa"),
-   find_path("toy_example_1.RDa")
+   find_path("toy_example_1.RDa"),
+   find_path("toy_example_2.RDa"),
+   find_path("toy_example_3.RDa")
  )
  df <- collect_parameters(filenames)
  testit::assert(nrow(df) == 3)
