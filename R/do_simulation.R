@@ -11,10 +11,7 @@ do_simulation <- function(
   verbose = FALSE
 ) {
   if (verbose != TRUE && verbose != FALSE) {
-    stop(
-      "do_simulation: ",
-      "verbose should be TRUE or FALSE"
-    )
+    stop("do_simulation: verbose should be TRUE or FALSE")
   }
   if (length(filename) != 1) {
     stop("do_simulation: supply exactly one parameter filename")

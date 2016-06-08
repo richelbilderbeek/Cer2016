@@ -22,22 +22,18 @@ collect_file_nltts <- function(
   dt = 0.001,
   verbose = FALSE
 ) {
-  if (length(filename) < 1) {
+  if (verbose != TRUE && verbose != FALSE) {
+    stop("collect_file_nltts: verbose should be TRUE or FALSE")
+  }
+  if (length(filename) != 1) {
     stop(
-      "collect_gamma_statistics_from_file: ",
-      "there must be exactly one filename supplied"
+      "collect_file_nltts: there must be exactly one filename supplied"
     )
   }
   if (!is_valid_file(filename = filename, verbose = verbose)) {
     stop(
-      "collect_gamma_statistics_from_file: ",
+      "collect_file_nltts: ",
       "invalid file '", filename, "'"
-    )
-  }
-  if (verbose != TRUE && verbose != FALSE) {
-    stop(
-      "show_parameter_files: ",
-      "verbose should be TRUE or FALSE"
     )
   }
 
