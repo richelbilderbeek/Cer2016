@@ -1,7 +1,6 @@
 context("plot_species_tree_nltt")
 
 test_that("plot_species_tree_nltt works", {
-  skip("First recreate toy examples")
 
   plot_species_tree_nltt(
     filename = find_path("toy_example_1.RDa"),

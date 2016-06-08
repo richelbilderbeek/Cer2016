@@ -1,7 +1,6 @@
 context("collect_posterior_gammas")
 
 test_that("collect_posterior_gammas basic tests", {
-  skip("First recreate toy examples")
   filename <- find_path("toy_example_3.RDa")
   df <- collect_posterior_gammas(filename)
   expect_equal(

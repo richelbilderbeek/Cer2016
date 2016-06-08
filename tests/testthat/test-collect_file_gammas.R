@@ -1,7 +1,6 @@
 context("collect_file_gammas")
 
 test_that("collect_file_gammas: basic test", {
-  skip("First recreate toy examples")
 
   filename <- find_path("toy_example_3.RDa")
   df <- collect_file_gammas(filename)

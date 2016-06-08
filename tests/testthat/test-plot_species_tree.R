@@ -1,7 +1,6 @@
 context("plot_species_tree")
 
 test_that("plot_species_tree works", {
-  skip("First recreate toy examples")
 
   plot_species_tree(filename = find_path("toy_example_1.RDa"))
   expect_error(

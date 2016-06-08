@@ -1,7 +1,6 @@
 context("collect_file_nltts")
 
 test_that("collect_file_nltts: basic test", {
-  skip("First recreate toy examples")
   dt <- 0.1
   filename <- find_path("toy_example_3.RDa")
   df <- collect_file_nltts(filename, dt = dt)

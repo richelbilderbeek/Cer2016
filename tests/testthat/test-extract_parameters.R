@@ -1,7 +1,6 @@
 context("extract_parameters")
 
 test_that("extract_erg", {
-  skip("First recreate toy examples")
 
   file <- Cer2016::read_file(find_path("toy_example_1.RDa"))
   erg <- extract_erg(file)
@@ -9,7 +8,6 @@ test_that("extract_erg", {
 })
 
 test_that("extract_eri", {
-  skip("First recreate toy examples")
 
   file <- Cer2016::read_file(find_path("toy_example_1.RDa"))
   eri <- extract_eri(file)
@@ -17,7 +15,6 @@ test_that("extract_eri", {
 })
 
 test_that("extract_scr", {
-  skip("First recreate toy examples")
 
   file <- Cer2016::read_file(find_path("toy_example_1.RDa"))
   scr <- extract_scr(file)
@@ -26,7 +23,6 @@ test_that("extract_scr", {
 
 
 test_that("extract_sirg", {
-  skip("First recreate toy examples")
 
   file <- Cer2016::read_file(find_path("toy_example_1.RDa"))
   expect_equal("sirg" %in% names(file$parameters), TRUE)
@@ -39,7 +35,6 @@ test_that("extract_sirg", {
 })
 
 test_that("extract_siri", {
-  skip("First recreate toy examples")
 
   file <- Cer2016::read_file(find_path("toy_example_1.RDa"))
   siri <- extract_siri(file)

@@ -1,7 +1,7 @@
 context("show_parameter_files")
 
 test_that("parameter files are shown", {
-  skip("First recreate toy examples")
+
   show_parameter_files(
     c(
       find_path("toy_example_1.RDa"),

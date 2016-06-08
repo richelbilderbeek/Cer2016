@@ -1,7 +1,6 @@
 context("collect_species_tree_n_taxa")
 
 test_that("collect_species_tree_n_taxa: basic use", {
-  skip("First recreate toy examples")
 
   filename <- find_path("toy_example_1.RDa")
   df <- collect_species_tree_n_taxa(filename)
@@ -11,7 +10,6 @@ test_that("collect_species_tree_n_taxa: basic use", {
 })
 
 test_that("collect_species_tree_n_taxa: abuse", {
-  skip("First recreate toy examples")
 
   filename <- find_path("toy_example_1.RDa")
 

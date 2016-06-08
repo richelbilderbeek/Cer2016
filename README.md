@@ -34,6 +34,10 @@ From the root folder:
 scp p230198@peregrine.hpc.rug.nl:/home/p230198/GitHubs/Cer2016/*.RDa /home/p230198/Peregrine
 ```
 
+## How to create the toy examples?
+
+ * Run the vignette 'worked_out_examples'
+ * Copy `tox_example_*.RDa` to `inst/extdata`
 
 ## Datasets
 
