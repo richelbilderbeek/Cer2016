@@ -52,7 +52,10 @@ add_posteriors <- function(
         testit::assert(posterior_index >= 1 &&
           posterior_index <= length(file$posteriors)
         )
-        if (is_beast_posterior(file$posteriors[[posterior_index]][[1]])) {
+        if (!is.na(file$posteriors[[posterior_index]])) {
+          # testit::assert(
+          #   is_beast_posterior(file$posteriors[[posterior_index]][[1]]))
+          # )
           if (verbose) {
             print(paste("   * Posterior #", k, " for alignment #",
               j, " for species tree #", i, " at posterior_index #",
