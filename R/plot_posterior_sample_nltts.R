@@ -37,18 +37,12 @@ plot_posterior_sample_nltts <- function(
 
   # Posterior nLTT values
   nltt_values <- NULL
+  index <- 1
 
   for (i in seq(1, n_species_trees_samples)) {
     for (j in seq(1, n_alignments)) {
       for (k in seq(1, n_beast_runs)) {
-        trees_filename <- paste(base_filename,
-          "_", i, "_", j, "_", k, ".trees", sep = ""
-        )
-        if (!file.exists(trees_filename)) {
-          print(paste("File '", trees_filename, "' not found", sep = ""))
-          next
-        }
-        all_trees <- rBEAST::beast2out.read.trees(trees_filename)
+        all_trees <- extract_posteriors(file)[[index]][[1]]
         n_trees <- length(all_trees)
         random_tree_index <- round(runif(1, min = 1, max = n_trees))
         random_tree <- all_trees[[random_tree_index]]
@@ -62,6 +56,7 @@ plot_posterior_sample_nltts <- function(
         } else {
           nltt_values <- rbind(nltt_values, these_nltt_values)
         }
+        index <- index + 1
       }
     }
   }

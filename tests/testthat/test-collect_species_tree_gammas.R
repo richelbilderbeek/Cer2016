@@ -7,7 +7,7 @@ test_that("collect_species_tree_gammas toy example 3", {
     c("species_tree", "gamma_stat")
   )
   expect_equal(nrow(df), 1)
-  expect_equal(df$gamma_stat, -0.8205514, tolerance = 0.0001)
+  expect_equal(df$gamma_stat, 0.005813035, tolerance = 0.0001)
 })
 
 test_that("collect_species_tree_gammas toy example 1", {
@@ -17,6 +17,6 @@ test_that("collect_species_tree_gammas toy example 1", {
     c("species_tree", "gamma_stat")
   )
   expect_equal(nrow(df), 2)
-  expect_equal(df$gamma_stat[1], -0.8567307, tolerance = 0.0001)
-  expect_equal(df$gamma_stat[2], -0.8567307, tolerance = 0.0001)
+  expect_equal(df$gamma_stat[1], 0.8273239, tolerance = 0.0001)
+  expect_equal(df$gamma_stat[2], 0.8273239, tolerance = 0.0001)
 })

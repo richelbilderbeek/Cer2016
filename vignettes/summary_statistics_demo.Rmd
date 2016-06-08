@@ -110,7 +110,7 @@ for more complex parameter files, but here it just looks ugly.
 From that true tree, I measure the gamma statistic:
 
 ```{r}
-true_gamma <- gammaStat(true_tree)
+true_gamma <- ape::gammaStat(true_tree)
 print(true_gamma)
 if (true_gamma < 0) {
   print("tippy tree")
@@ -124,14 +124,10 @@ The question is: how is the distribution of that statistic in the posterior?
 This toy example has only one posterior file:
 
 
-```{r}
-posterior_filename <- find_path("toy_example_1_1_1_1.trees")
-```
-
 Extracting the trees from that posterior:
 
 ```{r}
-posterior_trees <- rBEAST::beast2out.read.trees(posterior_filename)
+posterior_trees <- extract_posteriors(file)[[1]][[1]]
 n_trees <- length(posterior_trees)
 print(paste0("There are ", n_trees))
 ```
@@ -149,7 +145,7 @@ From those posterior trees, we collect the gamma statistic:
 ```{r}
 gamma_statistics <- rep(0, times = n_trees)
 for (i in seq(1:n_trees)) {
-  gamma_statistics[i] <- gammaStat(posterior_trees[[i]])
+  gamma_statistics[i] <- ape::gammaStat(posterior_trees[[i]])
 }
 hist(gamma_statistics, xlim = c(-1,1))
 abline(v = true_gamma, col = "red")

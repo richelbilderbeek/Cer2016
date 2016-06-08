@@ -20,7 +20,6 @@ file <- read_file(filename)
 plot(file$species_trees_with_outgroup[[1]][[1]])
 
 ## ------------------------------------------------------------------------
-trees_filename <- find_path("toy_example_3_1_1_1.trees")
 testit::assert(file.exists(trees_filename))
 all_trees <- rBEAST::beast2out.read.trees(trees_filename)
 plot(all_trees[[1]])

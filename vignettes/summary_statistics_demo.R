@@ -19,7 +19,7 @@ print(names(file$pbd_output))
 incipient_species_tree <- file$pbd_output$igtree.extant
 colors <- setNames(c("gray", "black"), c("i","g"))
 phytools::plotSimmap(
-  incipient_species_tree, 
+  incipient_species_tree,
   colors = colors
 )
 
@@ -27,7 +27,7 @@ phytools::plotSimmap(
 colors <- setNames(c("gray","black"), c("i","g"))
 testit::assert(length(read_file(filename)$pbd_output$igtree.extant$tip.label) > 0)
 phytools::plotSimmap(
-  file$pbd_output$igtree.extant, 
+  file$pbd_output$igtree.extant,
   colors = colors
 )
 
@@ -42,10 +42,9 @@ if (true_gamma < 0) {
   print("tippy tree")
 } else {
   print("stemmy tree")
-}  
+}
 
 ## ------------------------------------------------------------------------
-posterior_filename <- find_path("toy_example_1_1_1_1.trees")
 
 ## ------------------------------------------------------------------------
 posterior_trees <- rBEAST::beast2out.read.trees(posterior_filename)

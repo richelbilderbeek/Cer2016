@@ -61,7 +61,6 @@ add_posteriors(filename, skip_if_output_present = TRUE)
 plot_alignments(filename)
 
 ## ------------------------------------------------------------------------
-trees_filename <- "add_posterior_demo_1_1_1.trees"
 testit::assert(file.exists(trees_filename))
 
 ## ----warning = FALSE-----------------------------------------------------

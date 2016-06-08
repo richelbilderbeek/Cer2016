@@ -19,7 +19,6 @@ Checks if a file is a valid parameter file
 }
 \examples{
   testit::assert(is_valid_file(find_path("toy_example_1.RDa")))
-  testit::assert(!is_valid_file(find_path("toy_example_1_1_1_1.trees")))
 }
 \author{
 Richel Bilderbeek

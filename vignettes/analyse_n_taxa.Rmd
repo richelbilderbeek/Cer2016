@@ -54,9 +54,7 @@ not make sense.
 To be sure, the first phylogeny in the first posterior is plotted here:
 
 ```{r}
-trees_filename <- find_path("toy_example_3_1_1_1.trees")
-testit::assert(file.exists(trees_filename))
-all_trees <- rBEAST::beast2out.read.trees(trees_filename)
+all_trees <- extract_posteriors(file)[[1]][[1]]
 plot(all_trees[[1]])
 ```
 
