@@ -31,7 +31,6 @@ collect_species_tree_n_taxa <- function(
 
   file <- Cer2016::read_file(filename)
 
-
   phylogeny <- file$species_trees_with_outgroup[[1]][[1]]
   g <- NULL
   if (!inherits(phylogeny, "phylo")) {

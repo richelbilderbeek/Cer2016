@@ -27,6 +27,14 @@ From the root folder:
 ./scripts/run_1.sh
 ```
 
+Then run `vignettes/analyse_files.Rmd` to inspect the files.
+
+```
+./scripts/run_2.sh
+```
+
+Then run `vignettes/analyse_n_taxa.Rmd` to inspect the files.
+
 
 ## Copy files from Peregrine to local computer
 
