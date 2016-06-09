@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><beast beautitemplate='Standard' beautistatus='' namespace="beast.core:beast.evolution.alignment:beast.evolution.tree.coalescent:beast.core.util:beast.evolution.nuc:beast.evolution.operators:beast.evolution.sitemodel:beast.evolution.substitutionmodel:beast.evolution.likelihood" version="2.0">
+
+
+    <data
+id="test-do_simulation_1_1_1"
+name="alignment">
+                    <sequence id="seq_S3-3-10" taxon="S3-3-10" totalcount="4" value="CAGCTTAATG"/>
+                    <sequence id="seq_S5-5-8" taxon="S5-5-8" totalcount="4" value="GTGAGTTTAT"/>
+                    <sequence id="seq_S6-6-12" taxon="S6-6-12" totalcount="4" value="AACAGCTGGT"/>
+                    <sequence id="seq_S7-7-13" taxon="S7-7-13" totalcount="4" value="ACGGGGTAAT"/>
+                </data>
+
+
+    
+
+
+    
+
+
+    
+<map name="Uniform">beast.math.distributions.Uniform</map>
+<map name="Exponential">beast.math.distributions.Exponential</map>
+<map name="LogNormal">beast.math.distributions.LogNormalDistributionModel</map>
+<map name="Normal">beast.math.distributions.Normal</map>
+<map name="Beta">beast.math.distributions.Beta</map>
+<map name="Gamma">beast.math.distributions.Gamma</map>
+<map name="LaplaceDistribution">beast.math.distributions.LaplaceDistribution</map>
+<map name="prior">beast.math.distributions.Prior</map>
+<map name="InverseGamma">beast.math.distributions.InverseGamma</map>
+<map name="OneOnX">beast.math.distributions.OneOnX</map>
+
+
+<run id="mcmc" spec="MCMC" chainLength="10000">
+    <state id="state" storeEvery="5000">
+        <tree id="Tree.t:test-do_simulation_1_1_1" name="stateNode">
+            <taxonset id="TaxonSet.test-do_simulation_1_1_1" spec="TaxonSet">
+                <alignment idref="test-do_simulation_1_1_1"/>
+            </taxonset>
+        </tree>
+        <parameter id="birthRate2.t:test-do_simulation_1_1_1" lower="0.0" name="stateNode" upper="10000.0">1.0</parameter>
+        <parameter id="relativeDeathRate2.t:test-do_simulation_1_1_1" lower="0.0" name="stateNode" upper="1.0">0.5</parameter>
+    </state>
+
+    <init id="RandomTree.t:test-do_simulation_1_1_1" spec="beast.evolution.tree.RandomTree" estimate="false" initial="@Tree.t:test-do_simulation_1_1_1" taxa="@test-do_simulation_1_1_1">
+        <populationModel id="ConstantPopulation0.t:test-do_simulation_1_1_1" spec="ConstantPopulation">
+            <parameter id="randomPopSize.t:test-do_simulation_1_1_1" name="popSize">1.0</parameter>
+        </populationModel>
+    </init>
+
+    <distribution id="posterior" spec="util.CompoundDistribution">
+        <distribution id="prior" spec="util.CompoundDistribution">
+            <distribution id="BirthDeath.t:test-do_simulation_1_1_1" spec="beast.evolution.speciation.BirthDeathGernhard08Model" birthDiffRate="@birthRate2.t:test-do_simulation_1_1_1" relativeDeathRate="@relativeDeathRate2.t:test-do_simulation_1_1_1" tree="@Tree.t:test-do_simulation_1_1_1"/>
+            <prior id="BirthRatePrior.t:test-do_simulation_1_1_1" name="distribution" x="@birthRate2.t:test-do_simulation_1_1_1">
+                <Uniform id="Uniform.0" name="distr" upper="1000.0"/>
+            </prior>
+            <prior id="DeathRatePrior.t:test-do_simulation_1_1_1" name="distribution" x="@relativeDeathRate2.t:test-do_simulation_1_1_1">
+                <Uniform id="Uniform.01" name="distr"/>
+            </prior>
+        </distribution>
+        <distribution id="likelihood" spec="util.CompoundDistribution">
+            <distribution id="treeLikelihood.test-do_simulation_1_1_1" spec="TreeLikelihood" data="@test-do_simulation_1_1_1" tree="@Tree.t:test-do_simulation_1_1_1">
+                <siteModel id="SiteModel.s:test-do_simulation_1_1_1" spec="SiteModel">
+                    <parameter id="mutationRate.s:test-do_simulation_1_1_1" estimate="false" name="mutationRate">1.0</parameter>
+                    <parameter id="gammaShape.s:test-do_simulation_1_1_1" estimate="false" name="shape">1.0</parameter>
+                    <parameter id="proportionInvariant.s:test-do_simulation_1_1_1" estimate="false" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
+                    <substModel id="JC69.s:test-do_simulation_1_1_1" spec="JukesCantor"/>
+                </siteModel>
+                <branchRateModel id="StrictClock.c:test-do_simulation_1_1_1" spec="beast.evolution.branchratemodel.StrictClockModel">
+                    <parameter id="clockRate.c:test-do_simulation_1_1_1" estimate="false" name="clock.rate">1.0</parameter>
+                </branchRateModel>
+            </distribution>
+        </distribution>
+    </distribution>
+
+    <operator id="treeScaler.t:test-do_simulation_1_1_1" spec="ScaleOperator" scaleFactor="0.5" tree="@Tree.t:test-do_simulation_1_1_1" weight="3.0"/>
+
+    <operator id="treeRootScaler.t:test-do_simulation_1_1_1" spec="ScaleOperator" rootOnly="true" scaleFactor="0.5" tree="@Tree.t:test-do_simulation_1_1_1" weight="3.0"/>
+
+    <operator id="UniformOperator.t:test-do_simulation_1_1_1" spec="Uniform" tree="@Tree.t:test-do_simulation_1_1_1" weight="30.0"/>
+
+    <operator id="SubtreeSlide.t:test-do_simulation_1_1_1" spec="SubtreeSlide" tree="@Tree.t:test-do_simulation_1_1_1" weight="15.0"/>
+
+    <operator id="narrow.t:test-do_simulation_1_1_1" spec="Exchange" tree="@Tree.t:test-do_simulation_1_1_1" weight="15.0"/>
+
+    <operator id="wide.t:test-do_simulation_1_1_1" spec="Exchange" isNarrow="false" tree="@Tree.t:test-do_simulation_1_1_1" weight="3.0"/>
+
+    <operator id="WilsonBalding.t:test-do_simulation_1_1_1" spec="WilsonBalding" tree="@Tree.t:test-do_simulation_1_1_1" weight="3.0"/>
+
+    <operator id="BirthRateScaler.t:test-do_simulation_1_1_1" spec="ScaleOperator" parameter="@birthRate2.t:test-do_simulation_1_1_1" scaleFactor="0.75" weight="3.0"/>
+
+    <operator id="DeathRateScaler.t:test-do_simulation_1_1_1" spec="ScaleOperator" parameter="@relativeDeathRate2.t:test-do_simulation_1_1_1" scaleFactor="0.75" weight="3.0"/>
+
+    <logger id="tracelog" fileName="test-do_simulation_1_1_1.log" logEvery="1000" model="@posterior" sanitiseHeaders="true" sort="smart">
+        <log idref="posterior"/>
+        <log idref="likelihood"/>
+        <log idref="prior"/>
+        <log idref="treeLikelihood.test-do_simulation_1_1_1"/>
+        <log id="TreeHeight.t:test-do_simulation_1_1_1" spec="beast.evolution.tree.TreeHeightLogger" tree="@Tree.t:test-do_simulation_1_1_1"/>
+        <log idref="BirthDeath.t:test-do_simulation_1_1_1"/>
+        <log idref="birthRate2.t:test-do_simulation_1_1_1"/>
+        <log idref="relativeDeathRate2.t:test-do_simulation_1_1_1"/>
+    </logger>
+
+    <logger id="screenlog" logEvery="1000">
+        <log idref="posterior"/>
+        <log id="ESS.0" spec="util.ESS"  arg="@posterior"/>
+
+        <log idref="likelihood"/>
+        <log idref="prior"/>
+    </logger>
+
+    <logger id="treelog.t:test-do_simulation_1_1_1" fileName="$(tree).trees" logEvery="1000" mode="tree">
+        <log id="TreeWithMetaDataLogger.t:test-do_simulation_1_1_1" spec="beast.evolution.tree.TreeWithMetaDataLogger" tree="@Tree.t:test-do_simulation_1_1_1"/>
+    </logger>
+
+</run>
+
+</beast>

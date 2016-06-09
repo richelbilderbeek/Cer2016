@@ -20,7 +20,7 @@ add_species_trees <- function(
   file <- Cer2016::read_file(filename)
   if (is.na(file$pbd_output[1])) {
     stop("add_species_trees: ",
-      "file ", filename, " needs a pbd_output"
+      "file '", filename, "' needs a pbd_output"
     )
   }
   parameters <- file$parameters
