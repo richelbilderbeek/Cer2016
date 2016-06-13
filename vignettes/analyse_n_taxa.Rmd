@@ -151,3 +151,12 @@ ggplot2::ggplot(
   data = useful_n_taxa, ggplot2::aes(useful_n_taxa$n_taxa)
 ) + ggplot2::geom_density()
 ```
+
+For which parameter settings are these?
+
+```{r}
+df_big <- merge(x = df_parameters, y = df_n_taxa, by = "filenames", all = TRUE)
+
+
+
+```

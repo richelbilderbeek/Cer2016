@@ -29,6 +29,7 @@ before_script:
 
 script: 
  - travis_wait 30 R CMD check .
+ - ./run_analysis.sh
 
 after_success:
  - Rscript -e 'lintr::lint_package()'

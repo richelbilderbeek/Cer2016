@@ -58,6 +58,6 @@ collect_species_tree_n_taxa <- function(
   }
 
   # phylogeny must be put in a list or vector
-  g <- Cer2016::collect_n_taxa(c(phylogeny))
+  g <- Cer2016::collect_n_taxa(list(phylogeny))
   return (data.frame(n_taxa = g$n_taxa))
 }

@@ -56,3 +56,4 @@ tests/testthat/test-do_simulation.RDa
 tests/testthat/test-*.RDa
 tests/testthat/test-*.csv
 vignettes/*.csv
+collect_files_n_taxa.csv
