@@ -33,22 +33,18 @@ test_that("collect_species_tree_n_taxa: abuse", {
 
 test_that("collect_species_tree_n_taxa: silent", {
 
-  # NA file
-  expect_silent(
-    collect_species_tree_n_taxa(
-      filename = "/home/p230198/Peregrine/article_0_0_0_0_0.RDa",
-      verbose = TRUE
+  filename <- "/home/p230198/Peregrine/article_0_0_0_0_0.RDa"
+  if (file.exists(filename)) {
+    expect_silent(
+      collect_species_tree_n_taxa(filename = filename, verbose = TRUE
+      )
     )
-  )
+  }
 
-  # NA file
-  expect_silent(
-    collect_species_tree_n_taxa(
-      filename = "/home/p230198/Peregrine/article_1_3_0_0_0.RDa",
-      verbose = FALSE
+  filename <- "/home/p230198/Peregrine/article_1_3_0_0_0.RDa"
+  if (file.exists(filename)) {
+    expect_silent(
+      collect_species_tree_n_taxa(filename = filename)
     )
-  )
-
+  }
 })
-
-
