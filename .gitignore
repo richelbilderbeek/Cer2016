@@ -53,3 +53,6 @@ test-add_alignment.RDa
 test-add_posteriors_*.RDa
 tests/testthat/test-extract_posteriors_*
 tests/testthat/test-do_simulation.RDa
+tests/testthat/test-*.RDa
+tests/testthat/test-*.csv
+vignettes/*.csv

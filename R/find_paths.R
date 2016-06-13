@@ -7,6 +7,14 @@
 #' @author Richel Bilderbeek
 #' @export
 find_path <- function(filename) {
+
+  # Check the first logical candidate first
+  # From https://github.com/csgillespie/efficientR/issues/28
+  p <- system.file(paste0("extdata/", filename), package = "Cer2016")
+  if (file.exists(p)) {
+    return (p)
+  }
+
   # Check inst/extdata first
   prefixes <- c(
     "E:/Git/Cer2016/inst/extdata/",                                    # nolint
