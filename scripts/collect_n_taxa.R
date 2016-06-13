@@ -5,6 +5,6 @@ fns <- paste(
 df <- Cer2016::collect_files_n_taxa(fns, verbose = TRUE)
 write.csv(
   x = df,
-  file = "collect_files_n_taxa.csv",
+  file = "collected_n_taxa.csv",
   row.names = TRUE
 )

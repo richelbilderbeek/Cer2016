@@ -43,7 +43,6 @@ inst/extdata/collected_nltts_posterior.csv
 inst/extdata/gamma_diff.csv.zip
 *.lyx~
 inst/extdata/collected_gammas_species_trees.csv
-inst/extdata/collected_n_taxa.csv
 inst/extdata/collected_nltts_species_trees.csv
 inst/extdata/collected_parameters.csv
 inst/extdata/collected_*.zip
