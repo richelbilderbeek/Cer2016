@@ -6,27 +6,26 @@
 
 Community Ecology Research course 2016.
 
-## Update the package source
+## Update the package source on Peregrine
 
 ```
 module load git; git pull
 ```
 
-## Re-install the package
+## Re-install the package on Peregrine
 
 ```
 module load R; Rscript -e 'devtools::install_github("richelbilderbeek/Cer2016")'
 ```
 
 
-## Run the sim on the Peregrine cluster
+## Run the sim on Peregrine
 
 From the root folder:
 
 ```
 ./scripts/run_1.sh
 ```
-
 
 ## Copy files from Peregrine to local computer
 
