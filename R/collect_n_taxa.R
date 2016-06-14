@@ -38,5 +38,6 @@ collect_n_taxa <- function(phylogenies) {
   z <- as.data.frame(x = m)
   colnames(z) <- c("n_taxa")
   z[, 1] <- sapply(z[, 1], as.integer)
+  testit::assert(names(z) == c("n_taxa"))
   z
 }

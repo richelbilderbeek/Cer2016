@@ -1,10 +1,10 @@
 #!/bin/bash
-# Call from root folder with 'sbatch ./scripts/create_parameter_files_article.sh'
-#SBATCH --time=240:00:00
+# Called from scripts folder by run.sh
+#SBATCH --time=0:01:00
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=4
-#SBATCH --ntasks=4
-#SBATCH --mem=1G
+#SBATCH --ntasks-per-node=1
+#SBATCH --ntasks=1
+#SBATCH --mem=1M
 #SBATCH --job-name=create_parameter_files_article
 #SBATCH --output=create_parameter_files_article.log
 #SBATCH --mail-type=BEGIN,END

@@ -9,4 +9,5 @@ test_that("collect_files_n_taxa: basic", {
   df <- collect_files_n_taxa(filenames, verbose = FALSE)
   expect_equal(names(df), c("filenames", "n_taxa"))
   expect_equal(nrow(df), length(filenames))
+  expect_equal(is.na(df$n_taxa), rep(FALSE, 2))
 })

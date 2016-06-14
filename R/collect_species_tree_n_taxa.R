@@ -29,11 +29,21 @@ collect_species_tree_n_taxa <- function(
     )
   }
 
+
   file <- Cer2016::read_file(filename)
 
+  # pbd_output$recontree must be present, return NA if absent
+  if (is.null(file) || is.null(names(file$pbd_output))
+  ) {
+    if (verbose) {
+      print("collect_species_n_taxa: file$pbd_output$recontree absent")
+    }
+    return(data.frame(n_taxa = NA))
+  }
 
-  phylogeny <- file$species_trees_with_outgroup[[1]][[1]]
-  g <- NULL
+  # pbd_output$recontree must be a phylogeny, return NA if not
+  phylogeny <- file$pbd_output$recontree
+
   if (!inherits(phylogeny, "phylo")) {
     if (verbose) {
       print(
@@ -44,13 +54,10 @@ collect_species_tree_n_taxa <- function(
         )
       )
     }
-  } else {
-    # phylogeny must be put in a list or vector
-    g <- Cer2016::collect_n_taxa(c(phylogeny))
+    return(data.frame(n_taxa = NA))
   }
 
-  df <- data.frame(
-    n_taxa = g$n_taxa
-  )
-  df
+  # phylogeny must be put in a list or vector
+  g <- Cer2016::collect_n_taxa(list(phylogeny))
+  return (data.frame(n_taxa = g$n_taxa))
 }

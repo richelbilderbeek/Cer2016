@@ -18,19 +18,40 @@ module load git; git pull
 module load R; Rscript -e 'devtools::install_github("richelbilderbeek/Cer2016")'
 ```
 
+## Workflow
 
-## Run the sim on Peregrine
-
-From the root folder:
+On Peregrine, from the root folder:
 
 ```
 ./scripts/run_1.sh
 ```
 
+Wait until all parameter files are created.
+
+On your local computer, copy all parameter files to it:
+
+```
+scp p230198@peregrine.hpc.rug.nl:/home/p230198/GitHubs/Cer2016/*.RDa ~/Peregrine
+```
+
+On the local comp
+
+```
+./scripts/run_1_post.sh
+```
+
+Then run `vignettes/analyse_files.Rmd` to inspect the files.
+
+```
+./scripts/run_2.sh
+```
+
+Then run `vignettes/analyse_n_taxa.Rmd` to inspect the files.
+
 ## Copy files from Peregrine to local computer
 
 ```
-scp p230198@peregrine.hpc.rug.nl:/home/p230198/GitHubs/Cer2016/*.RDa /home/p230198/Peregrine
+scp p230198@peregrine.hpc.rug.nl:/home/p230198/GitHubs/Cer2016/*.RDa ~/Peregrine
 ```
 
 ## How to create the toy examples?

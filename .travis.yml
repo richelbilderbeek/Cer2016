@@ -7,7 +7,7 @@ before_install:
   - sudo apt-get update -qq
 
 install: 
-  - sudo apt-get install -qq r-base r-base-dev 
+  - sudo apt-get install -qq r-base r-base-dev --force-yes
   - sudo apt-get install -qq texlive
   - sudo pip install codecov
   - ./install_beast2.sh
@@ -29,6 +29,7 @@ before_script:
 
 script: 
  - travis_wait 30 R CMD check .
+ - ./run_analysis.sh
 
 after_success:
  - Rscript -e 'lintr::lint_package()'

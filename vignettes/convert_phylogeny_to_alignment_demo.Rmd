@@ -1,10 +1,10 @@
 ---
-title: "create_random_phylogeny demo"
+title: "convert_phylogeny_to_alignment demo"
 author: "Richel Bilderbeek"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{create_random_phylogeny demo}
+  %\VignetteIndexEntry{convert_phylogeny_to_alignment demo}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

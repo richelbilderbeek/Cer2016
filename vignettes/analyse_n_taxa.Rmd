@@ -13,6 +13,7 @@ Loading this package
 
 ```{r}
 library(Cer2016)
+options(warn = 2)
 ```
 
 ## Collecting the number of taxa from one or more phylogenies
@@ -73,8 +74,7 @@ filenames <- c(
   find_path("toy_example_3.RDa"),
   find_path("toy_example_4.RDa")
 )
-
-df <- collect_files_n_taxa(filenames, verbose = FALSE)
+df <- collect_files_n_taxa(filenames, verbose = TRUE)
 testit::assert(names(df) == c("filenames", "n_taxa"))
 names(df)
 knitr::kable(df)
@@ -82,10 +82,10 @@ knitr::kable(df)
 
 ## Collecting the number of taxa from all files
 
-```
-csv_filename_n_taxa <- find_path("collected_n_taxa.csv")
-csv_filename_parameters <- find_path("collected_parameters.csv")
-create_fresh <- FALSE # Set this to TRUE for a >2 mins calculation
+```{r}
+#csv_filename_n_taxa <- find_path("collected_n_taxa.csv")
+csv_filename_n_taxa <- "collected_n_taxa.csv"
+create_fresh <- TRUE # Set this to TRUE for a >2 mins calculation
 if (create_fresh) {
   folder <- "/home/p230198/Peregrine"
   all_parameter_filenames <- paste(
@@ -106,7 +106,9 @@ as this is a long step.
 
 Loading it from file:
 
-```
+```{r}
+csv_filename_parameters <- find_path("collected_parameters.csv")
+
 df_n_taxa <- read.csv(
  file = csv_filename_n_taxa, 
  header = TRUE, 
@@ -124,28 +126,37 @@ df_parameters <- read.csv(
 
 Putting the head of the data frame in a table:
 
-```
+```{r}
 knitr::kable(head(df_n_taxa))
 ```
 
 What kind of data is `df_n_taxa`?
 
-```
+```{r}
 str(df_n_taxa)
 names(df_n_taxa)
 ```
 
 Let's first plot the distribution of number of taxa statistics.
 
-```
+```{r}
 useful_n_taxa <- df_n_taxa[ !is.na(df_n_taxa$n_taxa), ]
 ggplot2::ggplot(
   data = useful_n_taxa, ggplot2::aes(useful_n_taxa$n_taxa)
 ) + ggplot2::geom_histogram(bins = 30)
 ```
 
-```
+```{r}
 ggplot2::ggplot(
   data = useful_n_taxa, ggplot2::aes(useful_n_taxa$n_taxa)
 ) + ggplot2::geom_density()
+```
+
+For which parameter settings are these?
+
+```{r}
+df_big <- merge(x = df_parameters, y = df_n_taxa, by = "filenames", all = TRUE)
+
+
+
 ```
