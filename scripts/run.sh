@@ -1,5 +1,8 @@
 #!/bin/bash
 
+rm *.txt
+rm *.log
+
 ##########################
 # Create parameter files
 ##########################
