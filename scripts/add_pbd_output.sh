@@ -7,6 +7,5 @@
 #SBATCH --mem=1G
 #SBATCH --job-name=add_pdb_output
 #SBATCH --output=add_pbd_output_%j.log
-#SBATCH --mail-type=BEGIN,END
 module load R
 Rscript -e "library(Cer2016); add_pbd_output(\"$1\")"

@@ -21,7 +21,9 @@ jobid_collect_parameters=`$cmd | cut -d ' ' -f 4`
 echo "job id of the collect_parameters script is "$jobid_collect_parameters
 
 # 2) Add pbd_sim_output
-jobsids=`./add_pbd_outputs.sh $jobid`
+cmd="sbatch --dependency=afterok:$jobid add_pbd_outputs.sh"
+echo "cmd: "$cmd
 
+jobids=`$cmd`
 echo "jobids:"
 echo $jobids
