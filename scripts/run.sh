@@ -15,7 +15,7 @@ echo "job id of first script is "$jobid
 ##########################
 
 # 1) Check its success: collect_parameters
-cmd="sbatch --dependency=afterok:$jobid Rscript collect_parameters.R"
+cmd="sbatch --dependency=afterok:$jobid collect_parameters.sh"
 echo "cmd: "$cmd
 jobid_collect_parameters=`$cmd | cut -d ' ' -f 4`
 echo "job id of the collect_parameters script is "$jobid_collect_parameters
