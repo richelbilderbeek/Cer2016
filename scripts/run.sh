@@ -21,17 +21,7 @@ jobid_collect_parameters=`$cmd | cut -d ' ' -f 4`
 echo "job id of the collect_parameters script is "$jobid_collect_parameters
 
 # 2) Add pbd_sim_output
-jobids=()
-for filename in `ls *.RDa`
-do
-  cmd="sbatch --dependency=afterok:$jobid add_pbd_output.sh $filename"
-  echo "cmd: "$cmd
-  jobids+=(`$cmd | cut -d ' ' -f 4`)
-done
+jobsids=`./add_pbd_outputs.sh $jobid`
 
-echo "All jobids:"
-echo ${jobids[@]}
-echo "jobids concatenated:"
-txt=$(printf ",%s" "${jobids[@]}")
-txt=${txt:1}
-echo $txt
+echo "jobids:"
+echo $jobids
