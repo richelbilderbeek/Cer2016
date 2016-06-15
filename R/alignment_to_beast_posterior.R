@@ -118,7 +118,7 @@ alignment_to_beast_posterior <- function(
   cmd <- paste0(
     "java -jar ", beast_jar_path,
     " -seed ", rng_seed,
-    #" -beagle_instances 4 -threads 4",
+    " -threads 8 -beagle",
     " ", beast_filename # XML filename should always be last
   )
   if (verbose == FALSE) {
