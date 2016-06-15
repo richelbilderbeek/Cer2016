@@ -11,12 +11,9 @@ test_that("collect_species_tree_n_taxa: basic use", {
 
 test_that("collect_species_tree_n_taxa: abuse", {
 
-  filename <- find_path("toy_example_1.RDa")
-
   expect_error(
     collect_species_tree_n_taxa(
-      filename = "inva.lid",
-      verbose = FALSE
+      filename = "inva.lid"
     ),
     "collect_species_n_taxa: invalid filename 'inva.lid'"
   )
@@ -30,21 +27,27 @@ test_that("collect_species_tree_n_taxa: abuse", {
   )
 })
 
+test_that("collect_species_tree_n_taxa: empty file should raise error", {
 
-test_that("collect_species_tree_n_taxa: silent", {
+  filename <- "test-collect_species_tree_n_taxa.RDa"
+  save_parameters_to_file(
+    rng_seed = 42,
+    sirg = 0.1,
+    siri = 0.1,
+    scr = 0.1,
+    erg = 0.1,
+    eri = 0.1,
+    age = 15,
+    n_species_trees_samples = 2,
+    mutation_rate = 0.01,
+    n_alignments = 2,
+    sequence_length = 1000,
+    mcmc_chainlength = 10000,
+    n_beast_runs = 2,
+    filename = filename
+  )
 
-  filename <- "/home/p230198/Peregrine/article_0_0_0_0_0.RDa" #nolint
-  if (file.exists(filename)) {
-    expect_silent(
-      collect_species_tree_n_taxa(filename = filename, verbose = TRUE
-      )
-    )
-  }
-
-  filename <- "/home/p230198/Peregrine/article_1_3_0_0_0.RDa" #nolint
-  if (file.exists(filename)) {
-    expect_silent(
-      collect_species_tree_n_taxa(filename = filename)
-    )
-  }
+  df <- collect_species_tree_n_taxa(filename = filename)
+  expect_equal(is.na(df$n_taxa[1]), TRUE)
+  file.remove(filename)
 })

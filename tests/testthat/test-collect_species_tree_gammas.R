@@ -20,3 +20,15 @@ test_that("collect_species_tree_gammas toy example 1", {
   expect_equal(df$gamma_stat[1], 0.8273239, tolerance = 0.0001)
   expect_equal(df$gamma_stat[2], 0.8273239, tolerance = 0.0001)
 })
+
+test_that("collect_species_tree_gammas: abuse", {
+  expect_error(
+    collect_species_tree_gammas(filename = "inva.lid", verbose = "TRUE nor FALSE"),
+    "collect_species_tree_gammas: verbose should be TRUE or FALSE"
+  )
+
+  expect_error(
+    collect_species_tree_gammas(filename = "inva.lid"),
+    "collect_species_tree_gammas: invalid file"
+  )
+})

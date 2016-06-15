@@ -8,6 +8,7 @@
 #'  testit::assert(names(df) == c("n_taxa"))
 #'  testit::assert(ncol(df) == 1)
 #'  testit::assert(nrow(df) == 1)
+#'  testit::assert(df$n_taxa[1] > 0)
 #' @export
 #' @author Richel Bilderbeek
 collect_species_tree_n_taxa <- function(
@@ -36,7 +37,7 @@ collect_species_tree_n_taxa <- function(
   if (is.null(file) || is.null(names(file$pbd_output))
   ) {
     if (verbose) {
-      print("collect_species_n_taxa: file$pbd_output$recontree absent")
+      print("collect_species_n_taxa: file$pbd_output absent")
     }
     return(data.frame(n_taxa = NA))
   }

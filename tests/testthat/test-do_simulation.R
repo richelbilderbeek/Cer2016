@@ -20,6 +20,8 @@ test_that("do_simulation: use", {
   )
 
   expect_silent(do_simulation(filename = filename))
+  file.remove(filename)
+
 })
 
 test_that("do_simulation: abuse", {
