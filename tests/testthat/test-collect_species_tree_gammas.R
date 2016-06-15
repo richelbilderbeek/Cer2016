@@ -23,7 +23,9 @@ test_that("collect_species_tree_gammas toy example 1", {
 
 test_that("collect_species_tree_gammas: abuse", {
   expect_error(
-    collect_species_tree_gammas(filename = "inva.lid", verbose = "TRUE nor FALSE"),
+    collect_species_tree_gammas(
+      filename = "inva.lid", verbose = "TRUE nor FALSE"
+    ),
     "collect_species_tree_gammas: verbose should be TRUE or FALSE"
   )
 
