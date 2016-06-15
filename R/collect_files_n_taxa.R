@@ -16,16 +16,18 @@ collect_files_n_taxa <- function(
   filenames,
   verbose = FALSE
 ) {
-  if (length(filenames) < 1) {
-    stop(
-      "collect_files_n_taxa: ",
-      "there must be at least one filename supplied"
-    )
-  }
+
   if (verbose != TRUE && verbose != FALSE) {
     stop(
       "collect_files_n_taxa: ",
       "verbose should be TRUE or FALSE"
+    )
+  }
+
+    if (length(filenames) < 1) {
+    stop(
+      "collect_files_n_taxa: ",
+      "there must be at least one filename supplied"
     )
   }
 
