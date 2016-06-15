@@ -1,0 +1,43 @@
+#!/bin/bash
+#SBATCH --time=2:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --ntasks=1
+#SBATCH --mem=1G
+#SBATCH --job-name=add_alignments
+#SBATCH --output=add_alignments.log
+
+##########################
+# Add alignments
+##########################
+
+jobids=()
+for filename in `ls *.RDa`
+do
+  cmd="sbatch add_alignments.sh $filename"
+  echo "cmd: "$cmd
+  jobids+=(`$cmd | cut -d ' ' -f 4`)
+done
+
+txt=$(printf ":%s" "${jobids[@]}")
+txt=${txt:1}
+
+############################
+# Collect n alignments
+############################
+
+cmd="sbatch --dependency=afterok:$txt collect_n_alignments.sh"
+echo "cmd: "$cmd
+jobid=`$cmd | cut -d ' ' -f 4`
+echo "jobid: "$jobid
+
+##########################
+# Add posteriors
+# This is a parallel job, 
+# which is started in run_4.sh
+##########################
+
+#cmd="sbatch --dependency=afterok:$jobid run_4.sh"
+#echo "cmd: "$cmd
+#jobid=`$cmd | cut -d ' ' -f 4`
+#echo "jobid: "$jobid
