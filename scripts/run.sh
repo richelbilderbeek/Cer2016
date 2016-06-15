@@ -6,7 +6,7 @@
 rm *.txt
 rm *.log
 rm *.RDa
-
+rm *.csv
 ##########################
 # Create parameter files
 ##########################

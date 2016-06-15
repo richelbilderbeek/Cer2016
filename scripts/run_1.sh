@@ -38,7 +38,7 @@ echo "jobid: "$jobid
 # which is started in run_2.sh
 ##########################
 
-cmd="sbatch --dependency=afterok:$jobid run_2	.sh"
+cmd="sbatch --dependency=afterok:$jobid run_2.sh"
 echo "cmd: "$cmd
 jobid=`$cmd | cut -d ' ' -f 4`
 echo "jobid: "$jobid
