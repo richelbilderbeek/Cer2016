@@ -44,19 +44,7 @@ collect_species_tree_n_taxa <- function(
 
   # pbd_output$recontree must be a phylogeny, return NA if not
   phylogeny <- file$pbd_output$recontree
-
-  if (!inherits(phylogeny, "phylo")) {
-    if (verbose) {
-      print(
-        paste0(
-          "collect_species_n_taxa: ",
-          "phylogeny must inherit from class 'phylo', ",
-          "class is '", class(phylogeny), "'"
-        )
-      )
-    }
-    return(data.frame(n_taxa = NA))
-  }
+  testit::assert(inherits(phylogeny, "phylo"))
 
   # phylogeny must be put in a list or vector
   g <- Cer2016::collect_n_taxa(list(phylogeny))

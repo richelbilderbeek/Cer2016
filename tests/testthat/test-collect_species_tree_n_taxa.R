@@ -47,7 +47,11 @@ test_that("collect_species_tree_n_taxa: empty file should raise error", {
     filename = filename
   )
 
-  df <- collect_species_tree_n_taxa(filename = filename)
+  # Mute output
+  sink("/dev/null") # nolint
+  df <- collect_species_tree_n_taxa(filename = filename, verbose = TRUE)
+  sink() # nolint
+
   expect_equal(is.na(df$n_taxa[1]), TRUE)
   file.remove(filename)
 })
