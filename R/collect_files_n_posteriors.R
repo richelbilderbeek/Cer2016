@@ -1,41 +1,41 @@
-#' Collects the number of alignments of all phylogenies belonging to a
+#' Collects the number of posteriors of all phylogenies belonging to a
 #' multiple parameter file in the melted/uncast/long form
 #' @param filenames names of the parameter file
 #' @param verbose give verbose output, should be TRUE or FALSE
-#' @return A dataframe with all number of sampled alignments of all files
+#' @return A dataframe with all number of sampled posteriors of all files
 #' @examples
 #'   filenames <- c(
 #'    find_path("toy_example_1.RDa"),
 #'    find_path("toy_example_3.RDa")
 #'  )
-#'  df <- collect_files_n_alignments(filenames, verbose = FALSE)
-#'  testit::assert(names(df) == c("filenames", "n_alignments"))
+#'  df <- collect_files_n_posteriors(filenames, verbose = FALSE)
+#'  testit::assert(names(df) == c("filenames", "n_posteriors"))
 #'  testit::assert(nrow(df) == length(filenames))
-#'  testit::assert(df$n_alignments == c(1, 4))
+#'  testit::assert(df$n_posteriors == c(1, 8))
 #' @export
-collect_files_n_alignments <- function(
+collect_files_n_posteriors <- function(
   filenames,
   verbose = FALSE
 ) {
   if (length(filenames) < 1) {
     stop(
-      "collect_files_n_alignments: ",
+      "collect_files_n_posteriors: ",
       "there must be at least one filename supplied"
     )
   }
   if (verbose != TRUE && verbose != FALSE) {
     stop(
-      "collect_files_n_alignments: ",
+      "collect_files_n_posteriors: ",
       "verbose should be TRUE or FALSE"
     )
   }
 
-  # alignments
-  n_alignments <- NULL
+  # posteriors
+  n_posteriors <- NULL
   for (filename in filenames) {
-    this_n_alignments <- NULL
+    this_n_posteriors <- NULL
     tryCatch(
-      this_n_alignments <- collect_n_alignments(
+      this_n_posteriors <- collect_n_posteriors(
         filename = filename,
         verbose = verbose
       ),
@@ -43,22 +43,22 @@ collect_files_n_alignments <- function(
         if (verbose) print(msg)
       }
     )
-    if (is.null(this_n_alignments)) {
-      this_n_alignments <- data.frame(
-        n_alignments = NA
+    if (is.null(this_n_posteriors)) {
+      this_n_posteriors <- data.frame(
+        n_posteriors = NA
       )
     }
-    if (!is.null(n_alignments)) {
-      n_alignments <- rbind(n_alignments, this_n_alignments)
+    if (!is.null(n_posteriors)) {
+      n_posteriors <- rbind(n_posteriors, this_n_posteriors)
     } else {
-      n_alignments <- this_n_alignments
+      n_posteriors <- this_n_posteriors
     }
   }
   df <- data.frame(
     filenames = basename(filenames),
-    n_alignments = n_alignments$n_alignments
+    n_posteriors = n_posteriors$n_posteriors
   )
   testit::assert(nrow(df) == length(filenames))
-  testit::assert(names(df) == c("filenames", "n_alignments"))
+  testit::assert(names(df) == c("filenames", "n_posteriors"))
   return(df)
 }

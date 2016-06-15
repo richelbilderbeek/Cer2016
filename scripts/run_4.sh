@@ -4,17 +4,17 @@
 #SBATCH --ntasks-per-node=1
 #SBATCH --ntasks=1
 #SBATCH --mem=1G
-#SBATCH --job-name=add_alignments
-#SBATCH --output=add_alignments.log
+#SBATCH --job-name=add_posteriors
+#SBATCH --output=add_posteriors.log
 
 ##########################
-# Add alignments
+# Add posteriors
 ##########################
 
 jobids=()
 for filename in `ls *.RDa`
 do
-  cmd="sbatch add_alignments.sh $filename"
+  cmd="sbatch add_posteriors.sh $filename"
   echo "cmd: "$cmd
   jobids+=(`$cmd | cut -d ' ' -f 4`)
 done
@@ -23,21 +23,19 @@ txt=$(printf ":%s" "${jobids[@]}")
 txt=${txt:1}
 
 ############################
-# Collect n alignments
+# Collect n posteriors
 ############################
 
-cmd="sbatch --dependency=afterok:$txt collect_n_alignments.sh"
+cmd="sbatch --dependency=afterok:$txt collect_n_posteriors.sh"
 echo "cmd: "$cmd
 jobid=`$cmd | cut -d ' ' -f 4`
 echo "jobid: "$jobid
 
 ##########################
-# Add posteriors
-# This is a parallel job, 
-# which is started in run_4.sh
+# Analysis
 ##########################
 
-cmd="sbatch --dependency=afterok:$jobid run_4.sh"
-echo "cmd: "$cmd
-jobid=`$cmd | cut -d ' ' -f 4`
-echo "jobid: "$jobid
+#cmd="sbatch --dependency=afterok:$jobid run_4.sh"
+#echo "cmd: "$cmd
+#jobid=`$cmd | cut -d ' ' -f 4`
+#echo "jobid: "$jobid

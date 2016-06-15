@@ -27,6 +27,6 @@ multiple parameter file in the melted/uncast/long form
  df <- collect_files_n_alignments(filenames, verbose = FALSE)
  testit::assert(names(df) == c("filenames", "n_alignments"))
  testit::assert(nrow(df) == length(filenames))
- testit::assert(df$n_alignments == c(1, 2))
+ testit::assert(df$n_alignments == c(1, 4))
 }
 
