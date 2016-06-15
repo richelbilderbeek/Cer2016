@@ -2,7 +2,7 @@
 title: "Demonstration of the gamma statistic"
 author: "Richel Bilderbeek"
 date: "`r Sys.Date()`"
-output: rmarkdown::pdf_document
+output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Demonstration of the gamma statistic}
   %\VignetteEngine{knitr::rmarkdown}

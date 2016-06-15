@@ -12,6 +12,13 @@ Community Ecology Research course 2016.
 module load git; git pull
 ```
 
+## Download the data
+
+```
+scp p230198@peregrine.hpc.rug.nl:/home/p230198/GitHubs/Cer2016/scripts/*.csv inst/extdata
+```
+
+
 ## Re-install the package on Peregrine
 
 ```

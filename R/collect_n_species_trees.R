@@ -8,7 +8,7 @@
 #'  testit::assert(names(df) == c("n_species_trees"))
 #'  testit::assert(ncol(df) == 1)
 #'  testit::assert(nrow(df) == 1)
-#'  testit::assert(nrow(df$n_species_trees[1]) == 1)
+#'  testit::assert(df$n_species_trees[1] == 1)
 #' @export
 #' @author Richel Bilderbeek
 collect_n_species_trees <- function(

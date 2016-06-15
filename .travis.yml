@@ -19,7 +19,6 @@ addons:
 
 before_script:
  - sudo Rscript install_r_packages.R
- - ./download_data.sh
  # R wants all hidden files gone...
  - rm .gitignore
  - rm .travis.yml
@@ -29,7 +28,6 @@ before_script:
 
 script: 
  - travis_wait 30 R CMD check .
- - ./run_analysis.sh
 
 after_success:
  - Rscript -e 'lintr::lint_package()'

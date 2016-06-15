@@ -83,21 +83,7 @@ knitr::kable(df)
 ## Collecting the number of taxa from all files
 
 ```{r}
-#csv_filename_n_taxa <- find_path("collected_n_taxa.csv")
-csv_filename_n_taxa <- "collected_n_taxa.csv"
-create_fresh <- TRUE # Set this to TRUE for a >2 mins calculation
-if (create_fresh) {
-  folder <- "/home/p230198/Peregrine"
-  all_parameter_filenames <- paste(
-    folder, list.files(folder, pattern = "\\.RDa"), sep = "/"
-  )
-  df <- collect_files_n_taxa(all_parameter_filenames, verbose = FALSE)
-  write.csv(
-    x = df,
-    file = csv_filename_n_taxa,
-    row.names = TRUE
-  )
-}
+csv_filename_n_taxa <- find_path("collected_n_taxa.csv")
 testit::assert(file.exists(csv_filename_n_taxa))
 ```
 
@@ -154,7 +140,7 @@ ggplot2::ggplot(
 
 For which parameter settings are these?
 
-```{r}
+```
 df_big <- merge(x = df_parameters, y = df_n_taxa, by = "filenames", all = TRUE)
 
 

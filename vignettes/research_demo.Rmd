@@ -123,7 +123,7 @@ for (filename in filenames) {
     read_file(filename)$pbd_output$igtree.extant, 
     colors = colors
   )
-  nLTT::nLTT.plot(read_file(filename)$pbd_output$tree)
+  nLTT::nltt_plot(read_file(filename)$pbd_output$tree)
 }
 ```
 
