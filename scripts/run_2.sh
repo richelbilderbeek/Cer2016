@@ -22,3 +22,12 @@ done
 
 txt=$(printf ":%s" "${jobids[@]}")
 txt=${txt:1}
+
+############################
+# Collect n species trees
+############################
+
+cmd="sbatch --dependency=afterok:$txt collect_n_species_trees.sh"
+echo "cmd: "$cmd
+jobid=`$cmd | cut -d ' ' -f 4`
+echo "jobid: "$jobid
