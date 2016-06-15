@@ -30,17 +30,7 @@ collect_n_species_trees <- function(
     )
   }
 
-
   file <- Cer2016::read_file(filename)
-
-  # pbd_output$recontree must be present, return NA if absent
-  if (is.null(file) || is.null(names(file$pbd_output))
-  ) {
-    if (verbose) {
-      print("collect_n_species_trees: file$pbd_output$recontree absent")
-    }
-    return(data.frame(n_species_trees = NA))
-  }
-
-  return (data.frame(n_species_trees = length(file$species_trees)))
+  n <- sum(!is.na(file$species_trees_with_outgroup))
+  return (data.frame(n_species_trees = n))
 }

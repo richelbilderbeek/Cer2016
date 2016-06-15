@@ -37,7 +37,6 @@ test_that("collect_n_species_trees: empty_file", {
     n_beast_runs = 2,
     filename = filename
   )
-
   df <- collect_n_species_trees(filename)
   expect_equal(names(df), c("n_species_trees"))
   expect_equal(ncol(df), 1)
