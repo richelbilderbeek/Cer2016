@@ -9,3 +9,8 @@ write.csv(
   file = "collected_n_taxa.csv",
   row.names = TRUE
 )
+
+# Analyse and create pdf
+file.copy("collected_n_taxa.csv", "../inst/extdata/collected_n_taxa.csv")
+library(knitr)
+knit2pdf("../vignettes/analyse_n_taxa.Rmd", "analyse_n_taxa.pdf" 
