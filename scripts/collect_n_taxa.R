@@ -15,5 +15,15 @@ file.copy("collected_n_taxa.csv", "../inst/extdata/collected_n_taxa.csv")
 
 library(knitr)
 library(rmarkdown)
-knit2pdf("../vignettes/analyse_n_taxa.Rmd", "analyse_n_taxa.md")
-render("../vignettes/analyse_n_taxa.Rmd", "analyse_n_taxa.pdf")
+
+tryCatch(
+  knit2pdf("../vignettes/analyse_n_taxa.Rmd", "analyse_n_taxa.md"),
+  error = function(msg) { print(msg) } 
+)
+
+tryCatch(
+  render("../vignettes/analyse_n_taxa.Rmd", "analyse_n_taxa.pdf"),
+  error = function(msg) { print(msg) } 
+)
+
+

@@ -15,5 +15,15 @@ file.copy("collected_parameters.csv", "../inst/extdata/collected_parameters.csv"
 
 library(knitr)
 library(rmarkdown)
-knit2pdf("../vignettes/analyse_files.Rmd", "analyse_files.md")
-render("../vignettes/analyse_files.Rmd", "analyse_files.pdf")
+
+tryCatch(
+  knit2pdf("../vignettes/analyse_files.Rmd", "analyse_files.md"),
+  error = function(msg) { print(msg) } 
+)
+
+tryCatch(
+  render("../vignettes/analyse_files.Rmd", "analyse_files.pdf"),
+  error = function(msg) { print(msg) } 
+)
+
+
