@@ -14,7 +14,6 @@ write.csv(
 file.copy("collected_parameters.csv", "../inst/extdata/collected_parameters.csv")
 
 library(knitr)
-knit2pdf("../vignettes/analyse_files.Rmd", "analyse_files.pdf")
-
-# library(rmarkdown)
-# render("../vignettes/analyse_files.Rmd", "analyse_files.pdf")
+library(rmarkdown)
+knit2pdf("../vignettes/analyse_files.Rmd", "analyse_files.md")
+render("../vignettes/analyse_files.Rmd", "analyse_files.pdf")
