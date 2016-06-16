@@ -8,6 +8,7 @@ rm *.log
 rm *.RDa
 rm *.csv
 rm *.pdf
+rm *.md
 ##########################
 # Create parameter files
 ##########################
