@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --time=2:00:00
+#SBATCH --time=0:10:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --ntasks=1
@@ -35,7 +35,12 @@ echo "jobid: "$jobid
 # Analysis
 ##########################
 
-#cmd="sbatch --dependency=afterok:$jobid run_4.sh"
-#echo "cmd: "$cmd
-#jobid=`$cmd | cut -d ' ' -f 4`
-#echo "jobid: "$jobid
+cmd="sbatch --dependency=afterok:$jobid collect_gammas.sh"
+echo "cmd: "$cmd
+jobid=`$cmd | cut -d ' ' -f 4`
+echo "jobid: "$jobid
+
+cmd="sbatch --dependency=afterok:$jobid collect_nltts.sh"
+echo "cmd: "$cmd
+jobid=`$cmd | cut -d ' ' -f 4`
+echo "jobid: "$jobid
