@@ -17,6 +17,9 @@ collect_posterior_gammas <- function(filename) {
       "invalid filename"
     )
   }
+
+  id <- NULL; rm(id) # nolint, should fix warning: collect_posterior_gammas: no visible binding for global variable ‘id’
+
   file <- Cer2016::read_file(filename)
   parameters <- file$parameters
   n_alignments <- as.numeric(parameters$n_alignments[2])
