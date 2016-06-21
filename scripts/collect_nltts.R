@@ -19,10 +19,6 @@ write.csv(
   row.names = TRUE
 )
 
-
-
-
-
 # Analyse and create pdf
 file.copy(
   csv_filename_species_trees,
@@ -37,12 +33,12 @@ library(knitr)
 library(rmarkdown)
 
 tryCatch(
-  knit2pdf("../vignettes/analyse_gammas.Rmd", "analyse_gammas.md"),
+  knit2pdf("../vignettes/analyse_nltts.Rmd", "analyse_nltts.md"),
   error = function(msg) { message(msg) }
 )
 
 tryCatch(
-  render("../vignettes/analyse_gammas.Rmd", "analyse_gammas.pdf"),
+  render("../vignettes/analyse_nltts.Rmd", "analyse_nltts.pdf"),
   error = function(msg) { message(msg) }
 )
 

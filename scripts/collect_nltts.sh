@@ -7,4 +7,4 @@
 #SBATCH --job-name=collect_nltts
 #SBATCH --output=collect_nltts.log
 module load R
-Rscript collect_gammas.R
+Rscript collect_nltts.R
