@@ -11,34 +11,30 @@ is_pbd_sim_output <- function(
 ) {
   if (typeof(pbd_sim_output) != "list") {
     if (verbose) {
-      print(
-        paste("is_pbd_sim_output:",
-          "typeof(pbd_sim_output) != \"list\", typeof(pbd_sim_output) is ",
-          typeof(pbd_sim_output)
-        )
+      message("is_pbd_sim_output:",
+        "typeof(pbd_sim_output) != \"list\", typeof(pbd_sim_output) is ",
+        typeof(pbd_sim_output)
       )
     }
     return(FALSE)
   }
   if (length(pbd_sim_output) < 9) {
     if (verbose) {
-      print(
-        paste("is_pbd_sim_output:",
-          "length(pbd_sim_output) < 9, was",
-          length(pbd_sim_output)
-        )
+      message(
+        "is_pbd_sim_output:",
+        "length(pbd_sim_output) < 9, was",
+        length(pbd_sim_output)
       )
     }
     return(FALSE)
   }
   if (class(pbd_sim_output$tree) != "phylo") {
     if (verbose) {
-      print(
-        paste("is_pbd_sim_output:",
-          "class(pbd_sim_output$tree) != \"phylo\"",
-          "class(pbd_sim_output$tree) is",
-          class(pbd_sim_output$tree)
-        )
+      message(
+        "is_pbd_sim_output:",
+        "class(pbd_sim_output$tree) != \"phylo\"",
+        "class(pbd_sim_output$tree) is",
+        class(pbd_sim_output$tree)
       )
     }
     return(FALSE)

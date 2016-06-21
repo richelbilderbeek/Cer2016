@@ -40,7 +40,7 @@ collect_files_n_alignments <- function(
         verbose = verbose
       ),
       error = function(msg) {
-        if (verbose) print(msg)
+        if (verbose) message(msg)
       }
     )
     if (is.null(this_n_alignments)) {

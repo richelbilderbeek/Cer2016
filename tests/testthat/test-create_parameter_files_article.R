@@ -6,9 +6,9 @@ test_that("create_parameter_files_article works", {
   #Local test
   if (1 == 2) {
     file <- read_file(filenames[1])
-    print("rng_seed" %in% names(file$parameters[2, , 2]))
-    print("add_outgroup" %in% names(file$parameters[2, , 2]))
-    print("version" %in% names(file$parameters[2, , 2]))
+    message("rng_seed" %in% names(file$parameters[2, , 2]))
+    message("add_outgroup" %in% names(file$parameters[2, , 2]))
+    message("version" %in% names(file$parameters[2, , 2]))
   }
 
   for (filename in filenames) {

@@ -38,7 +38,7 @@ collect_files_gammas <- function(
     tryCatch(
       this_stgs <- collect_species_tree_gammas(filename),
       error = function(msg) {
-        if (verbose) print(msg)
+        if (verbose) message(msg)
       }
     )
     if (is.null(this_stgs)) {
@@ -64,7 +64,7 @@ collect_files_gammas <- function(
     tryCatch(
       this_pgs <- collect_posterior_gammas(filename),
       error = function(msg) {
-        if (verbose) print(msg)
+        if (verbose) message(msg)
       }
     )
     if (is.null(this_pgs)) {

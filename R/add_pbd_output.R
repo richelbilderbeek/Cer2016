@@ -22,7 +22,7 @@ add_pbd_output <- function(
   file <- Cer2016::read_file(filename)
   if (Cer2016::is_pbd_sim_output(file$pbd_output)) {
     if (verbose) {
-      print(paste0("file ", filename, " already has a pbd_output"))
+      message(paste0("file ", filename, " already has a pbd_output"))
     }
     return()
   }
@@ -56,7 +56,7 @@ add_pbd_output <- function(
       break
     } else {
       if (verbose) {
-        print("n_taxa is 0")
+        message("n_taxa is 0")
       }
     }
   }

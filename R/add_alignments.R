@@ -20,7 +20,7 @@ add_alignments <- function(
   file <- Cer2016::read_file(filename)
   if (is.na(file$species_trees_with_outgroup[1])) {
     if (verbose) {
-      print(paste("file ", filename,
+      message(paste("file ", filename,
         " needs a species_trees_with_outgroup", sep = "")
       )
     }
@@ -40,7 +40,7 @@ add_alignments <- function(
     species_tree <- file$species_trees_with_outgroup[[i]][[1]]
     if (length(species_tree) == 1 && is.na(species_tree)) {
       if (verbose) {
-        print(paste("species_trees_with_outgroup[[", i,
+        message(paste("species_trees_with_outgroup[[", i,
           "]] is NA. Terminating 'add_alignments'", sep = "")
         )
       }
@@ -50,7 +50,7 @@ add_alignments <- function(
       index <- 1 + (j - 1) + ((i - 1) * n_species_trees_samples)                # nolint
       if (class(file$alignments[[index]][[1]]) == "DNAbin") {
         if (verbose) {
-          print(paste("   * Already stored alignment #", j,
+          message(paste("   * Already stored alignment #", j,
             " for species tree #", i, " at index #", index, sep = "")
           )
         }
@@ -66,12 +66,12 @@ add_alignments <- function(
       file$alignments[[index]] <- list(alignment)
       saveRDS(file, file = filename)
       if (verbose) {
-        print(paste("   * Created and saved alignments[", index, "]", sep = ""))
+        message(paste("   * Created and saved alignments[", index, "]", sep = ""))
       }
     }
   }
   if (verbose) {
-    print(paste("file ", filename, " has gotten its ", n_alignments,
+    message(paste("file ", filename, " has gotten its ", n_alignments,
       " alignments (per species tree)", sep = "")
     )
   }

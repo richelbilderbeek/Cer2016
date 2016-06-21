@@ -23,6 +23,7 @@ Collect the number of taxa of the species trees
  testit::assert(names(df) == c("n_taxa"))
  testit::assert(ncol(df) == 1)
  testit::assert(nrow(df) == 1)
+ testit::assert(df$n_taxa[1] > 0)
 }
 \author{
 Richel Bilderbeek

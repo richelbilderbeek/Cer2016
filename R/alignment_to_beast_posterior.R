@@ -95,19 +95,19 @@ alignment_to_beast_posterior <- function(
   if (file.exists(beast_trees_filename)) {
     file.remove(beast_trees_filename)
     if (verbose) {
-      print(paste("NOTE: removed '", beast_trees_filename, "'"), sep = "")
+      message("NOTE: removed '", beast_trees_filename, "'")
     }
   }
   if (file.exists(beast_log_filename)) {
     file.remove(beast_log_filename)
     if (verbose) {
-      print(paste("NOTE: removed '", beast_log_filename, "'"), sep = "")
+      message("NOTE: removed '", beast_log_filename, "'")
     }
   }
   if (file.exists(beast_state_filename)) {
     file.remove(beast_state_filename)
     if (verbose) {
-      print(paste("NOTE: removed '", beast_state_filename, "'"), sep = "")
+      message("NOTE: removed '", beast_state_filename, "'")
     }
   }
   testit::assert(!file.exists(beast_trees_filename))
@@ -153,7 +153,7 @@ alignment_to_beast_posterior <- function(
   file.remove(beast_state_filename)
 
   if (!Cer2016::is_beast_posterior(x = posterior)) {
-    print(Cer2016::is_beast_posterior(x = posterior, verbose = TRUE))
+    message(Cer2016::is_beast_posterior(x = posterior, verbose = TRUE))
     stop(
       "alignment_to_beast_posterior: ",
       "no posterior created"

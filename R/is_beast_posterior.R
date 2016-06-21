@@ -18,14 +18,14 @@ is_beast_posterior <- function(
 
   if (class(x) != "list") {
     if (verbose) {
-      print("x is not a list")
+      message("x is not a list")
     }
     return(FALSE)
   }
   for (item in x) {
     if (class(item) != "phylo") {
       if (verbose) {
-        print("item in x not a phylo")
+        message("item in x not a phylo")
       }
       return(FALSE)
     }
@@ -35,7 +35,7 @@ is_beast_posterior <- function(
   valid_names <- grep(valid_name_regex, names(x), perl = TRUE, value = TRUE)
   if (length(valid_names) != length(x)) {
     if (verbose) {
-      print("length of posterior does not match number of names")
+      message("length of posterior does not match number of names")
     }
     return(FALSE)
   }

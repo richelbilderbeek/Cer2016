@@ -20,11 +20,11 @@ write.csv(
 
 # Analyse and create pdf
 file.copy(
-  csv_filename_species_trees, 
+  csv_filename_species_trees,
   paste0("../inst/extdata/", csv_filename_species_trees)
 )
 file.copy(
-  csv_filename_posterior, 
+  csv_filename_posterior,
   paste0("../inst/extdata/", csv_filename_posterior)
 )
 
@@ -33,12 +33,12 @@ library(rmarkdown)
 
 tryCatch(
   knit2pdf("../vignettes/analyse_gammas.Rmd", "analyse_gammas.md"),
-  error = function(msg) { print(msg) } 
+  error = function(msg) { message(msg) }
 )
 
 tryCatch(
   render("../vignettes/analyse_gammas.Rmd", "analyse_gammas.pdf"),
-  error = function(msg) { print(msg) } 
+  error = function(msg) { message(msg) }
 )
 
 

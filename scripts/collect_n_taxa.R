@@ -18,12 +18,12 @@ library(rmarkdown)
 
 tryCatch(
   knit2pdf("../vignettes/analyse_n_taxa.Rmd", "analyse_n_taxa.md"),
-  error = function(msg) { print(msg) } 
+  error = function(msg) { message(msg) }
 )
 
 tryCatch(
   render("../vignettes/analyse_n_taxa.Rmd", "analyse_n_taxa.pdf"),
-  error = function(msg) { print(msg) } 
+  error = function(msg) { message(msg) }
 )
 
 

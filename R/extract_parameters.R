@@ -9,6 +9,11 @@
 #'   testit::assert(erg >= 0.0)
 #' @author Richel Bilderbeek
 extract_erg <- function(file) {
+
+  if (is.null(names(file$parameters))) {
+    stop("extract_erg: file$parameters not found")
+  }
+
   erg <- NA
   if ("erg" %in% names(file$parameters)) {
     erg <- as.numeric(file$parameters$erg[2])
@@ -30,6 +35,11 @@ extract_erg <- function(file) {
 #'   testit::assert(eri >= 0.0)
 #' @author Richel Bilderbeek
 extract_eri <- function(file) {
+
+  if (is.null(names(file$parameters))) {
+    stop("extract_eri: file$parameters not found")
+  }
+
   eri <- NA
   if ("eri" %in% names(file$parameters)) {
     eri <- as.numeric(file$parameters$eri[2])
@@ -52,6 +62,11 @@ extract_eri <- function(file) {
 #'   testit::assert(scr >= 0.0)
 #' @author Richel Bilderbeek
 extract_scr <- function(file) {
+
+  if (is.null(names(file$parameters))) {
+    stop("extract_scr: file$parameters not found")
+  }
+
   scr <- NA
   if ("scr" %in% names(file$parameters)) {
     scr <- as.numeric(file$parameters$scr[2])
@@ -74,6 +89,11 @@ extract_scr <- function(file) {
 #'   testit::assert(sirg >= 0.0)
 #' @author Richel Bilderbeek
 extract_sirg <- function(file) {
+
+  if (is.null(names(file$parameters))) {
+    stop("extract_sirg: file$parameters not found")
+  }
+
   sirg <- NA
   if ("sirg" %in% names(file$parameters)) {
     sirg <- as.numeric(file$parameters$sirg[2])
@@ -95,6 +115,11 @@ extract_sirg <- function(file) {
 #'   testit::assert(siri >= 0.0)
 #' @author Richel Bilderbeek
 extract_siri <- function(file) {
+
+  if (is.null(names(file$parameters))) {
+    stop("extract_siri: file$parameters not found")
+  }
+
   siri <- NA
   if ("siri" %in% names(file$parameters)) {
     siri <- as.numeric(file$parameters$siri[2])

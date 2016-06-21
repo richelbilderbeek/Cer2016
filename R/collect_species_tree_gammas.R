@@ -35,12 +35,10 @@ collect_species_tree_gammas <- function(
     g <- NULL
     if (!inherits(phylogeny, "phylo")) {
       if (verbose) {
-        print(
-          paste0(
-            "collect_species_tree_gammas: ",
-            "phylogeny must inherit from class 'phylo', ",
-            "class is '", class(phylogeny), "'"
-          )
+        message(
+          "collect_species_tree_gammas: ",
+          "phylogeny must inherit from class 'phylo', ",
+          "class is '", class(phylogeny), "'"
         )
       }
     } else {

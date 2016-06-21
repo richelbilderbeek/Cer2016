@@ -31,7 +31,7 @@ collect_files_nltts <- function(
     tryCatch(
       this_stns <- collect_species_tree_nltts(filename = filename, dt = dt),
       error = function(msg) {
-        if (verbose) print(msg)
+        if (verbose) message(msg)
       }
     )
     if (is.null(this_stns)) {
@@ -59,7 +59,7 @@ collect_files_nltts <- function(
         filename = filename, dt = dt
       ),
       error = function(msg) {
-        if (verbose) print(msg)
+        if (verbose) message(msg)
       }
     )
     if (is.null(this_pns)) {
