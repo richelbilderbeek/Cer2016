@@ -42,4 +42,5 @@ test_that("collect_n_species_trees: empty_file", {
   expect_equal(ncol(df), 1)
   expect_equal(nrow(df), 1)
   expect_equal(df$n_species_trees[1], 0)
+  file.remove(filename)
 })

@@ -72,4 +72,5 @@ test_that("add_species_trees: abuse", {
     add_species_trees(filename = filename),
     paste0("add_species_trees: file '", filename, "' needs a pbd_output")
   )
+  file.remove(filename)
 })

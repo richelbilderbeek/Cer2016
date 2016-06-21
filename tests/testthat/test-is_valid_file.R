@@ -62,4 +62,6 @@ test_that("is_valid_file: abuse", {
     is_valid_file(filename = filename, verbose = TRUE),
     "extract_erg: file\\$parameters not found"
   )
+
+  file.remove(filename)
 })

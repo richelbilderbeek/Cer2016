@@ -26,4 +26,13 @@ test_that("read_file abuse", {
     read_file(filename = c("1.RDa", "2.RDa")),
     "read_file: must supply 'read_file' with one filename"
   )
+
+  filename <- "test-read_file.RDa"
+  write.csv(data.frame(), file = filename)
+  expect_error(
+    read_file(filename = filename),
+    "read_file: error in readRDS of file with name"
+  )
+  file.remove(filename)
+
 })
