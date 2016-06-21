@@ -38,16 +38,7 @@ test-alignment_to_beast_posterior.log
 test-alignment_to_beast_posterior.trees
 test-alignment_to_beast_posterior.xml
 test-alignment_to_beast_posterior.xml.state
-inst/extdata/gamma_diff.csv
-inst/extdata/collected_nltts_posterior.csv
-inst/extdata/gamma_diff.csv.zip
 *.lyx~
-inst/extdata/collected_gammas_species_trees.csv
-inst/extdata/collected_nltts_species_trees.csv
-inst/extdata/collected_parameters.csv
-inst/extdata/collected_*.zip
-inst/extdata/collected_nltts_posterior_stub.csv
-inst/extdata/article_*.RDa
 test-add_alignment.RDa
 test-add_posteriors_*.RDa
 tests/testthat/test-extract_posteriors_*
