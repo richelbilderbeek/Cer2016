@@ -11,6 +11,7 @@ plot_species_tree_nltt <- function(
   if (!is_valid_file(filename)) {
     stop("plot_species_tree_nltt: invalid filename")
   }
+  nltt <- NULL; rm(nltt) # nolint, should fix warning: plot_species_tree_nltt: no visible binding for global variable ‘nltt’
 
   nltt_values <- Cer2016::collect_species_tree_nltts(
     filename = filename, dt = dt

@@ -21,6 +21,9 @@ collect_species_tree_nltts <- function(
       "invalid filename"
     )
   }
+
+  id <- NULL; rm(id) # nolint, should fix warning: collect_species_tree_nltts: no visible binding for global variable ‘id’
+
   file <- Cer2016::read_file(filename)
 
   n_species_trees_samples <- as.numeric(

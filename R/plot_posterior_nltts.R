@@ -12,6 +12,7 @@ plot_posterior_nltts <- function(
   if (!is_valid_file(filename)) {
     stop("plot_posterior_nltts: invalid filename")
   }
+  nltt <- NULL; rm(nltt) # nolint, should fix warning: plot_posterior_nltts: no visible binding for global variable ‘nltt’
 
   # Sampled species tree nLTT values
   true_nltt_values <- collect_species_tree_nltts(

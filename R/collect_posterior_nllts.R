@@ -12,6 +12,7 @@ collect_posterior_nltts <- function(
   if (!is_valid_file(filename)) {
     stop("collect_posterior_nltts: invalid filename")
   }
+
   file <- Cer2016::read_file(filename)
   parameters <- file$parameters
   n_alignments <- as.numeric(parameters$n_alignments[2])

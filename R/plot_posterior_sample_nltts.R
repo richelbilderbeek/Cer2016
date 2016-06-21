@@ -12,6 +12,8 @@ plot_posterior_sample_nltts <- function(
   if (!is_valid_file(filename)) {
     stop("plot_posterior_sample_nltts: invalid filename")
   }
+  nltt <- NULL; rm(nltt) # nolint, should fix warning: plot_posterior_sample_nltts: no visible binding for global variable ‘nltt’
+
   file <- Cer2016::read_file(filename)
   n_species_trees_samples <- as.numeric(
     file$parameters$n_species_trees_samples[2]
