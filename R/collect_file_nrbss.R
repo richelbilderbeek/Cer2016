@@ -7,7 +7,8 @@
 #' @examples
 #'   filename <- find_path("toy_example_3.RDa")
 #'   df <- collect_file_nrbss(filename)
-#'   testit::assert(nrow(df) > 2)
+#'   assert(names(df) == c("species_tree", "beast_run", "state", "nrbs"))
+#'   testit::assert(nrow(df) == 40)
 #' @export
 collect_file_nrbss <- function(
   filename,
@@ -79,13 +80,14 @@ collect_file_nrbss <- function(
     beast_run_index <- df$beast_run[i]
     state_index <- df$state[i]
 
+    # The index in the file$posterior
     posterior_index <- ((beast_run_index - 1) * n_beast_runs) + beast_run_index
 
     st <- file$species_trees_with_outgroup[[species_tree_index]][[1]]
     testit::assert(posterior_index >= 1)
     testit::assert(posterior_index <= length(file$posterior))
     testit::assert(state_index >= 1)
-    #testit::assert(state_index <= length(file$posterior[[posterior_index]]))
+    testit::assert(state_index <= length(file$posterior[[posterior_index]][[1]]))
     pt <- file$posterior[[posterior_index]][[1]][[state_index]]
     testit::assert(class(st) == "phylo")
     testit::assert(class(pt) == "phylo")

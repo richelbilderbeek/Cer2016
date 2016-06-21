@@ -22,6 +22,7 @@ posteriors in a parameter file in the melted/uncast/long form
 \examples{
   filename <- find_path("toy_example_3.RDa")
   df <- collect_file_nrbss(filename)
-  testit::assert(nrow(df) > 2)
+  assert(names(df) == c("species_tree", "beast_run", "state", "nrbs"))
+  testit::assert(nrow(df) == 40)
 }
 
