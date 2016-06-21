@@ -1,6 +1,6 @@
 context("is_alignment")
 
-test_that("basic tests", {
+test_that("is_alignment: use", {
   alignment_a <- beastscriptr::create_random_alignment(
     n_taxa = 5,
     sequence_length = 10

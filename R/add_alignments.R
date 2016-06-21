@@ -18,14 +18,7 @@ add_alignments <- function(
     stop("add_alignments: invalid file")
   }
   file <- Cer2016::read_file(filename)
-  if (is.na(file$species_trees_with_outgroup[1])) {
-    if (verbose) {
-      message("file ", filename,
-        " needs a species_trees_with_outgroup"
-      )
-    }
-    return()
-  }
+
   parameters <- file$parameters
   rng_seed <- as.numeric(parameters$rng_seed[2])
   mutation_rate <- as.numeric(parameters$mutation_rate[2])
@@ -36,21 +29,25 @@ add_alignments <- function(
   testit::assert(length(file$alignments) ==
     n_alignments * n_species_trees_samples
   )
+
+  testit::assert(length(n_species_trees_samples) == n_species_trees_samples)
+  for (species_tree_index in seq(1, n_species_trees_samples)) {
+    if (is.na(file$species_trees_with_outgroup[species_tree_index])) {
+      stop(
+        "add_alignments: need species_trees_with_outgroup at index ",
+        species_tree_index
+      )
+    }
+  }
+
   for (i in seq(1, n_species_trees_samples)) {
     species_tree <- file$species_trees_with_outgroup[[i]][[1]]
-    if (length(species_tree) == 1 && is.na(species_tree)) {
-      if (verbose) {
-        message("species_trees_with_outgroup[[", i,
-          "]] is NA. Terminating 'add_alignments'"
-        )
-      }
-      return
-    }
+    testit::assert(!is.na(species_tree))
     for (j in seq(1, n_alignments)) {
       index <- 1 + (j - 1) + ((i - 1) * n_species_trees_samples)                # nolint
       if (class(file$alignments[[index]][[1]]) == "DNAbin") {
         if (verbose) {
-          message("   * Already stored alignment #", j,
+          message("add_alignments: already got alignment #", j,
             " for species tree #", i, " at index #", index
           )
         }
@@ -66,7 +63,7 @@ add_alignments <- function(
       file$alignments[[index]] <- list(alignment)
       saveRDS(file, file = filename)
       if (verbose) {
-        message("   * Created and saved alignments[", index, "]")
+        message("add_alignments: created and saved alignments[", index, "]")
       }
     }
   }

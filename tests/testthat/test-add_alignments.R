@@ -19,21 +19,40 @@ test_that("alignment is added", {
     filename = filename
   )
   add_pbd_output(filename)
+
+  # Cannot add alignment without species trees
+  expect_error(
+    add_alignments(filename),
+    "add_alignments: need species_trees_with_outgroup at index 1"
+  )
+
   add_species_trees(
     filename = filename,
     verbose = FALSE
   )
+
+  # Precondition normal use
   expect_equal(
     is.na(read_file(filename = filename)$alignments),
     TRUE
   )
+
+  # Normal use takes place
   add_alignments(
     filename = filename,
     verbose = FALSE
   )
+
+  # Postcondition normal use
   file <- read_file(filename = filename)
   expect_equal(class(file$alignments[[1]]) == "list", TRUE)
   expect_equal(class(file$alignments[[1]][[1]]) == "DNAbin", TRUE)
+
+  # Cannot add alignment twice, only gives a warning
+  expect_message(
+    add_alignments(filename, verbose = TRUE),
+    "add_alignments: already got alignment"
+  )
 
   # Cleaning up
   file.remove(filename)
