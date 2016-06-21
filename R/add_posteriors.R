@@ -52,16 +52,17 @@ add_posteriors <- function(
         )
         if (!is.na(file$posteriors[[posterior_index]])) {
           if (verbose) {
-            message(paste("   * Posterior #", k, " for alignment #",
+            message(
+              "   * Posterior #", k, " for alignment #",
               j, " for species tree #", i, " at posterior_index #",
-              posterior_index, " already has a posterior", sep = "")
+              posterior_index, " already has a posterior"
             )
           }
           next
         }
         new_seed <- rng_seed + k
         if (verbose) {
-          message(paste("   * Setting seed to ", new_seed, sep = ""))
+          message("   * Setting seed to ", new_seed)
         }
         set.seed(new_seed)
         basefilename <- paste(
@@ -81,9 +82,10 @@ add_posteriors <- function(
         )
 
         if (verbose) {
-          message(paste0("   * Storing posterior #", k,
+          message(
+            "   * Storing posterior #", k,
             " for alignment #", j, " for species tree #", i,
-            " at posterior_index #", posterior_index)
+            " at posterior_index #", posterior_index
           )
         }
         file$posteriors[[posterior_index]] <- list(posterior) # nolint does not work otherwise
@@ -96,7 +98,7 @@ add_posteriors <- function(
   }
   saveRDS(file, file = filename)
   if (verbose) {
-    message(paste("file ", filename, " has gotten its posteriors", sep = ""))
+    message("file ", filename, " has gotten its posteriors")
   }
   n_posteriors_added
 }

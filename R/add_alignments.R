@@ -20,8 +20,8 @@ add_alignments <- function(
   file <- Cer2016::read_file(filename)
   if (is.na(file$species_trees_with_outgroup[1])) {
     if (verbose) {
-      message(paste("file ", filename,
-        " needs a species_trees_with_outgroup", sep = "")
+      message("file ", filename,
+        " needs a species_trees_with_outgroup"
       )
     }
     return()
@@ -40,8 +40,8 @@ add_alignments <- function(
     species_tree <- file$species_trees_with_outgroup[[i]][[1]]
     if (length(species_tree) == 1 && is.na(species_tree)) {
       if (verbose) {
-        message(paste("species_trees_with_outgroup[[", i,
-          "]] is NA. Terminating 'add_alignments'", sep = "")
+        message("species_trees_with_outgroup[[", i,
+          "]] is NA. Terminating 'add_alignments'"
         )
       }
       return
@@ -50,8 +50,8 @@ add_alignments <- function(
       index <- 1 + (j - 1) + ((i - 1) * n_species_trees_samples)                # nolint
       if (class(file$alignments[[index]][[1]]) == "DNAbin") {
         if (verbose) {
-          message(paste("   * Already stored alignment #", j,
-            " for species tree #", i, " at index #", index, sep = "")
+          message("   * Already stored alignment #", j,
+            " for species tree #", i, " at index #", index
           )
         }
         next
@@ -71,8 +71,8 @@ add_alignments <- function(
     }
   }
   if (verbose) {
-    message(paste("file ", filename, " has gotten its ", n_alignments,
-      " alignments (per species tree)", sep = "")
+    message("file ", filename, " has gotten its ", n_alignments,
+      " alignments (per species tree)"
     )
   }
 }

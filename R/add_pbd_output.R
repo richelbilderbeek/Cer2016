@@ -22,7 +22,7 @@ add_pbd_output <- function(
   file <- Cer2016::read_file(filename)
   if (Cer2016::is_pbd_sim_output(file$pbd_output)) {
     if (verbose) {
-      message(paste0("file ", filename, " already has a pbd_output"))
+      message("file ", filename, " already has a pbd_output")
     }
     return()
   }

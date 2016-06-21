@@ -35,7 +35,7 @@ add_species_trees <- function(
         message(" * species_trees_with_outgroup[", i, "] already exists")
       next
     }
-    if (verbose) message(paste0("   * Setting seed to ", (rng_seed + i)))
+    if (verbose) message("   * Setting seed to ", (rng_seed + i))
     # Each species tree is generated from its own RNG seed
     set.seed(rng_seed + i)
     species_tree <- sample_species_trees(
@@ -46,6 +46,6 @@ add_species_trees <- function(
     saveRDS(file, file = filename)
   }
   if (verbose) {
-    message(paste0("Added species_trees_with_outgroup to file ", filename))
+    message("Added species_trees_with_outgroup to file ", filename)
   }
 }
