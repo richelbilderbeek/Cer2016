@@ -14,31 +14,10 @@ find_path <- function(filename) {
   if (file.exists(p)) {
     return (p)
   }
-
-  # Check inst/extdata first
-  prefixes <- c(
-    "E:/Git/Cer2016/inst/extdata/",                                    # nolint
-    "/home/richel/GitHubs/Cer2016/inst/extdata/",                      # nolint
-    "/home/p230198/GitHubs/Cer2016/inst/extdata/",                     # nolint
-    "/home/travis/build/richelbilderbeek/Cer2016/inst/extdata/",       # nolint
-    "C:/Users/Aline/Cer2016/inst/extdata/"                             # nolint
-  )
-  for (prefix in prefixes) {
-    full_path <- paste(prefix, filename, sep = "")
-    if (file.exists(full_path)) {
-      return(full_path)
-    }
-  }
-
-  if (file.exists(filename)) {
-    return(filename)
-  }
-
   stop(
     "find_path: ",
     "cannot find '", filename, "'"
   )
-
 }
 
 #' Find the path of the BEAST2 jar file
