@@ -44,7 +44,9 @@ is_valid_file <- function(
     return(FALSE)
   }
   if (is.null(file$species_trees_with_outgroup)) {
-    if (verbose) message("is_valid_file: file$species_trees_with_outgroup absent")
+    if (verbose) {
+      message("is_valid_file: file$species_trees_with_outgroup absent")
+    }
     return(FALSE)
   }
   if (is.null(file$alignments)) {

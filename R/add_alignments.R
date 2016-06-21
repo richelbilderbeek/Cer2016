@@ -66,7 +66,7 @@ add_alignments <- function(
       file$alignments[[index]] <- list(alignment)
       saveRDS(file, file = filename)
       if (verbose) {
-        message(paste("   * Created and saved alignments[", index, "]", sep = ""))
+        message("   * Created and saved alignments[", index, "]")
       }
     }
   }

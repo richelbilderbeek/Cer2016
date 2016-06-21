@@ -33,7 +33,6 @@ test_that("add_species_trees: use", {
   )
   file.remove(filename)
   expect_equal(file.exists(filename), FALSE)
-
 })
 
 
