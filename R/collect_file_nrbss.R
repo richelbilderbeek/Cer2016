@@ -62,7 +62,7 @@ collect_file_nrbss <- function(
   # 2 2 3 NA
   df <- data.frame(
     species_tree = rep(seq(1, n_species_trees), each = n_beast_runs * n_states),
-    beast_run = rep(seq(1, n_beast_runs), each = n_states, times = n_species_trees),
+    beast_run = rep(seq(1, n_beast_runs), each = n_states, times = n_species_trees), # nolint
     state = rep(seq(1, n_states), n_species_trees * n_beast_runs),
     nrbs = rep(NA, n_rows),
     stringsAsFactors = FALSE
@@ -73,7 +73,6 @@ collect_file_nrbss <- function(
   # pti: posterior tree index, of type int
   # si: MCMC state index, of type int
   # st: MCMC state tree, of type phylo
-  index <- 1
   for (i in seq(1, n_rows)) {
 
     species_tree_index <- df$species_tree[i]
@@ -81,7 +80,7 @@ collect_file_nrbss <- function(
     state_index <- df$state[i]
 
     # The index in the file$posterior
-    posterior_index <- ((beast_run_index - 1) * n_beast_runs) + beast_run_index
+    posterior_index <- ( (beast_run_index - 1) * n_beast_runs) + beast_run_index
 
     st <- file$species_trees_with_outgroup[[species_tree_index]][[1]]
     testit::assert(posterior_index >= 1)
