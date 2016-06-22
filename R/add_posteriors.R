@@ -53,21 +53,20 @@ add_posteriors <- function(
         if (!is.na(file$posteriors[[posterior_index]])) {
           if (verbose) {
             message(
-              "   * Posterior #", k, " for alignment #",
-              j, " for species tree #", i, " at posterior_index #",
-              posterior_index, " already has a posterior"
+              "add_posteriors: posterior already present at posterior index ",
+              posterior_index
             )
           }
           next
         }
         new_seed <- rng_seed + k
         if (verbose) {
-          message("   * Setting seed to ", new_seed)
+          message("add_posteriors: setting seed to ", new_seed)
         }
         set.seed(new_seed)
-        basefilename <- paste(
+        basefilename <- paste0(
           tools::file_path_sans_ext(filename), "_",
-          i, "_", j, "_", k, sep = ""
+          i, "_", j, "_", k
         )
         posterior <- alignment_to_beast_posterior(
           alignment_dnabin = alignment,
@@ -77,21 +76,18 @@ add_posteriors <- function(
           skip_if_output_present = skip_if_output_present,
           verbose = verbose
         )
-        testit::assert(
-          is_beast_posterior(posterior) && 1 == 1
-        )
+        testit::assert(is_beast_posterior(posterior))
 
         if (verbose) {
           message(
-            "   * Storing posterior #", k,
-            " for alignment #", j, " for species tree #", i,
-            " at posterior_index #", posterior_index
+            "add_posteriors: sorted posterior at posterior index ",
+            posterior_index
           )
         }
         file$posteriors[[posterior_index]] <- list(posterior) # nolint does not work otherwise
         n_posteriors_added <- n_posteriors_added + 1
         testit::assert(
-          is_beast_posterior(file$posteriors[[posterior_index]][[1]]) && 2 == 2
+          is_beast_posterior(file$posteriors[[posterior_index]][[1]])
         )
       }
     }

@@ -55,14 +55,14 @@ From that alignment, create a BEAST2 posterior
 ```{r}
 base_filename <- "alignment_to_beast_posterior_test"
 
-if (file.exists(paste(base_filename, ".log", sep = ""))) {
-  file.remove(paste(base_filename, ".log", sep = ""))  
+if (file.exists(paste0(base_filename, ".log"))) {
+  file.remove(paste0(base_filename, ".log"))  
 }
-if (file.exists(paste(base_filename, ".trees", sep = ""))) {
-  file.remove(paste(base_filename, ".trees", sep = ""))  
+if (file.exists(paste0(base_filename, ".trees"))) {
+  file.remove(paste0(base_filename, ".trees"))  
 }
-if (file.exists(paste(base_filename, ".xml.state", sep = ""))) {
-  file.remove(paste(base_filename, ".xml.state", sep = ""))  
+if (file.exists(paste0(base_filename, ".xml.state"))) {
+  file.remove(paste0(base_filename, ".xml.state"))  
 }
 posterior <- alignment_to_beast_posterior(
   alignment,

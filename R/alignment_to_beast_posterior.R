@@ -61,12 +61,12 @@ alignment_to_beast_posterior <- function(
   }
 
   # File paths
-  beast_filename <- paste(base_filename, ".xml", sep = "")
+  beast_filename <- paste0(base_filename, ".xml")
 
-  beast_log_filename <- paste(base_filename, ".log", sep = "")
-  beast_trees_filename <- paste(base_filename, ".trees", sep = "")
-  beast_state_filename <- paste(base_filename, ".xml.state", sep = "")
-  temp_fasta_filename <- paste(base_filename, ".fasta", sep = "")
+  beast_log_filename <- paste0(base_filename, ".log")
+  beast_trees_filename <- paste0(base_filename, ".trees")
+  beast_state_filename <- paste0(base_filename, ".xml.state")
+  temp_fasta_filename <- paste0(base_filename, ".fasta")
 
   # Use the posterior already present?
   if (skip_if_output_present &&
