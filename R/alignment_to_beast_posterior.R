@@ -74,7 +74,7 @@ alignment_to_beast_posterior <- function(
     file.exists(beast_log_filename) &&
     file.exists(beast_state_filename)) {
     posterior <- rBEAST::beast2out.read.trees(beast_trees_filename)
-    testit::assert(is_beast_posterior(posterior))
+    testit::assert(Cer2016:::is_beast_posterior(posterior))
     return(posterior)
   }
 

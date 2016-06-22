@@ -6,7 +6,7 @@
 #' @author Richel Bilderbeek
 get_posterior_by_index <- function(file, posterior_index) {
   posterior <- file$posterior[[posterior_index]][[1]]
-  testit::assert(is_beast_posterior(posterior))
+  testit::assert(Cer2016:::is_beast_posterior(posterior))
   posterior
 }
 

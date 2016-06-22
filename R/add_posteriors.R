@@ -23,7 +23,7 @@ add_posteriors <- function(
   if (!is_valid_file(filename)) {
     stop("add_posteriors: invalid filename")
   }
-  file <- read_file(filename)
+  file <- Cer2016:::read_file(filename)
   parameters <- file$parameters
   rng_seed <- as.numeric(parameters$rng_seed[2])
   mcmc_chainlength <- as.numeric(parameters$mcmc_chainlength[2])
@@ -42,7 +42,7 @@ add_posteriors <- function(
         alignment_index <= length(file$alignments)
       )
       alignment <- file$alignments[[alignment_index]][[1]]
-      testit::assert(is_alignment(alignment))
+      testit::assert(Cer2016:::is_alignment(alignment))
       for (k in seq(1, n_beast_runs)) {
         posterior_index <- 1 + (k - 1) +
           ((j - 1) * n_alignments) +                                            # nolint
@@ -84,18 +84,22 @@ add_posteriors <- function(
             posterior_index
           )
         }
-        # Why doesn't this work?
-        # file <- set_posterior_by_index( # nolint
-        #   file = file, # nolint
-        #   posterior_index = posterior_index, # nolint
-        #   posterior = posterior # nolint
-        # ) # nolint
-        # testit::assert( # nolint
-        #   are_identical_posteriors( # nolint
-        #     get_posterior_by_index(file = file, posterior_index = posterior_index), # nolint
-        #     posterior # nolint
-        #   ) # nolint
-        # ) # nolint
+        if (1 == 2) {
+          # Why doesn't this work?
+          file <- set_posterior_by_index(
+            file = file,
+            posterior_index = posterior_index,
+            posterior = posterior
+          )
+          testit::assert(
+            are_identical_posteriors(
+              get_posterior_by_index(file = file,
+                posterior_index = posterior_index
+              ),
+              posterior
+            )
+          )
+        }
         file$posteriors[[posterior_index]] <- list(posterior) # nolint does not work otherwise
         n_posteriors_added <- n_posteriors_added + 1
         testit::assert(

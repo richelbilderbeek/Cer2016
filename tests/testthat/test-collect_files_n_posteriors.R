@@ -13,7 +13,7 @@ test_that("collect_files_n_posteriors: basic use", {
 
 test_that("collect_files_n_posteriors: abuse", {
   expect_error(
-    collect_files_n_posteriors(filename = "inva.lid", verbose = "TRUE nor FALSe"),
+    collect_files_n_posteriors(filename = "inva.lid", verbose = "TRUE nor FALSe"), # nolint
     "collect_files_n_posteriors: verbose should be TRUE or FALSE"
   )
   expect_error(
