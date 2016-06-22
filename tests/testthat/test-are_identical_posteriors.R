@@ -90,26 +90,6 @@ test_that("are_identical_posteriors: use from local simulation", {
   expect_true(are_identical_posteriors(posterior_1, posterior_2))
   expect_true(are_identical_posteriors(posterior_2, posterior_2))
   expect_true(are_identical_posteriors(posterior_3, posterior_3))
-
   expect_false(are_identical_posteriors(posterior_1, posterior_3))
   expect_false(are_identical_posteriors(posterior_2, posterior_3))
-
-  if (1 == 2) {
-    multiphylo_1 <- posterior_1
-    multiphylo_2 <- posterior_2
-    multiphylo_3 <- posterior_3
-    class(multiphylo_1) <- "multiPhylo"
-    class(multiphylo_2) <- "multiPhylo"
-    class(multiphylo_3) <- "multiPhylo"
-    png("are_identical_posteriors_1.png")
-    phangorn::densiTree(multiphylo_1, type = "cladogram", alpha = 1)
-    dev.off()
-    png("are_identical_posteriors_2.png")
-    phangorn::densiTree(multiphylo_2, type = "cladogram", alpha = 1)
-    dev.off()
-    png("are_identical_posteriors_3.png")
-    phangorn::densiTree(multiphylo_3, type = "cladogram", alpha = 1)
-    dev.off()
-  }
-
 })
