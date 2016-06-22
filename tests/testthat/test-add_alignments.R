@@ -45,8 +45,8 @@ test_that("alignment is added", {
 
   # Postcondition normal use
   file <- read_file(filename = filename)
-  expect_equal(class(file$alignments[[1]]) == "list", TRUE)
-  expect_equal(class(file$alignments[[1]][[1]]) == "DNAbin", TRUE)
+  expect_true(class(file$alignments[[1]]) == "list")
+  expect_true(class(file$alignments[[1]][[1]]) == "DNAbin")
 
   # Cannot add alignment twice, only gives a warning
   expect_message(
@@ -56,7 +56,7 @@ test_that("alignment is added", {
 
   # Cleaning up
   file.remove(filename)
-  expect_equal(file.exists(filename), FALSE)
+  expect_false(file.exists(filename))
 })
 
 

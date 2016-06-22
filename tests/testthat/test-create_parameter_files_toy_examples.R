@@ -7,4 +7,5 @@ test_that("create_test_parameter_files works", {
 
   filenames <- create_test_parameter_files()
   expect_equal(file.exists(filenames), rep(TRUE, 4))
+  file.remove(filenames)
 })

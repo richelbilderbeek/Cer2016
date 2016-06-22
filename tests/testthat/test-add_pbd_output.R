@@ -18,16 +18,14 @@ test_that("pbd_output is added", {
     n_beast_runs = 1,
     filename = filename
   )
-  expect_equal(file.exists(filename), TRUE)
-  expect_equal(
-    is_pbd_sim_output(read_file(filename)$pbd_output),
-    FALSE
+  expect_true(file.exists(filename))
+  expect_false(
+    is_pbd_sim_output(read_file(filename)$pbd_output)
   )
   add_pbd_output(filename)
-  expect_equal(
-    is_pbd_sim_output(read_file(filename)$pbd_output),
-    TRUE
+  expect_true(
+    is_pbd_sim_output(read_file(filename)$pbd_output)
   )
   file.remove(filename)
-  expect_equal(file.exists(filename), FALSE)
+  expect_false(file.exists(filename))
 })

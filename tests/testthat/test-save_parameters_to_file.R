@@ -18,8 +18,8 @@ test_that("save_parameters_to_file", {
     n_beast_runs = 1,
     filename = filename
   )
-  expect_equal(file.exists(filename), TRUE)
-  expect_equal(is_valid_file(filename), TRUE)
+  expect_true(file.exists(filename))
+  expect_true(is_valid_file(filename))
   file.remove(filename)
-  expect_equal(file.exists(filename), FALSE)
+  expect_false(file.exists(filename))
 })

@@ -7,13 +7,13 @@ test_that("basic tests", {
     verbose = TRUE
   )
   sink()
-  expect_equal(result, TRUE)
+  expect_true(result)
 
   sink("/dev/null") # nolint
   result <- is_pbd_sim_output(rep(x = 0, times = 9), verbose = TRUE)
   sink()
 
-  expect_equal(result, FALSE)
+  expect_false(result)
 
   sink("/dev/null") # nolint
   result <- is_pbd_sim_output(
@@ -22,5 +22,5 @@ test_that("basic tests", {
     )
   sink()
 
-  expect_equal(result, FALSE)
+  expect_false(result)
 })

@@ -8,12 +8,25 @@
 #' @export
 find_path <- function(filename) {
 
-  # Check the first logical candidate first
-  # From https://github.com/csgillespie/efficientR/issues/28
-  p <- system.file(paste0("extdata/", filename), package = "Cer2016")
-  if (file.exists(p)) {
-    return (p)
+  # Check local inst/extdata first
+  prefixes <- c(
+    "/home/richel/GitHubs/Cer2016/inst/extdata/",               # nolint
+    "/home/p230198/GitHubs/Cer2016/inst/extdata/",              # nolint
+    "/home/travis/build/richelbilderbeek/Cer2016/inst/extdata/" # nolint
+  )
+  for (prefix in prefixes) {
+    full_path <- paste(prefix, filename, sep = "")
+    if (file.exists(full_path)) {
+      return(full_path)
+    }
   }
+
+  # Check the library its candidate
+  # From https://github.com/csgillespie/efficientR/issues/28
+  #   p <- system.file(paste0("extdata/", filename), package = "Cer2016")
+  #   if (file.exists(p)) {
+  #     return (p)
+  #   }
   stop(
     "find_path: ",
     "cannot find '", filename, "'"

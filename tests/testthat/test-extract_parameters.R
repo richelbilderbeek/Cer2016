@@ -25,10 +25,9 @@ test_that("extract_scr", {
 test_that("extract_sirg", {
 
   file <- Cer2016::read_file(find_path("toy_example_1.RDa"))
-  expect_equal("sirg" %in% names(file$parameters), TRUE)
-  expect_equal(
-    "species_initiation_rate_good_species" %in% names(file$parameters),
-    FALSE
+  expect_true("sirg" %in% names(file$parameters))
+  expect_false(
+    "species_initiation_rate_good_species" %in% names(file$parameters)
   )
   sirg <- extract_sirg(file)
   expect_true(sirg >= 0.0)

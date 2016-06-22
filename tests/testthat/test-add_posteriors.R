@@ -5,7 +5,7 @@ test_that("one posterior is added", {
   if (file.exists(filename)) {
     file.remove(filename)
   }
-  expect_equal(file.exists(filename), FALSE)
+  expect_false(file.exists(filename))
 
   save_parameters_to_file(
     rng_seed = 42,
@@ -33,14 +33,14 @@ test_that("one posterior is added", {
     verbose = FALSE
   )
 
-  expect_equal(is.na(read_file(filename = filename)$posteriors[[1]]), TRUE)
+  expect_true(is.na(read_file(filename = filename)$posteriors[[1]]))
 
   n_posteriors_added <- add_posteriors(
     filename = filename,
     skip_if_output_present = FALSE,
     verbose = FALSE
   )
-  expect_equal(is.na(read_file(filename = filename)$posteriors[[1]]), FALSE)
+  expect_false(is.na(read_file(filename = filename)$posteriors[[1]]))
   expect_equal(n_posteriors_added, 1)
 
   # Cleaning up
@@ -48,7 +48,7 @@ test_that("one posterior is added", {
   if (file.exists(filename)) {
     file.remove(filename)
   }
-  expect_equal(file.exists(filename), FALSE)
+  expect_false(file.exists(filename))
 })
 
 
@@ -58,7 +58,7 @@ test_that("two posteriors are added", {
   if (file.exists(filename)) {
     file.remove(filename)
   }
-  expect_equal(file.exists(filename), FALSE)
+  expect_false(file.exists(filename))
 
   save_parameters_to_file(
     rng_seed = 42,
@@ -86,8 +86,8 @@ test_that("two posteriors are added", {
     verbose = FALSE
   )
 
-  expect_equal(is.na(read_file(filename = filename)$posteriors[[1]]), TRUE)
-  expect_equal(is.na(read_file(filename = filename)$posteriors[[2]]), TRUE)
+  expect_true(is.na(read_file(filename = filename)$posteriors[[1]]))
+  expect_true(is.na(read_file(filename = filename)$posteriors[[2]]))
 
   n_posteriors_added <- add_posteriors(
     filename = filename,
@@ -96,12 +96,12 @@ test_that("two posteriors are added", {
   )
   expect_equal(n_posteriors_added, 2)
 
-  expect_equal(is.na(read_file(filename = filename)$posteriors[[1]]), FALSE)
-  expect_equal(is.na(read_file(filename = filename)$posteriors[[2]]), FALSE)
+  expect_false(is.na(read_file(filename = filename)$posteriors[[1]]))
+  expect_false(is.na(read_file(filename = filename)$posteriors[[2]]))
 
   file.remove(filename)
 
-  expect_equal(file.exists(filename), FALSE)
+  expect_false(file.exists(filename))
 
 })
 
@@ -111,7 +111,7 @@ test_that("three posteriors are added, middle is deleted and added again", {
   if (file.exists(filename)) {
     file.remove(filename)
   }
-  expect_equal(file.exists(filename), FALSE)
+  expect_false(file.exists(filename))
 
   save_parameters_to_file(
     rng_seed = 42,
@@ -139,9 +139,9 @@ test_that("three posteriors are added, middle is deleted and added again", {
     verbose = FALSE
   )
 
-  expect_equal(is.na(read_file(filename = filename)$posteriors[[1]]), TRUE )
-  expect_equal(is.na(read_file(filename = filename)$posteriors[[2]]), TRUE)
-  expect_equal(is.na(read_file(filename = filename)$posteriors[[3]]), TRUE)
+  expect_true(is.na(read_file(filename = filename)$posteriors[[1]]))
+  expect_true(is.na(read_file(filename = filename)$posteriors[[2]]))
+  expect_true(is.na(read_file(filename = filename)$posteriors[[3]]))
 
   # Only be verbose on Travis
   n_posteriors_added <- add_posteriors(
@@ -151,18 +151,18 @@ test_that("three posteriors are added, middle is deleted and added again", {
   )
 
   expect_equal(n_posteriors_added, 3)
-  expect_equal(is.na(read_file(filename = filename)$posteriors[[1]]), FALSE)
-  expect_equal(is.na(read_file(filename = filename)$posteriors[[2]]), FALSE)
-  expect_equal(is.na(read_file(filename = filename)$posteriors[[3]]), FALSE)
+  expect_false(is.na(read_file(filename = filename)$posteriors[[1]]))
+  expect_false(is.na(read_file(filename = filename)$posteriors[[2]]))
+  expect_false(is.na(read_file(filename = filename)$posteriors[[3]]))
 
   # Delete middle
   file <- read_file(filename)
   file$posteriors[[2]][[1]] <- NA
   saveRDS(file, file = filename)
 
-  expect_equal(is.na(read_file(filename = filename)$posteriors[[1]]), FALSE)
-  expect_equal(is.na(read_file(filename = filename)$posteriors[[2]]), TRUE)
-  expect_equal(is.na(read_file(filename = filename)$posteriors[[3]]), FALSE)
+  expect_false(is.na(read_file(filename = filename)$posteriors[[1]]))
+  expect_true(is.na(read_file(filename = filename)$posteriors[[2]]))
+  expect_false(is.na(read_file(filename = filename)$posteriors[[3]]))
 
   # Add middle again
   n_posteriors_added <- add_posteriors(
@@ -172,14 +172,14 @@ test_that("three posteriors are added, middle is deleted and added again", {
   )
 
   expect_equal(n_posteriors_added, 1)
-  expect_equal(is.na(read_file(filename = filename)$posteriors[[1]]), FALSE)
-  expect_equal(is.na(read_file(filename = filename)$posteriors[[2]]), FALSE)
-  expect_equal(is.na(read_file(filename = filename)$posteriors[[3]]), FALSE)
+  expect_false(is.na(read_file(filename = filename)$posteriors[[1]]))
+  expect_false(is.na(read_file(filename = filename)$posteriors[[2]]))
+  expect_false(is.na(read_file(filename = filename)$posteriors[[3]]))
 
   # Clean up
-  expect_equal(file.exists(filename), TRUE)
+  expect_true(file.exists(filename))
   file.remove(filename)
-  expect_equal(file.exists(filename), FALSE)
+  expect_false(file.exists(filename))
 })
 
 

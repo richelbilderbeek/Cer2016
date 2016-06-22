@@ -9,10 +9,11 @@ test_that("plot_alignments: basic use", {
 
   plot_alignments(filename = find_path("toy_example_1.RDa"))
 
-  expect_equal(file.exists(pdf_filename), TRUE)
+  expect_true(file.exists(pdf_filename))
   if (file.exists(pdf_filename)) {
     file.remove(pdf_filename)
   }
+  expect_false(file.exists(pdf_filename))
 })
 
 test_that("plot_alignments: abuse", {

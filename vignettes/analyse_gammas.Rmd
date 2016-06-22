@@ -67,7 +67,13 @@ testit::assert(nrow(df$posterior_gammas) == 80)
 
 ```{r collecting_gammas5}
 # Thanks to Robin Lovelace
-all_parameter_filenames <- list.files(system.file("extdata", package = "Cer2016"), full.names = TRUE, pattern = "toy_example_.*\\.RDa")
+all_parameter_filenames <- c(
+  find_path("toy_example_1.RDa"),
+  find_path("toy_example_2.RDa"),
+  find_path("toy_example_3.RDa"),
+  find_path("toy_example_4.RDa")
+)
+   
 df <- collect_files_gammas(head(all_parameter_filenames), verbose = TRUE)
 testit::assert(names(df) 
   == c("species_tree_gamma_stats", "posterior_gamma_stats")

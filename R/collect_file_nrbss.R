@@ -81,7 +81,7 @@ collect_file_nrbss <- function(
 
 
     # The index in the file$posterior
-    posterior_index <- ((species_tree_index - 1) * n_beast_runs) +
+    posterior_index <- ( (species_tree_index - 1) * n_beast_runs) +
       beast_run_index
 
     message("collect_file_nrbss: posterior_index: ", posterior_index)

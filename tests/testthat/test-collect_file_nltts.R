@@ -12,8 +12,8 @@ test_that("collect_file_nltts: use", {
     names(df$species_tree_nltts),
     c("species_tree", "t", "nltt")
   )
-  expect_equal(nrow(df$species_tree_nltts) > 2, TRUE)
-  expect_equal(nrow(df$posterior_nltts) > 80, TRUE)
+  expect_true(nrow(df$species_tree_nltts) > 2)
+  expect_true(nrow(df$posterior_nltts) > 80)
 })
 
 test_that("collect_file_nltts: abuse", {

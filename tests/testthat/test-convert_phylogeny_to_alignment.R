@@ -6,7 +6,7 @@ test_that("convert_phylogeny_to_alignment: basic", {
     sequence_length = 10,
     mutation_rate = 1
   )
-  expect_equal(is_alignment(alignment), TRUE)
+  expect_true(is_alignment(alignment))
 })
 
 test_that("convert_phylogeny_to_alignment: abuse", {

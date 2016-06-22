@@ -7,5 +7,5 @@ test_that("plot_posterior_nltts works", {
     plot_posterior_nltts(filename = "inva.lid"),
     "plot_posterior_nltts: invalid filename"
   )
-  expect_equal(file.exists("Rplots.pdf"), FALSE)
+  expect_false(file.exists("Rplots.pdf"))
 })

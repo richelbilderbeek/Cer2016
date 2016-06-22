@@ -5,7 +5,7 @@ test_that("collect_parameters: is add_outgroup really gone?", {
   filenames <- create_test_parameter_files()
   for (filename in filenames) {
     file <- read_file(filename)
-    expect_equal("rng_seed" %in% names(file$parameters[2, , 2]), TRUE)
-    expect_equal("add_outgroup" %in% names(file$parameters[2, , 2]), FALSE)
+    expect_true("rng_seed" %in% names(file$parameters[2, , 2]))
+    expect_false("add_outgroup" %in% names(file$parameters[2, , 2]))
   }
 })

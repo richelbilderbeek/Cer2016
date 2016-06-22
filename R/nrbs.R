@@ -32,15 +32,6 @@ nrbs <- function(phylogeny1, phylogeny2) {
     stop("nrbs: phylogenies must have same number of tips")
   }
 
-#   message("nrbs: phylogeny1$tip.label: ", phylogeny1$tip.label)
-#   message("nrbs: phylogeny2$tip.label: ", phylogeny2$tip.label)
-#   message("nrbs: sort(phylogeny1$tip.label): ", sort(phylogeny1$tip.label))
-#   message("nrbs: sort(phylogeny2$tip.label): ", sort(phylogeny2$tip.label))
-#   message("nrbs: ?: ", all.equal(
-#       sort(phylogeny1$tip.label),
-#       sort(phylogeny2$tip.label)
-#     ) != TRUE)
-
   if (
     all.equal(
       sort(phylogeny1$tip.label),

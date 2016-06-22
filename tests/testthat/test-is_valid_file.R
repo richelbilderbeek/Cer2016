@@ -2,8 +2,8 @@ context("is_valid_file")
 
 test_that("is_valid_file: use", {
   filename <- find_path("toy_example_1.RDa")
-  expect_equal(file.exists(filename), TRUE)
-  expect_equal(is_valid_file(filename), TRUE)
+  expect_true(file.exists(filename))
+  expect_true(is_valid_file(filename))
 })
 
 test_that("is_valid_file: abuse", {
