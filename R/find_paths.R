@@ -23,10 +23,10 @@ find_path <- function(filename) {
 
   # Check the library its candidate
   # From https://github.com/csgillespie/efficientR/issues/28
-  #   p <- system.file(paste0("extdata/", filename), package = "Cer2016")
-  #   if (file.exists(p)) {
-  #     return (p)
-  #   }
+  #   p <- system.file(paste0("extdata/", filename), package = "Cer2016") # nolint
+  #   if (file.exists(p)) {                                               # nolint
+  #     return (p)                                                        # nolint
+  #   }                                                                   # nolint
   stop(
     "find_path: ",
     "cannot find '", filename, "'"
