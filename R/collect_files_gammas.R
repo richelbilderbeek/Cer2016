@@ -24,9 +24,15 @@ collect_files_gammas <- function(
   filenames,
   verbose = FALSE
 ) {
+  if (verbose != TRUE && verbose != FALSE) {
+    stop(
+      "collect_files_gammas: ",
+      "verbose should be TRUE or FALSE"
+    )
+  }
   if (length(filenames) < 1) {
     stop(
-      "collect_gamma_statistics_from_file: ",
+      "collect_files_gammas: ",
       "there must be at least one filename supplied"
     )
   }

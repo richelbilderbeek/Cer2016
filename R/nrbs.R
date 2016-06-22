@@ -27,6 +27,38 @@ nrbs <- function(phylogeny1, phylogeny2) {
       "instead of type", class(phylogeny2)
     )
   }
+  if (length(phylogeny1$tip.label) != length(phylogeny2$tip.label)) {
+    # Enforced by phangorn::KF.dist
+    stop("nrbs: phylogenies must have same number of tips")
+  }
+
+  message("nrbs: phylogeny1$tip.label: ", phylogeny1$tip.label)
+  message("nrbs: phylogeny2$tip.label: ", phylogeny2$tip.label)
+  message("nrbs: sort(phylogeny1$tip.label): ", sort(phylogeny1$tip.label))
+  message("nrbs: sort(phylogeny2$tip.label): ", sort(phylogeny2$tip.label))
+  message("nrbs: ?: ", all.equal(
+      sort(phylogeny1$tip.label),
+      sort(phylogeny2$tip.label)
+    ) != TRUE)
+
+  if (
+    all.equal(
+      sort(phylogeny1$tip.label),
+      sort(phylogeny2$tip.label)
+    ) != TRUE
+  ) {
+    # Enforced by phangorn::KF.dist
+    stop("nrbs: phylogenies must have same tip labels")
+  }
+  if (any(is.na(phylogeny1$tip.label))) {
+    # Enforced by phangorn::KF.dist
+    stop("nrbs: phylogeny #1 must not have any NA tip label")
+  }
+  if (any(is.na(phylogeny2$tip.label))) {
+    # Enforced by phangorn::KF.dist
+    stop("nrbs: phylogeny #2 must not have any NA tip label")
+  }
+
 
   # KF.dist return the branch score distance (Kuhner & Felsenstein 1994)
   difference <- phangorn::KF.dist(

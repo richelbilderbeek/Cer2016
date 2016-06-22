@@ -86,11 +86,14 @@ collect_file_nrbss <- function(
     testit::assert(posterior_index >= 1)
     testit::assert(posterior_index <= length(file$posterior))
     testit::assert(state_index >= 1)
-    testit::assert(state_index <= length(file$posterior[[posterior_index]][[1]]))
+    testit::assert(state_index <= length(file$posterior[[posterior_index]][[1]])) # nolint
     pt <- file$posterior[[posterior_index]][[1]][[state_index]]
     testit::assert(class(st) == "phylo")
     testit::assert(class(pt) == "phylo")
-    df$nrbs[i] <- nrbs(st, pt)
+    testit::assert(length(st$tip.label) == length(pt$tip.label))
+    testit::assert(all.equal(sort(st$tip.label), sort(pt$tip.label)))
+
+    df$nrbs[i] <- Cer2016::nrbs(st, pt)
   }
 
   df

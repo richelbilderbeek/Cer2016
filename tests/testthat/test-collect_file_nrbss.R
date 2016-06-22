@@ -1,7 +1,18 @@
 context("collect_file_nrbss")
 
-test_that("collect_file_nrbss: use", {
+test_that("collect_file_nrbss: use on #3", {
   filename <- find_path("toy_example_3.RDa")
+  df <- collect_file_nrbss(filename)
+  expect_equal(
+    names(df),
+    c("species_tree", "beast_run", "state", "nrbs")
+  )
+  df
+  testit::assert(nrow(df) == 40)
+})
+
+test_that("collect_file_nrbss: use on #4", {
+  filename <- find_path("toy_example_4.RDa")
   df <- collect_file_nrbss(filename)
   expect_equal(
     names(df),

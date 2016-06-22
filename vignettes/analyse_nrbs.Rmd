@@ -49,7 +49,7 @@ knitr::kable(head(df))
 
 ## Collecting NRBS values from some files
 
-```
+```{r}
 filenames <- c(
   find_path("toy_example_1.RDa"),
   find_path("toy_example_2.RDa"),

@@ -1,6 +1,6 @@
 context("collect_files_gammas")
 
-test_that("collect_files_gammas: basic test", {
+test_that("collect_files_gammas: use", {
 
   filenames <- c(
     find_path("toy_example_3.RDa"),
@@ -17,4 +17,17 @@ test_that("collect_files_gammas: basic test", {
   )
   expect_equal(nrow(df$species_tree_gamma_stats), 4)
   expect_equal(nrow(df$posterior_gamma_stats), 160)
+})
+
+test_that("collect_files_gammas: abuse", {
+
+  expect_error(
+    collect_files_gammas(filenames = "inval.lid", verbose = "TRUE nor FALSE"),
+    "collect_files_gammas: verbose should be TRUE or FALSE"
+  )
+
+  expect_error(
+    collect_files_gammas(filenames = c()),
+    "collect_files_gammas: there must be at least one filename supplied"
+  )
 })
