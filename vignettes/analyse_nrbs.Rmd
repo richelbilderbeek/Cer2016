@@ -68,7 +68,7 @@ knitr::kable(head(df))
 ## BELOW: TODO
 
 ```
-csv_filename_species_trees <- find_path("collected_nrbs.csv")
+csv_filename_species_trees <- find_path("collected_nrbss.csv")
 testit::assert(file.exists(csv_filename_species_trees))
 testit::assert(file.exists(csv_filename_posterior))
 ```

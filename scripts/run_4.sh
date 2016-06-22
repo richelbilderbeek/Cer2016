@@ -40,7 +40,17 @@ echo "cmd: "$cmd
 jobid=`$cmd | cut -d ' ' -f 4`
 echo "jobid: "$jobid
 
+cmd="sbatch --dependency=afterok:$jobid collect_nrbss.sh"
+echo "cmd: "$cmd
+jobid=`$cmd | cut -d ' ' -f 4`
+echo "jobid: "$jobid
+
 cmd="sbatch --dependency=afterok:$jobid collect_nltts.sh"
+echo "cmd: "$cmd
+jobid=`$cmd | cut -d ' ' -f 4`
+echo "jobid: "$jobid
+
+cmd="sbatch --dependency=afterok:$jobid send_me_an_email.sh"
 echo "cmd: "$cmd
 jobid=`$cmd | cut -d ' ' -f 4`
 echo "jobid: "$jobid
