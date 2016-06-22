@@ -9,10 +9,9 @@ test_that("collect_files_nrbss: use", {
   df <- collect_files_nrbss(filenames, verbose = TRUE)
   expect_equal(
     names(df),
-    c("filenames", "species_tree", "beast_run", "state", "nrbs")
+    c("filenames", "species_tree", "alignment", "beast_run", "state", "nrbs")
   )
-  expect_equal(nrow(df$species_tree_nrbss_stats), 4)
-  expect_equal(nrow(df$posterior_nrbss_stats), 160)
+  expect_equal(nrow(df), 160)
 })
 
 test_that("collect_files_nrbss: abuse", {

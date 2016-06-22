@@ -84,17 +84,18 @@ add_posteriors <- function(
             posterior_index
           )
         }
-#         file <- set_posterior_by_index(
-#           file = file,
-#           posterior_index = posterior_index,
-#           posterior = posterior
-#         )
-#         testit::assert(
-#           are_identical_posteriors(
-#             get_posterior_by_index(file = file, posterior_index = posterior_index),
-#             posterior
-#           )
-#         )
+        # Why doesn't this work?
+        # file <- set_posterior_by_index( # nolint
+        #   file = file, # nolint
+        #   posterior_index = posterior_index, # nolint
+        #   posterior = posterior # nolint
+        # ) # nolint
+        # testit::assert( # nolint
+        #   are_identical_posteriors( # nolint
+        #     get_posterior_by_index(file = file, posterior_index = posterior_index), # nolint
+        #     posterior # nolint
+        #   ) # nolint
+        # ) # nolint
         file$posteriors[[posterior_index]] <- list(posterior) # nolint does not work otherwise
         n_posteriors_added <- n_posteriors_added + 1
         testit::assert(

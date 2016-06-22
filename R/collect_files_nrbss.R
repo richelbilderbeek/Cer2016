@@ -9,8 +9,8 @@
 #'     find_path("toy_example_4.RDa")
 #'   )
 #'   df <- collect_files_nrbss(filenames)
-#'   testit::assert(names(df) == c("filename", "species_tree", "beast_run", "state", "nrbs"))
-#'   testit::assert(nrow(df) == 80)
+#'   testit::assert(names(df) == c("filename", "species_tree", "alignment", "beast_run", "state", "nrbs"))
+#'   testit::assert(nrow(df) == 160)
 #' @export
 collect_files_nrbss <- function(
   filenames,
@@ -42,7 +42,7 @@ collect_files_nrbss <- function(
     )
     if (is.null(this_df)) {
       this_df <- data.frame(
-        species_tree = NA, beast_run = NA, state = NA, nrbs = NA
+        species_tree = NA, alignment = NA, beast_run = NA, state = NA, nrbs = NA
       )
     }
     # Prepend a col with the filename

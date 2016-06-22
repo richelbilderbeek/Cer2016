@@ -7,8 +7,8 @@
 #' @examples
 #'   filename <- find_path("toy_example_3.RDa")
 #'   df <- collect_file_nrbss(filename)
-#'   testit::assert(names(df) == c("species_tree", "beast_run", "state", "nrbs"))
-#'   testit::assert(nrow(df) == 40)
+#'   testit::assert(names(df) == c("species_tree", "alignment", "beast_run", "state", "nrbs"))
+#'   testit::assert(nrow(df) == 80)
 #' @export
 collect_file_nrbss <- function(
   filename,
@@ -33,10 +33,13 @@ collect_file_nrbss <- function(
     )
   }
 
-  file <- Cer2016::read_file(filename)
+  file <- read_file(filename)
 
   n_species_trees <- as.numeric(
     file$parameters$n_species_trees_samples[2]
+  )
+  n_alignments <- as.numeric(
+    file$parameters$n_alignments[2]
   )
   n_beast_runs <- as.numeric(
     file$parameters$n_beast_runs[2]
@@ -44,26 +47,31 @@ collect_file_nrbss <- function(
   n_states <- as.numeric(
     as.numeric(file$parameters$mcmc_chainlength[2]) / 1000
   )
-  n_rows <- n_species_trees * n_beast_runs * n_states
+  n_rows <- n_species_trees * n_alignments * n_beast_runs * n_states
 
   # Create an empty data frame like this:
-  # S B T N    <- S: species tree index
-  # 1 1 1 NA      B: BEAST2 run index
-  # 1 1 2 NA      T: MCMC sTate index
-  # 1 1 3 NA      N: NRBS value
-  # 1 2 1 NA
-  # 1 2 2 NA
-  # 1 2 3 NA
-  # 2 1 1 NA
-  # 2 1 2 NA
-  # 2 1 3 NA
-  # 2 2 1 NA
-  # 2 2 2 NA
-  # 2 2 3 NA
+  # S A B T N    <- S: species tree index
+  # 1 1 1 1 NA      A: alignment index
+  # 1 1 1 2 NA      B: BEAST2 run index
+  # 1 1 2 1 NA      T: MCMC sTate index
+  # 1 1 2 2 NA      N: NRBS value
+  # 1 2 1 1 NA
+  # 1 2 1 2 NA
+  # 1 2 2 1 NA
+  # 1 2 2 2 NA
+  # 2 1 1 1 NA
+  # 2 1 1 2 NA
+  # 2 1 2 1 NA
+  # 2 1 2 2 NA
+  # 2 2 1 1 NA
+  # 2 2 1 2 NA
+  # 2 2 2 1 NA
+  # 2 2 2 2 NA
   df <- data.frame(
-    species_tree = rep(seq(1, n_species_trees), each = n_beast_runs * n_states),
-    beast_run = rep(seq(1, n_beast_runs), each = n_states, times = n_species_trees), # nolint
-    state = rep(seq(1, n_states), n_species_trees * n_beast_runs),
+    species_tree = rep(seq(1, n_species_trees), each = n_alignments * n_beast_runs * n_states), # nolint
+    alignment = rep(seq(1, n_alignments), each = n_states * n_beast_runs, times = n_species_trees), # nolint
+    beast_run = rep(seq(1, n_beast_runs), each = n_states, times = n_species_trees * n_alignments), # nolint
+    state = rep(seq(1, n_states), n_species_trees * n_beast_runs* n_alignments),
     nrbs = rep(NA, n_rows),
     stringsAsFactors = FALSE
   )
@@ -76,15 +84,15 @@ collect_file_nrbss <- function(
   for (i in seq(1, n_rows)) {
 
     species_tree_index <- df$species_tree[i]
+    alignment_index <- df$alignment[i]
     beast_run_index <- df$beast_run[i]
     state_index <- df$state[i]
 
 
     # The index in the file$posterior
-    posterior_index <- ( (species_tree_index - 1) * n_beast_runs) +
+    posterior_index <- ( (species_tree_index - 1) * (n_alignments * n_beast_runs)) + # nolint
+      ( (alignment_index - 1) * n_alignments) +
       beast_run_index
-
-    message("collect_file_nrbss: posterior_index: ", posterior_index)
 
     st <- file$species_trees_with_outgroup[[species_tree_index]][[1]]
     testit::assert(posterior_index >= 1)
@@ -96,8 +104,13 @@ collect_file_nrbss <- function(
     testit::assert(class(pt) == "phylo")
     testit::assert(length(st$tip.label) == length(pt$tip.label))
     testit::assert(all.equal(sort(st$tip.label), sort(pt$tip.label)))
-
-    df$nrbs[i] <- Cer2016::nrbs(st, pt)
+    df$nrbs[i] <- -posterior_index
+    tryCatch(
+      df$nrbs[i] <- nrbs(st, pt),
+      error = function(msg) {
+        if (verbose) message(msg)
+      }
+    )
   }
 
   df

@@ -5,10 +5,9 @@ test_that("collect_file_nrbss: use on #3", {
   df <- collect_file_nrbss(filename)
   expect_equal(
     names(df),
-    c("species_tree", "beast_run", "state", "nrbs")
+    c("species_tree", "alignment", "beast_run", "state", "nrbs")
   )
-  df
-  testit::assert(nrow(df) == 40)
+  expect_equal(nrow(df), 80)
 })
 
 test_that("collect_file_nrbss: use on #4", {
@@ -16,10 +15,9 @@ test_that("collect_file_nrbss: use on #4", {
   df <- collect_file_nrbss(filename)
   expect_equal(
     names(df),
-    c("species_tree", "beast_run", "state", "nrbs")
+    c("species_tree", "alignment", "beast_run", "state", "nrbs")
   )
-  df
-  testit::assert(nrow(df) == 40)
+  expect_equal(nrow(df), 80)
 })
 
 test_that("collect_file_nrbss: abuse", {
