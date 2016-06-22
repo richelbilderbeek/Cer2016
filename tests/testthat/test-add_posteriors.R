@@ -143,11 +143,13 @@ test_that("three posteriors are added, middle is deleted and added again", {
   expect_equal(is.na(read_file(filename = filename)$posteriors[[2]]), TRUE)
   expect_equal(is.na(read_file(filename = filename)$posteriors[[3]]), TRUE)
 
+  # Only be verbose on Travis
   n_posteriors_added <- add_posteriors(
     filename = filename,
     skip_if_output_present = FALSE,
-    verbose = FALSE
+    verbose = (regexpr("travis", getwd())[1] > 0)
   )
+
   expect_equal(n_posteriors_added, 3)
   expect_equal(is.na(read_file(filename = filename)$posteriors[[1]]), FALSE)
   expect_equal(is.na(read_file(filename = filename)$posteriors[[2]]), FALSE)
@@ -166,8 +168,9 @@ test_that("three posteriors are added, middle is deleted and added again", {
   n_posteriors_added <- add_posteriors(
     filename = filename,
     skip_if_output_present = FALSE,
-    verbose = FALSE
+    verbose = (regexpr("travis", getwd())[1] > 0)
   )
+
   expect_equal(n_posteriors_added, 1)
   expect_equal(is.na(read_file(filename = filename)$posteriors[[1]]), FALSE)
   expect_equal(is.na(read_file(filename = filename)$posteriors[[2]]), FALSE)
