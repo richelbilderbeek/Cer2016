@@ -41,8 +41,8 @@ print(nrbs(phylogeny1 = phylogeny1, phylogeny2 = phylogeny2))
 ```{r}
 filename <- find_path("toy_example_3.RDa")
 df <- collect_file_nrbss(filename)
-testit::assert(names(df) == c("species_tree", "beast_run", "state", "nrbs"))
-testit::assert(nrow(df) == 40)
+testit::assert(names(df) == c("species_tree", "alignment", "beast_run", "state", "nrbs"))
+testit::assert(nrow(df) == 80)
 knitr::kable(head(df))
 ```
 
@@ -57,18 +57,18 @@ filenames <- c(
   find_path("toy_example_4.RDa")
 )
 
-df <- collect_files_nrbss(filenames, dt = dt, verbose = TRUE)
-testit::assert(names(df) == c("filename", "species_tree", "beast_run", "state", "nrbs"))
+df <- collect_files_nrbss(filenames, verbose = FALSE)
+testit::assert(names(df) == c("filenames", "species_tree", "alignment", "beast_run", "state", "nrbs"))
 knitr::kable(head(df))
 ```
 
+
+## Collecting NRBS from all files
+
 ## BELOW: TODO
 
-## Collecting nLTTs from all files
-
 ```
-csv_filename_species_trees <- find_path("collected_nltts_species_trees.csv")
-csv_filename_posterior <- find_path("collected_nltts_posterior.csv")
+csv_filename_species_trees <- find_path("collected_nrbs.csv")
 testit::assert(file.exists(csv_filename_species_trees))
 testit::assert(file.exists(csv_filename_posterior))
 ```
