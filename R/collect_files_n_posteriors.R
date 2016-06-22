@@ -17,16 +17,16 @@ collect_files_n_posteriors <- function(
   filenames,
   verbose = FALSE
 ) {
-  if (length(filenames) < 1) {
-    stop(
-      "collect_files_n_posteriors: ",
-      "there must be at least one filename supplied"
-    )
-  }
   if (verbose != TRUE && verbose != FALSE) {
     stop(
       "collect_files_n_posteriors: ",
       "verbose should be TRUE or FALSE"
+    )
+  }
+  if (length(filenames) < 1) {
+    stop(
+      "collect_files_n_posteriors: ",
+      "there must be at least one filename supplied"
     )
   }
 

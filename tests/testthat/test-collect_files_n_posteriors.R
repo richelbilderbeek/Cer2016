@@ -11,13 +11,13 @@ test_that("collect_files_n_posteriors: basic use", {
   expect_equal(df$n_posteriors, c(1, 8))
 })
 
-test_that("collect_n_posteriors: abuse", {
+test_that("collect_files_n_posteriors: abuse", {
   expect_error(
-    collect_n_posteriors(filename = "inva.lid", verbose = "TRUE nor FALSe"),
-    "collect_n_posteriors: verbose should be TRUE or FALSE"
+    collect_files_n_posteriors(filename = "inva.lid", verbose = "TRUE nor FALSe"),
+    "collect_files_n_posteriors: verbose should be TRUE or FALSE"
   )
   expect_error(
-    collect_n_posteriors(filename = "inva.lid"),
-    "collect_n_posteriors: invalid filename 'inva.lid'"
+    collect_files_n_posteriors(filename = c()),
+    "collect_files_n_posteriors: there must be at least one filename supplied"
   )
 })

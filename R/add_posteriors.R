@@ -76,7 +76,7 @@ add_posteriors <- function(
           skip_if_output_present = skip_if_output_present,
           verbose = verbose
         )
-        testit::assert(is_beast_posterior(posterior))
+        testit::assert(Cer2016:::is_beast_posterior(posterior))
 
         if (verbose) {
           message(
