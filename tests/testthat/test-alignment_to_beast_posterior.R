@@ -43,6 +43,7 @@ test_that("alignment_to_beast_posterior: basic", {
     class(posterior$STATE_1000),
     "phylo"
   )
+  expect_true(is_beast_posterior(posterior))
   expect_false(file.exists(beast_log_filename))
   expect_false(file.exists(beast_trees_filename))
   expect_false(file.exists(beast_state_filename))

@@ -2,29 +2,28 @@ context("extract_parameters")
 
 test_that("extract_erg", {
 
-  file <- Cer2016::read_file(find_path("toy_example_1.RDa"))
+  file <- read_file(find_path("toy_example_1.RDa"))
   erg <- extract_erg(file)
   expect_true(erg >= 0.0)
 })
 
 test_that("extract_eri", {
 
-  file <- Cer2016::read_file(find_path("toy_example_1.RDa"))
+  file <- read_file(find_path("toy_example_1.RDa"))
   eri <- extract_eri(file)
   expect_true(eri >= 0.0)
 })
 
 test_that("extract_scr", {
 
-  file <- Cer2016::read_file(find_path("toy_example_1.RDa"))
+  file <- read_file(find_path("toy_example_1.RDa"))
   scr <- extract_scr(file)
   expect_true(scr >= 0.0)
 })
 
-
 test_that("extract_sirg", {
 
-  file <- Cer2016::read_file(find_path("toy_example_1.RDa"))
+  file <- read_file(find_path("toy_example_1.RDa"))
   expect_true("sirg" %in% names(file$parameters))
   expect_false(
     "species_initiation_rate_good_species" %in% names(file$parameters)
@@ -35,7 +34,7 @@ test_that("extract_sirg", {
 
 test_that("extract_siri", {
 
-  file <- Cer2016::read_file(find_path("toy_example_1.RDa"))
+  file <- read_file(find_path("toy_example_1.RDa"))
   siri <- extract_siri(file)
   expect_true(siri >= 0.0)
 })

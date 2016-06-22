@@ -29,5 +29,15 @@ are_identical_posteriors <- function(
       "q must be a BEAST2 posterior"
     )
   }
-  return (isTRUE(all.equal(p, q)))
+  if (length(p) != length(q)) {
+    return (FALSE)
+  }
+
+  for (i in seq(1, length(p))) {
+    if (!all.equal(p[[i]], q[[i]])) {
+      return (FALSE)
+    }
+  }
+
+  return (TRUE)
 }

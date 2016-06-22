@@ -10,7 +10,7 @@ set_posterior_by_index(file, posterior_index, posterior)
 \item{file}{A loaded parameter file}
 }
 \value{
-nothing
+the modified file
 }
 \description{
 Set a BEAST2 posterior of a file

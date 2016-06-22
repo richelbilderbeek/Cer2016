@@ -30,35 +30,58 @@ test_that("set_posterior_by_index: #4", {
   expect_true(is_beast_posterior(posterior_2))
   expect_true(is_beast_posterior(posterior_3))
   expect_true(is_beast_posterior(posterior_4))
+  expect_true(length(names(posterior_1)) > 1)
+  expect_true(length(names(posterior_2)) > 1)
+  expect_true(length(names(posterior_3)) > 1)
+  expect_true(length(names(posterior_4)) > 1)
 
-  multiphylo_1 <- posterior_1
-  multiphylo_2 <- posterior_2
-  multiphylo_3 <- posterior_3
-  multiphylo_4 <- posterior_4
-  class(multiphylo_1) <- "multiPhylo"
-  class(multiphylo_2) <- "multiPhylo"
-  class(multiphylo_3) <- "multiPhylo"
-  class(multiphylo_4) <- "multiPhylo"
-  png("set_posterior_by_index_4_1.png")
-  phangorn::densiTree(multiphylo_1, type = "cladogram", alpha = 1)
-  dev.off()
-  png("set_posterior_by_index_4_2.png")
-  phangorn::densiTree(multiphylo_2, type = "cladogram", alpha = 1)
-  dev.off()
-  png("set_posterior_by_index_4_3.png")
-  phangorn::densiTree(multiphylo_3, type = "cladogram", alpha = 1)
-  dev.off()
-  png("set_posterior_by_index_4_4.png")
-  phangorn::densiTree(multiphylo_4, type = "cladogram", alpha = 1)
-  dev.off()
+  expect_true(are_identical_posteriors(posterior_1, file$posterior[[1]][[1]]))
+  expect_true(are_identical_posteriors(posterior_2, file$posterior[[2]][[1]]))
+  expect_true(are_identical_posteriors(posterior_3, file$posterior[[3]][[1]]))
+  expect_true(are_identical_posteriors(posterior_4, file$posterior[[4]][[1]]))
+
+  if (1 == 2) {
+    multiphylo_1 <- posterior_1
+    multiphylo_2 <- posterior_2
+    multiphylo_3 <- posterior_3
+    multiphylo_4 <- posterior_4
+    class(multiphylo_1) <- "multiPhylo"
+    class(multiphylo_2) <- "multiPhylo"
+    class(multiphylo_3) <- "multiPhylo"
+    class(multiphylo_4) <- "multiPhylo"
+    png("set_posterior_by_index_4_1.png")
+    phangorn::densiTree(multiphylo_1, type = "cladogram", alpha = 1)
+    dev.off()
+    png("set_posterior_by_index_4_2.png")
+    phangorn::densiTree(multiphylo_2, type = "cladogram", alpha = 1)
+    dev.off()
+    png("set_posterior_by_index_4_3.png")
+    phangorn::densiTree(multiphylo_3, type = "cladogram", alpha = 1)
+    dev.off()
+    png("set_posterior_by_index_4_4.png")
+    phangorn::densiTree(multiphylo_4, type = "cladogram", alpha = 1)
+    dev.off()
+  }
 
   # All same posteriors are identical
+  saveRDS(object = posterior_1, file = "set_posterior_by_index_1.RDa")
+  saveRDS(object = posterior_2, file = "set_posterior_by_index_2.RDa")
+  saveRDS(object = posterior_3, file = "set_posterior_by_index_3.RDa")
+  saveRDS(object = posterior_4, file = "set_posterior_by_index_4.RDa")
+
   expect_true(are_identical_posteriors(posterior_1, posterior_1))
   expect_true(are_identical_posteriors(posterior_2, posterior_2))
   expect_true(are_identical_posteriors(posterior_3, posterior_3))
   expect_true(are_identical_posteriors(posterior_4, posterior_4))
 
   # All different posteriors are different
+  expect_false(are_identical_posteriors(file$posterior[[1]][[1]], file$posterior[[2]][[1]]))
+  expect_false(are_identical_posteriors(file$posterior[[1]][[1]], file$posterior[[3]][[1]]))
+  expect_false(are_identical_posteriors(file$posterior[[1]][[1]], file$posterior[[4]][[1]]))
+  expect_false(are_identical_posteriors(file$posterior[[2]][[1]], file$posterior[[3]][[1]]))
+  expect_false(are_identical_posteriors(file$posterior[[2]][[1]], file$posterior[[4]][[1]]))
+  expect_false(are_identical_posteriors(file$posterior[[3]][[1]], file$posterior[[4]][[1]]))
+
   expect_false(are_identical_posteriors(posterior_1, posterior_2))
   expect_false(are_identical_posteriors(posterior_1, posterior_3))
   expect_false(are_identical_posteriors(posterior_1, posterior_4))
