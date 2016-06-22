@@ -15,15 +15,9 @@ get_posterior_by_index <- function(file, posterior_index) {
 #' @return the modified file
 #' @export
 #' @author Richel Bilderbeek
-set_posterior_by_index <- function(file, posterior_index, posterior) {
-  file$posterior[[posterior_index]] <- list(posterior)
-  testit::assert(
-    are_identical_posteriors(
-      get_posterior_by_index(file, posterior_index),
-      posterior
-    )
-  )
-  file
+set_posterior_by_index <- function(my_file, posterior_index, posterior) {
+  my_file$posterior[[posterior_index]] <- list(posterior)
+  my_file
 }
 
 #' Extract the BEAST2 posterior phyogenies
