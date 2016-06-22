@@ -93,3 +93,39 @@ test_that("are_identical_posteriors: use from local simulation", {
   expect_false(are_identical_posteriors(posterior_1, posterior_3))
   expect_false(are_identical_posteriors(posterior_2, posterior_3))
 })
+
+test_that("are_identical_posteriors: abuse", {
+
+  filename <- find_path("toy_example_4.RDa")
+  file <- read_file(filename)
+  posterior_1 <- get_posterior_by_index(file, 1)
+  posterior_2 <- get_posterior_by_index(file, 2)
+  posterior_3 <- get_posterior_by_index(file, 3)
+  posterior_4 <- get_posterior_by_index(file, 4)
+
+  expect_error(
+    are_identical_posteriors(
+      p = NULL, q = NULL,
+      verbose = "not TRUE nor FALSE"
+    ),
+    "are_identical_posteriors: verbose should be TRUE or FALSE"
+  )
+  expect_error(
+    are_identical_posteriors(
+      p = "not a BEAST2 posterior",
+      q = posterior_2,
+      verbose = FALSE
+    ),
+    "are_identical_posteriors: p must be a BEAST2 posterior"
+  )
+
+  expect_error(
+    are_identical_posteriors(
+      p = posterior_1,
+      q = "not a BEAST2 posterior",
+      verbose = FALSE
+    ),
+    "are_identical_posteriors: q must be a BEAST2 posterior"
+  )
+
+})

@@ -32,10 +32,7 @@ test_that("alignment is added", {
   )
 
   # Precondition normal use
-  expect_equal(
-    is.na(read_file(filename = filename)$alignments),
-    TRUE
-  )
+  expect_true(is.na(read_file(filename = filename)$alignments))
 
   # Normal use takes place
   add_alignments(

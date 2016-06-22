@@ -3,7 +3,7 @@
 #' @param skip_if_output_present skip if output files are present, else remove these and start a new BEAST2 run
 #' @param verbose give verbose output, should be TRUE or FALSE
 #' @return the number of posteriors added. Also modifies the parameter file
-#' @importFrom Cer2016 read_file
+#' @import read_file
 #' @export
 #' @author Richel Bilderbeek
 add_posteriors <- function(

@@ -19,17 +19,15 @@ test_that("add_species_trees: use", {
     filename = filename
   )
   add_pbd_output(filename)
-  expect_equal(
-    is.na(read_file(filename)$species_trees_with_outgroup[1]),
-    TRUE
+  expect_true(
+    is.na(read_file(filename)$species_trees_with_outgroup[1])
   )
   add_species_trees(
     filename = filename,
     verbose = FALSE
   )
-  expect_equal(
-    is.na(read_file(filename)$species_trees_with_outgroup[1]),
-    FALSE
+  expect_false(
+    is.na(read_file(filename)$species_trees_with_outgroup[1])
   )
   file.remove(filename)
   expect_false(file.exists(filename))
