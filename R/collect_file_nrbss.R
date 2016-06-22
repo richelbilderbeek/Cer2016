@@ -79,8 +79,12 @@ collect_file_nrbss <- function(
     beast_run_index <- df$beast_run[i]
     state_index <- df$state[i]
 
+
     # The index in the file$posterior
-    posterior_index <- ( (beast_run_index - 1) * n_beast_runs) + beast_run_index
+    posterior_index <- ((species_tree_index - 1) * n_beast_runs) +
+      beast_run_index
+
+    message("collect_file_nrbss: posterior_index: ", posterior_index)
 
     st <- file$species_trees_with_outgroup[[species_tree_index]][[1]]
     testit::assert(posterior_index >= 1)
