@@ -3,10 +3,12 @@ folder <- "/home/p230198/GitHubs/Cer2016/scripts"
 
 csv_filename_species_trees <- "collected_nltts_species_trees.csv"
 csv_filename_posterior <- "collected_nltts_posterior.csv"
+dt <- 0.1
 
 fns <- paste(
   folder, list.files(folder, pattern = "\\.RDa"), sep = "/"
 )
+
 df <- collect_files_nltts(fns, dt = dt, verbose = FALSE)
 write.csv(
   x = df$species_tree_nltts,

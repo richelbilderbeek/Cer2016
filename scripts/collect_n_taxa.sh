@@ -8,4 +8,4 @@
 #SBATCH --job-name=collect_n_taxa
 #SBATCH --output=collect_n_taxa.log
 module load R
-Rscript collect_n_taxa.R
+time Rscript collect_n_taxa.R
