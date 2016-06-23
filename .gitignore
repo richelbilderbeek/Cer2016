@@ -13,37 +13,33 @@
 .Rproj.user
 
 # Files created by vignettes
-/toy_example_*
-/Newick*
-vignettes/add_posterior_demo_*
-vignettes/toy_example_*
-vignettes/research_demo_cache/
-inst/doc
-vignettes/femke.csv
-femke.csv
-# History files.Rhistory
-.Rapp.history# Session Data files
-convert_alignment_to_beast_posterior_*
-vignettes/collected_gammas_posterior.csv
-vignettes/collected_nltts_posterior.csv
-vignettes/tryCatch.*
-vignettes/worked_out_example_*
-tests/testthat/test-add_posteriors_*
-..Rcheck/
-collected_gammas_posterior.csv
+.Rapp.history # Session Data files
 *_cache/
-tests/testthat/Rplots.pdf
-tests/testthat/article_*.RDa
-test-alignment_to_beast_posterior.log
-test-alignment_to_beast_posterior.trees
-test-alignment_to_beast_posterior.xml
-test-alignment_to_beast_posterior.xml.state
+.Rhistory # History files
+
+
+inst/doc
 *.lyx~
-test-add_alignment.RDa
-test-add_posteriors_*.RDa
-tests/testthat/test-extract_posteriors_*
-tests/testthat/test-do_simulation.RDa
-tests/testthat/test-*.RDa
-tests/testthat/test-*.csv
+..Rcheck/
+
+/*.csv
+/*.log
+/*.pdf
+/*.RDa
+/*.trees
+/*.xml
+/*.xml.state
+tests/testthat/*.csv
+tests/testthat/*.log
+tests/testthat/*.pdf
+tests/testthat/*.RDa
+tests/testthat/*.trees
+tests/testthat/*.xml
+tests/testthat/*.xml.state
 vignettes/*.csv
-collect_files_n_taxa.csv
+vignettes/*.log
+vignettes/*.pdf
+vignettes/*.RDa
+vignettes/*.trees
+vignettes/*.xml
+vignettes/*.xml.state
