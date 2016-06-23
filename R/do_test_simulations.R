@@ -16,7 +16,7 @@ do_test_simulations <- function(
       "do_test_simulations: must have exactly four filenames"
     )
   }
-  filenames <- Cer2016::create_test_parameter_files(
+  Cer2016::create_test_parameter_files(
     filenames = filenames
   )
   for (filename in filenames) {

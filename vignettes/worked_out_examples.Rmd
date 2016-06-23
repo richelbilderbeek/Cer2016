@@ -72,21 +72,22 @@ This worked-out example will show:
 
 For that, I will create four parameter files:
 
-  * `toy_example_1.RDa`: protractedness is absent
-  * `toy_example_2.RDa`: protractedness strong
-  * `toy_example_3.RDa`: protractedness is absent for multiple replicates
-  * `toy_example_4.RDa`: protractedness is strong for multiple replicates
+  * `worked_out_example_1.RDa`: protractedness is absent
+  * `worked_out_example_2.RDa`: protractedness strong
+  * `worked_out_example_3.RDa`: protractedness is absent for multiple replicates
+  * `worked_out_example_4.RDa`: protractedness is strong for multiple replicates
 
 Here the parameter files are created with the desired parameters:
 
 ```{r create_parameter_files}
-filenames <- create_test_parameter_files()
+filenames <- paste0("worked_out_example_", seq(1, 4), ".RDa")
+create_test_parameter_files(filenames = filenames)
 ```
 
-  * `toy_example_1.RDa`: protractedness is absent, thus speciation completion rate is high, in this case `1.0e6`
-  * `toy_example_2.RDa`: protractedness strong, thus speciation completion rate is low, inde this case `1.0e-1`
-  * `toy_example_3.RDa`: protractedness is absent for multiple replicates, thus number of sampled species trees, alignments per species trees, and BEAST2 runs are all 2
-  * `toy_example_4.RDa`: protractedness is strong for multiple replicates,  thus number of sampled species trees, alignments per species trees, and   BEAST2 runs are all 2
+  * `worked_out_example_1.RDa`: protractedness is absent, thus speciation completion rate is high, in this case `1.0e6`
+  * `worked_out_example_2.RDa`: protractedness strong, thus speciation completion rate is low, inde this case `1.0e-1`
+  * `worked_out_example_3.RDa`: protractedness is absent for multiple replicates, thus number of sampled species trees, alignments per species trees, and BEAST2 runs are all 2
+  * `worked_out_example_4.RDa`: protractedness is strong for multiple replicates,  thus number of sampled species trees, alignments per species trees, and   BEAST2 runs are all 2
   
 Here the parameters are shown in a nicer format:
 

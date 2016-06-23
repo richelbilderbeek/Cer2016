@@ -11,7 +11,7 @@ create_test_parameter_files(filenames = paste0("toy_example_", seq(1, 4),
 \item{filenames}{the name of the four files created}
 }
 \value{
-The filenames of all parameter files created
+nothing
 }
 \description{
 Creates the parameter files for the toy examples

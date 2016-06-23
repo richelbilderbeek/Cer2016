@@ -1,6 +1,6 @@
 #' Creates the parameter files for the toy examples
 #' @param filenames the name of the four files created
-#' @return The filenames of all parameter files created
+#' @return nothing
 #' @export
 #' @author Richel Bilderbeek
 create_test_parameter_files <- function(
@@ -42,5 +42,4 @@ create_test_parameter_files <- function(
       filename = filenames[i]
     )
   }
-  filenames
 }
