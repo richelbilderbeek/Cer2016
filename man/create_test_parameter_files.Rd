@@ -4,7 +4,8 @@
 \alias{create_test_parameter_files}
 \title{Creates the parameter files for the toy examples}
 \usage{
-create_test_parameter_files()
+create_test_parameter_files(filenames = paste0("toy_example_", seq(1, 4),
+  ".RDa"))
 }
 \value{
 The filenames of all parameter files created

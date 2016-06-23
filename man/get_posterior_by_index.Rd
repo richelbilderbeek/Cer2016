@@ -9,6 +9,8 @@ get_posterior_by_index(file, posterior_index)
 }
 \arguments{
 \item{file}{A loaded parameter file}
+
+\item{posterior_index}{the index of the posterior}
 }
 \value{
 the posterior

@@ -8,6 +8,10 @@ set_posterior_by_index(file, posterior_index, posterior)
 }
 \arguments{
 \item{file}{A loaded parameter file}
+
+\item{posterior_index}{the index of the posterior}
+
+\item{posterior}{a BEAST2 posterior, may also be NA}
 }
 \value{
 the modified file

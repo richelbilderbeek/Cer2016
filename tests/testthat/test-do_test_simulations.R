@@ -1,10 +1,22 @@
 context("do_test_simulations")
 
-test_that("do_test_simulations works", {
-  # Only do this step on Travis
-  if (regexpr("travis", getwd())[1] > 0) {
-    expect_silent(
-      do_test_simulations()
-    )
+test_that("do_test_simulations: create exact replicate", {
+  if (regexpr("travis", getwd())[1] == -1) {
+    skip("do_test_simulations: only on Travis")
+  }
+  filenames_1 <- paste0("do_test_simulations_1_", seq(1,4), ".RDa")
+  filenames_2 <- paste0("do_test_simulations_2_", seq(1,4), ".RDa")
+  do_test_simulations(filenames = filenames_1)
+  do_test_simulations(filenames = filenames_2)
+
+  testit::assert(length(filenames_1) == length(filenames_2))
+  i <- 1
+  for (i in seq(1, length(filenames_1))) {
+    filename_1 <- filenames_1[i]
+    filename_2 <- filenames_2[i]
+    testit::assert(filename_1 != filename_2)
+    sum_1 <- tools::md5sum(filename_1)[[1]]
+    sum_2 <- tools::md5sum(filename_2)[[1]]
+    expect_equal(sum_1, sum_2)
   }
 })

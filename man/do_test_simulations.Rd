@@ -4,17 +4,16 @@
 \alias{do_test_simulations}
 \title{Run the full simulation pipeline on the test parameters}
 \usage{
-do_test_simulations(verbose = FALSE)
+do_test_simulations(filenames = paste0("toy_example_", seq(1, 4), ".RDa"),
+  verbose = FALSE)
 }
 \arguments{
+\item{filenames}{the name of the four files created}
+
 \item{verbose}{give verbose output, should be TRUE or FALSE}
-
-\item{filename}{name of the parameter file}
-
-\item{cache_beast_output}{if the BEAST2 output files exist, do not recalculate}
 }
 \value{
-Nothing. It does modify the input filename
+Nothing. It creates the four files
 }
 \description{
 Run the full simulation pipeline on the test parameters

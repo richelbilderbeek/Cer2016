@@ -2,14 +2,14 @@
 #' @return The filenames of all parameter files created
 #' @export
 #' @author Richel Bilderbeek
-create_test_parameter_files <- function() {
-  filenames <- c(
-    "toy_example_1.RDa",
-    "toy_example_2.RDa",
-    "toy_example_3.RDa",
-    "toy_example_4.RDa"
-  )
-
+create_test_parameter_files <- function(
+  filenames = paste0("toy_example_", seq(1,4), ".RDa")
+) {
+  if (length(filenames) != 4) {
+    stop(
+      "create_test_parameter_files: must have exactly four filenames"
+    )
+  }
   rng_seeds <- seq(1, 4)
   sirgs <- rep(0.5, times = 4)
   siris <- rep(0.5, times = 4)
