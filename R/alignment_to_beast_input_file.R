@@ -6,7 +6,6 @@
 #' @param temp_fasta_filename the name of a temporary file created
 #' @param verbose give verbose output, should be TRUE or FALSE
 #' @return Nothing, creates a file called 'beast_filename'
-#' @importFrom beastscriptr beast_scriptr
 #' @export
 #' @author Richel Bilderbeek
 alignment_to_beast_input_file <- function(
