@@ -1,4 +1,5 @@
 #' Creates the parameter files for the toy examples
+#' @param filenames the name of the four files created
 #' @return The filenames of all parameter files created
 #' @export
 #' @author Richel Bilderbeek
