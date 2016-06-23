@@ -1,6 +1,6 @@
 library(Cer2016)
-folder <- "/home/p230198/GitHubs/Cer2016/scripts"
 
+folder <- "/home/p230198/GitHubs/Cer2016/scripts"
 csv_filename_nrbss <- "collected_nrbss.csv"
 
 fns <- paste(
@@ -8,14 +8,14 @@ fns <- paste(
 )
 df <- collect_files_nrbss(fns, verbose = FALSE)
 write.csv(
-  x = df
-  file = csv_filename_species_trees,
+  x = df,
+  file = csv_filename_nrbss,
   row.names = TRUE
 )
 
 # Analyse and create pdf
 file.copy(
-  csv_filename_posterior,
+  csv_filename_nrbss,
   paste0("../inst/extdata/", csv_filename_nrbss)
 )
 
