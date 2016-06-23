@@ -12,12 +12,11 @@ Community Ecology Research course 2016.
 module load git; git pull
 ```
 
-## Download the data
+## Copy files from Peregrine to local computer
 
 ```
-scp p230198@peregrine.hpc.rug.nl:/home/p230198/GitHubs/Cer2016/scripts/*.csv inst/extdata
+scp p230198@peregrine.hpc.rug.nl:/home/p230198/GitHubs/Cer2016/scripts/*.(csv|md|pdf) ~/Peregrine
 ```
-
 
 ## Re-install the package on Peregrine
 
@@ -30,56 +29,16 @@ module load R; Rscript -e 'devtools::install_github("richelbilderbeek/Cer2016")'
 On Peregrine, from the root folder:
 
 ```
-./scripts/run_1.sh
+./scripts/run.sh
 ```
 
-Wait until all parameter files are created.
+It will send an email when finished.
 
 On your local computer, copy all parameter files to it:
 
-```
-scp p230198@peregrine.hpc.rug.nl:/home/p230198/GitHubs/Cer2016/*.RDa ~/Peregrine
-```
+## How to create the test examples?
 
-On the local comp
-
-```
-./scripts/run_1_post.sh
-```
-
-Then run `vignettes/analyse_files.Rmd` to inspect the files.
-
-```
-./scripts/run_2.sh
-```
-
-Then run `vignettes/analyse_n_taxa.Rmd` to inspect the files.
-
-## Copy files from Peregrine to local computer
-
-```
-scp p230198@peregrine.hpc.rug.nl:/home/p230198/GitHubs/Cer2016/*.RDa ~/Peregrine
-```
-
-## How to create the toy examples?
-
- * Run the vignette 'worked_out_examples'
- * Copy `tox_example_*.RDa` to `inst/extdata`
-
-## Datasets
-
-A large dataset has been created from many simulation runs.
-The datasets below are created from that bigger dataset
-and allow to do an analysis.
-
-The script [download_data.sh](download_data.sh) takes care of downloading and unzipping these files.
-
-CSV|Analyse
----|---
-collected_parameters.csv|analyse_files
-collected_gammas_species_trees.csv|analyse_gammas
-collected_gammas_posterior.csv|analyse_gammas
-collected_n_taxa.csv|analyse_n_taxa
+ * Run the function `do_test_simulations`
 
 ## How to install
 
