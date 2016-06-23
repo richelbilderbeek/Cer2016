@@ -1,5 +1,28 @@
 context("extract_posteriors")
 
+test_that("extract_posteriors: toy examples 1", {
+
+  filename <- find_path("toy_example_1.RDa")
+  file <- read_file(filename)
+  posteriors <- extract_posteriors(file)
+
+  expect_equal(length(posteriors), 1)
+  expect_true(is_beast_posterior(posteriors[[1]][[1]]))
+
+})
+
+test_that("extract_posteriors: toy examples 3", {
+
+  filename <- find_path("toy_example_3.RDa")
+  file <- read_file(filename)
+  posteriors <- extract_posteriors(file)
+
+  expect_equal(length(posteriors), 8)
+  expect_true(is_beast_posterior(posteriors[[8]][[1]]))
+
+})
+
+
 test_that("extract_posteriors: add one", {
 
   filename <- "test-extract_posteriors.RDa"

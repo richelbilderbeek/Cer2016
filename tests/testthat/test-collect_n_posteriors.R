@@ -1,6 +1,6 @@
-context("collect_posteriors")
+context("collect_n_posteriors")
 
-test_that("collect_posteriors: use case #1", {
+test_that("collect_n_posteriors: use case #1", {
   filename <- find_path("toy_example_1.RDa")
   df <- collect_n_posteriors(filename)
   expect_equal(names(df), c("n_posteriors"))
@@ -9,7 +9,7 @@ test_that("collect_posteriors: use case #1", {
   expect_equal(df$n_posteriors[1], 1)
 })
 
-test_that("collect_posteriors: use case #2", {
+test_that("collect_n_posteriors: use case #2", {
   filename <- find_path("toy_example_3.RDa")
   df <- collect_n_posteriors(filename)
   expect_equal(names(df), c("n_posteriors"))
@@ -18,9 +18,9 @@ test_that("collect_posteriors: use case #2", {
   expect_equal(df$n_posteriors[1], 8)
 })
 
-test_that("collect_posteriors: empty_file", {
+test_that("collect_n_posteriors: empty_file", {
   # An empty file does not have sampled species trees yet
-  filename <- "test-collect_posteriors.RDa"
+  filename <- "test-collect_n_posteriors.RDa"
   save_parameters_to_file(
     rng_seed = 42,
     sirg = 0.1,

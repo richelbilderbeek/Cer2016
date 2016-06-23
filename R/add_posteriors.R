@@ -50,7 +50,15 @@ add_posteriors <- function(
         testit::assert(posterior_index >= 1 &&
           posterior_index <= length(file$posteriors)
         )
-        if (!is.na(file$posteriors[[posterior_index]])) {
+        posterior <- NA
+        tryCatch(
+          posterior <- get_posterior_by_index(
+            file = file,
+            posterior_index = posterior_index
+          ),
+          error = function(msg) {}
+        )
+        if (is_beast_posterior(posterior)) {
           if (verbose) {
             message(
               "add_posteriors: posterior already present at posterior index ",
@@ -84,7 +92,7 @@ add_posteriors <- function(
             posterior_index
           )
         }
-        if (1 == 2) {
+        if (1 == 1) {
           # Why doesn't this work?
           file <- set_posterior_by_index(
             file = file,
@@ -100,11 +108,13 @@ add_posteriors <- function(
             )
           )
         }
-        file$posteriors[[posterior_index]] <- list(posterior) # nolint does not work otherwise
+        else {
+          file$posteriors[[posterior_index]] <- list(posterior) # nolint does not work otherwise
+          testit::assert(
+            is_beast_posterior(file$posteriors[[posterior_index]][[1]])
+          )
+        }
         n_posteriors_added <- n_posteriors_added + 1
-        testit::assert(
-          is_beast_posterior(file$posteriors[[posterior_index]][[1]])
-        )
       }
     }
   }

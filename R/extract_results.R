@@ -5,7 +5,7 @@
 #' @export
 #' @author Richel Bilderbeek
 get_posterior_by_index <- function(file, posterior_index) {
-  posterior <- file$posterior[[posterior_index]][[1]]
+  posterior <- file$posteriors[[posterior_index]][[1]]
   if (!Cer2016::is_beast_posterior(posterior)) {
     # The posterior may not be added yet
     stop(
@@ -22,7 +22,7 @@ get_posterior_by_index <- function(file, posterior_index) {
 #' @export
 #' @author Richel Bilderbeek
 set_posterior_by_index <- function(file, posterior_index, posterior) {
-  file$posterior[[posterior_index]] <- list(posterior)
+  file$posteriors[[posterior_index]] <- list(posterior)
   file
 }
 

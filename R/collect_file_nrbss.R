@@ -89,17 +89,17 @@ collect_file_nrbss <- function(
     state_index <- df$state[i]
 
 
-    # The index in the file$posterior
+    # The index in the file$posteriors
     posterior_index <- ( (species_tree_index - 1) * (n_alignments * n_beast_runs)) + # nolint
       ( (alignment_index - 1) * n_alignments) +
       beast_run_index
 
     st <- file$species_trees_with_outgroup[[species_tree_index]][[1]]
     testit::assert(posterior_index >= 1)
-    testit::assert(posterior_index <= length(file$posterior))
+    testit::assert(posterior_index <= length(file$posteriors))
     testit::assert(state_index >= 1)
-    testit::assert(state_index <= length(file$posterior[[posterior_index]][[1]])) # nolint
-    pt <- file$posterior[[posterior_index]][[1]][[state_index]]
+    testit::assert(state_index <= length(file$posteriors[[posterior_index]][[1]])) # nolint
+    pt <- file$posteriors[[posterior_index]][[1]][[state_index]]
     testit::assert(class(st) == "phylo")
     testit::assert(class(pt) == "phylo")
     testit::assert(length(st$tip.label) == length(pt$tip.label))

@@ -33,15 +33,27 @@ test_that("one posterior is added", {
     verbose = FALSE
   )
 
-  expect_true(is.na(read_file(filename = filename)$posteriors[[1]]))
+  expect_error(
+    get_posterior_by_index(
+      file = read_file(filename),
+      posterior_index = 1
+    ),
+    "get_posterior_by_index: posterior absent at index 1"
+  )
 
   n_posteriors_added <- add_posteriors(
     filename = filename,
     skip_if_output_present = FALSE,
     verbose = FALSE
   )
-  expect_false(is.na(read_file(filename = filename)$posteriors[[1]]))
+
   expect_equal(n_posteriors_added, 1)
+
+  posterior <- get_posterior_by_index(
+    file = read_file(filename),
+    posterior_index = 1
+  )
+  expect_true(is_beast_posterior(posterior))
 
   # Cleaning up
   # Post clean
@@ -86,8 +98,20 @@ test_that("two posteriors are added", {
     verbose = FALSE
   )
 
-  expect_true(is.na(read_file(filename = filename)$posteriors[[1]]))
-  expect_true(is.na(read_file(filename = filename)$posteriors[[2]]))
+  expect_error(
+    get_posterior_by_index(
+      file = read_file(filename),
+      posterior_index = 1
+    ),
+    "get_posterior_by_index: posterior absent at index 1"
+  )
+  expect_error(
+    get_posterior_by_index(
+      file = read_file(filename),
+      posterior_index = 2
+    ),
+    "get_posterior_by_index: posterior absent at index 2"
+  )
 
   n_posteriors_added <- add_posteriors(
     filename = filename,
@@ -96,8 +120,16 @@ test_that("two posteriors are added", {
   )
   expect_equal(n_posteriors_added, 2)
 
-  expect_false(is.na(read_file(filename = filename)$posteriors[[1]]))
-  expect_false(is.na(read_file(filename = filename)$posteriors[[2]]))
+  posterior_1 <- get_posterior_by_index(
+    file = read_file(filename),
+    posterior_index = 1
+  )
+  posterior_2 <- get_posterior_by_index(
+    file = read_file(filename),
+    posterior_index = 2
+  )
+  expect_true(is_beast_posterior(posterior_1))
+  expect_true(is_beast_posterior(posterior_2))
 
   file.remove(filename)
 
@@ -139,9 +171,27 @@ test_that("three posteriors are added, middle is deleted and added again", {
     verbose = FALSE
   )
 
-  expect_true(is.na(read_file(filename = filename)$posteriors[[1]]))
-  expect_true(is.na(read_file(filename = filename)$posteriors[[2]]))
-  expect_true(is.na(read_file(filename = filename)$posteriors[[3]]))
+  expect_error(
+    get_posterior_by_index(
+      file = read_file(filename),
+      posterior_index = 1
+    ),
+    "get_posterior_by_index: posterior absent at index 1"
+  )
+  expect_error(
+    get_posterior_by_index(
+      file = read_file(filename),
+      posterior_index = 2
+    ),
+    "get_posterior_by_index: posterior absent at index 2"
+  )
+  expect_error(
+    get_posterior_by_index(
+      file = read_file(filename),
+      posterior_index = 3
+    ),
+    "get_posterior_by_index: posterior absent at index 3"
+  )
 
   # Only be verbose on Travis
   n_posteriors_added <- add_posteriors(
@@ -151,18 +201,52 @@ test_that("three posteriors are added, middle is deleted and added again", {
   )
 
   expect_equal(n_posteriors_added, 3)
-  expect_false(is.na(read_file(filename = filename)$posteriors[[1]]))
-  expect_false(is.na(read_file(filename = filename)$posteriors[[2]]))
-  expect_false(is.na(read_file(filename = filename)$posteriors[[3]]))
+
+  posterior_1 <- get_posterior_by_index(
+    file = read_file(filename),
+    posterior_index = 1
+  )
+  posterior_2 <- get_posterior_by_index(
+    file = read_file(filename),
+    posterior_index = 2
+  )
+  posterior_3 <- get_posterior_by_index(
+    file = read_file(filename),
+    posterior_index = 3
+  )
+
+  expect_true(is_beast_posterior(posterior_1))
+  expect_true(is_beast_posterior(posterior_2))
+  expect_true(is_beast_posterior(posterior_3))
 
   # Delete middle
   file <- read_file(filename)
-  file$posteriors[[2]][[1]] <- NA
+  file <- set_posterior_by_index(
+    file = file,
+    posterior_index = 2,
+    posterior = NA
+  )
   saveRDS(file, file = filename)
 
-  expect_false(is.na(read_file(filename = filename)$posteriors[[1]]))
-  expect_true(is.na(read_file(filename = filename)$posteriors[[2]]))
-  expect_false(is.na(read_file(filename = filename)$posteriors[[3]]))
+  expect_silent(
+    get_posterior_by_index(
+      file = read_file(filename),
+      posterior_index = 1
+    )
+  )
+  expect_error(
+    get_posterior_by_index(
+      file = read_file(filename),
+      posterior_index = 2
+    ),
+    "get_posterior_by_index: posterior absent at index 2"
+  )
+  expect_silent(
+    get_posterior_by_index(
+      file = read_file(filename),
+      posterior_index = 3
+    )
+  )
 
   # Add middle again
   n_posteriors_added <- add_posteriors(
@@ -172,9 +256,24 @@ test_that("three posteriors are added, middle is deleted and added again", {
   )
 
   expect_equal(n_posteriors_added, 1)
-  expect_false(is.na(read_file(filename = filename)$posteriors[[1]]))
-  expect_false(is.na(read_file(filename = filename)$posteriors[[2]]))
-  expect_false(is.na(read_file(filename = filename)$posteriors[[3]]))
+  expect_silent(
+    get_posterior_by_index(
+      file = read_file(filename),
+      posterior_index = 1
+    )
+  )
+  expect_silent(
+    get_posterior_by_index(
+      file = read_file(filename),
+      posterior_index = 2
+    )
+  )
+  expect_silent(
+    get_posterior_by_index(
+      file = read_file(filename),
+      posterior_index = 3
+    )
+  )
 
   # Clean up
   expect_true(file.exists(filename))
