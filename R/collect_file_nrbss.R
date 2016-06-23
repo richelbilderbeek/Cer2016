@@ -33,7 +33,7 @@ collect_file_nrbss <- function(
     )
   }
 
-  file <- Cer2016:::read_file(filename)
+  file <- Cer2016::read_file(filename)
 
   n_species_trees <- as.numeric(
     file$parameters$n_species_trees_samples[2]

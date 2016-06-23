@@ -23,7 +23,7 @@ add_posteriors <- function(
   if (!is_valid_file(filename)) {
     stop("add_posteriors: invalid filename")
   }
-  file <- Cer2016:::read_file(filename)
+  file <- Cer2016::read_file(filename)
   parameters <- file$parameters
   rng_seed <- as.numeric(parameters$rng_seed[2])
   mcmc_chainlength <- as.numeric(parameters$mcmc_chainlength[2])
@@ -42,7 +42,7 @@ add_posteriors <- function(
         alignment_index <= length(file$alignments)
       )
       alignment <- file$alignments[[alignment_index]][[1]]
-      testit::assert(Cer2016:::is_alignment(alignment))
+      testit::assert(Cer2016::is_alignment(alignment))
       for (k in seq(1, n_beast_runs)) {
         posterior_index <- 1 + (k - 1) +
           ((j - 1) * n_alignments) +                                            # nolint
@@ -76,7 +76,7 @@ add_posteriors <- function(
           skip_if_output_present = skip_if_output_present,
           verbose = verbose
         )
-        testit::assert(Cer2016:::is_beast_posterior(posterior))
+        testit::assert(Cer2016::is_beast_posterior(posterior))
 
         if (verbose) {
           message(

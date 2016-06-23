@@ -4,7 +4,7 @@
 \alias{set_posterior_by_index}
 \title{Set a BEAST2 posterior of a file}
 \usage{
-set_posterior_by_index(my_file, posterior_index, posterior)
+set_posterior_by_index(file, posterior_index, posterior)
 }
 \arguments{
 \item{file}{A loaded parameter file}

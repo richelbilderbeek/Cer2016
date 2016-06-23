@@ -30,7 +30,9 @@ add_alignments <- function(
     n_alignments * n_species_trees_samples
   )
 
-  testit::assert(length(n_species_trees_samples) == n_species_trees_samples)
+  testit::assert(
+    length(file$species_trees_with_outgroup) == n_species_trees_samples
+  )
   for (species_tree_index in seq(1, n_species_trees_samples)) {
     if (is.na(file$species_trees_with_outgroup[species_tree_index])) {
       stop(

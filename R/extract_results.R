@@ -6,7 +6,13 @@
 #' @author Richel Bilderbeek
 get_posterior_by_index <- function(file, posterior_index) {
   posterior <- file$posterior[[posterior_index]][[1]]
-  testit::assert(Cer2016:::is_beast_posterior(posterior))
+  if (!Cer2016::is_beast_posterior(posterior)) {
+    # The posterior may not be added yet
+    stop(
+      "get_posterior_by_index: posterior absent at index ",
+      posterior_index
+    )
+  }
   posterior
 }
 
@@ -15,9 +21,9 @@ get_posterior_by_index <- function(file, posterior_index) {
 #' @return the modified file
 #' @export
 #' @author Richel Bilderbeek
-set_posterior_by_index <- function(my_file, posterior_index, posterior) {
-  my_file$posterior[[posterior_index]] <- list(posterior)
-  my_file
+set_posterior_by_index <- function(file, posterior_index, posterior) {
+  file$posterior[[posterior_index]] <- list(posterior)
+  file
 }
 
 #' Extract the BEAST2 posterior phyogenies
