@@ -11,7 +11,7 @@ do_test_simulations <- function(
   if (verbose != TRUE && verbose != FALSE) {
     stop("do_simulation: verbose should be TRUE or FALSE")
   }
-  filenames <- create_test_parameter_files()
+  filenames <- Cer2016::create_test_parameter_files()
   for (filename in filenames) {
     Cer2016::add_pbd_output(filename, verbose = verbose)
     Cer2016::add_species_trees(filename, verbose = verbose)
