@@ -3,7 +3,7 @@
 #' @export
 #' @author Richel Bilderbeek
 create_test_parameter_files <- function(
-  filenames = paste0("toy_example_", seq(1,4), ".RDa")
+  filenames = paste0("toy_example_", seq(1, 4), ".RDa")
 ) {
   if (length(filenames) != 4) {
     stop(

@@ -5,7 +5,7 @@
 #' @export
 #' @author Richel Bilderbeek
 do_test_simulations <- function(
-  filenames = paste0("toy_example_", seq(1,4), ".RDa"),
+  filenames = paste0("toy_example_", seq(1, 4), ".RDa"),
   verbose = FALSE
 ) {
   if (verbose != TRUE && verbose != FALSE) {

@@ -19,7 +19,7 @@ if (file.exists(filename)) {
 }
 
 ## ------------------------------------------------------------------------
-rng_seeds <- seq(1,4)
+rng_seeds <- seq(1, 4)
 sirgs <- rep(0.5, times = 4)
 siris <- rep(0.5, times = 4)
 scrs <- c(1.0e6, 1.0e-1, 1.0e6, 1.0e-1)

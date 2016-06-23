@@ -18,7 +18,7 @@ filenames <- c(
 #}
 
 ## ------------------------------------------------------------------------
-rng_seeds <- seq(1,4)
+rng_seeds <- seq(1, 4)
 sirgs <- rep(0.5, times = 4)
 siris <- rep(0.5, times = 4)
 scrs <- rep(1.0, times = 4)

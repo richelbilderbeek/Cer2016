@@ -4,8 +4,8 @@ test_that("do_test_simulations: create exact replicate", {
   if (regexpr("travis", getwd())[1] == -1) {
     skip("do_test_simulations: only on Travis")
   }
-  filenames_1 <- paste0("do_test_simulations_1_", seq(1,4), ".RDa")
-  filenames_2 <- paste0("do_test_simulations_2_", seq(1,4), ".RDa")
+  filenames_1 <- paste0("do_test_simulations_1_", seq(1, 4), ".RDa")
+  filenames_2 <- paste0("do_test_simulations_2_", seq(1, 4), ".RDa")
   do_test_simulations(filenames = filenames_1)
   do_test_simulations(filenames = filenames_2)
 
