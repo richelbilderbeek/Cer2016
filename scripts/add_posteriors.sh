@@ -7,4 +7,4 @@
 #SBATCH --job-name=add_posteriors
 #SBATCH --output=add_posteriors_%j.log
 module load R beagle-lib Beast
-Rscript -e "library(Cer2016); add_posteriors(\"$1\")"
+time Rscript -e "library(Cer2016); add_posteriors(\"$1\")"

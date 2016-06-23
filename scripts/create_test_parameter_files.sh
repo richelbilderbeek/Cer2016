@@ -8,4 +8,4 @@
 #SBATCH --job-name=create_test_parameter_files
 #SBATCH --output=create_test_parameter_files.log
 module load R
-Rscript -e 'library(Cer2016); create_test_parameter_files()'
+time Rscript -e 'library(Cer2016); create_test_parameter_files()'

@@ -7,4 +7,4 @@
 #SBATCH --job-name=collect_nrbss
 #SBATCH --output=collect_nrbss.log
 module load R
-Rscript collect_nrbss.R
+time Rscript collect_nrbss.R

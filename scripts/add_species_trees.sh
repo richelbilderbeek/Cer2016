@@ -7,4 +7,4 @@
 #SBATCH --job-name=add_species_trees
 #SBATCH --output=add_species_trees_%j.log
 module load R
-Rscript -e "library(Cer2016); add_species_trees(\"$1\")"
+time Rscript -e "library(Cer2016); add_species_trees(\"$1\")"

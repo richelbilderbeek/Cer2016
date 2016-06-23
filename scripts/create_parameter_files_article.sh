@@ -9,4 +9,4 @@
 #SBATCH --output=create_parameter_files_article.log
 #SBATCH --mail-type=BEGIN,END
 module load R
-Rscript -e 'library(Cer2016); create_parameter_files_article()'
+time Rscript -e 'library(Cer2016); create_parameter_files_article()'

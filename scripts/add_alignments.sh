@@ -7,4 +7,4 @@
 #SBATCH --job-name=add_alignments
 #SBATCH --output=add_alignments_%j.log
 module load R
-Rscript -e "library(Cer2016); add_alignments(\"$1\")"
+time Rscript -e "library(Cer2016); add_alignments(\"$1\")"

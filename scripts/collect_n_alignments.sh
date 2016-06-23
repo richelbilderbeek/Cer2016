@@ -7,4 +7,4 @@
 #SBATCH --job-name=collect_n_alignments
 #SBATCH --output=collect_n_alignments.log
 module load R
-Rscript collect_n_alignments.R
+time Rscript collect_n_alignments.R

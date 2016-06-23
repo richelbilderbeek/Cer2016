@@ -7,4 +7,4 @@
 #SBATCH --job-name=collect_gammas
 #SBATCH --output=collect_gammas.log
 module load R
-Rscript collect_gammas.R
+time Rscript collect_gammas.R

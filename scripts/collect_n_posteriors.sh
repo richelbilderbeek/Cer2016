@@ -7,4 +7,4 @@
 #SBATCH --job-name=collect_n_posteriors
 #SBATCH --output=collect_n_posteriors.log
 module load R
-Rscript collect_n_posteriors.R
+time Rscript collect_n_posteriors.R

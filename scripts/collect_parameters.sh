@@ -8,4 +8,4 @@
 #SBATCH --job-name=collect_parameters
 #SBATCH --output=collect_parameters.log
 module load R
-Rscript collect_parameters.R
+time Rscript collect_parameters.R

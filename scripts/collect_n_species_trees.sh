@@ -8,4 +8,4 @@
 #SBATCH --job-name=collect_n_species_trees
 #SBATCH --output=collect_n_species_trees.log
 module load R
-Rscript collect_n_species_trees.R
+time Rscript collect_n_species_trees.R

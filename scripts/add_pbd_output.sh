@@ -7,4 +7,4 @@
 #SBATCH --job-name=add_pdb_output
 #SBATCH --output=add_pbd_output_%j.log
 module load R
-Rscript -e "library(Cer2016); add_pbd_output(\"$1\")"
+time Rscript -e "library(Cer2016); add_pbd_output(\"$1\")"
