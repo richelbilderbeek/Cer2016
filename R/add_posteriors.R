@@ -96,28 +96,19 @@ add_posteriors <- function(
             posterior_index
           )
         }
-        if (1 == 1) {
-          # Why doesn't this work?
-          file <- set_posterior_by_index(
-            file = file,
-            posterior_index = posterior_index,
-            posterior = posterior
+        file <- set_posterior_by_index(
+          file = file,
+          posterior_index = posterior_index,
+          posterior = posterior
+        )
+        testit::assert(
+          are_identical_posteriors(
+            get_posterior_by_index(file = file,
+              posterior_index = posterior_index
+            ),
+            posterior
           )
-          testit::assert(
-            are_identical_posteriors(
-              get_posterior_by_index(file = file,
-                posterior_index = posterior_index
-              ),
-              posterior
-            )
-          )
-        }
-        else {
-          file$posteriors[[posterior_index]] <- list(posterior) # nolint does not work otherwise
-          testit::assert(
-            is_beast_posterior(file$posteriors[[posterior_index]][[1]])
-          )
-        }
+        )
         n_posteriors_added <- n_posteriors_added + 1
       }
     }

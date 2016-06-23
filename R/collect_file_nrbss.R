@@ -98,8 +98,8 @@ collect_file_nrbss <- function(
     testit::assert(posterior_index >= 1)
     testit::assert(posterior_index <= length(file$posteriors))
     testit::assert(state_index >= 1)
-    testit::assert(state_index <= length(file$posteriors[[posterior_index]][[1]])) # nolint
-    pt <- file$posteriors[[posterior_index]][[1]][[state_index]]
+    testit::assert(state_index <= length(get_posterior_by_index(file, posterior_index))) # nolint
+    pt <- get_posterior_by_index(file, posterior_index)[[state_index]]
     testit::assert(class(st) == "phylo")
     testit::assert(class(pt) == "phylo")
     testit::assert(length(st$tip.label) == length(pt$tip.label))
