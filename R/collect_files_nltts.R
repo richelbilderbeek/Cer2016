@@ -11,16 +11,16 @@ collect_files_nltts <- function(
   dt,
   verbose = FALSE
 ) {
-  if (length(filenames) < 1) {
-    stop(
-      "collect_files_nltts: ",
-      "there must be at least one filename supplied"
-    )
-  }
   if (verbose != TRUE && verbose != FALSE) {
     stop(
       "collect_files_nltts: ",
       "verbose should be TRUE or FALSE"
+    )
+  }
+  if (length(filenames) < 1) {
+    stop(
+      "collect_files_nltts: ",
+      "there must be at least one filename supplied"
     )
   }
 

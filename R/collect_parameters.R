@@ -17,7 +17,7 @@ collect_parameters <- function(
 ) {
   if (verbose != TRUE && verbose != FALSE) {
     stop(
-      "show_parameter_files: ",
+      "collect_parameters: ",
       "verbose should be TRUE or FALSE"
     )
   }

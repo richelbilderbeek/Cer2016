@@ -29,3 +29,23 @@ test_that("pbd_output is added", {
   file.remove(filename)
   expect_false(file.exists(filename))
 })
+
+
+test_that("add_pbd_output: abuse", {
+
+  expect_error(
+    add_pbd_output(
+      filename = find_path("toy_example_1.RDa"),
+      verbose = "not TRUE nor FALSE"
+    ),
+    "add_pbd_output: verbose should be TRUE or FALSE"
+  )
+
+  expect_error(
+    add_pbd_output(
+      filename = "inval.lid",
+    ),
+    "add_pbd_output: invalid filename"
+  )
+
+})

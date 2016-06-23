@@ -15,3 +15,17 @@ test_that("collect_files_nltts: basic", {
   expect_equal(nrow(df$species_tree_nltts), 18)
   expect_equal(nrow(df$posterior_nltts), 540)
 })
+
+
+test_that("collect_files_nltts: abuse", {
+  expect_error(
+    collect_files_nltts(filenames = c(), verbose = "TRUE nor FALSE"),
+    "collect_files_nltts: verbose should be TRUE or FALSE"
+  )
+
+  expect_error(
+    collect_files_nltts(filenames = c()),
+    "collect_files_nltts: there must be at least one filename supplied"
+  )
+
+})

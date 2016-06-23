@@ -51,3 +51,10 @@ test_that("can detect an invalid posterior, list", {
   expect_equal(length(not_posteriors), 2)
   expect_true(!is_beast_posterior(not_posteriors))
 })
+
+test_that("is_beast_posterior: abuse", {
+  expect_error(
+    is_beast_posterior(x = c(), verbose = "TRUE nor FALSE"),
+    "is_beast_posterior: verbose should be TRUE or FALSE"
+  )
+})

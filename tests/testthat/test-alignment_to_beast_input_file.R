@@ -25,3 +25,19 @@ test_that("creates an XML", {
   file.remove(beast_xml_input_file)
   expect_true(!file.exists(beast_xml_input_file))
 })
+
+
+test_that("alignment_to_beast_input_file: abuse", {
+
+  expect_error(
+    alignment_to_beast_input_file(
+      alignment_dnabin = "",
+      mcmc_chainlength = 1000,
+      rng_seed = 42,
+      beast_filename = "",
+      temp_fasta_filename = "",
+      verbose = "not TRUE nor FALSE"
+    ),
+    "alignment_to_beast_input_file: verbose should be TRUE or FALSE"
+  )
+})
