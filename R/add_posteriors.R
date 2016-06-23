@@ -56,7 +56,11 @@ add_posteriors <- function(
             file = file,
             posterior_index = posterior_index
           ),
-          error = function(msg) {}
+          error = function(msg) {
+            if (verbose) {
+              message(msg)
+            }
+          }
         )
         if (is_beast_posterior(posterior)) {
           if (verbose) {
