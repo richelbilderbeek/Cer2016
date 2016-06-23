@@ -1,21 +1,21 @@
-context("extract_posteriors")
+context("get_posteriors")
 
-test_that("extract_posteriors: toy examples 1", {
+test_that("get_posteriors: toy examples 1", {
 
   filename <- find_path("toy_example_1.RDa")
   file <- read_file(filename)
-  posteriors <- extract_posteriors(file)
+  posteriors <- get_posteriors(file)
 
   expect_equal(length(posteriors), 1)
   expect_true(is_beast_posterior(posteriors[[1]][[1]]))
 
 })
 
-test_that("extract_posteriors: toy examples 3", {
+test_that("get_posteriors: toy examples 3", {
 
   filename <- find_path("toy_example_3.RDa")
   file <- read_file(filename)
-  posteriors <- extract_posteriors(file)
+  posteriors <- get_posteriors(file)
 
   expect_equal(length(posteriors), 8)
   expect_true(is_beast_posterior(posteriors[[8]][[1]]))
@@ -23,9 +23,9 @@ test_that("extract_posteriors: toy examples 3", {
 })
 
 
-test_that("extract_posteriors: add one", {
+test_that("get_posteriors: add one", {
 
-  filename <- "test-extract_posteriors.RDa"
+  filename <- "test-get_posteriors.RDa"
   n_posteriors <- 1
 
   # Pre clean
@@ -54,7 +54,7 @@ test_that("extract_posteriors: add one", {
   add_alignments(filename = filename)
   add_posteriors(filename = filename)
   file <- read_file(filename)
-  posteriors <- extract_posteriors(file)
+  posteriors <- get_posteriors(file)
   expect_equal(length(posteriors), n_posteriors)
 
 
@@ -66,9 +66,9 @@ test_that("extract_posteriors: add one", {
   expect_false(file.exists(filename))
 })
 
-test_that("extract_posteriors: add two", {
+test_that("get_posteriors: add two", {
 
-  filename <- "test-extract_posteriors.RDa"
+  filename <- "test-get_posteriors.RDa"
   n_posteriors <- 2
 
   # Pre clean
@@ -97,7 +97,7 @@ test_that("extract_posteriors: add two", {
   add_alignments(filename = filename)
   add_posteriors(filename = filename)
 
-  posteriors <- extract_posteriors(read_file(filename))
+  posteriors <- get_posteriors(read_file(filename))
   expect_equal(length(posteriors), n_posteriors)
 
 

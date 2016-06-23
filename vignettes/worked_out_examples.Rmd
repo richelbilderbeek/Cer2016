@@ -229,7 +229,7 @@ It can be seen that the values for ESS (Effective Sample Size) are above 200 and
 A posterior contains many phylogenies. 
 
 ```{r}
-phylogenies <- extract_posteriors(read_file(filename))[[1]][[1]]
+phylogenies <- get_posteriors(read_file(filename))[[1]][[1]]
 # To get the densiTree function working, phylogenies must be of class multiphylo
 class(phylogenies) <- "multiPhylo"
 ```
@@ -474,7 +474,7 @@ A posterior contains many phylogenies. To visualize these,
 they are extracted from a `.trees` file here:
 
 ```{r}
-phylogenies <- extract_posteriors(read_file(filename))[[1]][[1]]
+phylogenies <- get_posteriors(read_file(filename))[[1]][[1]]
 # To get the densiTree function working, phylogenies must be of class multiphylo
 class(phylogenies) <- "multiPhylo"
 ```

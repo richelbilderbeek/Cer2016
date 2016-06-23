@@ -19,6 +19,7 @@ addons:
 
 before_script:
  - sudo Rscript install_r_packages.R
+ - Rscript -e 'library(Cer2016); print(has_beast2())'
  # R wants all hidden files gone...
  - rm .gitignore
  - rm .travis.yml

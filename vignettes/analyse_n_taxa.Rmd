@@ -55,7 +55,7 @@ not make sense.
 To be sure, the first phylogeny in the first posterior is plotted here:
 
 ```{r}
-all_trees <- extract_posteriors(file)[[1]][[1]]
+all_trees <- get_posteriors(file)[[1]][[1]]
 plot(all_trees[[1]])
 ```
 

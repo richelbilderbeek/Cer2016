@@ -75,7 +75,7 @@ do_simulation(filename, cache_beast_output = TRUE)
 ## Show the posterior
 
 ```{r}
-posteriors <- extract_posteriors(read_file(filename))
+posteriors <- get_posteriors(read_file(filename))
 testit::assert(length(posteriors) == n_beast_runs)
 testit::assert(is_beast_posterior(posteriors[[1]][[1]]))
 testit::assert(is_beast_posterior(posteriors[[2]][[1]]))
