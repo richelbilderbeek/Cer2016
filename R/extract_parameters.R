@@ -18,9 +18,6 @@ extract_erg <- function(file) {
   if ("erg" %in% names(file$parameters)) {
     erg <- as.numeric(file$parameters$erg[2])
   }
-  if ("extinction_rate_good_species" %in% names(file$parameters)) {
-    erg <- as.numeric(file$parameters$extinction_rate_good_species[2])
-  }
   return(erg)
 }
 
@@ -43,9 +40,6 @@ extract_eri <- function(file) {
   eri <- NA
   if ("eri" %in% names(file$parameters)) {
     eri <- as.numeric(file$parameters$eri[2])
-  }
-  if ("extinction_rate_incipient_species" %in% names(file$parameters)) {
-    eri <- as.numeric(file$parameters$extinction_rate_incipient_species[2]) # nolint this variable name is so long due to backwards compatibility
   }
   return(eri)
 }
@@ -71,9 +65,6 @@ extract_scr <- function(file) {
   if ("scr" %in% names(file$parameters)) {
     scr <- as.numeric(file$parameters$scr[2])
   }
-  if ("speciation_completion_rate" %in% names(file$parameters)) {
-    scr <- as.numeric(file$parameters$speciation_completion_rate[2])
-  }
   return(scr)
 }
 
@@ -98,9 +89,6 @@ extract_sirg <- function(file) {
   if ("sirg" %in% names(file$parameters)) {
     sirg <- as.numeric(file$parameters$sirg[2])
   }
-  if ("species_initiation_rate_good_species" %in% names(file$parameters)) {
-    sirg <- as.numeric(file$parameters$species_initiation_rate_good_species[2]) # nolint this variable name is so long due to backwards compatibility
-  }
   return(sirg)
 }
 
@@ -123,11 +111,6 @@ extract_siri <- function(file) {
   siri <- NA
   if ("siri" %in% names(file$parameters)) {
     siri <- as.numeric(file$parameters$siri[2])
-  }
-  if ("species_initiation_rate_incipient_species" %in% names(file$parameters)) {
-    siri <- as.numeric(
-      file$parameters$species_initiation_rate_incipient_species[2] # nolint this variable name is so long due to backwards compatibility
-    )
   }
   return(siri)
 }

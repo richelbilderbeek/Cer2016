@@ -34,4 +34,15 @@ test_that("collect_species_tree_gammas: abuse", {
     collect_species_tree_gammas(filename = "inva.lid"),
     "collect_species_tree_gammas: invalid file"
   )
+
+
+  filename <- "test-collect_species_tree_gammas.RDa"
+  file <- read_file(find_path("toy_example_1.RDa"))
+  file$species_trees_with_outgroup[[1]][[1]] <- list("Not a phylogeny")
+  saveRDS(object = file, file = filename)
+  expect_message(
+    collect_species_tree_gammas(filename = filename, verbose = TRUE),
+    "collect_species_tree_gammas: phylogeny must inherit from class 'phylo'"
+  )
+  file.remove(filename)
 })
