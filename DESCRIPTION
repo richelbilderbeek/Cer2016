@@ -28,7 +28,9 @@ Suggests:
   gridExtra,
   knitr,
   lintr,
+  lubridate,
   rmarkdown,
+  stringr,
   testit,
   testthat
 RoxygenNote: 5.0.1
