@@ -124,4 +124,6 @@ test_that("get_posterior_by_index from fresh file", {
       posterior, posterior_again
     )
   )
+
+  file.remove(filename)
 })

@@ -9,6 +9,7 @@ test_that("collect_parameters: is add_outgroup really gone?", {
     expect_true("rng_seed" %in% names(file$parameters[2, , 2]))
     expect_false("add_outgroup" %in% names(file$parameters[2, , 2]))
   }
+  file.remove(filenames)
 })
 
 test_that("collect_parameters: abuse", {
