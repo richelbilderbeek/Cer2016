@@ -26,7 +26,7 @@ txt=${txt:1}
 # Collect n posteriors
 ############################
 
-cmd="sbatch --dependency=afterok:$txt collect_n_posteriors.sh"
+cmd="sbatch --dependency=afterany:$txt collect_n_posteriors.sh"
 echo "cmd: "$cmd
 jobid=`$cmd | cut -d ' ' -f 4`
 echo "jobid: "$jobid
@@ -46,6 +46,11 @@ jobid=`$cmd | cut -d ' ' -f 4`
 echo "jobid: "$jobid
 
 cmd="sbatch --dependency=afterok:$jobid collect_nltts.sh"
+echo "cmd: "$cmd
+jobid=`$cmd | cut -d ' ' -f 4`
+echo "jobid: "$jobid
+
+cmd="sbatch --dependency=afterok:$jobid analyse_time.sh"
 echo "cmd: "$cmd
 jobid=`$cmd | cut -d ' ' -f 4`
 echo "jobid: "$jobid

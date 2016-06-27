@@ -17,7 +17,7 @@ library(knitr)
 library(rmarkdown)
 
 tryCatch(
-  knitr::knit("../vignettes/analyse_n_taxa.Rmd", "analyse_n_taxa.pdf"),
+  knitr::knit("../vignettes/analyse_n_taxa.Rmd", "analyse_n_taxa_knitr.pdf"),
   error = function(msg) { message(msg) }
 )
 
