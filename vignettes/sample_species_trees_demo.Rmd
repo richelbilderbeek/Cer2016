@@ -45,6 +45,7 @@ pbd_sim_output <- PBD::pbd_sim(
   age, 
   plotit = TRUE
 )
+names(pbd_sim_output)
 testit::assert(is_pbd_sim_output(pbd_sim_output))
 ```
 

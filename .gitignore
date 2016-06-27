@@ -16,12 +16,9 @@
 .Rapp.history # Session Data files
 *_cache/
 .Rhistory # History files
-
-
 inst/doc
 *.lyx~
 ..Rcheck/
-
 /*.csv
 /*.log
 /*.pdf

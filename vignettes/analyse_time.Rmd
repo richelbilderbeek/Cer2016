@@ -1,0 +1,111 @@
+---
+title: "Analyse time"
+author: "Richel Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Analyse time}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+This vignette shows the time used in the pipeline
+
+```{r}
+system("cd ~/Peregrine; egrep -R \"real[[:blank:]]\" --include=*.log > ../mytmp.txt")
+df_filenames <- read.csv("~/mytmp.txt", sep = ":", header = FALSE, stringsAsFactor = FALSE)
+
+names(df_filenames) <- c("log_filename", "real_time_sec")
+
+for (i in seq(1, nrow(df_filenames))) {
+  # Lose 'real ' in real_time column
+  df_filenames[i, 2] <- substr(df_filenames[i, 2], 5, nchar(df_filenames[i, 2]))
+  # Lose tabs in real_time column
+  df_filenames[i, 2] <- stringr::str_replace(df_filenames[i, 2], "(\\t)", "")
+  # Lose spaces in real_time
+  df_filenames[i, 2] <- stringr::str_replace(df_filenames[i, 2], "( )", "")
+  # Convert the number of seconds from floating point to integer by truncating
+  df_filenames[i, 2] <- stringr::str_replace(df_filenames[i, 2], "(\\.[0-9]*s)", "")
+  # Convert the m to a colon
+  df_filenames[i, 2] <- stringr::str_replace(df_filenames[i, 2], "(m)", ":")
+  # Convert time to number of seconds
+  df_filenames[i, 2] <- lubridate::period_to_seconds(lubridate::ms(df_filenames[i, 2]))
+}
+
+df_filenames[ , 2] <- as.numeric(df_filenames[ , 2])
+knitr::kable(head(df_filenames))
+```
+
+Lose the filename info:
+
+```{r}
+df_process <- df_filenames
+
+for (i in seq(1, nrow(df_process))) {
+  df_process[i, 1] <- stringr::str_replace(df_process[i, 1], "(_[0-9]*\\.log)", "")
+  df_process[i, 1] <- stringr::str_replace(df_process[i, 1], "(\\.log)", "")
+}
+names(df_process) <- c("process_name", "real_time_sec")
+knitr::kable(head(df_process))
+```
+
+Aggregate by process
+
+```{r}
+df_process <- stats::aggregate(df_process$real_time_sec, by = list(df_process$process_name), FUN=sum)
+names(df_process) <- c("process_name", "real_time_sec")
+df_process$process_name <- as.factor(df_process$process_name)
+knitr::kable(head(df_process))
+```
+
+Points:
+
+```{r fig.width = 7, fig.height = 7}
+ggplot2::ggplot(
+  df_process, 
+  ggplot2::aes(
+    x = df_process$process_name, 
+    y = df_process$real_time_sec
+  )
+) + ggplot2::geom_point()
+```
+
+Bars:
+
+```{r fig.width = 7, fig.height = 7}
+# Works: bars
+ggplot2::ggplot(
+  df_process, 
+  ggplot2::aes(
+    x = df_process$process_name, y = df_process$real_time_sec)
+  ) + ggplot2::geom_bar(stat = "identity")
+```
+
+Stacked bar:
+
+```{r fig.width = 7, fig.height = 7}
+ggplot2::ggplot(
+  df_process, 
+  ggplot2::aes(
+    x = factor(""), 
+    y = df_process$real_time_sec, 
+    fill = df_process$process_name
+  )
+) + ggplot2::geom_bar(stat = "identity") + ggplot2::ggtitle("Simulation times (sec)")
+```
+
+Pie chart:
+
+```{r fig.width = 7, fig.height = 7}
+ggplot2::ggplot(
+  df_process, 
+  ggplot2::aes(
+    x = factor(""), 
+    y = df_process$real_time_sec, 
+    fill = df_process$process_name
+  )
+) + ggplot2::geom_bar(stat = "identity") + 
+  ggplot2::coord_polar(theta = "y") + 
+  ggplot2::scale_x_discrete("") + 
+  ggplot2::ggtitle("Simulation times (sec)")
+```
