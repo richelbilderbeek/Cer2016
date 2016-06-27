@@ -40,3 +40,4 @@ vignettes/*.RDa
 vignettes/*.trees
 vignettes/*.xml
 vignettes/*.xml.state
+figure/

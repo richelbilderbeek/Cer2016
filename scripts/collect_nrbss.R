@@ -28,6 +28,11 @@ tryCatch(
 )
 
 tryCatch(
-  render("../vignettes/analyse_nrbss.Rmd", "analyse_nrbss.pdf"),
+  rmarkdown::render("../vignettes/analyse_nrbss.Rmd", output_file =  "analyse_nrbss.html"),
+  error = function(msg) { message(msg) }
+)
+
+tryCatch(
+  system("pandoc 'analyse_nrbss.html' -o 'analyse_nrbss.pdf'"),
   error = function(msg) { message(msg) }
 )
