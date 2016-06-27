@@ -59,6 +59,7 @@ add_posteriors <- function(
           error = function(msg) {
             if (verbose) {
               print(msg) # Is not allowed to be 'message'
+              cat(paste0(msg, "\n"), file = "add_posteriors.log")
             }
           }
         )
