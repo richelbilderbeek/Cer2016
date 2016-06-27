@@ -35,27 +35,27 @@ echo "jobid: "$jobid
 # Analysis
 ##########################
 
-cmd="sbatch --dependency=afterok:$jobid collect_gammas.sh"
+cmd="sbatch --dependency=afterany:$jobid collect_gammas.sh"
 echo "cmd: "$cmd
 jobid=`$cmd | cut -d ' ' -f 4`
 echo "jobid: "$jobid
 
-cmd="sbatch --dependency=afterok:$jobid collect_nrbss.sh"
+cmd="sbatch --dependency=afterany:$jobid collect_nrbss.sh"
 echo "cmd: "$cmd
 jobid=`$cmd | cut -d ' ' -f 4`
 echo "jobid: "$jobid
 
-cmd="sbatch --dependency=afterok:$jobid collect_nltts.sh"
+cmd="sbatch --dependency=afterany:$jobid collect_nltts.sh"
 echo "cmd: "$cmd
 jobid=`$cmd | cut -d ' ' -f 4`
 echo "jobid: "$jobid
 
-cmd="sbatch --dependency=afterok:$jobid analyse_time.sh"
+cmd="sbatch --dependency=afterany:$jobid analyse_time.sh"
 echo "cmd: "$cmd
 jobid=`$cmd | cut -d ' ' -f 4`
 echo "jobid: "$jobid
 
-cmd="sbatch --dependency=afterok:$jobid send_me_an_email.sh"
+cmd="sbatch --dependency=afterany:$jobid send_me_an_email.sh"
 echo "cmd: "$cmd
 jobid=`$cmd | cut -d ' ' -f 4`
 echo "jobid: "$jobid

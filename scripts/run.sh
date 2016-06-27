@@ -21,7 +21,7 @@ echo "jobid: "$jobid
 # Check parameter file creation success
 ##########################
 
-cmd="sbatch --dependency=afterok:$jobid collect_parameters.sh"
+cmd="sbatch --dependency=afterany:$jobid collect_parameters.sh"
 echo "cmd: "$cmd
 jobid=`$cmd | cut -d ' ' -f 4`
 echo "jobid: "$jobid
@@ -32,7 +32,7 @@ echo "jobid: "$jobid
 # which is started in run_1.sh
 ##########################
 
-cmd="sbatch --dependency=afterok:$jobid run_1.sh"
+cmd="sbatch --dependency=afterany:$jobid run_1.sh"
 echo "cmd: "$cmd
 jobid=`$cmd | cut -d ' ' -f 4`
 echo "jobid: "$jobid

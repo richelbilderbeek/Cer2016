@@ -27,7 +27,7 @@ txt=${txt:1}
 # Collect n species trees
 ############################
 
-cmd="sbatch --dependency=afterok:$txt collect_n_species_trees.sh"
+cmd="sbatch --dependency=afterany:$txt collect_n_species_trees.sh"
 echo "cmd: "$cmd
 jobid=`$cmd | cut -d ' ' -f 4`
 echo "jobid: "$jobid
@@ -38,7 +38,7 @@ echo "jobid: "$jobid
 # which is started in run_3.sh
 ##########################
 
-cmd="sbatch --dependency=afterok:$jobid run_3.sh"
+cmd="sbatch --dependency=afterany:$jobid run_3.sh"
 echo "cmd: "$cmd
 jobid=`$cmd | cut -d ' ' -f 4`
 echo "jobid: "$jobid
