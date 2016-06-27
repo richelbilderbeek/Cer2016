@@ -19,6 +19,7 @@ function.
 Load the packages we will need:
 
 ```{r}
+devtools::install_github("rsetienne/PBD", subdir = "PBD")
 library(Cer2016)
 library(ggplot2)
 library(phytools)

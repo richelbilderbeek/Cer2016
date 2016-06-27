@@ -35,7 +35,7 @@ library(knitr)
 library(rmarkdown)
 
 tryCatch(
-  knit2pdf("../vignettes/analyse_nltts.Rmd", "analyse_nltts.md"),
+  knitr::knit("../vignettes/analyse_nltts.Rmd", "analyse_nltts.pdf"),
   error = function(msg) { message(msg) }
 )
 

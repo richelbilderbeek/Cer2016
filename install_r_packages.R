@@ -33,5 +33,4 @@ devtools::install_github("jimhester/lintr")
 devtools::install_github("richelbilderbeek/beastscriptr")
 devtools::install_github("olli0601/rBEAST")
 devtools::install_github("richelbilderbeek/nLTT")
-
-#devtools::install_github("richelbilderbeek/Cer2016")
+devtools::install_github("rsetienne/PBD", subdir = "PBD")

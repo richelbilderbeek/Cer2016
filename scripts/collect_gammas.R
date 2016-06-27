@@ -32,7 +32,7 @@ library(knitr)
 library(rmarkdown)
 
 tryCatch(
-  knit2pdf("../vignettes/analyse_gammas.Rmd", "analyse_gammas.md"),
+  knitr::knit("../vignettes/analyse_gammas.Rmd", "analyse_gammas.pdf"),
   error = function(msg) { message(msg) }
 )
 
