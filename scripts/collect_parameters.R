@@ -17,10 +17,10 @@ library(knitr)
 library(rmarkdown)
 
 # Info for issue #71
-print(Sys.which(pandoc))
+print(Sys.which("pandoc"))
 print(system("pandoc -v"))
 Sys.setenv(RSTUDIO_PANDOC="/usr/bin/pandoc") 
-print(Sys.which(pandoc))
+print(Sys.which("pandoc"))
 print(system("pandoc -v"))
 
 
