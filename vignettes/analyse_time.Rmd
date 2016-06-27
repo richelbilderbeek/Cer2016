@@ -36,7 +36,7 @@ df_filenames[ , 2] <- as.numeric(df_filenames[ , 2])
 knitr::kable(head(df_filenames))
 ```
 
-Lose the filename info and aggregate by process:
+Lose the filename info:
 
 ```{r}
 df_process <- df_filenames
@@ -46,15 +46,11 @@ for (i in seq(1, nrow(df_process))) {
   df_process[i, 1] <- stringr::str_replace(df_process[i, 1], "(\\.log)", "")
 }
 names(df_process) <- c("process_name", "real_time_sec")
-#df_process <- stats::aggregate(df_process$real_time_sec, by = list(df_process$process_name), FUN=sum)
-names(df_process) <- c("process_name", "real_time_sec")
 df_process$process_name <- as.factor(df_process$process_name)
 knitr::kable(head(df_process))
 ```
 
-## Individual files:
-
-Points:
+Plot the variety between runs in a boxplot:
 
 ```{r fig.width = 7, fig.height = 7}
 ggplot2::ggplot(
@@ -63,18 +59,16 @@ ggplot2::ggplot(
     x = df_process$process_name, 
     y = df_process$real_time_sec
   )
-) + ggplot2::geom_point()
+) + ggplot2::geom_boxplot() + 
+  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=90, vjust=0.5))
 ```
 
-Bars:
+Aggregate:
 
-```{r fig.width = 7, fig.height = 7}
-# Works: bars
-ggplot2::ggplot(
-  df_process, 
-  ggplot2::aes(
-    x = df_process$process_name, y = df_process$real_time_sec)
-  ) + ggplot2::geom_bar(stat = "identity")
+```{r}
+df_process <- stats::aggregate(df_process$real_time_sec, by = list(df_process$process_name), FUN=sum)
+names(df_process) <- c("process_name", "real_time_sec")
+knitr::kable(head(df_process))
 ```
 
 Stacked bar:
@@ -87,7 +81,11 @@ ggplot2::ggplot(
     y = df_process$real_time_sec, 
     fill = df_process$process_name
   )
-) + ggplot2::geom_bar(stat = "identity") + ggplot2::ggtitle("Simulation times (sec)")
+) + 
+  ggplot2::geom_bar(stat = "identity") + 
+  ggplot2::scale_x_discrete("") +
+  ggplot2::ggtitle("Simulation times (sec)") + 
+  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=90, vjust=0.5))
 ```
 
 Pie chart:
@@ -100,8 +98,10 @@ ggplot2::ggplot(
     y = df_process$real_time_sec, 
     fill = df_process$process_name
   )
-) + ggplot2::geom_bar(stat = "identity") + 
+) + 
+  ggplot2::geom_bar(stat = "identity") + 
+  ggplot2::scale_x_discrete("") +
+  ggplot2::scale_y_continuous("time (sec)") +
   ggplot2::coord_polar(theta = "y") + 
-  ggplot2::scale_x_discrete("") + 
-  ggplot2::ggtitle("Simulation times (sec)")
+  ggplot2::ggtitle("Simulation times")
 ```
