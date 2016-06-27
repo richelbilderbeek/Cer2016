@@ -44,7 +44,7 @@ test_that("one posterior is added", {
   n_posteriors_added <- add_posteriors(
     filename = filename,
     skip_if_output_present = FALSE,
-    verbose = FALSE
+    verbose = TRUE
   )
 
   expect_equal(n_posteriors_added, 1)
@@ -116,7 +116,7 @@ test_that("two posteriors are added", {
   n_posteriors_added <- add_posteriors(
     filename = filename,
     skip_if_output_present = FALSE,
-    verbose = FALSE
+    verbose = TRUE
   )
   expect_equal(n_posteriors_added, 2)
 
@@ -197,7 +197,7 @@ test_that("three posteriors are added, middle is deleted and added again", {
   n_posteriors_added <- add_posteriors(
     filename = filename,
     skip_if_output_present = FALSE,
-    verbose = (regexpr("travis", getwd())[1] > 0)
+    verbose = TRUE
   )
 
   expect_equal(n_posteriors_added, 3)
