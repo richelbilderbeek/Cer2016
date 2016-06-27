@@ -9,6 +9,18 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+
+```{r}
+csv_filename <- "collected_parameters.csv"
+df <- read.csv(
+  file = csv_filename, 
+  header = TRUE, 
+  stringsAsFactors = FALSE, 
+  row.names = 1
+)
+knitr::kable(df, longTable = TRUE)
+```
+
 This vignette shows the time used in the pipeline
 
 ```{r}
