@@ -36,7 +36,7 @@ df_filenames[ , 2] <- as.numeric(df_filenames[ , 2])
 knitr::kable(head(df_filenames))
 ```
 
-Lose the filename info:
+Lose the filename info and aggregate by process:
 
 ```{r}
 df_process <- df_filenames
@@ -46,17 +46,13 @@ for (i in seq(1, nrow(df_process))) {
   df_process[i, 1] <- stringr::str_replace(df_process[i, 1], "(\\.log)", "")
 }
 names(df_process) <- c("process_name", "real_time_sec")
-knitr::kable(head(df_process))
-```
-
-Aggregate by process
-
-```{r}
-df_process <- stats::aggregate(df_process$real_time_sec, by = list(df_process$process_name), FUN=sum)
+#df_process <- stats::aggregate(df_process$real_time_sec, by = list(df_process$process_name), FUN=sum)
 names(df_process) <- c("process_name", "real_time_sec")
 df_process$process_name <- as.factor(df_process$process_name)
 knitr::kable(head(df_process))
 ```
+
+## Individual files:
 
 Points:
 
