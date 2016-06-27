@@ -15,7 +15,6 @@ is_beast_posterior <- function(
       "verbose should be TRUE or FALSE"
     )
   }
-
   if (class(x) != "list") {
     if (verbose) {
       message("x is not a list")

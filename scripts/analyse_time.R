@@ -8,7 +8,7 @@ tryCatch(
 )
 
 tryCatch(
-  render("../vignettes/analyse_time.Rmd", "analyse_time.pdf"),
+  rmarkdown::render("../vignettes/analyse_time.Rmd", "analyse_time.pdf"),
   error = function(msg) { message(msg) }
 )
 

@@ -58,7 +58,7 @@ add_posteriors <- function(
           ),
           error = function(msg) {
             if (verbose) {
-              message(msg)
+              print(msg) # Is not allowed to be 'message'
             }
           }
         )

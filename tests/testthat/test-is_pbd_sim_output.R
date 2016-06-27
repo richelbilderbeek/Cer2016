@@ -21,6 +21,14 @@ test_that("basic tests", {
       verbose = TRUE
     )
   sink()
+  expect_false(result)
 
+  # Replace
+  sink("/dev/null") # nolint
+  result <- is_pbd_sim_output(
+      as.list(rep(x = 0, times = 5)),
+      verbose = TRUE
+    )
+  sink()
   expect_false(result)
 })

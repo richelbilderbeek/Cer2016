@@ -15,7 +15,7 @@ module load git; git pull
 ## Copy files from Peregrine to local computer
 
 ```
-scp p230198@peregrine.hpc.rug.nl:/home/p230198/GitHubs/Cer2016/scripts/*.(csv|md|pdf) ~/Peregrine
+scp p230198@peregrine.hpc.rug.nl:/home/p230198/GitHubs/Cer2016/scripts/*.* ~/Peregrine
 ```
 
 ## Re-install the package on Peregrine
