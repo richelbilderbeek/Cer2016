@@ -2,6 +2,7 @@ context("alignment_to_beast_posterior")
 
 test_that("alignment_to_beast_posterior: basic", {
   base_filename <- file.path(getwd(), "test-alignment_to_beast_posterior")
+
   beast_log_filename <- paste0(base_filename, ".log")
   beast_trees_filename <- paste0(base_filename, ".trees")
   beast_state_filename <- paste0(base_filename, ".xml.state")
@@ -23,7 +24,7 @@ test_that("alignment_to_beast_posterior: basic", {
     mutation_rate = 1
   )
   beast_jar_path <- find_beast_jar_path()
-  testit::assert(file.exists(beast_jar_path))
+  expect_true(file.exists(beast_jar_path))
 
   posterior <- alignment_to_beast_posterior(
     alignment_dnabin = alignment,
@@ -32,7 +33,7 @@ test_that("alignment_to_beast_posterior: basic", {
     rng_seed = 42,
     beast_jar_path = beast_jar_path,
     skip_if_output_present = FALSE,
-    verbose = FALSE
+    verbose = TRUE
   )
 
   expect_equal(
@@ -68,7 +69,7 @@ test_that("alignment_to_beast_posterior: abuse", {
       rng_seed = 42,
       beast_jar_path = find_beast_jar_path(),
       skip_if_output_present = FALSE,
-      verbose = FALSE
+      verbose = TRUE
     ),
     "alignment_to_beast_posterior: alignment must be of class DNAbin"
   )

@@ -128,18 +128,33 @@ alignment_to_beast_posterior <- function(
   system(cmd)
 
   if (!file.exists(beast_trees_filename)) {
+    cat(
+      paste0("alignment_to_beast_posterior: ",
+      "file '", beast_trees_filename, "' should have been created"),
+      file = "testthat.log", append = TRUE
+    )
     stop(
       "alignment_to_beast_posterior: ",
       "file '", beast_trees_filename, "' should have been created"
     )
   }
   if (!file.exists(beast_log_filename)) {
+    cat(
+      paste0("alignment_to_beast_posterior: ",
+      "file '", beast_log_filename, "' should have been created"),
+      file = "testthat.log", append = TRUE
+    )
     stop(
       "alignment_to_beast_posterior: ",
       "file '", beast_log_filename, "' should have been created"
     )
   }
   if (!file.exists(beast_state_filename)) {
+    cat(
+      paste0("alignment_to_beast_posterior: ",
+      "file '", beast_state_filename, "' should have been created"),
+      file = "testthat.log", append = TRUE
+    )
     stop(
       "alignment_to_beast_posterior: ",
       "file '", beast_state_filename, "' should have been created"
@@ -153,7 +168,10 @@ alignment_to_beast_posterior <- function(
   file.remove(beast_state_filename)
 
   if (!Cer2016::is_beast_posterior(x = posterior)) {
-    message(Cer2016::is_beast_posterior(x = posterior, verbose = TRUE))
+    Cer2016::is_beast_posterior(x = posterior, verbose = TRUE)
+    cat(stderr(),
+      file = "testthat.log", append = TRUE
+    )
     stop(
       "alignment_to_beast_posterior: ",
       "no posterior created"
