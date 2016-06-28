@@ -40,11 +40,11 @@ tryCatch(
 )
 
 tryCatch(
-  rmarkdown::render("../vignettes/analyse_nltts.Rmd", output_file =  "analyse_nltts.html"),
+  rmarkdown::render("../vignettes/analyse_nltts.Rmd", output_file =  "~/analyse_nltts.html"),
   error = function(msg) { message(msg) }
 )
 
 tryCatch(
-  system("pandoc 'analyse_nltts.html' -o 'analyse_nltts.pdf'"),
+  system("pandoc ~/analyse_nltts.html -o analyse_nltts.pdf"),
   error = function(msg) { message(msg) }
 )

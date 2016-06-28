@@ -30,11 +30,11 @@ tryCatch(
 )
 
 tryCatch(
-  rmarkdown::render("../vignettes/analyse_files.Rmd", output_file = "analyse_files.html"),
+  rmarkdown::render("../vignettes/analyse_files.Rmd", output_file = "~/analyse_files.html"),
   error = function(msg) { message(msg) }
 )
 
 tryCatch(
-  system("pandoc 'analyse_files.html' -o 'analyse_files.pdf'"),
+  system("pandoc ~/analyse_files.html -o analyse_files.pdf"),
   error = function(msg) { message(msg) }
 )

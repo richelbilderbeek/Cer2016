@@ -37,11 +37,11 @@ tryCatch(
 )
 
 tryCatch(
-  rmarkdown::render("../vignettes/analyse_gammas.Rmd", output_file =  "analyse_gammas.html"),
+  rmarkdown::render("../vignettes/analyse_gammas.Rmd", output_file =  "~/analyse_gammas.html"),
   error = function(msg) { message(msg) }
 )
 
 tryCatch(
-  system("pandoc 'analyse_gammas.html' -o 'analyse_gammas.pdf'"),
+  system("pandoc ~/analyse_gammas.html -o analyse_gammas.pdf"),
   error = function(msg) { message(msg) }
 )

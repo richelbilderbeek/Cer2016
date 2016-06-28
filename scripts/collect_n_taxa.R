@@ -22,11 +22,11 @@ tryCatch(
 )
 
 tryCatch(
-  rmarkdown::render("../vignettes/analyse_n_taxa.Rmd", output_file =  "analyse_n_taxa.html"),
+  rmarkdown::render("../vignettes/analyse_n_taxa.Rmd", output_file =  "~/analyse_n_taxa.html"),
   error = function(msg) { message(msg) }
 )
 
 tryCatch(
-  system("pandoc 'analyse_n_taxa.html' -o 'analyse_n_taxa.pdf'"),
+  system("pandoc ~/analyse_n_taxa.html -o analyse_n_taxa.pdf"),
   error = function(msg) { message(msg) }
 )
