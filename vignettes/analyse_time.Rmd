@@ -11,7 +11,19 @@ vignette: >
 
 
 ```{r}
+library(Cer2016)
+```
+
+```{r}
 csv_filename <- "collected_parameters.csv"
+
+# When working locally
+if (1 == 2) {
+  if (!file.exists(csv_filename)) {
+    setwd("~/Peregrine")  
+  }
+}
+
 df <- read.csv(
   file = csv_filename, 
   header = TRUE, 
