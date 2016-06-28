@@ -3,11 +3,11 @@ library(knitr)
 library(rmarkdown)
 
 # Info for issue #71
-print(Sys.which("pandoc"))
-print(system("pandoc -v"))
+cat(Sys.which("pandoc"), file = "create_test_pdf.log", append = TRUE)
+cat(system("pandoc -v"), file = "create_test_pdf.log", append = TRUE)
 Sys.setenv(RSTUDIO_PANDOC="/usr/bin/pandoc") 
-print(Sys.which("pandoc"))
-print(system("pandoc -v"))
+cat(Sys.which("pandoc"), file = "create_test_pdf.log", append = TRUE)
+cat(system("pandoc -v"), file = "create_test_pdf.log", append = TRUE)
 
 # Knitr
 
