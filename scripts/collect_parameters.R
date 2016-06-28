@@ -13,17 +13,6 @@ write.csv(
 # Analyse and create pdf
 file.copy("collected_parameters.csv", "../inst/extdata/collected_parameters.csv")
 
-library(knitr)
-library(rmarkdown)
-
-# Info for issue #71
-print(Sys.which("pandoc"))
-print(system("pandoc -v"))
-Sys.setenv(RSTUDIO_PANDOC="/usr/bin/pandoc") 
-print(Sys.which("pandoc"))
-print(system("pandoc -v"))
-
-
 tryCatch(
   knitr::knit("../vignettes/analyse_files.Rmd", "analyse_files_knitr.pdf"),
   error = function(msg) { message(msg) }
