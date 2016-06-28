@@ -1,0 +1,70 @@
+library(Cer2016)
+library(knitr)
+library(rmarkdown)
+
+# Info for issue #71
+cat("========", file = "create_test_pdf.log", append = TRUE)
+cat("pandoc (before setting RSTUDIO_PANDOC)", file = "create_test_pdf.log", append = TRUE)
+cat("========", file = "create_test_pdf.log", append = TRUE)
+cat(Sys.which("pandoc"), file = "create_test_pdf.log", append = TRUE)
+cat("--------", file = "create_test_pdf.log", append = TRUE)
+cat(system("pandoc -v"), file = "create_test_pdf.log", append = TRUE)
+
+Sys.setenv(RSTUDIO_PANDOC="/usr/bin/pandoc") 
+
+cat("========", file = "create_test_pdf.log", append = TRUE)
+cat("pandoc (after setting RSTUDIO_PANDOC)", file = "create_test_pdf.log", append = TRUE)
+cat("========", file = "create_test_pdf.log", append = TRUE)
+cat(Sys.which("pandoc"), file = "create_test_pdf.log", append = TRUE)
+cat("--------", file = "create_test_pdf.log", append = TRUE)
+cat(system("pandoc -v"), file = "create_test_pdf.log", append = TRUE)
+cat("========", file = "create_test_pdf.log", append = TRUE)
+cat("pdflatex", file = "create_test_pdf.log", append = TRUE)
+cat("========", file = "create_test_pdf.log", append = TRUE)
+cat(Sys.which("pdflatex"), file = "create_test_pdf.log", append = TRUE)
+cat("--------", file = "create_test_pdf.log", append = TRUE)
+cat(system("pdflatex -v"), file = "create_test_pdf.log", append = TRUE)
+cat("--------", file = "create_test_pdf.log", append = TRUE)
+
+# Knitr
+
+tryCatch(
+  knitr::knit("../vignettes/troubleshooting.Rmd", "test_pdf_knitr.pdf"),
+  error = function(msg) { message(msg) }
+)
+
+# Pandoc with squiggle
+
+tryCatch(
+  rmarkdown::render("../vignettes/troubleshooting.Rmd", output_file = "~/troubleshooting_pandoc.html"),
+  error = function(msg) { message(msg) }
+)
+
+tryCatch(
+  system("pandoc ~/troubleshooting_pandoc.html -o test_pdf_pandoc_tilde.pdf"),
+  error = function(msg) { message(msg) }
+)
+
+# Pandoc with full path
+
+tryCatch(
+  rmarkdown::render("../vignettes/troubleshooting.Rmd", output_file = "/home/p230198/troubleshooting_pandoc.html"),
+  error = function(msg) { message(msg) }
+)
+
+tryCatch(
+  system("pandoc /home/p230198/troubleshooting_pandoc.html -o test_pdf_pandoc_full.pdf"),
+  error = function(msg) { message(msg) }
+)
+
+# Pandoc with $HOME
+
+tryCatch(
+  rmarkdown::render("../vignettes/troubleshooting.Rmd", output_file = past0(Sys.getenv("HOME"), "/troubleshooting_pandoc.html")),
+  error = function(msg) { message(msg) }
+)
+
+tryCatch(
+  system("pandoc $HOME/troubleshooting_pandoc.html -o test_pdf_pandoc_home.pdf"),
+  error = function(msg) { message(msg) }
+)

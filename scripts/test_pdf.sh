@@ -4,7 +4,7 @@
 #SBATCH --ntasks-per-node=1
 #SBATCH --ntasks=1
 #SBATCH --mem=1G
-#SBATCH --job-name=create_test_pdf
-#SBATCH --output=create_test_pdf.log
+#SBATCH --job-name=test_pdf
+#SBATCH --output=test_pdf.log
 module load R
-time Rscript create_test_pdf.R
+time Rscript test_pdf.R
