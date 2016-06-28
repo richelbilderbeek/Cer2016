@@ -3,28 +3,28 @@ library(knitr)
 library(rmarkdown)
 
 # Info for issue #71
-cat("========", file = "create_test_pdf.log", append = TRUE)
-cat("pandoc (before setting RSTUDIO_PANDOC)", file = "create_test_pdf.log", append = TRUE)
-cat("========", file = "create_test_pdf.log", append = TRUE)
-cat(Sys.which("pandoc"), file = "create_test_pdf.log", append = TRUE)
-cat("--------", file = "create_test_pdf.log", append = TRUE)
-cat(system("pandoc -v"), file = "create_test_pdf.log", append = TRUE)
+cat("========", file = "create_test_pdf_r.log", append = TRUE)
+cat("pandoc (before setting RSTUDIO_PANDOC)", file = "create_test_pdf_r.log", append = TRUE)
+cat("========", file = "create_test_pdf_r.log", append = TRUE)
+cat(Sys.which("pandoc"), file = "create_test_pdf_r.log", append = TRUE)
+cat("--------", file = "create_test_pdf_r.log", append = TRUE)
+cat(system("pandoc -v"), file = "create_test_pdf_r.log", append = TRUE)
 
 Sys.setenv(RSTUDIO_PANDOC="/usr/bin/pandoc") 
 
-cat("========", file = "create_test_pdf.log", append = TRUE)
-cat("pandoc (after setting RSTUDIO_PANDOC)", file = "create_test_pdf.log", append = TRUE)
-cat("========", file = "create_test_pdf.log", append = TRUE)
-cat(Sys.which("pandoc"), file = "create_test_pdf.log", append = TRUE)
-cat("--------", file = "create_test_pdf.log", append = TRUE)
-cat(system("pandoc -v"), file = "create_test_pdf.log", append = TRUE)
-cat("========", file = "create_test_pdf.log", append = TRUE)
-cat("pdflatex", file = "create_test_pdf.log", append = TRUE)
-cat("========", file = "create_test_pdf.log", append = TRUE)
-cat(Sys.which("pdflatex"), file = "create_test_pdf.log", append = TRUE)
-cat("--------", file = "create_test_pdf.log", append = TRUE)
-cat(system("pdflatex -v"), file = "create_test_pdf.log", append = TRUE)
-cat("--------", file = "create_test_pdf.log", append = TRUE)
+cat("========", file = "create_test_pdf_r.log", append = TRUE)
+cat("pandoc (after setting RSTUDIO_PANDOC)", file = "create_test_pdf_r.log", append = TRUE)
+cat("========", file = "create_test_pdf_r.log", append = TRUE)
+cat(Sys.which("pandoc"), file = "create_test_pdf_r.log", append = TRUE)
+cat("--------", file = "create_test_pdf_r.log", append = TRUE)
+cat(system("pandoc -v"), file = "create_test_pdf_r.log", append = TRUE)
+cat("========", file = "create_test_pdf_r.log", append = TRUE)
+cat("pdflatex", file = "create_test_pdf_r.log", append = TRUE)
+cat("========", file = "create_test_pdf_r.log", append = TRUE)
+cat(Sys.which("pdflatex"), file = "create_test_pdf_r.log", append = TRUE)
+cat("--------", file = "create_test_pdf_r.log", append = TRUE)
+cat(system("pdflatex -v"), file = "create_test_pdf_r.log", append = TRUE)
+cat("--------", file = "create_test_pdf_r.log", append = TRUE)
 
 # Knitr
 
@@ -60,7 +60,7 @@ tryCatch(
 # Pandoc with $HOME
 
 tryCatch(
-  rmarkdown::render("../vignettes/troubleshooting.Rmd", output_file = past0(Sys.getenv("HOME"), "/troubleshooting_pandoc.html")),
+  rmarkdown::render("../vignettes/troubleshooting.Rmd", output_file = paste0(Sys.getenv("HOME"), "/troubleshooting_pandoc.html")),
   error = function(msg) { message(msg) }
 )
 
