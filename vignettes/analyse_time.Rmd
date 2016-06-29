@@ -17,12 +17,11 @@ library(Cer2016)
 ```{r}
 csv_filename <- "collected_parameters.csv"
 
-# When working locally
-if (1 == 2) {
-  if (!file.exists(csv_filename)) {
-    setwd("~/Peregrine")  
-  }
+# When working on university computer
+if (!file.exists(csv_filename)) {
+  csv_filename <- "~/Peregrine/collected_parameters.csv"
 }
+testit::assert(file.exists(csv_filename))
 
 df <- read.csv(
   file = csv_filename, 
@@ -40,6 +39,9 @@ system("cd ~/Peregrine; egrep -R \"real[[:blank:]]\" --include=*.log > ../mytmp.
 df_filenames <- read.csv("~/mytmp.txt", sep = ":", header = FALSE, stringsAsFactor = FALSE)
 
 names(df_filenames) <- c("log_filename", "real_time_sec")
+
+df_filenames <- df_filenames[order(df_filenames$log_filename),] 
+rownames(df_filenames) <- NULL
 
 for (i in seq(1, nrow(df_filenames))) {
   # Lose 'real ' in real_time column
@@ -59,6 +61,84 @@ for (i in seq(1, nrow(df_filenames))) {
 df_filenames[ , 2] <- as.numeric(df_filenames[ , 2])
 knitr::kable(head(df_filenames))
 ```
+
+Connect the per-file `add_` processes to the parameters:
+
+```{r}
+add_alignments_ts <- df_filenames[
+  grep(x = df_filenames$log_filename, pattern = "add_alignments"),
+]
+add_pbd_output_ts <- df_filenames[
+  grep(x = df_filenames$log_filename, pattern = "add_pbd_output"),
+]
+add_posteriors_ts <- df_filenames[
+  grep(x = df_filenames$log_filename, pattern = "add_posteriors"),
+]
+add_species_trees_ts <- df_filenames[
+  grep(x = df_filenames$log_filename, pattern = "add_species_trees"),
+]
+df <- cbind(filename = rownames(df), df)
+df <- cbind(df, add_alignments_real_time_sec = add_alignments_ts$real_time_sec)
+df <- cbind(df, add_pbd_output_real_time_sec = add_pbd_output_ts$real_time_sec)
+df <- cbind(df, add_posteriors_real_time_sec = add_posteriors_ts$real_time_sec)
+df <- cbind(df, add_species_trees_real_time_sec = add_species_trees_ts$real_time_sec)
+knitr::kable(df)
+```
+
+See the effect of speciation initiation rate:
+
+```{r}
+ggplot2::ggplot(
+  df, 
+  ggplot2::aes(
+    x = df$sirg, 
+    y = df$add_posteriors_real_time_sec
+  )
+) + ggplot2::geom_boxplot() + 
+  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=90, vjust=0.5))
+```
+
+See the effect of speciation completion rate:
+
+```{r}
+ggplot2::ggplot(
+  df, 
+  ggplot2::aes(
+    x = factor(df$scr), 
+    y = df$add_posteriors_real_time_sec
+  )
+) + ggplot2::geom_boxplot() + 
+  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=90, vjust=0.5))
+```
+
+
+See the effect of extinction rate:
+
+```{r}
+ggplot2::ggplot(
+  df, 
+  ggplot2::aes(
+    x = df$erg, 
+    y = df$add_posteriors_real_time_sec
+  )
+) + ggplot2::geom_boxplot() + 
+  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=90, vjust=0.5))
+```
+
+
+See effect of sequence length:
+
+```{r}
+ggplot2::ggplot(
+  df, 
+  ggplot2::aes(
+    x = df$sequence_length, 
+    y = df$add_posteriors_real_time_sec
+  )
+) + ggplot2::geom_boxplot() + 
+  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=90, vjust=0.5))
+```
+
 
 Lose the filename info:
 
@@ -87,7 +167,7 @@ ggplot2::ggplot(
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=90, vjust=0.5))
 ```
 
-Aggregate:
+Aggregate by process:
 
 ```{r}
 df_process <- stats::aggregate(df_process$real_time_sec, by = list(df_process$process_name), FUN=sum)
