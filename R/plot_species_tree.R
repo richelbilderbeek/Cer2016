@@ -8,11 +8,9 @@ plot_species_tree <- function(filename) {
     stop("plot_species_tree: invalid filename")
   }
   file <- Cer2016::read_file(filename)
-  n_species_trees_samples <- as.numeric(
-    file$parameters$n_species_trees_samples[2]
-  )
-  for (i in seq(1, n_species_trees_samples)) {
-    graphics::plot(file$species_trees_with_outgroup[[i]][[1]],
+  for (sti in 1:2) {
+    graphics::plot(
+      get_species_tree_by_index(file = file, sti = sti),
       main = "Species tree"
     )
   }

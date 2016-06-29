@@ -40,9 +40,9 @@ test_that("is_valid_file: abuse", {
   saveRDS(df, file = filename)
   expect_message(
     is_valid_file(filename = filename, verbose = TRUE),
-    "is_valid_file: file\\$species_trees_with_outgroup absent\n"
+    "is_valid_file: file\\$species_trees absent\n"
   )
-  df$species_trees_with_outgroup <- list()
+  df$species_trees <- list()
   saveRDS(df, file = filename)
   expect_message(
     is_valid_file(filename = filename, verbose = TRUE),

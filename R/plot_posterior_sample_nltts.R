@@ -15,18 +15,15 @@ plot_posterior_sample_nltts <- function(
   nltt <- NULL; rm(nltt) # nolint, should fix warning: plot_posterior_sample_nltts: no visible binding for global variable ‘nltt’
 
   file <- Cer2016::read_file(filename)
-  n_species_trees_samples <- as.numeric(
-    file$parameters$n_species_trees_samples[2]
-  )
   n_alignments <- as.numeric(file$parameters$n_alignments[2])
   n_beast_runs <- as.numeric(file$parameters$n_beast_runs[2])
 
   # Sampled species tree nLTT values
   true_nltt_values <- NULL
 
-  for (i in seq(1, n_species_trees_samples)) {
+  for (sti in 1:2) {
     nltt_values <- nLTT::get_nltt_values(
-      list(file$species_trees_with_outgroup[[i]][[1]]),
+      list(get_species_tree_by_index(file = file, sti = sti)),
       dt = dt
     )
     if (is.null(true_nltt_values)) {
@@ -40,7 +37,7 @@ plot_posterior_sample_nltts <- function(
   nltt_values <- NULL
   index <- 1
 
-  for (i in seq(1, n_species_trees_samples)) {
+  for (sti in seq(1, 2)) {
     for (j in seq(1, n_alignments)) {
       for (k in seq(1, n_beast_runs)) {
         all_trees <- Cer2016::get_posteriors(file)[[index]][[1]]

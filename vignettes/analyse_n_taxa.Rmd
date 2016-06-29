@@ -43,7 +43,7 @@ To be sure, the species tree is plotted here:
 
 ```{r}
 file <- read_file(filename)
-plot(file$species_trees_with_outgroup[[1]][[1]])
+plot(get_species_tree_by_index(file = file, sti = 1))
 ```
 
 ## Collecting the number of taxa from the posterior

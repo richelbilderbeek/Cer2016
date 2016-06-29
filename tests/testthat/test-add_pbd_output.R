@@ -10,7 +10,6 @@ test_that("pbd_output is added", {
     erg = 0.5,
     eri = 0.5,
     age = 5,
-    n_species_trees_samples = 1,
     mutation_rate = 0.1,
     n_alignments = 1,
     sequence_length = 10,

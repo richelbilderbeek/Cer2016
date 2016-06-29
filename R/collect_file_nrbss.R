@@ -35,9 +35,7 @@ collect_file_nrbss <- function(
 
   file <- Cer2016::read_file(filename)
 
-  n_species_trees <- as.numeric(
-    file$parameters$n_species_trees_samples[2]
-  )
+  n_species_trees <- 2
   n_alignments <- as.numeric(
     file$parameters$n_alignments[2]
   )
@@ -83,18 +81,18 @@ collect_file_nrbss <- function(
   # st: MCMC state tree, of type phylo
   for (i in seq(1, n_rows)) {
 
-    species_tree_index <- df$species_tree[i]
+    sti <- df$species_tree[i]
     alignment_index <- df$alignment[i]
     beast_run_index <- df$beast_run[i]
     state_index <- df$state[i]
 
 
     # The index in the file$posteriors
-    posterior_index <- ( (species_tree_index - 1) * (n_alignments * n_beast_runs)) + # nolint
+    posterior_index <- ( (sti - 1) * (n_alignments * n_beast_runs)) + # nolint
       ( (alignment_index - 1) * n_alignments) +
       beast_run_index
 
-    st <- file$species_trees_with_outgroup[[species_tree_index]][[1]]
+    st <- get_species_tree_by_index(file = file, sti = sti)
     testit::assert(posterior_index >= 1)
     testit::assert(posterior_index <= length(file$posteriors))
     testit::assert(state_index >= 1)

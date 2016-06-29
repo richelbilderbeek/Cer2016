@@ -23,29 +23,30 @@ add_species_trees <- function(
       "file '", filename, "' needs a pbd_output"
     )
   }
-  parameters <- file$parameters
-  n_species_trees_samples <- as.numeric(parameters$n_species_trees_samples[2])
-  rng_seed <- as.numeric(parameters$rng_seed[2])
   if (verbose) {
-    message("Adding species_trees_with_outgroup to file ", filename)
+    message("Adding species_trees to file ", filename)
   }
 
-  for (i in seq(1:n_species_trees_samples)) {
-    if (!is.na(file$species_trees_with_outgroup[i]) && verbose) {
-        message(" * species_trees_with_outgroup[", i, "] already exists")
-      next
-    }
-    if (verbose) message("   * Setting seed to ", (rng_seed + i))
-    # Each species tree is generated from its own RNG seed
-    set.seed(rng_seed + i)
-    species_tree <- sample_species_trees(
-      n = 1, file$pbd_output
-    )[[1]]
+  for (sti in 1:2) {
+    species_tree <- NA
+    tryCatch(
+      species_tree <- get_species_tree_by_index(file = file, sti = sti),
+      error = function(msg) {
+        if (verbose) {
+          message("add_species_trees: species_tree #", i, " already exists")
+        }
+      }
+    )
+    if (!is.na(species_tree)) next
+    if (sti == 1) species_tree <- file$pbd_output$stree_youngest
+    if (sti == 2) species_tree <- file$pbd_output$stree_oldest
     testit::assert(class(species_tree) == "phylo")
-    file$species_trees_with_outgroup[[i]] <- list(species_tree)
+    file <- set_species_tree_by_index(
+      file = file, sti = sti, species_tree = species_tree
+    )
     saveRDS(file, file = filename)
   }
   if (verbose) {
-    message("Added species_trees_with_outgroup to file ", filename)
+    message("Added species_trees to file ", filename)
   }
 }

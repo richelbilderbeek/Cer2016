@@ -9,17 +9,17 @@ plot_alignments <- function(filename) {
   base_filename <- tools::file_path_sans_ext(basename(filename))
 
   file <- Cer2016::read_file(filename)
-  n_species_trees_samples <- as.numeric(
-    file$parameters$n_species_trees_samples[2]
-  )
+
   n_alignments <- as.numeric(file$parameters$n_alignments[2])
-  for (i in seq(1, n_species_trees_samples)) {
-    for (j in seq(1, n_alignments)) {
-      alignment_index <- 1 + j - 1 + ((i - 1) * n_species_trees_samples)        # nolint
-      testit::assert(alignment_index >= 1)
-      testit::assert(alignment_index <= length(file$alignments))
-      graphics::image(file$alignments[[alignment_index]][[1]],
-        main = paste(base_filename, "alignment", i, j)
+  for (sti in 1:2) {
+    for (ai in 1:n_alignments) {
+      alignment_index <- 1 + ai - 1 + ((sti - 1) * 2)
+      graphics::image(
+        get_alignment_by_index(
+          file = file,
+          alignment_index = alignment_index
+        ),
+        main = paste(base_filename, "alignment ", ai)
       )
     }
   }

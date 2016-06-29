@@ -60,7 +60,7 @@ print(names(file$pbd_output))
 ```
 
 The (unsampled) (original) incipient species tree is 
-in `file$species_tree_with_outgroup`, let's plot it:
+in `file$species_tree`, let's plot it:
 
 ```{r}
 incipient_species_tree <- file$pbd_output$igtree.extant
@@ -100,7 +100,7 @@ phytools::plotSimmap(
 I will use a sampled species tree as my true tree:
 
 ```{r}
-true_tree <- file$species_trees_with_outgroup[[1]][[1]]
+true_tree <-get_species_tree_by_index(file = filem, sti = 1)
 plot(true_tree)
 ```
 
@@ -173,7 +173,7 @@ I will use that tree as my true tree (sorry for all those square
 brackets):
 
 ```
-true_tree <- file$species_trees_with_outgroup[[1]][[1]]
+true_tree <- get_species_tree_by_index(file = file, sti = 1)
 plot(true_tree)
 ```
 

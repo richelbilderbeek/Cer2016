@@ -4,9 +4,8 @@
 \alias{save_parameters_to_file}
 \title{Creates a valid parameter file}
 \usage{
-save_parameters_to_file(rng_seed, sirg, siri, scr, erg, eri, age,
-  n_species_trees_samples, mutation_rate, n_alignments, sequence_length,
-  mcmc_chainlength, n_beast_runs, filename)
+save_parameters_to_file(rng_seed, sirg, siri, scr, erg, eri, age, mutation_rate,
+  n_alignments, sequence_length, mcmc_chainlength, n_beast_runs, filename)
 }
 \arguments{
 \item{rng_seed}{the random number generator seed}
@@ -22,8 +21,6 @@ save_parameters_to_file(rng_seed, sirg, siri, scr, erg, eri, age,
 \item{eri}{the rate at which incipient species get extinct}
 
 \item{age}{crown age of the phylogeny}
-
-\item{n_species_trees_samples}{the number of species trees that will be sampled from an incipient species tree}
 
 \item{mutation_rate}{the probability per nucleotide to mutate at a DNA replication}
 
@@ -53,7 +50,6 @@ save_parameters_to_file(
   erg = 0.5,
   eri = 0.5,
   age = 5,
-  n_species_trees_samples = 1,
   mutation_rate = 0.1,
   n_alignments = 1,
   sequence_length = 10,

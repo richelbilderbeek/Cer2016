@@ -10,7 +10,6 @@ test_that("add_species_trees: use", {
     erg = 0.5,
     eri = 0.5,
     age = 5,
-    n_species_trees_samples = 1,
     mutation_rate = 0.1,
     n_alignments = 1,
     sequence_length = 10,
@@ -20,14 +19,14 @@ test_that("add_species_trees: use", {
   )
   add_pbd_output(filename)
   expect_true(
-    is.na(read_file(filename)$species_trees_with_outgroup[1])
+    is.na(read_file(filename)$species_trees[1])
   )
   add_species_trees(
     filename = filename,
     verbose = FALSE
   )
   expect_false(
-    is.na(read_file(filename)$species_trees_with_outgroup[1])
+    is.na(read_file(filename)$species_trees[1])
   )
   file.remove(filename)
   expect_false(file.exists(filename))
@@ -57,7 +56,6 @@ test_that("add_species_trees: abuse", {
     erg = 0.5,
     eri = 0.5,
     age = 5,
-    n_species_trees_samples = 1,
     mutation_rate = 0.1,
     n_alignments = 1,
     sequence_length = 10,

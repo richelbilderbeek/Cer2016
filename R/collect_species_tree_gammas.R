@@ -24,14 +24,10 @@ collect_species_tree_gammas <- function(
 
   file <- Cer2016::read_file(filename)
 
-  n_species_trees_samples <- as.numeric(
-    file$parameters$n_species_trees_samples[2]
-  )
-
   df <- NULL
 
-  for (i in seq(1, n_species_trees_samples)) {
-    phylogeny <- file$species_trees_with_outgroup[[i]][[1]]
+  for (sti in 1:2) {
+    phylogeny <- get_species_tree_by_index(file = file, sti = sti)
     g <- NA
     if (!inherits(phylogeny, "phylo")) {
       if (verbose) {
@@ -47,7 +43,7 @@ collect_species_tree_gammas <- function(
 
     # Remove id column
     this_df <- data.frame(
-      species_tree = i,
+      species_tree = sti,
       gamma_stat = g
     )
     if (is.null(df)) {

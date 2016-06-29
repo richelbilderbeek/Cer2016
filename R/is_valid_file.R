@@ -43,9 +43,9 @@ is_valid_file <- function(
     if (verbose) message("is_valid_file: file$pbd_output absent")
     return(FALSE)
   }
-  if (is.null(file$species_trees_with_outgroup)) {
+  if (is.null(file$species_trees)) {
     if (verbose) {
-      message("is_valid_file: file$species_trees_with_outgroup absent")
+      message("is_valid_file: file$species_trees absent")
     }
     return(FALSE)
   }
@@ -126,10 +126,6 @@ is_valid_file <- function(
 
   if (as.numeric(parameters$age[2]) <= 0.0) {
     if (verbose) message("is_valid_file: age invalid")
-    return(FALSE)
-  }
-  if (as.numeric(parameters$n_species_trees_samples[2]) < 1) {
-    if (verbose) message("is_valid_file: n_species_trees_samples invalid")
     return(FALSE)
   }
   if (as.numeric(parameters$mutation_rate[2]) <= 0.0) {

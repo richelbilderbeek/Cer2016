@@ -5,7 +5,7 @@
 \title{Convert an alignment and parameters to a BEAST XML input file}
 \usage{
 alignment_to_beast_input_file(alignment_dnabin, mcmc_chainlength,
-  rng_seed = 42, beast_filename, temp_fasta_filename, verbose = TRUE)
+  rng_seed = 42, beast_filename, temp_fasta_filename, verbose = FALSE)
 }
 \arguments{
 \item{alignment_dnabin}{the DNA alignment of type DNAbin}

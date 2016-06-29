@@ -17,14 +17,11 @@ collect_posterior_nltts <- function(
   parameters <- file$parameters
   n_alignments <- as.numeric(parameters$n_alignments[2])
   n_beast_runs <- as.numeric(parameters$n_beast_runs[2])
-  n_species_trees_samples <- as.numeric(
-    file$parameters$n_species_trees_samples[2]
-  )
 
   df <- NULL
   index <- 1
 
-  for (i in seq(1, n_species_trees_samples)) {
+  for (sti in 1:2) {
     for (j in seq(1, n_alignments)) {
       for (k in seq(1, n_beast_runs)) {
         phylogenies <- Cer2016::get_posteriors(file)[[index]][[1]]
@@ -32,7 +29,7 @@ collect_posterior_nltts <- function(
 
         n_nltt_values <- nrow(nltt_values)
         this_df <- data.frame(
-          species_tree = rep(i, n_nltt_values),
+          species_tree = rep(sti, n_nltt_values),
           alignment = rep(j, n_nltt_values),
           beast_run = rep(k, n_nltt_values)
         )

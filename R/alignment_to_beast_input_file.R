@@ -14,7 +14,7 @@ alignment_to_beast_input_file <- function(
   rng_seed = 42,
   beast_filename,
   temp_fasta_filename,
-  verbose = TRUE
+  verbose = FALSE
 ) {
   if (verbose != TRUE && verbose != FALSE) {
     stop(

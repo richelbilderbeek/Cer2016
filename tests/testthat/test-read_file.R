@@ -9,7 +9,7 @@ test_that("read_file works", {
     c(
       "parameters",
       "pbd_output",
-      "species_trees_with_outgroup",
+      "species_trees",
       "alignments",
       "posteriors"
     )

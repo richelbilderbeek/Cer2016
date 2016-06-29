@@ -29,27 +29,25 @@ add_posteriors <- function(
   mcmc_chainlength <- as.numeric(parameters$mcmc_chainlength[2])
   n_alignments <- as.numeric(parameters$n_alignments[2])
   n_beast_runs <- as.numeric(parameters$n_beast_runs[2])
-  n_species_trees_samples <- as.numeric(
-    file$parameters$n_species_trees_samples[2]
-  )
 
   n_posteriors_added <- 0
 
-  for (i in seq(1, n_species_trees_samples)) {
+  if (!isTRUE(has_alignments(file))) {
+    stop("add_posteriors: alignments absent")
+  }
+
+  for (sti in 1:2) {
     for (j in seq(1, n_alignments)) {
-      alignment_index <- 1 + (j - 1) + ((i - 1) * n_species_trees_samples)      # nolint
-      testit::assert(alignment_index >= 1 &&
-        alignment_index <= length(file$alignments)
+      alignment_index <- 1 + (sti - 1) + ((j - 1) * 2)
+      alignment <- get_alignment_by_index(
+        file = file,
+        alignment_index = alignment_index
       )
-      alignment <- file$alignments[[alignment_index]][[1]]
       testit::assert(Cer2016::is_alignment(alignment))
       for (k in seq(1, n_beast_runs)) {
         posterior_index <- 1 + (k - 1) +
           ((j - 1) * n_alignments) +                                            # nolint
-          ((i - 1) * n_alignments * n_species_trees_samples)                    # nolint
-        testit::assert(posterior_index >= 1 &&
-          posterior_index <= length(file$posteriors)
-        )
+          ((sti - 1) * n_alignments * 2)
         posterior <- NA
         tryCatch(
           posterior <- get_posterior_by_index(
@@ -79,7 +77,7 @@ add_posteriors <- function(
         set.seed(new_seed)
         basefilename <- paste0(
           tools::file_path_sans_ext(filename), "_",
-          i, "_", j, "_", k
+          sti, "_", j, "_", k
         )
         posterior <- alignment_to_beast_posterior(
           alignment_dnabin = alignment,

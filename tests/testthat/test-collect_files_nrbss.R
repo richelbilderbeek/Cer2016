@@ -6,7 +6,7 @@ test_that("collect_files_nrbss: use", {
     find_path("toy_example_3.RDa"),
     find_path("toy_example_4.RDa")
   )
-  df <- collect_files_nrbss(filenames, verbose = TRUE)
+  df <- collect_files_nrbss(filenames, verbose = FALSE)
   expect_equal(
     names(df),
     c("filenames", "species_tree", "alignment", "beast_run", "state", "nrbs")

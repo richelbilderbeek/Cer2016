@@ -26,15 +26,11 @@ collect_species_tree_nltts <- function(
 
   file <- Cer2016::read_file(filename)
 
-  n_species_trees_samples <- as.numeric(
-    file$parameters$n_species_trees_samples[2]
-  )
-
   df <- NULL
 
-  for (i in seq(1, n_species_trees_samples)) {
+  for (sti in 1:2) {
     nltt_values <- nLTT::get_nltt_values(
-      list(file$species_trees_with_outgroup[[i]][[1]]),
+      list(get_species_tree_by_index(file = file, sti = sti)),
       dt = dt
     )
 
@@ -47,7 +43,7 @@ collect_species_tree_nltts <- function(
 
     n_nltt_values <- nrow(nltt_values)
     this_df <- data.frame(
-      species_tree = rep(i, n_nltt_values)
+      species_tree = rep(sti, n_nltt_values)
     )
     this_df <- cbind(this_df, nltt_values)
     if (is.null(df)) {

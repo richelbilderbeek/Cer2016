@@ -25,44 +25,49 @@ add_alignments <- function(
   n_alignments <- as.numeric(parameters$n_alignments[2])
   testit::assert(n_alignments > 0)
   sequence_length <- as.numeric(parameters$sequence_length[2])
-  n_species_trees_samples <- as.numeric(parameters$n_species_trees_samples[2])
-  testit::assert(length(file$alignments) ==
-    n_alignments * n_species_trees_samples
-  )
+  testit::assert(length(file$alignments) == n_alignments * 2)
 
-  testit::assert(
-    length(file$species_trees_with_outgroup) == n_species_trees_samples
-  )
-  for (species_tree_index in seq(1, n_species_trees_samples)) {
-    if (is.na(file$species_trees_with_outgroup[species_tree_index])) {
-      stop(
-        "add_alignments: need species_trees_with_outgroup at index ",
-        species_tree_index
-      )
+  for (sti in 1:2) {
+    species_tree <- NA
+    tryCatch(
+      species_tree <- get_species_tree_by_index(file = file, sti = sti),
+      error = function(msg) {}
+    )
+    if (!is_phylogeny(species_tree)) {
+      stop("add_alignments: need species_trees at index ", sti)
     }
   }
 
-  for (i in seq(1, n_species_trees_samples)) {
-    species_tree <- file$species_trees_with_outgroup[[i]][[1]]
+  for (i in 1:2) {
+    species_tree <- get_species_tree_by_index(file = file, sti = sti)
     testit::assert(!is.na(species_tree))
     for (j in seq(1, n_alignments)) {
-      index <- 1 + (j - 1) + ((i - 1) * n_species_trees_samples)                # nolint
-      if (class(file$alignments[[index]][[1]]) == "DNAbin") {
+      index <- 1 + (sti - 1) + ((j - 1) * 2)
+      alignment <- NA
+      tryCatch(
+        alignment <- get_alignment_by_index(file = file, alignment_index = index),
+        error = function(msg) {}
+      )
+      if (is_alignment(alignment)) {
         if (verbose) {
           message("add_alignments: already got alignment #", j,
-            " for species tree #", i, " at index #", index
+            " for species tree #", sti, " at index #", index
           )
         }
         next
       }
-      new_seed <- rng_seed - 1 + j + ((i - 1) * n_species_trees_samples)        # nolint
+      new_seed <- rng_seed - 1 + j + ((sti - 1) * 2)
       set.seed(new_seed)
       alignment <- convert_phylogeny_to_alignment(
         phylogeny = species_tree,
         sequence_length = sequence_length,
         mutation_rate = mutation_rate
       )
-      file$alignments[[index]] <- list(alignment)
+      file <- set_alignment_by_index(
+        file = file,
+        alignment_index = index,
+        alignment = alignment
+      )
       saveRDS(file, file = filename)
       if (verbose) {
         message("add_alignments: created and saved alignments[", index, "]")

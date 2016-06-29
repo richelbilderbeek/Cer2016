@@ -29,7 +29,6 @@ test_that("collect_n_alignments: empty_file", {
     erg = 0.1,
     eri = 0.1,
     age = 15,
-    n_species_trees_samples = 2,
     mutation_rate = 0.01,
     n_alignments = 2,
     sequence_length = 1000,

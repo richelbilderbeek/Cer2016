@@ -1,6 +1,6 @@
 context("add_posteriors")
 
-test_that("one posterior is added", {
+test_that("two posteriors are added", {
   filename <- "test-add_posteriors_1.RDa"
   if (file.exists(filename)) {
     file.remove(filename)
@@ -15,7 +15,6 @@ test_that("one posterior is added", {
     erg = 0.5,
     eri = 0.5,
     age = 5,
-    n_species_trees_samples = 1,
     mutation_rate = 0.1,
     n_alignments = 1,
     sequence_length = 10,
@@ -44,16 +43,21 @@ test_that("one posterior is added", {
   n_posteriors_added <- add_posteriors(
     filename = filename,
     skip_if_output_present = FALSE,
-    verbose = TRUE
+    verbose = FALSE
   )
 
-  expect_equal(n_posteriors_added, 1)
+  expect_equal(n_posteriors_added, 2)
 
-  posterior <- get_posterior_by_index(
+  posterior_1 <- get_posterior_by_index(
     file = read_file(filename),
     posterior_index = 1
   )
-  expect_true(is_beast_posterior(posterior))
+  posterior_2 <- get_posterior_by_index(
+    file = read_file(filename),
+    posterior_index = 2
+  )
+  expect_true(is_beast_posterior(posterior_1))
+  expect_true(is_beast_posterior(posterior_2))
 
   # Cleaning up
   # Post clean
@@ -80,7 +84,6 @@ test_that("two posteriors are added", {
     erg = 0.5,
     eri = 0.5,
     age = 5,
-    n_species_trees_samples = 1,
     mutation_rate = 0.1,
     n_alignments = 1,
     sequence_length = 10,
@@ -116,9 +119,9 @@ test_that("two posteriors are added", {
   n_posteriors_added <- add_posteriors(
     filename = filename,
     skip_if_output_present = FALSE,
-    verbose = TRUE
+    verbose = FALSE
   )
-  expect_equal(n_posteriors_added, 2)
+  expect_equal(n_posteriors_added, 4)
 
   posterior_1 <- get_posterior_by_index(
     file = read_file(filename),
@@ -128,8 +131,18 @@ test_that("two posteriors are added", {
     file = read_file(filename),
     posterior_index = 2
   )
+  posterior_3 <- get_posterior_by_index(
+    file = read_file(filename),
+    posterior_index = 3
+  )
+  posterior_4 <- get_posterior_by_index(
+    file = read_file(filename),
+    posterior_index = 4
+  )
   expect_true(is_beast_posterior(posterior_1))
   expect_true(is_beast_posterior(posterior_2))
+  expect_true(is_beast_posterior(posterior_3))
+  expect_true(is_beast_posterior(posterior_4))
 
   file.remove(filename)
 
@@ -153,7 +166,6 @@ test_that("three posteriors are added, middle is deleted and added again", {
     erg = 0.5,
     eri = 0.5,
     age = 5,
-    n_species_trees_samples = 1,
     mutation_rate = 0.1,
     n_alignments = 1,
     sequence_length = 10,
@@ -197,10 +209,10 @@ test_that("three posteriors are added, middle is deleted and added again", {
   n_posteriors_added <- add_posteriors(
     filename = filename,
     skip_if_output_present = FALSE,
-    verbose = TRUE
+    verbose = FALSE
   )
 
-  expect_equal(n_posteriors_added, 3)
+  expect_equal(n_posteriors_added, 6)
 
   posterior_1 <- get_posterior_by_index(
     file = read_file(filename),

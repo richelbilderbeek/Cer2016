@@ -18,7 +18,6 @@ create_test_parameter_files <- function(
   ergs <- rep(0.1, times = 4)
   eris <- rep(0.1, times = 4)
   ages <- rep(5, times = 4)
-  n_species_trees_sampleses <- c(1, 1, 2, 2)
   mutation_rates <- rep(0.01, times = 4)
   n_alignmentses <- c(1, 1, 2, 2)
   sequence_lengths <- rep(1000, times = 4)
@@ -33,7 +32,6 @@ create_test_parameter_files <- function(
       erg = ergs[i],
       eri = eris[i],
       age = ages[i],
-      n_species_trees_samples = n_species_trees_sampleses[i],
       mutation_rate = mutation_rates[i],
       n_alignments = n_alignmentses[i],
       sequence_length = sequence_lengths[i],

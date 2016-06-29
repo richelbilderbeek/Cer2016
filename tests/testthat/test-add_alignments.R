@@ -10,7 +10,6 @@ test_that("alignment is added", {
     erg = 0.5,
     eri = 0.5,
     age = 5,
-    n_species_trees_samples = 1,
     mutation_rate = 0.1,
     n_alignments = 1,
     sequence_length = 10,
@@ -23,7 +22,7 @@ test_that("alignment is added", {
   # Cannot add alignment without species trees
   expect_error(
     add_alignments(filename),
-    "add_alignments: need species_trees_with_outgroup at index 1"
+    "add_alignments: need species_trees at index 1"
   )
 
   add_species_trees(
@@ -32,18 +31,20 @@ test_that("alignment is added", {
   )
 
   # Precondition normal use
-  expect_true(is.na(read_file(filename = filename)$alignments))
+  expect_error(
+    get_alignment_by_index(file = read_file(filename), alignment_index = 1),
+    "get_alignment_by_index: alignment absent at index 1"
+  )
 
   # Normal use takes place
   add_alignments(
     filename = filename,
-    verbose = FALSE
+    verbose = TRUE
   )
 
   # Postcondition normal use
   file <- read_file(filename = filename)
-  expect_true(class(file$alignments[[1]]) == "list")
-  expect_true(class(file$alignments[[1]][[1]]) == "DNAbin")
+  expect_true(is_alignment(get_alignment_by_index(file = file, alignment_index = 1)))
 
   # Cannot add alignment twice, only gives a warning
   expect_message(

@@ -32,7 +32,6 @@ create_parameter_files_article <- function() {
               erg = mu,
               eri = mu,
               age = 15,
-              n_species_trees_samples = 2,
               mutation_rate = r,
               n_alignments = 2,
               sequence_length = l,

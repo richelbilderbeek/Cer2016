@@ -81,7 +81,6 @@ test_that("get_posterior_by_index from fresh file", {
     erg = 0.5,
     eri = 0.5,
     age = 5,
-    n_species_trees_samples = 1,
     mutation_rate = 0.1,
     n_alignments = 1,
     sequence_length = 10,

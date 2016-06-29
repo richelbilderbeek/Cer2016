@@ -38,7 +38,7 @@ test_that("collect_species_tree_gammas: abuse", {
 
   filename <- "test-collect_species_tree_gammas.RDa"
   file <- read_file(find_path("toy_example_1.RDa"))
-  file$species_trees_with_outgroup[[1]][[1]] <- list("Not a phylogeny")
+  file <- set_species_tree_by_index(file = file, sti = 1, species_tree = "Not a phylogeny")
   saveRDS(object = file, file = filename)
   expect_message(
     collect_species_tree_gammas(filename = filename, verbose = TRUE),

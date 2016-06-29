@@ -38,7 +38,6 @@ test_that("collect_species_tree_n_taxa: empty file should raise error", {
     erg = 0.1,
     eri = 0.1,
     age = 15,
-    n_species_trees_samples = 2,
     mutation_rate = 0.01,
     n_alignments = 2,
     sequence_length = 1000,

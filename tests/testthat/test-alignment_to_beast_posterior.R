@@ -33,7 +33,7 @@ test_that("alignment_to_beast_posterior: basic", {
     rng_seed = 42,
     beast_jar_path = beast_jar_path,
     skip_if_output_present = FALSE,
-    verbose = TRUE
+    verbose = FALSE
   )
 
   expect_equal(
@@ -69,7 +69,7 @@ test_that("alignment_to_beast_posterior: abuse", {
       rng_seed = 42,
       beast_jar_path = find_beast_jar_path(),
       skip_if_output_present = FALSE,
-      verbose = TRUE
+      verbose = FALSE
     ),
     "alignment_to_beast_posterior: alignment must be of class DNAbin"
   )
