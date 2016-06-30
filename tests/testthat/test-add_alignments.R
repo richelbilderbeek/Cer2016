@@ -25,32 +25,28 @@ test_that("alignment is added", {
     "add_alignments: need species_trees at index 1"
   )
 
-  add_species_trees(
-    filename = filename,
-    verbose = FALSE
-  )
+  add_species_trees(filename = filename)
 
   # Precondition normal use
   expect_error(
-    get_alignment_by_index(file = read_file(filename), alignment_index = 1),
-    "get_alignment_by_index: alignment absent at index 1"
+    get_alignment(file = read_file(filename), sti = 1, ai = 1),
+    "get_alignment: get_alignment_by_index: alignment absent at index 1"
+  )
+  expect_error(
+    get_alignment(file = read_file(filename), sti = 2, ai = 1),
+    "get_alignment: get_alignment_by_index: alignment absent at index 2"
   )
 
   # Normal use takes place
-  add_alignments(
-    filename = filename,
-    verbose = TRUE
-  )
+  add_alignments(filename = filename)
 
   # Postcondition normal use
-  file <- read_file(filename = filename)
-  expect_true(is_alignment(get_alignment_by_index(file = file, alignment_index = 1)))
-
-  # Cannot add alignment twice, only gives a warning
-  expect_message(
-    add_alignments(filename, verbose = TRUE),
-    "add_alignments: already got alignment"
+  expect_identical(
+    has_alignments(read_file(filename = filename)),
+    rep(TRUE, times = 2)
   )
+  expect_true(is_alignment(get_alignment(file = read_file(filename = filename), sti = 1, ai = 1)))
+  expect_true(is_alignment(get_alignment(file = read_file(filename = filename), sti = 2, ai = 1)))
 
   # Cleaning up
   file.remove(filename)
@@ -61,17 +57,7 @@ test_that("alignment is added", {
 test_that("add_alignment: abuse", {
 
   expect_error(
-    add_alignments(
-      filename = find_path("toy_example_1.RDa"),
-      verbose = "not TRUE nor FALSE"
-    ),
-    "add_alignments: verbose should be TRUE or FALSE"
-  )
-  expect_error(
-    add_alignments(
-      filename = "inva.lid",
-      verbose = FALSE
-    ),
+    add_alignments(filename = "inva.lid"),
     "add_alignments: invalid file"
   )
 })

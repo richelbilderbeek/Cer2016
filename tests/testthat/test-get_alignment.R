@@ -1,31 +1,31 @@
-context("get_alignment_by_index")
+context("get_alignment")
 
-test_that("get_alignment_by_index: #1", {
+test_that("get_alignment: #1", {
   file <- read_file(find_path("toy_example_1.RDa"))
-  alignment_index <- 1
-  alignment <- get_alignment_by_index(file, alignment_index)
-  expect_true(is_alignment(alignment))
+  alignment_1 <- get_alignment(file = file, sti = 1, ai = 1)
+  alignment_2 <- get_alignment(file = file, sti = 2, ai = 1)
+  expect_true(is_alignment(alignment_1))
+  expect_true(is_alignment(alignment_2))
 })
 
-test_that("get_alignment_by_index: #4", {
+test_that("get_alignment: #4", {
   file <- read_file(find_path("toy_example_4.RDa"))
-  alignment_index <- 4
-  alignment <- get_alignment_by_index(file, alignment_index)
-  expect_true(is_alignment(alignment))
-  expect_true(
-    identical(
-      alignment,
-      get_alignment_by_index(file, alignment_index)
-    )
-  )
+  alignment_1 <- get_alignment(file = file, sti = 1, ai = 1)
+  alignment_2 <- get_alignment(file = file, sti = 2, ai = 2)
+  alignment_3 <- get_alignment(file = file, sti = 2, ai = 1)
+  alignment_4 <- get_alignment(file = file, sti = 2, ai = 2)
+  expect_true(is_alignment(alignment_1))
+  expect_true(is_alignment(alignment_2))
+  expect_true(is_alignment(alignment_3))
+  expect_true(is_alignment(alignment_4))
 })
 
 test_that("set_alignment_by_index: #4", {
   file <- read_file(find_path("toy_example_4.RDa"))
-  alignment_1 <- get_alignment_by_index(file, 1)
-  alignment_2 <- get_alignment_by_index(file, 2)
-  alignment_3 <- get_alignment_by_index(file, 3)
-  alignment_4 <- get_alignment_by_index(file, 4)
+  alignment_1 <- get_alignment(file = file, sti = 1, ai = 1)
+  alignment_2 <- get_alignment(file = file, sti = 1, ai = 2)
+  alignment_3 <- get_alignment(file = file, sti = 2, ai = 1)
+  alignment_4 <- get_alignment(file = file, sti = 2, ai = 2)
   expect_true(is_alignment(alignment_1))
   expect_true(is_alignment(alignment_2))
   expect_true(is_alignment(alignment_3))
@@ -46,33 +46,46 @@ test_that("set_alignment_by_index: #4", {
   expect_false(identical(alignment_3, alignment_4))
 
   # Copy #1 over #2
-  file <- set_alignment_by_index(file, 2, alignment_1)
-  expect_true(
-    identical(
-      get_alignment_by_index(file, 1),
-      get_alignment_by_index(file, 2)
-    )
-  )
+  # Condition to change:
+  expect_false(identical(alignment_1, alignment_2))
+
+  # Do it
+  file <- set_alignment(file, sti = 1, ai = 2, alignment_1)
+
+  # Update
+  alignment_1 <- get_alignment(file = file, sti = 1, ai = 1)
+  alignment_2 <- get_alignment(file = file, sti = 1, ai = 2)
+  alignment_3 <- get_alignment(file = file, sti = 2, ai = 1)
+  alignment_4 <- get_alignment(file = file, sti = 2, ai = 2)
+
+  # Condition has changed?
+  expect_true(identical(alignment_1, alignment_2))
 
   # Copy #3 over #4
-  file <- set_alignment_by_index(file, 4, alignment_3)
-  expect_true(
-    identical(
-      get_alignment_by_index(file, 3),
-      get_alignment_by_index(file, 4)
-    )
-  )
+  # Condition to change:
+  expect_false(identical(alignment_3, alignment_4))
 
+  # Do it
+  file <- set_alignment(file, sti = 2, ai = 1, alignment_4)
+
+  # Update
+  alignment_1 <- get_alignment(file = file, sti = 1, ai = 1)
+  alignment_2 <- get_alignment(file = file, sti = 1, ai = 2)
+  alignment_3 <- get_alignment(file = file, sti = 2, ai = 1)
+  alignment_4 <- get_alignment(file = file, sti = 2, ai = 2)
+
+  # Condition has changed?
+  expect_true(identical(alignment_3, alignment_4))
 })
 
-test_that("get_alignment_by_index from fresh file", {
+test_that("get_alignment from fresh file", {
   filename <- "test-get_alignment.RDa"
 
   # Pre clean
   if (file.exists(filename)) {
     file.remove(filename)
   }
-  n_alignments <- 1 # So two in total
+  napst <- 1 # Number of alignments per species tree
 
   save_parameters_to_file(
     rng_seed = 42,
@@ -83,7 +96,7 @@ test_that("get_alignment_by_index from fresh file", {
     eri = 0.5,
     age = 5,
     mutation_rate = 0.1,
-    n_alignments = n_alignments,
+    n_alignments = napst,
     sequence_length = 10,
     mcmc_chainlength = 10000,
     n_beast_runs = 1,
@@ -94,15 +107,15 @@ test_that("get_alignment_by_index from fresh file", {
 
   # No alignment yet
   expect_error(
-    get_alignment_by_index(file, 1),
-    "get_alignment_by_index: alignment absent at index 1"
+    get_alignment(file, sti = 1, ai = 1),
+    "get_alignment: alignment absent at STI 1 and AI 1"
   )
   expect_error(
-    get_alignment_by_index(file, 2),
-    "get_alignment_by_index: alignment absent at index 2"
+    get_alignment(file, sti = 2, ai = 1),
+    "get_alignment: alignment absent at STI 2 and AI 1"
   )
 
-  # Getting a alignment
+  # Getting alignments
   alignment <- convert_phylogeny_to_alignment(
     phylogeny = phylogeny <- ape::rcoal(n = 5),
     sequence_length = 10
@@ -113,16 +126,19 @@ test_that("get_alignment_by_index from fresh file", {
   )
 
   expect_true(is_alignment(alignment))
+  expect_true(is_alignment(other_alignment))
 
-  file <- set_alignment_by_index(
+  file <- set_alignment(
     file = file,
-    alignment_index = 2,
+    sti = 2,
+    ai = 1,
     alignment = alignment
   )
 
-  alignment_again <- get_alignment_by_index(
+  alignment_again <- get_alignment(
     file = file,
-    alignment_index = 2
+    sti = 2,
+    ai = 1
   )
 
   expect_true(identical(alignment, alignment_again))

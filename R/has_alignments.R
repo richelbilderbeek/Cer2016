@@ -9,13 +9,13 @@ has_alignments <- function(file) {
   v <- NULL
 
   for (sti in 1:2) {
-    for (j in 1:n_alignments) {
-      alignment_index <- 1 + (sti - 1) + ((j - 1) * 2)
+    for (ai in 1:n_alignments) {
       alignment <- NA
       tryCatch(
-        alignment <- get_alignment_by_index(
+        alignment <- get_alignment(
           file = file,
-          alignment_index = alignment_index
+          sti = sti,
+          ai = ai
         ),
         error = function(msg) {}
       )

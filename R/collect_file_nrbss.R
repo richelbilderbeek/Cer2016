@@ -74,35 +74,22 @@ collect_file_nrbss <- function(
     stringsAsFactors = FALSE
   )
 
-  # st: species tree, of type phylo
-  # sti: species tree index, of type int
-  # pti: posterior tree index, of type int
-  # si: MCMC state index, of type int
-  # st: MCMC state tree, of type phylo
-  for (i in seq(1, n_rows)) {
+  for (i in 1:n_rows) {
 
-    sti <- df$species_tree[i]
-    alignment_index <- df$alignment[i]
-    beast_run_index <- df$beast_run[i]
+    sti <- df$species_tree[i] # species tree index
+    ai <- df$alignment[i] # alignment index
+    pi <- df$beast_run[i] # posterior index
     state_index <- df$state[i]
 
-
-    # The index in the file$posteriors
-    posterior_index <- ( (sti - 1) * (n_alignments * n_beast_runs)) + # nolint
-      ( (alignment_index - 1) * n_alignments) +
-      beast_run_index
-
-    st <- get_species_tree_by_index(file = file, sti = sti)
-    testit::assert(posterior_index >= 1)
-    testit::assert(posterior_index <= length(file$posteriors))
-    testit::assert(state_index >= 1)
-    testit::assert(state_index <= length(get_posterior_by_index(file, posterior_index))) # nolint
-    pt <- Cer2016::get_posterior_by_index(file, posterior_index)[[state_index]]
+    st <- get_species_tree_by_index(file = file, sti = sti) # st: species tree
     testit::assert(class(st) == "phylo")
+    testit::assert(state_index >= 1)
+    testit::assert(state_index <= length(get_posterior(file, sti = sti, ai = ai, pi = pi))) # nolint
+    pt <- Cer2016::get_posterior(file, sti = sti, ai = ai, pi = pi)[[state_index]] # pt: posterior state tree, of type phylo
     testit::assert(class(pt) == "phylo")
     testit::assert(length(st$tip.label) == length(pt$tip.label))
     testit::assert(all.equal(sort(st$tip.label), sort(pt$tip.label)))
-    df$nrbs[i] <- -posterior_index
+    df$nrbs[i] <- NA
     tryCatch(
       df$nrbs[i] <- nrbs(st, pt),
       error = function(msg) {

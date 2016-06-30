@@ -49,13 +49,19 @@ get_alignment <- function(
     stop("get_alignment: ai must be at least 1")
   }
   napst <- extract_napst(file = file)
-  if (ai > n_apst) {
+  if (ai > napst) {
     stop("get_alignment: ai must at most be napst")
   }
   i <- 1 + ((sti - 1) * napst) + (ai - 1)
-  return (get_alignment_by_index(
+  alignment <- NA
+  tryCatch(
+    alignment <- get_alignment_by_index(
       file = file,
       alignment_index = i
-    )
+    ),
+    error = function(msg) {
+      stop("get_alignment: ", msg$message)
+    }
   )
+  return (alignment)
 }

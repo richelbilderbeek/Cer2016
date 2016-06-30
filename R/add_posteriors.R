@@ -24,6 +24,10 @@ add_posteriors <- function(
     stop("add_posteriors: invalid filename")
   }
   file <- Cer2016::read_file(filename)
+  if (!all(has_alignments(file) == TRUE)) {
+    stop("add_posteriors: alignments absent")
+  }
+
   parameters <- file$parameters
   rng_seed <- as.numeric(parameters$rng_seed[2])
   mcmc_chainlength <- as.numeric(parameters$mcmc_chainlength[2])
@@ -32,27 +36,23 @@ add_posteriors <- function(
 
   n_posteriors_added <- 0
 
-  if (!isTRUE(has_alignments(file))) {
-    stop("add_posteriors: alignments absent")
-  }
-
   for (sti in 1:2) {
-    for (j in seq(1, n_alignments)) {
-      alignment_index <- 1 + (sti - 1) + ((j - 1) * 2)
-      alignment <- get_alignment_by_index(
+    for (ai in 1:n_alignments) {
+      alignment <- get_alignment(
         file = file,
-        alignment_index = alignment_index
+        sti = sti,
+        ai = ai
       )
       testit::assert(Cer2016::is_alignment(alignment))
-      for (k in seq(1, n_beast_runs)) {
-        posterior_index <- 1 + (k - 1) +
-          ((j - 1) * n_alignments) +                                            # nolint
-          ((sti - 1) * n_alignments * 2)
+      for (pi in 1:n_beast_runs) {
         posterior <- NA
+        testit::assert(!is_beast_posterior(posterior))
         tryCatch(
-          posterior <- get_posterior_by_index(
+          posterior <- get_posterior(
             file = file,
-            posterior_index = posterior_index
+            sti = sti,
+            ai = ai,
+            pi = pi
           ),
           error = function(msg) {
             if (verbose) {
@@ -62,22 +62,16 @@ add_posteriors <- function(
           }
         )
         if (is_beast_posterior(posterior)) {
-          if (verbose) {
-            message(
-              "add_posteriors: posterior already present at posterior index ",
-              posterior_index
-            )
-          }
           next
         }
-        new_seed <- rng_seed + k
-        if (verbose) {
-          message("add_posteriors: setting seed to ", new_seed)
-        }
+        i <- 1 + (pi - 1) +
+          ((ai - 1) * n_alignments) +                                            # nolint
+          ((sti - 1) * n_alignments * 2)
+        new_seed <- rng_seed + i
         set.seed(new_seed)
         basefilename <- paste0(
           tools::file_path_sans_ext(filename), "_",
-          sti, "_", j, "_", k
+          sti, "_", ai, "_", pi
         )
         posterior <- alignment_to_beast_posterior(
           alignment_dnabin = alignment,
@@ -89,21 +83,15 @@ add_posteriors <- function(
         )
         testit::assert(Cer2016::is_beast_posterior(posterior))
 
-        if (verbose) {
-          message(
-            "add_posteriors: sorted posterior at posterior index ",
-            posterior_index
-          )
-        }
-        file <- set_posterior_by_index(
-          file = file,
-          posterior_index = posterior_index,
+        file <- set_posterior(
+          file = file, sti = sti, ai = ai, pi = pi,
           posterior = posterior
         )
+        saveRDS(object = file, file = filename)
         testit::assert(
           are_identical_posteriors(
-            get_posterior_by_index(file = file,
-              posterior_index = posterior_index
+            get_posterior(file = file,
+              sti = sti, ai = ai, pi = pi
             ),
             posterior
           )
@@ -111,10 +99,6 @@ add_posteriors <- function(
         n_posteriors_added <- n_posteriors_added + 1
       }
     }
-  }
-  saveRDS(file, file = filename)
-  if (verbose) {
-    message("file ", filename, " has gotten its posteriors")
   }
   n_posteriors_added
 }

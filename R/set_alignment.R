@@ -44,9 +44,13 @@ set_alignment <- function(
     stop("set_alignment: ai must be at least 1")
   }
   napst <- extract_napst(file = file)
-  if (ai > n_apst) {
+  if (ai > napst) {
     stop("set_alignment: ai must at most be napst")
   }
+  if (!is_alignment(alignment)) {
+    stop("set_alignment: alignment must be an alignment")
+  }
+
   i <- 1 + ((sti - 1) * napst) + (ai - 1)
   return (
     set_alignment_by_index(

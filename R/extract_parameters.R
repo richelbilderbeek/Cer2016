@@ -137,3 +137,26 @@ extract_napst <- function(file) {
   }
   return(n_alignments)
 }
+
+#' Extract the number of posteriors per alignment
+#'   parameter value from a file
+#' @param file A loaded parameter file
+#' @return the number of posteriors per alignment
+#' @export
+#' @examples
+#'   file <- read_file(find_path("toy_example_1.RDa"))
+#'   nppa <- extract_nppa(file)
+#'   testit::assert(nppa == 1)
+#' @author Richel Bilderbeek
+extract_nppa <- function(file) {
+
+  if (is.null(names(file$parameters))) {
+    stop("extract_nppa: file$parameters not found")
+  }
+
+  nppa <- NA
+  if ("n_beast_runs" %in% names(file$parameters)) {
+    nppa <- as.numeric(file$parameters$n_beast_runs[2])
+  }
+  return(nppa)
+}

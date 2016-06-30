@@ -1,35 +1,40 @@
-context("get_posterior_by_index")
+context("get_posterior")
 
-test_that("get_posterior_by_index: #1", {
+test_that("get_posterior: #1", {
   file <- read_file(find_path("toy_example_1.RDa"))
-  posterior_index <- 1
-  posterior <- get_posterior_by_index(file, posterior_index)
-  expect_true(is_beast_posterior(posterior))
+  posterior_1 <- get_posterior(file = file, sti = 1, ai = 1, pi = 1)
+  posterior_2 <- get_posterior(file = file, sti = 2, ai = 1, pi = 1)
+  expect_true(is_beast_posterior(posterior_1))
+  expect_true(is_beast_posterior(posterior_2))
 })
 
-test_that("get_posterior_by_index: #4", {
+test_that("get_posterior: #4", {
   file <- read_file(find_path("toy_example_4.RDa"))
-  posterior_index <- 4
-  posterior <- get_posterior_by_index(file, posterior_index)
-  expect_true(is_beast_posterior(posterior))
-  expect_true(
-    are_identical_posteriors(
-      posterior,
-      get_posterior_by_index(file, posterior_index)
-    )
-  )
-})
-
-test_that("set_posterior_by_index: #4", {
-  file <- read_file(find_path("toy_example_4.RDa"))
-  posterior_1 <- get_posterior_by_index(file, 1)
-  posterior_2 <- get_posterior_by_index(file, 2)
-  posterior_3 <- get_posterior_by_index(file, 3)
-  posterior_4 <- get_posterior_by_index(file, 4)
+  posterior_1 <- get_posterior(file = file, sti = 1, ai = 1, pi = 1)
+  posterior_2 <- get_posterior(file = file, sti = 1, ai = 1, pi = 2)
+  posterior_3 <- get_posterior(file = file, sti = 1, ai = 2, pi = 1)
+  posterior_4 <- get_posterior(file = file, sti = 1, ai = 2, pi = 2)
+  posterior_5 <- get_posterior(file = file, sti = 2, ai = 1, pi = 1)
+  posterior_6 <- get_posterior(file = file, sti = 2, ai = 1, pi = 2)
+  posterior_7 <- get_posterior(file = file, sti = 2, ai = 2, pi = 1)
+  posterior_8 <- get_posterior(file = file, sti = 2, ai = 2, pi = 2)
   expect_true(is_beast_posterior(posterior_1))
   expect_true(is_beast_posterior(posterior_2))
   expect_true(is_beast_posterior(posterior_3))
   expect_true(is_beast_posterior(posterior_4))
+  expect_true(is_beast_posterior(posterior_5))
+  expect_true(is_beast_posterior(posterior_6))
+  expect_true(is_beast_posterior(posterior_7))
+  expect_true(is_beast_posterior(posterior_8))
+})
+
+test_that("set_posterior: #4", {
+  file <- read_file(find_path("toy_example_4.RDa"))
+  # Only use first four out of eight
+  posterior_1 <- get_posterior(file = file, sti = 1, ai = 1, pi = 1)
+  posterior_2 <- get_posterior(file = file, sti = 1, ai = 1, pi = 2)
+  posterior_3 <- get_posterior(file = file, sti = 1, ai = 2, pi = 1)
+  posterior_4 <- get_posterior(file = file, sti = 1, ai = 2, pi = 2)
 
   # All same posteriors are identical
   expect_true(are_identical_posteriors(posterior_1, posterior_1))
@@ -46,27 +51,29 @@ test_that("set_posterior_by_index: #4", {
   expect_false(are_identical_posteriors(posterior_3, posterior_4))
 
   # Copy #1 over #2
-  file <- set_posterior_by_index(file, 2, posterior_1)
+  file <- set_posterior(file, sti = 1, ai = 1, pi = 2, posterior_1)
   expect_true(
     are_identical_posteriors(
-      get_posterior_by_index(file, 1),
-      get_posterior_by_index(file, 2)
+      get_posterior(file, sti = 1, ai = 1, pi = 1),
+      get_posterior(file, sti = 1, ai = 1, pi = 2)
     )
   )
 
   # Copy #3 over #4
-  file <- set_posterior_by_index(file, 4, posterior_3)
+  file <- set_posterior(file, sti = 1, ai = 2, pi = 2, posterior_3)
   expect_true(
     are_identical_posteriors(
-      get_posterior_by_index(file, 3),
-      get_posterior_by_index(file, 4)
+      get_posterior(file, sti = 1, ai = 2, pi = 1),
+      get_posterior(file, sti = 1, ai = 2, pi = 2)
     )
   )
 })
 
-test_that("get_posterior_by_index from fresh file", {
+test_that("get_posterior from fresh file", {
   filename <- "test-extract_posterior.RDa"
-  n_posteriors <- 2
+
+  napst <- 3 # Number of alignments per species tree
+  nppa <- 4 # Number of posteriors per alignment
 
   # Pre clean
   if (file.exists(filename)) {
@@ -82,10 +89,10 @@ test_that("get_posterior_by_index from fresh file", {
     eri = 0.5,
     age = 5,
     mutation_rate = 0.1,
-    n_alignments = 1,
+    n_alignments = napst,
     sequence_length = 10,
     mcmc_chainlength = 10000,
-    n_beast_runs = n_posteriors,
+    n_beast_runs = nppa,
     filename = filename
   )
 
@@ -93,12 +100,8 @@ test_that("get_posterior_by_index from fresh file", {
 
   # No posterior yet
   expect_error(
-    get_posterior_by_index(file, 1),
-    "get_posterior_by_index: posterior absent at index 1"
-  )
-  expect_error(
-    get_posterior_by_index(file, 2),
-    "get_posterior_by_index: posterior absent at index 2"
+    get_posterior(file, sti = 2, ai = napst, pi = nppa),
+    "get_posterior: get_posterior_by_index: posterior absent at index 1"
   )
 
   # Getting a posterior
@@ -107,15 +110,14 @@ test_that("get_posterior_by_index from fresh file", {
   )
   expect_true(is_beast_posterior(posterior))
 
-  file <- set_posterior_by_index(
-    file = file,
-    posterior_index = 2,
+  file <- set_posterior(
+    file = file, sti = 2, ai = napst, pi = nppa,
     posterior = posterior
   )
 
-  posterior_again <- get_posterior_by_index(
+  posterior_again <- get_posterior(
     file = file,
-    posterior_index = 2
+    sti = 2, ai = napst, pi = nppa
   )
 
   expect_true(

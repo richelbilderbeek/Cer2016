@@ -4,12 +4,12 @@
 \alias{set_posterior_by_index}
 \title{Set a BEAST2 posterior of a file}
 \usage{
-set_posterior_by_index(file, posterior_index, posterior)
+set_posterior_by_index(file, i, posterior)
 }
 \arguments{
 \item{file}{A loaded parameter file}
 
-\item{posterior_index}{the index of the posterior}
+\item{i}{the index of the posterior}
 
 \item{posterior}{a BEAST2 posterior, may also be NA}
 }

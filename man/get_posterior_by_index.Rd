@@ -5,12 +5,13 @@
 \title{Extract a BEAST2 posterior phyogenies
   from a file}
 \usage{
-get_posterior_by_index(file, posterior_index)
+get_posterior_by_index(file, i)
 }
 \arguments{
 \item{file}{A loaded parameter file}
 
-\item{posterior_index}{the index of the posterior}
+\item{i}{the posterior index,
+the index of the posteriors in the list of posteriors}
 }
 \value{
 the posterior

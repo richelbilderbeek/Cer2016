@@ -22,22 +22,16 @@ test_that("two posteriors are added", {
     n_beast_runs = 1,
     filename = filename
   )
-  add_pbd_output(filename)
-  add_species_trees(
-    filename = filename,
-    verbose = FALSE
-  )
-  add_alignments(
-    filename = filename,
-    verbose = FALSE
-  )
+  add_pbd_output(filename = filename)
+  add_species_trees(filename = filename)
+  add_alignments(filename = filename)
 
   expect_error(
-    get_posterior_by_index(
+    get_posterior(
       file = read_file(filename),
-      posterior_index = 1
+      sti = 1, ai = 1, pi = 1
     ),
-    "get_posterior_by_index: posterior absent at index 1"
+    "get_posterior: get_posterior_by_index: posterior absent at index 1"
   )
 
   n_posteriors_added <- add_posteriors(
@@ -50,11 +44,11 @@ test_that("two posteriors are added", {
 
   posterior_1 <- get_posterior_by_index(
     file = read_file(filename),
-    posterior_index = 1
+    i = 1
   )
   posterior_2 <- get_posterior_by_index(
     file = read_file(filename),
-    posterior_index = 2
+    i = 2
   )
   expect_true(is_beast_posterior(posterior_1))
   expect_true(is_beast_posterior(posterior_2))
@@ -91,27 +85,21 @@ test_that("two posteriors are added", {
     n_beast_runs = 2,
     filename = filename
   )
-  add_pbd_output(filename)
-  add_species_trees(
-    filename = filename,
-    verbose = FALSE
-  )
-  add_alignments(
-    filename = filename,
-    verbose = FALSE
-  )
+  add_pbd_output(filename = filename)
+  add_species_trees(filename = filename)
+  add_alignments(filename = filename)
 
   expect_error(
     get_posterior_by_index(
       file = read_file(filename),
-      posterior_index = 1
+      i = 1
     ),
     "get_posterior_by_index: posterior absent at index 1"
   )
   expect_error(
     get_posterior_by_index(
       file = read_file(filename),
-      posterior_index = 2
+      i = 2
     ),
     "get_posterior_by_index: posterior absent at index 2"
   )
@@ -125,19 +113,19 @@ test_that("two posteriors are added", {
 
   posterior_1 <- get_posterior_by_index(
     file = read_file(filename),
-    posterior_index = 1
+    i = 1
   )
   posterior_2 <- get_posterior_by_index(
     file = read_file(filename),
-    posterior_index = 2
+    i = 2
   )
   posterior_3 <- get_posterior_by_index(
     file = read_file(filename),
-    posterior_index = 3
+    i = 3
   )
   posterior_4 <- get_posterior_by_index(
     file = read_file(filename),
-    posterior_index = 4
+    i = 4
   )
   expect_true(is_beast_posterior(posterior_1))
   expect_true(is_beast_posterior(posterior_2))
@@ -173,34 +161,28 @@ test_that("three posteriors are added, middle is deleted and added again", {
     n_beast_runs = 3,
     filename = filename
   )
-  add_pbd_output(filename)
-  add_species_trees(
-    filename = filename,
-    verbose = FALSE
-  )
-  add_alignments(
-    filename = filename,
-    verbose = FALSE
-  )
+  add_pbd_output(filename = filename)
+  add_species_trees(filename = filename)
+  add_alignments(filename = filename)
 
   expect_error(
     get_posterior_by_index(
       file = read_file(filename),
-      posterior_index = 1
+      i = 1
     ),
     "get_posterior_by_index: posterior absent at index 1"
   )
   expect_error(
     get_posterior_by_index(
       file = read_file(filename),
-      posterior_index = 2
+      i = 2
     ),
     "get_posterior_by_index: posterior absent at index 2"
   )
   expect_error(
     get_posterior_by_index(
       file = read_file(filename),
-      posterior_index = 3
+      i = 3
     ),
     "get_posterior_by_index: posterior absent at index 3"
   )
@@ -216,15 +198,15 @@ test_that("three posteriors are added, middle is deleted and added again", {
 
   posterior_1 <- get_posterior_by_index(
     file = read_file(filename),
-    posterior_index = 1
+    i = 1
   )
   posterior_2 <- get_posterior_by_index(
     file = read_file(filename),
-    posterior_index = 2
+    i = 2
   )
   posterior_3 <- get_posterior_by_index(
     file = read_file(filename),
-    posterior_index = 3
+    i = 3
   )
 
   expect_true(is_beast_posterior(posterior_1))
@@ -235,7 +217,7 @@ test_that("three posteriors are added, middle is deleted and added again", {
   file <- read_file(filename)
   file <- set_posterior_by_index(
     file = file,
-    posterior_index = 2,
+    i = 2,
     posterior = NA
   )
   saveRDS(file, file = filename)
@@ -243,20 +225,20 @@ test_that("three posteriors are added, middle is deleted and added again", {
   expect_silent(
     get_posterior_by_index(
       file = read_file(filename),
-      posterior_index = 1
+      i = 1
     )
   )
   expect_error(
     get_posterior_by_index(
       file = read_file(filename),
-      posterior_index = 2
+      i = 2
     ),
     "get_posterior_by_index: posterior absent at index 2"
   )
   expect_silent(
     get_posterior_by_index(
       file = read_file(filename),
-      posterior_index = 3
+      i = 3
     )
   )
 
@@ -271,19 +253,19 @@ test_that("three posteriors are added, middle is deleted and added again", {
   expect_silent(
     get_posterior_by_index(
       file = read_file(filename),
-      posterior_index = 1
+      i = 1
     )
   )
   expect_silent(
     get_posterior_by_index(
       file = read_file(filename),
-      posterior_index = 2
+      i = 2
     )
   )
   expect_silent(
     get_posterior_by_index(
       file = read_file(filename),
-      posterior_index = 3
+      i = 3
     )
   )
 
