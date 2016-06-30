@@ -54,14 +54,14 @@ get_posterior <- function(
   if (ai < 1) {
     stop("get_posterior: ai must be at least 1")
   }
-  napst <- extract_napst(file = file)
+  napst <- Cer2016::extract_napst(file = file)
   if (ai > napst) {
     stop("get_posterior: ai must at most be napst")
   }
   if (pi < 1) {
     stop("get_posterior: pi must be at least 1")
   }
-  nppa <- extract_nppa(file = file)
+  nppa <- Cer2016::extract_nppa(file = file)
   if (ai > nppa) {
     stop("get_posterior: pi must at most be nppa")
   }

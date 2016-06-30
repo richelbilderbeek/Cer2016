@@ -5,9 +5,9 @@ test_that("get_alignments: toy examples 1", {
   filename <- find_path("toy_example_1.RDa")
   file <- read_file(filename)
   alignments <- get_alignments(file)
-  #expect_equal(length(alignments), 2)
-  #expect_true(is_alignment(alignments[[1]][[1]]))
-  #expect_true(is_alignment(alignments[[2]][[1]]))
+  expect_equal(length(alignments), 2)
+  expect_true(is_alignment(alignments[[1]][[1]]))
+  expect_true(is_alignment(alignments[[2]][[1]]))
 })
 
 test_that("get_alignments: toy examples 3", {
@@ -15,8 +15,8 @@ test_that("get_alignments: toy examples 3", {
   filename <- find_path("toy_example_3.RDa")
   file <- read_file(filename)
   alignments <- get_alignments(file)
-  #expect_equal(length(alignments), 8)
-  #expect_true(is_alignment(alignments[[8]][[1]]))
+  expect_equal(length(alignments), 4)
+  expect_true(is_alignment(alignments[[4]][[1]]))
 })
 
 

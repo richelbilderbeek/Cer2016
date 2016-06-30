@@ -17,9 +17,9 @@ has_alignments <- function(file) {
           sti = sti,
           ai = ai
         ),
-        error = function(msg) {}
+        error = function(msg) {} # nolint
       )
-      v <- c(v, is_alignment(alignment))
+      v <- c(v, Cer2016::is_alignment(alignment))
     }
   }
   v

@@ -45,8 +45,8 @@ test_that("alignment is added", {
     has_alignments(read_file(filename = filename)),
     rep(TRUE, times = 2)
   )
-  expect_true(is_alignment(get_alignment(file = read_file(filename = filename), sti = 1, ai = 1)))
-  expect_true(is_alignment(get_alignment(file = read_file(filename = filename), sti = 2, ai = 1)))
+  expect_true(is_alignment(get_alignment(file = read_file(filename = filename), sti = 1, ai = 1))) # nolint
+  expect_true(is_alignment(get_alignment(file = read_file(filename = filename), sti = 2, ai = 1))) # nolint
 
   # Cleaning up
   file.remove(filename)

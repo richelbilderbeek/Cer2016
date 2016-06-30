@@ -7,9 +7,10 @@ test_that("collect_species_tree_gammas toy example 1", {
     c("species_tree", "gamma_stat")
   )
   expect_equal(nrow(df), 2)
-  #expect_equal(df$gamma_stat, 0.005813035, tolerance = 0.0001) # nolint
-  expect_equal(df$gamma_stat[1], -0.7585369, tolerance = 0.0001)
-  expect_equal(df$gamma_stat[2], -0.7585369, tolerance = 0.0001)
+  expect_equal(df$gamma_stat[1], 0.005813035, tolerance = 0.0001)
+  expect_equal(df$gamma_stat[2], 0.005813035, tolerance = 0.0001)
+  # expect_equal(df$gamma_stat[1], -0.7585369, tolerance = 0.0001) # nolint
+  # expect_equal(df$gamma_stat[2], -0.7585369, tolerance = 0.0001) # nolint
 })
 
 test_that("collect_species_tree_gammas toy example 3", {

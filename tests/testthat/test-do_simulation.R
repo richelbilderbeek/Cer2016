@@ -23,14 +23,13 @@ test_that("do_simulation: use", {
 
 })
 
-test_that("do_simulation: create toy_example_x.RDa", {
-  filenames <- paste0("toy_example_", 1:4 , ".RDa")
-  create_test_parameter_files(filenames = filenames)
-  for (filename in filenames) {
-    #expect_silent(
+test_that("do_simulation: create full toy_example_x.RDa", {
+  if (1 == 2) {
+    filenames <- paste0("toy_example_", 1:4, ".RDa")
+    create_test_parameter_files(filenames = filenames)
+    for (filename in filenames) {
       do_simulation(filename = filename)
-    #)
-    #file.remove(filename)
+    }
   }
 })
 

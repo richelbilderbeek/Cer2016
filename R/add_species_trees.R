@@ -33,7 +33,7 @@ add_species_trees <- function(
       species_tree <- get_species_tree_by_index(file = file, sti = sti),
       error = function(msg) {
         if (verbose) {
-          message("add_species_trees: species_tree #", i, " already exists")
+          message("add_species_trees: species_tree #", sti, " already exists")
         }
       }
     )

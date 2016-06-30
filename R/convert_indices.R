@@ -49,4 +49,3 @@ p2i <- function(
     ( (pi - 1) * nstpist * napst)
   return (i)
 }
-

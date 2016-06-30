@@ -16,7 +16,7 @@ add_alignments <- function(filename) {
         stop("add_alignments: need species_trees at index ", sti)
       }
     )
-    testit::assert(is_phylogeny(species_tree))
+    testit::assert(Cer2016::is_phylogeny(species_tree))
   }
 
   parameters <- file$parameters
@@ -29,12 +29,12 @@ add_alignments <- function(filename) {
 
 
   for (sti in 1:2) {
-    species_tree <- get_species_tree_by_index(file = file, sti = sti)
+    species_tree <- Cer2016::get_species_tree_by_index(file = file, sti = sti)
     testit::assert(!is.na(species_tree))
     for (ai in 1:n_alignments) {
       # Alignments must be different, even if species trees (oldest
       # and youngest) are identical
-      this_seed <- a2i(sti = sti, ai = ai, nstpist = 2, napst = n_alignments)
+      this_seed <- rng_seed + a2i(sti = sti, ai = ai, nstpist = 2, napst = n_alignments) # nolint
       set.seed(this_seed)
 
       # Simulate alignment on phylogeny
@@ -56,5 +56,5 @@ add_alignments <- function(filename) {
   }
 
   # Postconditions
-  testit::assert(has_alignments(file))
+  testit::assert(Cer2016::has_alignments(file))
 }

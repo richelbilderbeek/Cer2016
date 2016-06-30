@@ -48,7 +48,7 @@ get_alignment <- function(
   if (ai < 1) {
     stop("get_alignment: ai must be at least 1")
   }
-  napst <- extract_napst(file = file)
+  napst <- Cer2016::extract_napst(file = file)
   if (ai > napst) {
     stop("get_alignment: ai must at most be napst")
   }

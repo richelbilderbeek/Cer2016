@@ -29,8 +29,8 @@ collect_species_tree_gammas <- function(
     phylogeny <- NA
     g <- NA
     tryCatch(
-      phylogeny <- get_species_tree_by_index(file = file, sti = sti),
-      error = function(msg) {}
+      phylogeny <- Cer2016::get_species_tree_by_index(file = file, sti = sti),
+      error = function(msg) {} # nolint
     )
     if (is_phylogeny(phylogeny)) {
       g <- ape::gammaStat(phylogeny)

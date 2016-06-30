@@ -39,7 +39,7 @@ set_posterior <- function(
   if (ai < 1) {
     stop("set_posterior: ai must be at least 1")
   }
-  napst <- extract_napst(file = file)
+  napst <- Cer2016::extract_napst(file = file)
   if (ai > napst) {
     stop("set_posterior: ai must at most be napst")
   }
@@ -49,7 +49,7 @@ set_posterior <- function(
   if (pi < 1) {
     stop("set_posterior: pi must be at least 1")
   }
-  nppa <- extract_nppa(file = file)
+  nppa <- Cer2016::extract_nppa(file = file)
   if (pi > nppa) {
     stop("set_posterior: pi must at most be nppa")
   }
@@ -57,7 +57,7 @@ set_posterior <- function(
     stop("set_posterior: posterior must be a posterior")
   }
   nstpist <- 2 # Number species trees per incipient species tree
-  i <- p2i(sti = sti, pi = pi, ai = ai, nstpist = 2, napst = napst, nppa = nppa)
+  i <- p2i(sti = sti, pi = pi, ai = ai, nstpist = nstpist, napst = napst, nppa = nppa) # nolint
 
   return (
     set_posterior_by_index(

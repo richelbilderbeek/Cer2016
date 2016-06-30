@@ -9,7 +9,7 @@ get_species_tree_by_index <- function(file, sti) {
     stop("get_species_tree_by_index: index must be at least 1")
   }
   if (sti > length(file$species_trees)) {
-    stop("get_species_tree_by_index: index must be less than number of species_trees")
+    stop("get_species_tree_by_index: index must be less than number of species_trees") # nolint
   }
 
   species_tree <- file$species_trees[[sti]][[1]]

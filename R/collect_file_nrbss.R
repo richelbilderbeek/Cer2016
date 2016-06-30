@@ -79,13 +79,14 @@ collect_file_nrbss <- function(
     sti <- df$species_tree[i] # species tree index
     ai <- df$alignment[i] # alignment index
     pi <- df$beast_run[i] # posterior index
-    state_index <- df$state[i]
-
-    st <- get_species_tree_by_index(file = file, sti = sti) # st: species tree
+    si <- df$state[i] # state index
+    # st: species tree
+    st <- Cer2016::get_species_tree_by_index(file = file, sti = sti)
     testit::assert(class(st) == "phylo")
-    testit::assert(state_index >= 1)
-    testit::assert(state_index <= length(get_posterior(file, sti = sti, ai = ai, pi = pi))) # nolint
-    pt <- Cer2016::get_posterior(file, sti = sti, ai = ai, pi = pi)[[state_index]] # pt: posterior state tree, of type phylo
+    testit::assert(si >= 1)
+    testit::assert(si <= length(get_posterior(file, sti = sti, ai = ai, pi = pi))) # nolint
+    # pt: posterior state tree, of type phylo
+    pt <- Cer2016::get_posterior(file, sti = sti, ai = ai, pi = pi)[[si]]
     testit::assert(class(pt) == "phylo")
     testit::assert(length(st$tip.label) == length(pt$tip.label))
     testit::assert(all.equal(sort(st$tip.label), sort(pt$tip.label)))

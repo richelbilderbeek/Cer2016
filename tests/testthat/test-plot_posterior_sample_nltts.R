@@ -12,4 +12,3 @@ test_that("plot_posterior_sample_nltts: abuse", {
     "plot_posterior_sample_nltts: invalid filename"
   )
 })
-
