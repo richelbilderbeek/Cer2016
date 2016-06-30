@@ -66,9 +66,7 @@ get_posterior <- function(
     stop("get_posterior: pi must at most be nppa")
   }
 
-  i <- 1 + (pi - 1) +
-    ((ai - 1) * napst) +                                            # nolint
-    ((sti - 1) * napst * 2)
+  i <- p2i(sti = sti, pi = pi, ai = ai, nstpist = 2, napst = napst, nppa = nppa)
 
   posterior <- NA
   tryCatch(

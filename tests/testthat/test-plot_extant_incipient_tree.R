@@ -3,7 +3,7 @@ context("plot_extant_incipient_tree")
 test_that("plot_extant_incipient_tree: use", {
 
   plot_extant_incipient_tree(filename = find_path("toy_example_1.RDa"))
-  expect_false(file.exists("Rplots.pdf"))
+
 })
 
 test_that("plot_extant_incipient_tree: abuse", {

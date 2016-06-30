@@ -2,20 +2,20 @@ context("get_alignment_by_index")
 
 test_that("get_alignment_by_index: #1", {
   file <- read_file(find_path("toy_example_1.RDa"))
-  alignment_index <- 1
-  alignment <- get_alignment_by_index(file, alignment_index)
+  i <- 1
+  alignment <- get_alignment_by_index(file, i)
   expect_true(is_alignment(alignment))
 })
 
 test_that("get_alignment_by_index: #4", {
   file <- read_file(find_path("toy_example_4.RDa"))
-  alignment_index <- 4
-  alignment <- get_alignment_by_index(file, alignment_index)
+  i <- 4
+  alignment <- get_alignment_by_index(file, i)
   expect_true(is_alignment(alignment))
   expect_true(
     identical(
       alignment,
-      get_alignment_by_index(file, alignment_index)
+      get_alignment_by_index(file, i)
     )
   )
 })
@@ -116,13 +116,13 @@ test_that("get_alignment_by_index from fresh file", {
 
   file <- set_alignment_by_index(
     file = file,
-    alignment_index = 2,
+    i = 2,
     alignment = alignment
   )
 
   alignment_again <- get_alignment_by_index(
     file = file,
-    alignment_index = 2
+    i = 2
   )
 
   expect_true(identical(alignment, alignment_again))

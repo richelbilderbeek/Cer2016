@@ -1,22 +1,22 @@
 #' Set an alignment of a file
 #' @param file A loaded parameter file
-#' @param alignment_index the index of the alignment
+#' @param i the index of the alignment
 #' @param alignment an alignment, may also be NA
 #' @return the modified file
 #' @export
 #' @author Richel Bilderbeek
 set_alignment_by_index <- function(
   file,
-  alignment_index,
+  i,
   alignment
 ) {
-  if (alignment_index < 1) {
+  if (i < 1) {
     stop("set_alignment_by_index: index must be at least 1")
   }
-  if (alignment_index > length(file$alignments)) {
+  if (i > length(file$alignments)) {
     stop("set_alignment_by_index: index must be less than number of alignments")
   }
-  file$alignments[[alignment_index]] <- list(alignment)
+  file$alignments[[i]] <- list(alignment)
   file
 }
 
@@ -51,11 +51,12 @@ set_alignment <- function(
     stop("set_alignment: alignment must be an alignment")
   }
 
-  i <- 1 + ((sti - 1) * napst) + (ai - 1)
+  i <- a2i(sti = sti, ai = ai, nstpist = 2, napst = napst)
+
   return (
     set_alignment_by_index(
       file = file,
-      alignment_index = i,
+      i = i,
       alignment = alignment
     )
   )

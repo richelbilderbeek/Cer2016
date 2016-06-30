@@ -6,7 +6,7 @@ test_that("collect_n_species_trees: use case #1", {
   expect_equal(names(df), c("n_species_trees"))
   expect_equal(ncol(df), 1)
   expect_equal(nrow(df), 1)
-  expect_equal(df$n_species_trees[1], 1)
+  expect_equal(df$n_species_trees[1], 2)
 })
 
 test_that("collect_n_species_trees: use case #2", {

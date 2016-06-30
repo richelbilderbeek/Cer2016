@@ -21,23 +21,18 @@ collect_species_tree_gammas <- function(
   if (!is_valid_file(filename)) {
     stop("collect_species_tree_gammas: invalid file")
   }
-
   file <- Cer2016::read_file(filename)
 
   df <- NULL
 
   for (sti in 1:2) {
-    phylogeny <- get_species_tree_by_index(file = file, sti = sti)
+    phylogeny <- NA
     g <- NA
-    if (!inherits(phylogeny, "phylo")) {
-      if (verbose) {
-        message(
-          "collect_species_tree_gammas: ",
-          "phylogeny must inherit from class 'phylo', ",
-          "class is '", class(phylogeny), "'"
-        )
-      }
-    } else {
+    tryCatch(
+      phylogeny <- get_species_tree_by_index(file = file, sti = sti),
+      error = function(msg) {}
+    )
+    if (is_phylogeny(phylogeny)) {
       g <- ape::gammaStat(phylogeny)
     }
 

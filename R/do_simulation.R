@@ -21,7 +21,7 @@ do_simulation <- function(
   }
   Cer2016::add_pbd_output(filename, verbose = verbose)
   Cer2016::add_species_trees(filename, verbose = verbose)
-  Cer2016::add_alignments(filename, verbose = verbose)
+  Cer2016::add_alignments(filename)
   Cer2016::add_posteriors(
     filename = filename,
     skip_if_output_present = cache_beast_output,

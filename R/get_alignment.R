@@ -1,26 +1,26 @@
 #' Extract an alignment from an index from a file
 #' @param file A loaded parameter file
-#' @param alignment_index the index of the alignment
+#' @param i the index of the alignment
 #' @return the alignment
 #' @export
 #' @author Richel Bilderbeek
 get_alignment_by_index <- function(
   file,
-  alignment_index
+  i
 ) {
-  if (alignment_index < 1) {
+  if (i < 1) {
     stop("get_alignment_by_index: index must be at least 1")
   }
-  if (alignment_index > length(file$alignments)) {
+  if (i > length(file$alignments)) {
     stop("get_alignment_by_index: index must be less than number of alignments")
   }
 
-  alignment <- file$alignments[[alignment_index]][[1]]
+  alignment <- file$alignments[[i]][[1]]
   if (!Cer2016::is_alignment(alignment)) {
     # The alignment may not be added yet
     stop(
       "get_alignment_by_index: alignment absent at index ",
-      alignment_index
+      i
     )
   }
   alignment
@@ -52,12 +52,12 @@ get_alignment <- function(
   if (ai > napst) {
     stop("get_alignment: ai must at most be napst")
   }
-  i <- 1 + ((sti - 1) * napst) + (ai - 1)
+  i <- a2i(sti = sti, ai = ai, nstpist = 2, napst = napst)
   alignment <- NA
   tryCatch(
     alignment <- get_alignment_by_index(
       file = file,
-      alignment_index = i
+      i = i
     ),
     error = function(msg) {
       stop("get_alignment: ", msg$message)

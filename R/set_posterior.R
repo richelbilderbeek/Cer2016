@@ -56,10 +56,8 @@ set_posterior <- function(
   if (!is_posterior(posterior)) {
     stop("set_posterior: posterior must be a posterior")
   }
-
-  i <- 1 + (pi - 1) +
-    ((ai - 1) * napst) +                                            # nolint
-    ((sti - 1) * napst * 2)
+  nstpist <- 2 # Number species trees per incipient species tree
+  i <- p2i(sti = sti, pi = pi, ai = ai, nstpist = 2, napst = napst, nppa = nppa)
 
   return (
     set_posterior_by_index(

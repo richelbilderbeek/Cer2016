@@ -6,7 +6,7 @@ test_that("collect_n_posteriors: use case #1", {
   expect_equal(names(df), c("n_posteriors"))
   expect_equal(ncol(df), 1)
   expect_equal(nrow(df), 1)
-  expect_equal(df$n_posteriors[1], 1)
+  expect_equal(df$n_posteriors[1], 2)
 })
 
 test_that("collect_n_posteriors: use case #2", {

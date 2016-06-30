@@ -6,7 +6,7 @@ test_that("get_posteriors: toy examples 1", {
   file <- read_file(filename)
   posteriors <- get_posteriors(file)
 
-  expect_equal(length(posteriors), 1)
+  expect_equal(length(posteriors), 2)
   expect_true(is_posterior(posteriors[[1]][[1]]))
 
 })
@@ -26,7 +26,6 @@ test_that("get_posteriors: toy examples 3", {
 test_that("get_posteriors: add one", {
 
   filename <- "test-get_posteriors.RDa"
-  n_posteriors <- 1
 
   # Pre clean
   if (file.exists(filename)) {
@@ -45,7 +44,7 @@ test_that("get_posteriors: add one", {
     n_alignments = 1,
     sequence_length = 10,
     mcmc_chainlength = 10000,
-    n_beast_runs = n_posteriors,
+    n_beast_runs = 1,
     filename = filename
   )
   add_pbd_output(filename)
@@ -54,7 +53,7 @@ test_that("get_posteriors: add one", {
   add_posteriors(filename = filename)
   file <- read_file(filename)
   posteriors <- get_posteriors(file)
-  expect_equal(length(posteriors), n_posteriors)
+  expect_equal(length(posteriors), 2)
 
 
   # Cleaning up
@@ -96,7 +95,7 @@ test_that("get_posteriors: add two", {
   add_posteriors(filename = filename)
 
   posteriors <- get_posteriors(read_file(filename))
-  expect_equal(length(posteriors), n_posteriors)
+  expect_equal(length(posteriors), n_posteriors * 2)
 
 
   # Cleaning up

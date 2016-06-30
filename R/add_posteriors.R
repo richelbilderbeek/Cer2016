@@ -64,9 +64,7 @@ add_posteriors <- function(
         if (is_posterior(posterior)) {
           next
         }
-        i <- 1 + (pi - 1) +
-          ((ai - 1) * n_alignments) +                                            # nolint
-          ((sti - 1) * n_alignments * 2)
+        i <- p2i(sti = sti, ai = ai, pi = pi, nstpist = 2, napst = n_alignments, nppa = n_beast_runs) # nolint
         new_seed <- rng_seed + i
         set.seed(new_seed)
         basefilename <- paste0(

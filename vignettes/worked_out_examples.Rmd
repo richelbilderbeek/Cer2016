@@ -211,7 +211,7 @@ n_taxa_alignment <- length(
   labels(
     get_alignment_by_index(
       file = read_file(filename), 
-      alignment_index = 1
+      i = 1
     )
   )
 )

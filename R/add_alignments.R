@@ -34,7 +34,7 @@ add_alignments <- function(filename) {
     for (ai in 1:n_alignments) {
       # Alignments must be different, even if species trees (oldest
       # and youngest) are identical
-      this_seed <- rng_seed - 1 + ai + ((sti - 1) * 2)
+      this_seed <- a2i(sti = sti, ai = ai, nstpist = 2, napst = n_alignments)
       set.seed(this_seed)
 
       # Simulate alignment on phylogeny

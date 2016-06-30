@@ -24,7 +24,7 @@ test_that("do_simulation: use", {
 })
 
 test_that("do_simulation: create toy_example_x.RDa", {
-  filenames <- paste0("toy_example_", seq(1, 4), ".RDa")
+  filenames <- paste0("toy_example_", 1:4 , ".RDa")
   create_test_parameter_files(filenames = filenames)
   for (filename in filenames) {
     #expect_silent(

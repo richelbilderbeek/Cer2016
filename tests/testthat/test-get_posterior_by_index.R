@@ -109,7 +109,7 @@ test_that("get_posterior_by_index from fresh file", {
 
   file <- set_posterior_by_index(
     file = file,
-    posterior_index = 2,
+    i = 2,
     posterior = posterior
   )
 

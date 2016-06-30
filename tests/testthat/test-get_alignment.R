@@ -108,11 +108,11 @@ test_that("get_alignment from fresh file", {
   # No alignment yet
   expect_error(
     get_alignment(file, sti = 1, ai = 1),
-    "get_alignment: alignment absent at STI 1 and AI 1"
+    "get_alignment: get_alignment_by_index: alignment absent at index 1"
   )
   expect_error(
     get_alignment(file, sti = 2, ai = 1),
-    "get_alignment: alignment absent at STI 2 and AI 1"
+    "get_alignment: get_alignment_by_index: alignment absent at index 2"
   )
 
   # Getting alignments
