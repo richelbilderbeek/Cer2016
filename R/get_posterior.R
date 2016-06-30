@@ -14,7 +14,7 @@ get_posterior_by_index <- function(file, i) {
     stop("get_posterior_by_index: index must be less than number of posteriors")
   }
   posterior <- file$posteriors[[i]][[1]]
-  if (!Cer2016::is_beast_posterior(posterior)) {
+  if (!Cer2016::is_posterior(posterior)) {
     # The posterior may not be added yet
     stop(
       "get_posterior_by_index: posterior absent at index ",

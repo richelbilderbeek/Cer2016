@@ -5,13 +5,13 @@
 #' @return TRUE or FALSE
 #' @author Richel Bilderbeek
 #' @export
-is_beast_posterior <- function(
+is_posterior <- function(
   x,
   verbose = FALSE
 ) {
   if (verbose != TRUE && verbose != FALSE) {
     stop(
-      "is_beast_posterior: ",
+      "is_posterior: ",
       "verbose should be TRUE or FALSE"
     )
   }

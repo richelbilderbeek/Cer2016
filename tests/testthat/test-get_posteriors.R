@@ -7,7 +7,7 @@ test_that("get_posteriors: toy examples 1", {
   posteriors <- get_posteriors(file)
 
   expect_equal(length(posteriors), 1)
-  expect_true(is_beast_posterior(posteriors[[1]][[1]]))
+  expect_true(is_posterior(posteriors[[1]][[1]]))
 
 })
 
@@ -18,7 +18,7 @@ test_that("get_posteriors: toy examples 3", {
   posteriors <- get_posteriors(file)
 
   expect_equal(length(posteriors), 8)
-  expect_true(is_beast_posterior(posteriors[[8]][[1]]))
+  expect_true(is_posterior(posteriors[[8]][[1]]))
 
 })
 

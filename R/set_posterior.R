@@ -53,7 +53,7 @@ set_posterior <- function(
   if (pi > nppa) {
     stop("set_posterior: pi must at most be nppa")
   }
-  if (!is_beast_posterior(posterior)) {
+  if (!is_posterior(posterior)) {
     stop("set_posterior: posterior must be a posterior")
   }
 

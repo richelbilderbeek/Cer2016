@@ -17,13 +17,13 @@ are_identical_posteriors <- function(
       "verbose should be TRUE or FALSE"
     )
   }
-  if (!is_beast_posterior(p)) {
+  if (!is_posterior(p)) {
     stop(
       "are_identical_posteriors: ",
       "p must be a BEAST2 posterior"
     )
   }
-  if (!is_beast_posterior(q)) {
+  if (!is_posterior(q)) {
     stop(
       "are_identical_posteriors: ",
       "q must be a BEAST2 posterior"

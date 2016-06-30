@@ -50,8 +50,8 @@ test_that("two posteriors are added", {
     file = read_file(filename),
     i = 2
   )
-  expect_true(is_beast_posterior(posterior_1))
-  expect_true(is_beast_posterior(posterior_2))
+  expect_true(is_posterior(posterior_1))
+  expect_true(is_posterior(posterior_2))
 
   # Cleaning up
   # Post clean
@@ -127,10 +127,10 @@ test_that("two posteriors are added", {
     file = read_file(filename),
     i = 4
   )
-  expect_true(is_beast_posterior(posterior_1))
-  expect_true(is_beast_posterior(posterior_2))
-  expect_true(is_beast_posterior(posterior_3))
-  expect_true(is_beast_posterior(posterior_4))
+  expect_true(is_posterior(posterior_1))
+  expect_true(is_posterior(posterior_2))
+  expect_true(is_posterior(posterior_3))
+  expect_true(is_posterior(posterior_4))
 
   file.remove(filename)
 
@@ -209,9 +209,9 @@ test_that("three posteriors are added, middle is deleted and added again", {
     i = 3
   )
 
-  expect_true(is_beast_posterior(posterior_1))
-  expect_true(is_beast_posterior(posterior_2))
-  expect_true(is_beast_posterior(posterior_3))
+  expect_true(is_posterior(posterior_1))
+  expect_true(is_posterior(posterior_2))
+  expect_true(is_posterior(posterior_3))
 
   # Delete middle
   file <- read_file(filename)

@@ -46,7 +46,7 @@ add_posteriors <- function(
       testit::assert(Cer2016::is_alignment(alignment))
       for (pi in 1:n_beast_runs) {
         posterior <- NA
-        testit::assert(!is_beast_posterior(posterior))
+        testit::assert(!is_posterior(posterior))
         tryCatch(
           posterior <- get_posterior(
             file = file,
@@ -61,7 +61,7 @@ add_posteriors <- function(
             }
           }
         )
-        if (is_beast_posterior(posterior)) {
+        if (is_posterior(posterior)) {
           next
         }
         i <- 1 + (pi - 1) +
@@ -81,7 +81,7 @@ add_posteriors <- function(
           skip_if_output_present = skip_if_output_present,
           verbose = verbose
         )
-        testit::assert(Cer2016::is_beast_posterior(posterior))
+        testit::assert(Cer2016::is_posterior(posterior))
 
         file <- set_posterior(
           file = file, sti = sti, ai = ai, pi = pi,

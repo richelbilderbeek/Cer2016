@@ -76,8 +76,8 @@ do_simulation(filename, cache_beast_output = TRUE)
 ```{r}
 posteriors <- get_posteriors(read_file(filename))
 testit::assert(length(posteriors) == n_beast_runs)
-testit::assert(is_beast_posterior(posteriors[[1]][[1]]))
-testit::assert(is_beast_posterior(posteriors[[2]][[1]]))
+testit::assert(is_posterior(posteriors[[1]][[1]]))
+testit::assert(is_posterior(posteriors[[2]][[1]]))
 phylogenies_1 <- posteriors[[1]][[1]]
 phylogenies_2 <- posteriors[[2]][[1]]
 testit::assert(length(phylogenies_1) > 0)
