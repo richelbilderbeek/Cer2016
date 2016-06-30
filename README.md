@@ -26,15 +26,14 @@ module load R; Rscript -e 'devtools::install_github("richelbilderbeek/Cer2016")'
 
 ## Workflow
 
-On Peregrine, from the root folder:
+On Peregrine, from the `Cer2016` root folder:
 
 ```
-./scripts/run.sh
+cd scripts
+./run.sh
 ```
 
 It will send an email when finished.
-
-On your local computer, copy all parameter files to it:
 
 ## How to create the test examples?
 
@@ -67,7 +66,7 @@ sudo apt-get install libcurl4-openssl-dev
 ```
 
 Additionally, there is a vignette called `Troubleshooting` that may
-(even automagically!) help you out.
+help you out.
 
 ### Install packages
 
