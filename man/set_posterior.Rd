@@ -16,7 +16,12 @@ the ai-th alignment of that species tree,
 a value from 1 to and including
 the number of alignments per species tree}
 
-\item{alignment}{an alignment, may also be NA}
+\item{pi}{the posterior index,
+the pi-th posterior of that alignment,
+a value from 1 to and including
+the number of posteriors per alignment}
+
+\item{posterior}{a posterior, may also be NA}
 }
 \value{
 the modified file

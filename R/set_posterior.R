@@ -23,7 +23,11 @@ set_posterior_by_index <- function(file, i, posterior) {
 #'   the ai-th alignment of that species tree,
 #'   a value from 1 to and including
 #'   the number of alignments per species tree
-#' @param alignment an alignment, may also be NA
+#' @param pi the posterior index,
+#'   the pi-th posterior of that alignment,
+#'   a value from 1 to and including
+#'   the number of posteriors per alignment
+#' @param posterior a posterior, may also be NA
 #' @return the modified file
 #' @export
 #' @author Richel Bilderbeek

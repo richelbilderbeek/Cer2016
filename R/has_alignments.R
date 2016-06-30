@@ -1,4 +1,5 @@
 #' Checks if alignments are present
+#' @param a file, as returned by 'read_file(filename)'
 #' @return a vector of TRUEs and FALSEs
 #' @author Richel Bilderbeek
 #' @export

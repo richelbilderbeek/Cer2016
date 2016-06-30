@@ -4,12 +4,12 @@
 \alias{set_alignment_by_index}
 \title{Set an alignment of a file}
 \usage{
-set_alignment_by_index(file, alignment_index, alignment)
+set_alignment_by_index(file, i, alignment)
 }
 \arguments{
 \item{file}{A loaded parameter file}
 
-\item{alignment_index}{the index of the alignment}
+\item{i}{the index of the alignment}
 
 \item{alignment}{an alignment, may also be NA}
 }

@@ -4,12 +4,12 @@
 \alias{get_alignment_by_index}
 \title{Extract an alignment from an index from a file}
 \usage{
-get_alignment_by_index(file, alignment_index)
+get_alignment_by_index(file, i)
 }
 \arguments{
 \item{file}{A loaded parameter file}
 
-\item{alignment_index}{the index of the alignment}
+\item{i}{the index of the alignment}
 }
 \value{
 the alignment

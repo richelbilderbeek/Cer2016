@@ -5,13 +5,13 @@
 #' @return A dataframe with all number of sampled alignments of all files
 #' @examples
 #'   filenames <- c(
-#'    find_path("toy_example_1.RDa"),
-#'    find_path("toy_example_3.RDa")
-#'  )
-#'  df <- collect_files_n_alignments(filenames, verbose = FALSE)
-#'  testit::assert(names(df) == c("filenames", "n_alignments"))
-#'  testit::assert(nrow(df) == length(filenames))
-#'  testit::assert(df$n_alignments == c(1, 4))
+#'     find_path("toy_example_1.RDa"),
+#'     find_path("toy_example_3.RDa")
+#'   )
+#'   df <- collect_files_n_alignments(filenames)
+#'   testit::assert(names(df) == c("filenames", "n_alignments"))
+#'   testit::assert(nrow(df) == length(filenames))
+#'   testit::assert(df$n_alignments == c(2, 4))
 #' @export
 collect_files_n_alignments <- function(
   filenames,
