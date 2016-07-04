@@ -1,4 +1,4 @@
-#' Finds the full pathof a file
+#' Finds the full path of a file
 #' @param filename the name of a file
 #' @return the full path of the filename if an existing file could be found, stops otherwise
 #' @examples
@@ -31,6 +31,22 @@ find_path <- function(filename) {
     "find_path: ",
     "cannot find '", filename, "'"
   )
+}
+
+
+#' Finds the full path of files
+#' @param filenames the names of files
+#' @return the full path of the filenames if an existing file could be found, stops otherwise
+#' @examples
+#'   filenames <- find_paths(c("toy_example_1.RDa", "toy_example_2.RDa"))
+#'   testit::assert(file.exists(filenames[1]))
+#'   testit::assert(file.exists(filenames[2]))
+#' @author Richel Bilderbeek
+#' @export
+find_paths <- function(filenames) {
+  #filenames <- c("toy_example_1.RDa", "toy_example_2.RDa")
+  filenames <- as.vector(sapply(filenames, Cer2016::find_path))
+  filenames
 }
 
 #' Find the path of the BEAST2 jar file

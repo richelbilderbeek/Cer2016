@@ -19,7 +19,7 @@ plot_alignments <- function(filename) {
           file = file,
           i = i
         ),
-        main = paste(base_filename, "alignment ", ai)
+        main = paste(base_filename, "alignment ", ai, "of species tree ", sti)
       )
     }
   }

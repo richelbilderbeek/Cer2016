@@ -15,78 +15,6 @@ Loading this package
 library(Cer2016)
 ```
 
-Resolution of analysis:
-
-```{r}
-dt <- 0.1
-```
-
-## Collecting nLTT values from one or more phylogenies
-
-```{r collect_from_phylogenies}
-phylogenies <- c(ape::rcoal(10), ape::rcoal(20))
-df <- nLTT::get_nltt_values(phylogenies, dt = dt)
-knitr::kable(df)
-```
-
-## Collecting nLTT values from the species trees
-
-```{r collect_from_species_tree}
-filename <- find_path("toy_example_3.RDa")
-df <- collect_species_tree_nltts(filename, dt = dt)
-testit::assert(names(df) == c("species_tree", "t", "nltt"))
-testit::assert(nrow(df) == 2 * (1 + (1 / dt)))
-knitr::kable(df)
-```
-
-## Collecting nLTT values from the posterior
-
-```{r collect_from_a_file}
-filename <- find_path("toy_example_3.RDa")
-df <- collect_posterior_nltts(filename, dt = dt)
-testit::assert(names(df) == 
-  c("species_tree", "alignment", "beast_run", "state", "t", "nltt")
-)
-testit::assert(nrow(df) == 880)
-knitr::kable(head(df))
-```
-
-## Collecting nLTTs's from a file
-
-```{r}
-filename <- find_path("toy_example_3.RDa")
-df <- collect_file_nltts(filename, dt = dt)
-testit::assert(names(df) == c("species_tree_nltts", "posterior_nltts"))
-testit::assert(
-  names(df$species_tree_nltts) == c("species_tree", "t", "nltt")
-)
-testit::assert(names(df$posterior_nltts) == 
-  c("species_tree", "alignment", "beast_run", "state", "t", "nltt")
-)
-testit::assert(nrow(df$species_tree_nltts) > 0)
-testit::assert(nrow(df$posterior_nltts) > 0)
-knitr::kable(head(df$species_tree_nltts))
-knitr::kable(head(df$posterior_nltts))
-```
-
-## Collecting nLTTs from some files
-
-```{r collect_from_some_files}
-filenames <- c(
-  find_path("toy_example_1.RDa"),
-  find_path("toy_example_2.RDa"),
-  find_path("toy_example_3.RDa"),
-  find_path("toy_example_4.RDa")
-)
-
-df <- collect_files_nltts(filenames, dt = dt, verbose = TRUE)
-testit::assert(names(df) 
-  == c("species_tree_nltts", "posterior_nltts")
-)
-knitr::kable(head(df$species_tree_nltts))
-knitr::kable(head(df$posterior_nltts))
-```
-
 ## Collecting nLTTs from all files
 
 ```{r}
@@ -105,6 +33,7 @@ df_species_trees <- read.csv(
  stringsAsFactors = FALSE, 
  row.names = 1
 )
+df_species_trees$species_tree <- as.factor(df_species_trees$species_tree)
 
 df_posterior <- read.csv(
  file = csv_filename_posterior, 
@@ -112,6 +41,11 @@ df_posterior <- read.csv(
  stringsAsFactors = FALSE, 
  row.names = 1
 )
+
+df_posterior$species_tree <- as.factor(df_posterior$species_tree)
+df_posterior$alignment <- as.factor(df_posterior$alignment)
+df_posterior$beast_run <- as.factor(df_posterior$beast_run)
+
 ```
 
 Putting the head of the data frame in a table:
@@ -141,14 +75,76 @@ names(df_posterior)
 Let's first plot the distribution of nLTTs:
 
 ```{r}
-ggplot2::ggplot(
-  data = df_species_trees, ggplot2::aes(df_species_trees$nltt)
-) + ggplot2::geom_histogram(binwidth = 1)
+filenames <- as.vector(sapply(unique(sort(df_species_trees$filenames)), Cer2016::find_path))
+for (filename in filenames) {
+  #plot_species_tree(filename)
+  plot_species_tree_nltt(filename, dt = 0.1)
+}
 ```
+
+```{r fig.width = 7, fig.height = 7}
+ggplot2::ggplot(
+  data = df_species_trees, 
+  ggplot2::aes(x = df_species_trees$t, y = df_species_trees$nltt, colour = df_species_trees$species_tree)
+) + ggplot2::geom_point() + ggplot2::geom_smooth()
+```
+
+
+## Some pretty nonsensical histograms
+
+```{r fig.width = 7, fig.height = 7}
+ggplot2::ggplot(
+  data = df_species_trees, 
+  ggplot2::aes(df_species_trees$nltt, fill = df_species_trees$species_tree)
+) + ggplot2::geom_histogram(
+  alpha = 0.25, 
+  position = 'identity', 
+  binwidth = 0.1
+)
+```
+
+```{r fig.width = 7, fig.height = 7}
+ggplot2::ggplot(
+  data = df_species_trees, 
+  ggplot2::aes(df_species_trees$nltt, fill = df_species_trees$species_tree)
+) + ggplot2::geom_density(
+  alpha = 0.25, 
+  position = 'identity'
+)
+```
+
+
+
+
+
+
+
+```{r fig.width = 7, fig.height = 7}
+ggplot2::ggplot(
+  data = df_posterior, 
+  ggplot2::aes(df_posterior$nltt, fill = df_posterior$species_tree)
+) + ggplot2::geom_histogram(
+  alpha = 0.25, 
+  position = 'identity', 
+  binwidth = 0.1
+)
+```
+
+```{r fig.width = 7, fig.height = 7}
+ggplot2::ggplot(
+  data = df_posterior, 
+  ggplot2::aes(df_posterior$nltt, fill = df_posterior$species_tree)
+) + ggplot2::geom_density(
+  alpha = 0.25, 
+  position = 'identity'
+)
+```
+
+
+
 
 ```{r}
 ggplot2::ggplot(
   data = df_posterior, ggplot2::aes(df_posterior$nltt)
 ) + ggplot2::geom_histogram(binwidth = 1)
 ```
-
