@@ -28,10 +28,10 @@ before_script:
 
 script: 
  - R CMD check .
- - sudo Rscript install_this_r_package.R
- - Rscript -e 'library(Cer2016); print(has_beast2())'
 
 after_success:
+ - sudo Rscript install_this_r_package.R
+ - Rscript -e 'library(Cer2016); testit::assert(has_beast2())'
  - Rscript -e 'lintr::lint_package()'
  - Rscript -e 'library(covr); codecov()'
  - codecov
@@ -40,6 +40,8 @@ after_success:
  - cat /home/travis/build/richelbilderbeek/Cer2016/..Rcheck/00check.log
 
 after_failure:
+ - sudo Rscript install_this_r_package.R
+ - Rscript -e 'library(Cer2016); testit::assert(has_beast2())'
  - Rscript -e 'lintr::lint_package()'
  - Rscript -e 'library(covr); codecov()'
  - codecov
