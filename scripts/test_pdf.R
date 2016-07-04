@@ -26,15 +26,7 @@ cat("\n--------\n", file = "create_test_pdf_r.log", append = TRUE)
 cat(system("pdflatex -v"), file = "create_test_pdf_r.log", append = TRUE)
 cat("\n--------\n", file = "create_test_pdf_r.log", append = TRUE)
 
-# Knitr
-
-tryCatch(
-  knitr::knit("../vignettes/troubleshooting.Rmd", "test_pdf_knitr.pdf"),
-  error = function(msg) { message(msg) }
-)
-
 # Pandoc with squiggle
-
 tryCatch(
   rmarkdown::render("../vignettes/troubleshooting.Rmd", output_file = "~/troubleshooting_pandoc.html"),
   error = function(msg) { message(msg) }

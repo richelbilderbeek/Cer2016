@@ -13,13 +13,7 @@ write.csv(
 # Analyse and create pdf
 file.copy("collected_n_taxa.csv", "../inst/extdata/collected_n_taxa.csv")
 
-library(knitr)
 library(rmarkdown)
-
-tryCatch(
-  knitr::knit("../vignettes/analyse_n_taxa.Rmd", "analyse_n_taxa_knitr.pdf"),
-  error = function(msg) { message(msg) }
-)
 
 tryCatch(
   rmarkdown::render("../vignettes/analyse_n_taxa.Rmd", output_file =  "~/analyse_n_taxa.html"),

@@ -19,13 +19,7 @@ file.copy(
   paste0("../inst/extdata/", csv_filename_nrbss)
 )
 
-library(knitr)
 library(rmarkdown)
-
-tryCatch(
-  knitr::knit("../vignettes/analyse_nrbss.Rmd", "analyse_nrbss_knitr.pdf"),
-  error = function(msg) { message(msg) }
-)
 
 tryCatch(
   rmarkdown::render("../vignettes/analyse_nrbss.Rmd", output_file =  "~/analyse_nrbss.html"),

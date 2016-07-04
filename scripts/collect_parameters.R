@@ -14,11 +14,6 @@ write.csv(
 file.copy("collected_parameters.csv", "../inst/extdata/collected_parameters.csv")
 
 tryCatch(
-  knitr::knit("../vignettes/analyse_files.Rmd", "analyse_files_knitr.pdf"),
-  error = function(msg) { message(msg) }
-)
-
-tryCatch(
   rmarkdown::render("../vignettes/analyse_files.Rmd", output_file = "~/analyse_files.html"),
   error = function(msg) { message(msg) }
 )

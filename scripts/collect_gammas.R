@@ -28,13 +28,7 @@ file.copy(
   paste0("../inst/extdata/", csv_filename_posterior)
 )
 
-library(knitr)
 library(rmarkdown)
-
-tryCatch(
-  knitr::knit("../vignettes/analyse_gammas.Rmd", "analyse_gammas_knitr.pdf"),
-  error = function(msg) { message(msg) }
-)
 
 tryCatch(
   rmarkdown::render("../vignettes/analyse_gammas.Rmd", output_file =  "~/analyse_gammas.html"),
