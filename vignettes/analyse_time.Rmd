@@ -15,13 +15,7 @@ library(Cer2016)
 ```
 
 ```{r}
-csv_filename <- "collected_parameters.csv"
-
-# When working on university computer
-if (!file.exists(csv_filename)) {
-  csv_filename <- "~/Peregrine/collected_parameters.csv"
-}
-testit::assert(file.exists(csv_filename))
+csv_filename <- find_path("collected_parameters.csv")
 
 df <- read.csv(
   file = csv_filename, 

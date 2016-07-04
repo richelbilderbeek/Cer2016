@@ -66,7 +66,6 @@ testit::assert(nrow(df$posterior_gammas) == 80)
 ## Collecting gamma's from some files
 
 ```{r collecting_gammas5}
-# Thanks to Robin Lovelace
 all_parameter_filenames <- c(
   find_path("toy_example_1.RDa"),
   find_path("toy_example_2.RDa"),

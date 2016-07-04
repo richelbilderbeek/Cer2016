@@ -1,5 +1,5 @@
-"","rng_seed","sirg","siri","scr","erg","eri","age","n_species_trees_samples","mutation_rate","n_alignments","sequence_length","mcmc_chainlength","n_beast_runs"
-"toy_example_1.RDa",1,0.5,0.5,1e+06,0.1,0.1,5,1,0.01,1,1000,10000,1
-"toy_example_2.RDa",2,0.5,0.5,0.1,0.1,0.1,5,1,0.01,1,1000,10000,1
-"toy_example_3.RDa",3,0.5,0.5,1e+06,0.1,0.1,5,2,0.01,2,1000,10000,2
-"toy_example_4.RDa",4,0.5,0.5,0.1,0.1,0.1,5,2,0.01,2,1000,10000,2
+"","rng_seed","sirg","siri","scr","erg","eri","age","mutation_rate","n_alignments","sequence_length","mcmc_chainlength","n_beast_runs"
+"toy_example_1.RDa",1,0.5,0.5,1e+06,0.1,0.1,5,0.01,1,1000,10000,1
+"toy_example_2.RDa",2,0.5,0.5,0.1,0.1,0.1,5,0.01,1,1000,10000,1
+"toy_example_3.RDa",3,0.5,0.5,1e+06,0.1,0.1,5,0.01,2,1000,10000,2
+"toy_example_4.RDa",4,0.5,0.5,0.1,0.1,0.1,5,0.01,2,1000,10000,2
