@@ -310,7 +310,7 @@ The simplest member of the protracted speciation famility is the constant-rate
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -575,15 +575,70 @@ Creating species trees
 \end_layout
 
 \begin_layout Standard
-The longer speciation takes, the higher the number of incipient species
- will be.
- Because BEAST2 assumes one individual per species, we randomly sample one
- individual per species of all species to obtain a species tree.
- This is replicated 
-\begin_inset Formula $n_{s}$
+A species tree is a phylogeny with one lineage per species.
+ Assuming instantaneous speciation, every lineage represents a species per
+ definition.
+ For protracted speciation one needs to define which subspecies is chosen
+ to represent a species.
+ One such way is to randomly sample one lineage per species.
+ For the sampling being representative, this approach would have to be repeated
+ multiple times, which is computationally infeasable.
+ Instead, we chose (non-randomly) the two most extreme species trees: of
+ each species, we pick the lineages that has been present longest (the oldest)
+ and shortest (the youngest)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename IncipientSpeciesTree.png
+
 \end_inset
 
- times.
+
+\begin_inset Graphics
+	filename IncipientSpeciesTreeYoungest.png
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename IncipientSpeciesTreeOldest.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Example incipient species tree and its two species trees.
+ 'youngest' denotes that the most recent lineage is chosen to represent
+ a species, 'oldest' selects the lineage that has been present longest.
+ Because the simulation algorithm, the oldest lineage has the lowest subspecies
+ index (the third number), where the youngest lineage has the highest subspecies
+ index.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -746,11 +801,11 @@ reference "tab:Parameters-used"
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="11" columns="2">
+<lyxtabular version="3" rows="10" columns="2">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -1094,42 +1149,6 @@ alignment length (base pairs)
 
 ,
 \begin_inset Formula $10^{5}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $n_{s}$
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Number of species trees sampled
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $2$
 \end_inset
 
 
