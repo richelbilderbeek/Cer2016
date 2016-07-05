@@ -20,7 +20,11 @@ plot_species_tree_nltt <- function(
 
   ggplot2::ggplot(
     data = nltt_values,
-    ggplot2::aes(x = nltt_values$t, y = nltt_values$nltt, colour = nltt_values$species_tree),
+    ggplot2::aes(
+      x = nltt_values$t,
+      y = nltt_values$nltt,
+      colour = nltt_values$species_tree
+    ),
     main = "Species trees"
   ) + ggplot2::geom_line(
   ) + ggplot2::scale_x_continuous(

@@ -44,7 +44,6 @@ find_path <- function(filename) {
 #' @author Richel Bilderbeek
 #' @export
 find_paths <- function(filenames) {
-  #filenames <- c("toy_example_1.RDa", "toy_example_2.RDa")
   filenames <- as.vector(sapply(filenames, Cer2016::find_path))
   filenames
 }
