@@ -4,6 +4,7 @@ install.packages("RNeXML", repos = "http://cran.uk.r-project.org")
 # Second things
 install.packages("ape", repos = "http://cran.uk.r-project.org")
 install.packages("adephylo", repos = "http://cran.uk.r-project.org")
+install.packages("BH", repos = "http://cran.uk.r-project.org")
 install.packages("coda", repos = "http://cran.uk.r-project.org")
 install.packages("crayon", repos = "http://cran.uk.r-project.org")
 install.packages("data.table", repos = "http://cran.uk.r-project.org")
@@ -27,6 +28,7 @@ install.packages("testit", repos = "http://cran.uk.r-project.org")
 install.packages("testthat", repos = "http://cran.uk.r-project.org")
 install.packages("withr", repos = "http://cran.uk.r-project.org")
 install.packages("XML", repos = "http://cran.uk.r-project.org")
+install.packages("xml2", repos = "http://cran.uk.r-project.org")
 
 # Third things
 
