@@ -1,6 +1,10 @@
 context("add_posteriors")
 
-test_that("two posteriors are added", {
+test_that("add_posteriors: two posteriors are added", {
+  if (!has_beast2()) {
+    skip("BEAST2 absent")
+  }
+
   filename <- "test-add_posteriors_1.RDa"
   if (file.exists(filename)) {
     file.remove(filename)
@@ -62,6 +66,9 @@ test_that("two posteriors are added", {
 
 
 test_that("four posteriors are added", {
+  if (!has_beast2()) {
+    skip("BEAST2 absent")
+  }
 
   filename <- "test-add_posteriors_2.RDa"
   if (file.exists(filename)) {
@@ -138,6 +145,10 @@ test_that("four posteriors are added", {
 })
 
 test_that("three posteriors are added, middle is deleted and added again", {
+
+  if (!has_beast2()) {
+    skip("BEAST2 absent")
+  }
 
   filename <- "test-add_posteriors_3.RDa"
   if (file.exists(filename)) {
