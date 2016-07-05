@@ -38,6 +38,8 @@ after_success:
  - bash <(curl -s https://codecov.io/bash)
  - cat /home/travis/build/richelbilderbeek/Cer2016/..Rcheck/00install.out
  - cat /home/travis/build/richelbilderbeek/Cer2016/..Rcheck/00check.log
+ - cat testthat.log
+ - cat /home/travis/build/richelbilderbeek/Cer2016/testthat/testthat.log
 
 after_failure:
  - sudo Rscript install_this_r_package.R
@@ -50,3 +52,5 @@ after_failure:
  - cat /home/travis/build/richelbilderbeek/Cer2016/..Rcheck/00check.log
  - cat `find . | egrep "\.log"`
  - cd ~; find . | egrep "beast"
+ - cat testthat.log
+ - cat /home/travis/build/richelbilderbeek/Cer2016/testthat/testthat.log
