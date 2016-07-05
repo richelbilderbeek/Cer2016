@@ -1,5 +1,6 @@
 library(Cer2016)
 
+print(has_beast2())
 testit::assert(has_beast2())
 
 # Copied from test-alignment_to_beast_posterior.R

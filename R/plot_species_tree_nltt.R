@@ -13,10 +13,9 @@ plot_species_tree_nltt <- function(
   }
   nltt <- NULL; rm(nltt) # nolint, should fix warning: plot_species_tree_nltt: no visible binding for global variable ‘nltt’
 
-  nltt_values <- Cer2016::collect_species_tree_nltts(
+  nltt_values <- collect_species_tree_nltts(
     filename = filename, dt = dt
   )
-  nltt_values$species_tree <- as.factor(nltt_values$species_tree)
 
   ggplot2::ggplot(
     data = nltt_values,

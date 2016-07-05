@@ -4,14 +4,14 @@
 #' @param verbose give verbose output, should be TRUE or FALSE
 #' @return A dataframe with all number of sampled posteriors of all files
 #' @examples
-#'   filenames <- c(
+#'  filenames <- c(
 #'    find_path("toy_example_1.RDa"),
 #'    find_path("toy_example_3.RDa")
 #'  )
-#'  df <- collect_files_n_posteriors(filenames, verbose = FALSE)
+#'  df <- collect_files_n_posteriors(filenames)
 #'  testit::assert(names(df) == c("filenames", "n_posteriors"))
 #'  testit::assert(nrow(df) == length(filenames))
-#'  testit::assert(df$n_posteriors == c(1, 8))
+#'  testit::assert(df$n_posteriors == c(2, 8))
 #' @export
 collect_files_n_posteriors <- function(
   filenames,

@@ -2,7 +2,7 @@
 % Please edit documentation in R/find_paths.R
 \name{find_path}
 \alias{find_path}
-\title{Finds the full pathof a file}
+\title{Finds the full path of a file}
 \usage{
 find_path(filename)
 }
@@ -13,7 +13,7 @@ find_path(filename)
 the full path of the filename if an existing file could be found, stops otherwise
 }
 \description{
-Finds the full pathof a file
+Finds the full path of a file
 }
 \examples{
   path <- find_path("toy_example_1.RDa")
