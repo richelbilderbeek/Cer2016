@@ -11,8 +11,7 @@ vignette: >
 
 # Goal
 
-This vignette demonstrates the `sample_species_trees_from_pbd_output`
-function.
+This vignette demonstrates the sampling used.
 
 # Demonstration
 
@@ -24,11 +23,12 @@ library(Cer2016)
 library(ggplot2)
 library(phytools)
 library(nLTT)
+library(plyr)
 ```
 
 Here we will simulate a protracted birth-death process:
 
-```{r}
+```{r fig.width = 7, fig.height = 7}
 age <- 10
 seed <- 320
 set.seed(seed)
@@ -53,46 +53,47 @@ Most of these trees are uninteresting for this demonstration. I will zoom in
 on the middle tree of the top row, which are the extant good and
 incipient species:
 
-```{r}
-cols = setNames(c("gray", "black"), c("i", "g"))
+```{r fig.width = 7, fig.height = 7}
+cols <- setNames(c("gray", "black"), c("i", "g"))
 phytools::plotSimmap(pbd_sim_output$igtree.extant, colors = cols)
 ```
 
-From that tree, from each good species, we randomply pick one. This will cause
-multiple samplings to be different:
+From that tree, from each good species, we pick both the oldest and youngest:
 
 ```{r}
-n <- 10
-species_trees <- sample_species_trees(n = n, pbd_sim_output)
+stree_youngest <- pbd_sim_output$stree_youngest 
+stree_oldest <- pbd_sim_output$stree_oldest
+species_trees <- c(stree_youngest, stree_oldest)
 for (species_tree in species_trees) {
   plot(species_tree)
 }
 ```
 
-Just for giggles, let's see the average nLTT plot:
+The nLTT plots are expected to differ. Here we extract the nLTT plot is data:
 
 ```{r}
 df <- get_nltt_values(species_trees, dt = 0.01)
+df$id <- revalue(df$id, c("1" = "youngest", "2" = "oldest"))
+names(df)
+```
+
+Here we plot both nLTTs:
+
+```{r fig.width = 7, fig.height = 7}
+ggplot2::ggplot(
+  data = df,
+  ggplot2::aes(x = t, y = nltt, colour = id)
+) + ggplot2::geom_step(
+  direction = "vh", size = 2, alpha = 0.5
+) + ggplot2::scale_x_continuous(
+  name = "Normalized time"
+) + ggplot2::scale_y_continuous(name = "Normalized number of lineages"
+) + ggplot2::ggtitle("nLTT plots")
+```
+
+Or we plot them as an average:
+
+```{r fig.width = 7, fig.height = 7}
 ggplot2::qplot(t, nltt, data = df, geom = "blank", ylim = c(0, 1), main = "Average nLTT plot of phylogenies") + 
   ggplot2::stat_summary(fun.data = "mean_cl_boot", color = "red", geom = "smooth")
-```
-
-To make this random process repeatable, a random number generator seed
-is used. Here we check the seed. It should yield the same results for same seed:
-
-```{r}
-set.seed(seed)
-species_tree_a <- sample_species_trees(n = n, pbd_sim_output)[[1]]
-set.seed(seed)
-species_tree_b <- sample_species_trees(n = n, pbd_sim_output)[[1]]
-plot(species_tree_a, main = "A")
-plot(species_tree_b, main = "B")
-```
-
-For a different seed, it should be a different nLTT plot:
-
-```{r}
-set.seed(seed + 1)
-species_tree_c <- sample_species_trees(n = n, pbd_sim_output)[[1]]
-plot(species_tree_c, main = "C")
 ```

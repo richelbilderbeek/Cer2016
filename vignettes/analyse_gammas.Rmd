@@ -16,82 +16,11 @@ library(Cer2016)
 library(ggplot2)
 ```
 
-## Collecting gamma's from one or more phylogenies
-
-```{r collecting_gammas1}
-phylogenies <- c(ape::rcoal(10), ape::rcoal(20))
-df <- collect_gamma_statistics(phylogenies)
-knitr::kable(df)
-```
-
-## Collecting gamma's from the species trees
-
-```{r collecting_gammas2}
-filename <- find_path("toy_example_3.RDa")
-df <- collect_species_tree_gammas(filename)
-testit::assert(names(df) == c("species_tree", "gamma_stat"))
-testit::assert(nrow(df) == 2)
-knitr::kable(df)
-```
-
-## Collecting gamma's from the posterior
-
-```{r collecting_gammas3}
-filename <- find_path("toy_example_3.RDa")
-df <- collect_posterior_gammas(filename)
-testit::assert(names(df) == 
-  c("species_tree", "alignment", "beast_run", "gamma_stat")
-)
-testit::assert(nrow(df) == 80)
-knitr::kable(head(df))
-```
-
-
-## Collecting gamma's from a file
-
-```{r collecting_gammas4}
-filename <- find_path("toy_example_3.RDa")
-df <- collect_file_gammas(filename)
-testit::assert(names(df) == c("species_tree_gammas", "posterior_gammas"))
-testit::assert(
-  names(df$species_tree_gammas) == c("species_tree", "gamma_stat")
-)
-testit::assert(names(df$posterior_gammas) == 
-  c("species_tree", "alignment", "beast_run", "gamma_stat")
-)
-testit::assert(nrow(df$species_tree_gammas) == 2)
-testit::assert(nrow(df$posterior_gammas) == 80)
-```
-
-## Collecting gamma's from some files
-
-```{r collecting_gammas5}
-all_parameter_filenames <- c(
-  find_path("toy_example_1.RDa"),
-  find_path("toy_example_2.RDa"),
-  find_path("toy_example_3.RDa"),
-  find_path("toy_example_4.RDa")
-)
-   
-df <- collect_files_gammas(head(all_parameter_filenames), verbose = TRUE)
-testit::assert(names(df) 
-  == c("species_tree_gamma_stats", "posterior_gamma_stats")
-)
-knitr::kable(df$species_tree_gamma_stats)
-knitr::kable(head(df$posterior_gamma_stats))
-```
-
-## Collecting gamma's from all files
-
 ```{r}
 csv_filename_species_trees <- find_path("collected_gammas_species_trees.csv")
 csv_filename_posterior     <- find_path("collected_gammas_posterior.csv")
-csv_filename_parameters    <- find_path("collected_parameters.csv")
-# csv_filename_comparison    <- find_path("gamma_diff.csv")
 testit::assert(file.exists(csv_filename_species_trees))
 testit::assert(file.exists(csv_filename_posterior))
-testit::assert(file.exists(csv_filename_parameters))
-#testit::assert(file.exists(csv_filename_comparison))
 ```
 
 Note that the comma-seperated file is only created when absent,
@@ -114,14 +43,7 @@ df_posterior <- read.csv(
  row.names = 1
 )
 
-df_parameters <- read.csv(
-  file = csv_filename_parameters, 
-  header = TRUE, 
-  stringsAsFactors = FALSE, 
-  row.names = 1
-)
-
-
+df_parameters <- read_collected_parameters()
 
 df_comparison <- merge(
   x = df_species_trees, 
@@ -423,14 +345,7 @@ Which parameters go with that?
 First read all parameters:
 
 ```{r}
-csv_filename_parameters <- find_path("collected_parameters.csv")
-testit::assert(file.exists(csv_filename_parameters))
-df_parameters <- read.csv(
- file = csv_filename_parameters, 
- header = TRUE, 
- stringsAsFactors = FALSE, 
- row.names = 1
-)
+df_parameters <- read_collected_parameters()
 knitr::kable(head(df_parameters))
 ```
 

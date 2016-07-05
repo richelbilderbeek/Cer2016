@@ -17,15 +17,9 @@ library(ggplot2)
 Loading some files
 
 ```
-csv_filename_parameters    <- find_path("collected_parameters.csv")
 csv_filename_comparison    <- find_path("gamma_diff.csv")
 
-df_parameters <- read.csv(
-  file = csv_filename_parameters,
-  header = TRUE,
-  stringsAsFactors = FALSE,
-  row.names = 1
-)
+df_parameters <- read_collected_parameters()
 
 df_comparison <- read.csv(
   file = csv_filename_comparison,

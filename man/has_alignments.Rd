@@ -7,7 +7,7 @@
 has_alignments(file)
 }
 \arguments{
-\item{a}{file, as returned by 'read_file(filename)'}
+\item{file}{a file, as returned by 'read_file(filename)'}
 }
 \value{
 a vector of TRUEs and FALSEs

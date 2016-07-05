@@ -93,8 +93,6 @@ as this is a long step.
 Loading it from file:
 
 ```{r}
-csv_filename_parameters <- find_path("collected_parameters.csv")
-
 df_n_taxa <- read.csv(
  file = csv_filename_n_taxa, 
  header = TRUE, 
@@ -102,12 +100,7 @@ df_n_taxa <- read.csv(
  row.names = 1
 )
 
-df_parameters <- read.csv(
-  file = csv_filename_parameters, 
-  header = TRUE, 
-  stringsAsFactors = FALSE, 
-  row.names = 1
-)
+df_parameters <- read_collected_parameters()
 ```
 
 Putting the head of the data frame in a table:

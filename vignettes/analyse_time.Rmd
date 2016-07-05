@@ -15,14 +15,7 @@ library(Cer2016)
 ```
 
 ```{r}
-csv_filename <- find_path("collected_parameters.csv")
-
-df <- read.csv(
-  file = csv_filename, 
-  header = TRUE, 
-  stringsAsFactors = FALSE, 
-  row.names = 1
-)
+df <- read_collected_parameters()
 knitr::kable(df, longTable = TRUE)
 ```
 
