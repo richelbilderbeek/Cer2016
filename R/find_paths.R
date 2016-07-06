@@ -15,7 +15,7 @@ find_path <- function(filename) {
     "/home/travis/build/richelbilderbeek/Cer2016/inst/extdata/" # nolint
   )
   for (prefix in prefixes) {
-    full_path <- paste(prefix, filename, sep = "")
+    full_path <- paste0(prefix, filename)
     if (file.exists(full_path)) {
       return(full_path)
     }
@@ -38,13 +38,16 @@ find_path <- function(filename) {
 #' @param filenames the names of files
 #' @return the full path of the filenames if an existing file could be found, stops otherwise
 #' @examples
-#'   filenames <- find_paths(c("toy_example_1.RDa", "toy_example_2.RDa"))
+#'   filenames <- Cer2016::find_paths(c("toy_example_1.RDa", "toy_example_2.RDa"))
 #'   testit::assert(file.exists(filenames[1]))
 #'   testit::assert(file.exists(filenames[2]))
 #' @author Richel Bilderbeek
 #' @export
 find_paths <- function(filenames) {
-  filenames <- as.vector(sapply(filenames, Cer2016::find_path))
+  #for (i in 1:length(filenames)) {
+  #  filenames[i] <- find_path(filenames[i])
+  #}
+  filenames <- as.vector(sapply(filenames, Cer2016::find_path)) # nolint Why doesn't this work?
   filenames
 }
 

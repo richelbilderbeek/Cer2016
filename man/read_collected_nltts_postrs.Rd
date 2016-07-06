@@ -16,6 +16,7 @@ Read all the collected nLTT values of all posteriors
   df <- read_collected_nltts_postrs()
   testit::assert(names(df) ==
     c(
+      "filenames", "species_tree", "alignment",
       "beast_run", "state", "t", "nltt"
     )
   )

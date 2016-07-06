@@ -6,7 +6,7 @@
 #'  filename <- find_path("toy_example_1.RDa")
 #'  df <- collect_species_tree_gammas(filename)
 #'  testit::assert(names(df) == c("species_tree", "gamma_stat"))
-#'  testit::assert(nrow(df) == 1)
+#'  testit::assert(nrow(df) == 2)
 #'  testit::assert(abs(df$gamma_stat - -0.7585369) < 0.0001)
 #' @export
 #' @author Richel Bilderbeek
