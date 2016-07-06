@@ -119,6 +119,8 @@ alignment_to_beast_posterior <- function(
     "java -jar ", beast_jar_path,
     " -seed ", rng_seed,
     " -threads 8 -beagle",
+    " -statefile ", beast_state_filename,
+    " -overwrite ",
     " ", beast_filename # XML filename should always be last
   )
   if (verbose == FALSE) {
@@ -130,7 +132,7 @@ alignment_to_beast_posterior <- function(
   if (!file.exists(beast_trees_filename)) {
     cat(
       paste0("alignment_to_beast_posterior: ",
-      "file '", beast_trees_filename, "' should have been created"),
+      "file '", beast_trees_filename, "' should have been created\n"),
       file = "testthat.log", append = TRUE
     )
     stop(
@@ -141,7 +143,7 @@ alignment_to_beast_posterior <- function(
   if (!file.exists(beast_log_filename)) {
     cat(
       paste0("alignment_to_beast_posterior: ",
-      "file '", beast_log_filename, "' should have been created"),
+      "file '", beast_log_filename, "' should have been created\n"),
       file = "testthat.log", append = TRUE
     )
     stop(
@@ -152,7 +154,7 @@ alignment_to_beast_posterior <- function(
   if (!file.exists(beast_state_filename)) {
     cat(
       paste0("alignment_to_beast_posterior: ",
-      "file '", beast_state_filename, "' should have been created"),
+      "file '", beast_state_filename, "' should have been created\n"),
       file = "testthat.log", append = TRUE
     )
     stop(
