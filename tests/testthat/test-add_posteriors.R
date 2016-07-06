@@ -5,7 +5,7 @@ test_that("add_posteriors: two posteriors are added", {
     skip("BEAST2 absent")
   }
 
-  filename <- tempfile(pattern = "test-add_posteriors_1_", fileext = ".RDa")
+  filename <- "test-add_posteriors_1.RDa"
   expect_false(file.exists(filename))
   save_parameters_to_file(
     rng_seed = 42,
@@ -67,7 +67,7 @@ test_that("four posteriors are added", {
     skip("BEAST2 absent")
   }
 
-  filename <- tempfile(pattern = "test-add_posteriors_2_", fileext = ".RDa")
+  filename <- "test-add_posteriors_2.RDa"
   expect_false(file.exists(filename))
 
   save_parameters_to_file(
@@ -144,7 +144,7 @@ test_that("three posteriors are added, middle is deleted and added again", {
     skip("BEAST2 absent")
   }
 
-  filename <- tempfile(pattern = "test-add_posteriors_3_", fileext = ".RDa")
+  filename <- "test-add_posteriors_3.RDa"
   expect_false(file.exists(filename))
 
   save_parameters_to_file(
