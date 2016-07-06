@@ -38,6 +38,7 @@ after_success:
  - cat /home/travis/build/richelbilderbeek/Cer2016/..Rcheck/00check.log
  - cd ~; find . | egrep "beast"
  - cd ~; find . | egrep "\.log"
+ - cd ~; find . | egrep "\.trees"
  - cat /home/travis/build/richelbilderbeek/Cer2016/..Rcheck/tests/testthat/testthat.log
  
 after_failure:
@@ -49,4 +50,5 @@ after_failure:
  - cat /home/travis/build/richelbilderbeek/Cer2016/..Rcheck/00check.log
  - cd ~; find . | egrep "beast"
  - cd ~; find . | egrep "\.log"
+ - cd ~; find . | egrep "\.trees"
  - cat /home/travis/build/richelbilderbeek/Cer2016/..Rcheck/tests/testthat/testthat.log
