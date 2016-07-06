@@ -17,8 +17,7 @@ plot_species_tree_nltt <- function(
     filename = filename, dt = dt
   )
 
-
-  ggplot2::ggplot(
+  g <- ggplot2::ggplot(
     data = nltt_values,
     ggplot2::aes(
       x = nltt_values$t,
@@ -32,4 +31,5 @@ plot_species_tree_nltt <- function(
   ) + ggplot2::scale_y_continuous(
     limits = c(0, 1)
   ) + ggplot2::ggtitle("Species trees")
+  print(g)
 }
