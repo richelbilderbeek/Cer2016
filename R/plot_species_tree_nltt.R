@@ -17,6 +17,7 @@ plot_species_tree_nltt <- function(
     filename = filename, dt = dt
   )
 
+
   ggplot2::ggplot(
     data = nltt_values,
     ggplot2::aes(
@@ -25,7 +26,7 @@ plot_species_tree_nltt <- function(
       colour = nltt_values$species_tree
     ),
     main = "Species trees"
-  ) + ggplot2::geom_line(
+  ) + ggplot2::geom_step(direction = "vh"
   ) + ggplot2::scale_x_continuous(
     limits = c(0, 1)
   ) + ggplot2::scale_y_continuous(

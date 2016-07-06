@@ -17,45 +17,23 @@ library(Cer2016)
 
 ## Collecting nLTTs from all files
 
-```{r}
-csv_filename_species_trees <- find_path("collected_nltts_species_trees.csv")
-csv_filename_posterior <- find_path("collected_nltts_posterior.csv")
-testit::assert(file.exists(csv_filename_species_trees))
-testit::assert(file.exists(csv_filename_posterior))
-```
-
 Loading it from file:
 
 ```{r}
-df_species_trees <- read.csv(
- file = csv_filename_species_trees, 
- header = TRUE, 
- stringsAsFactors = FALSE, 
- row.names = 1
-)
-df_species_trees$species_tree <- as.factor(df_species_trees$species_tree)
-
-df_posterior <- read.csv(
- file = csv_filename_posterior, 
- header = TRUE, 
- stringsAsFactors = FALSE, 
- row.names = 1
-)
-
-df_posterior$species_tree <- as.factor(df_posterior$species_tree)
-df_posterior$alignment <- as.factor(df_posterior$alignment)
-df_posterior$beast_run <- as.factor(df_posterior$beast_run)
-
+df_species_trees <- read_collected_nltts_strees()
+df_posterior <- read_collected_nltts_postrs()
 ```
 
 Putting the head of the data frame in a table:
 
 ```{r}
 knitr::kable(head(df_species_trees))
+knitr::kable(tail(df_species_trees))
 ```
 
 ```{r}
 knitr::kable(head(df_posterior))
+knitr::kable(tail(df_posterior))
 ```
 
 What kind of data is `df_species_trees`?
@@ -72,7 +50,44 @@ str(df_posterior)
 names(df_posterior)
 ```
 
-Let's first plot the distribution of nLTTs:
+Let's first plot the collected data:
+
+```{r fig.width = 7, fig.height = 7}
+ggplot2::ggplot(
+  data = df_species_trees,
+  ggplot2::aes(
+    x = df_species_trees$t,
+    y = df_species_trees$nltt,
+    colour = df_species_trees$filenames
+  )
+) + ggplot2::geom_point(
+) + ggplot2::geom_step(direction = "vh", stat = "summary", fun.y = "mean"
+) + ggplot2::scale_x_continuous(
+  limits = c(0, 1), name = "Time (normalized)"
+) + ggplot2::scale_y_continuous(
+  limits = c(0, 1), name = "nLTT"
+) + ggplot2::ggtitle("Collected species trees")
+```
+
+```{r fig.width = 7, fig.height = 7}
+ggplot2::ggplot(
+  data = df_posterior,
+  ggplot2::aes(
+    x = df_posterior$t,
+    y = df_posterior$nltt,
+    colour = df_posterior$filenames
+  )
+) + ggplot2::geom_point(
+) + ggplot2::geom_step(direction = "vh", stat = "summary", fun.y = "mean"
+) + ggplot2::scale_x_continuous(
+  limits = c(0, 1), name = "Time (normalized)"
+) + ggplot2::scale_y_continuous(
+  limits = c(0, 1), name = "nLTT"
+) + ggplot2::ggtitle("Collected posteriors"
+) + ggplot2::geom_smooth(level = 0.95)
+```
+
+
 
 ```{r}
 filenames <- as.vector(sapply(unique(sort(df_species_trees$filenames)), Cer2016::find_path))
@@ -90,61 +105,3 @@ ggplot2::ggplot(
 ```
 
 
-## Some pretty nonsensical histograms
-
-```{r fig.width = 7, fig.height = 7}
-ggplot2::ggplot(
-  data = df_species_trees, 
-  ggplot2::aes(df_species_trees$nltt, fill = df_species_trees$species_tree)
-) + ggplot2::geom_histogram(
-  alpha = 0.25, 
-  position = 'identity', 
-  binwidth = 0.1
-)
-```
-
-```{r fig.width = 7, fig.height = 7}
-ggplot2::ggplot(
-  data = df_species_trees, 
-  ggplot2::aes(df_species_trees$nltt, fill = df_species_trees$species_tree)
-) + ggplot2::geom_density(
-  alpha = 0.25, 
-  position = 'identity'
-)
-```
-
-
-
-
-
-
-
-```{r fig.width = 7, fig.height = 7}
-ggplot2::ggplot(
-  data = df_posterior, 
-  ggplot2::aes(df_posterior$nltt, fill = df_posterior$species_tree)
-) + ggplot2::geom_histogram(
-  alpha = 0.25, 
-  position = 'identity', 
-  binwidth = 0.1
-)
-```
-
-```{r fig.width = 7, fig.height = 7}
-ggplot2::ggplot(
-  data = df_posterior, 
-  ggplot2::aes(df_posterior$nltt, fill = df_posterior$species_tree)
-) + ggplot2::geom_density(
-  alpha = 0.25, 
-  position = 'identity'
-)
-```
-
-
-
-
-```{r}
-ggplot2::ggplot(
-  data = df_posterior, ggplot2::aes(df_posterior$nltt)
-) + ggplot2::geom_histogram(binwidth = 1)
-```
