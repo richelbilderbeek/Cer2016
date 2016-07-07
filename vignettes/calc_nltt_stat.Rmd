@@ -1,0 +1,91 @@
+---
+title: "Demonstration of calc_nltt_stat"
+author: "Richel Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::pdf_document
+vignette: >
+  %\VignetteIndexEntry{Demonstration of calc_nltt_stat}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+`cal_nltt_stat` calculates the difference between original species tree and a posterior.
+
+```{r}
+library(Cer2016)
+set.seed(42)
+```
+
+Here we determine the resolution of our analysis:
+
+```{r}
+dt <- 0.1
+testit::assert(dt > 0.0 && dt < 1.0)
+```
+
+A `dt` (the timestep) close to zero gives a more detailed analysis, but it will take longer.
+
+First we construct a possible species tree:
+
+```{r}
+phylogenies <- c(ape::rcoal(n = 10))
+stree_nltts <- nLTT::get_nltt_values(
+  phylogenies = phylogenies, 
+  dt = dt
+)
+```
+
+Then we collect four possible posterior species trees:
+
+```{r}
+posteriors <- c(
+  ape::rcoal(n = 10), 
+  ape::rcoal(n = 10), 
+  ape::rcoal(n = 10), 
+  ape::rcoal(n = 10)
+)
+postr_nltts <- nLTT::get_nltt_values(phylogenies = posteriors, dt = dt)
+```
+
+Here we see the original species tree in black, and
+the posteriors in other colors:
+
+```{r fig.width = 7, fig.height = 7}
+ggplot2::ggplot(
+  data = stree_nltts,
+  ggplot2::aes(x = stree_nltts$t, y = stree_nltts$nltt)
+) + ggplot2::geom_step(
+  direction = "vh",
+  size = 2
+) + ggplot2::geom_step(
+  data = postr_nltts,
+  ggplot2::aes(x = postr_nltts$t, y = postr_nltts$nltt,   colour = postr_nltts$id),
+  direction = "vh",
+  position = ggplot2::position_dodge(width = 0.02)
+) + ggplot2::scale_x_continuous(
+  limits = c(0, 1), breaks = seq(0, 1, 0.1), name = "Normalized time"
+) + ggplot2::scale_y_continuous(
+  limits = c(0, 1), breaks = seq(0, 1, 0.1), name = "nLTT"
+) + ggplot2::ggtitle("True species tree nLTT and its posteriors")
+```
+
+`cal_nltt_stat` collects the difference of these two, by subtracting:
+
+```{r}
+diff_nltts <- postr_nltts
+diff_nltts$nltt <- diff_nltts$nltt - rep(stree_nltts$nltt, length(posteriors))
+```
+
+Here we plot the differences, as boxplot:
+
+```{r fig.width = 7, fig.height = 7}
+ggplot2::ggplot(
+  data = diff_nltts,
+  ggplot2::aes(x = factor(diff_nltts$t), y = diff_nltts$nltt)
+) + ggplot2::geom_boxplot(
+) + ggplot2::scale_x_discrete(
+  name = "Normalized time"
+) + ggplot2::scale_y_continuous(
+  limits = c(0, 1), breaks = seq(0, 1, 0.1), name = "nLTT difference"
+) + ggplot2::ggtitle("Difference between true species tree nLTT and its posteriors")
+```

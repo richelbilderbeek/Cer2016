@@ -36,29 +36,19 @@ knitr::kable(head(df_posterior))
 knitr::kable(tail(df_posterior))
 ```
 
-What kind of data is `df_species_trees`?
-
-```{r}
-str(df_species_trees)
-names(df_species_trees)
-```
-
-What kind of data is `df_posterior`?
-
-```{r}
-str(df_posterior)
-names(df_posterior)
-```
-
-Let's first plot the collected data:
+Here we can see the nLTTs of the species trees used in the analysis:
 
 ```{r fig.width = 7, fig.height = 7}
+
+df_species_trees$species_tree <- plyr::revalue(df_species_trees$species_tree, c("1"="youngest", "2"="oldest"))
+
 ggplot2::ggplot(
   data = df_species_trees,
   ggplot2::aes(
     x = df_species_trees$t,
     y = df_species_trees$nltt,
-    colour = df_species_trees$filenames
+    colour = df_species_trees$filenames,
+    shape = df_species_trees$species_tree
   )
 ) + ggplot2::geom_point(
 ) + ggplot2::geom_step(direction = "vh", stat = "summary", fun.y = "mean"
@@ -69,13 +59,21 @@ ggplot2::ggplot(
 ) + ggplot2::ggtitle("Collected species trees")
 ```
 
+For every parameter combination (in this case summarized as a filename), there are two lines: one for the youngest and
+one for the oldest subspiecies to represent a species.
+
+Here we do the same for posteriors:s
+
 ```{r fig.width = 7, fig.height = 7}
+df_posterior$species_tree <- plyr::revalue(df_posterior$species_tree, c("1"="youngest", "2"="oldest"))
+
 ggplot2::ggplot(
   data = df_posterior,
   ggplot2::aes(
     x = df_posterior$t,
     y = df_posterior$nltt,
-    colour = df_posterior$filenames
+    colour = df_posterior$filenames,
+    shape = df_posterior$species_tree
   )
 ) + ggplot2::geom_point(
 ) + ggplot2::geom_step(direction = "vh", stat = "summary", fun.y = "mean"
@@ -84,12 +82,12 @@ ggplot2::ggplot(
 ) + ggplot2::scale_y_continuous(
   limits = c(0, 1), name = "nLTT"
 ) + ggplot2::ggtitle("Collected posteriors"
-) + ggplot2::geom_smooth(level = 0.95)
+) + ggplot2::geom_smooth()
 ```
 
 
 
-```{r}
+```{r fig.width = 7, fig.height = 7}
 filenames <- as.vector(sapply(unique(sort(df_species_trees$filenames)), Cer2016::find_path))
 for (filename in filenames) {
   #plot_species_tree(filename)

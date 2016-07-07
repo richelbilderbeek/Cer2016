@@ -18,13 +18,13 @@ library(ribir)
 set.seed(42)
 
 # Create some random phylogenies
-phylogeny1 <- rcoal(10)
-phylogeny2 <- rcoal(20)
-phylogeny3 <- rcoal(30)
-phylogeny4 <- rcoal(40)
-phylogeny5 <- rcoal(50)
-phylogeny6 <- rcoal(60)
-phylogeny7 <- rcoal(70)
+phylogeny1 <- ape::rcoal(10)
+phylogeny2 <- ape::rcoal(20)
+phylogeny3 <- ape::rcoal(30)
+phylogeny4 <- ape::rcoal(40)
+phylogeny5 <- ape::rcoal(50)
+phylogeny6 <- ape::rcoal(60)
+phylogeny7 <- ape::rcoal(70)
 phylogenies <- c(phylogeny1, phylogeny2, phylogeny3,
   phylogeny4, phylogeny5, phylogeny6, phylogeny7
 )
