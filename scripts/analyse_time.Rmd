@@ -19,11 +19,11 @@ df <- read_collected_parameters()
 knitr::kable(df, longTable = TRUE)
 ```
 
-This vignette shows the time used in the pipeline
+This document shows the time used in the pipeline
 
 ```{r}
 system("egrep -R \"real[[:blank:]]\" --include=*.log > ../mytmp.txt")
-df_filenames <- read.csv("~/mytmp.txt", sep = ":", header = FALSE, stringsAsFactor = FALSE)
+df_filenames <- read.csv("../mytmp.txt", sep = ":", header = FALSE, stringsAsFactor = FALSE)
 
 names(df_filenames) <- c("log_filename", "real_time_sec")
 
