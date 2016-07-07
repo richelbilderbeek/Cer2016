@@ -3,12 +3,14 @@ language: cpp
 compiler: gcc
 
 before_install:
-  - sudo add-apt-repository --yes ppa:marutter/rrutter 
+  - sudo add-apt-repository --yes ppa:marutter/rrutter # R
+  - sudo add-apt-repository --yes ppa:webupd8team/java # Java 8
   - sudo apt-get update -qq
 
 install: 
-  - sudo apt-get install -qq r-base r-base-dev --force-yes
-  - sudo apt-get install -qq texlive
+  - sudo apt-get install -qq r-base r-base-dev --force-yes # R
+  - sudo apt-get install -qq texlive # knitr, pandoc, LyX
+  - sudo apt-get install -qq oracle-java8-installer # Java 8
   - sudo pip install codecov
   - ./install_beast2.sh
 
