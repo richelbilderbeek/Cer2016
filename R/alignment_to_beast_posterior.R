@@ -104,6 +104,12 @@ alignment_to_beast_posterior <- function(
   }
   system(cmd)
 
+  # always cat the command
+  cat(
+    paste0("alignment_to_beast_posterior: cmd :", cmd, "\n"),
+    file = "testthat.log", append = TRUE
+  )
+
   # cat all errors
   if (!file.exists(beast_trees_filename)) {
     cat(
