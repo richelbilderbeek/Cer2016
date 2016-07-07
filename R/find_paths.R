@@ -44,9 +44,6 @@ find_path <- function(filename) {
 #' @author Richel Bilderbeek
 #' @export
 find_paths <- function(filenames) {
-  #for (i in 1:length(filenames)) {
-  #  filenames[i] <- find_path(filenames[i])
-  #}
   filenames <- as.vector(sapply(filenames, Cer2016::find_path)) # nolint Why doesn't this work?
   filenames
 }
