@@ -98,11 +98,14 @@ alignment_to_beast_posterior <- function(
     " -overwrite ",
     " ", beast_filename # XML filename should always be last
   )
-  if (verbose == FALSE) {
-    # Silence BEAST
-    cmd <- paste0(cmd, " 1>/dev/null 2>/dev/null")
-  }
+  # Never silence BEAST2 # nolint
+  #if (verbose == FALSE) { # nolint
+  #  # Silence BEAST # nolint
+  #  cmd <- paste0(cmd, " 1>/dev/null 2>/dev/null") # nolint
+  #} # nolint
+  sink(file = "testthat.log")
   system(cmd)
+  sink()
 
   has_error <- FALSE
   # cat all errors
