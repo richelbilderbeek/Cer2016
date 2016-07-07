@@ -90,31 +90,6 @@ alignment_to_beast_posterior <- function(
   testit::assert(file.exists(beast_filename))
 
   # Run BEAST2, needs the BEAST2 .XML parameter file
-  # Prevent BEAST prompting the user whether to overwrite the log file
-
-  if (file.exists(beast_trees_filename)) {
-    file.remove(beast_trees_filename)
-    if (verbose) {
-      message("NOTE: removed '", beast_trees_filename, "'")
-    }
-  }
-  if (file.exists(beast_log_filename)) {
-    file.remove(beast_log_filename)
-    if (verbose) {
-      message("NOTE: removed '", beast_log_filename, "'")
-    }
-  }
-  if (file.exists(beast_state_filename)) {
-    file.remove(beast_state_filename)
-    if (verbose) {
-      message("NOTE: removed '", beast_state_filename, "'")
-    }
-  }
-  testit::assert(!file.exists(beast_trees_filename))
-  testit::assert(!file.exists(beast_log_filename))
-  testit::assert(!file.exists(beast_state_filename))
-
-  # Run BEAST2
   cmd <- paste0(
     "java -jar ", beast_jar_path,
     " -seed ", rng_seed,
@@ -129,15 +104,12 @@ alignment_to_beast_posterior <- function(
   }
   system(cmd)
 
+  # cat all errors
   if (!file.exists(beast_trees_filename)) {
     cat(
       paste0("alignment_to_beast_posterior: ",
       "file '", beast_trees_filename, "' should have been created\n"),
       file = "testthat.log", append = TRUE
-    )
-    stop(
-      "alignment_to_beast_posterior: ",
-      "file '", beast_trees_filename, "' should have been created"
     )
   }
   if (!file.exists(beast_log_filename)) {
@@ -146,10 +118,6 @@ alignment_to_beast_posterior <- function(
       "file '", beast_log_filename, "' should have been created\n"),
       file = "testthat.log", append = TRUE
     )
-    stop(
-      "alignment_to_beast_posterior: ",
-      "file '", beast_log_filename, "' should have been created"
-    )
   }
   if (!file.exists(beast_state_filename)) {
     cat(
@@ -157,6 +125,24 @@ alignment_to_beast_posterior <- function(
       "file '", beast_state_filename, "' should have been created\n"),
       file = "testthat.log", append = TRUE
     )
+  }
+
+  # Stop on errors
+
+  # beast_trees_filename is the only essential one
+  if (!file.exists(beast_trees_filename)) {
+    stop(
+      "alignment_to_beast_posterior: ",
+      "file '", beast_trees_filename, "' should have been created"
+    )
+  }
+  if (!file.exists(beast_log_filename)) {
+    stop(
+      "alignment_to_beast_posterior: ",
+      "file '", beast_log_filename, "' should have been created"
+    )
+  }
+  if (!file.exists(beast_state_filename)) {
     stop(
       "alignment_to_beast_posterior: ",
       "file '", beast_state_filename, "' should have been created"
