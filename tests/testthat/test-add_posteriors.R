@@ -37,7 +37,7 @@ test_that("add_posteriors: two posteriors are added", {
   n_posteriors_added <- add_posteriors(
     filename = filename,
     skip_if_output_present = FALSE,
-    verbose = FALSE
+    verbose = TRUE
   )
 
   expect_equal(n_posteriors_added, 2)
