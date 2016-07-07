@@ -34,12 +34,14 @@ script:
 after_success:
  - Rscript -e 'lintr::lint_package()'
  - Rscript -e 'library(covr); codecov()'
+ - Rscript -e 'library(goodpractice); gp()'
  
 after_failure:
  - sudo Rscript install_this_r_package.R
  - Rscript -e 'library(Cer2016); testit::assert(has_beast2())'
  - Rscript -e 'lintr::lint_package()'
  - Rscript -e 'library(covr); codecov()'
+ - Rscript -e 'library(goodpractice); gp()'
  - cat /home/travis/build/richelbilderbeek/Cer2016/..Rcheck/00install.out
  - cat /home/travis/build/richelbilderbeek/Cer2016/..Rcheck/00check.log
  - cd ~; find . | egrep "beast"
