@@ -104,14 +104,10 @@ alignment_to_beast_posterior <- function(
   }
   system(cmd)
 
-  # always cat the command
-  cat(
-    paste0("alignment_to_beast_posterior: cmd :", cmd, "\n"),
-    file = "testthat.log", append = TRUE
-  )
-
+  has_error <- FALSE
   # cat all errors
   if (!file.exists(beast_trees_filename)) {
+    has_error <- TRUE
     cat(
       paste0("alignment_to_beast_posterior: ",
       "file '", beast_trees_filename, "' should have been created\n"),
@@ -119,6 +115,7 @@ alignment_to_beast_posterior <- function(
     )
   }
   if (!file.exists(beast_log_filename)) {
+    has_error <- TRUE
     cat(
       paste0("alignment_to_beast_posterior: ",
       "file '", beast_log_filename, "' should have been created\n"),
@@ -126,11 +123,28 @@ alignment_to_beast_posterior <- function(
     )
   }
   if (!file.exists(beast_state_filename)) {
+    has_error <- TRUE
     cat(
       paste0("alignment_to_beast_posterior: ",
       "file '", beast_state_filename, "' should have been created\n"),
       file = "testthat.log", append = TRUE
     )
+  }
+  if (has_error) {
+    cat(
+      paste0("alignment_to_beast_posterior: cmd :", cmd, "\n"),
+      file = "testthat.log", append = TRUE
+    )
+    cmd <- paste0(
+      "java -jar ", beast_jar_path,
+      " -seed ", rng_seed,
+      " -threads 8 -beagle",
+      " -statefile ", beast_state_filename,
+      " -overwrite ",
+      " ", beast_filename, # XML filename should always be last
+      " >> testthat.log"
+    )
+    system(cmd)
   }
 
   # Stop on errors
