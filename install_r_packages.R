@@ -7,7 +7,9 @@ install.packages("adephylo", repos = "http://cran.uk.r-project.org")
 install.packages("BH", repos = "http://cran.uk.r-project.org")
 install.packages("coda", repos = "http://cran.uk.r-project.org")
 install.packages("crayon", repos = "http://cran.uk.r-project.org")
+install.packages("cyclocomp", repos = "http://cran.uk.r-project.org")
 install.packages("data.table", repos = "http://cran.uk.r-project.org")
+install.packages("desc", repos = "http://cran.uk.r-project.org")
 install.packages("devtools", repos = "http://cran.uk.r-project.org")
 install.packages("ggplot2", repos = "http://cran.uk.r-project.org")
 install.packages("gridExtra", repos = "http://cran.uk.r-project.org")
@@ -30,7 +32,6 @@ install.packages("withr", repos = "http://cran.uk.r-project.org")
 install.packages("XML", repos = "http://cran.uk.r-project.org")
 install.packages("xml2", repos = "http://cran.uk.r-project.org")
 
-# Third things
 
 devtools::install_github("jimhester/covr")
 devtools::install_github("jimhester/lintr")
