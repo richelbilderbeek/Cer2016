@@ -103,7 +103,7 @@ alignment_to_beast_posterior <- function(
   #  # Silence BEAST # nolint
   #  cmd <- paste0(cmd, " 1>/dev/null 2>/dev/null") # nolint
   #} # nolint
-  sink(file = "testthat.log")
+  sink(file = "testthat.log", append = TRUE)
   system(cmd)
   sink()
 
