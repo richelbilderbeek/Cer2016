@@ -22,7 +22,7 @@ do_test_simulations <- function(
   for (filename in filenames) {
     Cer2016::add_pbd_output(filename, verbose = verbose)
     Cer2016::add_species_trees(filename, verbose = verbose)
-    Cer2016::add_alignments(filename, verbose = verbose)
+    Cer2016::add_alignments(filename)
     Cer2016::add_posteriors(
       filename = filename,
       skip_if_output_present = TRUE,

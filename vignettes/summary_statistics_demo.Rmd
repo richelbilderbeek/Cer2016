@@ -100,7 +100,7 @@ phytools::plotSimmap(
 I will use a sampled species tree as my true tree:
 
 ```{r}
-true_tree <-get_species_tree_by_index(file = filem, sti = 1)
+true_tree <-get_species_tree_by_index(file = file, sti = 1)
 plot(true_tree)
 ```
 

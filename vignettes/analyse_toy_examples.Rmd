@@ -198,7 +198,7 @@ Here we simulate one DNA sequence on our one sampled species tree
 with outgroup:
 
 ```{r}
-add_alignments(filename, verbose = FALSE)  
+add_alignments(filename)  
 ```
 
 Note that this research assumes a simple Jukes-Cantor model, and does so as well in later steps.
@@ -461,7 +461,7 @@ Here we simulate one DNA sequence on our one sampled species tree
 with outgroup:
 
 ```{r}
-add_alignments(filename, verbose = FALSE)  
+add_alignments(filename)  
 ```
 
 Let's see the alignment:
