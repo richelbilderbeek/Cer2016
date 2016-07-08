@@ -38,7 +38,10 @@ calc_nltt_stats <- function(
    dt = dt
   )
   diff_nltts <- other_nltts
-  diff_nltts$nltt <- abs(diff_nltts$nltt - rep(phylogeny_nltts$nltt, length(others)))
-  nltt_stats <- dplyr::summarize(dplyr::group_by(diff_nltts, id), nltt_stat = mean(nltt))
+  diff_nltts$nltt <- abs(diff_nltts$nltt -
+    rep(phylogeny_nltts$nltt, length(others)))
+  nltt_stats <- dplyr::summarize(
+    dplyr::group_by(diff_nltts, id), nltt_stat = mean(nltt)
+  )
   nltt_stats
 }
