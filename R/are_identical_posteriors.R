@@ -34,7 +34,7 @@ are_identical_posteriors <- function(
   }
 
   for (i in seq(1, length(p))) {
-    if (!all.equal(p[[i]], q[[i]])) {
+    if (!isTRUE(all.equal(p[[i]], q[[i]]))) {
       return (FALSE)
     }
   }
