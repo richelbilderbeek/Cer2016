@@ -6,6 +6,12 @@ test_that("add_posteriors: two posteriors are added", {
   }
 
   filename <- "test-add_posteriors_1.RDa"
+
+  # Pre clean
+  if (file.exists(filename)) {
+    file.remove(filename)
+  }
+
   expect_false(file.exists(filename))
   save_parameters_to_file(
     rng_seed = 42,
@@ -68,6 +74,11 @@ test_that("four posteriors are added", {
   }
 
   filename <- "test-add_posteriors_2.RDa"
+
+  # Pre clean
+  if (file.exists(filename)) {
+    file.remove(filename)
+  }
   expect_false(file.exists(filename))
 
   save_parameters_to_file(
