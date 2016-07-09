@@ -9,7 +9,11 @@ before_install:
 
 install: 
   - sudo apt-get install -qq r-base r-base-dev --force-yes # R
-  - sudo apt-get install -qq pandoc pandoc-citeproc # pandoc
+  - sudo apt-get install -qq pandoc # pandoc
+  - sudo apt-get install ghc # pandoc
+  - sudo apt-get install cabal-install # pandoc
+  - sudo cabal update # pandoc
+  - sudo cabal install pandoc # pandoc
   - sudo apt-get install -qq texlive-full # LyX
   - sudo apt-get install -qq oracle-java8-installer # Java 8
   - sudo apt-get install oracle-java8-set-default
