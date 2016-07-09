@@ -9,7 +9,7 @@ before_install:
 
 install: 
   - sudo apt-get install -qq r-base r-base-dev --force-yes # R
-  - sudo apt-get install -qq pandoc # pandoc
+  # - sudo apt-get install -qq pandoc # pandoc
   - sudo apt-get install ghc # pandoc
   - sudo apt-get install cabal-install # pandoc
   - sudo cabal update # pandoc
