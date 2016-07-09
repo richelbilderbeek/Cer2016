@@ -14,7 +14,8 @@ plot_alignments <- function(filename) {
   for (sti in 1:2) {
     for (ai in 1:n_alignments) {
       alignment <- get_alignment(file = file, sti = sti, ai = ai)
-      graphics::image(
+      testit::assert(is_alignment(alignment))
+      ape::image.DNAbin(
         alignment,
         main = paste0(base_filename, "alignment ", ai, "of species tree ", sti)
       )
