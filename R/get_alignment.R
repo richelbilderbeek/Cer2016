@@ -52,7 +52,7 @@ get_alignment <- function(
   if (ai > napst) {
     stop("get_alignment: ai must at most be napst")
   }
-  i <- a2i(sti = sti, ai = ai, nstpist = 2, napst = napst)
+  i <- Cer2016::a2i(sti = sti, ai = ai, nstpist = 2, napst = napst)
   alignment <- NA
   tryCatch(
     alignment <- get_alignment_by_index(

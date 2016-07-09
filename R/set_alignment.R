@@ -51,7 +51,7 @@ set_alignment <- function(
     stop("set_alignment: alignment must be an alignment")
   }
 
-  i <- a2i(sti = sti, ai = ai, nstpist = 2, napst = napst)
+  i <- Cer2016::a2i(sti = sti, ai = ai, nstpist = 2, napst = napst)
 
   return (
     set_alignment_by_index(

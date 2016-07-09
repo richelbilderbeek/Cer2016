@@ -12,8 +12,8 @@ plot_species_tree <- function(filename) {
     title <- NA
     if (sti == 1) title <- "Species tree (youngest)"
     if (sti == 2) title <- "Species tree (oldest)"
-    phylogeny <- get_species_tree_by_index(file = file, sti = sti)
-    testit::assert(is_phylogeny(phylogeny))
+    phylogeny <- Cer2016::get_species_tree_by_index(file = file, sti = sti)
+    testit::assert(Cer2016::is_phylogeny(phylogeny))
     ape::plot.phylo(
       phylogeny,
       main = title

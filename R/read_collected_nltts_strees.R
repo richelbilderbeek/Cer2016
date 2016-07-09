@@ -6,7 +6,7 @@
 #' @author Richel Bilderbeek
 #' @export
 read_collected_nltts_strees <- function() {
-  filename <- find_path("collected_nltts_species_trees.csv")
+  filename <- Cer2016::find_path("collected_nltts_species_trees.csv")
   testit::assert(file.exists(filename))
   df <- read.csv(
    file = filename,
