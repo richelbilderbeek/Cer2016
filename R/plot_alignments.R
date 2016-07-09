@@ -16,7 +16,7 @@ plot_alignments <- function(filename) {
       alignment <- get_alignment(file = file, sti = sti, ai = ai)
       graphics::image(
         alignment,
-        main = paste(base_filename, "alignment ", ai, "of species tree ", sti)
+        main = paste0(base_filename, "alignment ", ai, "of species tree ", sti)
       )
     }
   }
