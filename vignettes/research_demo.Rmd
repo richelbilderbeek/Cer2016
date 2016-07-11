@@ -131,7 +131,7 @@ for (filename in filenames) {
 
 ## Add posteriors
 
-```{r}
+```{r add_posteriors}
 for (filename in filenames) {
   add_posteriors(
     filename, 
