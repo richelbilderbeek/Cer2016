@@ -15,5 +15,6 @@ read_collected_nltts_strees <- function() {
    row.names = 1
   )
   df$species_tree <- as.factor(df$species_tree)
+  testit::assert(names(df) == c("filename", "species_tree", "t", "nltt"))
   df
 }
