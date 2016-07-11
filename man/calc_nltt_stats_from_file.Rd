@@ -17,6 +17,14 @@ a distribution of nLTT statistics
 \description{
 Calculates the nLTT statistics from a file
 }
+\examples{
+  nltt_stats <- calc_nltt_stats_from_file(
+    filename = find_path("toy_example_1.RDa"),
+    dt = 0.1
+  )
+  expected_names <- c("sti", "ai", "pi", "si", "nltt_stat")
+  testit::assert(names(nltt_stats) == expected_names)
+}
 \author{
 Richel Bilderbeek
 }

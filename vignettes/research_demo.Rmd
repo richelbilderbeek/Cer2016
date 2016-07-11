@@ -79,7 +79,7 @@ for (filename in filenames) {
 This is how these look like, both the incipient species phylogenies and an nLTT plots:
 
 ```{r}
-colors <- setNames(c("gray", "black"), c("i", "g"))
+colors <- stats::setNames(c("gray", "black"), c("i", "g"))
 
 for (filename in filenames) {
   testit::assert(is_valid_file(filename))

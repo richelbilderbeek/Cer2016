@@ -54,7 +54,7 @@ on the middle tree of the top row, which are the extant good and
 incipient species:
 
 ```{r fig.width = 7, fig.height = 7}
-cols <- setNames(c("gray", "black"), c("i", "g"))
+cols <- stats::setNames(c("gray", "black"), c("i", "g"))
 phytools::plotSimmap(pbd_sim_output$igtree.extant, colors = cols)
 ```
 

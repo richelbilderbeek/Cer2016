@@ -3,6 +3,13 @@
 #' @param dt resolution of the analysis, must be between zero and one
 #' @return a distribution of nLTT statistics
 #' @export
+#' @examples
+#'   nltt_stats <- calc_nltt_stats_from_file(
+#'     filename = find_path("toy_example_1.RDa"),
+#'     dt = 0.1
+#'   )
+#'   expected_names <- c("sti", "ai", "pi", "si", "nltt_stat")
+#'   testit::assert(names(nltt_stats) == expected_names)
 #' @author Richel Bilderbeek
 calc_nltt_stats_from_file <- function(filename, dt) {
   file <- read_file(filename)
@@ -23,6 +30,7 @@ calc_nltt_stats_from_file <- function(filename, dt) {
   testit::assert(n_rows == length(ais))
   testit::assert(n_rows == length(pis))
   testit::assert(n_rows == length(sis))
+
   df <- data.frame(
     sti = stis,
     ai = ais,

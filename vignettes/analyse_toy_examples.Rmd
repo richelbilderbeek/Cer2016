@@ -46,7 +46,6 @@ library(Cer2016)
 library(ggplot2)
 library(Hmisc)
 library(nLTT)
-library(ribir)
 library(phangorn)
 ```
 
@@ -130,7 +129,7 @@ add_pbd_output(filename)
 This is how the incipient species tree looks like:
 
 ```{r}
-colors <- setNames(c("gray", "black"), c("i", "g"))
+colors <- stats::setNames(c("gray", "black"), c("i", "g"))
 testit::assert(length(read_file(filename)$pbd_output$igtree.extant$tip.label) > 0)
 phytools::plotSimmap(
   read_file(filename)$pbd_output$igtree.extant, 
@@ -410,7 +409,7 @@ add_pbd_output(filename)
 This is how the incipient species tree looks like:
 
 ```{r}
-colors <- setNames(c("gray", "black"), c("i", "g"))
+colors <- stats::setNames(c("gray", "black"), c("i", "g"))
 testit::assert(length(read_file(filename)$pbd_output$igtree.extant$tip.label) > 0)
 phytools::plotSimmap(
   read_file(filename)$pbd_output$igtree.extant, 

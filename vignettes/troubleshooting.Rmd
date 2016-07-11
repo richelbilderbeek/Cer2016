@@ -46,19 +46,6 @@ if (is.element("rBEAST", installed.packages()[, 1])) {
 }
 ```
 
-
-## `Cannot find package ribir`
-
-Install it like this:
-
-```
-if (is.element("ribir", installed.packages()[, 1])) {
-  print("package is already installed")
-} else {
-  devtools::install_github("richelbilderbeek/ribir")
-}
-```
-
 ## `Cannot find xml2-config`
 
 This may happen when you install the `XML` package:

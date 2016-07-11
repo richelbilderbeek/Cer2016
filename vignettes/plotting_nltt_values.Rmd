@@ -14,7 +14,6 @@ This is an example from `ribi::get_average_nltt_values`:
 ```{r}
 library(ape)
 library(ggplot2)
-library(ribir)
 set.seed(42)
 
 # Create some random phylogenies
