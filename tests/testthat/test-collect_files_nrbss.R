@@ -9,7 +9,7 @@ test_that("collect_files_nrbss: use", {
   df <- collect_files_nrbss(filenames, verbose = FALSE)
   expect_equal(
     names(df),
-    c("filenames", "species_tree", "alignment", "beast_run", "state", "nrbs")
+    c("filename", "species_tree", "alignment", "beast_run", "state", "nrbs")
   )
   expect_equal(nrow(df), 160)
 })

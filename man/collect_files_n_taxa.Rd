@@ -25,7 +25,7 @@ multiple parameter file in the melted/uncast/long form
    find_path("toy_example_2.RDa")
  )
  df <- collect_files_n_taxa(filenames, verbose = FALSE)
- testit::assert(names(df) == c("filenames", "n_taxa"))
+ testit::assert(names(df) == c("filename", "n_taxa"))
  testit::assert(nrow(df) == length(filenames))
 }
 

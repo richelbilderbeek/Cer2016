@@ -9,7 +9,7 @@
 #'    find_path("toy_example_3.RDa")
 #'  )
 #'  df <- collect_files_n_posteriors(filenames)
-#'  testit::assert(names(df) == c("filenames", "n_posteriors"))
+#'  testit::assert(names(df) == c("filename", "n_posteriors"))
 #'  testit::assert(nrow(df) == length(filenames))
 #'  testit::assert(df$n_posteriors == c(2, 8))
 #' @export
@@ -59,6 +59,6 @@ collect_files_n_posteriors <- function(
     n_posteriors = n_posteriors$n_posteriors
   )
   testit::assert(nrow(df) == length(filenames))
-  testit::assert(names(df) == c("filenames", "n_posteriors"))
+  testit::assert(names(df) == c("filename", "n_posteriors"))
   return(df)
 }

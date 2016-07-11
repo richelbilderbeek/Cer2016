@@ -58,7 +58,7 @@ filenames <- c(
 )
 
 df <- collect_files_nrbss(filenames, verbose = FALSE)
-testit::assert(names(df) == c("filenames", "species_tree", "alignment", "beast_run", "state", "nrbs"))
+testit::assert(names(df) == c("filename", "species_tree", "alignment", "beast_run", "state", "nrbs"))
 knitr::kable(head(df))
 ```
 

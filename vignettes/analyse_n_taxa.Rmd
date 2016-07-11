@@ -75,7 +75,7 @@ filenames <- c(
   find_path("toy_example_4.RDa")
 )
 df <- collect_files_n_taxa(filenames, verbose = TRUE)
-testit::assert(names(df) == c("filenames", "n_taxa"))
+testit::assert(names(df) == c("filename", "n_taxa"))
 names(df)
 knitr::kable(df)
 ```
@@ -134,7 +134,7 @@ ggplot2::ggplot(
 For which parameter settings are these?
 
 ```
-df_big <- merge(x = df_parameters, y = df_n_taxa, by = "filenames", all = TRUE)
+df_big <- merge(x = df_parameters, y = df_n_taxa, by = "filename", all = TRUE)
 
 
 

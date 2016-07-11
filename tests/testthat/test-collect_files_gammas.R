@@ -13,7 +13,7 @@ test_that("collect_files_gammas: use", {
   )
   expect_equal(
     names(df$species_tree_gamma_stats),
-    c("filenames", "species_tree", "gamma_stat")
+    c("filename", "species_tree", "gamma_stat")
   )
   expect_equal(nrow(df$species_tree_gamma_stats), 4)
   expect_equal(nrow(df$posterior_gamma_stats), 160)

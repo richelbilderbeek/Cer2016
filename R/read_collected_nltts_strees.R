@@ -2,7 +2,7 @@
 #' @return a dataframe
 #' @examples
 #'   df <- read_collected_nltts_strees()
-#'   testit::assert(names(df) == c("filenames", "species_tree", "t", "nltt"))
+#'   testit::assert(names(df) == c("filename", "species_tree", "t", "nltt"))
 #' @author Richel Bilderbeek
 #' @export
 read_collected_nltts_strees <- function() {

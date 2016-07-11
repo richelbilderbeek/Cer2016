@@ -96,7 +96,7 @@ ggplot2::ggplot(
   ggplot2::aes(
     x = df_species_trees$t,
     y = df_species_trees$nltt,
-    colour = df_species_trees$filenames,
+    colour = df_species_trees$filename,
     shape = df_species_trees$species_tree
   )
 ) + ggplot2::geom_point(
@@ -121,7 +121,7 @@ ggplot2::ggplot(
   ggplot2::aes(
     x = df_posterior$t,
     y = df_posterior$nltt,
-    colour = df_posterior$filenames,
+    colour = df_posterior$filename,
     shape = df_posterior$species_tree
   )
 ) + ggplot2::geom_point(
@@ -137,7 +137,7 @@ ggplot2::ggplot(
 
 
 ```{r fig.width = 7, fig.height = 7}
-filenames <- as.vector(sapply(unique(sort(df_species_trees$filenames)), Cer2016::find_path))
+filenames <- as.vector(sapply(unique(sort(df_species_trees$filename)), Cer2016::find_path))
 for (filename in filenames) {
   #plot_species_tree(filename)
   plot_species_tree_nltt(filename, dt = 0.1)

@@ -37,7 +37,7 @@ BD <- df_parameters[
   ]
 
 BD_gammas <- df_comparison[
-  df_comparison$filenames %in% rownames(BD),
+  df_comparison$filename %in% rownames(BD),
   ]
 ggplot2::qplot(diff, data = BD_gammas, binwidth = 0.005, xlim = c(-2, 2))
 ```
@@ -50,7 +50,7 @@ PBD <- df_parameters[
   ]
 
 PBD_gammas <- df_comparison[
-  df_comparison$filenames %in% rownames(PBD),
+  df_comparison$filename %in% rownames(PBD),
   ]
 ggplot2::qplot(diff, data = PBD_gammas, binwidth = 0.005, xlim = c(-2, 2))
 ```
@@ -62,7 +62,7 @@ PBD_01 <- df_parameters[
   ]
 
 PBD_01_gamma <- df_comparison[
-  df_comparison$filenames %in% rownames(PBD_01),
+  df_comparison$filename %in% rownames(PBD_01),
   ]
 
 ggplot2::qplot(diff, data = PBD_01_gamma, binwidth = 0.005, xlim = c(-2, 2))
@@ -75,7 +75,7 @@ PBD_02 <- df_parameters[
   ]
 
 PBD_02_gamma <- df_comparison[
-  df_comparison$filenames %in% rownames(PBD_02),
+  df_comparison$filename %in% rownames(PBD_02),
   ]
 
 ggplot2::qplot(diff, data = PBD_02_gamma, binwidth = 0.005, xlim = c(-2, 2))
@@ -88,7 +88,7 @@ PBD_03 <- df_parameters[
   ]
 
 PBD_03_gamma <- df_comparison[
-  df_comparison$filenames %in% rownames(PBD_03),
+  df_comparison$filename %in% rownames(PBD_03),
   ]
 
 ggplot2::qplot(diff, data = PBD_03_gamma, binwidth = 0.005, xlim = c(-2, 2))
@@ -101,7 +101,7 @@ PBD_04 <- df_parameters[
   ]
 
 PBD_04_gamma <- df_comparison[
-  df_comparison$filenames %in% rownames(PBD_04),
+  df_comparison$filename %in% rownames(PBD_04),
   ]
 
 ggplot2::qplot(diff, data = PBD_04_gamma, binwidth = 0.005, xlim = c(-2, 2))
@@ -114,7 +114,7 @@ PBD_08 <- df_parameters[
   ]
 
 PBD_08_gamma <- df_comparison[
-  df_comparison$filenames %in% rownames(PBD_08),
+  df_comparison$filename %in% rownames(PBD_08),
   ]
 
 ggplot2::qplot(diff, data = PBD_08_gamma, binwidth = 0.005, xlim = c(-2, 2))
@@ -127,7 +127,7 @@ PBD_10 <- df_parameters[
   ]
 
 PBD_10_gamma <- df_comparison[
-  df_comparison$filenames %in% rownames(PBD_10),
+  df_comparison$filename %in% rownames(PBD_10),
   ]
 
 ggplot2::qplot(diff, data = PBD_10_gamma, binwidth = 0.005, xlim = c(-2, 2))

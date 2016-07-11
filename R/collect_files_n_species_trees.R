@@ -9,7 +9,7 @@
 #'    find_path("toy_example_2.RDa")
 #'  )
 #'  df <- collect_files_n_species_trees(filenames, verbose = FALSE)
-#'  testit::assert(names(df) == c("filenames", "n_species_trees"))
+#'  testit::assert(names(df) == c("filename", "n_species_trees"))
 #'  testit::assert(nrow(df) == length(filenames))
 #' @export
 collect_files_n_species_trees <- function(
@@ -58,6 +58,6 @@ collect_files_n_species_trees <- function(
     n_species_trees = n_species_trees$n_species_trees
   )
   testit::assert(nrow(df) == length(filenames))
-  testit::assert(names(df) == c("filenames", "n_species_trees"))
+  testit::assert(names(df) == c("filename", "n_species_trees"))
   return(df)
 }

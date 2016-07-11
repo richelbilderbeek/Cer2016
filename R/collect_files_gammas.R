@@ -15,7 +15,7 @@
 #'  )
 #'  testit::assert(
 #'    names(df$species_tree_gamma_stats) ==
-#'    c("filenames", "species_tree", "gamma_stat")
+#'    c("filename", "species_tree", "gamma_stat")
 #'  )
 #'  testit::assert(nrow(df$species_tree_gamma_stats) == 4)
 #'  testit::assert(nrow(df$posterior_gamma_stats) == 160)

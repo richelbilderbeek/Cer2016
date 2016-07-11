@@ -9,7 +9,7 @@
 #'     find_path("toy_example_3.RDa")
 #'   )
 #'   df <- collect_files_n_alignments(filenames)
-#'   testit::assert(names(df) == c("filenames", "n_alignments"))
+#'   testit::assert(names(df) == c("filename", "n_alignments"))
 #'   testit::assert(nrow(df) == length(filenames))
 #'   testit::assert(df$n_alignments == c(2, 4))
 #' @export
@@ -59,6 +59,6 @@ collect_files_n_alignments <- function(
     n_alignments = n_alignments$n_alignments
   )
   testit::assert(nrow(df) == length(filenames))
-  testit::assert(names(df) == c("filenames", "n_alignments"))
+  testit::assert(names(df) == c("filename", "n_alignments"))
   return(df)
 }

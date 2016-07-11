@@ -9,7 +9,7 @@
 #'     find_path("toy_example_4.RDa")
 #'   )
 #'   df <- collect_files_nrbss(filenames)
-#'   testit::assert(names(df) == c("filenames", "species_tree", "alignment", "beast_run", "state", "nrbs"))
+#'   testit::assert(names(df) == c("filename", "species_tree", "alignment", "beast_run", "state", "nrbs"))
 #'   testit::assert(nrow(df) == 160)
 #' @export
 collect_files_nrbss <- function(
