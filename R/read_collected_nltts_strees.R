@@ -8,7 +8,7 @@
 read_collected_nltts_strees <- function() {
   filename <- Cer2016::find_path("collected_nltts_species_trees.csv")
   testit::assert(file.exists(filename))
-  df <- read.csv(
+  df <- utils::read.csv(
    file = filename,
    header = TRUE,
    stringsAsFactors = FALSE,

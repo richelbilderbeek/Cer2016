@@ -14,7 +14,7 @@ read_collected_nltts_postrs <- function() {
 
   filename <- Cer2016::find_path("collected_nltts_posterior.csv")
   testit::assert(file.exists(filename))
-  df <- read.csv(
+  df <- utils::read.csv(
    file = filename,
    header = TRUE,
    stringsAsFactors = FALSE,

@@ -18,7 +18,7 @@ plot_posterior_samples <- function(filename) {
       for (k in seq(1, n_beast_runs)) {
         all_trees <- Cer2016::get_posteriors(file)[[index]][[1]]
         n_trees <- length(all_trees)
-        random_tree_index <- round(runif(1, min = 1, max = n_trees))
+        random_tree_index <- round(stats::runif(1, min = 1, max = n_trees))
         random_tree <- all_trees[[random_tree_index]]
         graphics::plot(random_tree, main = paste(base_filename,
           "random tree in posterior ", sti, j, k)

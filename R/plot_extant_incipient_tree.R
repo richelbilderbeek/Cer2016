@@ -9,7 +9,7 @@ plot_extant_incipient_tree <- function(filename) {
       "file '", filename, "' is invalid"
     )
   }
-  colors <- setNames(c("gray", "black"), c("i", "g"))
+  colors <- stats::setNames(c("gray", "black"), c("i", "g"))
   testit::assert(
     length(Cer2016::read_file(filename)$pbd_output$igtree.extant$tip.label) > 0
   )

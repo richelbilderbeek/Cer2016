@@ -52,6 +52,9 @@ calc_nltt_stats <- function(
   diff_nltts$nltt <- abs(diff_nltts$nltt -
     rep(phylogeny_nltts$nltt, length(others)))
 
+  id <- NULL; rm(id) # nolint, should fix warning: calc_nltt_stats: no visible binding for global variable 'id'
+  nltt <- NULL; rm(nltt) # nolint, should fix warning: calc_nltt_stats: no visible binding for global variable 'nltt'
+
   # Calculate the surface between the two lines (which are the species
   # tree nLTT values and each posterior nLTT values):
   # the mean is taken as a trick to sum all differences
