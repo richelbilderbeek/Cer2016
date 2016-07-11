@@ -18,7 +18,7 @@ calc_nltt_stats_from_files <- function(filenames, dt) {
 
   # Check all files
   for (filename in filenames) {
-    if (!is_valid_file(filename)) {
+    if (!Cer2016::is_valid_file(filename)) {
       stop("calc_nltt_stats_from_files: invalid file '",
         filename, "'"
       )
@@ -30,9 +30,9 @@ calc_nltt_stats_from_files <- function(filenames, dt) {
   for (filename in filenames) {
     file <- read_file(filename)
     nst <- 2 # Number of species trees
-    napst <- extract_napst(file) # number of alignments per species tree
-    nppa <- extract_nppa(file) # number of number of posteriors per alignment
-    nspp <- extract_nspp(file) # number of states per posterior
+    napst <- Cer2016::extract_napst(file) # number of alignments per species tree
+    nppa <- Cer2016::extract_nppa(file) # number of number of posteriors per alignment
+    nspp <- Cer2016::extract_nspp(file) # number of states per posterior
     n_rows_for_this_file <- nst * napst * nppa * nspp
     n_rows <- n_rows + n_rows_for_this_file
   }
@@ -53,7 +53,10 @@ calc_nltt_stats_from_files <- function(filenames, dt) {
   # super[3:4, c("y", "z")] <- sub2                                                # nolint
   index <- 1
   for (filename in filenames) {
-    nltt_stats <- calc_nltt_stats_from_file(filename = filename, dt = dt)
+    nltt_stats <- Cer2016::calc_nltt_stats_from_file(
+      filename = filename,
+      dt = dt
+    )
     df[
       index:(index + nrow(nltt_stats) - 1),
       c("sti", "ai", "pi", "si", "nltt_stat")
@@ -63,7 +66,18 @@ calc_nltt_stats_from_files <- function(filenames, dt) {
     )
     index <- index + nrow(nltt_stats)
   }
-  testit::assert(names(df) == c("filename", "sti", "ai", "pi", "si", "nltt_stat"))
+  testit::assert(
+    c("filename", "sti", "ai", "pi", "si", "nltt_stat")
+      == names(df)
+  )
+
+  # Make factors
+  df$filename <- as.factor(df$filename)
+  df$sti <- as.factor(df$sti)
+  df$ai <- as.factor(df$ai)
+  df$pi <- as.factor(df$pi)
+  df$si <- as.factor(df$si)
+
   df
 
 }

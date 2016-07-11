@@ -12,12 +12,12 @@
 #'   testit::assert(names(nltt_stats) == expected_names)
 #' @author Richel Bilderbeek
 calc_nltt_stats_from_file <- function(filename, dt) {
-  file <- read_file(filename)
+  file <- Cer2016::read_file(filename)
 
   nst <- 2 # Number of species trees
-  napst <- extract_napst(file) # number of alignments per species tree
-  nppa <- extract_nppa(file) # number of number of posteriors per alignment
-  nspp <- extract_nspp(file) # number of states per posterior
+  napst <- Cer2016::extract_napst(file) # number of alignments per species tree
+  nppa <- Cer2016::extract_nppa(file) # number of number of posteriors per alignment
+  nspp <- Cer2016::extract_nspp(file) # number of states per posterior
   n_rows <- nst * napst * nppa * nspp
 
 
@@ -43,7 +43,7 @@ calc_nltt_stats_from_file <- function(filename, dt) {
   for (sti in 1:2) {
     for (ai in 1:napst) {
       for (pi in 1:nppa) {
-        nltt_stats <- calc_nltt_stats(
+        nltt_stats <- Cer2016::calc_nltt_stats(
           phylogeny = get_species_tree_by_index(file = file, sti = sti),
           others = get_posterior(file = file, sti = sti, ai = ai, pi = pi),
           dt = dt
