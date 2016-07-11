@@ -33,8 +33,7 @@ Imports:
   phangorn,
   phytools,
   plyr,
-  rBEAST,
-  ribir
+  rBEAST
 Suggests:
   ape,
   ggplot2,
