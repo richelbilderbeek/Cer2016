@@ -18,6 +18,9 @@ extract_erg <- function(file) {
   if ("erg" %in% names(file$parameters)) {
     erg <- as.numeric(file$parameters$erg[2])
   }
+  if (is.na(erg)) {
+    stop("extract_erg: parameter 'erg' absent")
+  }
   return(erg)
 }
 
@@ -40,6 +43,9 @@ extract_eri <- function(file) {
   eri <- NA
   if ("eri" %in% names(file$parameters)) {
     eri <- as.numeric(file$parameters$eri[2])
+  }
+  if (is.na(eri)) {
+    stop("extract_eri: parameter 'eri' absent")
   }
   return(eri)
 }
@@ -65,6 +71,9 @@ extract_scr <- function(file) {
   if ("scr" %in% names(file$parameters)) {
     scr <- as.numeric(file$parameters$scr[2])
   }
+  if (is.na(scr)) {
+    stop("extract_scr: parameter 'scr' absent")
+  }
   return(scr)
 }
 
@@ -89,6 +98,9 @@ extract_sirg <- function(file) {
   if ("sirg" %in% names(file$parameters)) {
     sirg <- as.numeric(file$parameters$sirg[2])
   }
+  if (is.na(sirg)) {
+    stop("extract_sirg: parameter 'sirg' absent")
+  }
   return(sirg)
 }
 
@@ -111,6 +123,9 @@ extract_siri <- function(file) {
   siri <- NA
   if ("siri" %in% names(file$parameters)) {
     siri <- as.numeric(file$parameters$siri[2])
+  }
+  if (is.na(siri)) {
+    stop("extract_siri: parameter 'siri' absent")
   }
   return(siri)
 }
@@ -135,6 +150,9 @@ extract_napst <- function(file) {
   if ("n_alignments" %in% names(file$parameters)) {
     n_alignments <- as.numeric(file$parameters$n_alignments[2])
   }
+  if (is.na(n_alignments)) {
+    stop("n_alignments: parameter 'n_alignments' absent")
+  }
   return(n_alignments)
 }
 
@@ -158,5 +176,34 @@ extract_nppa <- function(file) {
   if ("n_beast_runs" %in% names(file$parameters)) {
     nppa <- as.numeric(file$parameters$n_beast_runs[2])
   }
+  if (is.na(nppa)) {
+    stop("extract_nppa: parameter 'n_beast_runs' absent")
+  }
   return(nppa)
+}
+
+#' Extract the number of states per posterior
+#'   parameter value from a file
+#' @param file A loaded parameter file
+#' @return the number of posteriors per alignment
+#' @export
+#' @examples
+#'   file <- read_file(find_path("toy_example_1.RDa"))
+#'   nspp <- extract_nspp(file)
+#'   testit::assert(nspp == 10)
+#' @author Richel Bilderbeek
+extract_nspp <- function(file) {
+
+  if (is.null(names(file$parameters))) {
+    stop("extract_nspp: file$parameters not found")
+  }
+
+  nspp <- NA
+  if ("mcmc_chainlength" %in% names(file$parameters)) {
+    nspp <- as.numeric(file$parameters$mcmc_chainlength[2]) / 1000
+  }
+  if (is.na(nspp)) {
+    stop("extract_nspp: parameter 'mcmc_chainlength' absent")
+  }
+  return(nspp)
 }

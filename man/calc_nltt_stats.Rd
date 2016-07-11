@@ -21,6 +21,14 @@ A data frame
 Calculate the nLTT statistic between a focal phylogeny
 and multiple others
 }
+\examples{
+  nltt_stats <- calc_nltt_stats(
+    phylogeny = ape::rcoal(10),
+    others = c(ape::rcoal(10), ape::rcoal(10)),
+    dt = 0.1
+  )
+  expect_true(names(nltt_stats) == c("id", "nltt_stat"))
+}
 \author{
 Richel Bilderbeek
 }

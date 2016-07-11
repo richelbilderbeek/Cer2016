@@ -38,3 +38,21 @@ test_that("extract_siri", {
   siri <- extract_siri(file)
   expect_true(siri >= 0.0)
 })
+
+test_that("extract_napst", {
+  file <- read_file(find_path("toy_example_1.RDa"))
+  napst <- extract_napst(file)
+  expect_equal(napst, 1)
+})
+
+test_that("extract_nppa", {
+  file <- read_file(find_path("toy_example_1.RDa"))
+  nppa <- extract_nppa(file)
+  expect_equal(nppa, 1)
+})
+
+test_that("extract_nspp", {
+  file <- read_file(find_path("toy_example_1.RDa"))
+  nspp <- extract_nspp(file)
+  expect_equal(nspp, 10)
+})

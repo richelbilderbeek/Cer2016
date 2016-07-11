@@ -11,7 +11,7 @@
 #'     others = c(ape::rcoal(10), ape::rcoal(10)),
 #'     dt = 0.1
 #'   )
-#'   expect_true(names(nltt_stats) == c("id", "nltt_stat"))
+#'   testit::assert(names(nltt_stats) == c("id", "nltt_stat"))
 #' @export
 calc_nltt_stats <- function(
   phylogeny,
