@@ -55,7 +55,7 @@ collect_files_n_alignments <- function(
     }
   }
   df <- data.frame(
-    filenames = basename(filenames),
+    filename = basename(filenames),
     n_alignments = n_alignments$n_alignments
   )
   testit::assert(nrow(df) == length(filenames))

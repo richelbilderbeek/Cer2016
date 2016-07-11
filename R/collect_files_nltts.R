@@ -40,7 +40,7 @@ collect_files_nltts <- function(
     # Prepend a col with the filename
     this_filenames <- rep(basename(filename), times = nrow(this_stns))
     this_stns <- cbind(
-      filenames = this_filenames,
+      filename = this_filenames,
       this_stns
     )
     if (!is.null(stns)) {
@@ -75,7 +75,7 @@ collect_files_nltts <- function(
     # Prepend a col with the filename
     this_filenames <- rep(basename(filename), times = nrow(this_pns))
     this_pns <- cbind(
-      filenames = this_filenames,
+      filename = this_filenames,
       this_pns
     )
     if (!is.null(pns)) {

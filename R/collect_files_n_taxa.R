@@ -56,7 +56,7 @@ collect_files_n_taxa <- function(
     }
   }
   df <- data.frame(
-    filenames = basename(filenames),
+    filename = basename(filenames),
     n_taxa = n_taxa$n_taxa
   )
   testit::assert(nrow(df) == length(filenames))

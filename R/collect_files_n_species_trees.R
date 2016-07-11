@@ -54,7 +54,7 @@ collect_files_n_species_trees <- function(
     }
   }
   df <- data.frame(
-    filenames = basename(filenames),
+    filename = basename(filenames),
     n_species_trees = n_species_trees$n_species_trees
   )
   testit::assert(nrow(df) == length(filenames))

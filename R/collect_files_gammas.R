@@ -53,7 +53,7 @@ collect_files_gammas <- function(
     # Prepend a col with the filename
     this_filenames <- rep(basename(filename), times = nrow(this_stgs))
     this_stgs <- cbind(
-      filenames = this_filenames,
+      filename = this_filenames,
       this_stgs
     )
     if (!is.null(stgs)) {
@@ -84,7 +84,7 @@ collect_files_gammas <- function(
     # Prepend a col with the filename
     this_filenames <- rep(basename(filename), times = nrow(this_pgs))
     this_pgs <- cbind(
-      filenames = this_filenames,
+      filename = this_filenames,
       this_pgs
     )
     if (!is.null(pgs)) {

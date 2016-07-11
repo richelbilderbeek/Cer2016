@@ -48,7 +48,7 @@ collect_files_nrbss <- function(
     # Prepend a col with the filename
     this_filenames <- rep(basename(filename), times = nrow(this_df))
     this_df <- cbind(
-      filenames = this_filenames,
+      filename = this_filenames,
       this_df
     )
     if (!is.null(df)) {

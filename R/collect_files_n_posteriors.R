@@ -55,7 +55,7 @@ collect_files_n_posteriors <- function(
     }
   }
   df <- data.frame(
-    filenames = basename(filenames),
+    filename = basename(filenames),
     n_posteriors = n_posteriors$n_posteriors
   )
   testit::assert(nrow(df) == length(filenames))
