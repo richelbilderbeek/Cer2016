@@ -26,12 +26,15 @@ Requires:
   TreeSim
 Imports:
   beastscriptr,
+  devtools,
   dplyr,
   nLTT,
   PBD,
   phangorn,
   phytools,
-  rBEAST
+  plyr,
+  rBEAST,
+  ribir
 Suggests:
   ape,
   ggplot2,
