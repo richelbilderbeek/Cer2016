@@ -28,7 +28,7 @@ calc_nltt_stats_from_files <- function(filenames, dt) {
   # Calculate the number of rows needed
   n_rows <- 0
   for (filename in filenames) {
-    file <- read_file(filename)
+    file <- Cer2016::read_file(filename)
     nst <- 2 # Number of species trees
     napst <- Cer2016::extract_napst(file) # number of alignments per species tree # nolint
     nppa <- Cer2016::extract_nppa(file) # number of number of posteriors per alignment # nolint
