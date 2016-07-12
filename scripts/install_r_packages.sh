@@ -3,7 +3,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --ntasks=1
-#SBATCH --mem=1M
+#SBATCH --mem=1G
 #SBATCH --job-name=install_r_packages
 #SBATCH --output=install_r_packages.log
 module load R
