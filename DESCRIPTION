@@ -37,6 +37,7 @@ Suggests:
   ape,
   ggplot2,
   gridExtra,
+  Hmisc,
   lintr,
   lubridate,
   rmarkdown,
