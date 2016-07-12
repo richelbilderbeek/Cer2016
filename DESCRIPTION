@@ -16,6 +16,7 @@ Requires:
   ape,
   beastscriptr,
   dplyr,
+  knitr,
   nLTT,
   PBD,
   phangorn,
@@ -27,7 +28,6 @@ Requires:
 Imports:
   beastscriptr,
   dplyr,
-  knitr,
   nLTT,
   PBD,
   phangorn,
@@ -37,7 +37,6 @@ Suggests:
   ape,
   ggplot2,
   gridExtra,
-  knitr,
   lintr,
   lubridate,
   rmarkdown,
