@@ -15,6 +15,9 @@ install:
   - sudo apt-get install oracle-java8-set-default
   - ./install_beast2.sh
 
+before_script:
+- Rscript -e 'devtools::install_github("richelbilderbeek/Cer2016")'
+
 after_success:
   - Rscript -e 'lintr::lint_package()'
   - Rscript -e 'library(covr); codecov()'
