@@ -27,6 +27,7 @@ Requires:
 Imports:
   beastscriptr,
   dplyr,
+  knitr,
   nLTT,
   PBD,
   phangorn,
