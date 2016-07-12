@@ -26,13 +26,11 @@ Requires:
   TreeSim
 Imports:
   beastscriptr,
-  devtools,
   dplyr,
   nLTT,
   PBD,
   phangorn,
   phytools,
-  plyr,
   rBEAST
 Suggests:
   ape,
