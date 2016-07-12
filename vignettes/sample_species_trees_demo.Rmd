@@ -13,6 +13,14 @@ vignette: >
 
 This vignette demonstrates the sampling used.
 
+# Introduction
+
+```{r}
+newick <- "(((1,2),1),1);"
+phylogeny <- ape::read.tree(text = newick)
+ape::plot.phylo(phylogeny, edge.width = 3, cex = 2, root.edge = TRUE)
+```
+
 # Demonstration
 
 Load the packages we will need:
