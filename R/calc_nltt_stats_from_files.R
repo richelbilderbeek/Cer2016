@@ -30,8 +30,8 @@ calc_nltt_stats_from_files <- function(filenames, dt) {
   for (filename in filenames) {
     file <- read_file(filename)
     nst <- 2 # Number of species trees
-    napst <- Cer2016::extract_napst(file) # number of alignments per species tree
-    nppa <- Cer2016::extract_nppa(file) # number of number of posteriors per alignment
+    napst <- Cer2016::extract_napst(file) # number of alignments per species tree # nolint
+    nppa <- Cer2016::extract_nppa(file) # number of number of posteriors per alignment # nolint
     nspp <- Cer2016::extract_nspp(file) # number of states per posterior
     n_rows_for_this_file <- nst * napst * nppa * nspp
     n_rows <- n_rows + n_rows_for_this_file

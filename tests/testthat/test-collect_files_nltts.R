@@ -14,13 +14,19 @@ test_that("collect_files_nltts: basic", {
   )
   expect_equal(nrow(df$species_tree_nltts), 24)
   expect_equal(nrow(df$posterior_nltts), 600)
-  expect_true(names(df$species_tree_nltts)
-    == c("filename", "species_tree", "t", "nltt")
+  expect_true(
+    identical(
+      names(df$species_tree_nltts),
+      c("filename", "species_tree", "t", "nltt")
+    )
   )
-  expect_true(names(df$posterior_nltts)
-    == c(
-      "filename", "species_tree", "alignment",
-      "beast_run", "state", "t", "nltt"
+  expect_true(
+    identical(
+      names(df$posterior_nltts),
+      c(
+        "filename", "species_tree", "alignment",
+        "beast_run", "state", "t", "nltt"
+      )
     )
   )
 })
