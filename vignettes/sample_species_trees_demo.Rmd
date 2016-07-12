@@ -16,8 +16,20 @@ This vignette demonstrates the sampling used.
 # Introduction
 
 ```{r}
-newick <- "(((1,2),1),1);"
-phylogeny <- ape::read.tree(text = newick)
+newick <- "(((A,B),A),A);"
+phylogeny <- phytools::read.newick(text = newick)
+ape::plot.phylo(phylogeny, edge.width = 3, cex = 2, root.edge = TRUE)
+```
+
+```{r}
+newick <- "((A,B),A);"
+phylogeny <- phytools::read.newick(text = newick)
+ape::plot.phylo(phylogeny, edge.width = 3, cex = 2, root.edge = TRUE)
+```
+
+```{r}
+newick <- "(A,B);"
+phylogeny <- phytools::read.newick(text = newick)
 ape::plot.phylo(phylogeny, edge.width = 3, cex = 2, root.edge = TRUE)
 ```
 
