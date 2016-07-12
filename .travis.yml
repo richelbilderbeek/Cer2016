@@ -13,7 +13,7 @@ install:
   - sudo apt-get install -qq oracle-java8-installer # Java 8
   - sudo apt-get install oracle-java8-set-default
   - sudo pip install codecov
-  - ./install_pandoc.sh
+  - ./install_pandoc_deb.sh
   - ./install_beast2.sh
 
 addons:
