@@ -1,24 +1,42 @@
-language: r
-cache: packages
+sudo: require
+language: cpp
+compiler: gcc
 
-r_github_packages:
-  - jimhester/lintr
-  - jimhester/covr
-  - MangoTheCat/goodpractice
-  - richelbilderbeek/beastscriptr
-  - olli0601/rBEAST
-  - richelbilderbeek/nLTT
-  - rsetienne/PBD/PBD
+before_install:
+  - sudo add-apt-repository --yes ppa:marutter/rrutter # R
+  - sudo add-apt-repository --yes ppa:webupd8team/java # Java 8
+  - sudo apt-get update -qq
 
 install: 
+  - sudo apt-get install -qq r-base r-base-dev --force-yes # R
+  - sudo apt-get install -qq texlive-full # LyX
   - sudo apt-get install -qq oracle-java8-installer # Java 8
   - sudo apt-get install oracle-java8-set-default
+  - sudo pip install codecov
+  - sudo install_pandoc_deb.sh
   - ./install_beast2.sh
 
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+
+before_script:
+ - sudo Rscript install_r_packages.R
+ # R wants all hidden files gone...
+ - rm .gitignore
+ - rm .travis.yml
+ - rm -rf .git
+ - rm -rf ..Rcheck
+ - rm .Rprofile
+
+script: 
+ - R CMD check .
+
 after_success:
-  - Rscript -e 'lintr::lint_package()'
-  - Rscript -e 'library(covr); codecov()'
-  - Rscript -e 'library(goodpractice); gp()'
+ - Rscript -e 'lintr::lint_package()'
+ - Rscript -e 'library(covr); codecov()'
+ - Rscript -e 'library(goodpractice); gp()'
  
 after_failure:
  - sudo Rscript install_this_r_package.R
