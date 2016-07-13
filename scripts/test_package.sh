@@ -9,5 +9,5 @@
 #SBATCH --job-name=test_package
 #SBATCH --output=test_package.log
 #SBATCH --mail-type=BEGIN,END
-module load R/3.2.3-foss-2016a
+module load R/3.3.1-foss-2016a
 R CMD check .

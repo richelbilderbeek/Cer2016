@@ -7,5 +7,5 @@
 #SBATCH --mem=1G
 #SBATCH --job-name=collect_n_species_trees
 #SBATCH --output=collect_n_species_trees.log
-module load R/3.2.3-foss-2016a
+module load R/3.3.1-foss-2016a
 time Rscript collect_n_species_trees.R

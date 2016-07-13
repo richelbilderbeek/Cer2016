@@ -6,5 +6,5 @@
 #SBATCH --mem=1G
 #SBATCH --job-name=add_posteriors
 #SBATCH --output=add_posteriors_%j.log
-module load R/3.2.3-foss-2016a beagle-lib Beast
+module load R/3.3.1-foss-2016a beagle-lib Beast
 time Rscript -e "library(Cer2016); add_posteriors(\"$1\")"

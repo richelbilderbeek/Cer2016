@@ -6,5 +6,5 @@
 #SBATCH --mem=1G
 #SBATCH --job-name=test_beast2
 #SBATCH --output=test_beast2.log
-module load R/3.2.3-foss-2016a
+module load R/3.3.1-foss-2016a
 time Rscript test_beast2.R
