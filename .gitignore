@@ -41,3 +41,9 @@ vignettes/*.trees
 vignettes/*.xml
 vignettes/*.xml.state
 figure/
+scripts/*.RDa
+scripts/*.log
+scripts/*.csv
+scripts/*.pdf
+scripts/*.out
+scripts/*.xml
