@@ -7,5 +7,5 @@
 #SBATCH --mem=1M
 #SBATCH --job-name=create_test_parameter_files
 #SBATCH --output=create_test_parameter_files.log
-module load R
+module load R/3.2.3-foss-2016a
 time Rscript -e 'library(Cer2016); create_test_parameter_files()'

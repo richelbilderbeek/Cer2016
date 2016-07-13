@@ -6,5 +6,5 @@
 #SBATCH --mem=1G
 #SBATCH --job-name=analyse_time
 #SBATCH --output=analyse_time.log
-module load R
+module load R/3.2.3-foss-2016a
 time Rscript analyse_time.R

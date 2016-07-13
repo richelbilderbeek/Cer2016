@@ -6,5 +6,5 @@
 #SBATCH --mem=1G
 #SBATCH --job-name=test_pdf
 #SBATCH --output=test_pdf.log
-module load R
+module load R/3.2.3-foss-2016a
 time Rscript test_pdf.R

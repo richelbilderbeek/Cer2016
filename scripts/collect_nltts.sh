@@ -6,5 +6,5 @@
 #SBATCH --mem=1G
 #SBATCH --job-name=collect_nltts
 #SBATCH --output=collect_nltts.log
-module load R
+module load R/3.2.3-foss-2016a
 time Rscript collect_nltts.R

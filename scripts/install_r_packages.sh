@@ -6,5 +6,5 @@
 #SBATCH --mem=1G
 #SBATCH --job-name=install_r_packages
 #SBATCH --output=install_r_packages.log
-module load R
+module load R/3.2.3-foss-2016a
 time Rscript -e 'source("install_r_packages.R")'

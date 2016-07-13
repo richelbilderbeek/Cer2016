@@ -7,5 +7,5 @@
 #SBATCH --mem=1G
 #SBATCH --job-name=collect_n_taxa
 #SBATCH --output=collect_n_taxa.log
-module load R
+module load R/3.2.3-foss-2016a
 time time Rscript collect_n_taxa.R
