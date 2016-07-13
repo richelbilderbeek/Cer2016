@@ -42,3 +42,5 @@ tryCatch(
   system("pandoc ~/analyse_nltts.html -o analyse_nltts.pdf"),
   error = function(msg) { message(msg) }
 )
+
+warnings()

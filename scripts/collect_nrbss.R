@@ -30,3 +30,5 @@ tryCatch(
   system("pandoc ~/analyse_nrbss.html -o analyse_nrbss.pdf"),
   error = function(msg) { message(msg) }
 )
+
+warnings()

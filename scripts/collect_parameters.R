@@ -22,3 +22,5 @@ tryCatch(
   system("pandoc ~/analyse_files.html -o analyse_files.pdf"),
   error = function(msg) { message(msg) }
 )
+
+warnings()

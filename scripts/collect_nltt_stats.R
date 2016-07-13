@@ -9,7 +9,7 @@ fns <- paste(
   folder, list.files(folder, pattern = "\\.RDa"), sep = "/"
 )
 
-df <- calc_files_nltts(fns, dt = dt)
+df <- calc_nltt_stats_from_files(fns, dt = dt)
 write.csv(
   x = df,
   file = csv_filename_nltt_stat,
@@ -34,3 +34,5 @@ file.copy(
 #  system("pandoc ~/analyse_nltts.html -o analyse_nltts.pdf"),
 #  error = function(msg) { message(msg) }
 #)
+
+warnings()

@@ -60,3 +60,5 @@ tryCatch(
   system("pandoc $HOME/troubleshooting_pandoc.html -o test_pdf_pandoc_home.pdf"),
   error = function(msg) { message(msg) }
 )
+
+warnings()

@@ -162,3 +162,77 @@ We can see how similar these are:
 plot_posterior_nltts(filenames[3])
 plot_posterior_nltts(filenames[4])
 ```
+
+
+## Show the posterior again of the second file
+
+```{r}
+filename <- filenames[2]
+n_beast_runs <- extract_nppa(read_file(filename))
+posteriors <- get_posteriors(read_file(filename))
+testit::assert(length(posteriors) == 2 * n_beast_runs)
+testit::assert(is_posterior(Cer2016::get_posterior(file = read_file(filename), sti = 1, ai = 1, pi = 1)))
+testit::assert(is_posterior(Cer2016::get_posterior(file = read_file(filename), sti = 1, ai = 1, pi = 2)))
+testit::assert(is_posterior(Cer2016::get_posterior(file = read_file(filename), sti = 2, ai = 1, pi = 1)))
+testit::assert(is_posterior(Cer2016::get_posterior(file = read_file(filename), sti = 2, ai = 1, pi = 2)))
+
+phylogenies_1 <- Cer2016::get_posterior(file = read_file(filename), sti = 1, ai = 1, pi = 1)
+phylogenies_2 <- Cer2016::get_posterior(file = read_file(filename), sti = 1, ai = 1, pi = 2)
+phylogenies_3 <- Cer2016::get_posterior(file = read_file(filename), sti = 2, ai = 1, pi = 1)
+phylogenies_4 <- Cer2016::get_posterior(file = read_file(filename), sti = 2, ai = 1, pi = 2)
+
+testit::assert(length(phylogenies_1) > 0)
+testit::assert(length(phylogenies_2) > 0)
+testit::assert(length(phylogenies_3) > 0)
+testit::assert(length(phylogenies_4) > 0)
+```
+
+Here another hack: to get the `densiTree` function working, phylogenies must be of class multiphylo.
+Let it be so:
+
+```{r}
+class(phylogenies_1) <- "multiPhylo"
+class(phylogenies_2) <- "multiPhylo"
+class(phylogenies_3) <- "multiPhylo"
+class(phylogenies_4) <- "multiPhylo"
+```
+
+Displaying first posterior of the `youngest` species tree:
+
+```{r fig.width = 7, fig.height = 7}
+phangorn::densiTree(
+  phylogenies_1, 
+  type = "cladogram", 
+  alpha = 1
+)
+```
+
+Displaying second posterior of the `youngest` species tree:
+
+```{r fig.width = 7, fig.height = 7}
+phangorn::densiTree(
+  phylogenies_2, 
+  type = "cladogram", 
+  alpha = 1
+)
+```
+
+Displaying first posterior of the `oldest` species tree:
+
+```{r fig.width = 7, fig.height = 7}
+phangorn::densiTree(
+  phylogenies_3, 
+  type = "cladogram", 
+  alpha = 1
+)
+```
+
+Displaying second posterior of the `oldest` species tree:
+
+```{r fig.width = 7, fig.height = 7}
+phangorn::densiTree(
+  phylogenies_4, 
+  type = "cladogram", 
+  alpha = 1
+)
+```

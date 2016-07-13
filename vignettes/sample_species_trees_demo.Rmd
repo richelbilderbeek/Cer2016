@@ -15,22 +15,10 @@ This vignette demonstrates the sampling used.
 
 # Introduction
 
-```{r}
+```{r fig.width = 7, fig.height = 7}
 newick <- "(((A,B),A),A);"
 phylogeny <- phytools::read.newick(text = newick)
-ape::plot.phylo(phylogeny, edge.width = 3, cex = 2, root.edge = TRUE)
-```
-
-```{r}
-newick <- "((A,B),A);"
-phylogeny <- phytools::read.newick(text = newick)
-ape::plot.phylo(phylogeny, edge.width = 3, cex = 2, root.edge = TRUE)
-```
-
-```{r}
-newick <- "(A,B);"
-phylogeny <- phytools::read.newick(text = newick)
-ape::plot.phylo(phylogeny, edge.width = 3, cex = 2, root.edge = TRUE)
+ape::plot.phylo(phylogeny, edge.width = 3, cex = 2)
 ```
 
 # Demonstration
@@ -76,6 +64,7 @@ incipient species:
 ```{r fig.width = 7, fig.height = 7}
 cols <- stats::setNames(c("gray", "black"), c("i", "g"))
 phytools::plotSimmap(pbd_sim_output$igtree.extant, colors = cols)
+ape::add.scale.bar()
 ```
 
 From that tree, from each good species, we pick both the youngest and oldest:

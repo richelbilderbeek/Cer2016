@@ -24,3 +24,5 @@ tryCatch(
   system("pandoc ~/analyse_n_taxa.html -o analyse_n_taxa.pdf"),
   error = function(msg) { message(msg) }
 )
+
+warnings()

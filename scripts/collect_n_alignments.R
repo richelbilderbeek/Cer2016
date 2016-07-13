@@ -9,3 +9,5 @@ write.csv(
   file = "collected_n_alignments.csv",
   row.names = TRUE
 )
+
+warnings()

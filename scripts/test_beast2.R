@@ -41,3 +41,5 @@ posterior <- alignment_to_beast_posterior(
 )
 
 print(posterior)
+
+warnings()

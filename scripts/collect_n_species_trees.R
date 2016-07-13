@@ -9,3 +9,5 @@ write.csv(
   file = "collected_n_species_trees.csv",
   row.names = TRUE
 )
+
+warnings()

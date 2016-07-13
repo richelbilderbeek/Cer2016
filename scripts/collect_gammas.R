@@ -39,3 +39,5 @@ tryCatch(
   system("pandoc ~/analyse_gammas.html -o analyse_gammas.pdf"),
   error = function(msg) { message(msg) }
 )
+
+warnings()
