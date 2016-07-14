@@ -40,10 +40,20 @@ Suggests:
   Hmisc,
   lintr,
   lubridate,
+  plyr,
   rmarkdown,
   stringr,
   testit,
   testthat
+Remotes:
+  jimhester/covr
+  jimhester/lintr
+  richelbilderbeek/beastscriptr
+  olli0601/rBEAST
+  richelbilderbeek/nLTT
+  rsetienne/PBD/PBD
+  MangoTheCat/goodpractice
+
 RoxygenNote: 5.0.1
 URL: https://github.com/richelbilderbeek/Cer2016
 BugReports: https://github.com/richelbilderbeek/Cer2016/issues
