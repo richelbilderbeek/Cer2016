@@ -1,7 +1,7 @@
 context("do_test_simulations")
 
 test_that("do_test_simulations: create exact replicate", {
-  if (regexpr("travis", getwd())[1] == -1) {
+  if (regexpr("richelbilderbeek", getwd())[1] == -1) {
     skip("do_test_simulations: only on Travis")
   }
   filenames_1 <- paste0("do_test_simulations_1_", seq(1, 4), ".RDa")
