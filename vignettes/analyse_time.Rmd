@@ -1,0 +1,133 @@
+---
+title: "Analyse time"
+author: "Richel Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Analyse time}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r}
+library(Cer2016)
+```
+
+```{r}
+time_data <- read_collected_times()
+testit::assert(names(time_data) == c("per_file", "full_process"))
+knitr::kable(df)
+df_per_file <- time_data$per_file
+df_process <- time_data$full_process
+```
+
+See the effect of speciation initiation rate:
+
+```{r}
+ggplot2::ggplot(
+  df_per_file, 
+  ggplot2::aes(
+    x = df_per_file$sirg, 
+    y = df_per_file$add_posteriors_real_time_sec
+  )
+) + ggplot2::geom_boxplot() + 
+  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=90, vjust=0.5))
+```
+
+See the effect of speciation completion rate:
+
+```{r}
+ggplot2::ggplot(
+  df_per_file, 
+  ggplot2::aes(
+    x = factor(df_per_file$scr), 
+    y = df_per_file$add_posteriors_real_time_sec
+  )
+) + ggplot2::geom_boxplot() + 
+  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=90, vjust=0.5))
+```
+
+
+See the effect of extinction rate:
+
+```{r}
+ggplot2::ggplot(
+  df_per_file, 
+  ggplot2::aes(
+    x = df_per_file$erg, 
+    y = df_per_file$add_posteriors_real_time_sec
+  )
+) + ggplot2::geom_boxplot() + 
+  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=90, vjust=0.5))
+```
+
+
+See effect of sequence length:
+
+```{r}
+ggplot2::ggplot(
+  df_per_file, 
+  ggplot2::aes(
+    x = df_per_file$sequence_length, 
+    y = df_per_file$add_posteriors_real_time_sec
+  )
+) + ggplot2::geom_boxplot() + 
+  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=90, vjust=0.5))
+```
+
+Plot the variety between runs in a boxplot:
+
+```{r fig.width = 7, fig.height = 7}
+ggplot2::ggplot(
+  df_process, 
+  ggplot2::aes(
+    x = df_process$process_name, 
+    y = df_process$real_time_sec
+  )
+) + ggplot2::geom_boxplot() + 
+  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=90, vjust=0.5))
+```
+
+Aggregate by process:
+
+```{r}
+df_process <- stats::aggregate(df_process$real_time_sec, by = list(df_process$process_name), FUN=sum)
+names(df_process) <- c("process_name", "real_time_sec")
+knitr::kable(head(df_process))
+```
+
+Stacked bar:
+
+```{r fig.width = 7, fig.height = 7}
+ggplot2::ggplot(
+  df_process, 
+  ggplot2::aes(
+    x = factor(""), 
+    y = df_process$real_time_sec, 
+    fill = df_process$process_name
+  )
+) + 
+  ggplot2::geom_bar(stat = "identity") + 
+  ggplot2::scale_x_discrete("") +
+  ggplot2::ggtitle("Simulation times (sec)") + 
+  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=90, vjust=0.5))
+```
+
+Pie chart:
+
+```{r fig.width = 7, fig.height = 7}
+ggplot2::ggplot(
+  df_process, 
+  ggplot2::aes(
+    x = factor(""), 
+    y = df_process$real_time_sec, 
+    fill = df_process$process_name
+  )
+) + 
+  ggplot2::geom_bar(stat = "identity") + 
+  ggplot2::scale_x_discrete("") +
+  ggplot2::scale_y_continuous("time (sec)") +
+  ggplot2::coord_polar(theta = "y") + 
+  ggplot2::ggtitle("Simulation times")
+```
