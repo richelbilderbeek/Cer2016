@@ -1,6 +1,4 @@
 #!/bin/bash
-# Call from root folder with with 'sbatch ./scripts/test_package'
-# 10 hours suffices
 #SBATCH --time=10:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1

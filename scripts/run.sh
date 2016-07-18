@@ -13,7 +13,8 @@ rm *.md
 # Create parameter files
 ##########################
 
-jobid=`sbatch create_test_parameter_files.sh | cut -d ' ' -f 4`
+#jobid=`sbatch create_test_parameter_files.sh | cut -d ' ' -f 4`
+jobid=`sbatch create_parameter_files_timings.sh | cut -d ' ' -f 4`
 #jobid=`sbatch create_parameter_files_article.sh | cut -d ' ' -f 4`
 echo "jobid: "$jobid
 

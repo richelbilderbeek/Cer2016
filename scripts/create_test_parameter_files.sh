@@ -1,6 +1,6 @@
 #!/bin/bash
 # Called from scripts folder by run.sh
-#SBATCH --time=0:01:00
+#SBATCH --time=0:05:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --ntasks=1
