@@ -12,15 +12,28 @@ vignette: >
 
 ```{r}
 library(Cer2016)
+options(warn = 2)
 ```
 
 ```{r}
 time_data <- read_collected_times()
 testit::assert(names(time_data) == c("per_file", "full_process"))
-knitr::kable(df)
 df_per_file <- time_data$per_file
 df_process <- time_data$full_process
 ```
+
+Times per file:
+
+```{r}
+knitr::kable(head(df_per_file))
+```
+
+Times for the whole process:
+
+```{r}
+knitr::kable(head(df_process))
+```
+
 
 See the effect of speciation initiation rate:
 
