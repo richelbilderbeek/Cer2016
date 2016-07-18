@@ -25,6 +25,7 @@ Load all libraries:
 
 ```{r}
 library(Cer2016)
+options(warn = 2)
 ```
 
 Set the random number generator seed. 

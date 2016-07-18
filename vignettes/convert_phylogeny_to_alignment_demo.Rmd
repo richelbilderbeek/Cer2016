@@ -13,6 +13,7 @@ vignette: >
 ```{r}
 library(ape)
 library(Cer2016)
+options(warn = 2)
 n_taxa <- 5
 phylogeny <- rcoal(n = n_taxa)
 alignment <- convert_phylogeny_to_alignment(

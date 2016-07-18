@@ -12,6 +12,7 @@ vignette: >
 ```{r load_packages}
 library(Cer2016)
 library(ggplot2)
+options(warn = 2)
 ```
 
 Loading some files

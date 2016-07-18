@@ -11,6 +11,7 @@ vignette: >
 
 ```{r}
 library(Cer2016)
+options(warn = 2)
 filename <- find_path("toy_example_4.RDa")
 file <- read_file(filename)
 posterior_1 <- get_posterior_by_index(file, 1)

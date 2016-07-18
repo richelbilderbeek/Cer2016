@@ -21,6 +21,7 @@ Loading this package
 
 ```{r}
 library(Cer2016)
+options(warn = 2)
 ```
 
 ## Collecting nLTTs from all files

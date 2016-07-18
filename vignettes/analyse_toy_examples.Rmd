@@ -47,6 +47,7 @@ library(ggplot2)
 library(Hmisc)
 library(nLTT)
 library(phangorn)
+options(warn = 2)
 ```
 
 We also set the resolution of our analysis:

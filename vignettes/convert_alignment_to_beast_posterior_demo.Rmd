@@ -24,6 +24,7 @@ library(nLTT)
 library(phangorn)
 library(rBEAST)
 library(testit)
+options(warn = 2)
 ```
 
 Check if BEAST2 can be found:

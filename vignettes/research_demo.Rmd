@@ -36,6 +36,7 @@ We will need to load some libraries:
 ```{r}
 library(Cer2016)
 library(ape)
+options(warn = 2)
 ```
 
 

@@ -25,6 +25,7 @@ For this vignette, we need these libraries:
 ```{r}
 library(ape)
 library(Cer2016)
+options(warn = 2)
 ```
 
 First we obtain the full path of a parameter file:

@@ -9,6 +9,10 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+```{r}
+options(warn = 2)
+```
+
 ```{r fig.width = 7, fig.height = 4}
 newick <- "((A:2,B:2):8,(C:2,B:2):8);"
 phylogeny <- ape::read.tree(text = newick)
