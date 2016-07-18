@@ -1360,6 +1360,26 @@ key "testit"
 \end_inset
 
  for debugging.
+ 
+\end_layout
+
+\begin_layout Standard
+The code for this package and all scripts are available on GitHub, which
+ is good practice 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "perez2016ten"
+
+\end_inset
+
+ and helps to improve transparancy 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gorgolewski2016practical"
+
+\end_inset
+
+.
  All the scripts can be downloaded from 
 \begin_inset Flex URL
 status collapsed
@@ -1371,8 +1391,7 @@ https://github.com/richelbilderbeek/Cer2016
 
 \end_inset
 
-.
- 
+ and this research is reproducible with the start of a single command.
 \end_layout
 
 \begin_layout Paragraph
