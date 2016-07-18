@@ -9,59 +9,18 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+## Abstract
+
+This vignette shows how to work with nLTT values.
+It does *not* show the nLTT statistic, as that is
+shown in the vignette 'Analyse nLTT statistics'.
+
+## Setup
+
 Loading this package
 
 ```{r}
 library(Cer2016)
-```
-
-## Show the distribution of nLTT statistics
-
-```{r}
-filenames <- find_paths(paste0("toy_example_", 1:4,".RDa"))
-nltt_stats <- calc_nltt_stats_from_files(filenames = filenames, dt = 0.1)
-knitr::kable(head(nltt_stats))
-```
-
-All on one heap:
-
-```{r fig.width = 7, fig.height = 7}
-nltt_stats$sti <- plyr::revalue(nltt_stats$sti, c("1"="youngest", "2"="oldest"))
-
-ggplot2::ggplot(
-  data = nltt_stats,
-  ggplot2::aes(
-    x = nltt_stats$filename,
-    y = nltt_stats$nltt_stat
-  )
-) + ggplot2::geom_boxplot(
-) + ggplot2::scale_x_discrete(
-  name = "Filename"
-) + ggplot2::scale_y_continuous(
-  name = "nLTT statistic"
-) + ggplot2::ggtitle("Distribution of nLTT statistics")
-
-```
-
-Seperated by species tree:
-
-```{r fig.width = 7, fig.height = 7}
-nltt_stats$sti <- plyr::revalue(nltt_stats$sti, c("1"="youngest", "2"="oldest"))
-
-ggplot2::ggplot(
-  data = nltt_stats,
-  ggplot2::aes(
-    x = nltt_stats$filename,
-    y = nltt_stats$nltt_stat,
-    color = nltt_stats$sti
-  )
-) + ggplot2::geom_boxplot(
-) + ggplot2::scale_x_discrete(
-  name = "Filename"
-) + ggplot2::scale_y_continuous(
-  name = "nLTT statistic"
-) + ggplot2::ggtitle("Distribution of nLTT statistics")
-
 ```
 
 ## Collecting nLTTs from all files
@@ -111,7 +70,7 @@ ggplot2::ggplot(
 For every parameter combination (in this case summarized as a filename), there are two lines: one for the youngest and
 one for the oldest subspiecies to represent a species.
 
-Here we do the same for posteriors:s
+Here we do the same for posteriors:
 
 ```{r fig.width = 7, fig.height = 7}
 df_posterior$species_tree <- plyr::revalue(df_posterior$species_tree, c("1"="youngest", "2"="oldest"))
@@ -134,22 +93,5 @@ ggplot2::ggplot(
 ) + ggplot2::geom_smooth()
 ```
 
-
-
-```{r fig.width = 7, fig.height = 7}
-filenames <- as.vector(sapply(unique(sort(df_species_trees$filename)), Cer2016::find_path))
-for (filename in filenames) {
-  #plot_species_tree(filename)
-  plot_species_tree_nltt(filename, dt = 0.1)
-}
-```
-
-```{r fig.width = 7, fig.height = 7}
-ggplot2::ggplot(
-  data = df_species_trees, 
-  ggplot2::aes(x = df_species_trees$t, y = df_species_trees$nltt, colour = df_species_trees$species_tree)
-) + ggplot2::geom_point() + ggplot2::geom_smooth()
-```
-
-
-
+Note that the smoother is not perfectly correct, but
+I keep it in to give an idea of the distribition.

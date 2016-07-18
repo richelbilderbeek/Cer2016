@@ -55,6 +55,12 @@ echo "cmd: "$cmd
 jobid=`$cmd | cut -d ' ' -f 4`
 echo "jobid: "$jobid
 
+cmd="sbatch --dependency=afterany:$jobid analyse_nltt_statistics.sh"
+echo "cmd: "$cmd
+jobid=`$cmd | cut -d ' ' -f 4`
+echo "jobid: "$jobid
+
+
 cmd="sbatch --dependency=afterany:$jobid analyse_time.sh"
 echo "cmd: "$cmd
 jobid=`$cmd | cut -d ' ' -f 4`
