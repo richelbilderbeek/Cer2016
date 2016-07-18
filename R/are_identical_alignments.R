@@ -1,0 +1,19 @@
+#' Determines if the two alignments are equal
+#' @param p the first alignment
+#' @param q the second alignment
+#' @return TRUE or FALSE
+#' @author Richel Bilderbeek
+#' @export
+are_identical_alignments <- function(p, q) {
+  if (!is_alignment(p)) {
+    stop(
+      "are_identical_alignments: p must be an alignment"
+    )
+  }
+  if (!is_alignment(q)) {
+    stop(
+      "are_identical_alignments: q must be an alignment"
+    )
+  }
+  return (identical(p, q))
+}
