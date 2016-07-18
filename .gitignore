@@ -48,3 +48,8 @@ scripts/*.pdf
 scripts/*.out
 scripts/*.xml
 R/*.html
+mytmp.txt
+scripts/*.png
+scripts/LICENSE
+scripts/README.md
+scripts/*.odp

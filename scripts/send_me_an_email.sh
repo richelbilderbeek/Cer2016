@@ -9,4 +9,4 @@
 #SBATCH --output=send_me_an_email.log
 #SBATCH --mail-type=END
 #SBATCH --mail-user=r.j.c.bilderbeek@rug.nl
-cowsay "Send me an email"
+echo "Send me an email"
