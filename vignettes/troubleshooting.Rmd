@@ -12,18 +12,6 @@ vignette: >
 This vignette exists to describe and fix problem. It fixes
 problems just by using `Knitr` on it :-)
 
-## `Cannot find package beastscriptr`
-
-Install it like this:
-
-```
-if (is.element("beastscriptr", installed.packages()[, 1])) {
-  print("package is already installed")
-} else {
-  devtools::install_github("richelbilderbeek/beastscriptr")
-}
-```
-
 ## `Cannot find package rBEAST`
 
 Perhaps the prerequisites are missing:
