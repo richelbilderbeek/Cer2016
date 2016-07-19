@@ -1,0 +1,5 @@
+"","filename","rng_seed","sirg","siri","scr","erg","eri","age","mutation_rate","n_alignments","sequence_length","mcmc_chainlength","n_beast_runs","add_alignments_real_time_sec","add_pbd_output_real_time_sec","add_posteriors_real_time_sec","add_species_trees_real_time_sec"
+"toy_example_1.RDa","toy_example_1.RDa",1,0.5,0.5,1e+06,0.1,0.1,5,0.01,1,1000,10000,1,1,2,48,0
+"toy_example_2.RDa","toy_example_2.RDa",2,0.5,0.5,0.1,0.1,0.1,5,0.01,1,1000,10000,1,1,2,45,0
+"toy_example_3.RDa","toy_example_3.RDa",3,0.5,0.5,1e+06,0.1,0.1,5,0.01,2,1000,10000,2,2,2,59,0
+"toy_example_4.RDa","toy_example_4.RDa",4,0.5,0.5,0.1,0.1,0.1,5,0.01,2,1000,10000,2,1,2,56,0
