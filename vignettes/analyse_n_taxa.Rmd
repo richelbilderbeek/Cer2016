@@ -16,79 +16,10 @@ library(Cer2016)
 options(warn = 2)
 ```
 
-## Collecting the number of taxa from one or more phylogenies
-
-```{r}
-phylogenies <- c(ape::rcoal(10), ape::rcoal(20))
-df <- collect_n_taxa(phylogenies)
-testit::assert(names(df) == c("n_taxa"))
-testit::assert(df == data.frame(n_taxa = c(10, 20)))
-knitr::kable(df)
-```
-
-## Collecting the number of taxa from the species trees
-
-Because all species trees have the same number
-of taxa, there will be one `n_taxa` per file.
-
-```{r}
-filename <- find_path("toy_example_3.RDa")
-df <- collect_species_tree_n_taxa(filename)
-testit::assert(names(df) == c("n_taxa"))
-testit::assert(nrow(df) == 1)
-knitr::kable(df)
-```
-
-To be sure, the species tree is plotted here:
-
-```{r}
-file <- read_file(filename)
-plot(get_species_tree_by_index(file = file, sti = 1))
-```
-
-## Collecting the number of taxa from the posterior
-
-Because all posteriors have the same number
-of taxa as the species trees, this step does
-not make sense.
-
-To be sure, the first phylogeny in the first posterior is plotted here:
-
-```{r}
-all_trees <- get_posteriors(file)[[1]][[1]]
-plot(all_trees[[1]])
-```
-
-## Collecting the number of taxa from a file
-
-Because all posteriors have the same number
-of taxa as the species trees, this step does
-not make sense.
-
-## Collecting the number of taxa from some files
-
-```{r}
-filenames <- c(
-  find_path("toy_example_1.RDa"),
-  find_path("toy_example_2.RDa"),
-  find_path("toy_example_3.RDa"),
-  find_path("toy_example_4.RDa")
-)
-df <- collect_files_n_taxa(filenames, verbose = TRUE)
-testit::assert(names(df) == c("filename", "n_taxa"))
-names(df)
-knitr::kable(df)
-```
-
-## Collecting the number of taxa from all files
-
 ```{r}
 csv_filename_n_taxa <- find_path("collected_n_taxa.csv")
 testit::assert(file.exists(csv_filename_n_taxa))
 ```
-
-Note that the comma-seperated file is only created when absent,
-as this is a long step.
 
 Loading it from file:
 
@@ -103,39 +34,45 @@ df_n_taxa <- read.csv(
 df_parameters <- read_collected_parameters()
 ```
 
-Putting the head of the data frame in a table:
+## What is the global distribution of number of taxa?
 
-```{r}
-knitr::kable(head(df_n_taxa))
-```
+Plot the distribution of number of taxa (in the reconstructed incipient species tree) over all runs:
 
-What kind of data is `df_n_taxa`?
+```{r fig.width = 7, fig.height = 7}
+df <- df_n_taxa[ !is.na(df_n_taxa$n_taxa), ]
 
-```{r}
-str(df_n_taxa)
-names(df_n_taxa)
-```
-
-Let's first plot the distribution of number of taxa statistics.
-
-```{r}
-useful_n_taxa <- df_n_taxa[ !is.na(df_n_taxa$n_taxa), ]
+n_missing <- sum(is.na(df_n_taxa$n_taxa))
 ggplot2::ggplot(
-  data = useful_n_taxa, ggplot2::aes(useful_n_taxa$n_taxa)
-) + ggplot2::geom_histogram(bins = 30)
+  data = df, ggplot2::aes(df$n_taxa)
+) + 
+ggplot2::geom_histogram(bins = 30) + 
+ggplot2::ggtitle(
+  paste0(
+    "Number of taxa for ", nrow(df_n_taxa) - n_missing, "/",
+    nrow(df_n_taxa) ," runs"
+  )
+)
 ```
+
+## Which parameters?
+
+Now we create a data frame of both parameters and number of
+taxa:
 
 ```{r}
+# Create a 'filename' column needed for merge
+df_parameters$filename <- rownames(df_parameters) 
+# Outer join on the filename
+df <- merge(df_parameters, df_n_taxa, by = "filename")
+# Remove the NA's
+df <- df[ !is.na(df_n_taxa$n_taxa), ]
+```
+
+```{r fig.width = 7, fig.height = 7}
 ggplot2::ggplot(
-  data = useful_n_taxa, ggplot2::aes(useful_n_taxa$n_taxa)
-) + ggplot2::geom_density()
-```
-
-For which parameter settings are these?
-
-```
-df_big <- merge(x = df_parameters, y = df_n_taxa, by = "filename", all = TRUE)
-
-
-
+  data = df, ggplot2::aes(x = df$sirg, y = df$n_taxa, color = as.factor(df$erg))
+) + 
+ggplot2::geom_jitter(width = 0.01, height = 0.01) +
+ggplot2::scale_x_log10() +
+ggplot2::ggtitle("Effect of speciation and extinction rates on #taxa")
 ```
