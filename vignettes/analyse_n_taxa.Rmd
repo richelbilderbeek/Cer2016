@@ -34,6 +34,31 @@ df_n_taxa <- read.csv(
 df_parameters <- read_collected_parameters()
 ```
 
+
+## The success rate
+
+```{r fig.width = 7, fig.height = 7}
+n_fail <- sum( is.na(df_n_taxa$n_taxa))
+n_success <- sum(!is.na(df_n_taxa$n_taxa))
+df_success <- data.frame(
+  name = c("success", "fail"), n = c(n_success, n_fail)
+)
+
+ggplot2::ggplot(
+  df_success, 
+  ggplot2::aes(
+    x = factor(""), 
+    y = df_success$n, 
+    fill = df_success$name
+  )
+) + 
+  ggplot2::geom_bar(stat = "identity") + 
+  ggplot2::scale_x_discrete("") +
+  ggplot2::scale_y_continuous("number of parameter sets") +
+  ggplot2::coord_polar(theta = "y") + 
+  ggplot2::ggtitle("Incipient species trees created")
+```
+
 ## What is the global distribution of number of taxa?
 
 Plot the distribution of number of taxa (in the reconstructed incipient species tree) over all runs:
@@ -48,11 +73,12 @@ ggplot2::ggplot(
 ggplot2::geom_histogram(bins = 30) + 
 ggplot2::ggtitle(
   paste0(
-    "Number of taxa for ", nrow(df_n_taxa) - n_missing, "/",
+    "Number of taxa for ", n_success, "/",
     nrow(df_n_taxa) ," runs"
   )
 )
 ```
+
 
 ## Which parameters?
 
@@ -64,15 +90,15 @@ taxa:
 df_parameters$filename <- rownames(df_parameters) 
 # Outer join on the filename
 df <- merge(df_parameters, df_n_taxa, by = "filename")
-# Remove the NA's
+# Either remove the NA's...
 df <- df[ !is.na(df_n_taxa$n_taxa), ]
+# Or keep the failed ones
+df_fail <- df[ is.na(df_n_taxa$n_taxa), ]
 ```
 
 ```{r fig.width = 7, fig.height = 7}
-ggplot2::ggplot(
-  data = df, ggplot2::aes(x = df$sirg, y = df$n_taxa, color = as.factor(df$erg))
-) + 
-ggplot2::geom_jitter(width = 0.01, height = 0.01) +
-ggplot2::scale_x_log10() +
-ggplot2::ggtitle("Effect of speciation and extinction rates on #taxa")
+ggplot2::ggplot(data = df, ggplot2::aes(x = df$sirg, y = df$n_taxa, color = as.factor(df$erg))) + 
+ggplot2::geom_point(shape = 16) +
+ggplot2::geom_jitter(data = df_fail, shape = 3, width = 0.02, height = 0.02, ggplot2::aes(x = df_fail$sirg, y = 0, color = as.factor(df_fail$erg))) + 
+ggplot2::ggtitle("Effect of speciation and extinction rates on #taxa (crosses denote NA)") 
 ```
