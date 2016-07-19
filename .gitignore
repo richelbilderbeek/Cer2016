@@ -53,3 +53,7 @@ scripts/*.png
 scripts/LICENSE
 scripts/README.md
 scripts/*.odp
+scripts/*.trees
+scripts/*.xml
+scripts/*.xml.state
+scripts/*.xml.state.new

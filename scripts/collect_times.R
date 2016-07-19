@@ -1,6 +1,4 @@
 library(Cer2016)
-#folder <- "/home/p230198/GitHubs/Cer2016/scripts"
-
 # Collect all filenames and run time from the log files
 system("egrep -R \"real[[:blank:]]\" --include=*.log > ../mytmp.txt")
 df_filenames <- read.csv("../mytmp.txt", sep = ":", header = FALSE, stringsAsFactor = FALSE)

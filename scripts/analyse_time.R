@@ -2,7 +2,7 @@ library(Cer2016)
 library(rmarkdown)
 
 tryCatch(
-  rmarkdown::render("../vignettes/analyse_time.Rmd", output_file = "~/analyse_time.html"),
+  rmarkdown::render("analyse_time.Rmd", output_file = "~/analyse_time.html"),
   error = function(msg) { message(msg) }
 )
 
