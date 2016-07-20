@@ -3,19 +3,22 @@
 #' @param p the first phylogeny
 #' @param q the second phylogeny
 #' @return TRUE or FALSE
+#' @examples
+#'   p <- ape::rcoal(10)
+#'   q <- ape::rcoal(10)
+#'   testit::assert(are_identical_phylogenies(p, p))
+#'   testit::assert(!are_identical_phylogenies(p, q))
 #' @author Richel Bilderbeek
 #' @export
 are_identical_phylogenies <- function(p, q) {
   if (!is_phylogeny(p)) {
     stop(
-      "are_identical_phylogenies: ",
-      "p must be a phylogeny"
+      "are_identical_phylogenies: p must be a phylogeny"
     )
   }
   if (!is_phylogeny(q)) {
     stop(
-      "are_identical_phylogenies: ",
-      "q must be a phylogeny"
+      "are_identical_phylogenies: q must be a phylogeny"
     )
   }
   return (ape::all.equal.phylo(p, q))
