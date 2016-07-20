@@ -18,16 +18,12 @@ showing the workflow for toy examples.
 
 Every experiment has the following steps:
 
- * Starting up
  * Creating parameter files
  * Simulate one incipient species tree per parameter file
- * Once or more often, sample unique species from an incipient species tree
- * Per sampled species tree, add an outgroup
- * Simulate one or more alignments per species tree
- * Once or more often, let BEAST2 infer a posterior per alignment
- * Compare original, sampled species tree, to the posterior
-
-## Starting up
+ * Construct two species trees from an incipient species tree
+ * Per species tree, simulate one or more alignments
+ * Per alignment, let BEAST2 infer a posterior once or more often
+ * Compare the species tree to the posterior species trees
 
 ## Creating parameter files
 
