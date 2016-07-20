@@ -93,13 +93,16 @@ Abstract
 \end_layout
 
 \begin_layout Standard
-The construction of phylogenies has proven invaluable in answering evolutionary
- biological questions.
+The construction of phylogenies helps us answering evolutionary biological
+ questions.
  Our current phylogenetic tools ignore the fact that speciation takes time,
  which has an effect unknown in phylogeny reconstruction.
- Here, we measure the errors that the Bayesian phylogenetic software tool
- BEAST2 gives when recovering simulated phylogenies, for different times-to-spec
-iate, under a range of additional parameter settings.
+ Here, we simulate true incipient species trees and their corresponding
+ DNA alignments, from which we measure the reconstruction of the phylogeny
+ using a standard birth-death model.
+ We measure the errors that the Bayesian phylogenetic software tool BEAST2
+ gives when recovering simulated phylogenies, for different times-to-speciate,
+ under a range of additional parameter settings.
  It has been found that branch lengths are consistently and strongly underestima
 ted for biologically relevant parameters.
  This research shows that protractedness is a complexity of nature that
@@ -159,9 +162,10 @@ key "fitzjohn2009estimating"
 \end_inset
 
 .
- The original model by making speciation rate dependent on time, diversity
- or trait value.
- Also these extended models assume speciation is instantaneous.
+ They extend the original birth-death model by making speciation rate dependent
+ on time, diversity or trait value.
+ The assumptiond that all these extensions share is that speciation is instantan
+eous.
 \end_layout
 
 \begin_layout Paragraph
@@ -194,13 +198,27 @@ key "etienne2012prolonging,etienne2014estimating,rosindell2010protracted"
 
 \end_inset
 
-, yet matches best to the peripatric mode of speciation, in which species
- occupy a new niche, without gene flow between parental and this incipient
- species.
- The protracted speciation model makes no assumption about speciation and
- extinction rates (these may be contant or depend on time, diversity or
- trait value), but these features can easily be added to the model.
- 
+, yet matches best to the allopatric mode of speciation, in which populations
+ are split into two equal pieces, without gene flow between parental and
+ this incipient species
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+these are my original thoughts: when assuming speciation-initiation and
+ extinction rates being equal of good and incipient species, this means
+ that their population sizes must be -as a first assumption- equal.
+ Would a small subpopulation bud off, one expects these rates to be different.
+\end_layout
+
+\end_inset
+
+.
+ The assumption that speciation takes time is 'orthogonal', that is, independent
+ of the dynamics of the speciation and extinction rates.
+ The protracted speciation model in this research assumes these rates are
+ constant, but these rates can easily be made to depend on time, diversity
+ or trait.
 \end_layout
 
 \begin_layout Paragraph
@@ -231,11 +249,69 @@ This study
 
 \begin_layout Standard
 This simulation investigates the consequence of BEAST2 using instantaneous
- speciation, by creating a 'true' tree that is protracted and seeing how
- well BEAST2 can recover it.
- It is expected that for higher protractedness (thus deviation from BEAST2
+ speciation, by simulating a 'true' tree that is protracted, simulate DNA
+ alignments following that tree, and seeing how well BEAST2 can recover
+ the original phylogeny.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Novelty
+\end_layout
+
+\begin_layout Standard
+This study is the first to measure the error made when acknowledging that
+ speciation takes time, yet using one of the many tools that ignores this
+ fact.
+\end_layout
+
+\begin_layout Standard
+Part of the parameter space will create 'true' trees that are not protracted.
+ This will result in a test of BEAST2 against itself, which is, to the best
+ of our knowledge, not been done, probably due to the extensive computations
+ that are needed.
+\end_layout
+
+\begin_layout Paragraph
+Analysis
+\end_layout
+
+\begin_layout Standard
+The 'true' and inferred trees are compared with the nLTT statistic, which
+ is a novel and efficient summary statistic, that has been proven to have
+ better performance than the gamma statistics and phylogenetic in Approximate
+ Bayesian Computation 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "janzen2015approximate"
+
+\end_inset
+
+ (yet on par with the likelihood).
+ The nLTT statistics is the summed absolute difference between two Lineages-Thro
+ugh-Time plot lines that are normalized to let both time and number of lineages
+ range from zero to one.
+ Additionally, this statistic allows to pinpoint the timespan that contributed
+ most to its value.
+\end_layout
+
+\begin_layout Paragraph
+Expectations
+\end_layout
+
+\begin_layout Standard
+It is expected that for higher protractedness (thus deviation from BEAST2
  its assumptions), the error will increase.
- It is unknown, however, if and when this error is relevant.
+ Trees are expected to be inferred better, when there is more information
+ available to construct them, thus we expect less error when there are more
+ taxa and when the simulation DNA alignments are longer.
+ The error is expected to be biggest close to the present, as there will
+ be the most incipient species present.
+ 
+\end_layout
+
+\begin_layout Standard
+It is unknown, however, if and when this error is relevant.
  
 \end_layout
 
@@ -480,310 +556,43 @@ Workflow
 \end_layout
 
 \begin_layout Subsubsection
-Creating incipient species trees
+Parameter space
 \end_layout
 
 \begin_layout Standard
-From a parameter combination, a 'true' protracted constant-rate birth-death
- incipient species tree is simulated in the R programming language 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "R"
-
+This study investigates five parameters in all their combinations.
+ For each point in parameter space, 
+\begin_inset Formula $n_{i}$
 \end_inset
 
-, using the PBD package 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "PBD"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Paragraph
-Speciation-completion rate
-\end_layout
-
-\begin_layout Standard
-The speciation-completion rate 
-\begin_inset Formula $\lambda$
-\end_inset
-
- is pivotal for this study, as when 
-\begin_inset Formula $\lambda\rightarrow\infty$
-\end_inset
-
- the model falls back to a birth-death model and satisfies the instantaneous
- speciation assumption of the tools used.
-\end_layout
-
-\begin_layout Paragraph
-Speciation initiation rate, extinction rate and crown age
-\end_layout
-
-\begin_layout Standard
-The parameter values for the speciation-initiation rates 
-\begin_inset Formula $b$
-\end_inset
-
-, extinction rate 
-\begin_inset Formula $\mu$
-\end_inset
-
- and phylogeny crown age 
-\begin_inset Formula $t_{c}$
-\end_inset
-
- need to be balanced, as 
-\begin_inset Formula $t_{c}b\gg\mu$
-\end_inset
-
- results in overly taxon-rich phylogenies, where 
-\begin_inset Formula $t_{c}\mu\gg b$
-\end_inset
-
- results in extinction of all lineages.
- As a starting point, we used the parameters used by 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "etienne2014estimating"
-
-\end_inset
-
-.
- For simplicity, we assume species can give rise to new species, independent
- of species status, thus 
-\begin_inset Formula $b_{i}=b_{g}$
-\end_inset
-
-.
- This assumes that speciation is caused mostly by vicariance and the accumulatio
-n of independent mutations.
- Additionally, we assume a species can go extinct independent of species
- status, so
-\begin_inset Formula $\mu_{i}=\mu_{g}$
-\end_inset
-
-.
  
-\end_layout
-
-\begin_layout Subsubsection
-Creating species trees
-\end_layout
-
-\begin_layout Standard
-A species tree is a phylogeny with one lineage per species.
- Assuming instantaneous speciation, every lineage represents a species per
- definition.
- For protracted speciation one needs to define which subspecies is chosen
- to represent a species.
- One such way is to randomly sample one lineage per species.
- For the sampling being representative, this approach would have to be repeated
- multiple times, which is computationally infeasable.
- Instead, we chose (non-randomly) the two most extreme species trees: of
- each species, we pick the lineages that has been present longest (the oldest)
- and shortest (the youngest)
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
+\begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename IncipientSpeciesTree.png
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename IncipientSpeciesTreeYoungest.png
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename IncipientSpeciesTreeOldest.png
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Example incipient species tree and its two species trees.
- 'youngest' denotes that the most recent lineage is chosen to represent
- a species, 'oldest' selects the lineage that has been present longest.
- Because the simulation algorithm, the oldest lineage has the lowest subspecies
- index (the third number), where the youngest lineage has the highest subspecies
- index.
+rather meager, but see https://github.com/richelbilderbeek/Cer2016/issues/93
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
+incipient species trees are simulated as the 'true' incipient species tree.
+ After constructing two species trees from it (see section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Creating-species-trees"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Subsubsection
-Creating a DNA alignment
-\end_layout
-
-\begin_layout Standard
-From each species tree, 
+), 
 \begin_inset Formula $n_{a}$
 \end_inset
 
- DNA alignments were simulated following a Jukes-Cantor nucleotide subsititution
- model using the phangorn R package 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "phangorn"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-In creating DNA sequence alignments from the phylognies, a mutation rate
- 
-\begin_inset Formula $r$
-\end_inset
-
- and DNA sequence length 
-\begin_inset Formula $l_{a}$
-\end_inset
-
- need to be balanced as well.
- As a starting point, we chose the DNA sequence length to be 1kb, as this
- a common gene sequence length, but we also included one and two orders
- of magnitude bigger.
- The mutation rate is chosen to match a mutation rate as in nature [TODO:
- find that value].
-\end_layout
-
-\begin_layout Subsubsection
-Creating a BEAST2 posterior
-\end_layout
-
-\begin_layout Standard
-From these DNA alignments, a posterior containing phylogenies and parameter
- combinations were constructed using the BEAST2 software package 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "bouckaert2014beast"
-
-\end_inset
-
-.
+ alignments are similated per species tree.
  Per alignment, 
 \begin_inset Formula $n_{b}$
 \end_inset
 
- BEAST2 runs were performed, each with an MCMC length of 
-\begin_inset Formula $l_{m}$
-\end_inset
-
-, to see if both runs result in similar posteriors.
- 
-\end_layout
-
-\begin_layout Standard
-The BEAST2 priors used were as follows: 
-\end_layout
-
-\begin_layout Standard
-For the site model, the default parameters were used: which is the Jukes-Cantor
- substitution model
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Gamma category count of 0 and a 'proportion invariant' of 0
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-For the clock model, the default parameters are used, which is a strict
- clock prior, with a clock rate of 
-\begin_inset Formula $1.0$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-For the tree prior, the 'Birth Death Model' was selected and its parameters
- kept at the default uniform birth-rate 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-birthRate2.t
-\end_layout
-
-\end_inset
-
- (range 
-\begin_inset Formula $0$
-\end_inset
-
--
-\begin_inset Formula $10^{5}$
-\end_inset
-
-, initial value 
-\begin_inset Formula $1$
-\end_inset
-
-) and default uniform birth-rate 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-relativeDeathRate2.t
-\end_layout
-
-\end_inset
-
- (range 
-\begin_inset Formula $0$
-\end_inset
-
--
-\begin_inset Formula $1$
-\end_inset
-
-, initial value 
-\begin_inset Formula $0.5$
-\end_inset
-
-).
-\end_layout
-
-\begin_layout Subsubsection
-All parameters used
+ BEAST2 runs are performed.
 \end_layout
 
 \begin_layout Standard
@@ -794,7 +603,7 @@ reference "tab:Parameters-used"
 
 \end_inset
 
- shows all parameter values used.
+ shows an overview of all parameter values used.
 \end_layout
 
 \begin_layout Standard
@@ -805,7 +614,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="10" columns="2">
+<lyxtabular version="3" rows="11" columns="2">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -1167,7 +976,7 @@ alignment length (base pairs)
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Number of alignments
@@ -1203,7 +1012,7 @@ Number of alignments
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Number of BEAST2 runs
@@ -1221,6 +1030,42 @@ Number of BEAST2 runs
 
 \begin_layout Plain Layout
 \begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $n_{i}$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Number of incipient species trees
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
 \end_inset
 
 
@@ -1306,6 +1151,669 @@ name "tab:Parameters-used"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsubsection
+Creating incipient species trees
+\end_layout
+
+\begin_layout Standard
+From a parameter combination, a 'true' protracted constant-rate birth-death
+ incipient species tree is simulated in the R programming language 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "R"
+
+\end_inset
+
+, using the PBD package 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "PBD"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Speciation-completion rate
+\end_layout
+
+\begin_layout Standard
+The speciation-completion rate 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is pivotal for this study, as when 
+\begin_inset Formula $\lambda\rightarrow\infty$
+\end_inset
+
+ the model falls back to a birth-death model and satisfies the instantaneous
+ speciation assumption of the tools used.
+\end_layout
+
+\begin_layout Paragraph
+Speciation initiation rate, extinction rate and crown age
+\end_layout
+
+\begin_layout Standard
+The parameter values for the speciation-initiation rates 
+\begin_inset Formula $b$
+\end_inset
+
+, extinction rate 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and phylogeny crown age 
+\begin_inset Formula $t_{c}$
+\end_inset
+
+ need to be balanced, as 
+\begin_inset Formula $t_{c}b\gg\mu$
+\end_inset
+
+ results in overly taxon-rich phylogenies, where 
+\begin_inset Formula $t_{c}\mu\gg b$
+\end_inset
+
+ results in extinction of all lineages.
+ As a starting point, we used the parameters used by 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "etienne2014estimating"
+
+\end_inset
+
+.
+ For simplicity, we assume species can give rise to new species, independent
+ of species status, thus 
+\begin_inset Formula $b_{i}=b_{g}$
+\end_inset
+
+.
+ This assumes that speciation is caused mostly by vicariance and the accumulatio
+n of independent mutations.
+ Additionally, we assume a species can go extinct independent of species
+ status, so
+\begin_inset Formula $\mu_{i}=\mu_{g}$
+\end_inset
+
+.
+ With both 
+\begin_inset Formula $b_{i}=b_{g}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu_{i}=\mu_{g}$
+\end_inset
+
+ it is known that the incipient species phylogenies will not contain paraphylies
+ and thus the sampled species trees will always have the same topology
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Not impressed by just stating this.
+ Need ref and more explanation
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Creating species trees
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Creating-species-trees"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A species tree is a phylogeny with one lineage per species.
+ Assuming instantaneous speciation, every lineage represents a species per
+ definition.
+ For protracted speciation one needs to define which subspecies is chosen
+ to represent a species.
+ One such way is to randomly sample one lineage per species.
+ For the sampling being representative, this approach would have to be repeated
+ multiple times, which is computationally infeasable.
+ Instead, we chose (non-randomly) the two most extreme species trees: of
+ each species, we pick the lineages that has been present longest (the oldest)
+ and shortest (the youngest)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+  % Draw the tree
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0,  0.00) -- (4,  3.0) node[anchor=west] {$A_1$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (1, -0.75) -- (4,  1.5) node[anchor=west] {$A_2$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (2, -1.50) -- (4,  0.0) node[anchor=west] {$A_3$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (3, -2.25) -- (4, -1.5) node[anchor=west] {$B$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0,  0.00) -- (4, -3.0) node[anchor=west] {$A_4$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+  % Draw the tree
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0,  0.00) -- (4,  3.0) node[anchor=west] {$A_1$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0,  0.00) -- (4, -3.0) node[anchor=west] {$B$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+  % Draw the tree
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0, -0.75) -- (1, -0.75);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (1, -0.75) -- (4,  1.50) node[anchor=west] {$A_2$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (1, -0.75) -- (4, -3.00) node[anchor=west] {$B$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+  % Draw the tree
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0, -1.5) -- (2, -1.5);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (2, -1.5) -- (4,  0.0) node[anchor=west] {$A_3$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (2, -1.5) -- (4, -3.0) node[anchor=west] {$B$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+  % Draw the tree
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0, -2.25) -- (3, -2.25);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (3, -2.25) -- (4, -1.5) node[anchor=west] {$B$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (3, -2.25) -- (4, -3.0) node[anchor=west] {$A_4$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Example incipient species tree and four possible sampled species trees.
+ All trees are drawn with the same scale.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename IncipientSpeciesTree.png
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename IncipientSpeciesTreeYoungest.png
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename IncipientSpeciesTreeOldest.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Example incipient species tree and its two species trees.
+ 'youngest' denotes that the most recent lineage is chosen to represent
+ a species, 'oldest' selects the lineage that has been present longest.
+ Because the simulation algorithm, the oldest lineage has the lowest subspecies
+ index (the third number), where the youngest lineage has the highest subspecies
+ index.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Creating a DNA alignment
+\end_layout
+
+\begin_layout Standard
+From each species tree, 
+\begin_inset Formula $n_{a}$
+\end_inset
+
+ DNA alignments were simulated following a Jukes-Cantor nucleotide subsititution
+ model using the phangorn R package 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "phangorn"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In creating DNA sequence alignments from the phylognies, a mutation rate
+ 
+\begin_inset Formula $r$
+\end_inset
+
+ and DNA sequence length 
+\begin_inset Formula $l_{a}$
+\end_inset
+
+ need to be balanced as well.
+ As a starting point, we chose the DNA sequence length to be 1kb, as this
+ a common gene sequence length, but we also included one and two orders
+ of magnitude bigger.
+ The mutation rate is chosen to match a mutation rate as in nature [TODO:
+ find that value].
+\end_layout
+
+\begin_layout Subsubsection
+Creating a BEAST2 posterior
+\end_layout
+
+\begin_layout Standard
+From these DNA alignments, a posterior containing phylogenies and parameter
+ combinations were constructed using the BEAST2 software package 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bouckaert2014beast"
+
+\end_inset
+
+.
+ Per alignment, 
+\begin_inset Formula $n_{b}$
+\end_inset
+
+ BEAST2 runs were performed, each with an MCMC length of 
+\begin_inset Formula $l_{m}$
+\end_inset
+
+, to see if both runs result in similar posteriors.
+ 
+\end_layout
+
+\begin_layout Standard
+The BEAST2 priors used were as follows: 
+\end_layout
+
+\begin_layout Standard
+For the site model, the default parameters were used: which is the Jukes-Cantor
+ substitution model
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Gamma category count of 0 and a 'proportion invariant' of 0
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For the clock model, the default parameters are used, which is a strict
+ clock prior, with a clock rate of 
+\begin_inset Formula $1.0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For the tree prior, the 'Birth Death Model' was selected and its parameters
+ kept at the default uniform birth-rate 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+birthRate2.t
+\end_layout
+
+\end_inset
+
+ (range 
+\begin_inset Formula $0$
+\end_inset
+
+-
+\begin_inset Formula $10^{5}$
+\end_inset
+
+, initial value 
+\begin_inset Formula $1$
+\end_inset
+
+) and default uniform birth-rate 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+relativeDeathRate2.t
+\end_layout
+
+\end_inset
+
+ (range 
+\begin_inset Formula $0$
+\end_inset
+
+-
+\begin_inset Formula $1$
+\end_inset
+
+, initial value 
+\begin_inset Formula $0.5$
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Subsection
