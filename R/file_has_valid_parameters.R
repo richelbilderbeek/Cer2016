@@ -41,7 +41,7 @@ file_has_valid_parameters <- function(
     return(FALSE)
   }
   if (!is.null(parameters$add_ougroup)) {
-    if (verbose) message("file_has_valid_parameters: add_ougroup must be absent")
+    if (verbose) message("file_has_valid_parameters: add_ougroup must be absent") # nolint
     return(FALSE)
   }
 
