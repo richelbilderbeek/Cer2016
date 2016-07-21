@@ -560,7 +560,15 @@ Parameter space
 \end_layout
 
 \begin_layout Standard
-This study investigates five parameters in all their combinations.
+This study investigates five parameters in all their combinations (see table
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Parameter-descriptions"
+
+\end_inset
+
+ for the symbols and descriptions).
  For each point in parameter space, 
 \begin_inset Formula $n_{i}$
 \end_inset
@@ -599,7 +607,7 @@ reference "sub:Creating-species-trees"
 Table 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Parameters-used"
+reference "tab:Parameter-space"
 
 \end_inset
 
@@ -611,6 +619,382 @@ reference "tab:Parameters-used"
 wide false
 sideways false
 status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="13" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Symbol
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $b_{g}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Speciation initiation rate of a good species (per lineage, per million year)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $b_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Speciation initiation rate of an incipient species (per lineage, per million
+ year)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lambda$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Speciation completion rate (per lineage, per million year)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $\mu_{g}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Extinction rate of a good species (per lineage, per million year)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $\mu_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Extinction rate of an incipient species (per lineage, per million year)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $t_{c}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Crown age (million years)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $r$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mutation rate (?base pairs changed per duplication)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $l_{a}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DNA alignment length (base pairs)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $n_{a}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Number of alignments per species tree
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $n_{b}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Number of BEAST2 runs per alignment
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $n_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Number of incipient species trees per parameter set
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $l_{m}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MCMC chain length
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Parameter descriptions
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Parameter-descriptions"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -1136,7 +1520,7 @@ MCMC chain length
 Parameters used
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Parameters-used"
+name "tab:Parameter-space"
 
 \end_inset
 
@@ -1705,7 +2089,7 @@ In creating DNA sequence alignments from the phylognies, a mutation rate
 \begin_inset Formula $l_{a}$
 \end_inset
 
- need to be balanced as well.
+ need to be balanced to contain sufficient information.
  As a starting point, we chose the DNA sequence length to be 1kb, as this
  a common gene sequence length, but we also included one and two orders
  of magnitude bigger.
@@ -1817,11 +2201,15 @@ relativeDeathRate2.t
 \end_layout
 
 \begin_layout Subsection
-Analyzing the results
+Analysis
+\end_layout
+
+\begin_layout Paragraph
+Tools used
 \end_layout
 
 \begin_layout Standard
-These posteriors were analyzed using bash (
+The raw data is analyzed by multiple bash (
 \begin_inset Flex URL
 status collapsed
 
@@ -1871,6 +2259,35 @@ key "testit"
  
 \end_layout
 
+\begin_layout Paragraph
+Measuring error
+\end_layout
+
+\begin_layout Standard
+For each simulation, each of its two species trees 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+stree_youngest and stree_oldest.
+ Refer to previous chapter?
+\end_layout
+
+\end_inset
+
+ is compared with its posterior species trees.
+ This comparison is done by calculating the nLTT statistic.
+ Each species tree generated 
+\begin_inset Formula $\frac{n_{a}n_{b}l_{m}}{1000}$
+\end_inset
+
+ posterior trees resulting in a distribution of that many nLTT statistics.
+\end_layout
+
+\begin_layout Paragraph
+Obtaining the code and results
+\end_layout
+
 \begin_layout Standard
 The code for this package and all scripts are available on GitHub, which
  is good practice 
@@ -1880,7 +2297,7 @@ key "perez2016ten"
 
 \end_inset
 
- and helps to improve transparancy 
+ and helps to improve transparency 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "gorgolewski2016practical"
@@ -1899,7 +2316,9 @@ https://github.com/richelbilderbeek/Cer2016
 
 \end_inset
 
- and this research is reproducible with the start of a single command.
+.
+ All figures of this article can be reproduced with the start of a single
+ command.
 \end_layout
 
 \begin_layout Paragraph
