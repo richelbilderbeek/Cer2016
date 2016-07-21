@@ -3,7 +3,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=8
 #SBATCH --ntasks=8
-#SBATCH --mem=1G
+#SBATCH --mem=10G
 #SBATCH --job-name=add_posteriors
 #SBATCH --output=add_posteriors_%j.log
 module load R/3.3.1-foss-2016a beagle-lib Beast
