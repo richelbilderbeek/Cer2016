@@ -2574,7 +2574,14 @@ key "testit"
 \end_inset
 
  R packages.
- Code coverage is above 90%, as measured by the covr 
+ Code coverage, whick correlates with code quality
+\begin_inset CommandInset citation
+LatexCommand cite
+key "del1995correlation"
+
+\end_inset
+
+, is above 90%, as measured by the covr 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "covr"
