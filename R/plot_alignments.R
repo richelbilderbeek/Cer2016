@@ -16,8 +16,7 @@ plot_alignments <- function(filename) {
       alignment <- Cer2016::get_alignment(file = file, sti = sti, ai = ai)
       testit::assert(Cer2016::is_alignment(alignment))
       ape::image.DNAbin(
-        alignment,
-        main = paste0(base_filename, "alignment ", ai, "of species tree ", sti)
+        alignment
       )
     }
   }

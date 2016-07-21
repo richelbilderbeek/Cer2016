@@ -73,9 +73,9 @@ for (filename in filenames) {
 }
 ```
 
-This is how these look like, both the incipient species phylogenies and an nLTT plots:
+These are the incipient species trees:
 
-```{r}
+```{r fig.width = 7, fig.height = 7}
 colors <- stats::setNames(c("gray", "black"), c("i", "g"))
 
 for (filename in filenames) {
@@ -86,13 +86,12 @@ for (filename in filenames) {
     read_file(filename)$pbd_output$igtree.extant, 
     colors = colors
   )
-  nLTT::nltt_plot(read_file(filename)$pbd_output$tree)
 }
 ```
 
-## Once or more often, sample unique species from an incipient species tree. Then, per sampled species tree, add an outgroup
+## Per incipient species tree, take the youngest and oldest representative per species
 
-Here we simulate the 'true' incipient species tree:
+Per incipient species tree, we take the youngest and oldest representative per species:
 
 ```{r}
 for (filename in filenames) {
@@ -100,16 +99,15 @@ for (filename in filenames) {
 }
 ```
 
-Those are shown here. Note that run 1 and 2 have no replicate and
-thus produce only one sampled tree.
+These are the phylogenies with one subspecies
+per species:
 
-```{r}
+```{r fig.width = 7, fig.height = 7}
 for (filename in filenames) {
   print(filename)
   plot_species_tree(filename)
 }
 ```
-
 
 ## Add alignments
 
@@ -119,7 +117,7 @@ for (filename in filenames) {
 }
 ```
 
-```{r}
+```{r fig.width = 7, fig.height = 7}
 for (filename in filenames) {
   print(filename)
   plot_alignments(filename)
@@ -137,17 +135,9 @@ for (filename in filenames) {
 }
 ```
 
-```{r}
-for (filename in filenames) {
-  print(filename)
-  plot_posterior_samples(filename)
-  plot_posterior_sample_nltts(filename)
-}
-```
-
 Let's view the two posteriors of the first two files:
 
-```{r}
+```{r fig.width = 7, fig.height = 7}
 plot_posterior_nltts(filenames[1])
 plot_posterior_nltts(filenames[2])
 ```
@@ -155,7 +145,89 @@ plot_posterior_nltts(filenames[2])
 The third and fourth parameter files have had two BEAST2 runs per alignment.
 We can see how similar these are:
 
-```{r}
+```{r fig.width = 7, fig.height = 7}
 plot_posterior_nltts(filenames[3])
 plot_posterior_nltts(filenames[4])
+```
+
+## nLTT statistics
+
+```{r}
+nltt_stats <- calc_nltt_stats_from_files(filenames = filenames, dt = 0.1)
+nltt_stats$sti <- plyr::revalue(nltt_stats$sti, c("1"="youngest", "2"="oldest"))
+knitr::kable(head(nltt_stats))
+```
+
+All on one heap:
+
+```{r fig.width = 7, fig.height = 7}
+ggplot2::ggplot(
+  data = nltt_stats,
+  ggplot2::aes(
+    x = nltt_stats$filename,
+    y = nltt_stats$nltt_stat
+  )
+) + ggplot2::geom_boxplot(
+) + ggplot2::scale_x_discrete(
+  name = "Filename"
+) + ggplot2::scale_y_continuous(
+  name = "nLTT statistic"
+) + ggplot2::ggtitle("Distribution of nLTT statistics")
+
+```
+
+Seperated by species tree:
+
+```{r fig.width = 7, fig.height = 7}
+ggplot2::ggplot(
+  data = nltt_stats,
+  ggplot2::aes(
+    x = nltt_stats$filename,
+    y = nltt_stats$nltt_stat,
+    color = nltt_stats$sti
+  )
+) + ggplot2::geom_boxplot(
+) + ggplot2::scale_x_discrete(
+  name = "Filename"
+) + ggplot2::scale_y_continuous(
+  name = "nLTT statistic"
+) + ggplot2::ggtitle("Distribution of nLTT statistics")
+
+```
+
+
+```{r fig.width = 7, fig.height = 7}
+phylogenies_11 <- Cer2016::get_posterior(file = read_file(filenames[1]), sti = 1, ai = 1, pi = 1)
+phylogenies_12 <- Cer2016::get_posterior(file = read_file(filenames[1]), sti = 2, ai = 1, pi = 1)
+phylogenies_21 <- Cer2016::get_posterior(file = read_file(filenames[2]), sti = 1, ai = 1, pi = 1)
+phylogenies_22 <- Cer2016::get_posterior(file = read_file(filenames[2]), sti = 2, ai = 1, pi = 1)
+
+class(phylogenies_11) <- "multiPhylo"
+class(phylogenies_12) <- "multiPhylo"
+class(phylogenies_21) <- "multiPhylo"
+class(phylogenies_22) <- "multiPhylo"
+
+phangorn::densiTree(
+  phylogenies_11, 
+  type = "cladogram", 
+  alpha = 1
+)
+
+phangorn::densiTree(
+  phylogenies_12, 
+  type = "cladogram", 
+  alpha = 1
+)
+
+phangorn::densiTree(
+  phylogenies_21, 
+  type = "cladogram", 
+  alpha = 1
+)
+
+phangorn::densiTree(
+  phylogenies_22, 
+  type = "cladogram", 
+  alpha = 1
+)
 ```

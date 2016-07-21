@@ -10,6 +10,7 @@ create_citations_bibtex <- function() {
     utils::toBibtex(utils::citation(package = "gridExtra")),
     utils::toBibtex(utils::citation(package = "nLTT")),
     utils::toBibtex(utils::citation(package = "testit")),
+    utils::toBibtex(utils::citation(package = "testthat")),
     utils::toBibtex(utils::citation(package = "tools")),
     utils::toBibtex(utils::citation(package = "PBD")),
     utils::toBibtex(utils::citation(package = "phangorn")),

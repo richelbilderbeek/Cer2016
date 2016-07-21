@@ -555,6 +555,163 @@ tiation
 Workflow
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Workflow1.png
+	lyxscale 25
+	width 33text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Workflow2a.png
+	lyxscale 25
+	width 33text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Workflow3a.png
+	lyxscale 25
+	width 33text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Workflow5a.png
+	lyxscale 25
+	width 33text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Workflow4a.png
+	lyxscale 25
+	width 33text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Workflow6.png
+	lyxscale 25
+	width 33text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Workflow of the experiment: top-left: per parameter set, the creation of
+ an incipient species tree.
+ Top-center: constructing two species trees with oldest and youngest representat
+ive per species (only youngest shown).
+ Top-right: constructing 
+\begin_inset Formula $n_{a}$
+\end_inset
+
+ alignments per species trees.
+ Bottom-left: creating 
+\begin_inset Formula $n_{b}$
+\end_inset
+
+ posteriors per alignment.
+ Bottom-center: extract the nLTT curve of the species tree (thick line)
+ and of the 
+\begin_inset Formula $\frac{l_{m}}{1000}$
+\end_inset
+
+ posteriors.
+ Bottom right: compare the nLTT statistics between all parameters
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Parameter space
 \end_layout
@@ -1665,12 +1822,16 @@ A species tree is a phylogeny with one lineage per species.
  definition.
  For protracted speciation one needs to define which subspecies is chosen
  to represent a species.
- One such way is to randomly sample one lineage per species.
+ 
+\end_layout
+
+\begin_layout Standard
+One such way is to randomly sample one lineage per species.
  For the sampling being representative, this approach would have to be repeated
  multiple times, which is computationally infeasable.
- Instead, we chose (non-randomly) the two most extreme species trees: of
- each species, we pick the lineages that has been present longest (the oldest)
- and shortest (the youngest)
+ Instead, we chose deterministically the two most extreme species trees:
+ of each species, we pick the subspecies that has been present longest (the
+ oldest) and shortest (the youngest).
 \end_layout
 
 \begin_layout Standard
@@ -2010,23 +2171,74 @@ Example incipient species tree and four possible sampled species trees.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename IncipientSpeciesTree.png
+	lyxscale 25
+	width 66text%
 
 \end_inset
 
 
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 \begin_inset Graphics
 	filename IncipientSpeciesTreeYoungest.png
+	width 33text%
 
 \end_inset
 
 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 \begin_inset Graphics
 	filename IncipientSpeciesTreeOldest.png
+	width 33text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
 
 \end_inset
 
@@ -2038,19 +2250,28 @@ status open
 
 \begin_layout Plain Layout
 Example incipient species tree and its two species trees.
- 'youngest' denotes that the most recent lineage is chosen to represent
- a species, 'oldest' selects the lineage that has been present longest.
  Because the simulation algorithm, the oldest lineage has the lowest subspecies
  index (the third number), where the youngest lineage has the highest subspecies
  index.
+ Top: incipient species trees, where black lines depict a good species and
+ grey lines an incipient species.
+ Species names are in the form 'Sx-x-y', where 'x-x' is the genus-species
+ names (like 
+\shape italic
+Rattus rattus
+\shape default
+) and 'y' is the subspecies index.
+ Bottom-left: the species tree with the youngest subspecies to represent
+ a species.
+ In this case S1-1-13 represents species S1-1.
+ Bottom-right: the species tree with the oldest subspecies to represent
+ a species.
+ In this case S1-1-2 represents species S1-1.
+ 
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -2241,6 +2462,13 @@ key "APE"
 
 \end_inset
 
+, phangorn 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "phangorn"
+
+\end_inset
+
  and ggplot2 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -2248,15 +2476,7 @@ key "ggplot2"
 
 \end_inset
 
- for plotting and testit 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "testit"
-
-\end_inset
-
- for debugging.
- 
+ for plotting.
 \end_layout
 
 \begin_layout Paragraph
@@ -2284,13 +2504,25 @@ stree_youngest and stree_oldest.
  posterior trees resulting in a distribution of that many nLTT statistics.
 \end_layout
 
-\begin_layout Paragraph
-Obtaining the code and results
+\begin_layout Subsection
+Software
 \end_layout
 
 \begin_layout Standard
-The code for this package and all scripts are available on GitHub, which
- is good practice 
+The full workflow of this research is put in a package called 'Cer2016'
+ and is hosted at GitHub (
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://github.com/richelbilderbeek/Cer2016
+\end_layout
+
+\end_inset
+
+).
+ Using GitHub is good practice 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "perez2016ten"
@@ -2305,78 +2537,88 @@ key "gorgolewski2016practical"
 \end_inset
 
 .
- All the scripts can be downloaded from 
+ The code follows all advice given by the devtools 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "devtools"
+
+\end_inset
+
+, lintr 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lintr"
+
+\end_inset
+
+and goodpractice 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "goodpractice"
+
+\end_inset
+
+ packages at their default settings.
+ The code is tested by the testthat 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wickham2011testthat"
+
+\end_inset
+
+ and testit 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "testit"
+
+\end_inset
+
+ R packages.
+ Code coverage is above 90%, as measured by the covr 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "covr"
+
+\end_inset
+
+ R package and visualized by Codecov, 
 \begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
 
-https://github.com/richelbilderbeek/Cer2016
+https://codecov.io/
 \end_layout
 
 \end_inset
 
 .
- All figures of this article can be reproduced with the start of a single
+ Continuous integration is serviced by Travis CI, 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.travis-ci.org
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+All figures of this article can be reproduced with the start of a single
  command.
 \end_layout
 
-\begin_layout Paragraph
-How well do two BEAST runs repeat (from the same alignment)?
+\begin_layout Subsection
+Hardware
 \end_layout
 
 \begin_layout Standard
-Very good
-\end_layout
-
-\begin_layout Paragraph
-How similar are the results of different alignments (of the same species
- tree)?
-\end_layout
-
-\begin_layout Standard
-Good
-\end_layout
-
-\begin_layout Paragraph
-How similar are the results of two different species trees (from the same
- gene tree)?
-\end_layout
-
-\begin_layout Standard
-Similar
-\end_layout
-
-\begin_layout Paragraph
-The effect of sequence length and mutation rate
-\end_layout
-
-\begin_layout Standard
-The effects of sequence length and mutation rate are ...
-\end_layout
-
-\begin_layout Paragraph
-Number of taxa
-\end_layout
-
-\begin_layout Standard
-The number of taxa ...
-\end_layout
-
-\begin_layout Paragraph
-Difference in nLTT plots
-\end_layout
-
-\begin_layout Standard
-Protracted speciation 
-\end_layout
-
-\begin_layout Paragraph
-Histogram of errors
-\end_layout
-
-\begin_layout Standard
-Histogram of errors
+Computions were performed on the Peregrine HPC cluster from the University
+ of Groningen.
 \end_layout
 
 \begin_layout Section
