@@ -128,3 +128,39 @@ test_that("get_posterior from fresh file", {
 
   file.remove(filename)
 })
+
+test_that("get_posterior: abuse", {
+
+  file <- read_file(find_path("toy_example_1.RDa"))
+
+  expect_error(
+    get_posterior(file = file, sti = -314, ai = 1, pi = 1),
+    "get_posterior: sti must be at least 1"
+  )
+
+  expect_error(
+    get_posterior(file = file, sti = 314, ai = 1, pi = 1),
+    "get_posterior: sti must at most be 2"
+  )
+
+  expect_error(
+    get_posterior(file = file, sti = 1, ai = -314, pi = 1),
+    "get_posterior: ai must be at least 1"
+  )
+
+  expect_error(
+    get_posterior(file = file, sti = 1, ai = 314, pi = 1),
+    "get_posterior: ai must at most be napst"
+  )
+
+  expect_error(
+    get_posterior(file = file, sti = 1, ai = 1, pi = -314),
+    "get_posterior: pi must be at least 1"
+  )
+
+  expect_error(
+    get_posterior(file = file, sti = 1, ai = 1, pi = 314),
+    "get_posterior: pi must at most be nppa"
+  )
+
+})

@@ -53,8 +53,20 @@ test_that("can detect an invalid posterior, list", {
 })
 
 test_that("is_posterior: abuse", {
+
   expect_error(
     is_posterior(x = c(), verbose = "TRUE nor FALSE"),
     "is_posterior: verbose should be TRUE or FALSE"
   )
+
+  expect_error(
+    is_posterior(x = 42,
+    "x is not a list"
+  )
+
+  expect_error(
+    is_posterior(x = list(42, 314),
+    "item in x not a phylo"
+  )
+
 })

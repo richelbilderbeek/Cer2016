@@ -126,3 +126,26 @@ test_that("get_posterior_by_index from fresh file", {
 
   file.remove(filename)
 })
+
+
+test_that("get_posterior_by_index: abuse", {
+
+  file <- read_file(find_path("toy_example_1.RDa"))
+
+  expect_error(
+    get_posterior_by_index(file = file, i = -314),
+    "get_posterior_by_index: index must be at least 1"
+  )
+
+  expect_error(
+    get_posterior_by_index(file = file, i = 42),
+    "get_posterior_by_index: index must be less than number of posteriors"
+  )
+
+  file <- set_posterior_by_index(file = file, i = 1, posterior = NA)
+  expect_error(
+    get_posterior_by_index(file = file, i = 1),
+    "get_posterior_by_index: posterior absent at index 1"
+  )
+
+})
