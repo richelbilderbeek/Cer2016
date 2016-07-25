@@ -60,12 +60,12 @@ test_that("is_posterior: abuse", {
   )
 
   expect_error(
-    is_posterior(x = 42,
+    is_posterior(x = 42),
     "x is not a list"
   )
 
   expect_error(
-    is_posterior(x = list(42, 314),
+    is_posterior(x = list(42, 314)),
     "item in x not a phylo"
   )
 
