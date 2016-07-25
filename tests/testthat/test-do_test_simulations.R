@@ -19,6 +19,10 @@ test_that("do_test_simulations: create exact replicate", {
     sum_2 <- tools::md5sum(filename_2)[[1]]
     expect_equal(sum_1, sum_2)
   }
+
+  file.remove(filenames_1)
+  file.remove(filenames_2)
+
 })
 
 test_that("do_test_simulations: abuse", {
