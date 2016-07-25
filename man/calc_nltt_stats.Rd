@@ -5,14 +5,12 @@
 \title{Calculate the nLTT statistic between a focal phylogeny
 and multiple others}
 \usage{
-calc_nltt_stats(phylogeny, others, dt)
+calc_nltt_stats(phylogeny, others)
 }
 \arguments{
 \item{phylogeny}{the focal phylogeny}
 
 \item{others}{the other phylogenies}
-
-\item{dt}{resolution of the analysis, must be between zero and one}
 }
 \value{
 A data frame
@@ -24,8 +22,7 @@ and multiple others
 \examples{
   nltt_stats <- calc_nltt_stats(
     phylogeny = ape::rcoal(10),
-    others = c(ape::rcoal(10), ape::rcoal(10)),
-    dt = 0.1
+    others = c(ape::rcoal(10), ape::rcoal(10))
   )
   testit::assert(names(nltt_stats) == c("id", "nltt_stat"))
 }

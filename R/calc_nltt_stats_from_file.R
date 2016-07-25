@@ -1,17 +1,15 @@
 #' Calculates the nLTT statistics from a file
 #' @param filename the name of a file
-#' @param dt resolution of the analysis, must be between zero and one
 #' @return a distribution of nLTT statistics
 #' @export
 #' @examples
 #'   nltt_stats <- calc_nltt_stats_from_file(
-#'     filename = find_path("toy_example_1.RDa"),
-#'     dt = 0.1
+#'     filename = find_path("toy_example_1.RDa")
 #'   )
 #'   expected_names <- c("sti", "ai", "pi", "si", "nltt_stat")
 #'   testit::assert(names(nltt_stats) == expected_names)
 #' @author Richel Bilderbeek
-calc_nltt_stats_from_file <- function(filename, dt) {
+calc_nltt_stats_from_file <- function(filename) {
   file <- Cer2016::read_file(filename)
 
   nst <- 2 # Number of species trees
@@ -45,8 +43,7 @@ calc_nltt_stats_from_file <- function(filename, dt) {
       for (pi in 1:nppa) {
         nltt_stats <- Cer2016::calc_nltt_stats(
           phylogeny = get_species_tree_by_index(file = file, sti = sti),
-          others = get_posterior(file = file, sti = sti, ai = ai, pi = pi),
-          dt = dt
+          others = get_posterior(file = file, sti = sti, ai = ai, pi = pi)
         )
         testit::assert(nspp == length(nltt_stats$nltt_stat))
         testit::assert(length(nltt_stats$nltt_stat) == nrow(nltt_stats))

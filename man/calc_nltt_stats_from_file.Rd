@@ -4,12 +4,10 @@
 \alias{calc_nltt_stats_from_file}
 \title{Calculates the nLTT statistics from a file}
 \usage{
-calc_nltt_stats_from_file(filename, dt)
+calc_nltt_stats_from_file(filename)
 }
 \arguments{
 \item{filename}{the name of a file}
-
-\item{dt}{resolution of the analysis, must be between zero and one}
 }
 \value{
 a distribution of nLTT statistics
@@ -19,8 +17,7 @@ Calculates the nLTT statistics from a file
 }
 \examples{
   nltt_stats <- calc_nltt_stats_from_file(
-    filename = find_path("toy_example_1.RDa"),
-    dt = 0.1
+    filename = find_path("toy_example_1.RDa")
   )
   expected_names <- c("sti", "ai", "pi", "si", "nltt_stat")
   testit::assert(names(nltt_stats) == expected_names)

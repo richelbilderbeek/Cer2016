@@ -1,7 +1,7 @@
 context("do_test_simulations")
 
 test_that("do_test_simulations: create exact replicate", {
-  if (regexpr("richelbilderbeek", getwd())[1] == -1) {
+  if (regexpr("travis", getwd())[1] != -1) {
     skip("do_test_simulations: only on Travis")
   }
   filenames_1 <- paste0("do_test_simulations_1_", seq(1, 4), ".RDa")
@@ -19,4 +19,23 @@ test_that("do_test_simulations: create exact replicate", {
     sum_2 <- tools::md5sum(filename_2)[[1]]
     expect_equal(sum_1, sum_2)
   }
+})
+
+test_that("do_test_simulations: abuse", {
+  filenames <- paste0("do_test_simulations_", seq(1, 4), ".RDa")
+
+  expect_error(
+    do_test_simulations(
+      filenames = filenames,
+      verbose = "TRUE nor FALSE"
+    ),
+    "do_simulation: verbose should be TRUE or FALSE"
+  )
+
+  expect_error(
+    do_test_simulations(
+      filenames = c("too", "few")
+    ),
+    "do_test_simulations: must have exactly four filenames"
+  )
 })

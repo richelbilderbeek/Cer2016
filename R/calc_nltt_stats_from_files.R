@@ -1,6 +1,5 @@
 #' Calculates the nLTT statistics from multiple files
 #' @param filenames the names of the files
-#' @param dt resolution of the analysis, must be between zero and one
 #' @return a distribution of nLTT statistics
 #' @export
 #' @examples
@@ -8,13 +7,12 @@
 #'     filenames = c(
 #'       find_path("toy_example_1.RDa"),
 #'       find_path("toy_example_2.RDa")
-#'     ),
-#'     dt = 0.1
+#'     )
 #'   )
 #'   expected_names <- c("filename", "sti", "ai", "pi", "si", "nltt_stat")
 #'   testit::assert(names(nltt_stats) == expected_names)
 #' @author Richel Bilderbeek
-calc_nltt_stats_from_files <- function(filenames, dt) {
+calc_nltt_stats_from_files <- function(filenames) {
 
   # Check all files
   for (filename in filenames) {
@@ -54,8 +52,7 @@ calc_nltt_stats_from_files <- function(filenames, dt) {
   index <- 1
   for (filename in filenames) {
     nltt_stats <- Cer2016::calc_nltt_stats_from_file(
-      filename = filename,
-      dt = dt
+      filename = filename
     )
     df[
       index:(index + nrow(nltt_stats) - 1),

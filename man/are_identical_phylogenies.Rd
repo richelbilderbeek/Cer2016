@@ -19,6 +19,12 @@ TRUE or FALSE
 Determines if two phylogenies are equal
 as parsed by olli's rBEAST package its function beast2out.read.trees
 }
+\examples{
+  p <- ape::rcoal(10)
+  q <- ape::rcoal(10)
+  testit::assert(are_identical_phylogenies(p, p))
+  testit::assert(!are_identical_phylogenies(p, q))
+}
 \author{
 Richel Bilderbeek
 }
