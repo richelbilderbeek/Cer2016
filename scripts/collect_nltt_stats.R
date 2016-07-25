@@ -2,14 +2,13 @@ library(Cer2016)
 folder <- "/home/p230198/GitHubs/Cer2016/scripts"
 
 csv_filename_nltt_stat <- "collected_nltt_stats.csv"
-dt <- 0.1
 
 # filenames
 fns <- paste(
   folder, list.files(folder, pattern = "\\.RDa"), sep = "/"
 )
 
-df <- calc_nltt_stats_from_files(fns, dt = dt)
+df <- calc_nltt_stats_from_files(fns)
 write.csv(
   x = df,
   file = csv_filename_nltt_stat,
