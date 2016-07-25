@@ -9,11 +9,19 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+Load the library:
 
 ```{r}
 library(Cer2016)
+```
+
+Set warnings to maximum level:
+
+```{r}
 options(warn = 2)
 ```
+
+Read the collected times:
 
 ```{r}
 time_data <- read_collected_times()
@@ -22,18 +30,17 @@ df_per_file <- time_data$per_file
 df_process <- time_data$full_process
 ```
 
-Times per file:
+Show (part of) the times per file:
 
 ```{r}
 knitr::kable(head(df_per_file))
 ```
 
-Times for the whole process:
+Show (part of) the times for the whole process:
 
 ```{r}
 knitr::kable(head(df_process))
 ```
-
 
 See the effect of speciation initiation rate:
 
@@ -61,7 +68,6 @@ ggplot2::ggplot(
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=90, vjust=0.5))
 ```
 
-
 See the effect of extinction rate:
 
 ```{r}
@@ -75,7 +81,6 @@ ggplot2::ggplot(
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=90, vjust=0.5))
 ```
 
-
 See effect of sequence length:
 
 ```{r}
@@ -88,6 +93,27 @@ ggplot2::ggplot(
 ) + ggplot2::geom_boxplot() + 
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=90, vjust=0.5))
 ```
+
+See the effect of number of taxa:
+
+```{r}
+df_n_taxa <- read_collected_n_taxa()
+df_time_per_taxa <- merge(x = df_per_file, y = df_n_taxa, by = "filename", all = TRUE)
+
+df_time_per_taxa <- df_time_per_taxa[
+  !is.na(df_time_per_taxa$n_taxa) & !is.na(df_time_per_taxa$add_posteriors_real_time_sec), ]
+
+ggplot2::ggplot(
+  df_time_per_taxa, 
+  ggplot2::aes(
+    x = df_time_per_taxa$n_taxa, 
+    y = df_time_per_taxa$add_posteriors_real_time_sec
+  )
+) + ggplot2::geom_point() + 
+  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=90, vjust=0.5))
+
+```
+
 
 Plot the variety between runs in a boxplot:
 

@@ -26,7 +26,6 @@ Requires:
   TreeSim
 Imports:
   beastscriptr,
-  dplyr,
   knitr,
   nLTT,
   PBD,
@@ -35,6 +34,7 @@ Imports:
   rBEAST
 Suggests:
   ape,
+  dplyr,
   ggplot2,
   gridExtra,
   Hmisc,
