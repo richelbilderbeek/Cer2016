@@ -124,7 +124,7 @@ test_that("extract_siri: abuse", {
   file$parameters$siri <- NULL
   expect_error(
     extract_siri(file),
-    "extract_siri: parameter 'sirg' absent"
+    "extract_siri: parameter 'siri' absent"
   )
 
 })
@@ -145,10 +145,10 @@ test_that("extract_napst: abuse", {
   )
 
   file <- read_file(find_path("toy_example_1.RDa"))
-  file$parameters$napst <- NULL
+  file$parameters$n_alignments <- NULL
   expect_error(
-    extract_siri(file),
-    "extract_siri: parameter 'n_alignments' absent"
+    extract_napst(file),
+    "extract_napst: parameter 'n_alignments' absent"
   )
 
 })

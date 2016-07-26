@@ -59,13 +59,13 @@ test_that("is_posterior: abuse", {
     "is_posterior: verbose should be TRUE or FALSE"
   )
 
-  expect_error(
-    is_posterior(x = 42),
+  expect_message(
+    is_posterior(x = 42, verbose = TRUE),
     "x is not a list"
   )
 
-  expect_error(
-    is_posterior(x = list(42, 314)),
+  expect_message(
+    is_posterior(x = list(42, 314), verbose = TRUE),
     "item in x not a phylo"
   )
 
