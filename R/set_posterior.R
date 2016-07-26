@@ -47,9 +47,6 @@ set_posterior <- function(
   if (ai > napst) {
     stop("set_posterior: ai must at most be napst")
   }
-  if (!is_posterior(posterior)) {
-    stop("set_posterior: posterior must be an posterior")
-  }
   if (pi < 1) {
     stop("set_posterior: pi must be at least 1")
   }
