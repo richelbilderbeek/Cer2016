@@ -151,7 +151,7 @@ extract_napst <- function(file) {
     n_alignments <- as.numeric(file$parameters$n_alignments[2])
   }
   if (is.na(n_alignments)) {
-    stop("n_alignments: parameter 'n_alignments' absent")
+    stop("extract_napst: parameter 'n_alignments' absent")
   }
   return(n_alignments)
 }
