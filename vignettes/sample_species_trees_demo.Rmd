@@ -86,7 +86,7 @@ for (species_tree in species_trees) {
 The nLTT plots are expected to differ. Here we extract the nLTT plot is data:
 
 ```{r}
-df <- get_nltt_values(species_trees, dt = 0.01)
+df <- nLTT::get_nltt_values(species_trees, dt = 0.01)
 df$id <- revalue(df$id, c("1" = "youngest", "2" = "oldest"))
 names(df)
 ```
