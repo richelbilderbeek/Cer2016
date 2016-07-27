@@ -16,21 +16,16 @@ library(Cer2016)
 options(warn = 2)
 ```
 
+
+Loading the number of taxa:
+
 ```{r}
-csv_filename_n_taxa <- find_path("collected_n_taxa.csv")
-testit::assert(file.exists(csv_filename_n_taxa))
+df_n_taxa <- read_collected_n_taxa()
 ```
 
-Loading it from file:
+Loading the parameters:
 
 ```{r}
-df_n_taxa <- read.csv(
- file = csv_filename_n_taxa, 
- header = TRUE, 
- stringsAsFactors = FALSE, 
- row.names = 1
-)
-
 df_parameters <- read_collected_parameters()
 ```
 
@@ -94,6 +89,13 @@ df <- merge(df_parameters, df_n_taxa, by = "filename")
 df <- df[ !is.na(df_n_taxa$n_taxa), ]
 # Or keep the failed ones
 df_fail <- df[ is.na(df_n_taxa$n_taxa), ]
+```
+
+
+```{r}
+if (nrow(df_fail) == 0)
+  }{
+  
 ```
 
 ```{r fig.width = 7, fig.height = 7}
