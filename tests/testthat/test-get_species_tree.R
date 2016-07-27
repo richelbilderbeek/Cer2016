@@ -104,3 +104,26 @@ test_that("get_species_tree_by_index from fresh file", {
 
   file.remove(filename)
 })
+
+
+test_that("get_species_tree_by_index: abuse", {
+
+  file <- read_file(find_path("toy_example_1.RDa"))
+
+  expect_error(
+    get_species_tree_by_index(file = file, sti = -314),
+    "get_species_tree_by_index: index must be at least 1"
+  )
+
+  expect_error(
+    get_species_tree_by_index(file = file, sti = 42),
+    "get_species_tree_by_index: index must be less than number of species_trees"
+  )
+
+  file <- set_species_tree_by_index(file = file, sti = 1, species_tree = NA)
+  expect_error(
+    get_species_tree_by_index(file = file, sti = 1),
+    "get_species_tree_by_index: species_tree absent at index 1"
+  )
+
+})
