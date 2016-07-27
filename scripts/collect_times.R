@@ -1,4 +1,5 @@
 library(Cer2016)
+library(methods)
 # Collect all filenames and run time from the log files
 system("egrep -R \"real[[:blank:]]\" --include=*.log > ../mytmp.txt")
 df_filenames <- read.csv("../mytmp.txt", sep = ":", header = FALSE, stringsAsFactor = FALSE)
