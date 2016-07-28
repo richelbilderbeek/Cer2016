@@ -540,7 +540,7 @@ ive per species (only youngest shown).
  posteriors per alignment.
  Bottom-center: extract the nLTT curve of the species tree (thick line)
  and of the 
-\begin_inset Formula $\frac{l_{m}}{1000}$
+\begin_inset Formula $n_{s}$
 \end_inset
 
  posteriors.
@@ -2504,7 +2504,7 @@ stree_youngest and stree_oldest.
  is compared with its posterior species trees.
  This comparison is done by calculating the nLTT statistic.
  Each species tree generated 
-\begin_inset Formula $\frac{n_{a}n_{b}l_{m}}{1000}$
+\begin_inset Formula $n_{a}n_{b}n_{s}$
 \end_inset
 
  posterior trees resulting in a distribution of that many nLTT statistics.
