@@ -22,4 +22,3 @@ test_that("collect_species_tree_nltts: abuse", {
   )
 
 })
-
