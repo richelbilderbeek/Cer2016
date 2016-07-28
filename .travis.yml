@@ -4,6 +4,7 @@ cache: packages
 before_script:
   - sudo apt-get install -qq oracle-java8-installer # Java 8
   - sudo apt-get install oracle-java8-set-default
+  - sudo apt-get install lyx
   - sudo pip install proselint
   - ./install_beast2.sh
 
