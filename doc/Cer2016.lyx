@@ -704,7 +704,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="13" columns="2">
+<lyxtabular version="3" rows="14" columns="2">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -1019,11 +1019,11 @@ Number of incipient species trees per parameter set
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $l_{m}$
+\begin_inset Formula $n_{s}$
 \end_inset
 
 
@@ -1031,11 +1031,34 @@ Number of incipient species trees per parameter set
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-MCMC chain length
+Number of MCMC samples
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $i_{s}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MCMC sampling interval
 \end_layout
 
 \end_inset
@@ -1080,7 +1103,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="11" columns="2">
+<lyxtabular version="3" rows="12" columns="2">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -1281,28 +1304,6 @@ status open
 \end_inset
 
 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-crown age
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -1341,16 +1342,6 @@ crown age
 \end_inset
 
 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-mutation rate
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -1382,16 +1373,6 @@ mutation rate
 
 \begin_layout Plain Layout
 \begin_inset Formula $l_{a}$
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-alignment length (base pairs)
-\end_layout
-
 \end_inset
 
 
@@ -1441,16 +1422,6 @@ alignment length (base pairs)
 \end_inset
 
 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Number of alignments
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -1474,16 +1445,6 @@ Number of alignments
 
 \begin_layout Plain Layout
 \begin_inset Formula $n_{b}$
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Number of BEAST2 runs
-\end_layout
-
 \end_inset
 
 
@@ -1513,16 +1474,6 @@ Number of BEAST2 runs
 \end_inset
 
 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Number of incipient species trees
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -1541,21 +1492,49 @@ Number of incipient species trees
 </cell>
 </row>
 <row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $n_{s}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $10^{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $l_{m}$
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-MCMC chain length
-\end_layout
-
+\begin_inset Formula $i_{s}$
 \end_inset
 
 
@@ -1579,7 +1558,7 @@ MCMC chain length
 \uwave off
 \noun off
 \color none
-\begin_inset Formula $10^{6}$
+\begin_inset Formula $10^{3}$
 \end_inset
 
 
@@ -2359,12 +2338,16 @@ key "bouckaert2014beast"
 \begin_inset Formula $n_{b}$
 \end_inset
 
- BEAST2 runs were performed, each with an MCMC length of 
-\begin_inset Formula $l_{m}$
+ BEAST2 runs were performed to see if both runs result in similar posteriors.
+ The MCMC created by BEAST has 
+\begin_inset Formula $n_{s}$
 \end_inset
 
-, to see if both runs result in similar posteriors.
- 
+ states sampled at an interval of 
+\begin_inset Formula $i_{s}$
+\end_inset
+
+ states.
 \end_layout
 
 \begin_layout Standard
