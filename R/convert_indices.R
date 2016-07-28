@@ -7,6 +7,22 @@
 #' @param nstpist the number of species trees per incipient species tree
 #' @param napst the number of alignments per species tree
 #' @return the plain index
+#' @examples
+#'   # only index must be one
+#'   testit::assert(1 == a2i(sti = 1, ai = 1, nstpist = 1, napst = 1))
+#'
+#'   # With only two species tree indices must be one and two
+#'   testit::assert(1 == a2i(sti = 1, ai = 1, nstpist = 1, napst = 1))
+#'   testit::assert(2 == a2i(sti = 2, ai = 1, nstpist = 2, napst = 1))
+#'
+#'   # With only two alignment indices must be one and two
+#'   testit::assert(1 == a2i(sti = 1, ai = 1, nstpist = 1, napst = 1))
+#'   testit::assert(2 == a2i(sti = 1, ai = 2, nstpist = 1, napst = 2))
+#'
+#'   # With only three species tree indices must be one to three
+#'   testit::assert(1 == a2i(sti = 1, ai = 1, nstpist = 1, napst = 1))
+#'   testit::assert(2 == a2i(sti = 2, ai = 1, nstpist = 2, napst = 1))
+#'   testit::assert(3 == a2i(sti = 3, ai = 1, nstpist = 3, napst = 1))
 #' @export
 #' @author Richel Bilderbeek
 a2i <- function(

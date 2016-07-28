@@ -44,7 +44,8 @@ Suggests:
   rmarkdown,
   stringr,
   testit,
-  testthat
+  testthat,
+    knitr
 Remotes:
   jimhester/covr,
   jimhester/lintr,

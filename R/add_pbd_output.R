@@ -2,6 +2,36 @@
 #' @param filename Parameter filename
 #' @param verbose give verbose output, should be TRUE or FALSE
 #' @return Nothing, modifies the parameter file
+#' @examples
+#'   # Create a parameter file
+#'   filename <- "add_pbd_output_example.RDa"
+#'   save_parameters_to_file(
+#'     rng_seed = 42,
+#'     sirg = 0.5,
+#'     siri = 0.5,
+#'     scr = 0.5,
+#'     erg = 0.5,
+#'     eri = 0.5,
+#'     age = 5,
+#'     mutation_rate = 0.1,
+#'     n_alignments = 1,
+#'     sequence_length = 10,
+#'     mcmc_chainlength = 10000,
+#'     n_beast_runs = 1,
+#'     filename = filename
+#'   )
+#'
+#'   # File does not have an incipient species tree yet
+#'   testit::assert(!is_pbd_sim_output(read_file(filename)$pbd_output))
+#'
+#'   # Add an incipient species tree
+#'   add_pbd_output(filename)
+#'
+#'   # File does have an incipient species tree now
+#'   testit::assert(is_pbd_sim_output(read_file(filename)$pbd_output))
+#'
+#'   # Cleanup
+#'   file.remove(filename)
 #' @export
 #' @author Richel Bilderbeek
 add_pbd_output <- function(

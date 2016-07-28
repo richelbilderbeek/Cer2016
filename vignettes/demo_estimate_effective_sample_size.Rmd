@@ -1,0 +1,22 @@
+---
+title: "Demonstration of estimating the effective sample size of an MCMC"
+author: "Richel Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Demonstration of estimating the effective sample size of an MCMC}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r}
+library(coda)
+```
+
+
+```{r}
+mcmc_list <- c(1,2,3)
+ess <- coda::effectiveSize(mcmc_list)
+ess
+```

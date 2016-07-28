@@ -1,6 +1,48 @@
 #' Add an alignment to a file
 #' @param filename Parameter filename
 #' @return Nothing, modifies the parameter file
+#' @examples
+#'  # Create a file with parameters
+#'  filename <- "add_alignment_example.RDa"
+#'  save_parameters_to_file(
+#'    rng_seed = 42,
+#'    sirg = 0.5,
+#'    siri = 0.5,
+#'    scr = 0.5,
+#'    erg = 0.5,
+#'    eri = 0.5,
+#'    age = 5,
+#'    mutation_rate = 0.1,
+#'    n_alignments = 1,
+#'    sequence_length = 10,
+#'    mcmc_chainlength = 10000,
+#'    n_beast_runs = 1,
+#'    filename = filename
+#'  )
+#'
+#'  # Add an incipient species tree
+#'  add_pbd_output(filename)
+#'
+#'  # Add the sampled species trees
+#'  add_species_trees(filename = filename)
+#'
+#'  # Test if there are no alignments yet
+#'  testit::assert(
+#'    has_alignments(read_file(filename = filename))
+#'    == rep(FALSE, times = 2)
+#'  )
+#'
+#'  # Add the alignments (n_alignments per species tree)
+#'  add_alignments(filename = filename)
+#'
+#'  # Test if there are alignments now
+#'  testit::assert(
+#'    has_alignments(read_file(filename = filename))
+#'    == rep(TRUE, times = 2)
+#'  )
+#'
+#'  # Cleanup
+#'  file.remove(filename)
 #' @export
 #' @author Richel Bilderbeek
 add_alignments <- function(filename) {
