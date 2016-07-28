@@ -113,8 +113,16 @@ ted for biologically relevant parameters.
 Introduction
 \end_layout
 
-\begin_layout Paragraph
-Speciation takes time
+\begin_layout Subsection
+Biology: speciation takes time
+\end_layout
+
+\begin_layout Subsection
+The use of speciation models
+\end_layout
+
+\begin_layout Subsection
+First model: constant rate birth death model
 \end_layout
 
 \begin_layout Standard
@@ -128,13 +136,22 @@ key "nee1994"
 
 \end_inset
 
-) is among the simplest speciation models, and assumes instant speciation
- and extinction rates, captured by its two parameters.
+) is among the simplest speciation models, and assumes a constant speciation
+ rate 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ and constant extinction rate 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ Additionally, it assumes speciation is instantaneous.
  The constant-rate birth-death model is popular for its simplicity, yet
  has also served as a starting point for more elaborate specation models.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsection
 Other non-protracted speciation models
 \end_layout
 
@@ -164,12 +181,16 @@ key "fitzjohn2009estimating"
 .
  They extend the original birth-death model by making speciation rate dependent
  on time, diversity or trait value.
- The assumptiond that all these extensions share is that speciation is instantan
-eous.
+ The assumption that all these extensions share is that speciation is instantane
+ous.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsection
 Protracted speciation model
+\end_layout
+
+\begin_layout Subsubsection
+Good and incipient states
 \end_layout
 
 \begin_layout Standard
@@ -190,38 +211,90 @@ reference "fig:The-states-and-transitions-of-a-species"
 
 ): the 'incipient' stage, which a lineages has to complete before becoming
  a 'good' species.
- The protracted speciation model makes no assumption about the exact biolologica
-l mechanism by which reproductive isolation is acquired 
+ One view is to say that good species have achieved reproductive isolation,
+ where incipient species are in the process of achieving this [REF].
+ Alternatively, an incipient species can be described as a good-species-to-be,
+ yet not recognized as such [REF].
+\end_layout
+
+\begin_layout Subsubsection
+Biological mechanism of reproductive isolation
+\end_layout
+
+\begin_layout Standard
+The protracted speciation model makes no assumption about the exact biolological
+ mechanism by which reproductive isolation is acquired 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "etienne2012prolonging,etienne2014estimating,rosindell2010protracted"
 
 \end_inset
 
-, yet matches best to the allopatric mode of speciation, in which populations
- are split into two equal pieces, without gene flow between parental and
- this incipient species
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-these are my original thoughts: when assuming speciation-initiation and
- extinction rates being equal of good and incipient species, this means
- that their population sizes must be -as a first assumption- equal.
- Would a small subpopulation bud off, one expects these rates to be different.
+.
 \end_layout
 
-\end_inset
+\begin_layout Subsubsection
+Effects on topology
+\end_layout
 
-.
- The assumption that speciation takes time is 'orthogonal', that is, independent
- of the dynamics of the speciation and extinction rates.
+\begin_layout Standard
+A feature of the protracted birth-death model, is that it may result in
+ paraphylies when the rates between good and incipient species differ [REF].
+ Paraphylies may be more than an experimental artifact and are claimed to
+ be an inherent feature of nature [REF: Funk & Omland].
+ If the rates between good and incipient species are equal, no paraphylies
+ are expected [REF].
+ This research assumes exactly this.
+\end_layout
+
+\begin_layout Subsubsection
+Good and incipient rates
+\end_layout
+
+\begin_layout Standard
+Where the classic birth death model assumes constant speciation and extinction
+ rates, the protracted birth-death model allows these rates to be state
+ dependent.
+ 
+\end_layout
+
+\begin_layout Standard
+The only additional parameter is the rate at which incipient species become
+ (recognized as) good species.
+ When setting that parameter to infinity, incipient species become good
+ species instantanous and the model falls back to a constant-rate (non-protracte
+d) birth-death model [REF].
+\end_layout
+
+\begin_layout Subsubsection
+Relationship to constant-rate birth-death model
+\end_layout
+
+\begin_layout Standard
+Although the models use similar notation for their parameters, they are
+ mathematically substantially different [REF].
+ 
+\end_layout
+
+\begin_layout Standard
+There is no relationship known between the parameters of the constant-rate
+ birth-death model and the protracted birth-death model [REF].
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Good and incipient rates do not need to be constant
+\end_layout
+
+\begin_layout Standard
+The assumption that speciation takes time is independent of the dynamics
+ of the speciation and extinction rates.
  The protracted speciation model in this research assumes these rates are
  constant, but these rates can easily be made to depend on time, diversity
  or trait.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsection
 Use of a speciation model in inferring a phylogeny
 \end_layout
 
@@ -243,7 +316,7 @@ key "bouckaert2014beast"
  
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsection
 This study
 \end_layout
 
@@ -255,7 +328,7 @@ This simulation investigates the consequence of BEAST2 using instantaneous
  
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsection
 Novelty
 \end_layout
 
@@ -272,7 +345,7 @@ Part of the parameter space will create 'true' trees that are not protracted.
  that are needed.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsection
 Analysis
 \end_layout
 
@@ -295,7 +368,7 @@ ugh-Time plot lines that are normalized to let both time and number of lineages
  most to its value.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsection
 Expectations
 \end_layout
 
@@ -315,7 +388,7 @@ It is unknown, however, if and when this error is relevant.
  
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsection
 Preview results
 \end_layout
 
@@ -325,234 +398,6 @@ This study shows that [TODO: put result here]
 
 \begin_layout Section
 Methods
-\end_layout
-
-\begin_layout Subsection
-Model
-\end_layout
-
-\begin_layout Standard
-The speciation model used in this investigation is a constant-rate protracted
- speciation model.
-\end_layout
-
-\begin_layout Standard
-A protracted speciation model assumes that species have at least two states:
- a species is either a good or incipient species.
- A good species is a species recognized as such, where an incipient species
- is not yet.
- Both good and incipient species can generate new incipient species, at
- the speciation-initiation rates 
-\begin_inset Formula $b_{g}$
-\end_inset
-
- and 
-\begin_inset Formula $b_{i}$
-\end_inset
-
- respectively.
- An incipient species can become a good species at the speciation-completion
- rate 
-\begin_inset Formula $\lambda$
-\end_inset
-
-.
- Both good and incipient species can go extinct at rates 
-\begin_inset Formula $\mu_{i}$
-\end_inset
-
- and 
-\begin_inset Formula $\mu_{g}$
-\end_inset
-
- respectively (see also figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:The-states-and-transitions-of-a-species"
-
-\end_inset
-
-).
-\end_layout
-
-\begin_layout Standard
-The simplest member of the protracted speciation famility is the constant-rate
- protracted speciation model, which assumes that all rates are constant
- in time.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=4cm, semithick
-]   
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-tikzstyle{every state}=[]
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-node[state] (A)              {Good};   
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-node[state] (B) [right of=A] {Incipient};   
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-node[state] (C) [below of=B] {Extinct};   
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-path (A) edge [bend right] node {$b_g$} (B)
-\end_layout
-
-\begin_layout Plain Layout
-
-      (A) edge [bend right] node {$
-\backslash
-mu_g$} (C)
-\end_layout
-
-\begin_layout Plain Layout
-
-      (B) edge [loop above] node {$b_i$} (B)
-\end_layout
-
-\begin_layout Plain Layout
-
-      (B) edge [bend right] node {$
-\backslash
-lambda$} (A)
-\end_layout
-
-\begin_layout Plain Layout
-
-      (B) edge [bend right] node {$
-\backslash
-mu_i$} (C); 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{tikzpicture}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-The states and transitions of a species.
- 
-\begin_inset Formula $b_{i}$
-\end_inset
-
-: speciation-initiation rate of incipient species.
- 
-\begin_inset Formula $b_{g}$
-\end_inset
-
-: speciation-initiation rate of good species.
- 
-\begin_inset Formula $\lambda$
-\end_inset
-
-: speciation completion rate.
- 
-\begin_inset Formula $\mu_{i}$
-\end_inset
-
-: extinction rate of incipient species.
- 
-\begin_inset Formula $\mu_{g}$
-\end_inset
-
-: extinction rate of good species.
- Figure after Etienne et al, 2014, Evolution
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:The-states-and-transitions-of-a-species"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-There is no relationship known between the speciation rate (often called
- 
-\begin_inset Formula $\lambda$
-\end_inset
-
-) of the constant-rate birth-death model and a combination of the speciation-ini
-tiation 
-\begin_inset Formula $\lambda$
-\end_inset
-
- and speciation-completion rates of the protracted birth-death model (
-\begin_inset Formula $b_{g}$
-\end_inset
-
- and 
-\begin_inset Formula $b_{i}$
-\end_inset
-
-).
- When setting 
-\begin_inset Formula $\lambda\rightarrow\infty$
-\end_inset
-
-, the model used falls back to a constant-rate (non-protracted) birth-death
- model.
-\end_layout
-
-\begin_layout Subsection
-Workflow
 \end_layout
 
 \begin_layout Standard
@@ -712,7 +557,7 @@ ive per species (only youngest shown).
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Parameter space
 \end_layout
 
@@ -760,6 +605,74 @@ reference "sub:Creating-species-trees"
  BEAST2 runs are performed.
 \end_layout
 
+\begin_layout Subsubsection
+Parameter range
+\end_layout
+
+\begin_layout Standard
+The range of parameters needed to be tuned carefully.
+ The parameter values for the speciation-initiation rates 
+\begin_inset Formula $b$
+\end_inset
+
+, extinction rate 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and phylogeny crown age 
+\begin_inset Formula $t_{c}$
+\end_inset
+
+ need to be balanced, as 
+\begin_inset Formula $t_{c}b\gg\mu$
+\end_inset
+
+ results in overly taxon-rich phylogenies, where 
+\begin_inset Formula $t_{c}\mu\gg b$
+\end_inset
+
+ results in extinction of all lineages.
+\end_layout
+
+\begin_layout Standard
+It was chosen to follow the same values as 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "etienne2014estimating"
+
+\end_inset
+
+, as there the same tuning was needed, also allowing comparison between
+ the results.
+\end_layout
+
+\begin_layout Standard
+We also follow the simplication of 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "etienne2014estimating"
+
+\end_inset
+
+ to assume that species can both (1) give rise to new species, and (2) go
+ extinct, independent of species status (thus 
+\begin_inset Formula $b_{i}=b_{g}$
+\end_inset
+
+ and
+\begin_inset Formula $\mu_{i}=\mu_{g}$
+\end_inset
+
+).
+ This also ensures the absence of paraphylies [REF again].
+\end_layout
+
+\begin_layout Standard
+An additional contraint followed is that a full simulation (for one point
+ in parameter space) should be completed in 240 hours.
+ 
+\end_layout
+
 \begin_layout Standard
 Table 
 \begin_inset CommandInset ref
@@ -769,6 +682,18 @@ reference "tab:Parameter-space"
 \end_inset
 
  shows an overview of all parameter values used.
+\end_layout
+
+\begin_layout Subsubsection
+Fall back to classic birth-death model
+\end_layout
+
+\begin_layout Standard
+When setting speciation completion rate close to infinity, the protracted
+ speciation model falls back to a constant-rate (non-protracted) birth-death
+ model.
+ This allows to measure the performance of BEAST2 with all its assumptions
+ satisfied.
 \end_layout
 
 \begin_layout Standard
@@ -1151,7 +1076,7 @@ name "tab:Parameter-descriptions"
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -1694,8 +1619,194 @@ name "tab:Parameter-space"
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Creating incipient species trees
+\end_layout
+
+\begin_layout Standard
+A protracted speciation model assumes that species have at least two states:
+ a species is either a good or incipient species.
+ A good species is a species recognized as such, where an incipient species
+ is not yet.
+ Both good and incipient species can generate new incipient species, at
+ the speciation-initiation rates 
+\begin_inset Formula $b_{g}$
+\end_inset
+
+ and 
+\begin_inset Formula $b_{i}$
+\end_inset
+
+ respectively.
+ An incipient species can become a good species at the speciation-completion
+ rate 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+ Both good and incipient species can go extinct at rates 
+\begin_inset Formula $\mu_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu_{g}$
+\end_inset
+
+ respectively (see also figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:The-states-and-transitions-of-a-species"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+This research uses the constant-rate protracted speciation model, which
+ assumes all these rates are constant in time.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=4cm, semithick
+]   
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+tikzstyle{every state}=[]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node[state] (A)              {Good};   
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node[state] (B) [right of=A] {Incipient};   
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node[state] (C) [below of=B] {Extinct};   
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+path (A) edge [bend right] node {$b_g$} (B)
+\end_layout
+
+\begin_layout Plain Layout
+
+      (A) edge [bend right] node {$
+\backslash
+mu_g$} (C)
+\end_layout
+
+\begin_layout Plain Layout
+
+      (B) edge [loop above] node {$b_i$} (B)
+\end_layout
+
+\begin_layout Plain Layout
+
+      (B) edge [bend right] node {$
+\backslash
+lambda$} (A)
+\end_layout
+
+\begin_layout Plain Layout
+
+      (B) edge [bend right] node {$
+\backslash
+mu_i$} (C); 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+The states and transitions of a species.
+ 
+\begin_inset Formula $b_{i}$
+\end_inset
+
+: speciation-initiation rate of incipient species.
+ 
+\begin_inset Formula $b_{g}$
+\end_inset
+
+: speciation-initiation rate of good species.
+ 
+\begin_inset Formula $\lambda$
+\end_inset
+
+: speciation completion rate.
+ 
+\begin_inset Formula $\mu_{i}$
+\end_inset
+
+: extinction rate of incipient species.
+ 
+\begin_inset Formula $\mu_{g}$
+\end_inset
+
+: extinction rate of good species.
+ Figure after Etienne et al, 2014, Evolution
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:The-states-and-transitions-of-a-species"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1717,95 +1828,7 @@ key "PBD"
 .
 \end_layout
 
-\begin_layout Paragraph
-Speciation-completion rate
-\end_layout
-
-\begin_layout Standard
-The speciation-completion rate 
-\begin_inset Formula $\lambda$
-\end_inset
-
- is pivotal for this study, as when 
-\begin_inset Formula $\lambda\rightarrow\infty$
-\end_inset
-
- the model falls back to a birth-death model and satisfies the instantaneous
- speciation assumption of the tools used.
-\end_layout
-
-\begin_layout Paragraph
-Speciation initiation rate, extinction rate and crown age
-\end_layout
-
-\begin_layout Standard
-The parameter values for the speciation-initiation rates 
-\begin_inset Formula $b$
-\end_inset
-
-, extinction rate 
-\begin_inset Formula $\mu$
-\end_inset
-
- and phylogeny crown age 
-\begin_inset Formula $t_{c}$
-\end_inset
-
- need to be balanced, as 
-\begin_inset Formula $t_{c}b\gg\mu$
-\end_inset
-
- results in overly taxon-rich phylogenies, where 
-\begin_inset Formula $t_{c}\mu\gg b$
-\end_inset
-
- results in extinction of all lineages.
- As a starting point, we used the parameters used by 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "etienne2014estimating"
-
-\end_inset
-
-.
- For simplicity, we assume species can give rise to new species, independent
- of species status, thus 
-\begin_inset Formula $b_{i}=b_{g}$
-\end_inset
-
-.
- This assumes that speciation is caused mostly by vicariance and the accumulatio
-n of independent mutations.
- Additionally, we assume a species can go extinct independent of species
- status, so
-\begin_inset Formula $\mu_{i}=\mu_{g}$
-\end_inset
-
-.
- With both 
-\begin_inset Formula $b_{i}=b_{g}$
-\end_inset
-
- and 
-\begin_inset Formula $\mu_{i}=\mu_{g}$
-\end_inset
-
- it is known that the incipient species phylogenies will not contain paraphylies
- and thus the sampled species trees will always have the same topology
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Not impressed by just stating this.
- Need ref and more explanation
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Subsubsection
+\begin_layout Subsection
 Creating species trees
 \begin_inset CommandInset label
 LatexCommand label
@@ -2280,7 +2303,7 @@ Rattus rattus
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Creating a DNA alignment
 \end_layout
 
@@ -2318,7 +2341,7 @@ In creating DNA sequence alignments from the phylognies, a mutation rate
  find that value].
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Creating a BEAST2 posterior
 \end_layout
 
@@ -2505,6 +2528,10 @@ stree_youngest and stree_oldest.
 \end_layout
 
 \begin_layout Subsection
+Peripherals
+\end_layout
+
+\begin_layout Subsubsection
 Software
 \end_layout
 
@@ -2619,7 +2646,7 @@ All figures of this article can be reproduced with the start of a single
  command.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Hardware
 \end_layout
 
@@ -2636,8 +2663,12 @@ Results
 Discussion 
 \end_layout
 
-\begin_layout Standard
-The protracted speciation model creates trees with less taxa, 
+\begin_layout Paragraph
+The PBD model is just one implementation of speciation taking time
+\end_layout
+
+\begin_layout Paragraph
+Used the simplest version of the PBD model
 \end_layout
 
 \begin_layout Standard
@@ -2648,11 +2679,52 @@ A constant-rate protracted birth-death model is used, this research could
  model yet.
 \end_layout
 
+\begin_layout Paragraph
+Biological implication of assuming equal speciation-initiation and extinction
+ rates 
+\end_layout
+
+\begin_layout Paragraph
+Allopatric speciation only
+\end_layout
+
+\begin_layout Standard
+The protracted speciation model matches best to the allopatric mode of speciatio
+n, in which populations are split into two equal pieces, without gene flow
+ between parental and this incipient species
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+these are my original thoughts: when assuming speciation-initiation and
+ extinction rates being equal of good and incipient species, this means
+ that their population sizes must be -as a first assumption- equal.
+ Would a small subpopulation bud off, one expects these rates to be different.
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
 \begin_layout Standard
 This research assumes that speciation is allopatric, because in the simulation
  of the DNA alignments, there is no gene flow anymore between two taxa of
  still-the-same species.
  
+\end_layout
+
+\begin_layout Paragraph
+BEAST2 is just one of many tools
+\end_layout
+
+\begin_layout Paragraph
+Meager coverage of parameter space
+\end_layout
+
+\begin_layout Paragraph
+nLTT statistic is just one of many summary statistics
 \end_layout
 
 \begin_layout Standard
