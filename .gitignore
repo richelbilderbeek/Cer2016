@@ -57,3 +57,5 @@ scripts/*.trees
 scripts/*.xml
 scripts/*.xml.state
 scripts/*.xml.state.new
+doc/*.eps
+doc/*.tex
