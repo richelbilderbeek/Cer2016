@@ -17,8 +17,7 @@ collect_species_tree_nltts <- function(
 ) {
   if (!is_valid_file(filename)) {
     stop(
-      "collect_species_tree_nltts: ",
-      "invalid filename"
+      "collect_species_tree_nltts: invalid filename"
     )
   }
 
