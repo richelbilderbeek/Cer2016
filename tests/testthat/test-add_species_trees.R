@@ -21,10 +21,9 @@ test_that("add_species_trees: use", {
   expect_true(
     is.na(read_file(filename)$species_trees[1])
   )
-  add_species_trees(
-    filename = filename,
-    verbose = FALSE
-  )
+
+  add_species_trees(filename = filename)
+
   expect_false(
     is.na(read_file(filename)$species_trees[1])
   )
@@ -34,13 +33,6 @@ test_that("add_species_trees: use", {
 
 
 test_that("add_species_trees: abuse", {
-  expect_error(
-    add_species_trees(
-      filename = find_path("toy_example_1.RDa"),
-      verbose = "TRUE not FALSE"
-    ),
-    "add_species_trees: verbose should be TRUE or FALSE"
-  )
 
   expect_error(
     add_species_trees(filename = "inva.lid"),

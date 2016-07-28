@@ -95,7 +95,7 @@ Per incipient species tree, we take the youngest and oldest representative per s
 
 ```{r}
 for (filename in filenames) {
-  add_species_trees(filename, verbose = FALSE)  
+  add_species_trees(filename)  
 }
 ```
 

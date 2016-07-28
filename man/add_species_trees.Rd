@@ -4,12 +4,10 @@
 \alias{add_species_trees}
 \title{Add a species tree with/without outgroup to a file}
 \usage{
-add_species_trees(filename, verbose = FALSE)
+add_species_trees(filename)
 }
 \arguments{
 \item{filename}{Parameter filename}
-
-\item{verbose}{give verbose output, should be TRUE or FALSE}
 }
 \value{
 Nothing, modifies the parameter file

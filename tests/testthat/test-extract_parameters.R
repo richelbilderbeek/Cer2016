@@ -152,14 +152,53 @@ test_that("extract_napst: abuse", {
   )
 
 })
-test_that("extract_nppa", {
+
+test_that("extract_nppa: use", {
   file <- read_file(find_path("toy_example_1.RDa"))
   nppa <- extract_nppa(file)
   expect_equal(nppa, 1)
 })
 
-test_that("extract_nspp", {
+test_that("extract_nppa: abuse", {
+
+  file <- read_file(find_path("toy_example_1.RDa"))
+  file$parameters <- NULL
+  expect_error(
+    extract_nppa(file),
+    "extract_nppa: file\\$parameters not found"
+  )
+
+  file <- read_file(find_path("toy_example_1.RDa"))
+  file$parameters$n_beast_runs <- NULL
+  expect_error(
+    extract_nppa(file),
+    "extract_nppa: parameter 'n_beast_runs' absent"
+  )
+
+})
+
+
+test_that("extract_nspp: use", {
   file <- read_file(find_path("toy_example_1.RDa"))
   nspp <- extract_nspp(file)
   expect_equal(nspp, 10)
+})
+
+
+test_that("extract_nspp: abuse", {
+
+  file <- read_file(find_path("toy_example_1.RDa"))
+  file$parameters <- NULL
+  expect_error(
+    extract_nspp(file),
+    "extract_nspp: file\\$parameters not found"
+  )
+
+  file <- read_file(find_path("toy_example_1.RDa"))
+  file$parameters$mcmc_chainlength <- NULL
+  expect_error(
+    extract_nspp(file),
+    "extract_nspp: parameter 'mcmc_chainlength' absent"
+  )
+
 })

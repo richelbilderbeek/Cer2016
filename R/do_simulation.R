@@ -20,7 +20,7 @@ do_simulation <- function(
     stop("do_simulation: filename must be a valid file")
   }
   Cer2016::add_pbd_output(filename, verbose = verbose)
-  Cer2016::add_species_trees(filename, verbose = verbose)
+  Cer2016::add_species_trees(filename)
   Cer2016::add_alignments(filename)
   Cer2016::add_posteriors(
     filename = filename,

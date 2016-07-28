@@ -45,11 +45,9 @@ nrbs <- function(phylogeny1, phylogeny2) {
     # Enforced by phangorn::KF.dist
     stop("nrbs: phylogeny #1 must not have any NA tip label")
   }
-  if (any(is.na(phylogeny2$tip.label))) {
-    # Enforced by phangorn::KF.dist
-    stop("nrbs: phylogeny #2 must not have any NA tip label")
-  }
-
+  # Labels are the same, phylogeny #1 has been checked to have no NA's
+  # so phylogeny #2 cannot have any NA tip label
+  testit::assert(!any(is.na(phylogeny2$tip.label)))
 
   # KF.dist return the branch score distance (Kuhner & Felsenstein 1994)
   difference <- phangorn::KF.dist(

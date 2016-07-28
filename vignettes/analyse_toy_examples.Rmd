@@ -171,7 +171,7 @@ constant-rate birth death model, there exist no multiple individuals
 per species. To being able to root our phylogenies in later steps, an outgroup is added as well.
 
 ```{r}
-add_species_trees(filename, verbose = FALSE)  
+add_species_trees(filename)  
 ```
 
 Here we observe the sample species tree:
@@ -442,7 +442,7 @@ constant-rate birth death model, there exist no multiple individuals
 per species. To being able to root our phylogenies in later steps, an outgroup is added as well.
 
 ```{r}
-add_species_trees(filename, verbose = FALSE)  
+add_species_trees(filename)  
 ```
 
 Here we observe the sample species tree:
