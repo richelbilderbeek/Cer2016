@@ -91,16 +91,17 @@ df <- df[ !is.na(df_n_taxa$n_taxa), ]
 df_fail <- df[ is.na(df_n_taxa$n_taxa), ]
 ```
 
-
-```{r}
-if (nrow(df_fail) == 0)
-  }{
-  
-```
+Here we plot both successes and fails. The latter are only plot if present.
 
 ```{r fig.width = 7, fig.height = 7}
-ggplot2::ggplot(data = df, ggplot2::aes(x = df$sirg, y = df$n_taxa, color = as.factor(df$erg))) + 
-ggplot2::geom_point(shape = 16) +
-ggplot2::geom_jitter(data = df_fail, shape = 3, width = 0.02, height = 0.02, ggplot2::aes(x = df_fail$sirg, y = 0, color = as.factor(df_fail$erg))) + 
-ggplot2::ggtitle("Effect of speciation and extinction rates on #taxa (crosses denote NA)") 
+if (nrow(df_fail) == 0) {
+  ggplot2::ggplot(data = df, ggplot2::aes(x = df$sirg, y = df$n_taxa, color = as.factor(df$erg))) + 
+  ggplot2::geom_point(shape = 16) +
+  ggplot2::ggtitle("Effect of speciation and extinction rates on #taxa") 
+} else {
+  ggplot2::ggplot(data = df, ggplot2::aes(x = df$sirg, y = df$n_taxa, color = as.factor(df$erg))) + 
+  ggplot2::geom_point(shape = 16) +
+  ggplot2::geom_jitter(data = df_fail, shape = 3, width = 0.02, height = 0.02, ggplot2::aes(x = df_fail$sirg, y = 0,   color = as.factor(df_fail$erg))) + 
+  ggplot2::ggtitle("Effect of speciation and extinction rates on #taxa (crosses denote NA)") 
+}
 ```

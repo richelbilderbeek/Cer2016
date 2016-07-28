@@ -146,3 +146,30 @@ test_that("get_alignment from fresh file", {
 
   file.remove(filename)
 })
+
+
+test_that("get_alignment: abuse", {
+
+  file <- read_file(find_path("toy_example_1.RDa"))
+
+  expect_error(
+    get_alignment(file = file, sti = -314, ai = 1),
+    "get_alignment: sti must be at least 1"
+  )
+
+  expect_error(
+    get_alignment(file = file, sti = 314, ai = 1),
+    "get_alignment: sti must at most be 2"
+  )
+
+  expect_error(
+    get_alignment(file = file, sti = 1, ai = -314),
+    "get_alignment: ai must be at least 1"
+  )
+
+  expect_error(
+    get_alignment(file = file, sti = 1, ai = 314),
+    "get_alignment: ai must at most be napst"
+  )
+
+})
