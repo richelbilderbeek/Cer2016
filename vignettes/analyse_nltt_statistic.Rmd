@@ -25,8 +25,7 @@ options(warn = 2)
 ## Show the distribution of nLTT statistics
 
 ```{r}
-filenames <- find_paths(paste0("toy_example_", 1:4,".RDa"))
-nltt_stats <- calc_nltt_stats_from_files(filenames = filenames)
+nltt_stats <- read_collected_nltt_stats()
 nltt_stats$sti <- plyr::revalue(nltt_stats$sti, c("1"="youngest", "2"="oldest"))
 knitr::kable(head(nltt_stats))
 ```
@@ -45,19 +44,20 @@ ggplot2::ggplot(
   name = "Filename"
 ) + ggplot2::scale_y_continuous(
   name = "nLTT statistic"
-) + ggplot2::ggtitle("Distribution of nLTT statistics")
+) + ggplot2::ggtitle("Distribution of nLTT statistics") + 
+  ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, vjust = 0.5)) + ggplot2::theme(legend.position="none") + 
+  ggplot2::theme(axis.ticks = ggplot2::element_blank(), axis.text.x = ggplot2::element_blank())
 
 ```
 
-Seperated by species tree:
+Seperated by species tree, but still at one big heap:
 
 ```{r fig.width = 7, fig.height = 7}
 ggplot2::ggplot(
   data = nltt_stats,
   ggplot2::aes(
-    x = nltt_stats$filename,
-    y = nltt_stats$nltt_stat,
-    color = nltt_stats$sti
+    x = nltt_stats$sti,
+    y = nltt_stats$nltt_stat
   )
 ) + ggplot2::geom_boxplot(
 ) + ggplot2::scale_x_discrete(
@@ -67,3 +67,12 @@ ggplot2::ggplot(
 ) + ggplot2::ggtitle("Distribution of nLTT statistics")
 
 ```
+
+Time to anwer the question [do nLTT statistics differ between posteriors?](https://github.com/richelbilderbeek/Cer2016/issues/103)
+
+First we need to know if nLTT statistics are normally 
+distributed per posterior, as this will influence are tests.
+
+
+
+

@@ -52,7 +52,7 @@ ggplot2::ggplot(
     y = df_per_file$add_posteriors_real_time_sec
   )
 ) + ggplot2::geom_boxplot() + 
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=90, vjust=0.5))
+  ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, vjust = 0.5))
 ```
 
 See the effect of speciation completion rate:
@@ -65,7 +65,7 @@ ggplot2::ggplot(
     y = df_per_file$add_posteriors_real_time_sec
   )
 ) + ggplot2::geom_boxplot() + 
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=90, vjust=0.5))
+  ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, vjust = 0.5))
 ```
 
 See the effect of extinction rate:
@@ -78,7 +78,7 @@ ggplot2::ggplot(
     y = df_per_file$add_posteriors_real_time_sec
   )
 ) + ggplot2::geom_boxplot() + 
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=90, vjust=0.5))
+  ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, vjust = 0.5))
 ```
 
 See effect of sequence length:
@@ -91,7 +91,7 @@ ggplot2::ggplot(
     y = df_per_file$add_posteriors_real_time_sec
   )
 ) + ggplot2::geom_boxplot() + 
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=90, vjust=0.5))
+  ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, vjust = 0.5))
 ```
 
 Collect some data to see the effect of number of taxa and sequence length:
@@ -115,7 +115,7 @@ ggplot2::ggplot(
   )
 ) + ggplot2::geom_point() + 
   ggplot2::geom_smooth() +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=90, vjust=0.5))
+  ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, vjust = 0.5))
 
 ```
 
@@ -131,7 +131,7 @@ ggplot2::ggplot(
   )
 ) + ggplot2::geom_point() + 
   ggplot2::geom_smooth() +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=90, vjust=0.5)) + 
+  ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, vjust = 0.5)) + 
   ggplot2::ggtitle("Effect of number of taxa and sequence length on calculation time") + 
   ggplot2::labs(colour = "Sequence length (base pairs)") +
   ggplot2::theme(legend.position = "bottom") +
@@ -151,7 +151,7 @@ ggplot2::ggplot(
     y = df_process$real_time_sec
   )
 ) + ggplot2::geom_boxplot() + 
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=90, vjust=0.5))
+  ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, vjust = 0.5))
 ```
 
 Aggregate by process:
@@ -176,7 +176,7 @@ ggplot2::ggplot(
   ggplot2::geom_bar(stat = "identity") + 
   ggplot2::scale_x_discrete("") +
   ggplot2::ggtitle("Simulation times (sec)") + 
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=90, vjust=0.5))
+  ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, vjust = 0.5))
 ```
 
 Pie chart:
