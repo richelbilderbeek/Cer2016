@@ -48,9 +48,10 @@ Suggests:
 Remotes:
   jimhester/covr,
   jimhester/lintr,
-  richelbilderbeek/beastscriptr,
   olli0601/rBEAST,
+  richelbilderbeek/beastscriptr,
   richelbilderbeek/nLTT,
+  richelbilderbeek/ribir,
   rsetienne/PBD/PBD,
   MangoTheCat/goodpractice
 RoxygenNote: 5.0.1

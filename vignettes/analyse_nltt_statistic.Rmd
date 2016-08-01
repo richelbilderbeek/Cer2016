@@ -73,6 +73,48 @@ Time to anwer the question [do nLTT statistics differ between posteriors?](https
 First we need to know if nLTT statistics are normally 
 distributed per posterior, as this will influence are tests.
 
+```
+
+names(nltt_stats)
+
+dplyr::summarise(
+  dplyr::group_by(nltt_stats, filename, sti, ai, pi),
+  mean = mean(nltt_stat)
+)
+
+dplyr::summarise(
+  dplyr::group_by(nltt_stats, filename, sti, ai, pi),
+  ind = ribir::is_distributed_normally(nltt_stat)
+)
+
+f <- function(x) { return (length(x)) }
+
+g <- function(x) { return (ribir::is_distributed_normally(x)) }
+
+df <- dplyr::summarise(
+  dplyr::group_by(nltt_stats, filename, sti, ai, pi),
+  ind = f(nltt_stat)
+)
+
+unique(df$ind)
+
+
+library(dplyr)
+nltt_stats %>% 
+  group_by(filename, sti, ai, pi) %>% 
+  select(filename, sti, ai, pi, nltt_stat) %>% 
+  summarise(ribir::is_distributed_normally(nltt_stat))
+
+
+df <- dplyr::summarise(
+  dplyr::group_by(nltt_stats, filename, sti, ai, pi),
+  ind = g(nltt_stat)
+)
+
+stats::aggregate(x = nltt_stats, by = list(nltt_stats$si),
+  FUN = mean
+)
+```
 
 
 
