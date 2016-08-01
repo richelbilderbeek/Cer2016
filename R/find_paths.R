@@ -1,4 +1,4 @@
-#' Finds the full path of a file
+  #' Finds the full path of a file
 #' @param filename the name of a file
 #' @return the full path of the filename if an existing file could be found, stops otherwise
 #' @examples
