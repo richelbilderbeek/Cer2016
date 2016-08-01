@@ -24,8 +24,7 @@ get_posterior_by_index <- function(file, i) {
   posterior
 }
 
-#' Extract a BEAST2 posterior
-#'   from a file
+#' Extract a BEAST2 posterior from a file
 #' @param file A loaded parameter file
 #' @param sti the species tree index, a value from 1 to and including 2
 #' @param ai the alignment index,
@@ -38,6 +37,18 @@ get_posterior_by_index <- function(file, i) {
 #'   the number of posteriors per alignment
 #' @return the posterior
 #' @export
+#' @examples
+#'   # Read a file with one or more posteriors
+#'   file <- read_file(find_path("toy_example_1.RDa"))
+#'   # Pick the indices of the posterior to extract
+#'   sti  <- 1 # Species tree index
+#'   ai   <- 1 # Alignment index
+#'   pi   <- 1 # Posterior index
+#'   # Extract the posterior
+#'   posterior <- get_posterior(file = file, sti = sti, ai = 1, pi = 1)
+#'   # Check that it is indeed a posterior of non-zero length
+#'   testit::assert(is_posterior(posterior))
+#'   testit::assert(length(posterior) > 0)
 #' @author Richel Bilderbeek
 get_posterior <- function(
   file,

@@ -2,8 +2,7 @@
 % Please edit documentation in R/get_posterior.R
 \name{get_posterior}
 \alias{get_posterior}
-\title{Extract a BEAST2 posterior
-  from a file}
+\title{Extract a BEAST2 posterior from a file}
 \usage{
 get_posterior(file, sti, ai, pi)
 }
@@ -26,8 +25,20 @@ the number of posteriors per alignment}
 the posterior
 }
 \description{
-Extract a BEAST2 posterior
-  from a file
+Extract a BEAST2 posterior from a file
+}
+\examples{
+  # Read a file with one or more posteriors
+  file <- read_file(find_path("toy_example_1.RDa"))
+  # Pick the indices of the posterior to extract
+  sti  <- 1 # Species tree index
+  ai   <- 1 # Alignment index
+  pi   <- 1 # Posterior index
+  # Extract the posterior
+  posterior <- get_posterior(file = file, sti = sti, ai = 1, pi = 1)
+  # Check that it is indeed a posterior of non-zero length
+  testit::assert(is_posterior(posterior))
+  testit::assert(length(posterior) > 0)
 }
 \author{
 Richel Bilderbeek

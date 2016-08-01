@@ -39,14 +39,31 @@ calc_nltt_stats_from_file <- function(filename) {
 
   index <- 1
   for (sti in 1:2) {
+    focal_phylogeny <- get_species_tree_by_index(file = file, sti = sti)
+    testit::assert(is_phylogeny(focal_phylogeny))
     for (ai in 1:napst) {
       for (pi in 1:nppa) {
-        nltt_stats <- Cer2016::calc_nltt_stats(
-          phylogeny = get_species_tree_by_index(file = file, sti = sti),
-          others = get_posterior(file = file, sti = sti, ai = ai, pi = pi)
+
+        # Some files may lack a posterior
+        posterior <- NA
+        tryCatch(
+          posterior <- get_posterior(file = file, sti = sti, ai = ai, pi = pi),
+          error = function(msg) {
+            print(paste0("File", filename, " lacks a posterior"))
+          }
         )
-        testit::assert(nspp == length(nltt_stats$nltt_stat))
-        testit::assert(length(nltt_stats$nltt_stat) == nrow(nltt_stats))
+        # If no posterior, then this will be the nLTT statistic
+        nltt_stats <- data.frame(id = 1, nltt_stat = NA)
+
+        # If possible, extract the nLTT statistics
+        if (length(posterior) >= 1 && !is.na(posterior)) {
+          nltt_stats <- Cer2016::calc_nltt_stats(
+            phylogeny = focal_phylogeny,
+            others = posterior
+          )
+          testit::assert(nspp == length(nltt_stats$nltt_stat))
+          testit::assert(length(nltt_stats$nltt_stat) == nrow(nltt_stats))
+        }
         df$nltt_stat[
           index:(index + nrow(nltt_stats) - 1)
         ] <- nltt_stats$nltt_stat

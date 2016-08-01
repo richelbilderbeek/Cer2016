@@ -10,6 +10,7 @@
 #'     others = c(ape::rcoal(10), ape::rcoal(10))
 #'   )
 #'   testit::assert(names(nltt_stats) == c("id", "nltt_stat"))
+#'   testit::assert(is.factor(nltt_stats$id))
 #' @export
 calc_nltt_stats <- function(
   phylogeny,
@@ -21,22 +22,29 @@ calc_nltt_stats <- function(
   if (length(others) == 0) {
     stop("calc_nltt_stats: must supply others")
   }
-  for (phylogeny in others) {
-    if (!is_phylogeny(phylogeny)) {
+  for (q in others) {
+    if (!is_phylogeny(q)) {
       stop("calc_nltt_stats: others must be phylogenies")
     }
   }
-  nltt_stats <- rep(x = 0, times = length(others))
+  nltt_stats <- rep(x = NA, times = length(others))
   i <- 1
   for (q in others) {
     nltt_stats[i] <- nLTT::nLTTstat_exact(phylogeny, q)
     i <- i + 1
   }
+  testit::assert(length(nltt_stats) == length(others))
+
+  ids <- seq_along(nltt_stats)
+
+  testit::assert(length(nltt_stats) == length(ids))
 
   df <- data.frame(
-    id = seq_along(nltt_stats),
+    id = ids,
     nltt_stat = nltt_stats
   )
+  testit::assert(nrow(df) == length(others))
+
   df$id <- as.factor(df$id)
   df
 }

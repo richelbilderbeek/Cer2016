@@ -25,6 +25,7 @@ and multiple others
     others = c(ape::rcoal(10), ape::rcoal(10))
   )
   testit::assert(names(nltt_stats) == c("id", "nltt_stat"))
+  testit::assert(is.factor(nltt_stats$id))
 }
 \author{
 Richel Bilderbeek
