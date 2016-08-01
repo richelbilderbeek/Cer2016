@@ -44,11 +44,11 @@ knitr::kable(head(df_process))
 
 See the effect of speciation initiation rate:
 
-```{r}
+```{r fig.width = 7, fig.height = 7}
 ggplot2::ggplot(
   df_per_file, 
   ggplot2::aes(
-    x = df_per_file$sirg, 
+    x = as.factor(df_per_file$sirg), 
     y = df_per_file$add_posteriors_real_time_sec
   )
 ) + ggplot2::geom_boxplot() + 
@@ -57,11 +57,11 @@ ggplot2::ggplot(
 
 See the effect of speciation completion rate:
 
-```{r}
+```{r fig.width = 7, fig.height = 7}
 ggplot2::ggplot(
   df_per_file, 
   ggplot2::aes(
-    x = factor(df_per_file$scr), 
+    x = as.factor(df_per_file$scr), 
     y = df_per_file$add_posteriors_real_time_sec
   )
 ) + ggplot2::geom_boxplot() + 
@@ -70,11 +70,11 @@ ggplot2::ggplot(
 
 See the effect of extinction rate:
 
-```{r}
+```{r fig.width = 7, fig.height = 7}
 ggplot2::ggplot(
   df_per_file, 
   ggplot2::aes(
-    x = df_per_file$erg, 
+    x = as.factor(df_per_file$erg), 
     y = df_per_file$add_posteriors_real_time_sec
   )
 ) + ggplot2::geom_boxplot() + 
@@ -83,26 +83,30 @@ ggplot2::ggplot(
 
 See effect of sequence length:
 
-```{r}
+```{r fig.width = 7, fig.height = 7}
 ggplot2::ggplot(
   df_per_file, 
   ggplot2::aes(
-    x = df_per_file$sequence_length, 
+    x = as.factor(df_per_file$sequence_length), 
     y = df_per_file$add_posteriors_real_time_sec
   )
 ) + ggplot2::geom_boxplot() + 
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=90, vjust=0.5))
 ```
 
-See the effect of number of taxa:
+Collect some data to see the effect of number of taxa and sequence length:
 
-```{r}
+```{r fig.width = 7, fig.height = 7}
 df_n_taxa <- read_collected_n_taxa()
 df_time_per_taxa <- merge(x = df_per_file, y = df_n_taxa, by = "filename", all = TRUE)
 
 df_time_per_taxa <- df_time_per_taxa[
   !is.na(df_time_per_taxa$n_taxa) & !is.na(df_time_per_taxa$add_posteriors_real_time_sec), ]
+```
 
+See the effect of number of taxa:
+
+```{r}
 ggplot2::ggplot(
   df_time_per_taxa, 
   ggplot2::aes(
@@ -110,7 +114,29 @@ ggplot2::ggplot(
     y = df_time_per_taxa$add_posteriors_real_time_sec
   )
 ) + ggplot2::geom_point() + 
+  ggplot2::geom_smooth() +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=90, vjust=0.5))
+
+```
+
+See the effect of number of taxa and sequence length:
+
+```{r}
+ggplot2::ggplot(
+  df_time_per_taxa, 
+  ggplot2::aes(
+    x = df_time_per_taxa$n_taxa, 
+    y = df_time_per_taxa$add_posteriors_real_time_sec,
+    color = as.factor(df_time_per_taxa$sequence_length)
+  )
+) + ggplot2::geom_point() + 
+  ggplot2::geom_smooth() +
+  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=90, vjust=0.5)) + 
+  ggplot2::ggtitle("Effect of number of taxa and sequence length on calculation time") + 
+  ggplot2::labs(colour = "Sequence length (base pairs)") +
+  ggplot2::theme(legend.position = "bottom") +
+  ggplot2::scale_x_continuous(name = "Number of taxa") +
+  ggplot2::scale_y_continuous(name = "Time to create posterior (sec)")
 
 ```
 
