@@ -65,7 +65,8 @@ ggplot2::ggplot(
   limits = c(0, 1), name = "Time (normalized)"
 ) + ggplot2::scale_y_continuous(
   limits = c(0, 1), name = "nLTT"
-) + ggplot2::ggtitle("Collected species trees")
+) + ggplot2::ggtitle("Collected species trees") + 
+  ggplot2::guides(colour = FALSE)
 ```
 
 For every parameter combination (in this case summarized as a filename), there are two lines: one for the youngest and
@@ -76,13 +77,15 @@ Here we do the same for posteriors:
 ```{r fig.width = 7, fig.height = 7}
 df_posterior$species_tree <- plyr::revalue(df_posterior$species_tree, c("1"="youngest", "2"="oldest"))
 
+# Only select those with non-NA values
+df <- df_posterior[ !is.na(df_posterior$t), ]
+
 ggplot2::ggplot(
-  data = df_posterior,
+  data = df,
   ggplot2::aes(
-    x = df_posterior$t,
-    y = df_posterior$nltt,
-    colour = df_posterior$filename,
-    shape = df_posterior$species_tree
+    x = df$t,
+    y = df$nltt,
+    color = df$species_tree
   )
 ) + ggplot2::geom_point(
 ) + ggplot2::geom_step(direction = "vh", stat = "summary", fun.y = "mean"
@@ -92,6 +95,7 @@ ggplot2::ggplot(
   limits = c(0, 1), name = "nLTT"
 ) + ggplot2::ggtitle("Collected posteriors"
 ) + ggplot2::geom_smooth()
+  
 ```
 
 Note that the smoother is not perfectly correct, but
