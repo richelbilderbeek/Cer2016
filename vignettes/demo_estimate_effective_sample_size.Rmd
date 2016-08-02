@@ -20,6 +20,28 @@ library(coda)
 estimates <- parse_beast_log(
   filename = find_path("beast2_example_output.log")
 )
-ess <- coda::effectiveSize(estimates)
-knitr::kable(ess)
+```
+
+I will melt these, to plot all at once:
+
+```{r fig.width = 7, fig.height = 7}
+melted <- reshape2::melt(estimates, id.vars = c("Sample"))
+
+ggplot2::ggplot(
+  melted, 
+  ggplot2::aes(
+    x = melted$Sample, 
+    y = melted$value,
+    color = as.factor(melted$variable)
+  )
+) + ggplot2::geom_line() +
+  ggplot2::ggtitle("Parameter estimates")
+```
+
+Display the ESSes:
+
+```{r}
+# Get the ESSes of all columns except 'Samples'
+ess <- coda::effectiveSize(estimates[, 2:ncol(estimates)])
+knitr::kable(as.data.frame(ess))
 ```

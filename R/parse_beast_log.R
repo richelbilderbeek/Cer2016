@@ -27,6 +27,5 @@ parse_beast_log <- function(filename) {
   )
   # Remove a column with the name X, no idea where it comes from
   estimates <- estimates[, !(names(estimates) %in% c("X"))]
-  names(estimates)
   estimates
 }
