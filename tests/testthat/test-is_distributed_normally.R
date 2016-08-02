@@ -24,11 +24,15 @@ test_that("is_distributed_normally: abuse", {
     "is_distributed_normally: all values must be numeric"
   )
 
-    expect_error(
+  expect_error(
     is_distributed_normally(c(3, 1)),
     "is_distributed_normally: sample size must be between 3 and 5000"
   )
 
+  expect_error(
+    is_distributed_normally(rep(3.14, times = 10)),
+    "is_distributed_normally: all values are identical, with value "
+  )
 
 
 })

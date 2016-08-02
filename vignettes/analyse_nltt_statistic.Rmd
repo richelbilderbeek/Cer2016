@@ -73,7 +73,7 @@ Time to anwer the question [do nLTT statistics differ between posteriors?](https
 First we need to know if nLTT statistics are normally 
 distributed per posterior, as this will influence are tests.
 
-```{r}
+```
 
 names(nltt_stats)
 
@@ -81,18 +81,24 @@ dplyr::summarise(
   dplyr::group_by(nltt_stats, filename, sti, ai, pi),
   mean = mean(nltt_stat)
 )
+nltt_stats_no_na <- nltt_stats[ !is.na(nltt_stats$nltt_stat), ]
 
-is.factor(nltt_stats$sti)
-is.factor(nltt_stats$ai)
-is.factor(nltt_stats$pi)
-is.factor(nltt_stats$si)
-is.numeric(nltt_stats$nltt_stat)
-any(is.na(nltt_stats$nltt_stat))
+nltt_stats_no_na_all_equal <- dplyr::summarise(
+  dplyr::group_by(nltt_stats_no_na, filename, sti, ai, pi),
+  all_equal = (length(unique(nltt_stat)) == 1)
+)
+nltt_stats_no_na_all_equal[ nltt_stats_no_na_all_equal$all_equal == TRUE, ]
+
+
+nltt_stats[ nltt_stats$filename == "article_0_0_2_0_0.RDa", ]
+
 
 dplyr::summarise(
-  dplyr::group_by(nltt_stats, filename, sti, ai, pi),
+  dplyr::group_by(df, filename, sti, ai, pi),
   idn = is_distributed_normally(nltt_stat)
 )
+
+v <- rep(12,10)
 
 f <- function(x) { return (length(x)) }
 
@@ -108,9 +114,9 @@ unique(df$ind)
 
 library(dplyr)
 nltt_stats %>% 
+  filter(!is.na(nltt_stat)) %>% 
   group_by(filename, sti, ai, pi) %>% 
-  select(filename, sti, ai, pi, nltt_stat) %>% 
-  summarise(ribir::is_distributed_normally(nltt_stat))
+  summarise(ribir::is_distributed_normally(nltt_stats$nltt_stat))
 
 
 df <- dplyr::summarise(
