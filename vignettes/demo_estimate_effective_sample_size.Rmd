@@ -11,19 +11,15 @@ vignette: >
 
 
 ```{r}
+library(Cer2016)
 library(coda)
 ```
 
 
 ```{r}
-posterior <- get_posterior(
-  file = read_file(find_path("toy_example_1.RDa")),
-  sti = 1,
-  ai = 1,
-  pi =1
+estimates <- parse_beast_log(
+  filename = find_path("beast2_example_output.log")
 )
-
-mcmc_list <- c(1,2,3)
-ess <- coda::effectiveSize(mcmc_list)
-ess
+ess <- coda::effectiveSize(estimates)
+knitr::kable(ess)
 ```

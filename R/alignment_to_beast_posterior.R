@@ -109,7 +109,7 @@ alignment_to_beast_posterior <- function(
     file.exists(beast_trees_filename) &&
     file.exists(beast_log_filename) &&
     file.exists(beast_state_filename)) {
-    posterior <- parse_beast_trees(beast_trees_filename)
+    posterior <- Cer2016::parse_beast_trees(beast_trees_filename)
     testit::assert(Cer2016::is_posterior(posterior))
     return(posterior)
   }
@@ -202,7 +202,7 @@ alignment_to_beast_posterior <- function(
       "file '", beast_state_filename, "' should have been created"
     )
   }
-  posterior <- parse_beast_trees(beast_trees_filename)
+  posterior <- Cer2016::parse_beast_trees(beast_trees_filename)
 
   file.remove(beast_filename)
   file.remove(beast_trees_filename)
