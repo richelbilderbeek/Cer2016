@@ -29,6 +29,43 @@ the phylogenies of the BEAST2 posterior
 \description{
 Convert an alignment to a BEAST2 XML input file
 }
+\examples{
+
+  # Prepare the many filenames
+  base_filename <- "alignment_to_beast_posterior_example"
+  beast_log_filename <- paste0(base_filename, ".log")
+  beast_trees_filename <- paste0(base_filename, ".trees")
+  beast_state_filename <- paste0(base_filename, ".xml.state")
+
+  # Simulate a random phylogeny its alignment
+  alignment <- convert_phylogeny_to_alignment(
+    phylogeny = ape::rcoal(5),
+    sequence_length = 10,
+    mutation_rate = 1
+  )
+
+  # See if the BEAST2 .jar file is present
+  beast_jar_path <- find_beast_jar_path()
+  expect_true(file.exists(beast_jar_path))
+
+  # Run BEAST2 and extract the phylogenies of its posterior
+  posterior <- alignment_to_beast_posterior(
+    alignment_dnabin = alignment,
+    mcmc_chainlength = 10000,
+    base_filename = base_filename,
+    rng_seed = 42,
+    beast_jar_path = beast_jar_path,
+    skip_if_output_present = FALSE,
+    verbose = FALSE
+  )
+
+  # Check the posterior
+  testit::assert(is_posterior(posterior))
+  expected_names <- paste0("STATE_", seq(from = 1000, to = 10000, by = 1000))
+  testit::assert(names(posterior) == expected_names)
+  testit::assert(is_phylogeny(posterior$STATE_1000))
+
+}
 \author{
 Richel Bilderbeek
 }

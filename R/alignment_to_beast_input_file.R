@@ -6,6 +6,31 @@
 #' @param temp_fasta_filename the name of a temporary file created
 #' @param verbose give verbose output, should be TRUE or FALSE
 #' @return Nothing, creates a file called 'beast_filename'
+#' @examples
+#'
+#'   # Simulate a phylogeny
+#'   phylogeny <- ape::rcoal(n = 5)
+#'
+#'   # Simulate an alignment from that phylogeny
+#'   alignment <- convert_phylogeny_to_alignment(
+#'     phylogeny = phylogeny,
+#'     sequence_length = 10
+#'   )
+#'
+#'   # Create a BEAST2 input file
+#'   beast_xml_input_file <- "alignment_to_beast_input_file_example.xml"
+#'   fasta_filename <- "alignment_to_beast_input_file_examp.fasta"
+#'   alignment_to_beast_input_file(
+#'     alignment_dnabin = alignment,
+#'     mcmc_chainlength = 10000,
+#'     rng_seed = 42,
+#'     beast_filename = beast_xml_input_file,
+#'     temp_fasta_filename = fasta_filename
+#'   )
+#'
+#'   # Check that the BEAST2 input file really exists
+#'   testit::assert(file.exists(beast_xml_input_file))
+#'
 #' @export
 #' @author Richel Bilderbeek
 alignment_to_beast_input_file <- function(

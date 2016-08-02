@@ -16,6 +16,13 @@ library(coda)
 
 
 ```{r}
+posterior <- get_posterior(
+  file = read_file(find_path("toy_example_1.RDa")),
+  sti = 1,
+  ai = 1,
+  pi =1
+)
+
 mcmc_list <- c(1,2,3)
 ess <- coda::effectiveSize(mcmc_list)
 ess

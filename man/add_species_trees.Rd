@@ -15,6 +15,38 @@ Nothing, modifies the parameter file
 \description{
 Add a species tree with/without outgroup to a file
 }
+\examples{
+ # Create a parameter file
+  filename <- "add_species_trees_example.RDa"
+  save_parameters_to_file(
+    rng_seed = 42,
+    sirg = 0.5,
+    siri = 0.5,
+    scr = 0.5,
+    erg = 0.5,
+    eri = 0.5,
+    age = 5,
+    mutation_rate = 0.1,
+    n_alignments = 1,
+    sequence_length = 10,
+    mcmc_chainlength = 10000,
+    n_beast_runs = 1,
+    filename = filename
+  )
+
+  # Simulate an incipient species tree
+  add_pbd_output(filename)
+
+  # No species tree added yet
+  testit::assert(is.na(read_file(filename)$species_trees[1]))
+
+  # Add the species trees
+  add_species_trees(filename = filename)
+
+  # Now species tree is added
+  testit::assert(!is.na(read_file(filename)$species_trees[1]))
+
+}
 \author{
 Richel Bilderbeek
 }
