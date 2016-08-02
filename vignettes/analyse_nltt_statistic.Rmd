@@ -102,7 +102,7 @@ v <- rep(12,10)
 
 f <- function(x) { return (length(x)) }
 
-g <- function(x) { return (ribir::is_distributed_normally(x)) }
+g <- function(x) { return (is_distributed_normally(x)) }
 
 df <- dplyr::summarise(
   dplyr::group_by(nltt_stats, filename, sti, ai, pi),
@@ -116,7 +116,7 @@ library(dplyr)
 nltt_stats %>% 
   filter(!is.na(nltt_stat)) %>% 
   group_by(filename, sti, ai, pi) %>% 
-  summarise(ribir::is_distributed_normally(nltt_stats$nltt_stat))
+  summarise(is_distributed_normally(nltt_stats$nltt_stat))
 
 
 df <- dplyr::summarise(

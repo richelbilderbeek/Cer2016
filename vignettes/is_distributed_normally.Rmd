@@ -12,7 +12,7 @@ vignette: >
 This vignette demonstrates the `is_distributed_normally` function.
 
 ```{r}
-library(ribir)
+library(Cer2016)
 ```
 
 Here we create a normally distributed collection of values:
