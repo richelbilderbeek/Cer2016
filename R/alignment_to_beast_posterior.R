@@ -24,7 +24,7 @@
 #'
 #'   # See if the BEAST2 .jar file is present
 #'   beast_jar_path <- find_beast_jar_path()
-#'   expect_true(file.exists(beast_jar_path))
+#'   testit::assert(file.exists(beast_jar_path))
 #'
 #'   # Run BEAST2 and extract the phylogenies of its posterior
 #'   posterior <- alignment_to_beast_posterior(
