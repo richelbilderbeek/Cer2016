@@ -14,7 +14,7 @@
 #'   testit::assert(names(estimates) == expected_names)
 #' @author Richel Bilderbeek
 parse_beast_log <- function(filename) {
-  if (!file.exist(filename)) {
+  if (!file.exists(filename)) {
     stop("parse_beast_log: file absent")
   }
   estimates <- utils::read.csv(
