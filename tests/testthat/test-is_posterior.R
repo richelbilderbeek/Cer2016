@@ -8,7 +8,7 @@ test_that("can find is_posterior_test.R", {
 
 test_that("can create a posterior", {
   filename <- find_path(filename = "is_posterior.trees")
-  posterior <- rBEAST::beast2out.read.trees(
+  posterior <- parse_beast_trees(
     filename
   )
   expect_true(is_posterior(posterior))
@@ -16,7 +16,7 @@ test_that("can create a posterior", {
 
 test_that("can create a posterior with length 10", {
   filename <- find_path(filename = "is_posterior.trees")
-  posterior <- rBEAST::beast2out.read.trees(
+  posterior <- parse_beast_trees(
     filename
   )
   expect_equal(length(posterior), 10)
@@ -32,7 +32,7 @@ test_that("can detect an invalid posterior, basic types", {
 test_that("can detect an invalid posterior, vector", {
   # Putting posteriors in a vector must yield an invalid BEAST posterior
   filename <- find_path(filename = "is_posterior.trees")
-  posterior <- rBEAST::beast2out.read.trees(
+  posterior <- parse_beast_trees(
     filename
   )
   not_posteriors <- c(posterior, posterior)
@@ -44,7 +44,7 @@ test_that("can detect an invalid posterior, vector", {
 test_that("can detect an invalid posterior, list", {
   # Putting posteriors in a list must yield an invalid BEAST posterior
   filename <- find_path(filename = "is_posterior.trees")
-  posterior <- rBEAST::beast2out.read.trees(
+  posterior <- parse_beast_trees(
     filename
   )
   not_posteriors <- c(list(posterior), list(posterior))
