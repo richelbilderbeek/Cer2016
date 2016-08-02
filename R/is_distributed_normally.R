@@ -25,9 +25,12 @@ is_distributed_normally <- function(
     stop("is_distributed_normally: sample size must be between 3 and 5000")
   }
   if (all(values == values[1])) {
-    stop("is_distributed_normally: all values are identical, with value ", values[1])
+    stop(
+      "is_distributed_normally: all values are identical, with value ",
+      values[1]
+    )
   }
-  t <- shapiro.test(x = values)
+  t <- stats::shapiro.test(x = values)
   if (t$p >= p_value) {
     # Cannot reject distribution is normal
     return (TRUE)

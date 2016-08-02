@@ -34,6 +34,7 @@ Imports:
   rBEAST
 Suggests:
   ape,
+  coda,
   dplyr,
   ggplot2,
   gridExtra,
