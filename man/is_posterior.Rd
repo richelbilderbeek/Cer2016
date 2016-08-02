@@ -3,7 +3,7 @@
 \name{is_posterior}
 \alias{is_posterior}
 \title{Determines if the input is a BEAST2 posterior,
-as parsed by olli's rBEAST package its function beast2out.read.trees}
+as parsed by parse_beast_trees}
 \usage{
 is_posterior(x, verbose = FALSE)
 }
@@ -17,7 +17,7 @@ TRUE or FALSE
 }
 \description{
 Determines if the input is a BEAST2 posterior,
-as parsed by olli's rBEAST package its function beast2out.read.trees
+as parsed by parse_beast_trees
 }
 \author{
 Richel Bilderbeek

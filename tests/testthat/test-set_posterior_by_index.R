@@ -5,7 +5,7 @@ test_that("set_posterior_by_index: use", {
   posterior <- get_posterior_by_index(file = file, i = 1)
   expect_true(is_posterior(posterior))
   posterior_new <- parse_beast_trees(
-    file = find_path(filename = "is_posterior.trees")
+    file = find_path(filename = "beast2_example_output.trees")
   )
   expect_true(is_posterior(posterior_new))
   expect_false(are_identical_posteriors(posterior, posterior_new))

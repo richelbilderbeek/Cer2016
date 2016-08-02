@@ -16,7 +16,9 @@ the phylogenies in the posterior
 Parses a BEAST2 .trees output file
 }
 \examples{
-  posterior <- parse_beast_trees(find_path("toy_example_1.RDa"))
+  posterior <- parse_beast_trees(
+    find_path("beast2_example_output.trees")
+  )
   testit::assert(is_posterior(posterior))
 }
 \author{

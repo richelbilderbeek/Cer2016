@@ -103,7 +103,7 @@ test_that("get_posterior_by_index from fresh file", {
 
   # Getting a posterior
   posterior <- parse_beast_trees(
-    find_path(filename = "is_posterior.trees")
+    find_path(filename = "beast2_example_output.trees")
   )
   expect_true(is_posterior(posterior))
 

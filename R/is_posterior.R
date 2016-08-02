@@ -1,5 +1,5 @@
 #' Determines if the input is a BEAST2 posterior,
-#' as parsed by olli's rBEAST package its function beast2out.read.trees
+#' as parsed by parse_beast_trees
 #' @param x the input
 #' @param verbose give verbose output, should be TRUE or FALSE
 #' @return TRUE or FALSE
