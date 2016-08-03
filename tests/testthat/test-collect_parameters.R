@@ -1,17 +1,10 @@
 context("collect_parameters")
 
-test_that("collect_parameters: is add_outgroup really gone?", {
+test_that("collect_parameters: use", {
   # Testing
-  filenames <- paste0("collect_parameters_", seq(1, 4), ".RDa")
-  create_test_parameter_files(filenames = filenames)
-  for (filename in filenames) {
-    file <- read_file(filename)
-    expect_true("rng_seed" %in% names(file$parameters[2, , 2]))
-    expect_false("add_outgroup" %in% names(file$parameters[2, , 2]))
-  }
-  file.remove(filenames)
+  filenames <- find_paths(paste0("toy_example_", seq(1, 4), ".RDa"))
+  df <- collect_parameters(filenames = filenames)
 })
-
 
 test_that("collect_parameters: invalid filenames return an empty data.frame", {
 
@@ -19,8 +12,6 @@ test_that("collect_parameters: invalid filenames return an empty data.frame", {
   expect_equal(class(df), "data.frame")
   expect_equal(df$message, "No valid files supplied")
 })
-
-
 
 test_that("collect_parameters: abuse", {
 
@@ -50,4 +41,17 @@ test_that("collect_parameters: abuse", {
   # File two (a toy example) is valid
   expect_false(is.na(df[2, "rng_seed"]))
   file.remove(filename)
+})
+
+# Checks a refactoring
+test_that("collect_parameters: is add_outgroup really gone?", {
+  # Testing
+  filenames <- paste0("collect_parameters_", seq(1, 4), ".RDa")
+  create_test_parameter_files(filenames = filenames)
+  for (filename in filenames) {
+    file <- read_file(filename)
+    expect_true("rng_seed" %in% names(file$parameters[2, , 2]))
+    expect_false("add_outgroup" %in% names(file$parameters[2, , 2]))
+  }
+  file.remove(filenames)
 })

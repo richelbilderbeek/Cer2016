@@ -80,9 +80,11 @@ collect_parameters <- function(
   tidy_df <- t(df)
   rownames(tidy_df) <- c(basename(filenames))
   colnames(tidy_df) <- parameter_names
+  tidy_df <- data.frame(tidy_df)
 
   # Restore original scientific notation
   options(scipen = old_scipen)
+
 
   testit::assert(class(tidy_df) == "data.frame")
   tidy_df
