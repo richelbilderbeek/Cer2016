@@ -45,3 +45,60 @@ Display the ESSes:
 ess <- coda::effectiveSize(estimates[, 2:ncol(estimates)])
 knitr::kable(as.data.frame(ess))
 ```
+
+Lets do this column by column:
+
+```{r}
+esses <- rep(NA, ncol(estimates))
+for (i in seq_along(estimates)) {
+  print(estimates[i])
+  esses[i] <- coda::effectiveSize(estimates[i])
+  print(esses[i])
+}
+esses
+```
+
+Hmm, this appears to be the same.
+
+Yes, ESS equals the sample size, because the sample size is small.
+
+## Test it myself
+
+Example without autocorrelation: 
+
+```{r}
+# Set the random number generator seed for exact reproducible results
+set.seed(42)
+
+# Create a dataset with values drawn independently from a normal distribution
+mean <- 10.0
+sd <- 5.0
+sample_size <- 100
+dataset <- rnorm(n = sample_size, mean = mean, sd = sd)
+ess <- coda::effectiveSize(dataset)
+
+# There is no autocorrelation, 
+# thus the expected Effective Sample Size is the sample size
+expected_ess <- sample_size 
+
+# Expectation should match the measurement
+testit::assert(abs(ess - expected_ess) < 0.01)
+
+# Show the results in a table
+results <- data.frame(measured = ess, expected = expected_ess, row.names = "ESS")
+knitr::kable(results)
+```
+
+Example without autocorrelation:
+
+```{r}
+# Create a dataset with autocorrelated values
+sample_size <- 1000
+dataset <- filter(rnorm(sample_size), filter = rep(1,3), circular = TRUE)
+
+# Measure the Effective Sample Size
+ess <- coda::effectiveSize(dataset)
+
+# ESS should be less than the actual sample size
+testit::assert(ess < 0.5 * sample_size)
+```

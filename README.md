@@ -6,6 +6,25 @@
 
 Community Ecology Research course 2016.
 
+## Installing Cer2016
+
+The `Cer2016` package is absent on CRAN.
+
+An easy way is to install it from GitHub. Within R, do:
+
+```
+devtools::install_github("richelbilderbeek/Cer2016")
+```
+
+## Using Cer20 as a package dependency
+
+If your package uses `Cer2016`, add the following to the `DESCRIPTION` its `Remotes` section:
+
+```
+Remotes:
+  richelbilderbeek/Cer2016
+```
+
 ## Update the package source on Peregrine
 
 ```
@@ -21,8 +40,10 @@ scp p230198@peregrine.hpc.rug.nl:/home/p230198/GitHubs/Cer2016/scripts/*.* ~/Per
 ## Re-install the package on Peregrine
 
 ```
-module load R; Rscript -e 'devtools::install_github("richelbilderbeek/Cer2016")'
+cd scripts; sbatch install_this_r_package.sh
 ```
+
+Note that this is done automatically when running the pipeline.
 
 ## Workflow
 
@@ -65,9 +86,6 @@ You may also need to do this, for GNU/Linux:
 sudo apt-get install libcurl4-openssl-dev
 ```
 
-Additionally, there is a vignette called `Troubleshooting` that may
-help you out.
-
 ### Install packages
 
 You will need some packages, which are listed in `install_r_packages.R`.
@@ -75,7 +93,7 @@ You will need some packages, which are listed in `install_r_packages.R`.
 In Linux, you can install all of these with:
 
 ```
-sudo Rscript install_r_packages.R
+sudo install_r_packages.sh
 ```
 
 ### Install BEAST2
