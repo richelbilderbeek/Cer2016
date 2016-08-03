@@ -1,6 +1,8 @@
-#' Creates tidy data of all parameter files
+#' Collects the parameters of its input files
 #' @param filenames names of the parameter files
 #' @param verbose give verbose output, should be TRUE or FALSE
+#' @return a data.frame, one per parameter file. If all filenames are invalid,
+#'   a simpler data.frame is returned
 #' @examples
 #'  filenames <- c(
 #'    find_path("toy_example_1.RDa"),
@@ -34,9 +36,12 @@ collect_parameters <- function(
     break
   }
   if (is.null(parameter_names)) {
-    df <- data.frame(message = "No valid files supplied")
-    t <- knitr::kable(df)
-    return(t)
+    df <- data.frame(
+      message = "No valid files supplied",
+      stringsAsFactors = FALSE
+    )
+    testit::assert(class(df) == "data.frame")
+    return(df)
   }
 
   # Disable scientific notation
@@ -79,5 +84,6 @@ collect_parameters <- function(
   # Restore original scientific notation
   options(scipen = old_scipen)
 
+  testit::assert(class(tidy_df) == "data.frame")
   tidy_df
 }

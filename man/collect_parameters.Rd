@@ -2,7 +2,7 @@
 % Please edit documentation in R/collect_parameters.R
 \name{collect_parameters}
 \alias{collect_parameters}
-\title{Creates tidy data of all parameter files}
+\title{Collects the parameters of its input files}
 \usage{
 collect_parameters(filenames, verbose = FALSE)
 }
@@ -11,8 +11,12 @@ collect_parameters(filenames, verbose = FALSE)
 
 \item{verbose}{give verbose output, should be TRUE or FALSE}
 }
+\value{
+a data.frame, one per parameter file. If all filenames are invalid,
+  a simpler data.frame is returned
+}
 \description{
-Creates tidy data of all parameter files
+Collects the parameters of its input files
 }
 \examples{
  filenames <- c(

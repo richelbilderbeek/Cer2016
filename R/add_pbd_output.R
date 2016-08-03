@@ -52,7 +52,7 @@ add_pbd_output <- function(
   file <- Cer2016::read_file(filename)
   if (Cer2016::is_pbd_sim_output(file$pbd_output)) {
     if (verbose) {
-      message("file ", filename, " already has a pbd_output")
+      message("add_pbd_output: file already has a pbd_output")
     }
     return()
   }
@@ -74,22 +74,15 @@ add_pbd_output <- function(
   )
 
   # Must get an incipient species tree with at least one taxon
-  while (1) {
-    file$pbd_output <- PBD::pbd_sim(
-      parameters,
-      age = age,
-      soc = 2,
-      plotit = FALSE
-    )
-    n_taxa <- length(file$pbd_output$igtree.extant$tip.label)
-    if (n_taxa > 0) {
-      break
-    } else {
-      if (verbose) {
-        message("n_taxa is 0")
-      }
-    }
-  }
+  # PBD::pbd_sim guarantees to return a tree with two taxa
+  # Note: if speciation rates are zero, PBD::pbd_sim will last forever
+  file$pbd_output <- PBD::pbd_sim(
+    parameters,
+    age = age,
+    soc = 2,
+    plotit = FALSE
+  )
   testit::assert(length(file$pbd_output$igtree.extant$tip.label) > 0)
+
   saveRDS(file, file = filename)
 }

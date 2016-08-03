@@ -6,3 +6,12 @@ test_that("parse_beast_trees: use", {
   )
   expect_true(is_posterior(posterior))
 })
+
+test_that("parse_beast_trees: abuse", {
+
+  expect_error(
+    parse_beast_trees(filename = "inva.lid"),
+    "parse_beast_trees: file absent"
+  )
+
+})

@@ -12,11 +12,24 @@ test_that("collect_parameters: is add_outgroup really gone?", {
   file.remove(filenames)
 })
 
+
+test_that("collect_parameters: invalid filenames return an empty data.frame", {
+
+  df <- collect_parameters(filenames = c("inva.lid"))
+  expect_equal(class(df), "data.frame")
+  expect_equal(df$message, "No valid files supplied")
+})
+
+
+
 test_that("collect_parameters: abuse", {
+
+  # verbose
   expect_error(
     collect_parameters(filenames = c(), verbose = "TRUE nor FALSE"),
     "collect_parameters: verbose should be TRUE or FALSE"
   )
+
 
   # Create a 'corrupt file'
   filename <- "test-collect_parameters.RDa"

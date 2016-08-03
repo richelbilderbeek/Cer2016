@@ -32,12 +32,7 @@ is_posterior <- function(
 
   valid_name_regex <- "^STATE_[[:digit:]]+$"
   valid_names <- grep(valid_name_regex, names(x), perl = TRUE, value = TRUE)
-  if (length(valid_names) != length(x)) {
-    if (verbose) {
-      message("length of posterior does not match number of names")
-    }
-    return(FALSE)
-  }
+  testit::assert(length(valid_names) == length(x))
   values <- sub("STATE_(\\d+)", "\\1", names(x))
   if (is.unsorted(as.numeric(values))) {
     if (verbose) {
