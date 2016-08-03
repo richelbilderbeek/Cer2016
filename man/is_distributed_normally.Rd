@@ -21,13 +21,18 @@ Sees if the values of a distribution are normally distributed
  using a Shapiro-Wilk normality test
 }
 \examples{
-   # Create a normal disribution
+   # Create a normal distribution
    nd <- rnorm(n = 1000, mean = 0.0, sd = 1.0)
    testit::assert(is_distributed_normally(nd))
 
-   # Create a non-normal disribution
+   # Create a non-normal distribution
    nnd <- runif(n = 1000, min = 0.0, max = 1.0)
    testit::assert(!is_distributed_normally(nnd))
+
+   # Create a disribution of one value only
+   r <- rep(x = 42, times = 100)
+   testit::assert(is.na(is_distributed_normally(nnd)))
+
 }
 \author{
 Richel Bilderbeek

@@ -25,9 +25,15 @@ options(warn = 2)
 ## Show the distribution of nLTT statistics
 
 ```{r}
-nltt_stats <- read_collected_nltt_stats()
-nltt_stats$sti <- plyr::revalue(nltt_stats$sti, c("1"="youngest", "2"="oldest"))
-knitr::kable(head(nltt_stats))
+nltt_stats_raw <- read_collected_nltt_stats()
+nltt_stats_raw$sti <- plyr::revalue(nltt_stats_raw$sti, c("1"="youngest", "2"="oldest"))
+knitr::kable(head(nltt_stats_raw))
+```
+
+Remove the NA's:
+
+```{r}
+nltt_stats <- nltt_stats_raw[!is.na(nltt_stats_raw$nltt_stat), ]
 ```
 
 All on one heap:
@@ -73,60 +79,44 @@ Time to anwer the question [do nLTT statistics differ between posteriors?](https
 First we need to know if nLTT statistics are normally 
 distributed per posterior, as this will influence are tests.
 
-```
+To do, we will use the Shapiro-Wilk normality test, that
+assumes all measured values are different.
 
-names(nltt_stats)
+First check the measurement that have only one
+measured value:
 
-dplyr::summarise(
+```{r}
+nltt_stats_all_equal <- dplyr::summarise(
   dplyr::group_by(nltt_stats, filename, sti, ai, pi),
-  mean = mean(nltt_stat)
-)
-nltt_stats_no_na <- nltt_stats[ !is.na(nltt_stats$nltt_stat), ]
-
-nltt_stats_no_na_all_equal <- dplyr::summarise(
-  dplyr::group_by(nltt_stats_no_na, filename, sti, ai, pi),
   all_equal = (length(unique(nltt_stat)) == 1)
 )
-nltt_stats_no_na_all_equal[ nltt_stats_no_na_all_equal$all_equal == TRUE, ]
+nltt_stats_all_equal <- nltt_stats_all_equal[ nltt_stats_all_equal$all_equal == TRUE, ]
+knitr::kable(nltt_stats_all_equal)
+```
 
+Notice that all eight posteriors, independent of species tree,
+alignment, or replicate, has all equal values.
 
-nltt_stats[ nltt_stats$filename == "article_0_0_2_0_0.RDa", ]
+```{r}
+t <- dplyr::tally(dplyr::group_by(nltt_stats_all_equal, filename))
+knitr::kable(t)
+```
 
+It is not the case that the error is too low to measure.
+It is because two phylogenies with two taxa have an nLTT
+statistic of exactly zero!
 
-dplyr::summarise(
-  dplyr::group_by(df, filename, sti, ai, pi),
+Back to the analysis:
+
+How many nLTT statistics are distributed normally?
+
+```{r}
+df <- dplyr::summarise(
+  dplyr::group_by(nltt_stats, filename, sti, ai, pi),
   idn = is_distributed_normally(nltt_stat)
 )
 
-v <- rep(12,10)
-
-f <- function(x) { return (length(x)) }
-
-g <- function(x) { return (is_distributed_normally(x)) }
-
-df <- dplyr::summarise(
-  dplyr::group_by(nltt_stats, filename, sti, ai, pi),
-  ind = f(nltt_stat)
-)
-
-unique(df$ind)
-
-
-library(dplyr)
-nltt_stats %>% 
-  filter(!is.na(nltt_stat)) %>% 
-  group_by(filename, sti, ai, pi) %>% 
-  summarise(is_distributed_normally(nltt_stats$nltt_stat))
-
-
-df <- dplyr::summarise(
-  dplyr::group_by(nltt_stats, filename, sti, ai, pi),
-  ind = g(nltt_stat)
-)
-
-stats::aggregate(x = nltt_stats, by = list(nltt_stats$si),
-  FUN = mean
-)
+knitr::kable(dplyr::tally(dplyr::group_by(df, idn)))
 ```
 
 

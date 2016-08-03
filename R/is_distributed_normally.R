@@ -3,15 +3,21 @@
 #' @param values the values to check
 #' @param p_value the p value
 #' @return TRUE when it cannot be rejected that the distribution is normal,
-#'    or FALSE when it can be rejected that the distribution is normal
+#'    FALSE when it can be rejected that the distribution is normal,
+#'    NA when all values have been identical
 #' @examples
-#'    # Create a normal disribution
+#'    # Create a normal distribution
 #'    nd <- rnorm(n = 1000, mean = 0.0, sd = 1.0)
 #'    testit::assert(is_distributed_normally(nd))
 #'
-#'    # Create a non-normal disribution
+#'    # Create a non-normal distribution
 #'    nnd <- runif(n = 1000, min = 0.0, max = 1.0)
 #'    testit::assert(!is_distributed_normally(nnd))
+#'
+#'    # Create a disribution of one value only
+#'    r <- rep(x = 42, times = 100)
+#'    testit::assert(is.na(is_distributed_normally(r)))
+#'
 #' @export
 #' @author Richel Bilderbeek
 is_distributed_normally <- function(
@@ -25,10 +31,8 @@ is_distributed_normally <- function(
     stop("is_distributed_normally: sample size must be between 3 and 5000")
   }
   if (all(values == values[1])) {
-    stop(
-      "is_distributed_normally: all values are identical, with value ",
-      values[1]
-    )
+    # all values are identical
+    return (NA)
   }
   t <- stats::shapiro.test(x = values)
   if (t$p >= p_value) {
