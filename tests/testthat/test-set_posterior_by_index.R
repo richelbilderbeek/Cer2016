@@ -8,14 +8,14 @@ test_that("set_posterior_by_index: use", {
     file = find_path(filename = "beast2_example_output.trees")
   )
   expect_true(is_trees_posterior(posterior_new))
-  expect_false(are_identical_posteriors(posterior, posterior_new))
+  expect_false(are_identical_trees_posteriors(posterior, posterior_new))
   file <- set_posterior_by_index(
     file = file,
     i = 1,
     posterior = posterior_new
   )
   posterior_new_again <- get_posterior_by_index(file = file, i = 1)
-  expect_true(are_identical_posteriors(posterior_new, posterior_new_again))
+  expect_true(are_identical_trees_posteriors(posterior_new, posterior_new_again))
 })
 
 

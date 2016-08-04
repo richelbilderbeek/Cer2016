@@ -127,7 +127,7 @@ add_posteriors <- function(
         )
         saveRDS(object = file, file = filename)
         testit::assert(
-          are_identical_posteriors(
+          are_identical_trees_posteriors(
             get_posterior(file = file,
               sti = sti, ai = ai, pi = pi
             ),

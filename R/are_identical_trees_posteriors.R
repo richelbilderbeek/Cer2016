@@ -6,26 +6,26 @@
 #' @return TRUE or FALSE
 #' @author Richel Bilderbeek
 #' @export
-are_identical_posteriors <- function(
+are_identical_trees_posteriors <- function(
   p,
   q,
   verbose = FALSE
 ) {
   if (verbose != TRUE && verbose != FALSE) {
     stop(
-      "are_identical_posteriors: ",
+      "are_identical_trees_posteriors: ",
       "verbose should be TRUE or FALSE"
     )
   }
   if (!is_trees_posterior(p)) {
     stop(
-      "are_identical_posteriors: ",
+      "are_identical_trees_posteriors: ",
       "p must be a BEAST2 posterior"
     )
   }
   if (!is_trees_posterior(q)) {
     stop(
-      "are_identical_posteriors: ",
+      "are_identical_trees_posteriors: ",
       "q must be a BEAST2 posterior"
     )
   }

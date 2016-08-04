@@ -1,6 +1,6 @@
-context("are_identical_posteriors")
+context("are_identical_trees_posteriors")
 
-test_that("are_identical_posteriors: use from file", {
+test_that("are_identical_trees_posteriors: use from file", {
   filename <- find_path("toy_example_4.RDa")
   file <- read_file(filename)
   posterior_1 <- get_posterior_by_index(file, 1)
@@ -13,25 +13,25 @@ test_that("are_identical_posteriors: use from file", {
   expect_true(is_trees_posterior(posterior_4))
 
   # All same posteriors are identical
-  expect_true(are_identical_posteriors(posterior_1, posterior_1))
-  expect_true(are_identical_posteriors(posterior_2, posterior_2))
-  expect_true(are_identical_posteriors(posterior_3, posterior_3))
-  expect_true(are_identical_posteriors(posterior_4, posterior_4))
+  expect_true(are_identical_trees_posteriors(posterior_1, posterior_1))
+  expect_true(are_identical_trees_posteriors(posterior_2, posterior_2))
+  expect_true(are_identical_trees_posteriors(posterior_3, posterior_3))
+  expect_true(are_identical_trees_posteriors(posterior_4, posterior_4))
 
   # All different posteriors are different
-  expect_false(are_identical_posteriors(posterior_1, posterior_2))
-  expect_false(are_identical_posteriors(posterior_1, posterior_3))
-  expect_false(are_identical_posteriors(posterior_1, posterior_4))
-  expect_false(are_identical_posteriors(posterior_2, posterior_3))
-  expect_false(are_identical_posteriors(posterior_2, posterior_4))
-  expect_false(are_identical_posteriors(posterior_3, posterior_4))
+  expect_false(are_identical_trees_posteriors(posterior_1, posterior_2))
+  expect_false(are_identical_trees_posteriors(posterior_1, posterior_3))
+  expect_false(are_identical_trees_posteriors(posterior_1, posterior_4))
+  expect_false(are_identical_trees_posteriors(posterior_2, posterior_3))
+  expect_false(are_identical_trees_posteriors(posterior_2, posterior_4))
+  expect_false(are_identical_trees_posteriors(posterior_3, posterior_4))
 
 })
 
 
-test_that("are_identical_posteriors: use from local simulation", {
+test_that("are_identical_trees_posteriors: use from local simulation", {
 
-  base_filename <- "are_identical_posteriors"
+  base_filename <- "are_identical_trees_posteriors"
   beast_log_filename <- paste0(base_filename, ".log")
   beast_trees_filename <- paste0(base_filename, ".trees")
   beast_state_filename <- paste0(base_filename, ".xml.state")
@@ -86,15 +86,15 @@ test_that("are_identical_posteriors: use from local simulation", {
   expect_true(is_trees_posterior(posterior_1))
   expect_true(is_trees_posterior(posterior_2))
   expect_true(is_trees_posterior(posterior_3))
-  expect_true(are_identical_posteriors(posterior_1, posterior_1))
-  expect_true(are_identical_posteriors(posterior_1, posterior_2))
-  expect_true(are_identical_posteriors(posterior_2, posterior_2))
-  expect_true(are_identical_posteriors(posterior_3, posterior_3))
-  expect_false(are_identical_posteriors(posterior_1, posterior_3))
-  expect_false(are_identical_posteriors(posterior_2, posterior_3))
+  expect_true(are_identical_trees_posteriors(posterior_1, posterior_1))
+  expect_true(are_identical_trees_posteriors(posterior_1, posterior_2))
+  expect_true(are_identical_trees_posteriors(posterior_2, posterior_2))
+  expect_true(are_identical_trees_posteriors(posterior_3, posterior_3))
+  expect_false(are_identical_trees_posteriors(posterior_1, posterior_3))
+  expect_false(are_identical_trees_posteriors(posterior_2, posterior_3))
 })
 
-test_that("are_identical_posteriors: abuse", {
+test_that("are_identical_trees_posteriors: abuse", {
 
   filename <- find_path("toy_example_4.RDa")
   file <- read_file(filename)
@@ -104,28 +104,28 @@ test_that("are_identical_posteriors: abuse", {
   posterior_4 <- get_posterior_by_index(file, 4)
 
   expect_error(
-    are_identical_posteriors(
+    are_identical_trees_posteriors(
       p = NULL, q = NULL,
       verbose = "not TRUE nor FALSE"
     ),
-    "are_identical_posteriors: verbose should be TRUE or FALSE"
+    "are_identical_trees_posteriors: verbose should be TRUE or FALSE"
   )
   expect_error(
-    are_identical_posteriors(
+    are_identical_trees_posteriors(
       p = "not a BEAST2 posterior",
       q = posterior_2,
       verbose = FALSE
     ),
-    "are_identical_posteriors: p must be a BEAST2 posterior"
+    "are_identical_trees_posteriors: p must be a BEAST2 posterior"
   )
 
   expect_error(
-    are_identical_posteriors(
+    are_identical_trees_posteriors(
       p = posterior_1,
       q = "not a BEAST2 posterior",
       verbose = FALSE
     ),
-    "are_identical_posteriors: q must be a BEAST2 posterior"
+    "are_identical_trees_posteriors: q must be a BEAST2 posterior"
   )
 
 })

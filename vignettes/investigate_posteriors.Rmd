@@ -24,18 +24,18 @@ testit::assert(is_trees_posterior(posterior_3) == TRUE)
 testit::assert(is_trees_posterior(posterior_4) == TRUE)
 
 # All same posteriors are identical
-testit::assert(are_identical_posteriors(posterior_1, posterior_1) == TRUE)
-testit::assert(are_identical_posteriors(posterior_2, posterior_2) == TRUE)
-testit::assert(are_identical_posteriors(posterior_3, posterior_3) == TRUE)
-testit::assert(are_identical_posteriors(posterior_4, posterior_4) == TRUE)
+testit::assert(are_identical_trees_posteriors(posterior_1, posterior_1) == TRUE)
+testit::assert(are_identical_trees_posteriors(posterior_2, posterior_2) == TRUE)
+testit::assert(are_identical_trees_posteriors(posterior_3, posterior_3) == TRUE)
+testit::assert(are_identical_trees_posteriors(posterior_4, posterior_4) == TRUE)
 
 # All different posteriors are different
-testit::assert(are_identical_posteriors(posterior_1, posterior_2) == FALSE)
-testit::assert(are_identical_posteriors(posterior_1, posterior_3) == FALSE)
-testit::assert(are_identical_posteriors(posterior_1, posterior_4) == FALSE)
-testit::assert(are_identical_posteriors(posterior_2, posterior_3) == FALSE)
-testit::assert(are_identical_posteriors(posterior_2, posterior_4) == FALSE)
-testit::assert(are_identical_posteriors(posterior_3, posterior_4) == FALSE)
+testit::assert(are_identical_trees_posteriors(posterior_1, posterior_2) == FALSE)
+testit::assert(are_identical_trees_posteriors(posterior_1, posterior_3) == FALSE)
+testit::assert(are_identical_trees_posteriors(posterior_1, posterior_4) == FALSE)
+testit::assert(are_identical_trees_posteriors(posterior_2, posterior_3) == FALSE)
+testit::assert(are_identical_trees_posteriors(posterior_2, posterior_4) == FALSE)
+testit::assert(are_identical_trees_posteriors(posterior_3, posterior_4) == FALSE)
 ```
 
 ```{r}
