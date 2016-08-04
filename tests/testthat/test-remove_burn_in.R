@@ -22,6 +22,8 @@ test_that("remove_burn_in: use", {
 
 test_that("remove_burn_in: abuse", {
 
+  v <- seq(1, 10)
+
   expect_error(
     remove_burn_in(trace = v, burn_in = -0.1),
     "remove_burn_in: burn_in must be at least zero"

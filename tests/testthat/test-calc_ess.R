@@ -5,6 +5,7 @@ test_that("calc_ess: use", {
   estimates <- parse_beast_log(
     filename = find_path("beast2_example_output.log")
   )
+
   esses <- rep(NA, ncol(estimates))
   burn_in <- 0.1
   for (i in seq_along(estimates)) {

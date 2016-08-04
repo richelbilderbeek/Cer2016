@@ -18,8 +18,9 @@ calc_act <- function(trace, sample_interval) {
   # where array indices in R start at index one.
   # I kept as close to the Java code as possible, just adding
   # '+ 1' within index operators.
+  # I kept in the original comments as well
 
-  # A constant
+  # A constant I found in the original class
   max_lag <- 2000
 
   # sum of trace, excluding burn-in
@@ -64,9 +65,9 @@ calc_act <- function(trace, sample_interval) {
     }
   }
 
-  maxLag <- min(length(trace), max_lag)
+  max_lag <- min(length(trace), max_lag)
   integral_ac_times_two <- 0.0
-  for (lag_index in seq(0, maxLag - 1)) {
+  for (lag_index in seq(0, max_lag - 1)) {
     if (lag_index == 0) {
       integral_ac_times_two <- auto_correlation[0 + 1]
     } else if (lag_index %% 2 == 0) {
