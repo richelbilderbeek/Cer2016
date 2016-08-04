@@ -15,7 +15,7 @@ test_that("calc_ess: use", {
     trace <- remove_burn_in(trace = trace_raw, burn_in = 0.1)
 
     # Store the effectice sample size
-    esses[i] <- calc_ess(trace, sampleInterval = 1000)
+    esses[i] <- calc_ess(trace, sample_interval = 1000)
   }
 
   # Note that the first value of three is nonsense:
