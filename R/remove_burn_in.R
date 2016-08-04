@@ -15,8 +15,20 @@
 #'   testit::assert(w == seq(2, 10))
 #' @author Richel Bilderbeek
 remove_burn_in <- function(trace, burn_in) {
+  if (!is.numeric(trace)) {
+    stop("remove_burn_in: trace must be numeric")
+  }
+  if (burn_in < 0.0) {
+    stop("remove_burn_in: burn_in must be at least zero")
+  }
+  if (burn_in > 1.0) {
+    stop("remove_burn_in: burn_in must be at most one")
+  }
   n <- length(trace)
   first_index <- as.integer(1 + (n * burn_in))
+  if (first_index >= length(trace)) {
+    return(c())
+  }
   out <- trace[ seq(first_index, n) ]
   out
 }

@@ -24,3 +24,17 @@ test_that("calc_ess: use", {
   expected_esses <- c(3, 10, 10, 10, 10, 7, 10, 9, 6)
   expect_true(all(expected_esses - esses < 0.5))
 })
+
+test_that("calc_ess: abuse", {
+
+  expect_error(
+    calc_ess(trace = "not numeric", sample_interval = 1),
+    "calc_ess: trace must be numeric"
+  )
+
+  expect_error(
+    calc_ess(trace = seq(1, 10), sample_interval = 0),
+    "calc_ess: sample interval must be at least one"
+  )
+
+})

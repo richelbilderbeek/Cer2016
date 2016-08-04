@@ -2,7 +2,7 @@
 % Please edit documentation in R/calc_act.R
 \name{calc_act}
 \alias{calc_act}
-\title{Calculate the autocorrelation time}
+\title{Calculate the auto-correlation time}
 \usage{
 calc_act(trace, sample_interval)
 }
@@ -12,16 +12,16 @@ calc_act(trace, sample_interval)
 \item{sample_interval}{the interval in timesteps between samples}
 }
 \value{
-the autocorrelation time
+the auto_correlation time
 }
 \description{
-Calculate the autocorrelation time
+Calculate the auto-correlation time
 }
 \author{
 The original Java version of the algorithm was from Remco Bouckaert,
   ported to R and adapted by Richel Bilderbeek
 }
 \seealso{
-Java code can be found [here](https://github.com/CompEvol/beast2/blob/9f040ed0357c4b946ea276a481a4c654ad4fff36/src/beast/core/util/ESS.java#L161)
+Java code can be found here: \url{https://github.com/CompEvol/beast2/blob/9f040ed0357c4b946ea276a481a4c654ad4fff36/src/beast/core/util/ESS.java#L161}
 }
 
