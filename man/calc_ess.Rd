@@ -4,12 +4,12 @@
 \alias{calc_ess}
 \title{Calculates the Effective Sample Size}
 \usage{
-calc_ess(trace, sampleInterval)
+calc_ess(trace, sample_interval)
 }
 \arguments{
-\item{trace}{the values}
+\item{trace}{the values without burn-in}
 
-\item{sampleInterval}{the interval in timesteps between samples}
+\item{sample_interval}{the interval in timesteps between samples}
 }
 \value{
 the effective sample size

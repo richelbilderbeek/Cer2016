@@ -17,16 +17,36 @@ library(coda)
 ```
 
 ```{r}
-trace <- rnorm(100, 50, 10)
-class(trace)
-calc_ess(trace, sampleInterval = 1000)
-```
-
-
-```{r}
 estimates <- parse_beast_log(
   filename = find_path("beast2_example_output.log")
 )
+```
+
+Display the ESSes:
+
+```{r}
+esses <- rep(NA, ncol(estimates))
+burn_in <- 0.1
+for (i in seq_along(estimates)) {
+  # Trace with the burn-in still present
+  trace_raw <- as.numeric(t(estimates[i]))
+
+  # Trace with the burn-in removed
+  trace <- remove_burn_in(trace = trace_raw, burn_in = 0.1)
+
+  # Store the effectice sample size
+  esses[i] <- calc_ess(trace, sample_interval = 1000)
+}
+
+# Note that the first value of three is nonsense:
+# it is the index of the sample. I keep it in
+# for simplicity of writing this code
+expected_esses <- c(3, 10, 10, 10, 10, 7, 10, 9, 6)
+testit::assert(all(expected_esses - esses < 0.5))
+
+df_esses <- data.frame(esses)
+rownames(df_esses) <- names(estimates)
+knitr::kable(df_esses)
 ```
 
 I will melt these, to plot all at once:
@@ -43,85 +63,4 @@ ggplot2::ggplot(
   )
 ) + ggplot2::geom_line() +
   ggplot2::ggtitle("Parameter estimates")
-```
-
-Display the ESSes:
-
-```{r}
-# Get the ESSes of all columns except 'Samples'
-ess <- coda::effectiveSize(estimates[, 2:ncol(estimates)])
-knitr::kable(as.data.frame(ess))
-```
-
-Lets do this column by column:
-
-```{r}
-esses <- rep(NA, ncol(estimates))
-for (i in seq_along(estimates)) {
-  esses[i] <- coda::effectiveSize(estimates[i])
-}
-esses
-```
-
-```{r}
-esses <- rep(NA, ncol(estimates))
-
-for (i in seq_along(estimates)) {
-  # Estimates WithOut Burn-in
-  ewob <- as.numeric(t(estimates[i]))
-  
-  n <- length(ewob)
-  first_index <- as.integer(1 + (n / 10))
-  testit::assert(first_index >= 2)
-  # Estimates With Burn-in
-  ewb <- ewob[ seq(first_index, n) ]
-  testit::assert(length(ewb) < length(ewob))
-  esses[i] <- calc_ess(ewb, sampleInterval = 1000)
-}
-esses
-```
-
-Hmm, this appears to be the same.
-
-Yes, ESS equals the sample size, because the sample size is small.
-
-## Test it myself
-
-Example without autocorrelation: 
-
-```{r}
-# Set the random number generator seed for exact reproducible results
-set.seed(42)
-
-# Create a dataset with values drawn independently from a normal distribution
-mean <- 10.0
-sd <- 5.0
-sample_size <- 100
-dataset <- rnorm(n = sample_size, mean = mean, sd = sd)
-ess <- coda::effectiveSize(dataset)
-
-# There is no autocorrelation, 
-# thus the expected Effective Sample Size is the sample size
-expected_ess <- sample_size 
-
-# Expectation should match the measurement
-testit::assert(abs(ess - expected_ess) < 0.01)
-
-# Show the results in a table
-results <- data.frame(measured = ess, expected = expected_ess, row.names = "ESS")
-knitr::kable(results)
-```
-
-Example without autocorrelation:
-
-```{r}
-# Create a dataset with autocorrelated values
-sample_size <- 1000
-dataset <- filter(rnorm(sample_size), filter = rep(1,3), circular = TRUE)
-
-# Measure the Effective Sample Size
-ess <- coda::effectiveSize(dataset)
-
-# ESS should be less than the actual sample size
-testit::assert(ess < 0.5 * sample_size)
 ```
