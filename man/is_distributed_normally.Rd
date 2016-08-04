@@ -14,7 +14,8 @@ is_distributed_normally(values, p_value = 0.05)
 }
 \value{
 TRUE when it cannot be rejected that the distribution is normal,
-   or FALSE when it can be rejected that the distribution is normal
+   FALSE when it can be rejected that the distribution is normal,
+   NA when all values have been identical
 }
 \description{
 Sees if the values of a distribution are normally distributed
@@ -31,7 +32,7 @@ Sees if the values of a distribution are normally distributed
 
    # Create a disribution of one value only
    r <- rep(x = 42, times = 100)
-   testit::assert(is.na(is_distributed_normally(nnd)))
+   testit::assert(is.na(is_distributed_normally(r)))
 
 }
 \author{
