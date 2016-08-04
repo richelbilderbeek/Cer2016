@@ -54,8 +54,8 @@ Add BEAST2 posteriors to a file
   testit::assert(n_posteriors_added == 2)
   p1 <- get_posterior(file = read_file(filename), sti = 1, ai = 1, pi = 1)
   p2 <- get_posterior(file = read_file(filename), sti = 2, ai = 1, pi = 1)
-  testit::assert(is_posterior(p1))
-  testit::assert(is_posterior(p2))
+  testit::assert(is_trees_posterior(p1))
+  testit::assert(is_trees_posterior(p2))
 
   # Clean up
   file.remove(filename)

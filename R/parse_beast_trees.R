@@ -6,7 +6,7 @@
 #'   posterior <- parse_beast_trees(
 #'     find_path("beast2_example_output.trees")
 #'   )
-#'   testit::assert(is_posterior(posterior))
+#'   testit::assert(is_trees_posterior(posterior))
 #' @author Richel Bilderbeek
 parse_beast_trees <- function(filename) {
   if (!file.exists(filename)) {

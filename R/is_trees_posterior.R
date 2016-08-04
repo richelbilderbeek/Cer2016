@@ -5,13 +5,13 @@
 #' @return TRUE or FALSE
 #' @author Richel Bilderbeek
 #' @export
-is_posterior <- function(
+is_trees_posterior <- function(
   x,
   verbose = FALSE
 ) {
   if (verbose != TRUE && verbose != FALSE) {
     stop(
-      "is_posterior: ",
+      "is_trees_posterior: ",
       "verbose should be TRUE or FALSE"
     )
   }

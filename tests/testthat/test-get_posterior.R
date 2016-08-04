@@ -4,8 +4,8 @@ test_that("get_posterior: #1", {
   file <- read_file(find_path("toy_example_1.RDa"))
   posterior_1 <- get_posterior(file = file, sti = 1, ai = 1, pi = 1)
   posterior_2 <- get_posterior(file = file, sti = 2, ai = 1, pi = 1)
-  expect_true(is_posterior(posterior_1))
-  expect_true(is_posterior(posterior_2))
+  expect_true(is_trees_posterior(posterior_1))
+  expect_true(is_trees_posterior(posterior_2))
 })
 
 test_that("get_posterior: #4", {
@@ -18,14 +18,14 @@ test_that("get_posterior: #4", {
   posterior_6 <- get_posterior(file = file, sti = 2, ai = 1, pi = 2)
   posterior_7 <- get_posterior(file = file, sti = 2, ai = 2, pi = 1)
   posterior_8 <- get_posterior(file = file, sti = 2, ai = 2, pi = 2)
-  expect_true(is_posterior(posterior_1))
-  expect_true(is_posterior(posterior_2))
-  expect_true(is_posterior(posterior_3))
-  expect_true(is_posterior(posterior_4))
-  expect_true(is_posterior(posterior_5))
-  expect_true(is_posterior(posterior_6))
-  expect_true(is_posterior(posterior_7))
-  expect_true(is_posterior(posterior_8))
+  expect_true(is_trees_posterior(posterior_1))
+  expect_true(is_trees_posterior(posterior_2))
+  expect_true(is_trees_posterior(posterior_3))
+  expect_true(is_trees_posterior(posterior_4))
+  expect_true(is_trees_posterior(posterior_5))
+  expect_true(is_trees_posterior(posterior_6))
+  expect_true(is_trees_posterior(posterior_7))
+  expect_true(is_trees_posterior(posterior_8))
 })
 
 test_that("set_posterior: #4", {
@@ -108,7 +108,7 @@ test_that("get_posterior from fresh file", {
   posterior <- parse_beast_trees(
     find_path(filename = "beast2_example_output.trees")
   )
-  expect_true(is_posterior(posterior))
+  expect_true(is_trees_posterior(posterior))
 
   file <- set_posterior(
     file = file, sti = 2, ai = napst, pi = nppa,

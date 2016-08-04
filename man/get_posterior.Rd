@@ -37,7 +37,7 @@ Extract a BEAST2 posterior from a file
   # Extract the posterior
   posterior <- get_posterior(file = file, sti = sti, ai = 1, pi = 1)
   # Check that it is indeed a posterior of non-zero length
-  testit::assert(is_posterior(posterior))
+  testit::assert(is_trees_posterior(posterior))
   testit::assert(length(posterior) > 0)
 }
 \author{

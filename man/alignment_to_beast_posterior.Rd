@@ -60,7 +60,7 @@ Convert an alignment to a BEAST2 XML input file
   )
 
   # Check the posterior
-  testit::assert(is_posterior(posterior))
+  testit::assert(is_trees_posterior(posterior))
   expected_names <- paste0("STATE_", seq(from = 1000, to = 10000, by = 1000))
   testit::assert(names(posterior) == expected_names)
   testit::assert(is_phylogeny(posterior$STATE_1000))

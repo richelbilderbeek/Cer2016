@@ -4,14 +4,14 @@ test_that("get_posterior_by_index: #1", {
   file <- read_file(find_path("toy_example_1.RDa"))
   i <- 1
   posterior <- get_posterior_by_index(file, i)
-  expect_true(is_posterior(posterior))
+  expect_true(is_trees_posterior(posterior))
 })
 
 test_that("get_posterior_by_index: #4", {
   file <- read_file(find_path("toy_example_4.RDa"))
   i <- 4
   posterior <- get_posterior_by_index(file, i)
-  expect_true(is_posterior(posterior))
+  expect_true(is_trees_posterior(posterior))
   expect_true(
     are_identical_posteriors(
       posterior,
@@ -26,10 +26,10 @@ test_that("set_posterior_by_index: #4", {
   posterior_2 <- get_posterior_by_index(file, 2)
   posterior_3 <- get_posterior_by_index(file, 3)
   posterior_4 <- get_posterior_by_index(file, 4)
-  expect_true(is_posterior(posterior_1))
-  expect_true(is_posterior(posterior_2))
-  expect_true(is_posterior(posterior_3))
-  expect_true(is_posterior(posterior_4))
+  expect_true(is_trees_posterior(posterior_1))
+  expect_true(is_trees_posterior(posterior_2))
+  expect_true(is_trees_posterior(posterior_3))
+  expect_true(is_trees_posterior(posterior_4))
 
   # All same posteriors are identical
   expect_true(are_identical_posteriors(posterior_1, posterior_1))
@@ -105,7 +105,7 @@ test_that("get_posterior_by_index from fresh file", {
   posterior <- parse_beast_trees(
     find_path(filename = "beast2_example_output.trees")
   )
-  expect_true(is_posterior(posterior))
+  expect_true(is_trees_posterior(posterior))
 
   file <- set_posterior_by_index(
     file = file,

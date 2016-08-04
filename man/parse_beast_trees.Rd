@@ -19,7 +19,7 @@ Parses a BEAST2 .trees output file
   posterior <- parse_beast_trees(
     find_path("beast2_example_output.trees")
   )
-  testit::assert(is_posterior(posterior))
+  testit::assert(is_trees_posterior(posterior))
 }
 \author{
 Richel Bilderbeek

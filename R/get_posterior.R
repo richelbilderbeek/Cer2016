@@ -14,7 +14,7 @@ get_posterior_by_index <- function(file, i) {
     stop("get_posterior_by_index: index must be less than number of posteriors")
   }
   posterior <- file$posteriors[[i]][[1]]
-  if (!Cer2016::is_posterior(posterior)) {
+  if (!Cer2016::is_trees_posterior(posterior)) {
     # The posterior may not be added yet
     stop(
       "get_posterior_by_index: posterior absent at index ",
@@ -47,7 +47,7 @@ get_posterior_by_index <- function(file, i) {
 #'   # Extract the posterior
 #'   posterior <- get_posterior(file = file, sti = sti, ai = 1, pi = 1)
 #'   # Check that it is indeed a posterior of non-zero length
-#'   testit::assert(is_posterior(posterior))
+#'   testit::assert(is_trees_posterior(posterior))
 #'   testit::assert(length(posterior) > 0)
 #' @author Richel Bilderbeek
 get_posterior <- function(
