@@ -23,10 +23,6 @@ calc_nltt_stats_from_files <- function(filenames) {
     }
   }
 
-  # Disable current scientific notation
-  # old_scipen <- getOption("scipen")
-  # options(scipen = 999)
-
   # Calculate the number of rows needed
   n_rows <- 0
   for (filename in filenames) {
@@ -78,9 +74,6 @@ calc_nltt_stats_from_files <- function(filenames) {
   df$ai <- as.factor(df$ai)
   df$pi <- as.factor(df$pi)
   df$si <- as.factor(df$si)
-
-  # Restore original scientific notation
-  # options(scipen = old_scipen)
 
   df
 
