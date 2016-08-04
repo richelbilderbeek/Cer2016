@@ -4,8 +4,8 @@ test_that("get_posterior: #1", {
   file <- read_file(find_path("toy_example_1.RDa"))
   posterior_1 <- get_posterior(file = file, sti = 1, ai = 1, pi = 1)
   posterior_2 <- get_posterior(file = file, sti = 2, ai = 1, pi = 1)
-  expect_true(is_trees_posterior(posterior_1))
-  expect_true(is_trees_posterior(posterior_2))
+  expect_true(is_posterior(posterior_1))
+  expect_true(is_posterior(posterior_2))
 })
 
 test_that("get_posterior: #4", {
@@ -18,14 +18,14 @@ test_that("get_posterior: #4", {
   posterior_6 <- get_posterior(file = file, sti = 2, ai = 1, pi = 2)
   posterior_7 <- get_posterior(file = file, sti = 2, ai = 2, pi = 1)
   posterior_8 <- get_posterior(file = file, sti = 2, ai = 2, pi = 2)
-  expect_true(is_trees_posterior(posterior_1))
-  expect_true(is_trees_posterior(posterior_2))
-  expect_true(is_trees_posterior(posterior_3))
-  expect_true(is_trees_posterior(posterior_4))
-  expect_true(is_trees_posterior(posterior_5))
-  expect_true(is_trees_posterior(posterior_6))
-  expect_true(is_trees_posterior(posterior_7))
-  expect_true(is_trees_posterior(posterior_8))
+  expect_true(is_posterior(posterior_1))
+  expect_true(is_posterior(posterior_2))
+  expect_true(is_posterior(posterior_3))
+  expect_true(is_posterior(posterior_4))
+  expect_true(is_posterior(posterior_5))
+  expect_true(is_posterior(posterior_6))
+  expect_true(is_posterior(posterior_7))
+  expect_true(is_posterior(posterior_8))
 })
 
 test_that("set_posterior: #4", {
@@ -37,23 +37,23 @@ test_that("set_posterior: #4", {
   posterior_4 <- get_posterior(file = file, sti = 1, ai = 2, pi = 2)
 
   # All same posteriors are identical
-  expect_true(are_identical_trees_posteriors(posterior_1, posterior_1))
-  expect_true(are_identical_trees_posteriors(posterior_2, posterior_2))
-  expect_true(are_identical_trees_posteriors(posterior_3, posterior_3))
-  expect_true(are_identical_trees_posteriors(posterior_4, posterior_4))
+  expect_true(are_identical_posteriors(posterior_1, posterior_1))
+  expect_true(are_identical_posteriors(posterior_2, posterior_2))
+  expect_true(are_identical_posteriors(posterior_3, posterior_3))
+  expect_true(are_identical_posteriors(posterior_4, posterior_4))
 
   # All different posteriors are different
-  expect_false(are_identical_trees_posteriors(posterior_1, posterior_2))
-  expect_false(are_identical_trees_posteriors(posterior_1, posterior_3))
-  expect_false(are_identical_trees_posteriors(posterior_1, posterior_4))
-  expect_false(are_identical_trees_posteriors(posterior_2, posterior_3))
-  expect_false(are_identical_trees_posteriors(posterior_2, posterior_4))
-  expect_false(are_identical_trees_posteriors(posterior_3, posterior_4))
+  expect_false(are_identical_posteriors(posterior_1, posterior_2))
+  expect_false(are_identical_posteriors(posterior_1, posterior_3))
+  expect_false(are_identical_posteriors(posterior_1, posterior_4))
+  expect_false(are_identical_posteriors(posterior_2, posterior_3))
+  expect_false(are_identical_posteriors(posterior_2, posterior_4))
+  expect_false(are_identical_posteriors(posterior_3, posterior_4))
 
   # Copy #1 over #2
   file <- set_posterior(file, sti = 1, ai = 1, pi = 2, posterior_1)
   expect_true(
-    are_identical_trees_posteriors(
+    are_identical_posteriors(
       get_posterior(file, sti = 1, ai = 1, pi = 1),
       get_posterior(file, sti = 1, ai = 1, pi = 2)
     )
@@ -62,7 +62,7 @@ test_that("set_posterior: #4", {
   # Copy #3 over #4
   file <- set_posterior(file, sti = 1, ai = 2, pi = 2, posterior_3)
   expect_true(
-    are_identical_trees_posteriors(
+    are_identical_posteriors(
       get_posterior(file, sti = 1, ai = 2, pi = 1),
       get_posterior(file, sti = 1, ai = 2, pi = 2)
     )
@@ -105,10 +105,11 @@ test_that("get_posterior from fresh file", {
   )
 
   # Getting a posterior
-  posterior <- parse_beast_trees(
-    find_path(filename = "beast2_example_output.trees")
+  posterior <- parse_beast_posterior(
+    trees_filename = find_path(filename = "beast2_example_output.trees"),
+    log_filename   = find_path(filename = "beast2_example_output.log")
   )
-  expect_true(is_trees_posterior(posterior))
+  expect_true(is_posterior(posterior))
 
   file <- set_posterior(
     file = file, sti = 2, ai = napst, pi = nppa,
@@ -121,7 +122,7 @@ test_that("get_posterior from fresh file", {
   )
 
   expect_true(
-    are_identical_trees_posteriors(
+    are_identical_posteriors(
       posterior, posterior_again
     )
   )

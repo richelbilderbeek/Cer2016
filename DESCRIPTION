@@ -42,6 +42,7 @@ Suggests:
   lintr,
   lubridate,
   plyr,
+  reshape2,
   rmarkdown,
   stringr,
   testit,

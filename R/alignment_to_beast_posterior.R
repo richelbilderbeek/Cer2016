@@ -38,10 +38,8 @@
 #'   )
 #'
 #'   # Check the posterior
-#'   testit::assert(is_trees_posterior(posterior))
-#'   expected_names <- paste0("STATE_", seq(from = 1000, to = 10000, by = 1000))
-#'   testit::assert(names(posterior) == expected_names)
-#'   testit::assert(is_phylogeny(posterior$STATE_1000))
+#'   testit::assert(is_posterior(posterior))
+#'   testit::assert(is_trees_posterior(posterior$trees))
 #'
 #' @export
 #' @author Richel Bilderbeek
@@ -202,15 +200,16 @@ alignment_to_beast_posterior <- function(
       "file '", beast_state_filename, "' should have been created"
     )
   }
-  posterior <- Cer2016::parse_beast_trees(beast_trees_filename)
+  trees_posterior <- Cer2016::parse_beast_trees(beast_trees_filename)
+  estimates_posterior <- Cer2016::parse_beast_log(beast_log_filename)
 
   file.remove(beast_filename)
   file.remove(beast_trees_filename)
   file.remove(beast_log_filename)
   file.remove(beast_state_filename)
 
-  if (!Cer2016::is_trees_posterior(x = posterior)) {
-    Cer2016::is_trees_posterior(x = posterior, verbose = TRUE)
+  if (!Cer2016::is_trees_posterior(x = trees_posterior)) {
+    Cer2016::is_trees_posterior(x = trees_posterior, verbose = TRUE)
     cat(stderr(),
       file = "testthat.log", append = TRUE
     )
@@ -219,6 +218,13 @@ alignment_to_beast_posterior <- function(
       "no posterior created"
     )
   }
-  testit::assert(Cer2016::is_trees_posterior(posterior))
+  posterior <- list(
+    trees = trees_posterior,
+    estimates = estimates_posterior
+  )
+
+  testit::assert(Cer2016::is_posterior(posterior))
+  testit::assert(Cer2016::is_trees_posterior(trees_posterior))
+
   return(posterior)
 }

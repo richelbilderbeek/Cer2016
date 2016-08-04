@@ -31,7 +31,7 @@ collect_posterior_gammas <- function(filename) {
   for (sti in 1:2) {
     for (j in seq(1, n_alignments)) {
       for (k in seq(1, n_beast_runs)) {
-        phylogenies <- Cer2016::get_posteriors(file)[[index]][[1]]
+        phylogenies <- Cer2016::get_posteriors(file)[[index]][[1]]$trees
         gamma_statistics <- Cer2016::collect_gamma_statistics(phylogenies)
 
         # Remove id column

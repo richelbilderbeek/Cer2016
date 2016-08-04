@@ -84,9 +84,9 @@ collect_file_nrbss <- function(
     st <- Cer2016::get_species_tree_by_index(file = file, sti = sti)
     testit::assert(class(st) == "phylo")
     testit::assert(si >= 1)
-    testit::assert(si <= length(get_posterior(file, sti = sti, ai = ai, pi = pi))) # nolint
+    testit::assert(si <= length(get_posterior(file, sti = sti, ai = ai, pi = pi)$trees)) # nolint
     # pt: posterior state tree, of type phylo
-    pt <- Cer2016::get_posterior(file, sti = sti, ai = ai, pi = pi)[[si]]
+    pt <- Cer2016::get_posterior(file, sti = sti, ai = ai, pi = pi)$trees[[si]]
     testit::assert(class(pt) == "phylo")
     testit::assert(length(st$tip.label) == length(pt$tip.label))
     testit::assert(all.equal(sort(st$tip.label), sort(pt$tip.label)))

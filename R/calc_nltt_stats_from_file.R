@@ -54,12 +54,13 @@ calc_nltt_stats_from_file <- function(filename) {
         )
         # If no posterior, then this will be the nLTT statistic
         nltt_stats <- data.frame(id = 1, nltt_stat = NA)
+        posterior_trees <- posterior$trees
 
         # If possible, extract the nLTT statistics
-        if (length(posterior) >= 1 && !is.na(posterior)) {
+        if (length(posterior_trees) >= 1 && !is.na(posterior_trees)) {
           nltt_stats <- Cer2016::calc_nltt_stats(
             phylogeny = focal_phylogeny,
-            others = posterior
+            others = posterior_trees
           )
           testit::assert(nspp == length(nltt_stats$nltt_stat))
           testit::assert(length(nltt_stats$nltt_stat) == nrow(nltt_stats))

@@ -54,7 +54,7 @@ set_posterior <- function(
   if (pi > nppa) {
     stop("set_posterior: pi must at most be nppa")
   }
-  if (!is_trees_posterior(posterior)) {
+  if (!is_posterior(posterior)) {
     stop("set_posterior: posterior must be a posterior")
   }
   nstpist <- 2 # Number species trees per incipient species tree

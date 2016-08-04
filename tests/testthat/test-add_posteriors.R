@@ -56,8 +56,8 @@ test_that("add_posteriors: two posteriors are added", {
     file = read_file(filename),
     i = 2
   )
-  expect_true(is_trees_posterior(posterior_1))
-  expect_true(is_trees_posterior(posterior_2))
+  expect_true(is_posterior(posterior_1))
+  expect_true(is_posterior(posterior_2))
 
   # Cleaning up
   # Post clean
@@ -138,10 +138,10 @@ test_that("four posteriors are added", {
     file = read_file(filename),
     i = 4
   )
-  expect_true(is_trees_posterior(posterior_1))
-  expect_true(is_trees_posterior(posterior_2))
-  expect_true(is_trees_posterior(posterior_3))
-  expect_true(is_trees_posterior(posterior_4))
+  expect_true(is_posterior(posterior_1))
+  expect_true(is_posterior(posterior_2))
+  expect_true(is_posterior(posterior_3))
+  expect_true(is_posterior(posterior_4))
 
   file.remove(filename)
 
@@ -156,6 +156,12 @@ test_that("three posteriors are added, middle is deleted and added again", {
   }
 
   filename <- "test-add_posteriors_3.RDa"
+
+  # Pre clean
+  if (file.exists(filename)) {
+    file.remove(filename)
+  }
+
   expect_false(file.exists(filename))
 
   save_parameters_to_file(
@@ -199,7 +205,6 @@ test_that("three posteriors are added, middle is deleted and added again", {
     "get_posterior_by_index: posterior absent at index 3"
   )
 
-  # Only be verbose on Travis
   n_posteriors_added <- add_posteriors(
     filename = filename,
     skip_if_output_present = FALSE,
@@ -221,9 +226,9 @@ test_that("three posteriors are added, middle is deleted and added again", {
     i = 3
   )
 
-  expect_true(is_trees_posterior(posterior_1))
-  expect_true(is_trees_posterior(posterior_2))
-  expect_true(is_trees_posterior(posterior_3))
+  expect_true(is_posterior(posterior_1))
+  expect_true(is_posterior(posterior_2))
+  expect_true(is_posterior(posterior_3))
 
   # Delete middle
   file <- read_file(filename)
@@ -257,8 +262,7 @@ test_that("three posteriors are added, middle is deleted and added again", {
   # Add middle again
   n_posteriors_added <- add_posteriors(
     filename = filename,
-    skip_if_output_present = FALSE,
-    verbose = (regexpr("travis", getwd())[1] > 0)
+    skip_if_output_present = FALSE
   )
 
   expect_equal(n_posteriors_added, 1)

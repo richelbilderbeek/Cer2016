@@ -24,7 +24,7 @@ collect_posterior_nltts <- function(
   for (sti in 1:2) {
     for (j in seq(1, n_alignments)) {
       for (k in seq(1, n_beast_runs)) {
-        phylogenies <- Cer2016::get_posteriors(file)[[index]][[1]]
+        phylogenies <- Cer2016::get_posteriors(file)[[index]][[1]]$trees
         nltt_values <- nLTT::get_nltt_values(phylogenies, dt = dt)
 
         n_nltt_values <- nrow(nltt_values)

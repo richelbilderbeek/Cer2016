@@ -272,7 +272,7 @@ In this case, I choose a random state to zoom in on.
 From this last state, I show the tree only:
 
 ```{r}
-plot_posterior_samples(filename)
+# plot_posterior_samples(filename)
 ```
 
 This random tree may be very different by chance, 

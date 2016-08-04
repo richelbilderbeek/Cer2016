@@ -7,24 +7,24 @@ test_that("are_identical_trees_posteriors: use from file", {
   posterior_2 <- get_posterior_by_index(file, 2)
   posterior_3 <- get_posterior_by_index(file, 3)
   posterior_4 <- get_posterior_by_index(file, 4)
-  expect_true(is_trees_posterior(posterior_1))
-  expect_true(is_trees_posterior(posterior_2))
-  expect_true(is_trees_posterior(posterior_3))
-  expect_true(is_trees_posterior(posterior_4))
+  expect_true(is_trees_posterior(posterior_1$trees))
+  expect_true(is_trees_posterior(posterior_2$trees))
+  expect_true(is_trees_posterior(posterior_3$trees))
+  expect_true(is_trees_posterior(posterior_4$trees))
 
   # All same posteriors are identical
-  expect_true(are_identical_trees_posteriors(posterior_1, posterior_1))
-  expect_true(are_identical_trees_posteriors(posterior_2, posterior_2))
-  expect_true(are_identical_trees_posteriors(posterior_3, posterior_3))
-  expect_true(are_identical_trees_posteriors(posterior_4, posterior_4))
+  expect_true(are_identical_trees_posteriors(posterior_1$trees, posterior_1$trees))
+  expect_true(are_identical_trees_posteriors(posterior_2$trees, posterior_2$trees))
+  expect_true(are_identical_trees_posteriors(posterior_3$trees, posterior_3$trees))
+  expect_true(are_identical_trees_posteriors(posterior_4$trees, posterior_4$trees))
 
   # All different posteriors are different
-  expect_false(are_identical_trees_posteriors(posterior_1, posterior_2))
-  expect_false(are_identical_trees_posteriors(posterior_1, posterior_3))
-  expect_false(are_identical_trees_posteriors(posterior_1, posterior_4))
-  expect_false(are_identical_trees_posteriors(posterior_2, posterior_3))
-  expect_false(are_identical_trees_posteriors(posterior_2, posterior_4))
-  expect_false(are_identical_trees_posteriors(posterior_3, posterior_4))
+  expect_false(are_identical_trees_posteriors(posterior_1$trees, posterior_2$trees))
+  expect_false(are_identical_trees_posteriors(posterior_1$trees, posterior_3$trees))
+  expect_false(are_identical_trees_posteriors(posterior_1$trees, posterior_4$trees))
+  expect_false(are_identical_trees_posteriors(posterior_2$trees, posterior_3$trees))
+  expect_false(are_identical_trees_posteriors(posterior_2$trees, posterior_4$trees))
+  expect_false(are_identical_trees_posteriors(posterior_3$trees, posterior_4$trees))
 
 })
 
@@ -83,25 +83,25 @@ test_that("are_identical_trees_posteriors: use from local simulation", {
     verbose = FALSE
   )
 
-  expect_true(is_trees_posterior(posterior_1))
-  expect_true(is_trees_posterior(posterior_2))
-  expect_true(is_trees_posterior(posterior_3))
-  expect_true(are_identical_trees_posteriors(posterior_1, posterior_1))
-  expect_true(are_identical_trees_posteriors(posterior_1, posterior_2))
-  expect_true(are_identical_trees_posteriors(posterior_2, posterior_2))
-  expect_true(are_identical_trees_posteriors(posterior_3, posterior_3))
-  expect_false(are_identical_trees_posteriors(posterior_1, posterior_3))
-  expect_false(are_identical_trees_posteriors(posterior_2, posterior_3))
+  expect_true(is_trees_posterior(posterior_1$trees))
+  expect_true(is_trees_posterior(posterior_2$trees))
+  expect_true(is_trees_posterior(posterior_3$trees))
+  expect_true(are_identical_trees_posteriors(posterior_1$trees, posterior_1$trees))
+  expect_true(are_identical_trees_posteriors(posterior_1$trees, posterior_2$trees))
+  expect_true(are_identical_trees_posteriors(posterior_2$trees, posterior_2$trees))
+  expect_true(are_identical_trees_posteriors(posterior_3$trees, posterior_3$trees))
+  expect_false(are_identical_trees_posteriors(posterior_1$trees, posterior_3$trees))
+  expect_false(are_identical_trees_posteriors(posterior_2$trees, posterior_3$trees))
 })
 
 test_that("are_identical_trees_posteriors: abuse", {
 
   filename <- find_path("toy_example_4.RDa")
   file <- read_file(filename)
-  posterior_1 <- get_posterior_by_index(file, 1)
-  posterior_2 <- get_posterior_by_index(file, 2)
-  posterior_3 <- get_posterior_by_index(file, 3)
-  posterior_4 <- get_posterior_by_index(file, 4)
+  posterior_1 <- get_posterior_by_index(file, 1)$trees
+  posterior_2 <- get_posterior_by_index(file, 2)$trees
+  posterior_3 <- get_posterior_by_index(file, 3)$trees
+  posterior_4 <- get_posterior_by_index(file, 4)$trees
 
   expect_error(
     are_identical_trees_posteriors(
