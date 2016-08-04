@@ -20,8 +20,8 @@ parse_beast_posterior <- function(trees_filename, log_filename) {
     stop("parse_beast_posterior: log_filename absent")
   }
 
-  posterior_trees <- parse_beast_trees(trees_filename)
-  posterior_estimates <- parse_beast_log(log_filename)
+  posterior_trees <- Cer2016::parse_beast_trees(trees_filename)
+  posterior_estimates <- Cer2016::parse_beast_log(log_filename)
 
   posterior <- list(
     trees = posterior_trees,

@@ -10,9 +10,16 @@ vignette: >
 ---
 
 
+
 ```{r}
 library(Cer2016)
 library(coda)
+```
+
+```{r}
+trace <- rnorm(100, 50, 10)
+class(trace)
+calc_ess(trace, sampleInterval = 1000)
 ```
 
 
@@ -51,9 +58,25 @@ Lets do this column by column:
 ```{r}
 esses <- rep(NA, ncol(estimates))
 for (i in seq_along(estimates)) {
-  print(estimates[i])
   esses[i] <- coda::effectiveSize(estimates[i])
-  print(esses[i])
+}
+esses
+```
+
+```{r}
+esses <- rep(NA, ncol(estimates))
+
+for (i in seq_along(estimates)) {
+  # Estimates WithOut Burn-in
+  ewob <- as.numeric(t(estimates[i]))
+  
+  n <- length(ewob)
+  first_index <- as.integer(1 + (n / 10))
+  testit::assert(first_index >= 2)
+  # Estimates With Burn-in
+  ewb <- ewob[ seq(first_index, n) ]
+  testit::assert(length(ewb) < length(ewob))
+  esses[i] <- calc_ess(ewb, sampleInterval = 1000)
 }
 esses
 ```
