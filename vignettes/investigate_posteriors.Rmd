@@ -14,10 +14,10 @@ library(Cer2016)
 options(warn = 2)
 filename <- find_path("toy_example_4.RDa")
 file <- read_file(filename)
-posterior_1 <- get_posterior_by_index(file, 1)
-posterior_2 <- get_posterior_by_index(file, 2)
-posterior_3 <- get_posterior_by_index(file, 3)
-posterior_4 <- get_posterior_by_index(file, 4)
+posterior_1 <- get_posterior_by_index(file, 1)$trees
+posterior_2 <- get_posterior_by_index(file, 2)$trees
+posterior_3 <- get_posterior_by_index(file, 3)$trees
+posterior_4 <- get_posterior_by_index(file, 4)$trees
 testit::assert(is_trees_posterior(posterior_1) == TRUE)
 testit::assert(is_trees_posterior(posterior_2) == TRUE)
 testit::assert(is_trees_posterior(posterior_3) == TRUE)

@@ -74,20 +74,20 @@ posterior <- alignment_to_beast_posterior(
 )
 ```
 
-## Plot this posterior
+## Plot this posterior its trees
 
 Here the posterior phylogenies are plotted:
 
 ```{r warning = FALSE}
 # To get the densiTree function working, phylogenies must be of class multiphylo
-class(posterior) <- "multiPhylo"
+class(posterior$trees) <- "multiPhylo"
 ```
 
 Displaying:
 
 ```{r fig.width = 7, fig.height = 7}
 densiTree(
-  posterior, 
+  posterior$trees, 
   type = "cladogram",
   alpha = 1
 )

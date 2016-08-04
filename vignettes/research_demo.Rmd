@@ -197,10 +197,10 @@ ggplot2::ggplot(
 
 
 ```{r fig.width = 7, fig.height = 7}
-phylogenies_11 <- Cer2016::get_posterior(file = read_file(filenames[1]), sti = 1, ai = 1, pi = 1)
-phylogenies_12 <- Cer2016::get_posterior(file = read_file(filenames[1]), sti = 2, ai = 1, pi = 1)
-phylogenies_21 <- Cer2016::get_posterior(file = read_file(filenames[2]), sti = 1, ai = 1, pi = 1)
-phylogenies_22 <- Cer2016::get_posterior(file = read_file(filenames[2]), sti = 2, ai = 1, pi = 1)
+phylogenies_11 <- Cer2016::get_posterior(file = read_file(filenames[1]), sti = 1, ai = 1, pi = 1)$trees
+phylogenies_12 <- Cer2016::get_posterior(file = read_file(filenames[1]), sti = 2, ai = 1, pi = 1)$trees
+phylogenies_21 <- Cer2016::get_posterior(file = read_file(filenames[2]), sti = 1, ai = 1, pi = 1)$trees
+phylogenies_22 <- Cer2016::get_posterior(file = read_file(filenames[2]), sti = 2, ai = 1, pi = 1)$trees
 
 class(phylogenies_11) <- "multiPhylo"
 class(phylogenies_12) <- "multiPhylo"
