@@ -12,7 +12,7 @@ calc_esses <- function(traces, sample_interval) {
     stop("calc_esses: sample interval must be at least one")
   }
 
-  esses <- rep(NA, ncol(estimates))
+  esses <- rep(NA, ncol(traces))
 
   for (i in seq_along(estimates)) {
     trace <- as.numeric(t(estimates[i]))
