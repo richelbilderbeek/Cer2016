@@ -9,9 +9,16 @@
 #'   testit::assert(is_trees_posterior(posterior))
 #' @author Richel Bilderbeek
 parse_beast_trees <- function(filename) {
+
   if (!file.exists(filename)) {
     stop("parse_beast_trees: file absent")
   }
+
   posterior <- rBEAST::beast2out.read.trees(filename)
+
+  if (length(posterior) == 1 && is.na(posterior)) {
+    stop("parse_beast_trees: invalid file")
+  }
+
   posterior
 }
