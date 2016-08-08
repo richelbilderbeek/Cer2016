@@ -7,13 +7,13 @@ test_that("calc_ess: use", {
   )
 
   esses <- rep(NA, ncol(estimates))
-  burn_in <- 0.1
+  burn_in_fraction <- 0.1
   for (i in seq_along(estimates)) {
     # Trace with the burn-in still present
     trace_raw <- as.numeric(t(estimates[i]))
 
     # Trace with the burn-in removed
-    trace <- remove_burn_in(trace = trace_raw, burn_in = 0.1)
+    trace <- remove_burn_in(trace = trace_raw, burn_in_fraction = 0.1)
 
     # Store the effectice sample size
     esses[i] <- calc_ess(trace, sample_interval = 1000)

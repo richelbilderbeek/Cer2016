@@ -4,6 +4,13 @@ test_that("do_test_simulations: create exact replicate", {
 
   filenames_1 <- paste0("do_test_simulations_1_", seq(1, 4), ".RDa")
   filenames_2 <- paste0("do_test_simulations_2_", seq(1, 4), ".RDa")
+
+  for (filename in c(filenames_1, filenames_2)) {
+    if (file.exists(filename)) {
+      file.remove(filename)
+    }
+  }
+
   do_test_simulations(filenames = filenames_1)
   do_test_simulations(filenames = filenames_2)
 
@@ -13,6 +20,8 @@ test_that("do_test_simulations: create exact replicate", {
     filename_1 <- filenames_1[i]
     filename_2 <- filenames_2[i]
     testit::assert(filename_1 != filename_2)
+    testit::assert(file.exists(filename_1))
+    testit::assert(file.exists(filename_2))
     sum_1 <- tools::md5sum(filename_1)[[1]]
     sum_2 <- tools::md5sum(filename_2)[[1]]
     expect_equal(sum_1, sum_2)
