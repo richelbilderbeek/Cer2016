@@ -14,7 +14,12 @@ parse_beast_trees <- function(filename) {
     stop("parse_beast_trees: file absent")
   }
 
-  posterior <- rBEAST::beast2out.read.trees(filename)
+  posterior <- NA
+
+  tryCatch(
+    posterior <- rBEAST::beast2out.read.trees(filename),
+    error = function(msg) {}
+  )
 
   if (length(posterior) == 1 && is.na(posterior)) {
     stop("parse_beast_trees: invalid file")

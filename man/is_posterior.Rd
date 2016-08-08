@@ -17,6 +17,13 @@ TRUE or FALSE
 \description{
 Determines if the input is a BEAST2 posterior
 }
+\examples{
+
+  file <- read_file(find_path("toy_example_1.RDa"))
+  posterior <- get_posterior(file = file, sti = 1, ai = 1, pi = 1)
+  testit::assert(is_posterior(posterior))
+
+}
 \author{
 Richel Bilderbeek
 }
