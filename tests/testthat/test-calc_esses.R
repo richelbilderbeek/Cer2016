@@ -6,23 +6,26 @@ test_that("calc_esses: use", {
     filename = find_path("beast2_example_output.log")
   )
 
-  # Remove burn-in
-  estimates <- remove_burn_ins(estimates_raw)
-
+  # Remove burn-ins
+  estimates <- remove_burn_ins(
+    estimates_raw,
+    burn_in_fraction = 0.1
+  )
   df <- calc_esses(estimates, sample_interval = 1000)
 
   df_expected <- estimates[1, ]
   df_expected[1,] <- c(3, 10, 10, 10, 10, 7, 10, 9, 6)
+  df[1,] <- as.integer(df[1,] + 0.5)
 
 
-  expect_true(df == df_expected)
+  expect_true(identical(df, df_expected))
 })
 
 test_that("calc_esses: abuse", {
 
   expect_error(
     calc_esses(traces = "not numeric", sample_interval = 1),
-    "calc_esses: trace must be a data.frame"
+    "calc_esses: traces must be a data.frame"
   )
 
   expect_error(

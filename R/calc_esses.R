@@ -14,8 +14,8 @@ calc_esses <- function(traces, sample_interval) {
 
   esses <- rep(NA, ncol(traces))
 
-  for (i in seq_along(estimates)) {
-    trace <- as.numeric(t(estimates[i]))
+  for (i in seq_along(traces)) {
+    trace <- as.numeric(t(traces[i]))
     esses[i] <- calc_ess(trace, sample_interval = sample_interval)
   }
 

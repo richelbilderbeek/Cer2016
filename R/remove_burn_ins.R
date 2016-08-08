@@ -1,23 +1,26 @@
 #' Removed the burn-ins from a data frame
 #' @param traces a data frame with traces
-#' @param burn_in the fraction that needs to be removed, must be [0,1>
+#' @param burn_in_fraction the fraction that needs to be removed, must be [0,1>
 #' @return the data frame with the burn-in removed
 #' @export
 #' @author Richel Bilderbeek
-remove_burn_ins <- function(traces, burn_in) {
+remove_burn_ins <- function(traces, burn_in_fraction) {
   if (!is.data.frame(traces)) {
-    stop("remove_burn_ins: traces must be a data.frame")
+    stop("remove_burn_in: traces must be a data.frame")
   }
-  if (burn_in < 0.0) {
-    stop("remove_burn_ins: burn_in must be at least zero")
+  if (burn_in_fraction < 0.0) {
+    stop("remove_burn_in: burn_in_fraction must be at least zero")
   }
-  if (burn_in > 1.0) {
-    stop("remove_burn_ins: burn_in must be at most one")
+  if (burn_in_fraction > 1.0) {
+    stop("remove_burn_in: burn_in_fraction must be at most one")
   }
-  n <- length(trace)
-  first_index <- as.integer(1 + (n * burn_in))
-  if (first_index >= length(trace)) {
-    return(c())
+  n <- nrow(traces)
+  first_index <- as.integer(1 + (n * burn_in_fraction))
+
+  if (first_index >= nrow(traces)) {
+    empty_df <- data.frame()
+    names(empty_df) <- names(traces)
+    return(empty_df)
   }
   out <- traces[ seq(first_index, n), ]
   out
