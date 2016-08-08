@@ -25,4 +25,3 @@ remove_burn_ins <- function(traces, burn_in_fraction) {
   out <- traces[ seq(first_index, n), ]
   out
 }
-

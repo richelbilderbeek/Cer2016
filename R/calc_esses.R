@@ -16,11 +16,13 @@ calc_esses <- function(traces, sample_interval) {
 
   for (i in seq_along(traces)) {
     trace <- as.numeric(t(traces[i]))
-    esses[i] <- calc_ess(trace, sample_interval = sample_interval)
+    esses[i] <- Cer2016::calc_ess(
+      trace, sample_interval = sample_interval
+    )
   }
 
   df <- traces[1, ]
-  df[1,] <- esses
+  df[1, ] <- esses
   testit::assert(nrow(df) == 1)
   testit::assert(names(df) == names(traces))
   df

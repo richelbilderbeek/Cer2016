@@ -51,7 +51,7 @@ calc_act <- function(trace, sample_interval) {
       square_lagged_sums[lag_index + 1] <- square_lagged_sums[lag_index + 1] +
         trace[i - lag_index + 1] * trace[i + 1]
       # The following line is the same approximation as in Tracer
-      # (valid since mean *(samples - lag), sum1, and sum2 are approximately the same)
+      # (valid since mean *(samples - lag), sum1, and sum2 are approximately the same) # nolint
       # though a more accurate estimate would be
       # auto_correlation[lag] = m_fsquare_lagged_sums.get(lag) - sum1 * sum2  # nolint
       testit::assert(lag_index + 1 >= 1)
@@ -72,7 +72,9 @@ calc_act <- function(trace, sample_interval) {
       integral_ac_times_two <- auto_correlation[0 + 1]
     } else if (lag_index %% 2 == 0) {
       # fancy stopping criterion - see main comment in Tracer code of BEAST 1
-      if (auto_correlation[lag_index - 1 + 1] + auto_correlation[lag_index + 1] > 0) {
+      if (auto_correlation[lag_index - 1 + 1] +
+          auto_correlation[lag_index + 1] > 0
+      ) {
         integral_ac_times_two <- integral_ac_times_two + (2.0 * (auto_correlation[lag_index - 1 + 1] + auto_correlation[lag_index + 1]))
       } else {
         break

@@ -15,7 +15,7 @@ test_that("calc_esses: use", {
 
   df_expected <- estimates[1, ]
   df_expected[1,] <- c(3, 10, 10, 10, 10, 7, 10, 9, 6)
-  df[1,] <- as.integer(df[1,] + 0.5) # Round off
+  df[1, ] <- as.integer(df[1, ] + 0.5) # Round off
 
 
   expect_true(identical(df, df_expected))
@@ -30,7 +30,7 @@ test_that("calc_esses: abuse", {
 
   expect_error(
     calc_esses(
-      traces = data.frame(x = seq(1, 10), y = seq(2,11)),
+      traces = data.frame(x = seq(1, 10), y = seq(2, 11)),
       sample_interval = 0
     ),
     "calc_esses: sample interval must be at least one"
