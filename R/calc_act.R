@@ -75,7 +75,9 @@ calc_act <- function(trace, sample_interval) {
       if (auto_correlation[lag_index - 1 + 1] +
           auto_correlation[lag_index + 1] > 0
       ) {
-        integral_ac_times_two <- integral_ac_times_two + (2.0 * (auto_correlation[lag_index - 1 + 1] + auto_correlation[lag_index + 1]))
+        integral_ac_times_two <- integral_ac_times_two +
+          (2.0 * (auto_correlation[lag_index - 1 + 1] +
+          auto_correlation[lag_index + 1]))
       } else {
         break
       }

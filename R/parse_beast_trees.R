@@ -18,7 +18,9 @@ parse_beast_trees <- function(filename) {
 
   tryCatch(
     posterior <- rBEAST::beast2out.read.trees(filename),
-    error = function(msg) {}
+    error = function(msg) {
+      # Nothing
+    }
   )
 
   if (length(posterior) == 1 && is.na(posterior)) {
