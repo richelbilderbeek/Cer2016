@@ -38,6 +38,6 @@ test_that("alignment_to_beast_input_file: abuse", {
       temp_fasta_filename = "",
       verbose = "not TRUE nor FALSE"
     ),
-    "alignment_to_beast_input_file: verbose should be TRUE or FALSE"
+    "verbose should be TRUE or FALSE"
   )
 })

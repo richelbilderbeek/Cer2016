@@ -14,7 +14,7 @@ test_that("collect_posterior_gammas: abuse", {
 
   expect_error(
     collect_posterior_gammas(filename = "inva.lid"),
-    "collect_posterior_gammas: invalid filename"
+    "invalid filename"
   )
 
 })

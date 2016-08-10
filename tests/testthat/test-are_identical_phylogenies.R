@@ -13,10 +13,10 @@ test_that("are_identical_phylogenies: abuse", {
   p <- ape::rcoal(10)
   expect_error(
     are_identical_phylogenies("not a phylogeny", p),
-    "are_identical_phylogenies: p must be a phylogeny"
+    "p must be a phylogeny"
   )
   expect_error(
     are_identical_phylogenies(p, "not a phylogeny"),
-    "are_identical_phylogenies: q must be a phylogeny"
+    "q must be a phylogeny"
   )
 })

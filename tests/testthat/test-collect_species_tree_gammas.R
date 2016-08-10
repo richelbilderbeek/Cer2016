@@ -27,11 +27,11 @@ test_that("collect_species_tree_gammas: abuse", {
     collect_species_tree_gammas(
       filename = "inva.lid", verbose = "TRUE nor FALSE"
     ),
-    "collect_species_tree_gammas: verbose should be TRUE or FALSE"
+    "verbose should be TRUE or FALSE"
   )
 
   expect_error(
     collect_species_tree_gammas(filename = "inva.lid"),
-    "collect_species_tree_gammas: invalid file"
+    "invalid file"
   )
 })

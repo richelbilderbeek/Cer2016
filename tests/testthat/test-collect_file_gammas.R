@@ -20,12 +20,12 @@ test_that("collect_file_gammas: abuse", {
 
   expect_error(
     collect_file_gammas(c("1.RDa", "2.Rda")),
-    "collect_file_gammas: there must be exactly one filename supplied" # nolint
+    "there must be exactly one filename supplied" # nolint
   )
 
   expect_error(
     collect_file_gammas(filename = "inva.lid"),
-    "collect_file_gammas: invalid file 'inva.lid'"
+    "invalid file 'inva.lid'"
   )
 
   expect_error(
@@ -33,7 +33,7 @@ test_that("collect_file_gammas: abuse", {
       filename = "1.RDa",
       verbose = "Not true nor false"
     ),
-    "collect_file_gammas: verbose should be TRUE or FALSE"
+    "verbose should be TRUE or FALSE"
   )
 
 })

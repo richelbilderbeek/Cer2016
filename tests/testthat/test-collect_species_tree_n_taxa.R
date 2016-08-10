@@ -15,7 +15,7 @@ test_that("collect_species_tree_n_taxa: abuse", {
     collect_species_tree_n_taxa(
       filename = "inva.lid"
     ),
-    "collect_species_n_taxa: invalid filename 'inva.lid'"
+    "invalid filename 'inva.lid'"
   )
 
   expect_error(
@@ -23,7 +23,7 @@ test_that("collect_species_tree_n_taxa: abuse", {
       filename = filename,
       verbose = "invalid"
     ),
-    "collect_species_n_taxa: verbose should be TRUE or FALSE"
+    "verbose should be TRUE or FALSE"
   )
 })
 

@@ -23,10 +23,10 @@ test_that("are_identical_alignments: abuse", {
   )
   expect_error(
     are_identical_alignments("Not a phylogeny", p),
-    "are_identical_alignments: p must be an alignment"
+    "p must be an alignment"
   )
   expect_error(
     are_identical_alignments(p, "Not a phylogeny"),
-    "are_identical_alignments: q must be an alignment"
+    "q must be an alignment"
   )
 })

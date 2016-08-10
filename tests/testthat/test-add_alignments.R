@@ -22,7 +22,7 @@ test_that("alignment is added", {
   # Cannot add alignment without species trees
   expect_error(
     add_alignments(filename),
-    "add_alignments: need species_trees at index 1"
+    "need species_trees at index 1"
   )
 
   add_species_trees(filename = filename)
@@ -30,11 +30,11 @@ test_that("alignment is added", {
   # Precondition normal use
   expect_error(
     get_alignment(file = read_file(filename), sti = 1, ai = 1),
-    "get_alignment: get_alignment_by_index: alignment absent at index 1"
+    "get_alignment_by_index: alignment absent at index 1"
   )
   expect_error(
     get_alignment(file = read_file(filename), sti = 2, ai = 1),
-    "get_alignment: get_alignment_by_index: alignment absent at index 2"
+    "get_alignment_by_index: alignment absent at index 2"
   )
 
   # Normal use takes place

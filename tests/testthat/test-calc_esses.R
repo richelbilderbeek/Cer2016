@@ -25,7 +25,7 @@ test_that("calc_esses: abuse", {
 
   expect_error(
     calc_esses(traces = "not numeric", sample_interval = 1),
-    "calc_esses: traces must be a data.frame"
+    "traces must be a data.frame"
   )
 
   expect_error(
@@ -33,7 +33,7 @@ test_that("calc_esses: abuse", {
       traces = data.frame(x = seq(1, 10), y = seq(2, 11)),
       sample_interval = 0
     ),
-    "calc_esses: sample interval must be at least one"
+    "sample interval must be at least one"
   )
 
 })

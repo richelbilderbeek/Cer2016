@@ -14,11 +14,11 @@ test_that("collect_files_n_species_trees: basic use", {
 test_that("collect_files_n_species_trees: abuse", {
   expect_error(
     collect_files_n_species_trees(filename = "inva.lid", verbose = "TRUE nor FALSe"), # nolint
-    "collect_files_n_species_trees: verbose should be TRUE or FALSE"
+    "verbose should be TRUE or FALSE"
   )
 
   expect_error(
     collect_files_n_species_trees(filename = c()),
-    "collect_files_n_species_trees: there must be at least one filename supplied" # nolint
+    "there must be at least one filename supplied" # nolint
   )
 })

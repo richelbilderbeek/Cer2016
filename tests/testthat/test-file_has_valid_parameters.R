@@ -18,7 +18,7 @@ test_that("file_has_valid_parameters: abuse", {
       file = read_file(find_path("toy_example_1.RDa")),
       verbose = "TRUE nor FALSE"
     ),
-    "file_has_valid_parameters: verbose should be TRUE or FALSE"
+    "verbose should be TRUE or FALSE"
   )
 
   # ERG
@@ -26,7 +26,7 @@ test_that("file_has_valid_parameters: abuse", {
   file$parameters$erg <- -123.456
   expect_message(
     file_has_valid_parameters(file = file, verbose = TRUE),
-    "file_has_valid_parameters: ERG invalid"
+    "ERG invalid"
   )
 
   # ERI
@@ -34,7 +34,7 @@ test_that("file_has_valid_parameters: abuse", {
   file$parameters$eri <- -123.456
   expect_message(
     file_has_valid_parameters(file = file, verbose = TRUE),
-    "file_has_valid_parameters: ERI invalid"
+    "ERI invalid"
   )
 
 
@@ -43,7 +43,7 @@ test_that("file_has_valid_parameters: abuse", {
   file$parameters$scr <- -123.456
   expect_message(
     file_has_valid_parameters(file = file, verbose = TRUE),
-    "file_has_valid_parameters: SCR invalid"
+    "SCR invalid"
   )
 
   # SIRG
@@ -51,7 +51,7 @@ test_that("file_has_valid_parameters: abuse", {
   file$parameters$sirg <- -123.456
   expect_message(
     file_has_valid_parameters(file = file, verbose = TRUE),
-    "file_has_valid_parameters: SIRG invalid"
+    "SIRG invalid"
   )
 
   # SIRI
@@ -59,7 +59,7 @@ test_that("file_has_valid_parameters: abuse", {
   file$parameters$siri <- -123.456
   expect_message(
     file_has_valid_parameters(file = file, verbose = TRUE),
-    "file_has_valid_parameters: SIRI invalid"
+    "SIRI invalid"
   )
 
   # add_outgroup
@@ -67,7 +67,7 @@ test_that("file_has_valid_parameters: abuse", {
   file$parameters$add_ougroup <- "present"
   expect_message(
     file_has_valid_parameters(file = file, verbose = TRUE),
-    "file_has_valid_parameters: add_ougroup must be absent"
+    "add_ougroup must be absent"
   )
 
   # age
@@ -75,7 +75,7 @@ test_that("file_has_valid_parameters: abuse", {
   file$parameters$age[2] <- -123.456
   expect_message(
     file_has_valid_parameters(file = file, verbose = TRUE),
-    "file_has_valid_parameters: age invalid"
+    "age invalid"
   )
 
   # mutation rate
@@ -83,14 +83,14 @@ test_that("file_has_valid_parameters: abuse", {
   file$parameters$mutation_rate[2] <- -123.456
   expect_message(
     file_has_valid_parameters(file = file, verbose = TRUE),
-    "file_has_valid_parameters: mutation_rate invalid"
+    "mutation_rate invalid"
   )
   # n_alignments
   file <- read_file(find_path("toy_example_1.RDa"))
   file$parameters$n_alignments[2] <- -123.456
   expect_message(
     file_has_valid_parameters(file = file, verbose = TRUE),
-    "file_has_valid_parameters: n_alignments invalid"
+    "n_alignments invalid"
   )
 
   # sequence_length
@@ -98,7 +98,7 @@ test_that("file_has_valid_parameters: abuse", {
   file$parameters$sequence_length[2] <- -123.456
   expect_message(
     file_has_valid_parameters(file = file, verbose = TRUE),
-    "file_has_valid_parameters: sequence_length invalid"
+    "sequence_length invalid"
   )
 
   # n_beast_runs
@@ -106,7 +106,7 @@ test_that("file_has_valid_parameters: abuse", {
   file$parameters$n_beast_runs[2] <- -123.456
   expect_message(
     file_has_valid_parameters(file = file, verbose = TRUE),
-    "file_has_valid_parameters: n_beast_runs invalid"
+    "n_beast_runs invalid"
   )
 
   # mcmc_chainlength
@@ -114,7 +114,7 @@ test_that("file_has_valid_parameters: abuse", {
   file$parameters$mcmc_chainlength[2] <- -123.456
   expect_message(
     file_has_valid_parameters(file = file, verbose = TRUE),
-    "file_has_valid_parameters: mcmc_chainlength invalid"
+    "mcmc_chainlength invalid"
   )
 
 })

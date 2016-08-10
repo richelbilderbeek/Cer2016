@@ -16,7 +16,7 @@ test_that("calc_nltt_stats: abuse", {
       phylogeny = "Not a phylogeny",
       others = c(ape::rcoal(10), ape::rcoal(10))
     ),
-    "nltt_stats: phylogeny must be a phylogeny"
+    "phylogeny must be a phylogeny"
   )
 
   expect_error(
@@ -24,7 +24,7 @@ test_that("calc_nltt_stats: abuse", {
       phylogeny = ape::rcoal(10),
       others = c()
     ),
-    "nltt_stats: must supply others"
+    "must supply others"
   )
 
   expect_error(
@@ -32,6 +32,6 @@ test_that("calc_nltt_stats: abuse", {
       phylogeny = ape::rcoal(10),
       others = c(ape::rcoal(10), "Not a phylogeny")
     ),
-    "nltt_stats: others must be phylogenies"
+    "others must be phylogenies"
   )
 })

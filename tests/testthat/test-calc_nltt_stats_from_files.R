@@ -26,7 +26,7 @@ test_that("calc_nltt_stats_from_files: abuse", {
 
   expect_error(
     calc_nltt_stats_from_files(filenames = c("inva.lid")),
-    "calc_nltt_stats_from_files: invalid file "
+    "invalid file "
   )
 
 })

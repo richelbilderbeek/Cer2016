@@ -18,11 +18,11 @@ test_that("collect_files_nrbss: abuse", {
 
   expect_error(
     collect_files_nrbss(filenames = "inval.lid", verbose = "TRUE nor FALSE"),
-    "collect_files_nrbss: verbose should be TRUE or FALSE"
+    "verbose should be TRUE or FALSE"
   )
 
   expect_error(
     collect_files_nrbss(filenames = c()),
-    "collect_files_nrbss: there must be at least one filename supplied"
+    "there must be at least one filename supplied"
   )
 })

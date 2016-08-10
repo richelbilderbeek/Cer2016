@@ -18,7 +18,7 @@ test_that("collect_species_tree_nltts: abuse", {
 
   expect_error(
     collect_species_tree_nltts(filename = "inva.lid", dt = 0.1),
-    "collect_species_tree_nltts: invalid filename"
+    "invalid filename"
   )
 
 })

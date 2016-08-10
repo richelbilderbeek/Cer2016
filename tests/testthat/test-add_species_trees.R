@@ -36,7 +36,7 @@ test_that("add_species_trees: abuse", {
 
   expect_error(
     add_species_trees(filename = "inva.lid"),
-    "add_species_trees: invalid file"
+    "invalid file"
   )
 
   filename <- "test-add_species_trees.RDa"
@@ -57,7 +57,7 @@ test_that("add_species_trees: abuse", {
   )
   expect_error(
     add_species_trees(filename = filename),
-    paste0("add_species_trees: file '", filename, "' needs a pbd_output")
+    paste0("file '", filename, "' needs a pbd_output")
   )
   file.remove(filename)
 })

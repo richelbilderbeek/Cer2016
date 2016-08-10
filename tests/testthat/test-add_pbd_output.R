@@ -102,14 +102,14 @@ test_that("add_pbd_output: abuse", {
       filename = find_path("toy_example_1.RDa"),
       verbose = "not TRUE nor FALSE"
     ),
-    "add_pbd_output: verbose should be TRUE or FALSE"
+    "verbose should be TRUE or FALSE"
   )
 
   expect_error(
     add_pbd_output(
       filename = "inval.lid",
     ),
-    "add_pbd_output: invalid filename"
+    "invalid filename"
   )
 
 })

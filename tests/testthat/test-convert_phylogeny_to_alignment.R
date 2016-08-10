@@ -16,7 +16,7 @@ test_that("convert_phylogeny_to_alignment: abuse", {
       sequence_length = 10,
       mutation_rate = 1
     ),
-    "convert_phylogeny_to_alignment: parameter 'phylogeny' must be a phylogeny" #nolint
+    "parameter 'phylogeny' must be a phylogeny" #nolint
   )
 
   expect_error(
@@ -25,7 +25,7 @@ test_that("convert_phylogeny_to_alignment: abuse", {
       sequence_length = -1, # Must be positive
       mutation_rate = 1
     ),
-    "convert_phylogeny_to_alignment: parameter 'sequence_length' must be a non-zero and positive integer value" # nolint
+    "parameter 'sequence_length' must be a non-zero and positive integer value" # nolint
   )
 
   expect_error(
@@ -34,6 +34,6 @@ test_that("convert_phylogeny_to_alignment: abuse", {
       sequence_length = 10,
       mutation_rate = -1 # Must be positive
     ),
-    "convert_phylogeny_to_alignment: parameter 'mutation_rate' must be a non-zero and positive value" # nolint
+    "parameter 'mutation_rate' must be a non-zero and positive value" # nolint
   )
 })

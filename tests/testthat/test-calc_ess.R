@@ -30,12 +30,12 @@ test_that("calc_ess: abuse", {
 
   expect_error(
     calc_ess(trace = "not numeric", sample_interval = 1),
-    "calc_ess: trace must be numeric"
+    "trace must be numeric"
   )
 
   expect_error(
     calc_ess(trace = seq(1, 10), sample_interval = 0),
-    "calc_ess: sample interval must be at least one"
+    "sample interval must be at least one"
   )
 
 })

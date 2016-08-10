@@ -18,7 +18,7 @@ test_that("collect_parameters: abuse", {
   # verbose
   expect_error(
     collect_parameters(filenames = c(), verbose = "TRUE nor FALSE"),
-    "collect_parameters: verbose should be TRUE or FALSE"
+    "verbose should be TRUE or FALSE"
   )
 
 

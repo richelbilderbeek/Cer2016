@@ -12,14 +12,14 @@ test_that("parse_beast_trees: abuse", {
 
   expect_error(
     parse_beast_trees(filename = "inva.lid"),
-    "parse_beast_trees: file absent"
+    "file absent"
   )
 
   expect_error(
     parse_beast_trees(
       filename = find_path("toy_example_1.RDa")
     ),
-    "parse_beast_trees: invalid file"
+    "invalid file"
   )
 
 

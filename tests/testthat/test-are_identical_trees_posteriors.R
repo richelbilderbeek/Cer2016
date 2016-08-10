@@ -108,7 +108,7 @@ test_that("are_identical_trees_posteriors: abuse", {
       p = NULL, q = NULL,
       verbose = "not TRUE nor FALSE"
     ),
-    "are_identical_trees_posteriors: verbose should be TRUE or FALSE"
+    "verbose should be TRUE or FALSE"
   )
   expect_error(
     are_identical_trees_posteriors(
@@ -116,7 +116,7 @@ test_that("are_identical_trees_posteriors: abuse", {
       q = posterior_2,
       verbose = FALSE
     ),
-    "are_identical_trees_posteriors: p must be a BEAST2 posterior"
+    "p must be a BEAST2 posterior"
   )
 
   expect_error(
@@ -125,7 +125,7 @@ test_that("are_identical_trees_posteriors: abuse", {
       q = "not a BEAST2 posterior",
       verbose = FALSE
     ),
-    "are_identical_trees_posteriors: q must be a BEAST2 posterior"
+    "q must be a BEAST2 posterior"
   )
 
 })

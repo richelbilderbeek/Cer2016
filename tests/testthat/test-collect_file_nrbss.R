@@ -24,12 +24,12 @@ test_that("collect_file_nrbss: abuse", {
 
   expect_error(
     collect_file_nrbss(c("1.RDa", "2.Rda")),
-    "collect_file_nrbss: there must be exactly one filename supplied" # nolint
+    "there must be exactly one filename supplied" # nolint
   )
 
   expect_error(
     collect_file_nrbss(filename = "inva.lid"),
-    "collect_file_nrbss: invalid file 'inva.lid'"
+    "invalid file 'inva.lid'"
   )
 
   expect_error(
@@ -37,7 +37,7 @@ test_that("collect_file_nrbss: abuse", {
       filename = "1.RDa",
       verbose = "Not true nor false"
     ),
-    "collect_file_nrbss: verbose should be TRUE or FALSE"
+    "verbose should be TRUE or FALSE"
   )
 
 })

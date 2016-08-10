@@ -19,14 +19,14 @@ test_that("collect_n_taxa: other uses", {
 test_that("collect_n_taxa: abuse", {
   expect_error(
     collect_n_taxa(phylogenies = c()),
-    "collect_n_taxa: there must be at least one phylogeny supplied"
+    "there must be at least one phylogeny supplied"
   )
   expect_error(
     collect_n_taxa(phylogenies = "nonsense"),
-    "collect_n_taxa: phylogenies must be of class 'multiPhylo' or 'list'"
+    "phylogenies must be of class 'multiPhylo' or 'list'"
   )
   expect_error(
     collect_n_taxa(phylogenies = list("nonsense")),
-    "collect_n_taxa: phylogenies must be of type phylo"
+    "phylogenies must be of type phylo"
   )
 })

@@ -20,17 +20,17 @@ test_that("collect_file_nltts: abuse", {
 
   expect_error(
     collect_file_nltts(filename = "NA", verbose = "not TRUE nor FALSE"),
-    "collect_file_nltts: verbose should be TRUE or FALSE"
+    "verbose should be TRUE or FALSE"
   )
 
   expect_error(
     collect_file_nltts(filename = c("inva", "lid")),
-    "collect_file_nltts: there must be exactly one filename supplied"
+    "there must be exactly one filename supplied"
   )
 
   expect_error(
     collect_file_nltts(filename = "inva.lid"),
-    "collect_file_nltts: invalid file '"
+    "invalid file '"
   )
 
 })

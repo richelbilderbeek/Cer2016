@@ -18,7 +18,7 @@ test_that("parse_beast_log: abuse", {
 
   expect_error(
     parse_beast_log(filename = "inva.lid"),
-    "parse_beast_log: file absent"
+    "file absent"
   )
 
 })

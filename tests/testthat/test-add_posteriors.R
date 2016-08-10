@@ -37,7 +37,7 @@ test_that("add_posteriors: two posteriors are added", {
       file = read_file(filename),
       sti = 1, ai = 1, pi = 1
     ),
-    "get_posterior: get_posterior_by_index: posterior absent at index 1"
+    "get_posterior_by_index: posterior absent at index 1"
   )
 
   n_posteriors_added <- add_posteriors(

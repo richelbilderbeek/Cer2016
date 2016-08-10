@@ -14,11 +14,11 @@ test_that("collect_files_n_alignments: basic use", {
 test_that("collect_n_alignments: abuse", {
   expect_error(
     collect_files_n_alignments(filename = "inva.lid", verbose = "TRUE nor FALSe"), # nolint
-    "collect_files_n_alignments: verbose should be TRUE or FALSE"
+    "verbose should be TRUE or FALSE"
   )
 
   expect_error(
     collect_files_n_alignments(filename = c()),
-    "collect_files_n_alignments: there must be at least one filename supplied"
+    "there must be at least one filename supplied"
   )
 })

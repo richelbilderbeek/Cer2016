@@ -22,12 +22,12 @@ test_that("are_identical_posteriors: abuse", {
 
   expect_error(
     are_identical_posteriors(p = "invalid", q = posterior_2),
-    "are_identical_posteriors: p must be a Cer2016 posterior"
+    "p must be a Cer2016 posterior"
   )
 
   expect_error(
     are_identical_posteriors(p = posterior_1, q = "invalid"),
-    "are_identical_posteriors: q must be a Cer2016 posterior"
+    "q must be a Cer2016 posterior"
   )
 
 })

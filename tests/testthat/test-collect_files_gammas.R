@@ -23,11 +23,11 @@ test_that("collect_files_gammas: abuse", {
 
   expect_error(
     collect_files_gammas(filenames = "inval.lid", verbose = "TRUE nor FALSE"),
-    "collect_files_gammas: verbose should be TRUE or FALSE"
+    "verbose should be TRUE or FALSE"
   )
 
   expect_error(
     collect_files_gammas(filenames = c()),
-    "collect_files_gammas: there must be at least one filename supplied"
+    "there must be at least one filename supplied"
   )
 })
