@@ -33,7 +33,13 @@ find_path <- function(filename) {
 #' @author Richel Bilderbeek
 #' @export
 find_paths <- function(filenames) {
-  filenames <- as.vector(sapply(filenames, Cer2016::find_path)) # nolint Why doesn't this work?
+  filenames <- as.vector(
+    vapply(
+      filenames,
+      Cer2016::find_path,
+      FUN.VALUE = "string"
+    )
+  )
   filenames
 }
 
