@@ -34,10 +34,10 @@ is_distributed_normally <- function(
   p_value = 0.05
 ) {
   if (any(is.na(values)) || any(!is.numeric(values))) {
-    stop("is_distributed_normally: all values must be numeric")
+    stop("all values must be numeric")
   }
   if (length(values) < 3L || length(values) > 5000L) {
-    stop("is_distributed_normally: sample size must be between 3 and 5000")
+    stop("sample size must be between 3 and 5000")
   }
   if (all(values == values[1])) {
     # all values are identical

@@ -108,11 +108,11 @@ test_that("get_alignment from fresh file", {
   # No alignment yet
   expect_error(
     get_alignment(file, sti = 1, ai = 1),
-    "get_alignment: get_alignment_by_index: alignment absent at index 1"
+    "alignment absent at index 1"
   )
   expect_error(
     get_alignment(file, sti = 2, ai = 1),
-    "get_alignment: get_alignment_by_index: alignment absent at index 2"
+    "alignment absent at index 2"
   )
 
   # Getting alignments
@@ -154,22 +154,22 @@ test_that("get_alignment: abuse", {
 
   expect_error(
     get_alignment(file = file, sti = -314, ai = 1),
-    "get_alignment: sti must be at least 1"
+    "sti must be at least 1"
   )
 
   expect_error(
     get_alignment(file = file, sti = 314, ai = 1),
-    "get_alignment: sti must at most be 2"
+    "sti must at most be 2"
   )
 
   expect_error(
     get_alignment(file = file, sti = 1, ai = -314),
-    "get_alignment: ai must be at least 1"
+    "ai must be at least 1"
   )
 
   expect_error(
     get_alignment(file = file, sti = 1, ai = 314),
-    "get_alignment: ai must at most be napst"
+    "ai must at most be napst"
   )
 
 })

@@ -10,6 +10,6 @@ test_that("plot_extant_incipient_tree: abuse", {
 
   expect_error(
     plot_extant_incipient_tree(filename = "inva.lid"),
-    "plot_extant_incipient_tree: file 'inva.lid' is invalid"
+    "file 'inva.lid' is invalid"
   )
 })

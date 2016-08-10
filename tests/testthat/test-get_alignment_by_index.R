@@ -95,11 +95,11 @@ test_that("get_alignment_by_index from fresh file", {
   # No alignment yet
   expect_error(
     get_alignment_by_index(file, 1),
-    "get_alignment_by_index: alignment absent at index 1"
+    "alignment absent at index 1"
   )
   expect_error(
     get_alignment_by_index(file, 2),
-    "get_alignment_by_index: alignment absent at index 2"
+    "alignment absent at index 2"
   )
 
   # Getting a alignment
@@ -138,18 +138,18 @@ test_that("get_alignment_by_index: abuse", {
 
   expect_error(
     get_alignment_by_index(file = file, i = -314),
-    "get_alignment_by_index: index must be at least 1"
+    "index must be at least 1"
   )
 
   expect_error(
     get_alignment_by_index(file = file, i = 42),
-    "get_alignment_by_index: index must be less than number of alignments"
+    "index must be less than number of alignments"
   )
 
   file <- set_alignment_by_index(file = file, i = 1, alignment = NA)
   expect_error(
     get_alignment_by_index(file = file, i = 1),
-    "get_alignment_by_index: alignment absent at index 1"
+    "alignment absent at index 1"
   )
 
 })

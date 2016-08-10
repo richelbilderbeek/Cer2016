@@ -11,13 +11,13 @@ do_simulation <- function(
   verbose = FALSE
 ) {
   if (verbose != TRUE && verbose != FALSE) {
-    stop("do_simulation: verbose should be TRUE or FALSE")
+    stop("verbose should be TRUE or FALSE")
   }
   if (length(filename) != 1) {
-    stop("do_simulation: supply exactly one parameter filename")
+    stop("supply exactly one parameter filename")
   }
   if (!is_valid_file(filename)) {
-    stop("do_simulation: filename must be a valid file")
+    stop("filename must be a valid file")
   }
   Cer2016::add_pbd_output(filename, verbose = verbose)
   Cer2016::add_species_trees(filename)

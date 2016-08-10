@@ -10,7 +10,7 @@ collect_posterior_nltts <- function(
   dt
 ) {
   if (!is_valid_file(filename)) {
-    stop("collect_posterior_nltts: invalid filename")
+    stop("invalid filename")
   }
 
   file <- Cer2016::read_file(filename)

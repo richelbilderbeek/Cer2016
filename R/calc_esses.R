@@ -6,10 +6,10 @@
 #' @author Richel Bilderbeek
 calc_esses <- function(traces, sample_interval) {
   if (!is.data.frame(traces)) {
-    stop("calc_esses: traces must be a data.frame")
+    stop("traces must be a data.frame")
   }
   if (sample_interval < 1) {
-    stop("calc_esses: sample interval must be at least one")
+    stop("sample interval must be at least one")
   }
 
   esses <- rep(NA, ncol(traces))

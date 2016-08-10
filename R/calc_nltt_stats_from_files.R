@@ -17,7 +17,7 @@ calc_nltt_stats_from_files <- function(filenames) {
   # Check all files
   for (filename in filenames) {
     if (!Cer2016::is_valid_file(filename)) {
-      stop("calc_nltt_stats_from_files: invalid file '",
+      stop("invalid file '",
         filename, "'"
       )
     }

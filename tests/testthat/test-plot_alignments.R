@@ -19,6 +19,6 @@ test_that("plot_alignments: basic use", {
 test_that("plot_alignments: abuse", {
   expect_error(
     plot_alignments(filename = "inva.lid"),
-    "plot_alignments: invalid filename"
+    "invalid filename"
   )
 })

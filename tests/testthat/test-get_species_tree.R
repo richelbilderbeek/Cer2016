@@ -74,11 +74,11 @@ test_that("get_species_tree_by_index from fresh file", {
   # No species_tree yet
   expect_error(
     get_species_tree_by_index(file, 1),
-    "get_species_tree_by_index: species_tree absent at index 1"
+    "species_tree absent at index 1"
   )
   expect_error(
     get_species_tree_by_index(file, 2),
-    "get_species_tree_by_index: species_tree absent at index 2"
+    "species_tree absent at index 2"
   )
 
   # Getting a species_tree
@@ -112,18 +112,18 @@ test_that("get_species_tree_by_index: abuse", {
 
   expect_error(
     get_species_tree_by_index(file = file, sti = -314),
-    "get_species_tree_by_index: index must be at least 1"
+    "index must be at least 1"
   )
 
   expect_error(
     get_species_tree_by_index(file = file, sti = 42),
-    "get_species_tree_by_index: index must be less than number of species_trees"
+    "index must be less than number of species_trees"
   )
 
   file <- set_species_tree_by_index(file = file, sti = 1, species_tree = NA)
   expect_error(
     get_species_tree_by_index(file = file, sti = 1),
-    "get_species_tree_by_index: species_tree absent at index 1"
+    "species_tree absent at index 1"
   )
 
 })

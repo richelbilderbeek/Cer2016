@@ -37,11 +37,11 @@
 add_species_trees <- function(filename) {
 
   if (!is_valid_file(filename)) {
-    stop("add_species_trees: invalid file")
+    stop("invalid file")
   }
   file <- Cer2016::read_file(filename)
   if (is.na(file$pbd_output[1])) {
-    stop("add_species_trees: ",
+    stop(
       "file '", filename, "' needs a pbd_output"
     )
   }

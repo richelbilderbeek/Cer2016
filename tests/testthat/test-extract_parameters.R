@@ -13,14 +13,14 @@ test_that("extract_erg: abuse", {
   file$parameters <- NULL
   expect_error(
     extract_erg(file),
-    "extract_erg: file\\$parameters not found"
+    "file\\$parameters not found"
   )
 
   file <- read_file(find_path("toy_example_1.RDa"))
   file$parameters$erg <- NULL
   expect_error(
     extract_erg(file),
-    "extract_erg: parameter 'erg' absent"
+    "parameter 'erg' absent"
   )
 
 })
@@ -38,14 +38,14 @@ test_that("extract_eri: abuse", {
   file$parameters <- NULL
   expect_error(
     extract_eri(file),
-    "extract_eri: file\\$parameters not found"
+    "file\\$parameters not found"
   )
 
   file <- read_file(find_path("toy_example_1.RDa"))
   file$parameters$eri <- NULL
   expect_error(
     extract_eri(file),
-    "extract_eri: parameter 'eri' absent"
+    "parameter 'eri' absent"
   )
 
 })
@@ -63,14 +63,14 @@ test_that("extract_scr: abuse", {
   file$parameters <- NULL
   expect_error(
     extract_scr(file),
-    "extract_scr: file\\$parameters not found"
+    "file\\$parameters not found"
   )
 
   file <- read_file(find_path("toy_example_1.RDa"))
   file$parameters$scr <- NULL
   expect_error(
     extract_scr(file),
-    "extract_scr: parameter 'scr' absent"
+    "parameter 'scr' absent"
   )
 
 })
@@ -92,14 +92,14 @@ test_that("extract_sirg: abuse", {
   file$parameters <- NULL
   expect_error(
     extract_sirg(file),
-    "extract_sirg: file\\$parameters not found"
+    "file\\$parameters not found"
   )
 
   file <- read_file(find_path("toy_example_1.RDa"))
   file$parameters$sirg <- NULL
   expect_error(
     extract_sirg(file),
-    "extract_sirg: parameter 'sirg' absent"
+    "parameter 'sirg' absent"
   )
 
 })
@@ -117,14 +117,14 @@ test_that("extract_siri: abuse", {
   file$parameters <- NULL
   expect_error(
     extract_siri(file),
-    "extract_siri: file\\$parameters not found"
+    "file\\$parameters not found"
   )
 
   file <- read_file(find_path("toy_example_1.RDa"))
   file$parameters$siri <- NULL
   expect_error(
     extract_siri(file),
-    "extract_siri: parameter 'siri' absent"
+    "parameter 'siri' absent"
   )
 
 })
@@ -141,14 +141,14 @@ test_that("extract_napst: abuse", {
   file$parameters <- NULL
   expect_error(
     extract_napst(file),
-    "extract_napst: file\\$parameters not found"
+    "file\\$parameters not found"
   )
 
   file <- read_file(find_path("toy_example_1.RDa"))
   file$parameters$n_alignments <- NULL
   expect_error(
     extract_napst(file),
-    "extract_napst: parameter 'n_alignments' absent"
+    "parameter 'n_alignments' absent"
   )
 
 })
@@ -165,14 +165,14 @@ test_that("extract_nppa: abuse", {
   file$parameters <- NULL
   expect_error(
     extract_nppa(file),
-    "extract_nppa: file\\$parameters not found"
+    "file\\$parameters not found"
   )
 
   file <- read_file(find_path("toy_example_1.RDa"))
   file$parameters$n_beast_runs <- NULL
   expect_error(
     extract_nppa(file),
-    "extract_nppa: parameter 'n_beast_runs' absent"
+    "parameter 'n_beast_runs' absent"
   )
 
 })
@@ -191,14 +191,14 @@ test_that("extract_nspp: abuse", {
   file$parameters <- NULL
   expect_error(
     extract_nspp(file),
-    "extract_nspp: file\\$parameters not found"
+    "file\\$parameters not found"
   )
 
   file <- read_file(find_path("toy_example_1.RDa"))
   file$parameters$mcmc_chainlength <- NULL
   expect_error(
     extract_nspp(file),
-    "extract_nspp: parameter 'mcmc_chainlength' absent"
+    "parameter 'mcmc_chainlength' absent"
   )
 
 })

@@ -53,43 +53,42 @@ alignment_to_beast_posterior <- function(
   verbose = FALSE
 ) {
   if (!is_alignment(alignment_dnabin)) {
-    stop("alignment_to_beast_posterior: ",
+    stop(
       "alignment must be of class DNAbin"
     )
   }
   if (!is_whole_number(mcmc_chainlength)) {
-    stop("alignment_to_beast_posterior: ",
+    stop(
       "mcmc_chainlength must be a whole number"
     )
   }
   if (mcmc_chainlength <= 0) {
-    stop("alignment_to_beast_posterior: ",
+    stop(
       "mcmc_chainlength must non-zero and positive"
     )
   }
   if (!is.character(base_filename)) {
-    stop("alignment_to_beast_posterior: ",
+    stop(
       "base_filename must be a character string"
     )
   }
   if (!is_whole_number(rng_seed)) {
-    stop("alignment_to_beast_posterior: ",
+    stop(
       "rng_seed must be a whole number"
     )
   }
   if (!is.null(beast_jar_path) && !is.character(beast_jar_path)) {
-    stop("alignment_to_beast_posterior: ",
+    stop(
       "beast_jar_path must be NULL or a character string"
     )
   }
   if (!file.exists(beast_jar_path)) {
-    stop("alignment_to_beast_posterior: ",
+    stop(
       "beast_jar_path not found"
     )
   }
   if (verbose != TRUE && verbose != FALSE) {
     stop(
-      "alignment_to_beast_posterior: ",
       "verbose should be TRUE or FALSE"
     )
   }
@@ -184,19 +183,16 @@ alignment_to_beast_posterior <- function(
   # beast_trees_filename is the only essential one
   if (!file.exists(beast_trees_filename)) {
     stop(
-      "alignment_to_beast_posterior: ",
       "file '", beast_trees_filename, "' should have been created"
     )
   }
   if (!file.exists(beast_log_filename)) {
     stop(
-      "alignment_to_beast_posterior: ",
       "file '", beast_log_filename, "' should have been created"
     )
   }
   if (!file.exists(beast_state_filename)) {
     stop(
-      "alignment_to_beast_posterior: ",
       "file '", beast_state_filename, "' should have been created"
     )
   }
@@ -214,7 +210,6 @@ alignment_to_beast_posterior <- function(
       file = "testthat.log", append = TRUE
     )
     stop(
-      "alignment_to_beast_posterior: ",
       "no posterior created"
     )
   }

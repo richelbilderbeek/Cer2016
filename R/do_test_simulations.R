@@ -9,11 +9,11 @@ do_test_simulations <- function(
   verbose = FALSE
 ) {
   if (verbose != TRUE && verbose != FALSE) {
-    stop("do_simulation: verbose should be TRUE or FALSE")
+    stop("verbose should be TRUE or FALSE")
   }
   if (length(filenames) != 4) {
     stop(
-      "do_test_simulations: must have exactly four filenames"
+      "must have exactly four filenames"
     )
   }
   Cer2016::create_test_parameter_files(

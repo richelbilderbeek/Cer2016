@@ -101,7 +101,7 @@ test_that("get_posterior from fresh file", {
   # No posterior yet
   expect_error(
     get_posterior(file, sti = 2, ai = napst, pi = nppa),
-    "get_posterior: get_posterior_by_index: posterior absent at index 24"
+    "get_posterior_by_index: posterior absent at index 24"
   )
 
   # Getting a posterior
@@ -136,32 +136,32 @@ test_that("get_posterior: abuse", {
 
   expect_error(
     get_posterior(file = file, sti = -314, ai = 1, pi = 1),
-    "get_posterior: sti must be at least 1"
+    "sti must be at least 1"
   )
 
   expect_error(
     get_posterior(file = file, sti = 314, ai = 1, pi = 1),
-    "get_posterior: sti must at most be 2"
+    "sti must at most be 2"
   )
 
   expect_error(
     get_posterior(file = file, sti = 1, ai = -314, pi = 1),
-    "get_posterior: ai must be at least 1"
+    "ai must be at least 1"
   )
 
   expect_error(
     get_posterior(file = file, sti = 1, ai = 314, pi = 1),
-    "get_posterior: ai must at most be napst"
+    "ai must at most be napst"
   )
 
   expect_error(
     get_posterior(file = file, sti = 1, ai = 1, pi = -314),
-    "get_posterior: pi must be at least 1"
+    "pi must be at least 1"
   )
 
   expect_error(
     get_posterior(file = file, sti = 1, ai = 1, pi = 314),
-    "get_posterior: pi must at most be nppa"
+    "pi must at most be nppa"
   )
 
 })

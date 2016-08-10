@@ -9,6 +9,6 @@ test_that("plot_species_tree: use", {
 test_that("plot_species_tree: abuse", {
   expect_error(
     plot_species_tree(filename = "inva.lid"),
-    "plot_species_tree: invalid filename"
+    "invalid filename"
   )
 })

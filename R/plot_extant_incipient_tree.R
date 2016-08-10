@@ -5,7 +5,7 @@
 #' @author Richel Bilderbeek
 plot_extant_incipient_tree <- function(filename) {
   if (!is_valid_file(filename)) {
-    stop("plot_extant_incipient_tree: ",
+    stop(
       "file '", filename, "' is invalid"
     )
   }

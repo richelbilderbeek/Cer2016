@@ -8,16 +8,16 @@
 #' @author Richel Bilderbeek
 get_posterior_by_index <- function(file, i) {
   if (i < 1) {
-    stop("get_posterior_by_index: index must be at least 1")
+    stop("index must be at least 1")
   }
   if (i > length(file$posteriors)) {
-    stop("get_posterior_by_index: index must be less than number of posteriors")
+    stop("index must be less than number of posteriors")
   }
   posterior <- file$posteriors[[i]][[1]]
   if (!Cer2016::is_posterior(posterior)) {
     # The posterior may not be added yet
     stop(
-      "get_posterior_by_index: posterior absent at index ",
+      "posterior absent at index ",
       i
     )
   }
@@ -57,24 +57,24 @@ get_posterior <- function(
   pi
 ) {
   if (sti < 1) {
-    stop("get_posterior: sti must be at least 1")
+    stop("sti must be at least 1")
   }
   if (sti > 2) {
-    stop("get_posterior: sti must at most be 2")
+    stop("sti must at most be 2")
   }
   if (ai < 1) {
-    stop("get_posterior: ai must be at least 1")
+    stop("ai must be at least 1")
   }
   napst <- Cer2016::extract_napst(file = file)
   if (ai > napst) {
-    stop("get_posterior: ai must at most be napst")
+    stop("ai must at most be napst")
   }
   if (pi < 1) {
-    stop("get_posterior: pi must be at least 1")
+    stop("pi must be at least 1")
   }
   nppa <- Cer2016::extract_nppa(file = file)
   if (pi > nppa) {
-    stop("get_posterior: pi must at most be nppa")
+    stop("pi must at most be nppa")
   }
 
   i <- Cer2016::p2i(
@@ -85,7 +85,7 @@ get_posterior <- function(
   tryCatch(
     posterior <- get_posterior_by_index(file = file, i = i),
     error = function(msg) {
-      stop("get_posterior: ", msg$message)
+      stop(msg$message)
     }
   )
   return (posterior)

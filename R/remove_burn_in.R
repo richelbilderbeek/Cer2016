@@ -16,13 +16,13 @@
 #' @author Richel Bilderbeek
 remove_burn_in <- function(trace, burn_in_fraction) {
   if (!is.numeric(trace)) {
-    stop("remove_burn_in: trace must be numeric")
+    stop("trace must be numeric")
   }
   if (burn_in_fraction < 0.0) {
-    stop("remove_burn_in: burn_in_fraction must be at least zero")
+    stop("burn_in_fraction must be at least zero")
   }
   if (burn_in_fraction > 1.0) {
-    stop("remove_burn_in: burn_in_fraction must be at most one")
+    stop("burn_in_fraction must be at most one")
   }
   n <- length(trace)
   first_index <- as.integer(1 + (n * burn_in_fraction))

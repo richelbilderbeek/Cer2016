@@ -23,16 +23,15 @@ collect_file_nltts <- function(
   verbose = FALSE
 ) {
   if (verbose != TRUE && verbose != FALSE) {
-    stop("collect_file_nltts: verbose should be TRUE or FALSE")
+    stop("verbose should be TRUE or FALSE")
   }
   if (length(filename) != 1) {
     stop(
-      "collect_file_nltts: there must be exactly one filename supplied"
+      "there must be exactly one filename supplied"
     )
   }
   if (!is_valid_file(filename = filename, verbose = verbose)) {
     stop(
-      "collect_file_nltts: ",
       "invalid file '", filename, "'"
     )
   }

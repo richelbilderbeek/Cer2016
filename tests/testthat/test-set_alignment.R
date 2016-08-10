@@ -8,7 +8,7 @@ test_that("set_alignment: abuse", {
       sti = -314, ai = 1,
       alignment = ape::rcoal(10)
     ),
-    "set_alignment: sti must be at least 1"
+    "sti must be at least 1"
   )
 
   expect_error(
@@ -17,7 +17,7 @@ test_that("set_alignment: abuse", {
       sti = 314, ai = 1,
       alignment = ape::rcoal(10)
     ),
-    "set_alignment: sti must at most be 2"
+    "sti must at most be 2"
   )
 
   expect_error(
@@ -26,7 +26,7 @@ test_that("set_alignment: abuse", {
       sti = 1, ai = -314,
       alignment = ape::rcoal(10)
     ),
-    "set_alignment: ai must be at least 1"
+    "ai must be at least 1"
   )
   expect_error(
     set_alignment(
@@ -34,7 +34,7 @@ test_that("set_alignment: abuse", {
       sti = 1, ai = 314,
       alignment = ape::rcoal(10)
     ),
-    "set_alignment: ai must at most be napst"
+    "ai must at most be napst"
   )
   expect_error(
     set_alignment(
@@ -42,7 +42,7 @@ test_that("set_alignment: abuse", {
       sti = 1, ai = 1,
       alignment = "not a alignment"
     ),
-    "set_alignment: alignment must be an alignment"
+    "alignment must be an alignment"
   )
 
 

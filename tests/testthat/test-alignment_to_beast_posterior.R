@@ -64,7 +64,7 @@ test_that("alignment_to_beast_posterior: abuse", {
       skip_if_output_present = FALSE,
       verbose = FALSE
     ),
-    "alignment_to_beast_posterior: alignment must be of class DNAbin"
+    "alignment must be of class DNAbin"
   )
 
   expect_error(
@@ -77,7 +77,7 @@ test_that("alignment_to_beast_posterior: abuse", {
       skip_if_output_present = FALSE,
       verbose = FALSE
     ),
-    "alignment_to_beast_posterior: mcmc_chainlength must be a whole number"
+    "mcmc_chainlength must be a whole number"
   )
 
   expect_error(
@@ -90,7 +90,7 @@ test_that("alignment_to_beast_posterior: abuse", {
       skip_if_output_present = FALSE,
       verbose = FALSE
     ),
-    "alignment_to_beast_posterior: mcmc_chainlength must non-zero and positive"
+    "mcmc_chainlength must non-zero and positive"
   )
   expect_error(
     alignment_to_beast_posterior(
@@ -102,7 +102,7 @@ test_that("alignment_to_beast_posterior: abuse", {
       skip_if_output_present = FALSE,
       verbose = FALSE
     ),
-    "alignment_to_beast_posterior: base_filename must be a character string"
+    "base_filename must be a character string"
   )
   expect_error(
     alignment_to_beast_posterior(
@@ -114,7 +114,7 @@ test_that("alignment_to_beast_posterior: abuse", {
       skip_if_output_present = FALSE,
       verbose = FALSE
     ),
-    "alignment_to_beast_posterior: rng_seed must be a whole number"
+    "rng_seed must be a whole number"
   )
   expect_error(
     alignment_to_beast_posterior(
@@ -126,7 +126,7 @@ test_that("alignment_to_beast_posterior: abuse", {
       skip_if_output_present = FALSE,
       verbose = FALSE
     ),
-    "alignment_to_beast_posterior: beast_jar_path must be NULL or a character string" # nolint sometimes error messages are long
+    "beast_jar_path must be NULL or a character string" # nolint sometimes error messages are long
   )
   expect_error(
     alignment_to_beast_posterior(
@@ -138,7 +138,7 @@ test_that("alignment_to_beast_posterior: abuse", {
       skip_if_output_present = FALSE,
       verbose = FALSE
     ),
-    "alignment_to_beast_posterior: beast_jar_path not found" # nolint sometimes error messages are long
+    "beast_jar_path not found" # nolint sometimes error messages are long
   )
   expect_error(
     alignment_to_beast_posterior(
@@ -150,6 +150,6 @@ test_that("alignment_to_beast_posterior: abuse", {
       skip_if_output_present = FALSE,
       verbose = "not TRUE not FALSE"
     ),
-    "alignment_to_beast_posterior: verbose should be TRUE or FALSE" # nolint sometimes error messages are long
+    "verbose should be TRUE or FALSE" # nolint sometimes error messages are long
   )
 })

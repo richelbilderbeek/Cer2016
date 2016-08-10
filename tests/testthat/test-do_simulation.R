@@ -36,15 +36,15 @@ test_that("do_simulation: create full toy_example_x.RDa", {
 test_that("do_simulation: abuse", {
   expect_error(
     do_simulation(filename = filename, verbose = "not TRUE nor FALSE"),
-    "do_simulation: verbose should be TRUE or FALSE"
+    "verbose should be TRUE or FALSE"
   )
   expect_error(
     do_simulation(filename = c("inva", "lid")),
-    "do_simulation: supply exactly one parameter filename"
+    "supply exactly one parameter filename"
   )
 
   expect_error(
     do_simulation(filename = "inva.lid"),
-    "do_simulation: filename must be a valid file"
+    "filename must be a valid file"
   )
 })

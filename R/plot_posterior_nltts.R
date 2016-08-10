@@ -10,7 +10,7 @@ plot_posterior_nltts <- function(
   dt = 0.001
 ) {
   if (!is_valid_file(filename)) {
-    stop("plot_posterior_nltts: invalid filename")
+    stop("invalid filename")
   }
   nltt <- NULL; rm(nltt) # nolint, should fix warning: plot_posterior_nltts: no visible binding for global variable ‘nltt’
 

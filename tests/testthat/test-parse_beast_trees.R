@@ -9,7 +9,6 @@ test_that("parse_beast_trees: use", {
 
 test_that("parse_beast_trees: abuse", {
 
-
   expect_error(
     parse_beast_trees(filename = "inva.lid"),
     "file absent"

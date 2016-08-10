@@ -6,10 +6,10 @@
 #' @author Richel Bilderbeek
 calc_ess <- function(trace, sample_interval) {
   if (!is.numeric(trace)) {
-    stop("calc_ess: trace must be numeric")
+    stop("trace must be numeric")
   }
   if (sample_interval < 1) {
-    stop("calc_ess: sample interval must be at least one")
+    stop("sample interval must be at least one")
   }
   act <- Cer2016::calc_act(
     trace = trace,

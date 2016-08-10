@@ -28,7 +28,7 @@ test_that("set_alignment_by_index: abuse", {
       i = 0,
       alignment = ape::rcoal(10)
     ),
-    "set_alignment_by_index: index must be at least 1"
+    "index must be at least 1"
   )
 
   expect_error(
@@ -37,7 +37,7 @@ test_that("set_alignment_by_index: abuse", {
       i = 3,
       alignment = ape::rcoal(10)
     ),
-    "set_alignment_by_index: index must be less than number of alignments"
+    "index must be less than number of alignments"
   )
 
 })

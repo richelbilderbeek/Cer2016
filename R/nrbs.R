@@ -29,7 +29,7 @@ nrbs <- function(phylogeny1, phylogeny2) {
   }
   if (length(phylogeny1$tip.label) != length(phylogeny2$tip.label)) {
     # Enforced by phangorn::KF.dist
-    stop("nrbs: phylogenies must have same number of tips")
+    stop("phylogenies must have same number of tips")
   }
 
   if (
@@ -39,11 +39,11 @@ nrbs <- function(phylogeny1, phylogeny2) {
     ) != TRUE
   ) {
     # Enforced by phangorn::KF.dist
-    stop("nrbs: phylogenies must have same tip labels")
+    stop("phylogenies must have same tip labels")
   }
   if (any(is.na(phylogeny1$tip.label))) {
     # Enforced by phangorn::KF.dist
-    stop("nrbs: phylogeny #1 must not have any NA tip label")
+    stop("phylogeny #1 must not have any NA tip label")
   }
   # Labels are the same, phylogeny #1 has been checked to have no NA's
   # so phylogeny #2 cannot have any NA tip label

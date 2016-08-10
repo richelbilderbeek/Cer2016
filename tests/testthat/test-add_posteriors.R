@@ -37,7 +37,7 @@ test_that("add_posteriors: two posteriors are added", {
       file = read_file(filename),
       sti = 1, ai = 1, pi = 1
     ),
-    "get_posterior_by_index: posterior absent at index 1"
+    "posterior absent at index 1"
   )
 
   n_posteriors_added <- add_posteriors(
@@ -105,14 +105,14 @@ test_that("four posteriors are added", {
       file = read_file(filename),
       i = 1
     ),
-    "get_posterior_by_index: posterior absent at index 1"
+    "posterior absent at index 1"
   )
   expect_error(
     get_posterior_by_index(
       file = read_file(filename),
       i = 2
     ),
-    "get_posterior_by_index: posterior absent at index 2"
+    "posterior absent at index 2"
   )
 
   n_posteriors_added <- add_posteriors(
@@ -188,21 +188,21 @@ test_that("three posteriors are added, middle is deleted and added again", {
       file = read_file(filename),
       i = 1
     ),
-    "get_posterior_by_index: posterior absent at index 1"
+    "posterior absent at index 1"
   )
   expect_error(
     get_posterior_by_index(
       file = read_file(filename),
       i = 2
     ),
-    "get_posterior_by_index: posterior absent at index 2"
+    "posterior absent at index 2"
   )
   expect_error(
     get_posterior_by_index(
       file = read_file(filename),
       i = 3
     ),
-    "get_posterior_by_index: posterior absent at index 3"
+    "posterior absent at index 3"
   )
 
   n_posteriors_added <- add_posteriors(
@@ -250,7 +250,7 @@ test_that("three posteriors are added, middle is deleted and added again", {
       file = read_file(filename),
       i = 2
     ),
-    "get_posterior_by_index: posterior absent at index 2"
+    "posterior absent at index 2"
   )
   expect_silent(
     get_posterior_by_index(
@@ -295,17 +295,17 @@ test_that("three posteriors are added, middle is deleted and added again", {
 test_that("add_posteriors: abuse", {
   expect_error(
     add_posteriors(filename = "inva.lid", verbose = "TRUE not FALSE"),
-    "add_posteriors: verbose should be TRUE or FALSE"
+    "verbose should be TRUE or FALSE"
   )
   expect_error(
     add_posteriors(
       filename = "inva.lid",
       skip_if_output_present = "TRUE not FALSE"
     ),
-    "add_posteriors: skip_if_output_present should be TRUE or FALSE"
+    "skip_if_output_present should be TRUE or FALSE"
   )
   expect_error(
     add_posteriors(filename = "inva.lid"),
-    "add_posteriors: invalid filename"
+    "invalid filename"
   )
 })

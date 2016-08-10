@@ -7,10 +7,10 @@
 #' @author Richel Bilderbeek
 set_posterior_by_index <- function(file, i, posterior) {
   if (i < 1) {
-    stop("set_posterior_by_index: index must be at least 1")
+    stop("index must be at least 1")
   }
   if (i > length(file$posteriors)) {
-    stop("set_posterior_by_index: index must be less than number of posteriors")
+    stop("index must be less than number of posteriors")
   }
   file$posteriors[[i]] <- list(posterior)
   file
@@ -35,27 +35,27 @@ set_posterior <- function(
   file, sti, ai, pi, posterior
 ) {
   if (sti < 1) {
-    stop("set_posterior: sti must be at least 1")
+    stop("sti must be at least 1")
   }
   if (sti > 2) {
-    stop("set_posterior: sti must at most be 2")
+    stop("sti must at most be 2")
   }
   if (ai < 1) {
-    stop("set_posterior: ai must be at least 1")
+    stop("ai must be at least 1")
   }
   napst <- Cer2016::extract_napst(file = file)
   if (ai > napst) {
-    stop("set_posterior: ai must at most be napst")
+    stop("ai must at most be napst")
   }
   if (pi < 1) {
-    stop("set_posterior: pi must be at least 1")
+    stop("pi must be at least 1")
   }
   nppa <- Cer2016::extract_nppa(file = file)
   if (pi > nppa) {
-    stop("set_posterior: pi must at most be nppa")
+    stop("pi must at most be nppa")
   }
   if (!is_posterior(posterior)) {
-    stop("set_posterior: posterior must be a posterior")
+    stop("posterior must be a posterior")
   }
   nstpist <- 2 # Number species trees per incipient species tree
   i <- p2i(sti = sti, pi = pi, ai = ai, nstpist = nstpist, napst = napst, nppa = nppa) # nolint

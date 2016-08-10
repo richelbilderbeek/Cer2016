@@ -4,7 +4,7 @@
 #' @author Richel Bilderbeek
 plot_alignments <- function(filename) {
   if (!is_valid_file(filename)) {
-    stop("plot_alignments: invalid filename")
+    stop("invalid filename")
   }
 
   file <- Cer2016::read_file(filename)

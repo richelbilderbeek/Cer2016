@@ -11,10 +11,10 @@ set_alignment_by_index <- function(
   alignment
 ) {
   if (i < 1) {
-    stop("set_alignment_by_index: index must be at least 1")
+    stop("index must be at least 1")
   }
   if (i > length(file$alignments)) {
-    stop("set_alignment_by_index: index must be less than number of alignments")
+    stop("index must be less than number of alignments")
   }
   file$alignments[[i]] <- list(alignment)
   file
@@ -35,20 +35,20 @@ set_alignment <- function(
   file, sti, ai, alignment
 ) {
   if (sti < 1) {
-    stop("set_alignment: sti must be at least 1")
+    stop("sti must be at least 1")
   }
   if (sti > 2) {
-    stop("set_alignment: sti must at most be 2")
+    stop("sti must at most be 2")
   }
   if (ai < 1) {
-    stop("set_alignment: ai must be at least 1")
+    stop("ai must be at least 1")
   }
   napst <- Cer2016::extract_napst(file = file)
   if (ai > napst) {
-    stop("set_alignment: ai must at most be napst")
+    stop("ai must at most be napst")
   }
   if (!is_alignment(alignment)) {
-    stop("set_alignment: alignment must be an alignment")
+    stop("alignment must be an alignment")
   }
 
   i <- Cer2016::a2i(sti = sti, ai = ai, nstpist = 2, napst = napst)

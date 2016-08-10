@@ -11,7 +11,7 @@
 extract_erg <- function(file) {
 
   if (is.null(names(file$parameters))) {
-    stop("extract_erg: file$parameters not found")
+    stop("file$parameters not found")
   }
 
   erg <- NA
@@ -19,7 +19,7 @@ extract_erg <- function(file) {
     erg <- as.numeric(file$parameters$erg[2])
   }
   if (is.na(erg)) {
-    stop("extract_erg: parameter 'erg' absent")
+    stop("parameter 'erg' absent")
   }
   return(erg)
 }
@@ -37,7 +37,7 @@ extract_erg <- function(file) {
 extract_eri <- function(file) {
 
   if (is.null(names(file$parameters))) {
-    stop("extract_eri: file$parameters not found")
+    stop("file$parameters not found")
   }
 
   eri <- NA
@@ -45,7 +45,7 @@ extract_eri <- function(file) {
     eri <- as.numeric(file$parameters$eri[2])
   }
   if (is.na(eri)) {
-    stop("extract_eri: parameter 'eri' absent")
+    stop("parameter 'eri' absent")
   }
   return(eri)
 }
@@ -64,7 +64,7 @@ extract_eri <- function(file) {
 extract_scr <- function(file) {
 
   if (is.null(names(file$parameters))) {
-    stop("extract_scr: file$parameters not found")
+    stop("file$parameters not found")
   }
 
   scr <- NA
@@ -72,7 +72,7 @@ extract_scr <- function(file) {
     scr <- as.numeric(file$parameters$scr[2])
   }
   if (is.na(scr)) {
-    stop("extract_scr: parameter 'scr' absent")
+    stop("parameter 'scr' absent")
   }
   return(scr)
 }
@@ -91,7 +91,7 @@ extract_scr <- function(file) {
 extract_sirg <- function(file) {
 
   if (is.null(names(file$parameters))) {
-    stop("extract_sirg: file$parameters not found")
+    stop("file$parameters not found")
   }
 
   sirg <- NA
@@ -99,7 +99,7 @@ extract_sirg <- function(file) {
     sirg <- as.numeric(file$parameters$sirg[2])
   }
   if (is.na(sirg)) {
-    stop("extract_sirg: parameter 'sirg' absent")
+    stop("parameter 'sirg' absent")
   }
   return(sirg)
 }
@@ -117,7 +117,7 @@ extract_sirg <- function(file) {
 extract_siri <- function(file) {
 
   if (is.null(names(file$parameters))) {
-    stop("extract_siri: file$parameters not found")
+    stop("file$parameters not found")
   }
 
   siri <- NA
@@ -125,7 +125,7 @@ extract_siri <- function(file) {
     siri <- as.numeric(file$parameters$siri[2])
   }
   if (is.na(siri)) {
-    stop("extract_siri: parameter 'siri' absent")
+    stop("parameter 'siri' absent")
   }
   return(siri)
 }
@@ -143,7 +143,7 @@ extract_siri <- function(file) {
 extract_napst <- function(file) {
 
   if (is.null(names(file$parameters))) {
-    stop("extract_napst: file$parameters not found")
+    stop("file$parameters not found")
   }
 
   n_alignments <- NA
@@ -151,7 +151,7 @@ extract_napst <- function(file) {
     n_alignments <- as.numeric(file$parameters$n_alignments[2])
   }
   if (is.na(n_alignments)) {
-    stop("extract_napst: parameter 'n_alignments' absent")
+    stop("parameter 'n_alignments' absent")
   }
   return(n_alignments)
 }
@@ -169,7 +169,7 @@ extract_napst <- function(file) {
 extract_nppa <- function(file) {
 
   if (is.null(names(file$parameters))) {
-    stop("extract_nppa: file$parameters not found")
+    stop("file$parameters not found")
   }
 
   nppa <- NA
@@ -177,7 +177,7 @@ extract_nppa <- function(file) {
     nppa <- as.numeric(file$parameters$n_beast_runs[2])
   }
   if (is.na(nppa)) {
-    stop("extract_nppa: parameter 'n_beast_runs' absent")
+    stop("parameter 'n_beast_runs' absent")
   }
   return(nppa)
 }
@@ -195,7 +195,7 @@ extract_nppa <- function(file) {
 extract_nspp <- function(file) {
 
   if (is.null(names(file$parameters))) {
-    stop("extract_nspp: file$parameters not found")
+    stop("file$parameters not found")
   }
 
   nspp <- NA
@@ -203,7 +203,7 @@ extract_nspp <- function(file) {
     nspp <- as.numeric(file$parameters$mcmc_chainlength[2]) / 1000
   }
   if (is.na(nspp)) {
-    stop("extract_nspp: parameter 'mcmc_chainlength' absent")
+    stop("parameter 'mcmc_chainlength' absent")
   }
   return(nspp)
 }

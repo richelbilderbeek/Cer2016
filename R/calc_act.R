@@ -8,10 +8,10 @@
 #'   ported to R and adapted by Richel Bilderbeek
 calc_act <- function(trace, sample_interval) {
   if (!is.numeric(trace)) {
-    stop("calc_act: trace must be numeric")
+    stop("trace must be numeric")
   }
   if (sample_interval < 1) {
-    stop("calc_act: sample interval must be at least one")
+    stop("sample interval must be at least one")
   }
 
   # The code is adapted from Java, that has arrays starting at index zero,

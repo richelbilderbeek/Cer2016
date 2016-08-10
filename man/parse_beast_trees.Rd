@@ -15,6 +15,11 @@ the phylogenies in the posterior
 \description{
 Parses a BEAST2 .trees output file
 }
+\note{
+The function is not yet able to respond
+  correctly to invalid files, as documented at
+  https://github.com/richelbilderbeek/Cer2016/issues/118
+}
 \examples{
   posterior <- parse_beast_trees(
     find_path("beast2_example_output.trees")

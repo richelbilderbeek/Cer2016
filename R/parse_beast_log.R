@@ -15,7 +15,7 @@
 #' @author Richel Bilderbeek
 parse_beast_log <- function(filename) {
   if (!file.exists(filename)) {
-    stop("parse_beast_log: file absent")
+    stop("file absent")
   }
   estimates <- utils::read.csv(
     file = filename,

@@ -11,10 +11,10 @@ set_species_tree_by_index <- function(
   species_tree
 ) {
   if (sti < 1) {
-    stop("set_species_tree_by_index: index must be at least 1")
+    stop("index must be at least 1")
   }
   if (sti > length(file$species_trees)) {
-    stop("set_species_tree_by_index: index must be less than number of species_trees") # nolint
+    stop("index must be less than number of species_trees") # nolint
   }
   file$species_trees[[sti]] <- list(species_tree)
   file

@@ -5,19 +5,22 @@
 #' @export
 collect_gamma_statistics <- function(phylogenies) {
   if (length(phylogenies) < 1) {
-    stop("collect_gamma_statistics: ",
-         "there must be at least one phylogeny supplied")
+    stop(
+      "there must be at least one phylogeny supplied"
+    )
   }
   if (class(phylogenies) != "multiPhylo" && class(phylogenies) != "list") {
-    stop("collect_gamma_statistics: ",
-         "phylogenies must be of class 'multiPhylo' or 'list', ",
-         "used '", class(phylogenies), "' instead")
+    stop(
+      "phylogenies must be of class 'multiPhylo' or 'list', ",
+      "used '", class(phylogenies), "' instead"
+    )
   }
   if (!inherits(phylogenies[[1]], "phylo")) {
     # Stop imposed by ape::ltt.plot.coords
-    stop("collect_gamma_statistics: ",
-         "phylogenies must be of type phylo, ",
-         "instead of '", class(phylogenies[[1]]), "'")
+    stop(
+      "phylogenies must be of type phylo, ",
+      "instead of '", class(phylogenies[[1]]), "'"
+    )
   }
 
   n_cols <- 2 # ID, gamma_statistic

@@ -5,7 +5,7 @@
 #' @export
 plot_species_tree <- function(filename) {
   if (!is_valid_file(filename)) {
-    stop("plot_species_tree: invalid filename")
+    stop("invalid filename")
   }
   file <- Cer2016::read_file(filename)
   for (sti in 1:2) {

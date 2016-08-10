@@ -94,11 +94,11 @@ test_that("get_posterior_by_index from fresh file", {
   # No posterior yet
   expect_error(
     get_posterior_by_index(file, 1),
-    "get_posterior_by_index: posterior absent at index 1"
+    "posterior absent at index 1"
   )
   expect_error(
     get_posterior_by_index(file, 2),
-    "get_posterior_by_index: posterior absent at index 2"
+    "posterior absent at index 2"
   )
 
   # Getting a posterior
@@ -135,18 +135,18 @@ test_that("get_posterior_by_index: abuse", {
 
   expect_error(
     get_posterior_by_index(file = file, i = -314),
-    "get_posterior_by_index: index must be at least 1"
+    "index must be at least 1"
   )
 
   expect_error(
     get_posterior_by_index(file = file, i = 42),
-    "get_posterior_by_index: index must be less than number of posteriors"
+    "index must be less than number of posteriors"
   )
 
   file <- set_posterior_by_index(file = file, i = 1, posterior = NA)
   expect_error(
     get_posterior_by_index(file = file, i = 1),
-    "get_posterior_by_index: posterior absent at index 1"
+    "posterior absent at index 1"
   )
 
 })

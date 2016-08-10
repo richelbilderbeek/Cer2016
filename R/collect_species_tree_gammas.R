@@ -16,10 +16,10 @@ collect_species_tree_gammas <- function(
 ) {
 
   if (verbose != TRUE && verbose != FALSE) {
-    stop("collect_species_tree_gammas: verbose should be TRUE or FALSE")
+    stop("verbose should be TRUE or FALSE")
   }
   if (!is_valid_file(filename)) {
-    stop("collect_species_tree_gammas: invalid file")
+    stop("invalid file")
   }
   file <- Cer2016::read_file(filename)
 

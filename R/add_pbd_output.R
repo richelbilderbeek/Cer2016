@@ -41,18 +41,17 @@ add_pbd_output <- function(
 
   if (verbose != TRUE && verbose != FALSE) {
     stop(
-      "add_pbd_output: ",
       "verbose should be TRUE or FALSE"
     )
   }
   if (!is_valid_file(filename)) {
-    stop("add_pbd_output: invalid filename")
+    stop("invalid filename")
   }
 
   file <- Cer2016::read_file(filename)
   if (Cer2016::is_pbd_sim_output(file$pbd_output)) {
     if (verbose) {
-      message("add_pbd_output: file already has a pbd_output")
+      message("file already has a pbd_output")
     }
     return()
   }

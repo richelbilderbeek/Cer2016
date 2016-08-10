@@ -13,11 +13,11 @@
 parse_beast_posterior <- function(trees_filename, log_filename) {
 
   if (!file.exists(trees_filename)) {
-    stop("parse_beast_posterior: trees_filename absent")
+    stop("trees_filename absent")
   }
 
   if (!file.exists(log_filename)) {
-    stop("parse_beast_posterior: log_filename absent")
+    stop("log_filename absent")
   }
 
   posterior_trees <- Cer2016::parse_beast_trees(trees_filename)

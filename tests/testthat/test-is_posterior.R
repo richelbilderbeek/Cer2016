@@ -10,7 +10,7 @@ test_that("is_posterior: use", {
 
   expect_message(
     is_posterior(x = "invalid", verbose = TRUE),
-    "is_posterior: x is not a list"
+    "x is not a list"
   )
 })
 
@@ -21,7 +21,7 @@ test_that("is_posterior: abuse", {
   posterior <- get_posterior(file = file, sti = 1, ai = 1, pi = 1)
   expect_error(
     is_posterior(posterior, verbose = "invalid"),
-    "is_posterior: verbose should be TRUE or FALSE"
+    "verbose should be TRUE or FALSE"
   )
 
 })

@@ -25,7 +25,7 @@ test_that("set_species_tree_by_index: abuse", {
       sti = 0,
       species_tree = ape::rcoal(10)
     ),
-    "set_species_tree_by_index: index must be at least 1"
+    "index must be at least 1"
   )
 
   expect_error(
@@ -34,7 +34,7 @@ test_that("set_species_tree_by_index: abuse", {
       sti = 3,
       species_tree = ape::rcoal(10)
     ),
-    "set_species_tree_by_index: index must be less than number of species_trees"
+    "index must be less than number of species_trees"
   )
 
 })

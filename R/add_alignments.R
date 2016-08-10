@@ -47,7 +47,7 @@
 #' @author Richel Bilderbeek
 add_alignments <- function(filename) {
   if (!is_valid_file(filename)) {
-    stop("add_alignments: invalid file")
+    stop("invalid file")
   }
   file <- Cer2016::read_file(filename)
   for (sti in 1:2) {
@@ -55,7 +55,7 @@ add_alignments <- function(filename) {
     tryCatch(
       species_tree <- get_species_tree_by_index(file = file, sti = sti),
       error = function(msg) {
-        stop("add_alignments: need species_trees at index ", sti)
+        stop("need species_trees at index ", sti)
       }
     )
     testit::assert(Cer2016::is_phylogeny(species_tree))

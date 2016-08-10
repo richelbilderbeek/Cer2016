@@ -11,19 +11,20 @@
 #' @export
 collect_n_taxa <- function(phylogenies) {
   if (length(phylogenies) < 1) {
-    stop("collect_n_taxa: ",
-         "there must be at least one phylogeny supplied")
+    stop("there must be at least one phylogeny supplied")
   }
   if (class(phylogenies) != "multiPhylo" && class(phylogenies) != "list") {
-    stop("collect_n_taxa: ",
-         "phylogenies must be of class 'multiPhylo' or 'list', ",
-         "used '", class(phylogenies), "' instead")
+    stop(
+      "phylogenies must be of class 'multiPhylo' or 'list', ",
+      "used '", class(phylogenies), "' instead"
+    )
   }
   if (!inherits(phylogenies[[1]], "phylo")) {
     # Stop imposed by ape::ltt.plot.coords
-    stop("collect_n_taxa: ",
-         "phylogenies must be of type phylo, ",
-         "instead of '", class(phylogenies[[1]]), "'")
+    stop(
+      "phylogenies must be of type phylo, ",
+      "instead of '", class(phylogenies[[1]]), "'"
+    )
   }
 
   n_cols <- 1 # n_taxa

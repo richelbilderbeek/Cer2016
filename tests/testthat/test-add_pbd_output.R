@@ -52,7 +52,7 @@ test_that("add_pbd_output: add twice", {
 
   expect_message(
     add_pbd_output(filename = filename, verbose = TRUE),
-    "add_pbd_output: file already has a pbd_output"
+    "file already has a pbd_output"
   )
   file.remove(filename)
   expect_false(file.exists(filename))

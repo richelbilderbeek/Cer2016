@@ -33,7 +33,7 @@ test_that("set_posterior_by_index: abuse", {
       i = 0,
       posterior = ape::rcoal(10)
     ),
-    "set_posterior_by_index: index must be at least 1"
+    "index must be at least 1"
   )
 
   expect_error(
@@ -42,7 +42,7 @@ test_that("set_posterior_by_index: abuse", {
       i = 3,
       posterior = ape::rcoal(10)
     ),
-    "set_posterior_by_index: index must be less than number of posteriors"
+    "index must be less than number of posteriors"
   )
 
 })

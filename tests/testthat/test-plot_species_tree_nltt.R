@@ -12,6 +12,6 @@ test_that("plot_species_tree_nltt: abuse", {
 
   expect_error(
     plot_species_tree_nltt(filename = "inva.lid"),
-    "plot_species_tree_nltt: invalid filename"
+    "invalid filename"
   )
 })

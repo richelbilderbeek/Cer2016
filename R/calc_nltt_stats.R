@@ -17,14 +17,14 @@ calc_nltt_stats <- function(
   others
 ) {
   if (!is_phylogeny(phylogeny)) {
-    stop("calc_nltt_stats: phylogeny must be a phylogeny")
+    stop("phylogeny must be a phylogeny")
   }
   if (length(others) == 0) {
-    stop("calc_nltt_stats: must supply others")
+    stop("must supply others")
   }
   for (q in others) {
     if (!is_phylogeny(q)) {
-      stop("calc_nltt_stats: others must be phylogenies")
+      stop("others must be phylogenies")
     }
   }
   nltt_stats <- rep(x = NA, times = length(others))

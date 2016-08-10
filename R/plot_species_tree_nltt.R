@@ -9,7 +9,7 @@ plot_species_tree_nltt <- function(
   dt = 0.001
 ) {
   if (!is_valid_file(filename)) {
-    stop("plot_species_tree_nltt: invalid filename")
+    stop("invalid filename")
   }
   nltt <- NULL; rm(nltt) # nolint, should fix warning: plot_species_tree_nltt: no visible binding for global variable ‘nltt’
 

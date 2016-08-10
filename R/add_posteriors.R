@@ -61,11 +61,11 @@ add_posteriors <- function(
     )
   }
   if (!is_valid_file(filename)) {
-    stop("add_posteriors: invalid filename")
+    stop("invalid filename")
   }
   file <- Cer2016::read_file(filename)
   if (!all(has_alignments(file) == TRUE)) {
-    stop("add_posteriors: alignments absent")
+    stop("alignments absent")
   }
 
   parameters <- file$parameters

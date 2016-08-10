@@ -9,6 +9,6 @@ test_that("plot_posterior_nltts: use", {
 test_that("plot_posterior_nltts: abuse", {
   expect_error(
     plot_posterior_nltts(filename = "inva.lid"),
-    "plot_posterior_nltts: invalid filename"
+    "invalid filename"
   )
 })
