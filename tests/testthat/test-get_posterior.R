@@ -101,7 +101,7 @@ test_that("get_posterior from fresh file", {
   # No posterior yet
   expect_error(
     get_posterior(file, sti = 2, ai = napst, pi = nppa),
-    "get_posterior_by_index: posterior absent at index 24"
+    "posterior absent at index 24"
   )
 
   # Getting a posterior
