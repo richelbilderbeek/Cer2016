@@ -20,7 +20,6 @@ Requires:
   PBD,
   phangorn,
   phytools,
-  rBEAST,
   testit,
   tools,
   TreeSim
@@ -31,8 +30,7 @@ Imports:
   PBD,
   phangorn,
   phytools,
-  RBeast,
-  rBEAST
+  RBeast
 Suggests:
   ape,
   coda,
@@ -52,7 +50,6 @@ Remotes:
   beast-dev/RBeast,
   jimhester/covr,
   jimhester/lintr,
-  olli0601/rBEAST,
   richelbilderbeek/beastscriptr,
   richelbilderbeek/nLTT,
   richelbilderbeek/ribir,
