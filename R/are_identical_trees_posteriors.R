@@ -17,13 +17,13 @@ are_identical_trees_posteriors <- function(
       "verbose should be TRUE or FALSE"
     )
   }
-  if (!is_trees_posterior(p)) {
+  if (!RBeast::is_trees_posterior(p)) {
     stop(
       "are_identical_trees_posteriors: ",
       "p must be a BEAST2 posterior"
     )
   }
-  if (!is_trees_posterior(q)) {
+  if (!RBeast::is_trees_posterior(q)) {
     stop(
       "are_identical_trees_posteriors: ",
       "q must be a BEAST2 posterior"

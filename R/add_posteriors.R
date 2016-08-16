@@ -86,7 +86,7 @@ add_posteriors <- function(
       testit::assert(Cer2016::is_alignment(alignment))
       for (pi in 1:n_beast_runs) {
         posterior <- NA
-        testit::assert(!Cer2016::is_trees_posterior(posterior))
+        testit::assert(!RBeast::is_trees_posterior(posterior))
         tryCatch(
           posterior <- get_posterior(
             file = file,

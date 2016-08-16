@@ -31,6 +31,7 @@ Imports:
   PBD,
   phangorn,
   phytools,
+  RBeast,
   rBEAST
 Suggests:
   ape,
@@ -48,6 +49,7 @@ Suggests:
   testit,
   testthat
 Remotes:
+  beast-dev/RBeast,
   jimhester/covr,
   jimhester/lintr,
   olli0601/rBEAST,

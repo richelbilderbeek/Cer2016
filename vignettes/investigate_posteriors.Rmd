@@ -18,10 +18,10 @@ posterior_1 <- get_posterior_by_index(file, 1)$trees
 posterior_2 <- get_posterior_by_index(file, 2)$trees
 posterior_3 <- get_posterior_by_index(file, 3)$trees
 posterior_4 <- get_posterior_by_index(file, 4)$trees
-testit::assert(is_trees_posterior(posterior_1) == TRUE)
-testit::assert(is_trees_posterior(posterior_2) == TRUE)
-testit::assert(is_trees_posterior(posterior_3) == TRUE)
-testit::assert(is_trees_posterior(posterior_4) == TRUE)
+testit::assert(RBeast::is_trees_posterior(posterior_1) == TRUE)
+testit::assert(RBeast::is_trees_posterior(posterior_2) == TRUE)
+testit::assert(RBeast::is_trees_posterior(posterior_3) == TRUE)
+testit::assert(RBeast::is_trees_posterior(posterior_4) == TRUE)
 
 # All same posteriors are identical
 testit::assert(are_identical_trees_posteriors(posterior_1, posterior_1) == TRUE)

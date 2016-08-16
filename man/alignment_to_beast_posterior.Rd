@@ -61,7 +61,7 @@ Convert an alignment to a BEAST2 XML input file
 
   # Check the posterior
   testit::assert(is_posterior(posterior))
-  testit::assert(is_trees_posterior(posterior$trees))
+  testit::assert(RBeast::is_trees_posterior(posterior$trees))
 
 }
 \author{

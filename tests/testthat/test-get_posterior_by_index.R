@@ -102,7 +102,7 @@ test_that("get_posterior_by_index from fresh file", {
   )
 
   # Getting a posterior
-  posterior <- parse_beast_posterior(
+  posterior <- RBeast::parse_beast_posterior(
     trees_filename = find_path(filename = "beast2_example_output.trees"),
     log_filename   = find_path(filename = "beast2_example_output.log")
   )
