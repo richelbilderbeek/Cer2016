@@ -106,7 +106,7 @@ df_time_per_taxa <- df_time_per_taxa[
 
 See the effect of number of taxa:
 
-```{r}
+```{r fig.width = 7, fig.height = 7}
 ggplot2::ggplot(
   df_time_per_taxa, 
   ggplot2::aes(
@@ -121,7 +121,7 @@ ggplot2::ggplot(
 
 See the effect of number of taxa and sequence length:
 
-```{r}
+```{r fig.width = 7, fig.height = 7}
 ggplot2::ggplot(
   df_time_per_taxa, 
   ggplot2::aes(
