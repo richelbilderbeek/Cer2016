@@ -14,12 +14,12 @@
 #' @export
 are_identical_posteriors <- function(p, q) {
 
-  if (!is_posterior(p)) {
+  if (!RBeast::is_posterior(p)) {
     stop(
       "are_identical_posteriors: p must be a Cer2016 posterior"
     )
   }
-  if (!is_posterior(q)) {
+  if (!RBeast::is_posterior(q)) {
     stop(
       "are_identical_posteriors: ",
       "q must be a Cer2016 posterior"

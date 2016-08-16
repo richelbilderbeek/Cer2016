@@ -38,8 +38,8 @@
 #'   testit::assert(n_posteriors_added == 2)
 #'   p1 <- get_posterior(file = read_file(filename), sti = 1, ai = 1, pi = 1)
 #'   p2 <- get_posterior(file = read_file(filename), sti = 2, ai = 1, pi = 1)
-#'   testit::assert(is_posterior(p1))
-#'   testit::assert(is_posterior(p2))
+#'   testit::assert(RBeast::is_posterior(p1))
+#'   testit::assert(RBeast::is_posterior(p2))
 #'
 #'   # Clean up
 #'   file.remove(filename)
@@ -101,7 +101,7 @@ add_posteriors <- function(
             }
           }
         )
-        if (is_posterior(posterior)) {
+        if (RBeast::is_posterior(posterior)) {
           next
         }
         i <- p2i(sti = sti, ai = ai, pi = pi, nstpist = 2, napst = n_alignments, nppa = n_beast_runs) # nolint
@@ -119,7 +119,7 @@ add_posteriors <- function(
           skip_if_output_present = skip_if_output_present,
           verbose = verbose
         )
-        testit::assert(Cer2016::is_posterior(posterior))
+        testit::assert(RBeast::is_posterior(posterior))
 
         file <- set_posterior(
           file = file, sti = sti, ai = ai, pi = pi,

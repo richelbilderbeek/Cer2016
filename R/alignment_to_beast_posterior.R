@@ -38,7 +38,7 @@
 #'   )
 #'
 #'   # Check the posterior
-#'   testit::assert(is_posterior(posterior))
+#'   testit::assert(RBeast::is_posterior(posterior))
 #'   testit::assert(RBeast::is_trees_posterior(posterior$trees))
 #'
 #' @export
@@ -218,7 +218,7 @@ alignment_to_beast_posterior <- function(
     estimates = estimates_posterior
   )
 
-  testit::assert(Cer2016::is_posterior(posterior))
+  testit::assert(RBeast::is_posterior(posterior))
   testit::assert(RBeast::is_trees_posterior(trees_posterior))
 
   return(posterior)

@@ -36,7 +36,7 @@ test_that("alignment_to_beast_posterior: basic", {
     verbose = FALSE
   )
 
-  expect_true(is_posterior(posterior))
+  expect_true(RBeast::is_posterior(posterior))
   expect_true(RBeast::is_trees_posterior(posterior$trees))
   expect_false(file.exists(beast_log_filename))
   expect_false(file.exists(beast_trees_filename))
