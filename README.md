@@ -6,7 +6,7 @@
 
 Community Ecology Research course 2016.
 
-## Installing Cer2016
+## Installing `Cer2016`
 
 The `Cer2016` package is absent on CRAN.
 
@@ -16,7 +16,7 @@ An easy way is to install it from GitHub. Within R, do:
 devtools::install_github("richelbilderbeek/Cer2016")
 ```
 
-## Using Cer20 as a package dependency
+## Using `Cer2016` as a package dependency
 
 If your package uses `Cer2016`, add the following to the `DESCRIPTION` its `Remotes` section:
 
