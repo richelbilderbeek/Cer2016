@@ -43,5 +43,6 @@ devtools::install_github("olli0601/rBEAST")
 devtools::install_github("richelbilderbeek/nLTT")
 devtools::install_github("rsetienne/PBD", subdir = "PBD")
 devtools::install_github("MangoTheCat/goodpractice")
+devtools::install_github("beast-dev/RBeast")
 
 warnings()
