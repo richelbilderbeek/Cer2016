@@ -164,7 +164,7 @@ ggplot2::ggplot(
 ) + ggplot2::geom_density(
   alpha=.2, 
   fill="#666666"
-) + ggplot2::ggtitle("nLTT statistic dsitribution that is normally distributed"
+) + ggplot2::ggtitle("nLTT statistic distribution that is normally distributed"
 ) + ggplot2::stat_function(
   fun = dnorm, 
   args = list(
