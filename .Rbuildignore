@@ -3,9 +3,11 @@
 ^doc/*
 ^scripts/*
 ^git/*
-.travis.yml
-Codecov.png
-TravisCI.png
-Whitespace.png
-install_beast2.sh
-install_r_packages.R
+^.travis.yml$
+^Codecov.png$
+^TravisCI.png$
+^Whitespace.png$
+^download_data.sh$
+^FAQ.md$
+^install_beast2.sh$
+^install_r_packages.R$

@@ -72,22 +72,22 @@ This worked-out example will show:
 
 For that, I will create four parameter files:
 
-  * `worked_out_example_1.RDa`: protractedness is absent
-  * `worked_out_example_2.RDa`: protractedness strong
-  * `worked_out_example_3.RDa`: protractedness is absent for multiple replicates
-  * `worked_out_example_4.RDa`: protractedness is strong for multiple replicates
+  * `analyse_toy_examples_1.RDa`: protractedness is absent
+  * `analyse_toy_examples_2.RDa`: protractedness strong
+  * `analyse_toy_examples_3.RDa`: protractedness is absent for multiple replicates
+  * `analyse_toy_examples_4.RDa`: protractedness is strong for multiple replicates
 
 Here the parameter files are created with the desired parameters:
 
 ```{r create_parameter_files}
-filenames <- paste0("worked_out_example_", seq(1, 4), ".RDa")
+filenames <- paste0("analyse_toy_examples_", seq(1, 4), ".RDa")
 create_test_parameter_files(filenames = filenames)
 ```
 
-  * `worked_out_example_1.RDa`: protractedness is absent, thus speciation completion rate is high, in this case `1.0e6`
-  * `worked_out_example_2.RDa`: protractedness strong, thus speciation completion rate is low, inde this case `1.0e-1`
-  * `worked_out_example_3.RDa`: protractedness is absent for multiple replicates, thus number of sampled species trees, alignments per species trees, and BEAST2 runs are all 2
-  * `worked_out_example_4.RDa`: protractedness is strong for multiple replicates,  thus number of sampled species trees, alignments per species trees, and   BEAST2 runs are all 2
+  * `analyse_toy_examples_1.RDa`: protractedness is absent, thus speciation completion rate is high, in this case `1.0e6`
+  * `analyse_toy_examples_2.RDa`: protractedness strong, thus speciation completion rate is low, inde this case `1.0e-1`
+  * `analyse_toy_examples_3.RDa`: protractedness is absent for multiple replicates, thus number of sampled species trees, alignments per species trees, and BEAST2 runs are all 2
+  * `analyse_toy_examples_4.RDa`: protractedness is strong for multiple replicates,  thus number of sampled species trees, alignments per species trees, and   BEAST2 runs are all 2
   
 Here the parameters are shown in a nicer format:
 
@@ -789,10 +789,13 @@ Because of the number of repeats, there are more data points, as all are lumped 
 This visualization does not tell use how the error is made: is the error concentrated at the root, middle or tips of the tree? To locate this, the average nLTT plots of the posterior is shown in figure [fig:Examples-34-posterior-average-nltt]:
 
 
-
-
-
 ## References
 
  * [1] Janzen, Thijs, Sebastian Höhna, and Rampal S. Etienne. "Approximate Bayesian Computation of diversification rates from molecular phylogenies: introducing a new efficient summary statistic, the nLTT." Methods in Ecology and Evolution 6.5 (2015): 566-575.
  * [2] Pybus, Oliver G., and Paul H. Harvey. "Testing macro–evolutionary models using incomplete molecular phylogenies." Proceedings of the Royal Society of London B: Biological Sciences 267.1459 (2000): 2267-2272.
+
+## Cleaning up
+
+```{r clean_up}
+file.remove(filenames)
+```

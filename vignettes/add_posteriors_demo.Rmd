@@ -141,3 +141,11 @@ phangorn::densiTree(
   alpha = 1
 )
 ```
+
+## Cleaning up
+
+Delete the created files.
+
+```{r}
+file.remove(filename)
+```
