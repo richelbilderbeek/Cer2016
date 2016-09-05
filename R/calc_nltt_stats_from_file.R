@@ -49,21 +49,24 @@ calc_nltt_stats_from_file <- function(filename) {
         tryCatch(
           posterior <- get_posterior(file = file, sti = sti, ai = ai, pi = pi),
           error = function(msg) {
-            print(paste0("File", filename, " lacks a posterior"))
+            print(paste0("File ", filename, " lacks a posterior"))
           }
         )
         # If no posterior, then this will be the nLTT statistic
         nltt_stats <- data.frame(id = 1, nltt_stat = NA)
-        posterior_trees <- posterior$trees
 
-        # If possible, extract the nLTT statistics
-        if (length(posterior_trees) >= 1 && !is.na(posterior_trees)) {
-          nltt_stats <- Cer2016::calc_nltt_stats(
-            phylogeny = focal_phylogeny,
-            others = posterior_trees
-          )
-          testit::assert(nspp == length(nltt_stats$nltt_stat))
-          testit::assert(length(nltt_stats$nltt_stat) == nrow(nltt_stats))
+        # If there is a posterior, some calculations must be made
+        if (!is.na(posterior)) {
+          posterior_trees <- posterior$trees
+          # If possible, extract the nLTT statistics
+          if (length(posterior_trees) >= 1 && !is.na(posterior_trees)) {
+            nltt_stats <- Cer2016::calc_nltt_stats(
+              phylogeny = focal_phylogeny,
+              others = posterior_trees
+            )
+            testit::assert(nspp == length(nltt_stats$nltt_stat))
+            testit::assert(length(nltt_stats$nltt_stat) == nrow(nltt_stats))
+          }
         }
         df$nltt_stat[
           index:(index + nrow(nltt_stats) - 1)

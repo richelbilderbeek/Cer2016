@@ -1,5 +1,6 @@
 library(Cer2016)
-folder <- "/home/p230198/GitHubs/Cer2016/scripts"
+folder <- "/home/p230198/Peregrine"
+#folder <- "/home/p230198/GitHubs/Cer2016/scripts"
 csv_filename_nltt_stat <- "collected_nltt_stats.csv"
 
 # filenames
