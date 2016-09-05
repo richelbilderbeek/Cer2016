@@ -17,7 +17,7 @@
 #'     mutation_rate = 0.1,
 #'     n_alignments = 1,
 #'     sequence_length = 10,
-#'     mcmc_chainlength = 10000,
+#'     nspp = 10,
 #'     n_beast_runs = 1,
 #'     filename = filename
 #'   )
@@ -70,7 +70,7 @@ add_posteriors <- function(
 
   parameters <- file$parameters
   rng_seed <- as.numeric(parameters$rng_seed[2])
-  mcmc_chainlength <- as.numeric(parameters$mcmc_chainlength[2])
+  nspp <- as.numeric(parameters$nspp[2])
   n_alignments <- as.numeric(parameters$n_alignments[2])
   n_beast_runs <- as.numeric(parameters$n_beast_runs[2])
 
@@ -114,7 +114,7 @@ add_posteriors <- function(
         posterior <- alignment_to_beast_posterior(
           alignment_dnabin = alignment,
           base_filename = basefilename,
-          mcmc_chainlength = mcmc_chainlength,
+          nspp = nspp,
           rng_seed = new_seed,
           skip_if_output_present = skip_if_output_present,
           verbose = verbose

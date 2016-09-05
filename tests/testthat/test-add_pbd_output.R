@@ -13,7 +13,7 @@ test_that("pbd_output is added", {
     mutation_rate = 0.1,
     n_alignments = 1,
     sequence_length = 10,
-    mcmc_chainlength = 10000,
+    nspp = 10,
     n_beast_runs = 1,
     filename = filename
   )
@@ -43,7 +43,7 @@ test_that("add_pbd_output: add twice", {
     mutation_rate = 0.1,
     n_alignments = 1,
     sequence_length = 10,
-    mcmc_chainlength = 10000,
+    nspp = 10,
     n_beast_runs = 1,
     filename = filename
   )
@@ -80,7 +80,7 @@ test_that("add_pbd_output: demonstrate PBD::pbd_sim to freeze", {
       mutation_rate = 0.1,
       n_alignments = 1,
       sequence_length = 10,
-      mcmc_chainlength = 10000,
+      nspp = 10,
       n_beast_runs = 1,
       filename = filename
     )

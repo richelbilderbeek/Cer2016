@@ -65,8 +65,8 @@ file_has_valid_parameters <- function(
     if (verbose) message("file_has_valid_parameters: n_beast_runs invalid")
     return(FALSE)
   }
-  if (as.numeric(parameters$mcmc_chainlength[2]) < 1) {
-    if (verbose) message("file_has_valid_parameters: mcmc_chainlength invalid")
+  if (Cer2016::extract_nspp(file) < 1) {
+    if (verbose) message("file_has_valid_parameters: nspp invalid")
     return(FALSE)
   }
   return(TRUE)

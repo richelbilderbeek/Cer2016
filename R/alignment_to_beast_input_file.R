@@ -1,6 +1,7 @@
 #' Convert an alignment and parameters to a BEAST XML input file
 #' @param alignment_dnabin the DNA alignment of type DNAbin
-#' @param mcmc_chainlength the BEAST2 MCMC chain length
+#' @param nspp the number of states in a BEAST2 MCMC chain,
+#'   typically there is one state per one thousand generations
 #' @param rng_seed random number generator seed
 #' @param beast_filename the filename of the XML BEAST2 input file created
 #' @param temp_fasta_filename the name of a temporary file created
@@ -22,7 +23,7 @@
 #'   fasta_filename <- "alignment_to_beast_input_file_examp.fasta"
 #'   alignment_to_beast_input_file(
 #'     alignment_dnabin = alignment,
-#'     mcmc_chainlength = 10000,
+#'     nspp = 10,
 #'     rng_seed = 42,
 #'     beast_filename = beast_xml_input_file,
 #'     temp_fasta_filename = fasta_filename
@@ -35,7 +36,7 @@
 #' @author Richel Bilderbeek
 alignment_to_beast_input_file <- function(
   alignment_dnabin,
-  mcmc_chainlength,
+  nspp,
   rng_seed = 42,
   beast_filename,
   temp_fasta_filename,
@@ -54,7 +55,7 @@ alignment_to_beast_input_file <- function(
   options(scipen = 20)
   beastscriptr::beast_scriptr(
     input_fasta_filename = temp_fasta_filename,
-    mcmc_chainlength = mcmc_chainlength,
+    mcmc_chainlength = nspp * 1000,
     tree_prior = "birth_death",
     date_str = "20151027",
     output_xml_filename = beast_filename

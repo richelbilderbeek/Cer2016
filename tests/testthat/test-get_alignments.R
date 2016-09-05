@@ -41,7 +41,7 @@ test_that("get_alignments: add one", {
     mutation_rate = 0.1,
     n_alignments = 1,
     sequence_length = 10,
-    mcmc_chainlength = 10000,
+    nspp = 10,
     n_beast_runs = n_alignments,
     filename = filename
   )
@@ -83,7 +83,7 @@ test_that("get_alignments: add two", {
     mutation_rate = 0.1,
     n_alignments = n_alignments,
     sequence_length = 10,
-    mcmc_chainlength = 10000,
+    nspp = 10,
     n_beast_runs = 1,
     filename = filename
   )

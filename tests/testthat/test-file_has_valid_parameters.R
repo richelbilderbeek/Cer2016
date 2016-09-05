@@ -109,12 +109,12 @@ test_that("file_has_valid_parameters: abuse", {
     "n_beast_runs invalid"
   )
 
-  # mcmc_chainlength
+  # nspp
   file <- read_file(find_path("toy_example_1.RDa"))
-  file$parameters$mcmc_chainlength[2] <- -123.456
+  file$parameters$nspp[2] <- -123.456
   expect_message(
     file_has_valid_parameters(file = file, verbose = TRUE),
-    "mcmc_chainlength invalid"
+    "nspp invalid"
   )
 
 })

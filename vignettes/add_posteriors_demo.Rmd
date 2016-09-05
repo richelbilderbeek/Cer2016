@@ -55,7 +55,7 @@ save_parameters_to_file(
   mutation_rate = 0.01,
   n_alignments = 1,
   sequence_length = 1000,
-  mcmc_chainlength = 10000,
+  nspp = 10,
   n_beast_runs = n_beast_runs,
   filename = filename
 )  

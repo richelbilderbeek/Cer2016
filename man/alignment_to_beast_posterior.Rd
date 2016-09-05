@@ -4,14 +4,15 @@
 \alias{alignment_to_beast_posterior}
 \title{Convert an alignment to a BEAST2 XML input file}
 \usage{
-alignment_to_beast_posterior(alignment_dnabin, mcmc_chainlength, base_filename,
+alignment_to_beast_posterior(alignment_dnabin, nspp, base_filename,
   rng_seed = 42, beast_jar_path = find_beast_jar_path(),
   skip_if_output_present = FALSE, verbose = FALSE)
 }
 \arguments{
 \item{alignment_dnabin}{The alignmnet}
 
-\item{mcmc_chainlength}{The length of the MCMC chain BEAST2 will generate}
+\item{nspp}{The number of states in the MCMC chain BEAST2 will generate,
+typically one state per one thousand moves}
 
 \item{base_filename}{The base of the filename (the part without the extension)}
 
@@ -51,7 +52,7 @@ Convert an alignment to a BEAST2 XML input file
   # Run BEAST2 and extract the phylogenies of its posterior
   posterior <- alignment_to_beast_posterior(
     alignment_dnabin = alignment,
-    mcmc_chainlength = 10000,
+    nspp = 10,
     base_filename = base_filename,
     rng_seed = 42,
     beast_jar_path = beast_jar_path,

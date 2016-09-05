@@ -41,7 +41,7 @@ test_that("collect_species_tree_n_taxa: empty file should raise error", {
     mutation_rate = 0.01,
     n_alignments = 2,
     sequence_length = 1000,
-    mcmc_chainlength = 10000,
+    nspp = 10,
     n_beast_runs = 2,
     filename = filename
   )

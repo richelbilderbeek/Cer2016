@@ -35,7 +35,7 @@ create_parameter_files_article <- function() {
               mutation_rate = r,
               n_alignments = 2,
               sequence_length = l,
-              mcmc_chainlength = 1000000,
+              nspp = 1000,
               n_beast_runs = 2,
               filename = filename
             )

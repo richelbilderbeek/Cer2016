@@ -66,7 +66,7 @@ if (file.exists(paste0(base_filename, ".xml.state"))) {
 }
 posterior <- alignment_to_beast_posterior(
   alignment,
-  mcmc_chainlength = 10000,
+  nspp = 10,
   base_filename = base_filename,
   rng_seed = 42,
   beast_jar_path = find_beast_jar_path()

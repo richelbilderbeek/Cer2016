@@ -21,7 +21,7 @@ create_test_parameter_files <- function(
   mutation_rates <- rep(0.01, times = 4)
   n_alignmentses <- c(1, 1, 2, 2)
   sequence_lengths <- rep(1000, times = 4)
-  mcmc_chainlengths <- rep(10000, times = 4)
+  nspps <- rep(10, times = 4)
   n_beast_runses <- c(1, 1, 2, 2)
   for (i in seq(1, 4)) {
     save_parameters_to_file(
@@ -35,7 +35,7 @@ create_test_parameter_files <- function(
       mutation_rate = mutation_rates[i],
       n_alignments = n_alignmentses[i],
       sequence_length = sequence_lengths[i],
-      mcmc_chainlength = mcmc_chainlengths[i],
+      nspp = nspps[i],
       n_beast_runs = n_beast_runses[i],
       filename = filenames[i]
     )

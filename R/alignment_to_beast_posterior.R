@@ -1,6 +1,7 @@
 #' Convert an alignment to a BEAST2 XML input file
 #' @param alignment_dnabin The alignmnet
-#' @param mcmc_chainlength The length of the MCMC chain BEAST2 will generate
+#' @param nspp The number of states in the MCMC chain BEAST2 will generate,
+#'   typically one state per one thousand moves
 #' @param base_filename The base of the filename (the part without the extension)
 #' @param rng_seed The random number generator seed used by BEAST2
 #' @param beast_jar_path Where the jar 'beast.jar' can be found
@@ -29,7 +30,7 @@
 #'   # Run BEAST2 and extract the phylogenies of its posterior
 #'   posterior <- alignment_to_beast_posterior(
 #'     alignment_dnabin = alignment,
-#'     mcmc_chainlength = 10000,
+#'     nspp = 10,
 #'     base_filename = base_filename,
 #'     rng_seed = 42,
 #'     beast_jar_path = beast_jar_path,
@@ -45,7 +46,7 @@
 #' @author Richel Bilderbeek
 alignment_to_beast_posterior <- function(
   alignment_dnabin,
-  mcmc_chainlength,
+  nspp,
   base_filename,
   rng_seed = 42,
   beast_jar_path = find_beast_jar_path(),
@@ -57,14 +58,14 @@ alignment_to_beast_posterior <- function(
       "alignment must be of class DNAbin"
     )
   }
-  if (!is_whole_number(mcmc_chainlength)) {
+  if (!is_whole_number(nspp)) {
     stop(
-      "mcmc_chainlength must be a whole number"
+      "nspp must be a whole number"
     )
   }
-  if (mcmc_chainlength <= 0) {
+  if (nspp <= 0) {
     stop(
-      "mcmc_chainlength must non-zero and positive"
+      "nspp must non-zero and positive"
     )
   }
   if (!is.character(base_filename)) {
@@ -114,7 +115,7 @@ alignment_to_beast_posterior <- function(
   # Create a BEAST2 XML input file
   alignment_to_beast_input_file(
     alignment_dnabin = alignment_dnabin,
-    mcmc_chainlength = mcmc_chainlength,
+    nspp = nspp,
     rng_seed = rng_seed,
     beast_filename = beast_filename,
     temp_fasta_filename = temp_fasta_filename,

@@ -28,7 +28,7 @@ test_that("alignment_to_beast_posterior: basic", {
 
   posterior <- alignment_to_beast_posterior(
     alignment_dnabin = alignment,
-    mcmc_chainlength = 10000,
+    nspp = 10,
     base_filename = base_filename,
     rng_seed = 42,
     beast_jar_path = beast_jar_path,
@@ -57,7 +57,7 @@ test_that("alignment_to_beast_posterior: abuse", {
   expect_error(
     alignment_to_beast_posterior(
       alignment_dnabin = "not an alignment",
-      mcmc_chainlength = 10000,
+      nspp = 10,
       base_filename = base_filename,
       rng_seed = 42,
       beast_jar_path = find_beast_jar_path(),
@@ -70,32 +70,32 @@ test_that("alignment_to_beast_posterior: abuse", {
   expect_error(
     alignment_to_beast_posterior(
       alignment_dnabin = alignment,
-      mcmc_chainlength = 3.14, # Not a whole number
+      nspp = 3.14, # Not a whole number
       base_filename = base_filename,
       rng_seed = 42,
       beast_jar_path = find_beast_jar_path(),
       skip_if_output_present = FALSE,
       verbose = FALSE
     ),
-    "mcmc_chainlength must be a whole number"
+    "nspp must be a whole number"
   )
 
   expect_error(
     alignment_to_beast_posterior(
       alignment_dnabin = alignment,
-      mcmc_chainlength = -10000, # Not a positive non-zero value
+      nspp = -10000, # Not a positive non-zero value
       base_filename = base_filename,
       rng_seed = 42,
       beast_jar_path = find_beast_jar_path(),
       skip_if_output_present = FALSE,
       verbose = FALSE
     ),
-    "mcmc_chainlength must non-zero and positive"
+    "nspp must non-zero and positive"
   )
   expect_error(
     alignment_to_beast_posterior(
       alignment_dnabin = alignment,
-      mcmc_chainlength = 10000,
+      nspp = 10,
       base_filename = c(1, 2, 3), # Not a character string
       rng_seed = 42,
       beast_jar_path = find_beast_jar_path(),
@@ -107,7 +107,7 @@ test_that("alignment_to_beast_posterior: abuse", {
   expect_error(
     alignment_to_beast_posterior(
       alignment_dnabin = alignment,
-      mcmc_chainlength = 10000,
+      nspp = 10,
       base_filename = base_filename,
       rng_seed = 3.14,   # Not a whole number
       beast_jar_path = find_beast_jar_path(),
@@ -119,7 +119,7 @@ test_that("alignment_to_beast_posterior: abuse", {
   expect_error(
     alignment_to_beast_posterior(
       alignment_dnabin = alignment,
-      mcmc_chainlength = 10000,
+      nspp = 10,
       base_filename = base_filename,
       rng_seed = 42,
       beast_jar_path = c(1, 2, 3), # Not NULL nor a character string
@@ -131,7 +131,7 @@ test_that("alignment_to_beast_posterior: abuse", {
   expect_error(
     alignment_to_beast_posterior(
       alignment_dnabin = alignment,
-      mcmc_chainlength = 10000,
+      nspp = 10,
       base_filename = base_filename,
       rng_seed = 42,
       beast_jar_path = "invalid/path_too",
@@ -143,7 +143,7 @@ test_that("alignment_to_beast_posterior: abuse", {
   expect_error(
     alignment_to_beast_posterior(
       alignment_dnabin = alignment,
-      mcmc_chainlength = 10000,
+      nspp = 10,
       base_filename = base_filename,
       rng_seed = 42,
       beast_jar_path = find_beast_jar_path(),

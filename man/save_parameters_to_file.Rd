@@ -5,7 +5,7 @@
 \title{Creates a valid parameter file}
 \usage{
 save_parameters_to_file(rng_seed, sirg, siri, scr, erg, eri, age, mutation_rate,
-  n_alignments, sequence_length, mcmc_chainlength, n_beast_runs, filename)
+  n_alignments, sequence_length, nspp, n_beast_runs, filename)
 }
 \arguments{
 \item{rng_seed}{the random number generator seed}
@@ -28,7 +28,7 @@ save_parameters_to_file(rng_seed, sirg, siri, scr, erg, eri, age, mutation_rate,
 
 \item{sequence_length}{the simulated DNA sequence length in nucleotides}
 
-\item{mcmc_chainlength}{the length of the MCMC chain that BEAST2 will run}
+\item{nspp}{the number of states in the MCMC chain that BEAST2 will run}
 
 \item{n_beast_runs}{the number of BEAST2 runs per DNA alignments}
 
@@ -53,7 +53,7 @@ save_parameters_to_file(
   mutation_rate = 0.1,
   n_alignments = 1,
   sequence_length = 10,
-  mcmc_chainlength = 10000,
+  nspp = 10,
   n_beast_runs = 1,
   filename = filename
 )

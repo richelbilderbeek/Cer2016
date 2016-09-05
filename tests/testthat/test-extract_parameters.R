@@ -196,9 +196,10 @@ test_that("extract_nspp: abuse", {
 
   file <- read_file(find_path("toy_example_1.RDa"))
   file$parameters$mcmc_chainlength <- NULL
+  file$parameters$nspp <- NULL
   expect_error(
     extract_nspp(file),
-    "parameter 'mcmc_chainlength' absent"
+    "parameter 'nspp' absent"
   )
 
 })

@@ -32,7 +32,7 @@ testit::assert(file.exists(beast_jar_path))
 
 posterior <- alignment_to_beast_posterior(
   alignment_dnabin = alignment,
-  mcmc_chainlength = 10000,
+  nspp = 10,
   base_filename = base_filename,
   rng_seed = 42,
   beast_jar_path = beast_jar_path,

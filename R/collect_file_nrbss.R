@@ -42,9 +42,7 @@ collect_file_nrbss <- function(
   n_beast_runs <- as.numeric(
     file$parameters$n_beast_runs[2]
   )
-  n_states <- as.numeric(
-    as.numeric(file$parameters$mcmc_chainlength[2]) / 1000
-  )
+  n_states <- extract_nspp(file)
   n_rows <- n_species_trees * n_alignments * n_beast_runs * n_states
 
   # Create an empty data frame like this:

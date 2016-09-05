@@ -199,11 +199,16 @@ extract_nspp <- function(file) {
   }
 
   nspp <- NA
-  if ("mcmc_chainlength" %in% names(file$parameters)) {
-    nspp <- as.numeric(file$parameters$mcmc_chainlength[2]) / 1000
+  if ("nspp" %in% names(file$parameters)) {
+    nspp <- as.numeric(file$parameters$nspp[2])
+  } else {
+    # Backwards compatibility
+    if ("mcmc_chainlength" %in% names(file$parameters)) {
+      nspp <- as.numeric(file$parameters$mcmc_chainlength[2]) / 1000
+    }
   }
   if (is.na(nspp)) {
-    stop("parameter 'mcmc_chainlength' absent")
+    stop("parameter 'nspp' absent")
   }
   return(nspp)
 }

@@ -14,7 +14,7 @@ test_that("creates an XML", {
 
   alignment_to_beast_input_file(
     alignment_dnabin = alignment,
-    mcmc_chainlength = 10000,
+    nspp = 10,
     rng_seed = 42,
     beast_filename = beast_xml_input_file,
     temp_fasta_filename = fasta_filename
@@ -32,7 +32,7 @@ test_that("alignment_to_beast_input_file: abuse", {
   expect_error(
     alignment_to_beast_input_file(
       alignment_dnabin = "",
-      mcmc_chainlength = 1000,
+      nspp = 1,
       rng_seed = 42,
       beast_filename = "",
       temp_fasta_filename = "",
