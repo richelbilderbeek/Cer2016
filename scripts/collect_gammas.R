@@ -1,7 +1,7 @@
 library(Cer2016)
 folder <- "/home/p230198/GitHubs/Cer2016/scripts"
-csv_filename_species_trees <- "collected_gammas_species_trees.csv"
-csv_filename_posterior     <- "collected_gammas_posterior.csv"
+csv_filename_species_trees <- "../inst/extdata/collected_gammas_species_trees.csv"
+csv_filename_posterior     <- "../inst/extdata/collected_gammas_posterior.csv"
 
 fns <- paste(
   folder, list.files(folder, pattern = "\\.RDa"), sep = "/"
@@ -16,16 +16,6 @@ write.csv(
   x = df$posterior_gamma_stats,
   file = csv_filename_posterior,
   row.names = TRUE
-)
-
-# Analyse and create pdf
-file.copy(
-  csv_filename_species_trees,
-  paste0("../inst/extdata/", csv_filename_species_trees)
-)
-file.copy(
-  csv_filename_posterior,
-  paste0("../inst/extdata/", csv_filename_posterior)
 )
 
 library(rmarkdown)

@@ -6,12 +6,9 @@ fns <- paste(
 df <- Cer2016::collect_files_n_taxa(fns, verbose = TRUE)
 write.csv(
   x = df,
-  file = "collected_n_taxa.csv",
+  file = "../inst/extdata/collected_n_taxa.csv",
   row.names = TRUE
 )
-
-# Analyse and create pdf
-file.copy("collected_n_taxa.csv", "../inst/extdata/collected_n_taxa.csv")
 
 library(rmarkdown)
 

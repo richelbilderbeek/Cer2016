@@ -7,4 +7,4 @@
 #SBATCH --job-name=analyse_time
 #SBATCH --output=analyse_time.log
 module load R/3.3.1-foss-2016a
-time Rscript analyse_nltt_statistics.R
+time Rscript analyse_nltt_stats.R

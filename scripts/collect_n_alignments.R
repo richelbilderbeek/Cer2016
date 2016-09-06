@@ -6,7 +6,7 @@ fns <- paste(
 df <- Cer2016::collect_files_n_alignments(fns, verbose = TRUE)
 write.csv(
   x = df,
-  file = "collected_n_alignments.csv",
+  file = "../inst/extdata/collected_n_alignments.csv",
   row.names = TRUE
 )
 

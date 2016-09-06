@@ -6,12 +6,9 @@ fns <- paste(
 df <- Cer2016::collect_parameters(fns, verbose = TRUE)
 write.csv(
   x = df,
-  file = "collected_parameters.csv",
+  file = "../inst/extdata/collected_parameters.csv",
   row.names = TRUE
 )
-
-# Analyse and create pdf
-file.copy("collected_parameters.csv", "../inst/extdata/collected_parameters.csv")
 
 tryCatch(
   rmarkdown::render("../vignettes/analyse_files.Rmd", output_file = "~/analyse_files.html"),

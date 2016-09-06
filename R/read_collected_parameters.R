@@ -11,5 +11,9 @@ read_collected_parameters <- function() {
     stringsAsFactors = FALSE,
     row.names = 1
   )
+  if ("mcmc_chainlength" %in%  names(df)) {
+    df$mcmc_chainlength <- df$mcmc_chainlength / 1000
+    df <- plyr::rename(df,c('mcmc_chainlength'='nspp'))
+  }
   df
 }

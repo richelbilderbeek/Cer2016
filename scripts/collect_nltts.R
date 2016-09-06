@@ -1,8 +1,8 @@
 library(Cer2016)
 folder <- "/home/p230198/GitHubs/Cer2016/scripts"
 
-csv_filename_species_trees <- "collected_nltts_species_trees.csv"
-csv_filename_posterior <- "collected_nltts_posterior.csv"
+csv_filename_species_trees <- "../inst/extdata/collected_nltts_species_trees.csv"
+csv_filename_posterior <- "../inst/extdata/collected_nltts_posterior.csv"
 dt <- 0.1
 
 fns <- paste(
@@ -19,16 +19,6 @@ write.csv(
   x = df$posterior_nltts,
   file = csv_filename_posterior,
   row.names = TRUE
-)
-
-# Analyse and create pdf
-file.copy(
-  csv_filename_species_trees,
-  paste0("../inst/extdata/", csv_filename_species_trees)
-)
-file.copy(
-  csv_filename_posterior,
-  paste0("../inst/extdata/", csv_filename_posterior)
 )
 
 library(rmarkdown)

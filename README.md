@@ -31,19 +31,11 @@ Remotes:
 module load git; git pull
 ```
 
-## Copy files from Peregrine to local computer
+## Copy all files from Peregrine to local computer
 
 ```
 scp p230198@peregrine.hpc.rug.nl:/home/p230198/GitHubs/Cer2016/scripts/*.* ~/Peregrine
 ```
-
-## Re-install the package on Peregrine
-
-```
-cd scripts; sbatch install_this_r_package.sh
-```
-
-Note that this is done automatically when running the pipeline.
 
 ## Workflow
 
@@ -54,7 +46,29 @@ cd scripts
 ./run.sh
 ```
 
-It will send an email when finished.
+This will first create a dataset, then analyse this.
+
+### Creating raw data
+
+Data is created by simulation.
+
+The first round of output will be `RDa` ('R Data') files.
+Each `RDa` will contain the paramaters of a run, its incipient species tree, sampled species trees, alignments and its posteriors.
+
+### Measurements
+
+The `RDa` files are processed and multiple `csv` ('Comma Seperated files') will be created in the folder `inst/extdata`.
+
+Each `csv` contains a collected [something] of all the raw data files. These can be parameters, simulation duration
+and summary statistics.
+
+The benefit of these `csv` files is that they will speed up local analysis. 
+
+### Analysing data
+
+```
+scp p230198@peregrine.hpc.rug.nl:/home/p230198/GitHubs/Cer2016/inst/exdata/*.csv ~/GitHubs/Cer2016/inst/extdata
+```
 
 ## How to create the test examples?
 

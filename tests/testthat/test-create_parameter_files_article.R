@@ -11,8 +11,6 @@ test_that("create_parameter_files_article works", {
     message("version" %in% names(file$parameters[2, , 2]))
   }
 
-
-
   for (filename in filenames) {
     expect_true(is_valid_file(filename))
     file <- read_file(filename)

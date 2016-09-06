@@ -5,6 +5,7 @@
 ^git/*
 ^.travis.yml$
 ^Codecov.png$
+^clean.sh$
 ^TravisCI.png$
 ^Whitespace.png$
 ^download_data.sh$

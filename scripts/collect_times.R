@@ -68,25 +68,14 @@ df_process$process_name <- as.factor(df_process$process_name)
 # Write data to CSVs
 write.csv(
   x = df,
-  file = "collected_times_per_file.csv",
+  file = "../inst/extdata/collected_times_per_file.csv",
   row.names = TRUE
 )
 
 write.csv(
   x = df_process,
-  file = "collected_times_for_process.csv",
+  file = "../inst/extdata/collected_times_for_process.csv",
   row.names = TRUE
-)
-
-
-# Copy the CSVs to a folder that is accessible for a vignette
-file.copy(
-  "collected_times_per_file.csv",
-  "../inst/extdata/collected_times_per_file.csv"
-)
-file.copy(
-  "collected_times_for_process.csv",
-  "../inst/extdata/collected_times_for_process.csv"
 )
 
 # Create a PDF
