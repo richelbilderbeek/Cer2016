@@ -15,10 +15,10 @@ read_collected_nltt_stats <- function() {
   filename <- Cer2016::find_path("collected_nltt_stats.csv")
   testit::assert(file.exists(filename))
   df <- utils::read.csv(
-   file = filename,
-   header = TRUE,
-   stringsAsFactors = FALSE,
-   row.names = 1
+    file = filename,
+    header = TRUE,
+    stringsAsFactors = FALSE,
+    row.names = 1
   )
   df
   df$filename <- as.factor(df$filename)

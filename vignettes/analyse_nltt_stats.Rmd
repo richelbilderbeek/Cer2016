@@ -27,7 +27,7 @@ options(warn = 2)
 ```{r}
 nltt_stats_raw <- read_collected_nltt_stats()
 #nltt_stats_raw$sti <- plyr::revalue(nltt_stats_raw$sti, c("1"="youngest", "2"="oldest"))
-knitr::kable(head(nltt_stats_raw))
+knitr::kable(head(nltt_stats_raw, 12))
 ```
 
 Remove the NA's:
@@ -36,41 +36,53 @@ Remove the NA's:
 nltt_stats <- nltt_stats_raw[!is.na(nltt_stats_raw$nltt_stat), ]
 ```
 
+## Are nLTT statistics from the same distribution?
+
+Time to anwer the question [do nLTT statistics differ between posteriors?](https://github.com/richelbilderbeek/Cer2016/issues/103)
+
+First we need to know if nLTT statistics are from the
+same distribution, as this will influence are tests.
+
+To do, we will use the Mann-Whitney U test, as
+it assumes little.
+
+Are nLTT statistics between BEAST2 runs from the same
+distribution?
+
+```{r}
+df <- cast_nltt_stats(nltt_stats)
+  
+df <- are_beast_replicates_from_same_distribution(df)
+  
+# nltt_stats
+# df <- dplyr::summarise(
+#   dplyr::group_by(nltt_stats, filename, sti, ai),
+#   idn = are_from_same_distribution(a, b)
+# )
+# knitr::kable(dplyr::tally(dplyr::group_by(df, idn)))
+```
+
+
+
+## Show all nLTTs
+
 All on one heap:
 
 ```{r fig.width = 7, fig.height = 7}
-ggplot2::ggplot(
-  data = nltt_stats,
-  ggplot2::aes(
-    x = nltt_stats$filename,
-    y = nltt_stats$nltt_stat
-  )
-) + ggplot2::geom_boxplot(
-) + ggplot2::scale_x_discrete(
-  name = "Filename"
-) + ggplot2::scale_y_continuous(
-  name = "nLTT statistic"
-) + ggplot2::ggtitle("Distribution of nLTT statistics") + 
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, vjust = 0.5)) + ggplot2::theme(legend.position="none") + 
-  ggplot2::theme(axis.ticks = ggplot2::element_blank(), axis.text.x = ggplot2::element_blank())
-
+if (1 == 2) {
+  ggplot2::ggplot(
+    data = nltt_stats,
+    ggplot2::aes(
+      x = nltt_stats$filename,
+      y = nltt_stats$nltt_stat
+    )
+  ) + ggplot2::geom_boxplot(
+  ) + ggplot2::scale_x_discrete(
+    name = "Filename"
+  ) + ggplot2::scale_y_continuous(
+    name = "nLTT statistic"
+  ) + ggplot2::ggtitle("Distribution of nLTT statistics") + 
+    ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, vjust = 0.5)) + ggplot2::theme(legend.position="none") + 
+    ggplot2::theme(axis.ticks = ggplot2::element_blank(), axis.text.x = ggplot2::element_blank())
+}
 ```
-
-Seperated by species tree, but still at one big heap:
-
-```{r fig.width = 7, fig.height = 7}
-ggplot2::ggplot(
-  data = nltt_stats,
-  ggplot2::aes(
-    x = nltt_stats$sti,
-    y = nltt_stats$nltt_stat
-  )
-) + ggplot2::geom_boxplot(
-) + ggplot2::scale_x_discrete(
-  name = "Species tree index"
-) + ggplot2::scale_y_continuous(
-  name = "nLTT statistic"
-) + ggplot2::ggtitle("Distribution of nLTT statistics")
-
-```
-
