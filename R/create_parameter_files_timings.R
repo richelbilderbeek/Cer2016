@@ -36,7 +36,7 @@ create_parameter_files_timings <- function() {
               mutation_rate = r,
               n_alignments = 2,
               sequence_length = l,
-              nspp = 10, # divided by 100
+              nspp = 12, # divided by 100
               n_beast_runs = 2,
               filename = filename
             )

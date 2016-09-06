@@ -3,6 +3,7 @@ rm *.csv
 rm *.RDa
 rm *.pdf
 rm *.log
+rm *.out
 
 cd scripts
 rm *.csv
