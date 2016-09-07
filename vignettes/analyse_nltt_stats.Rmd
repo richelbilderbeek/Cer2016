@@ -19,6 +19,7 @@ Loading this package
 
 ```{r}
 library(Cer2016)
+library(dplyr)
 options(warn = 2)
 ```
 
@@ -50,16 +51,9 @@ Are nLTT statistics between BEAST2 runs from the same
 distribution?
 
 ```{r}
-df <- cast_nltt_stats(nltt_stats)
-  
-df <- are_beast_replicates_from_same_distribution(df)
-  
-# nltt_stats
-# df <- dplyr::summarise(
-#   dplyr::group_by(nltt_stats, filename, sti, ai),
-#   idn = are_from_same_distribution(a, b)
-# )
-# knitr::kable(dplyr::tally(dplyr::group_by(df, idn)))
+df <- are_beast_replicates_from_same_distribution(nltt_stats)
+knitr::kable(head(df))
+knitr::kable(count(df, same_distr))
 ```
 
 

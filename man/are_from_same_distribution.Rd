@@ -15,7 +15,7 @@ are_from_same_distribution(a, b, alpha = 0.05)
 \item{alpha}{significance level, is 0.05 by default}
 }
 \value{
-TRUE or FALSE
+TRUE or FALSE, or NA if cannot be calculated
 }
 \description{
 Checks if two samples are from the same distribution
