@@ -52,6 +52,13 @@ distribution?
 
 ```{r}
 df <- are_beast_replicates_from_same_distribution(nltt_stats)
+count(df, filename)
+df[ is.na(df$filename), ]
+
+head(df)
+df_false <- df[ df$same_distr == FALSE, ]
+df_na <- df[ is.na(df$same_distr), ]
+
 knitr::kable(head(df))
 knitr::kable(count(df, same_distr))
 ```
