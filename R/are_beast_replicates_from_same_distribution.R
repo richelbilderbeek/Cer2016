@@ -2,7 +2,7 @@
 #' @param df data frame
 #' @return data frame,
 #' @export
-#' @import dplyr
+#' @importFrom dplyr %>%
 are_beast_replicates_from_same_distribution <- function(df) {
 
   if ("filename" %in% names(df) &&
