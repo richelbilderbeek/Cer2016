@@ -18,8 +18,8 @@ test_that("cast_nltt_stats: use", {
   df2 <- cast_nltt_stats(nltt_stats)
 
   expect_true(all.equal(df1, df2))
-  expect_true(nrow(df) < nrow(nltt_stats)
-  expect_false("si" %in% names(df))
-  expect_false("nltt_stat" %in% names(df))
+  expect_true(nrow(df2) < nrow(nltt_stats))
+  expect_false("si" %in% names(df2))
+  expect_false("nltt_stat" %in% names(df2))
 
 })
