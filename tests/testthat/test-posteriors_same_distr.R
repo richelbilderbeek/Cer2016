@@ -17,6 +17,7 @@ test_that("create artifical dataset: same distributions", {
 
   # Create a fake dataset with 100 nLTT statistics per BEAST2 posterior
   # resulting in 200 rows in totla
+  set.seed(42)
   nltt_stats <- data.frame(
     filename = rep("fake.RDa", 200),
     sti = rep(1, 200),
