@@ -2,8 +2,8 @@
 #' @param df data frame
 #' @return data frame,
 #' @export
-#' @importFrom dplyr %>%
 are_beast_replicates_from_same_distribution <- function(df) {
+  requireNamespace("dplyr", quietly = TRUE)
 
   if ("filename" %in% names(df) &&
     "sti" %in% names(df) &&

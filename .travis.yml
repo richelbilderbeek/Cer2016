@@ -1,6 +1,10 @@
 language: r
 cache: packages
 
+r_packages:
+  - dplyr
+  - tidyr
+
 r_github_packages:
   - jimhester/covr
   - jimhester/lintr
