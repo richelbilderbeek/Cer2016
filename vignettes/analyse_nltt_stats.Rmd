@@ -20,6 +20,7 @@ Loading this package
 ```{r}
 library(Cer2016)
 library(dplyr)
+library(tidyr)
 options(warn = 2)
 ```
 
