@@ -3,6 +3,14 @@
 #' @return data frame,
 #' @export
 are_beast_replicates_from_same_distribution <- function(df) {
+  filename <- NULL; rm(filename)
+  ai <- NULL; rm(ai)
+  pi <- NULL; rm(pi)
+  si <- NULL; rm(si)
+  nltt_stat <- NULL; rm(nltt_stat)
+  A <- NULL; rm(A)
+  B <- NULL; rm(B)
+
   `%>%` <- dplyr::`%>%`
 
   if ("filename" %in% names(df) &&
@@ -20,8 +28,8 @@ are_beast_replicates_from_same_distribution <- function(df) {
     df <- subset(df, select = -c(si))
 
     df <- df %>%
-      group_by(filename, sti, ai) %>%
-      summarise(
+      dplyr::group_by(filename, sti, ai) %>%
+      dplyr::summarise(
         same_distr = are_from_same_distribution(A, B)
       )
     return (df)

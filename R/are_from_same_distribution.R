@@ -19,7 +19,7 @@ are_from_same_distribution <- function(a, b, alpha = 0.05)
 
   t <- NA
   tryCatch(
-    t <- wilcox.test(
+    t <- stats::wilcox.test(
         x = a,
         y = b,
         correct = FALSE,
