@@ -21,7 +21,7 @@ parameter file in the melted/uncast/long form
 }
 \examples{
   filename <- find_path("toy_example_3.RDa")
-  df <- collect_file_esses(filename, dt = dt)
+  df <- collect_file_esses(filename)
   testit::assert(nrow(df) == 8)
 }
 

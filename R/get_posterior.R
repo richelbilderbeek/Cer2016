@@ -47,6 +47,7 @@ get_posterior_by_index <- function(file, i) {
 #'   # Extract the posterior
 #'   posterior <- get_posterior(file = file, sti = sti, ai = 1, pi = 1)
 #'   # Check that it is indeed a posterior of non-zero length
+#'   testit::assert(all.true(names(posterior) == c("trees", "estimates")))
 #'   testit::assert(RBeast::is_posterior(posterior))
 #'   testit::assert(length(posterior) > 0)
 #' @author Richel Bilderbeek
