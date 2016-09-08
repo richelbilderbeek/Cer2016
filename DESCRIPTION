@@ -46,7 +46,8 @@ Suggests:
   rmarkdown,
   stringr,
   testit,
-  testthat
+  testthat,
+  tidyr
 Remotes:
   beast-dev/RBeast,
   jimhester/covr,
