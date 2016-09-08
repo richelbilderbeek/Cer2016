@@ -2,7 +2,7 @@
 #' @param df data frame
 #' @return data frame,
 #' @export
-are_beast_replicates_from_same_distribution <- function(df) {
+posteriors_same_distr <- function(df) {
   filename <- NULL; rm(filename)
   sti <- NULL; rm(sti)
   ai <- NULL; rm(ai)
@@ -24,7 +24,7 @@ are_beast_replicates_from_same_distribution <- function(df) {
     # Spread the posterior indices over multiple columns
     df <- df %>% tidyr::spread(pi, nltt_stat)
     # Rename columns with numbers
-    df <- plyr::rename(df, c("1"="A", "2"="B"))
+    df <- plyr::rename(df, c("1" = "A", "2" = "B"))
     # Remove the si column
     df <- subset(df, select = -c(si))
 

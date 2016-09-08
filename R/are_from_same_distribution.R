@@ -5,15 +5,8 @@
 #' @param alpha significance level, is 0.05 by default
 #' @return TRUE or FALSE, or NA if cannot be calculated
 #' @export
-are_from_same_distribution <- function(a, b, alpha = 0.05)
-{
-  if (length(a) == 0) {
-    #message("Need at least one value in the first distribution")
-    return (NA)
-  }
-
-  if (length(b) == 0) {
-    #message("Need at least one value in the second distribution")
+are_from_same_distribution <- function(a, b, alpha = 0.05) {
+  if (length(a) == 0 || length(b) == 0) {
     return (NA)
   }
 
