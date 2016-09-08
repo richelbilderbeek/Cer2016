@@ -21,6 +21,7 @@ Requires:
   phangorn,
   phytools,
   testit,
+  tidyr,
   tools,
   TreeSim
 Imports:
