@@ -4,6 +4,7 @@
 #' @export
 are_beast_replicates_from_same_distribution <- function(df) {
   filename <- NULL; rm(filename)
+  sti <- NULL; rm(sti)
   ai <- NULL; rm(ai)
   pi <- NULL; rm(pi)
   si <- NULL; rm(si)

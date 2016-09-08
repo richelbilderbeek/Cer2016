@@ -53,15 +53,18 @@ distribution?
 
 ```{r}
 df <- are_beast_replicates_from_same_distribution(nltt_stats)
-count(df, filename)
-df[ is.na(df$filename), ]
-
-head(df)
-df_false <- df[ df$same_distr == FALSE, ]
-df_na <- df[ is.na(df$same_distr), ]
-
 knitr::kable(head(df))
 knitr::kable(count(df, same_distr))
+```
+
+Not all BEAST2 posteriors follow the same distribution.
+
+
+```{r}
+df_true <- df[ !is.na(df$same_distr) & df$same_distr == TRUE, ]
+df_false <- df[ !is.na(df$same_distr) & df$same_distr == FALSE, ]
+df_na <- df[ is.na(df$same_distr), ]
+testit::assert(nrow(df) == nrow(df_true) + nrow(df_false) + nrow(df_na))
 ```
 
 
