@@ -35,27 +35,32 @@ collect_file_esses <- function(
   n_rows <- n_species_trees * n_alignments * n_beast_runs
 
   df <- data.frame(
-     filename = rep(filename, n_rows),
+     filename = rep(basename(filename), n_rows),
      sti = rep(seq(1, n_species_trees), each = n_alignments * n_beast_runs, times = 1),
      ai  = rep(seq(1, n_alignments   ), each = n_beast_runs, times = n_species_trees),
      pi  = rep(seq(1, n_beast_runs   ), times = n_species_trees * n_alignments),
-     ess = rep(NA, n_rows)
+     min_ess = rep(NA, n_rows)
   )
   index <- 1
 
   for (sti in 1:2) {
-    for (j in seq(1, n_alignments)) {
-      for (k in seq(1, n_beast_runs)) {
-        # stub: calculate the ESS from the posterior parameter estimates here
-        df$ess[index] <- 0.0
+    for (ai in seq(1, n_alignments)) {
+      for (pi in seq(1, n_beast_runs)) {
+        min_ess <- min(
+          RBeast::calc_esses(
+            traces = Cer2016::get_posterior(file, sti = sti, ai = ai, pi = pi)$estimates,
+            sample_interval = 1000
+          )
+        )
 
-        c
+        df$min_ess[index] <- min_ess
+
         index <- index + 1
       }
     }
   }
   testit::assert(names(df)
-    == c("filename", "sti", "ai", "pi", "ess")
+    == c("filename", "sti", "ai", "pi", "min_ess")
   )
   df
 }

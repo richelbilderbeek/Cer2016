@@ -181,7 +181,6 @@ alignment_to_beast_posterior <- function(
 
   # Stop on errors
 
-  # beast_trees_filename is the only essential one
   if (!file.exists(beast_trees_filename)) {
     stop(
       "file '", beast_trees_filename, "' should have been created"
