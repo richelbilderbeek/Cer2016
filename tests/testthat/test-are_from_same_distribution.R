@@ -43,11 +43,9 @@ test_that("are_from_same_distribution: datasets of different sizes", {
   # Only datasets of size zero give an error
   set.seed(42)
   expect_true(
-    is.na(
-      are_from_same_distribution(
-        runif(100),
-        runif(1)
-      )
+    are_from_same_distribution(
+      runif(100),
+      runif(1)
     )
   )
 
