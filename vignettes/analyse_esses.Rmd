@@ -1,0 +1,17 @@
+---
+title: "Analyse the files' ESSes"
+author: "Richel Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Analyse the files' ESSes}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r}
+library(Cer2016)
+df <- read_collected_esses()
+knitr::kable(df)
+```
+

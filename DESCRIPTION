@@ -47,7 +47,8 @@ Suggests:
   stringr,
   testit,
   testthat,
-  tidyr
+  tidyr,
+    knitr
 Remotes:
   beast-dev/RBeast,
   jimhester/covr,
