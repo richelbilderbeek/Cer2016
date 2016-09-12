@@ -29,13 +29,13 @@ collect_files_esses <- function(
     }
   }
   n_filenames_before <- length(filenames)
-  df <- collect_file_esses(filenames[1])
-  filenames <- tail(filenames, length(filenames) - 1)
+  df <- Cer2016::collect_file_esses(filenames[1])
+  filenames <- utils::tail(filenames, length(filenames) - 1)
   n_filenames_after <- length(filenames)
   testit::assert(n_filenames_after == n_filenames_before - 1)
 
   for (filename in filenames) {
-    df <- rbind(df, collect_file_esses(filename))
+    df <- rbind(df, Cer2016::collect_file_esses(filename))
   }
 
   testit::assert(names(df)
