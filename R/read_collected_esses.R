@@ -8,7 +8,6 @@
 #'   testit::assert(is.factor(df$sti))
 #'   testit::assert(is.factor(df$ai))
 #'   testit::assert(is.factor(df$pi))
-#'   testit::assert(is.factor(df$si))
 #' @author Richel Bilderbeek
 #' @export
 read_collected_esses <- function() {

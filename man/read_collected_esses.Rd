@@ -20,7 +20,6 @@ Read all the collected ESSes of all simulations' posteriors
   testit::assert(is.factor(df$sti))
   testit::assert(is.factor(df$ai))
   testit::assert(is.factor(df$pi))
-  testit::assert(is.factor(df$si))
 }
 \author{
 Richel Bilderbeek
