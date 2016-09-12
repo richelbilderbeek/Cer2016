@@ -35,6 +35,11 @@ echo "jobid: "$jobid
 # Analysis
 ##########################
 
+cmd="sbatch --dependency=afterany:$jobid collect_esses.sh"
+echo "cmd: "$cmd
+jobid=`$cmd | cut -d ' ' -f 4`
+echo "jobid: "$jobid
+
 cmd="sbatch --dependency=afterany:$jobid collect_gammas.sh"
 echo "cmd: "$cmd
 jobid=`$cmd | cut -d ' ' -f 4`
@@ -55,16 +60,21 @@ echo "cmd: "$cmd
 jobid=`$cmd | cut -d ' ' -f 4`
 echo "jobid: "$jobid
 
-cmd="sbatch --dependency=afterany:$jobid analyse_nltt_stats.sh"
-echo "cmd: "$cmd
-jobid=`$cmd | cut -d ' ' -f 4`
-echo "jobid: "$jobid
-
 cmd="sbatch --dependency=afterany:$jobid collect_times.sh"
 echo "cmd: "$cmd
 jobid=`$cmd | cut -d ' ' -f 4`
 echo "jobid: "$jobid
 
+cmd="sbatch --dependency=afterany:$jobid analyse_esses.sh"
+echo "cmd: "$cmd
+jobid=`$cmd | cut -d ' ' -f 4`
+echo "jobid: "$jobid
+
+
+cmd="sbatch --dependency=afterany:$jobid analyse_nltt_stats.sh"
+echo "cmd: "$cmd
+jobid=`$cmd | cut -d ' ' -f 4`
+echo "jobid: "$jobid
 
 cmd="sbatch --dependency=afterany:$jobid analyse_time.sh"
 echo "cmd: "$cmd
