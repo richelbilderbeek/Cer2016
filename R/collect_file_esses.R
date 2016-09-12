@@ -36,9 +36,13 @@ collect_file_esses <- function(
 
   df <- data.frame(
      filename = rep(basename(filename), n_rows),
-     sti = rep(seq(1, n_species_trees), each = n_alignments * n_beast_runs, times = 1),
-     ai  = rep(seq(1, n_alignments   ), each = n_beast_runs, times = n_species_trees),
-     pi  = rep(seq(1, n_beast_runs   ), times = n_species_trees * n_alignments),
+     sti = rep(
+       seq(1, n_species_trees), each = n_alignments * n_beast_runs, times = 1
+     ),
+     ai  = rep(
+       seq(1, n_alignments), each = n_beast_runs, times = n_species_trees
+     ),
+     pi  = rep(seq(1, n_beast_runs), times = n_species_trees * n_alignments),
      min_ess = rep(NA, n_rows)
   )
   index <- 1
@@ -48,7 +52,9 @@ collect_file_esses <- function(
       for (pi in seq(1, n_beast_runs)) {
         min_ess <- min(
           RBeast::calc_esses(
-            traces = Cer2016::get_posterior(file, sti = sti, ai = ai, pi = pi)$estimates,
+            traces = Cer2016::get_posterior(
+              file, sti = sti, ai = ai, pi = pi
+            )$estimates,
             sample_interval = 1000
           )
         )
