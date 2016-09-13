@@ -30,7 +30,7 @@ calc_nltt_stats <- function(
   nltt_stats <- rep(x = NA, times = length(others))
   i <- 1
   for (q in others) {
-    nltt_stats[i] <- nLTT::nLTTstat_exact(phylogeny, q)
+    nltt_stats[i] <- nLTT::nLTTstat_exact(phylogeny, q, ignore_stem = FALSE)
     i <- i + 1
   }
   testit::assert(length(nltt_stats) == length(others))
