@@ -1,4 +1,4 @@
-#' Tests if the nLTT statistics between posteriors
+#' Tests if the nLTT statistics between alignments
 #' are of the same distribution
 #' @param df data frame with column names 'filename',
 #'   'sti' (Species Tree Index), 'ai' (Alignment Index), 'pi' (Posterior
@@ -6,11 +6,11 @@
 #'  that posterior state its phylogeny and the sampled species tree)
 #' @return data frame
 #' @examples
-#'   nltt_stats <- read_collected_nltt_stats()
-#'   df <- posteriors_same_distr_nltt_stat(nltt_stats)
-#'   testit::assert(all(names(df) == c("filename", "sti", "ai", "same_distr")))
+#'   df <- read_collected_nltt_stats()
+#'   df <- alignments_same_distr_nltt_stat(nltt_stats)
+#'   testit::assert(all(names(df) == c("filename", "sti", "same_distr")))
 #' @export
-posteriors_same_distr_nltt_stat <- function(df) {
+alignments_same_distr_nltt_stat <- function(df) {
   filename <- NULL; rm(filename)
   sti <- NULL; rm(sti)
   ai <- NULL; rm(ai)
@@ -30,14 +30,18 @@ posteriors_same_distr_nltt_stat <- function(df) {
     "nltt_stat" %in% names(df)
   ) {
     # Spread the posterior indices over multiple columns
-    df <- df %>% tidyr::spread(pi, nltt_stat)
+    df <- df %>% tidyr::spread(ai, nltt_stat)
     # Rename columns with numbers
     df <- plyr::rename(df, c("1" = "A", "2" = "B"))
-    # Remove the si column
-    df <- subset(df, select = -c(si))
+    # If there had been only one alignment index, there will be no column B
+    if (!"B" %in% names(df)) {
+      stop("Cannot compare alignments if there is only one")
+    }
+    # Remove the pi and si columns
+    df <- subset(df, select = -c(pi, si))
 
     df <- df %>%
-      dplyr::group_by(filename, sti, ai) %>%
+      dplyr::group_by(filename, sti) %>%
       dplyr::summarise(
         same_distr = are_from_same_distribution(A, B)
       )

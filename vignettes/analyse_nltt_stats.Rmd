@@ -19,8 +19,8 @@ Loading this package
 
 ```{r}
 library(Cer2016)
-library(dplyr)
-library(tidyr)
+#library(dplyr)
+#library(tidyr)
 options(warn = 2)
 ```
 
@@ -35,6 +35,7 @@ knitr::kable(head(nltt_stats_raw, 12))
 Remove the NA's:
 
 ```{r}
+#nltt_stats <- nltt_stats_raw
 nltt_stats <- nltt_stats_raw[!is.na(nltt_stats_raw$nltt_stat), ]
 ```
 
@@ -48,13 +49,27 @@ same distribution, as this will influence are tests.
 To do, we will use the Mann-Whitney U test, as
 it assumes little.
 
+
+### 2. Between alignments on same sampled species tree
+
+```{r}
+df_same_dist <- alignments_same_distr_nltt_stat(nltt_stats)
+knitr::kable(head(df_same_dist))
+knitr::kable(dplyr::count(df_same_dist, same_distr))
+```
+
+### 3. Between sampled species trees of same incipient species tree
+
+
+### 1. Between BEAST2 runs on same DNA alignment
+
 Are nLTT statistics between BEAST2 runs from the same
 distribution?
 
 ```{r}
-df_same_dist <- posteriors_same_distr(nltt_stats)
+df_same_dist <- posteriors_same_distr_nltt_stat(nltt_stats)
 knitr::kable(head(df_same_dist))
-knitr::kable(count(df_same_dist, same_distr))
+knitr::kable(dplyr::count(df_same_dist, same_distr))
 ```
 
 Not all BEAST2 posteriors follow the same distribution.
@@ -73,9 +88,15 @@ df_parameters <- read_collected_parameters()
 df_parameters$filename <- rownames(df_parameters)
 df_n_taxa <- read_collected_n_taxa()
 
-
+testit::assert("filename" %in% names(df_parameters))
+testit::assert("filename" %in% names(df_n_taxa))
 df <- merge(df_parameters, df_n_taxa, by = "filename")
+names(df)
+
+testit::assert("filename" %in% names(df))
+testit::assert("filename" %in% names(df_same_dist))
 df <- merge(df, df_same_dist, by = "filename")
+testit::assert("filename" %in% names(df))
 head(df)
 
 df$same_distr <- plyr::mapvalues(df$same_distr, from = c(TRUE, FALSE, NA), to = c("yes", "no", "singular value"))
@@ -97,7 +118,7 @@ ggplot2::ggplot(
 )
 ```
 
-## How do the nLTT distributions look like?
+#### How do the nLTT distributions look like?
 
 First, the nLTTs of the posteriors that are different
 distributed with the highest number of taxa:
@@ -153,8 +174,6 @@ df_no <- df[df$same_distr == "no", ]
 no_max_n_taxa <- df_no[
   df_no$n_taxa == max(df_no$n_taxa), 
 ]
-
-
 
 no_max_n_taxa_nltts <- nltt_stats[ 
   nltt_stats$filename == no_max_n_taxa[1, ]$filename & 
