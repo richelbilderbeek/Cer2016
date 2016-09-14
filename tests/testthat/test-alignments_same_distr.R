@@ -38,19 +38,19 @@ test_that(paste("create artifical dataset:",
 
   # Create a fake dataset with 100 nLTT statistics per BEAST2 posterior
   # resulting in 200 rows in total
-  set.seed(42)
+  set.seed(314)
   nltt_stats <- data.frame(
     filename = rep("fake.RDa", 200),
     sti = rep(c(1,2), each = 100, times = 1),
     ai = rep(c(1, 2), each = 50, times = 2),
     pi = rep(c(1, 2), each = 25, times = 4),
     si = rep(1:25, 4),
-    nltt_stat = c(runif(100), runif(100))
+    nltt_stat = runif(200)
   )
   df <- alignments_same_distr_nltt_stat(nltt_stats)
   t <- dplyr::count(df, same_distr)
   expect_true(t$same_distr[1] == TRUE)
-  expect_true(t$n[1] == 1)
+  expect_true(t$n[1] == 2)
 
 })
 
