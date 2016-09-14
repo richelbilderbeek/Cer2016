@@ -26,7 +26,6 @@ Requires:
   TreeSim
 Imports:
   beastscriptr,
-  knitr,
   nLTT,
   PBD,
   phangorn,
@@ -48,7 +47,7 @@ Suggests:
   testit,
   testthat,
   tidyr,
-    knitr
+  knitr
 Remotes:
   beast-dev/RBeast,
   jimhester/covr,

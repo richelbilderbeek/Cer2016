@@ -13,8 +13,8 @@ test_that("dataset is too small sometimes", {
   expect_true(nrow(t) > 1)
 })
 
-test_that("create artifical dataset:"
-  "cannot compare if there is only one alignment", {
+test_that(paste("create artifical dataset:",
+  "cannot compare if there is only one alignment"), {
 
   # Create a fake dataset with 100 nLTT statistics per BEAST2 posterior
   # resulting in 200 rows in totla
@@ -33,8 +33,8 @@ test_that("create artifical dataset:"
   )
 })
 
-test_that("create artifical dataset:"
-  "compare two identical alignments", {
+test_that(paste("create artifical dataset:",
+  "compare two identical alignments"), {
 
   # Create a fake dataset with 100 nLTT statistics per BEAST2 posterior
   # resulting in 200 rows in totla
@@ -54,8 +54,8 @@ test_that("create artifical dataset:"
 
 })
 
-test_that("create artifical dataset: "
-  "compare two different distributions", {
+test_that(paste("create artifical dataset:",
+  "compare two different distributions"), {
 
   # Create a fake dataset with 100 nLTT statistics per BEAST2 posterior
   # resulting in 200 rows in totla
