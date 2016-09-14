@@ -1,7 +1,6 @@
-# First things
-install.packages("RNeXML", repos = "http://cran.uk.r-project.org")
+# Try to install from GitHub
+#install.packages("RNeXML", repos = "http://cran.uk.r-project.org")
 
-# Second things
 install.packages("ape", repos = "http://cran.uk.r-project.org")
 install.packages("adephylo", repos = "http://cran.uk.r-project.org")
 install.packages("BH", repos = "http://cran.uk.r-project.org")
@@ -35,7 +34,7 @@ install.packages("withr", repos = "http://cran.uk.r-project.org")
 install.packages("XML", repos = "http://cran.uk.r-project.org")
 install.packages("xml2", repos = "http://cran.uk.r-project.org")
 
-
+devtools::install_github("ropensci/RNeXML.git")
 devtools::install_github("jimhester/covr")
 devtools::install_github("jimhester/lintr")
 devtools::install_github("richelbilderbeek/beastscriptr")
