@@ -113,15 +113,72 @@ ted for biologically relevant parameters.
 Introduction
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Paragraph
 Biology: speciation takes time
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
+It takes time for different lineages of a same species to acquire sufficient
+ different mutations to establish reproductive isolation 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "schluter2001ecology"
+
+\end_inset
+
+.
+ When looking back in time, we can infer when two species started to separate.
+ In the present, it takes time for us to recognize reproductive isolation
+ and reclassify that one single species has become two (or more) species
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "fennessy2016multi"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+1) Time between phylogeny nodes
+\end_layout
+
+\begin_layout Plain Layout
+2) Time from a good species to become incipient
+\end_layout
+
+\begin_layout Plain Layout
+2) Time from an incipient species to become good
+\end_layout
+
+\begin_layout Plain Layout
+lineage with one good species -> incipient species -> loss of incipient
+ species due to recombination -> repeat.
+ How often does this happen?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
 The use of speciation models
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
+From DNA sequences obtained in the present, we can construct phylogenies
+ to infer the evolutionary relationship between species.
+ Additionally, we can estimate which species lived when [REF, Felsensteyn?].
+ 
+\end_layout
+
+\begin_layout Paragraph
 First model: constant rate birth death model
 \end_layout
 
@@ -151,7 +208,7 @@ key "nee1994"
  has also served as a starting point for more elaborate specation models.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Paragraph
 Other non-protracted speciation models
 \end_layout
 
@@ -185,11 +242,13 @@ key "fitzjohn2009estimating"
 ous.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Paragraph
+
+\bar under
 Protracted speciation model
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Paragraph
 Good and incipient states
 \end_layout
 
@@ -217,7 +276,7 @@ reference "fig:The-states-and-transitions-of-a-species"
  yet not recognized as such [REF].
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Paragraph
 Biological mechanism of reproductive isolation
 \end_layout
 
@@ -233,7 +292,7 @@ key "etienne2012prolonging,etienne2014estimating,rosindell2010protracted"
 .
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Paragraph
 Effects on topology
 \end_layout
 
@@ -247,7 +306,7 @@ A feature of the protracted birth-death model, is that it may result in
  This research assumes exactly this.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Paragraph
 Good and incipient rates
 \end_layout
 
@@ -266,7 +325,7 @@ The only additional parameter is the rate at which incipient species become
 d) birth-death model [REF].
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Paragraph
 Relationship to constant-rate birth-death model
 \end_layout
 
@@ -282,7 +341,7 @@ There is no relationship known between the parameters of the constant-rate
  
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Paragraph
 Good and incipient rates do not need to be constant
 \end_layout
 
@@ -294,7 +353,7 @@ The assumption that speciation takes time is independent of the dynamics
  or trait.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Paragraph
 Use of a speciation model in inferring a phylogeny
 \end_layout
 
@@ -316,7 +375,7 @@ key "bouckaert2014beast"
  
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Paragraph
 This study
 \end_layout
 
@@ -328,7 +387,7 @@ This simulation investigates the consequence of BEAST2 using instantaneous
  
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Paragraph
 Novelty
 \end_layout
 
@@ -345,7 +404,7 @@ Part of the parameter space will create 'true' trees that are not protracted.
  that are needed.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Paragraph
 Analysis
 \end_layout
 
@@ -368,7 +427,7 @@ ugh-Time plot lines that are normalized to let both time and number of lineages
  most to its value.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Paragraph
 Expectations
 \end_layout
 
@@ -388,7 +447,7 @@ It is unknown, however, under which biological settings this error is relevant.
  
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Paragraph
 Preview results
 \end_layout
 
