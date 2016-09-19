@@ -1,6 +1,6 @@
 library(Cer2016)
-#folder <- "/home/p230198/GitHubs/Cer2016/scripts"
-folder <- "/home/p230198/Peregrine"
+folder <- "/home/p230198/GitHubs/Cer2016/scripts"
+#folder <- "/home/p230198/Peregrine"
 csv_filename_esses <- "../inst/extdata/collected_esses.csv"
 
 fns <- paste(
