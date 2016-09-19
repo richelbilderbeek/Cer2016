@@ -50,17 +50,23 @@ collect_file_esses <- function(
   for (sti in 1:2) {
     for (ai in seq(1, n_alignments)) {
       for (pi in seq(1, n_beast_runs)) {
-        min_ess <- min(
-          RBeast::calc_esses(
-            traces = Cer2016::get_posterior(
-              file, sti = sti, ai = ai, pi = pi
-            )$estimates,
-            sample_interval = 1000
-          )
+
+        min_ess <- NA
+        tryCatch(
+          min_ess <- min(
+            RBeast::calc_esses(
+              traces = Cer2016::get_posterior(
+                file, sti = sti, ai = ai, pi = pi
+              )$estimates,
+              sample_interval = 1000
+            )
+          ),
+          error = function(msg) {
+            # OK
+          }
         )
 
         df$min_ess[index] <- min_ess
-
         index <- index + 1
       }
     }

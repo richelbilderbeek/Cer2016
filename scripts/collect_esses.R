@@ -1,5 +1,6 @@
 library(Cer2016)
-folder <- "/home/p230198/GitHubs/Cer2016/scripts"
+#folder <- "/home/p230198/GitHubs/Cer2016/scripts"
+folder <- "/home/p230198/Peregrine"
 csv_filename_esses <- "../inst/extdata/collected_esses.csv"
 
 fns <- paste(
@@ -12,17 +13,3 @@ write.csv(
   file = csv_filename_esses,
   row.names = TRUE
 )
-
-library(rmarkdown)
-
-tryCatch(
-  rmarkdown::render("../vignettes/analyse_esses.Rmd", output_file =  "~/analyse_esses.html"),
-  error = function(msg) { message(msg) }
-)
-
-tryCatch(
-  system("pandoc ~/analyse_esses.html -o analyse_esses.pdf"),
-  error = function(msg) { message(msg) }
-)
-
-warnings()
