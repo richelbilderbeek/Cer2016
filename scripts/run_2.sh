@@ -4,14 +4,13 @@
 # Add species trees
 ##########################
 
-# add_pbd_outputs.log will be parsed to obtain the jobids
 #SBATCH --time=2:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --ntasks=1
 #SBATCH --mem=1G
-#SBATCH --job-name=add_species_trees
-#SBATCH --output=add_species_trees.log
+#SBATCH --job-name=run_2
+#SBATCH --output=run_2.log
 jobids=()
 for filename in `ls *.RDa`
 do

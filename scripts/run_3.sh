@@ -4,8 +4,8 @@
 #SBATCH --ntasks-per-node=1
 #SBATCH --ntasks=1
 #SBATCH --mem=1G
-#SBATCH --job-name=add_alignments
-#SBATCH --output=add_alignments.log
+#SBATCH --job-name=run_3
+#SBATCH --output=run_3.log
 
 ##########################
 # Add alignments

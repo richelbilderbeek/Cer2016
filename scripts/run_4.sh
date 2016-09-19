@@ -4,8 +4,8 @@
 #SBATCH --ntasks-per-node=1
 #SBATCH --ntasks=1
 #SBATCH --mem=1G
-#SBATCH --job-name=add_posteriors
-#SBATCH --output=add_posteriors.log
+#SBATCH --job-name=run_4
+#SBATCH --output=run_4.log
 
 ##########################
 # Add posteriors

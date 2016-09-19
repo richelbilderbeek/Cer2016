@@ -3,15 +3,13 @@
 ######################
 # Add pbd_sim_output #
 ######################
-
-# add_pbd_outputs.log will be parsed to obtain the jobids
 #SBATCH --time=2:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --ntasks=1
 #SBATCH --mem=1G
-#SBATCH --job-name=add_pdb_outputs
-#SBATCH --output=add_pbd_outputs.log
+#SBATCH --job-name=run_1
+#SBATCH --output=run_1.log
 jobids=()
 for filename in `ls *.RDa`
 do
