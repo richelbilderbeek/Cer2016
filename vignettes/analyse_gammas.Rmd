@@ -52,8 +52,8 @@ df_comparison <- merge(
   by = c("filename", "species_tree"), 
   all = TRUE
 )
-df_comparison$diff <- df_comparison$gamma_stat.x
- - df_comparison$gamma_stat.y
+df_comparison$diff <- df_comparison$gamma_stat.x - 
+  df_comparison$gamma_stat.y
 ```
 
 Putting the head of the data frame in a table:
@@ -82,7 +82,7 @@ names(df_posterior)
 
 Let's first plot the distribution of gamma statistics.
 
-```{r}
+```{r fig.width = 7, fig.height = 7}
 ggplot2::ggplot(
   data = df_species_trees, ggplot2::aes(df_species_trees$gamma_stat)) +   
   ggplot2::xlim(-15, 5) +
@@ -103,7 +103,7 @@ ggplot2::ggplot(
                                   lineheight=1))
 ```
 
-```{r}
+```{r fig.width = 7, fig.height = 7}
 ggplot2::ggplot(
   data = df_posterior, ggplot2::aes(df_posterior$gamma_stat)) + 
   ggplot2::xlim(-15, 5) +
@@ -187,7 +187,7 @@ compare the gamma statistics of every tree that has a posterior.
 
 ```{r}
 comparison  <- NULL
-for (stat in head(df_posterior$gamma_stat)){
+for (stat in df_posterior$gamma_stat) {
   counter <- 0
   if (!is.na(stat)){ 
     for (value in head(df_species_trees$gamma_stat)){
@@ -209,7 +209,7 @@ comparison <- data.frame(comparison)
 ```
 
 ```{r}
-knitr::kable(comparison)
+knitr::kable(head(comparison))
 ```
 
 We actually used a different script for this. At any rate, this is what you get
@@ -221,43 +221,45 @@ ggplot2::qplot(diff, data = df_comparison, binwidth = 0.005, xlim = c(-2, 2))
 
 And this is what you get if you plot the BD portion:
 
-```{r}
+```{r fig.width = 7, fig.height = 7}
 BD <- df_parameters[
   !is.na(df_parameters$scr) 
   & df_parameters$scr > 2,
   ]
-head(BD)
+
+knitr::kable(head(BD))
 
 BD_gammas <- df_comparison[
   df_comparison$filename %in% rownames(BD),
   ]
-head(BD_gammas)
+
+knitr::kable(head(BD_gammas))
 
 ggplot2::qplot(diff, data = BD_gammas, binwidth = 0.005, xlim = c(-2, 2))
 ```
 
 So it seems like this is just noise.
 
-```{r}
+```{r fig.width = 7, fig.height = 7}
 PBD <- df_parameters[
   !is.na(df_parameters$scr)
   & df_parameters$scr < 2 
   & df_parameters$scr > 0,
   ]
-head(PBD)
+
+knitr::kable(head(PBD))
 
 PBD_gammas <- df_comparison[
   df_comparison$filename %in% rownames(PBD),
   ]
-head(PBD_gammas)
+
+knitr::kable(head(PBD_gammas))
 
 ggplot2::qplot(diff, data = PBD_gammas, binwidth = 0.005, xlim = c(-2, 2))
 
 ```
 
 Mmmh. Small difference, PBD has a little less on the right of 0.
-
-
 
 The lower the 'comparison' value, the bigger the error of BEAST towards higher 
 gamma statistics.
@@ -267,7 +269,7 @@ values. The higher values for the speciation initiation rate for example
 (0.8 and 1). This turned to be because of missing posterior gammas for those
 parameters. All files after `article_1_5_5_2_2.RDA` appear to be corrupted.
 
-```{r}
+```{r fig.width = 7, fig.height = 7}
 gamma_bigdiff <- df_comparison[ 
   !is.na(df_comparison$diff) & df_comparison$diff < -1, 
   ]
@@ -308,7 +310,7 @@ Most of the time, there doesn't seem to be a difference.
 But let's look at age: It seems like the longer ```age``` is less well 
 predicted.
 
-```{r}
+```{r fig.width = 7, fig.height = 7}
 ggplot2::qplot(age, data = parameters_bigdiff,
                binwidth = 0.5)
 
@@ -318,7 +320,7 @@ ggplot2::qplot(age, data = parameters_smalldiff,
 
 Higher mutation rates are predicted better.
 
-```{r}
+```{r fig.width = 7, fig.height = 7}
 ggplot2::qplot(mutation_rate, data = parameters_bigdiff,
                binwidth = 0.005)
 
@@ -404,7 +406,7 @@ but not all, and the double dose of super-duper high speciation
 completion time runs. In the end, it turns out that the corrupted files are 
 random... we are working with an involuntarily sampled set from the 'real' data. 
 
-```{r}
+```{r fig.width = 7, fig.height = 7}
 ggplot2::ggplot(
   data = na_sample, ggplot2::aes(SIR_GS)) +
   ggplot2::xlim(-0.1, 1) +
@@ -427,7 +429,7 @@ ggplot2::ggplot(
 
 The speciation completion rate is also interesting.
 
-```{r}
+```{r fig.width = 7, fig.height = 7}
  ggplot2::ggplot(
   data = na_sample, ggplot2::aes(SCR)) +
   ggplot2::xlim(c(999999, 1000001)) +
@@ -516,7 +518,7 @@ PBD <- data.frame(PBD)
 knitr::kable(head(PBD))
 ```
 
-```{r}
+```{r fig.width = 7, fig.height = 7}
 ggplot2::ggplot(
   data = PBD, ggplot2::aes(gammas)) +
   ggplot2::xlim(c(-15, 3)) +
@@ -556,7 +558,7 @@ ggplot2::ggplot(
                                   lineheight=1))
 ```
 
-```{r}
+```{r fig.width = 7, fig.height = 7}
 ggplot2::qplot(gammas, data = PBD, binwidth = 0.05, xlim = c(-15, 3))
 ggplot2::qplot(gammas, data = BD, binwidth = 0.05, xlim = c(-15, 3))
 
@@ -578,12 +580,14 @@ df_parameters_richel <- df_parameters[
   !is.na(df_parameters$scr)
   & df_parameters$scr > 0,
   ]
-head(df_parameters_richel)
+
+knitr::kable(head(df_parameters_richel))
 
 richel_gammas <- df_comparison[
   df_comparison$filename %in% rownames(df_parameters_richel),
   ]
-head(richel_gammas)
+
+knitr::kable(head(richel_gammas))
 
 ```
 
@@ -592,14 +596,10 @@ head(richel_gammas)
 Analysis here:
 
 ```{r}
-class(df_comparison)
-class(df_parameters)
 
 # Add a column called 'filenames' to the parameter files
 df_parameters$filename <- rownames(df_parameters)
 
-names(df_comparison)
-names(df_parameters)
 df_big <- merge(x = df_parameters, y = df_comparison, by = "filename", all = TRUE)
 
 names(df_big)
@@ -651,7 +651,7 @@ df_final <- df_big[
   ]
 ```
 
-```{r}
+```{r fig.width = 7, fig.height = 7}
 ggplot(df_final, aes(x = diff, colour = scr)) + 
   geom_density() +
   xlim(c(-1, 0.2)) +
@@ -664,9 +664,6 @@ ggplot(df_final, aes(x = diff, colour = scr)) +
   ggtitle("Comparison PBD - BD") +
   xlab("Diff sampled tree - posterior")
 
-
-
-
 ggplot(df_big, aes(x = diff, colour = scr)) + 
   geom_density() +
   xlim(c(-0.2, 0.2)) +
@@ -676,31 +673,8 @@ ggplot(df_big, aes(x = diff, colour = scr)) +
 ggplot(df_big, aes(x = diff, colour = scr)) + 
   geom_density() +
   xlim(c(-2, 2)) +
-  ggtitle("Comparison PBD - BD") +
+  ggtitle("Comparison gamma statistic PBD - BD") +
   xlab("Diff sampled tree - posterior")
 
-ggplot(df_01, aes(x = diff, colour = scr)) + 
-  geom_density() +
-  xlim(c(-2, 2))
-
-ggplot(df_02, aes(x = diff, colour = scr)) + 
-  geom_density() +
-  xlim(c(-2, 2))
-
-ggplot(df_03, aes(x = diff, colour = scr)) + 
-  geom_density() +
-  xlim(c(-2, 2))
-
-ggplot(df_04, aes(x = diff, colour = scr)) + 
-  geom_density() +
-  xlim(c(-2, 2))
-
-ggplot(df_08, aes(x = diff, colour = scr)) + 
-  geom_density() +
-  xlim(c(-2, 2))
-
-ggplot(df_10, aes(x = diff, colour = scr)) + 
-  geom_density() +
-  xlim(c(-2, 2))
 ```
 
