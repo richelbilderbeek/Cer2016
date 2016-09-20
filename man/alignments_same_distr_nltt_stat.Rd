@@ -21,7 +21,7 @@ Tests if the nLTT statistics between alignments
 are of the same distribution
 }
 \examples{
-  df <- read_collected_nltt_stats()
+  nltt_stats <- read_collected_nltt_stats()
   df <- alignments_same_distr_nltt_stat(nltt_stats)
   testit::assert(all(names(df) == c("filename", "sti", "same_distr")))
 }

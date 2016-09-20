@@ -6,7 +6,7 @@
 #'  that posterior state its phylogeny and the sampled species tree)
 #' @return data frame
 #' @examples
-#'   df <- read_collected_nltt_stats()
+#'   nltt_stats <- read_collected_nltt_stats()
 #'   df <- alignments_same_distr_nltt_stat(nltt_stats)
 #'   testit::assert(all(names(df) == c("filename", "sti", "same_distr")))
 #' @export
