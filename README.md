@@ -7,6 +7,6 @@
 This was the GitHub of the Community Ecology Research course 2016.
 
 Code has been spread over many repositories now, most notably
-[the wirittes](https://github.com/richelbilderbeek/wirittes)
-and [the wirittea](https://github.com/richelbilderbeek/wirittea)
+[the wiritttes](https://github.com/richelbilderbeek/wiritttes)
+and [the wiritttea](https://github.com/richelbilderbeek/wiritttea)
 GitHubs.
