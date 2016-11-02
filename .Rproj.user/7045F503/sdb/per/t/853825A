@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"add_posteriors demo\"\nauthor: \"Richel Bilderbeek\"\ndate: \"`r Sys.Date()`\"\noutput: rmarkdown::html_vignette\nvignette: >\n  %\\VignetteIndexEntry{add_posteriors demo}\n  %\\VignetteEngine{knitr::rmarkdown}\n  %\\VignetteEncoding{UTF-8}\n---\n\n## Starting up\n\nWe will need to load some libraries:\n\n```{r message = FALSE}\nlibrary(ape)\nlibrary(Cer2016)\nlibrary(ggplot2)\nlibrary(Hmisc)\nlibrary(nLTT)\nlibrary(phangorn)\noptions(warn = 2)\n```\n\n## Creating parameter files\n\nHere, we create the four parameter filenames:\n\n```{r}\nfilename <- \"add_posterior_demo.RDa\"\n```\n\nTo be sure to have a fresh analysis, we delete the files if they exist:\n\n```{r message = FALSE}\nif (file.exists(filename)) {\n  file.remove(filename)\n}\n```\n\nNow the parameter files are created with the desired parameters:\n\n```{r}\nn_beast_runs <- 2\n\nsave_parameters_to_file(\n  rng_seed = 2,\n  sirg = 0.5,\n  siri = 0.5,\n  scr = 1.0e-1,\n  erg = 0.1,\n  eri = 0.1,\n  age = 5,\n  mutation_rate = 0.01,\n  n_alignments = 1,\n  sequence_length = 1000,\n  mcmc_chainlength = 10000,\n  n_beast_runs = n_beast_runs,\n  filename = filename\n)  \ntestit::assert(is_valid_file(filename))\n```\n\n## Running the simulation\n\nThe simulation has multiple steps. The last step is adding the \nposterior to the parameter file.\n\n```{r}\ndo_simulation(filename, cache_beast_output = TRUE)\n```\n\n## Show the posterior\n\n```{r}\nposteriors <- get_posteriors(read_file(filename))\ntestit::assert(length(posteriors) == 2 * n_beast_runs)\ntestit::assert(is_posterior(Cer2016::get_posterior(file = read_file(filename), sti = 1, ai = 1, pi = 1)))\ntestit::assert(is_posterior(Cer2016::get_posterior(file = read_file(filename), sti = 1, ai = 1, pi = 2)))\ntestit::assert(is_posterior(Cer2016::get_posterior(file = read_file(filename), sti = 2, ai = 1, pi = 1)))\ntestit::assert(is_posterior(Cer2016::get_posterior(file = read_file(filename), sti = 2, ai = 1, pi = 2)))\n\nphylogenies_1 <- Cer2016::get_posterior(file = read_file(filename), sti = 1, ai = 1, pi = 1)$trees\nphylogenies_2 <- Cer2016::get_posterior(file = read_file(filename), sti = 1, ai = 1, pi = 2)$trees\nphylogenies_3 <- Cer2016::get_posterior(file = read_file(filename), sti = 2, ai = 1, pi = 1)$trees\nphylogenies_4 <- Cer2016::get_posterior(file = read_file(filename), sti = 2, ai = 1, pi = 2)$trees\n\ntestit::assert(length(phylogenies_1) > 0)\ntestit::assert(length(phylogenies_2) > 0)\ntestit::assert(length(phylogenies_3) > 0)\ntestit::assert(length(phylogenies_4) > 0)\n```\n\nHere another hack: to get the `densiTree` function working, phylogenies must be of class multiphylo.\nLet it be so:\n\n```{r}\nclass(phylogenies_1) <- \"multiPhylo\"\nclass(phylogenies_2) <- \"multiPhylo\"\nclass(phylogenies_3) <- \"multiPhylo\"\nclass(phylogenies_4) <- \"multiPhylo\"\n```\n\nDisplaying first posterior of the `youngest` species tree:\n\n```{r fig.width = 7, fig.height = 7}\nphangorn::densiTree(\n  phylogenies_1, \n  type = \"cladogram\", \n  alpha = 1\n)\n```\n\nDisplaying second posterior of the `youngest` species tree:\n\n```{r fig.width = 7, fig.height = 7}\nphangorn::densiTree(\n  phylogenies_2, \n  type = \"cladogram\", \n  alpha = 1\n)\n```\n\nDisplaying first posterior of the `oldest` species tree:\n\n```{r fig.width = 7, fig.height = 7}\nphangorn::densiTree(\n  phylogenies_3, \n  type = \"cladogram\", \n  alpha = 1\n)\n```\n\nDisplaying second posterior of the `oldest` species tree:\n\n```{r fig.width = 7, fig.height = 7}\nphangorn::densiTree(\n  phylogenies_4, \n  type = \"cladogram\", \n  alpha = 1\n)\n```\n",
+    "created" : 1470556989728.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3629316384",
+    "id" : "853825A",
+    "lastKnownWriteTime" : 1470396364,
+    "last_content_update" : 1470396364,
+    "path" : "~/GitHubs/Cer2016/vignettes/add_posteriors_demo.Rmd",
+    "project_path" : "vignettes/add_posteriors_demo.Rmd",
+    "properties" : {
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

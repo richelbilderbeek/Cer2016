@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "Package: Cer2016\nType: Package\nTitle: Phylogeny Summary Statistics Demonstrated\nVersion: 1.3.1\nAuthor: Richel Bilderbeek <richel@richelbilderbeek.nl>\nMaintainer: Richel Bilderbeek <richel@richelbilderbeek.nl>\nDescription: This package contains multiple phylogeny summary statistics:\n    SummaryStatisticA, SummaryStatisticB, SummaryStatisticC and\n    SummaryStatisticD. These statistics are demonstrated on\n    phylogenies created by the protracted and the (non-protracted)\n    birth-death model.\nLicense: file LICENSE\nLazyData: TRUE\nRequires:\n  adephylo,\n  ape,\n  beastscriptr,\n  dplyr,\n  nLTT,\n  PBD,\n  phangorn,\n  phytools,\n  rBEAST,\n  testit,\n  tools,\n  TreeSim\nImports:\n  beastscriptr,\n  knitr,\n  nLTT,\n  PBD,\n  phangorn,\n  phytools,\n  rBEAST\nSuggests:\n  ape,\n  coda,\n  dplyr,\n  ggplot2,\n  gridExtra,\n  Hmisc,\n  lintr,\n  lubridate,\n  plyr,\n  reshape2,\n  rmarkdown,\n  stringr,\n  testit,\n  testthat\nRemotes:\n  jimhester/covr,\n  jimhester/lintr,\n  olli0601/rBEAST,\n  richelbilderbeek/beastscriptr,\n  richelbilderbeek/nLTT,\n  richelbilderbeek/ribir,\n  rsetienne/PBD/PBD,\n  MangoTheCat/goodpractice\nRoxygenNote: 5.0.1\nURL: https://github.com/richelbilderbeek/Cer2016\nBugReports: https://github.com/richelbilderbeek/Cer2016/issues\nVignetteBuilder: knitr\n",
+    "created" : 1470556237597.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1708618962",
+    "id" : "42836EA7",
+    "lastKnownWriteTime" : 1470396364,
+    "last_content_update" : 1470396364,
+    "path" : "~/GitHubs/Cer2016/DESCRIPTION",
+    "project_path" : "DESCRIPTION",
+    "properties" : {
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "dcf"
+}

@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# Cer2016\n\n[![Build Status](https://travis-ci.org/richelbilderbeek/Cer2016.svg?branch=master)](https://travis-ci.org/richelbilderbeek/Cer2016)\n[![codecov.io](https://codecov.io/github/richelbilderbeek/Cer2016/coverage.svg?branch=master)](https://codecov.io/github/richelbilderbeek/Cer2016?branch=master)\n[![gplv3](http://www.gnu.org/graphics/gplv3-88x31.png)](http://www.gnu.org/licenses/gpl.html)\n\nCommunity Ecology Research course 2016.\n\n## Installing Cer2016\n\nThe `Cer2016` package is absent on CRAN.\n\nAn easy way is to install it from GitHub. Within R, do:\n\n```\ndevtools::install_github(\"richelbilderbeek/Cer2016\")\n```\n\n## Using Cer20 as a package dependency\n\nIf your package uses `Cer2016`, add the following to the `DESCRIPTION` its `Remotes` section:\n\n```\nRemotes:\n  richelbilderbeek/Cer2016\n```\n\n## Update the package source on Peregrine\n\n```\nmodule load git; git pull\n```\n\n## Copy files from Peregrine to local computer\n\n```\nscp p230198@peregrine.hpc.rug.nl:/home/p230198/GitHubs/Cer2016/scripts/*.* ~/Peregrine\n```\n\n## Re-install the package on Peregrine\n\n```\ncd scripts; sbatch install_this_r_package.sh\n```\n\nNote that this is done automatically when running the pipeline.\n\n## Workflow\n\nOn Peregrine, from the `Cer2016` root folder:\n\n```\ncd scripts\n./run.sh\n```\n\nIt will send an email when finished.\n\n## How to create the test examples?\n\n * Run the function `do_test_simulations`\n\n## How to install\n\nTo install this repository, you will need to:\n\n * Clone this repository\n * Install packages\n * Install BEAST2\n\nSteps are shown below.\n\n### Clone this repository\n\nFrom the GNU/Linux terminal, or using Windows Git Bash:\n\n```\ngit clone https://github.com/richelbilderbeek/Cer2016\n```\n\nThis will create a folder called `Cer2016`. \n\nYou may also need to do this, for GNU/Linux:\n\n```\nsudo apt-get install libcurl4-openssl-dev\n```\n\n### Install packages\n\nYou will need some packages, which are listed in `install_r_packages.R`.\n\nIn Linux, you can install all of these with:\n\n```\nsudo install_r_packages.sh\n```\n\n### Install BEAST2\n\nYou will need to install BEAST2. \n\nYou can do this from [the BEAST2 GitHub](https://github.com/CompEvol/beast2).\n\nIn Linux, you can install it with:\n\n```\n./install_beast2.sh\n```\n\n## Resources\n\n * [My 2015-11-23 TRES presentation](https://github.com/richelbilderbeek/Science/blob/master/Bilderbeek20151123TresMeeting/20151123TresMeeting.pdf)\n * [My 2016-02-03 TECE presentation](https://github.com/richelbilderbeek/Science/blob/master/Bilderbeek20160203TeceMeeting/20160203TeceMeeting.pdf)\n * [My 2016 TRES presentation about BEAST2](https://github.com/richelbilderbeek/Science/blob/master/Bilderbeek2016Beast/Bilderbeek2016Beast.pdf)\n * [My R repository](https://github.com/richelbilderbeek/R), especially the `Phylogeny` and `Peregrine` folders may be of help\n * [Prolonging the Past Counteracts the Pull of the Present: Protracted Speciation Can Explain Observed Slowdowns in Diversification. Rampal S. Etienne, James Rosindell. 2012](http://sysbio.oxfordjournals.org/content/61/2/204)\n * Nee, Sean, Robert M. May, and Paul H. Harvey. \"The reconstructed evolutionary process.\" Philosophical Transactions of the Royal Society of London B: Biological Sciences 344.1309 (1994): 305-311.\n * [R coding standard](https://github.com/richelbilderbeek/R-CodingStandard)\n * [Pro Git](https://git-scm.com/book/en/v2)\n * Tidy Data, Hadley Wickham\n * R packages, Hadley Wickham\n * Advanced R, Hadley Wickham\n",
+    "created" : 1470480089674.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "563287499",
+    "id" : "B156B9B7",
+    "lastKnownWriteTime" : 1470396364,
+    "last_content_update" : 1470396364,
+    "path" : "~/GitHubs/Cer2016/README.md",
+    "project_path" : "README.md",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "markdown"
+}

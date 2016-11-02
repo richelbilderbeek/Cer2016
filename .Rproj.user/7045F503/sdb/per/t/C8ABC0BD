@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "context(\"parse_beast_trees\")\n\ntest_that(\"parse_beast_trees: use\", {\n  posterior <- parse_beast_trees(\n    find_path(\"beast2_example_output.trees\")\n  )\n  expect_true(is_trees_posterior(posterior))\n})\n\ntest_that(\"parse_beast_trees: abuse\", {\n\n  expect_error(\n    parse_beast_trees(filename = \"inva.lid\"),\n    \"parse_beast_trees: file absent\"\n  )\n\n})\n",
+    "created" : 1470556161112.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "723253434",
+    "id" : "C8ABC0BD",
+    "lastKnownWriteTime" : 1470396364,
+    "last_content_update" : 1470396364,
+    "path" : "~/GitHubs/Cer2016/tests/testthat/test-parse_beast_trees.R",
+    "project_path" : "tests/testthat/test-parse_beast_trees.R",
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
